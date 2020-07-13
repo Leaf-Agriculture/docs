@@ -3,12 +3,14 @@ dist: bionic
 
 language: node_js
 node_js:
-  - '10'
+  - node
 
 cache:
-  yarn: true
+  npm: true
+
+install:
+  - npm install
 
 script:
-  - yarn
-  - export GIT_USER="${GITHUB_TOKEN}"
-  - yarn deploy
+  - npm run swizzle docusaurus-lunr-search SearchBar
+  - npm run build

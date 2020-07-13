@@ -1,6 +1,8 @@
 const path = require('path');
+
 module.exports = {
-  plugins: [path.resolve(__dirname, './node_modules/docusaurus-lunr-search/')],
+  plugins: [require.resolve('docusaurus-lunr-search')],
+
   title: 'My Site',
   tagline: 'The tagline of my site',
   url: 'https://leaf-agriculture.github.io',
@@ -8,6 +10,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'leaf-agriculture', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
+
   themeConfig: {
     navbar: {
       title: 'My Site',

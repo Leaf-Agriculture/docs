@@ -14,3 +14,12 @@ install:
 script:
   - npm run swizzle docusaurus-lunr-search SearchBar
   - npm run build
+
+deploy:
+  provider: pages
+  strategy: git
+  edge: true
+  cleanup: false
+  local_dir: ./build
+  on:
+    branch: master

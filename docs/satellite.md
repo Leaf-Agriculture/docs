@@ -4,12 +4,13 @@ title: Satellite
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
 Our API returns processed, cropped, and color-corrected RGB and NDVI images.
 
-![fields][1]
+<img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
 All HTTP methods should be prepended by this service's endpoint:
 
@@ -254,7 +255,7 @@ the image below. If you want to use your own ramp, we recommend using `NDVI.tif`
 which is a pre calculated NDVI file. You can import it into any GIS software,
 like [QGis][4], and use it as you please.
 
-![NDVI example][2]
+<img alt="NDVI example" src={useBaseUrl('img/ndviexample.png')} />
 
 <Tabs
   defaultValue="js"

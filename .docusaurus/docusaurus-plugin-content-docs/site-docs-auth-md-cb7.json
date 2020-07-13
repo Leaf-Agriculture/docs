@@ -1,0 +1,17 @@
+{
+  "id": "auth",
+  "title": "Authentication",
+  "description": "Create an account",
+  "source": "@site/docs/auth.md",
+  "permalink": "/leaf/docs/auth",
+  "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/auth.md",
+  "sidebar": "docs",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/leaf/docs/intro"
+  },
+  "next": {
+    "title": "Satellite",
+    "permalink": "/leaf/docs/satellite"
+  }
+}

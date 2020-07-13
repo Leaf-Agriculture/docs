@@ -1,0 +1,44 @@
+{
+  "docsSidebars": {
+    "docs": [
+      {
+        "type": "category",
+        "label": "Getting started",
+        "items": [
+          {
+            "type": "link",
+            "label": "Introduction",
+            "href": "/docs/intro"
+          },
+          {
+            "type": "link",
+            "label": "Authentication",
+            "href": "/docs/auth"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "REST API Reference",
+        "items": [
+          {
+            "type": "link",
+            "label": "Satellite",
+            "href": "/docs/satellite"
+          },
+          {
+            "type": "link",
+            "label": "converter",
+            "href": "/docs/converter"
+          }
+        ]
+      }
+    ]
+  },
+  "permalinkToSidebar": {
+    "/docs/auth": "docs",
+    "/docs/converter": "docs",
+    "/docs/intro": "docs",
+    "/docs/satellite": "docs"
+  }
+}

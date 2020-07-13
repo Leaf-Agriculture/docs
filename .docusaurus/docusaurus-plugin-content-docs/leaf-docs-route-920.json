@@ -1,0 +1,44 @@
+{
+  "docsSidebars": {
+    "docs": [
+      {
+        "type": "category",
+        "label": "Getting started",
+        "items": [
+          {
+            "type": "link",
+            "label": "Introduction",
+            "href": "/leaf/docs/intro"
+          },
+          {
+            "type": "link",
+            "label": "Authentication",
+            "href": "/leaf/docs/auth"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "REST API Reference",
+        "items": [
+          {
+            "type": "link",
+            "label": "Satellite",
+            "href": "/leaf/docs/satellite"
+          },
+          {
+            "type": "link",
+            "label": "converter",
+            "href": "/leaf/docs/converter"
+          }
+        ]
+      }
+    ]
+  },
+  "permalinkToSidebar": {
+    "/leaf/docs/auth": "docs",
+    "/leaf/docs/converter": "docs",
+    "/leaf/docs/intro": "docs",
+    "/leaf/docs/satellite": "docs"
+  }
+}

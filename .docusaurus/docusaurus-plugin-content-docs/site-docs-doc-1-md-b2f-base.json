@@ -1,0 +1,58 @@
+{
+  "docsSidebars": {
+    "sidebar": [
+      {
+        "type": "category",
+        "label": "About",
+        "items": [
+          {
+            "type": "link",
+            "label": "About",
+            "href": "/docs/intro/about"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Docusaurus",
+        "items": [
+          {
+            "type": "link",
+            "label": "Style Guide",
+            "href": "/docs/doc1"
+          },
+          {
+            "type": "link",
+            "label": "Document Number 2",
+            "href": "/docs/doc2"
+          },
+          {
+            "type": "link",
+            "label": "This is Document Number 3",
+            "href": "/docs/doc3"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Features",
+        "items": [
+          {
+            "type": "link",
+            "label": "Powered by MDX",
+            "href": "/docs/mdx"
+          }
+        ]
+      }
+    ]
+  },
+  "permalinkToSidebar": {
+    "/docs/doc1": "sidebar",
+    "/docs/doc2": "sidebar",
+    "/docs/doc3": "sidebar",
+    "/docs/intro/about": "sidebar",
+    "/docs/mdx": "sidebar"
+  },
+  "isHomePage": true,
+  "homePagePath": "/docs/doc1"
+}

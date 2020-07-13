@@ -1,0 +1,13 @@
+{
+  "id": "intro",
+  "title": "Introduction",
+  "description": "Welcome to the Leaf's Documentation!",
+  "source": "@site/docs/intro.md",
+  "permalink": "/leaf/docs/intro",
+  "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/intro.md",
+  "sidebar": "docs",
+  "next": {
+    "title": "Authentication",
+    "permalink": "/leaf/docs/auth"
+  }
+}

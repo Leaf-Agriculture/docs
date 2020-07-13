@@ -1,0 +1,46 @@
+{
+  "docsSidebars": {
+    "sidebar": [
+      {
+        "type": "category",
+        "label": "Introduction",
+        "items": [
+          {
+            "type": "link",
+            "label": "About",
+            "href": "/docs/intro/about"
+          },
+          {
+            "type": "link",
+            "label": "Authentication",
+            "href": "/docs/intro/auth"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Satellite",
+        "items": [
+          {
+            "type": "link",
+            "label": "about",
+            "href": "/docs/satellite/about"
+          },
+          {
+            "type": "link",
+            "label": "endpoints",
+            "href": "/docs/satellite/endpoints"
+          }
+        ]
+      }
+    ]
+  },
+  "permalinkToSidebar": {
+    "/docs/intro/about": "sidebar",
+    "/docs/intro/auth": "sidebar",
+    "/docs/satellite/about": "sidebar",
+    "/docs/satellite/endpoints": "sidebar"
+  },
+  "isHomePage": true,
+  "homePagePath": "/docs/about"
+}

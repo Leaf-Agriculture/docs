@@ -1,0 +1,13 @@
+{
+  "id": "test/doc1",
+  "title": "doc1",
+  "description": "You can write content using GitHub-flavored Markdown syntax.",
+  "source": "@site/docs/test/doc1.md",
+  "permalink": "/docs/test/doc1",
+  "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/test/doc1.md",
+  "sidebar": "sidebar",
+  "previous": {
+    "title": "Powered by MDX",
+    "permalink": "/docs/mdx"
+  }
+}

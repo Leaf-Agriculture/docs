@@ -3,11 +3,11 @@ module.exports = {
   plugins: [path.resolve(__dirname, './node_modules/docusaurus-lunr-search/')],
   title: 'My Site',
   tagline: 'The tagline of my site',
-  url: 'https://leaf.github.io',
-  baseUrl: '/leaf/',
+  url: 'https://leaf-agriculture.github.io',
+  baseUrl: '/leaf-agriculture/',
   favicon: 'img/favicon.ico',
-  organizationName: 'leaf', // Usually your GitHub org/user name.
-  projectName: 'leaf', // Usually your repo name.
+  organizationName: 'leaf-agriculture', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'My Site',

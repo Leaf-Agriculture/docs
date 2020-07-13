@@ -93,7 +93,7 @@ export default {
       {
         "docs": {
           "homePageId": "intro",
-          "sidebarPath": "/home/joao/work/docs/leaf/sidebars.js",
+          "sidebarPath": "/home/joao/work/leafdocs/sidebars.js",
           "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/"
         },
         "blog": {
@@ -101,7 +101,7 @@ export default {
           "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/blog/"
         },
         "theme": {
-          "customCss": "/home/joao/work/docs/leaf/src/css/custom.css"
+          "customCss": "/home/joao/work/leafdocs/src/css/custom.css"
         }
       }
     ]

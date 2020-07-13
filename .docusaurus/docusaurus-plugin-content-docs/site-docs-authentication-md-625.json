@@ -1,8 +1,0 @@
-{
-  "id": "authentication",
-  "title": "Authentication",
-  "description": "Create an account",
-  "source": "@site/docs/authentication.md",
-  "permalink": "/docs/authentication",
-  "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/authentication.md"
-}

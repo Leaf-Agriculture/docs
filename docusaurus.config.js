@@ -4,7 +4,7 @@ module.exports = {
   title: 'My Site',
   tagline: 'The tagline of my site',
   url: 'https://leaf-agriculture.github.io',
-  baseUrl: '/leaf-agriculture/',
+  baseUrl: '/docs/',
   favicon: 'img/favicon.ico',
   organizationName: 'leaf-agriculture', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.

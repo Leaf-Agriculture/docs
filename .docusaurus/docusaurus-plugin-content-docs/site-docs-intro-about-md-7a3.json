@@ -1,9 +1,0 @@
-{
-  "id": "intro.about",
-  "title": "intro.about",
-  "description": "",
-  "source": "@site/docs/intro.about.md",
-  "permalink": "/docs/intro.about",
-  "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/intro.about.md",
-  "sidebar": "sidebar"
-}

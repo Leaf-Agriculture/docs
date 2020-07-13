@@ -1,8 +1,0 @@
-{
-  "id": "doc2",
-  "title": "Document Number 2",
-  "description": "This is a link to another document. This is a link to an external page.",
-  "source": "@site/docs/doc2.md",
-  "permalink": "/docs/doc2",
-  "editUrl": "https://github.com/facebook/docusaurus/edit/master/website/docs/doc2.md"
-}

@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
   plugins: [require.resolve('docusaurus-lunr-search')],
 
-  title: 'My Site',
-  tagline: 'The tagline of my site',
+  title: 'Leaf Agriculture',
+  tagline: 'The easiest way to connect agriculture data across platforms.',
   url: 'https://leaf-agriculture.github.io',
   baseUrl: '/docs/',
   favicon: 'img/favicon.ico',
@@ -16,7 +16,7 @@ module.exports = {
       title: 'My Site',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       links: [
         {
@@ -25,9 +25,9 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
+        {to: 'https://medium.com/leaf-agriculture', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/leaf-agriculture',
           label: 'GitHub',
           position: 'right',
         },

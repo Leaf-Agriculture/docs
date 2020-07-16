@@ -12,6 +12,6 @@ You can view code examples on your right.
 
 :::tip
 
-Please don't hesitate to contact us with questions, suggestions, and more! connect@leafagriculture.com.br
+Please don't hesitate to [contact us to scheudle a demo, ask a question, request sample data, or suggest a feature!](mailto:connect@leafagriculture.com.br)
 
 :::

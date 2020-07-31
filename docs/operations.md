@@ -2,193 +2,143 @@
 title: Operations Service
 ---
 
-## Overview
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-
-Leaf's Operation Data API returns aggregated, cleaned, and standardized data from
-all major machine data brands in a simple JSON response. This tutorial will walk through
-how to create a Leaf user, securely authenticate with their chosen platforms, and receive
-auto-updating data from all of them with a single request.
-
-
+## About
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://a.agrigate.io/services/services/operations/api
+https://a.agrigate.io/services/operations/api
 ```
 
 This service has the following endpoints available:
 
 ```
 GET    /files
-GET    /files/{id} 
-GET    /files/convertedBetween
-GET    /files/operationsBetween
+GET    /files/{id}
 GET    /files/{id}/summary
 GET    /files/{id}/images
-GET    /files/{x}/{y}/{z}.{ext}
 POST   /files
 POST   /files/merge
 ```
 
----
-
-
-
 ## Endpoints
-Here we list all the available endpoints from this microservice. For easily testing this microservice, we recomend to see our [postman collection](https://github.com/Leaf-Agriculture/postman-collections).
-
+Here we list all the available endpoints from this microservice. For easily
+testing this microservice, we recomend to see our Postman collection.
 
 ### `GET /files`
-Return paged list of files from the current logged client that matches with the query parameters passed. All parameters are optional and calling this endpoint without any will return all results. Here are the supported parameters:
+Gets a paged list of files from the current logged client that matches with the
+query parameters passed. All parameters are optional and calling this endpoint
+without any will return all results. Here is a list of the supported parameters:
 
 - `userId`, an UUID
 - `provider`, one of the following strings:
-    - CNHI
-    - JohnDeere
-    - Trimble
-    - ClimateFieldView
+  - CNHI
+  - JohnDeere
+  - Trimble
+  - ClimateFieldView
 - `status`, one of the following string:
-    - EMPTY
-    - DOWNLOADED
-    - CONVERTED
-    - FAILED
-    - GENERATED_GEOJSON
-    - GENERATED_STANDARD_GEOJSON
-    - GENERATED_PNGS
-    - GENERATED_SUMMARY
+  - EMPTY
+  - DOWNLOADED
+  - CONVERTED
+  - FAILED
+  - GENERATED_GEOJSON
+  - GENERATED_STANDARD_GEOJSON
+  - GENERATED_PNGS
+  - GENERATED_SUMMARY
+  - SENT_TO_MERGE
+- fileOrigin, one of the following strings:
+  - POOLED
+  - AUTOMERGED
+  - MERGED
+  - UPLOADED
+- `createdTime`, as ISO 8601 date to filter files created after `createdTime`
+- `convertedTime`, as ISO 8601 date to filter files processed before
+`convertedTime`
+- `operationStart`, as ISO 8601 date to filter files that operation starts after
+`operationStart`
+- `operationEnd`, as ISO 8601 date to filter files that operation end before
+`operationEnd`
 
-
-#### Example
-```bash
-$ http GET /files provider==CNHI userId==SOME_USER_UUID
-```
-
-```json
-[
-    {
-      "id": "UUID",
-      "fileName": "filename.zip",
-      "providerFileId": "123456789",
-      "providerName": "CNHI",
-      "providerId": 2,
-      "originalUrl": "S3_URL",
-      "rawGeojsonUrl": "S3_URL",
-      "status": "FAILED",
-      "leafUserId": "UUID",
-      "apiOwnerUsername": "CLIENT",
-      "fileType": "PRESCRIPTION",
-      "convertedTime": "2020-04-23T13:56:02.68",
-      "createdTime": "2020-04-16T21:14:03.518",
-      "sizeInBytes": 123456789
-    }
-  ]
-```
-
-
-### `GET /files/convertedBetween`
-Return paged list of files converted inside a date range. Here are the supported parameters, both are optional:
-
-- `start`, date time. Must be in the past.
-- `end`, date time. Must be in the present or past.
-
-#### Example:
-```bash
-$ http GET /files/convertedBetween start==2020-04-30T13:21:08+00:00 end==2020-04-29T13:21:08+00:00
-```
+It returns a Json like the following:
 
 ```json
 [
-    {
-      "id": "UUID",
-      "fileName": "filename.zip",
-      "providerFileId": "123456789",
-      "providerName": "CNHI",
-      "providerId": 2,
-      "originalUrl": "S3_URL",
-      "rawGeojsonUrl": "S3_URL",
-      "status": "FAILED",
-      "leafUserId": "UUID",
-      "apiOwnerUsername": "CLIENT",
-      "fileType": "PRESCRIPTION",
-      "convertedTime": "2020-04-23T13:56:02.68",
-      "createdTime": "2020-04-16T21:14:03.518",
-      "sizeInBytes": 123456789
-    }
+  {
+    "id": "UUID",
+    "fileName": "filename.zip",
+    "providerFileId": "123456789",
+    "providerName": "CNHI",
+    "providerId": 2,
+    "originalUrl": "S3_URL",
+    "rawGeojsonUrl": "S3_URL",
+    "status": "FAILED",
+    "leafUserId": "UUID",
+    "apiOwnerUsername": "CLIENT",
+    "fileType": "PRESCRIPTION",
+    "convertedTime": "2020-04-23T13:56:02.68",
+    "createdTime": "2020-04-16T21:14:03.518",
+    "sizeInBytes": 123456789
+  },
+  ...
+]
+```
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
   ]
-```
+}>
+  <TabItem value="js">
 
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
 
-### `GET /files/operationsBetween`
-Return paged list of files with operations performed inside a date range. Here are the supported parameters, both are optional:
+  const endpoint ='https://a.agrigate.io/services/operations/api/files'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-- `start`, date time. Must be in the past.
-- `end`, date time. Must be in the present or past.
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
 
-#### Example:
-```bash
-$ http GET /files/operationsBetween start==2020-04-30T13:21:08+00:00 end==2020-04-29T13:21:08+00:00
-```
+  </TabItem>
+  <TabItem value="py">
 
-```json
-[
-    {
-      "id": "UUID",
-      "fileName": "filename.zip",
-      "providerFileId": "123456789",
-      "providerName": "CNHI",
-      "providerId": 2,
-      "originalUrl": "S3_URL",
-      "rawGeojsonUrl": "S3_URL",
-      "status": "FAILED",
-      "leafUserId": "UUID",
-      "apiOwnerUsername": "CLIENT",
-      "fileType": "PRESCRIPTION",
-      "convertedTime": "2020-04-23T13:56:02.68",
-      "createdTime": "2020-04-16T21:14:03.518",
-      "sizeInBytes": 123456789
-    }
-  ]
-```
+  ```py
+  import requests
 
+  TOKEN = 'YOUR_TOKEN'
 
-### `POST /files/merge`
-Perform a merge between two or more files. 
+  endpoint = 'https://a.agrigate.io/services/operations/api/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
 
-#### Example:
-```bash
-$ http POST /files/merge ids:='["ID_1", "ID_2"]'
-```
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
 
-If any of the file ids passed does not have the `stdGeoJsonUrl` entry, the call will result in 404. All files must have the same `leafUserId`. If not, it will result in 500.
+  </TabItem>
+  <TabItem value="sh">
 
-Response sample:
-```json
-{
-  "id": "UUID",
-  "status": "string",
-  "stdGeojsonUrl": "S3_URL"
-}
-```
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files'
+  ```
 
+  </TabItem>
+</Tabs>
 
-### `DELETE /files/{id}`
-Delete a file entry by its id.
+### `GET files/{id}`
+Gets a single file by its id.
 
-#### Example:
-```bash
-$ http DELETE /files/UUID
-```
-
-
-### `GET /files/{id}`
-Returns a file entry by its id
-
-#### Example:
-```bash
-$ http GET /files/UUID
-```
-
+Returns a single JSON object:
 
 ```json
 {
@@ -215,106 +165,379 @@ $ http GET /files/UUID
 }
 ```
 
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/operations/api/files/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/operations/api/files/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
 
 ### `GET /files/{id}/summary`
-Returns the summary entry given for the file. The summary is a single GeoJSON feature containing the convex hull of all operation data and some statistics calculated from it.
+Gets the summary, if available, for the file id.
 
-Example:
-```bash
-$ http GET /files/{id}/summary
+Returns a single GeoJSON feature containing the convex hull of all operation
+data and some statistics calculated from it.
+
+```py
+{
+  "type": "Feature",
+  "properties": {
+    # these properties and more
+    "totalDistance": 19194.943013290438,
+    "startTime": "2017-10-27T08:56:52.124000+00:00",
+    "endTime": "2017-10-27T09:40:46.920000+00:00",
+    "operationType": "HARVESTED",
+    "totalArea": 131638.75702051684
+  },
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [...]
+  }
+}
 ```
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/operations/api/files/{id}/summary'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/operations/api/files/{id}/summary'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files/{id}/summary'
+  ```
+
+  </TabItem>
+</Tabs>
 
 ### `GET /files/{id}/images`
-Returns the properties images for the file.
+Gets a list of PNG images generated from the operation's file properties.
 
-Example:
-```bash
-$ http GET /files/{id}/images
-```
-
+Returns a JSON list of the following format:
 
 ```json
 [
   {
     "property": "elevation",
-    "url": "PNG_URL.png"
+    "ramp": {
+      "0%":   [200,   0, 0],
+      "35%":  [255,  40, 0],
+      "45%":  [255, 150, 0],
+      "55%":  [255, 240, 0],
+      "65%":  [  0, 230, 0],
+      "75%":  [  0, 190, 0],
+      "100%": [  0, 130, 0],
+      "nv":   [  0,   0, 0, 0]
+    },
+    "url": "string"
   },
-  {
-    "property": "targetRate",
-    "url": "PNG_URL.png"
-  },
-  {
-    "property": "speed",
-    "url": "PNG_URL.png"
-  },
-  {
-    "property": "distance",
-    "url": "PNG_URL.png"
-  },
-  {
-    "property": "heading",
-    "url": "PNG_URL.png"
-  },
-  {
-    "property": "appliedRate",
-    "url": "PNG_URL.png"
-  }
+  ...
 ]
 ```
 
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
 
-Note: The image entry it was only shown on this endpoint. Also, we provide an auxiliar XML tha helps GIS tools to locate the image. You just need to request for the disere png url with the `.aux.xml` suffix.
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
 
+  const endpoint ='https://a.agrigate.io/services/operations/api/files/{id}/images'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-### `GET /files/{x}/{y}/{z}.{ext}?leafUserId=1&property=speed`
-Returns an image of operations in the tile x/y/z filtered by property (obligatory) and other properties, like leafUserId.
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
 
-Example:
-```bash
-$ http GET /files/2051/3109/13.png?property=speed
-```
+  </TabItem>
+  <TabItem value="py">
 
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/operations/api/files/{id}/images'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files/{id}/images'
+  ```
+
+  </TabItem>
+</Tabs>
 
 ### `POST /files`
-Perform a file POST to operations-service and automatically process the received file. You will need to inform the `leafUserId` to associate this new file, the `fileFormat`, that must be one of:
+Posts/creates a new file in our server.
+
+This endpoint receives three query parameters. A `leafUserId`, `fileFormat` and
+`provider`. The `fileFormat` must be one of the following:
 
 ```
-SHAPEFILE,
-ADAPTADM,
-DATCLIMATE,
-CN1,
-TRIMBLE,
-ISO11783,
+ADAPTADM
+CN1
+DATCLIMATE
 GEOJSON
+ISO11783
+SHAPEFILE
+TRIMBLE
 ```
 
-And the file `provider` as:
+Provider must be one of the following:
 
 ```
-CNHI, 
-JohnDeere,
-Trimble,
-ClimateFieldView,
+ClimateFieldView
+CNHI
+JohnDeere
 Leaf
+Trimble
 ```
 
-#### Example:
-To upload an `SHAPEFILE` named `shapefile.zip`, with the provider `Leaf` for the leafUserID `b7bd056b-51c8-4433-9022-fbb2288ffbf4` you will need to perform the following curl:
+Returns a single JSON object:
 
-```bash
-$ curl --location --request POST 'https://a.agrigate.io/services/operations/api/files?' \
-		'leafUserId=b7bd056b-51c8-4433-9022-fbb2288ffbf4' \
-		'&provider=Leaf&fileFormat=SHAPEFILE' \
---header 'Authorization: Bearer {{YOUR_TOKEN}}' \
---form 'file=@PATH/shapefile.zip'
-```
-
-If you pass an invalid `provider`, or `fileFormat`, or `leafUserId` you will receive an HTTP 400 status response. Otherwise, you will get and 201 status and the following response:
-
-Response sample:
 ```json
 {
-    "message": "Your file is being processed and will be available in a few minutes",
-    "id": "UUID"
+  "message": "Your file is being processed and will be available in a few minutes",
+  "id": "id"
 }
 ```
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/operations/api/files'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const params = {
+    fileFormat: 'SHAPEFILE',
+    provider: 'JohnDeere',
+    leafUserId: 'id'
+  }
+
+  const form = new FormData()
+  form.append('file', 'shapefile.zip')
+
+  axios.post(endpoint, form, { headers, params })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/operations/api/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('shapefile.zip')}
+  params = {
+    'fileFormat': 'SHAPEFILE',
+    'provider': 'JohnDeere',
+    'leafUserId': 'id'
+  }
+
+  response = requests.post(endpoint, headers=headers, files=files, params=params)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=shapefile.zip' \
+      'https://a.agrigate.io/services/operations/api/files?' \
+      'fileFormat=SHAPEFILE&provider=JohnDeere&leafUserId=id'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### `POST /files/merge`
+Posts a merge operation to our server.
+
+It receives a single JSON object with the `ids` entry. Example:
+
+```json
+{
+  "ids": [ "id1", "id2", "so on" ]
+}
+```
+
+Returns a single JSON object:
+
+```json
+{
+  "id": "id",
+  "status": "SENT_TO_MERGE"
+}
+```
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/operations/api/files/merge'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = { ids: [ 'id1', 'id2' ] }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/operations/api/files/merge'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {'ids': ['id1', 'id2']}
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "ids": [ "id1", "id2" ] }'
+      'https://a.agrigate.io/services/operations/api/files/merge'
+  ```
+
+  </TabItem>
+</Tabs>
+

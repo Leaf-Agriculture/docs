@@ -22,47 +22,41 @@ GET    /files/{id}/summary
 GET    /files/{id}/images
 POST   /files
 POST   /files/merge
+DELETE /files/{id}
 ```
 
 ## Endpoints
 Here we list all the available endpoints from this microservice. For easily
-testing this microservice, we recomend to see our Postman collection.
+testing it, we recomend to see our Postman [collection][1].
 
 ### `GET /files`
-Gets a paged list of files from the current logged client that matches with the
-query parameters passed. All parameters are optional and calling this endpoint
-without any will return all results. Here is a list of the supported parameters:
+Gets a paged list of files that belong to the current logged in user. It is
+possible to filter the results by passing some query parameters. They are listed
+below.
 
-- `userId`, an UUID
-- `provider`, one of the following strings:
-  - CNHI
-  - JohnDeere
-  - Trimble
-  - ClimateFieldView
-- `status`, one of the following string:
-  - EMPTY
-  - DOWNLOADED
-  - CONVERTED
-  - FAILED
-  - GENERATED_GEOJSON
-  - GENERATED_STANDARD_GEOJSON
-  - GENERATED_PNGS
-  - GENERATED_SUMMARY
-  - SENT_TO_MERGE
-- fileOrigin, one of the following strings:
-  - POOLED
-  - AUTOMERGED
-  - MERGED
-  - UPLOADED
-- `createdTime`, as ISO 8601 date to filter files created after `createdTime`
-- `convertedTime`, as ISO 8601 date to filter files processed before
-`convertedTime`
-- `operationStart`, as ISO 8601 date to filter files that operation starts after
-`operationStart`
-- `operationEnd`, as ISO 8601 date to filter files that operation end before
-`operationEnd`
+- `userId`, only matches files from this user
+- `provider`, filter by the provider. Currently we support the following providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView`
+- `status`, each file can be on a different step of our processing pipeline. You
+can match each step of the process by passing one of the following: `EMPTY`,
+`DOWNLOADED`, `CONVERTED`, `FAILED`, `GENERATED_GEOJSON`,
+`GENERATED_STANDARD_GEOJSON`, `GENERATED_PNGS`, `GENERATED_SUMMARY`,
+`SENT_TO_MERGE`
+- `fileOrigin`, files have differnte origins in our services. You can filter by
+its origin using one of the following: `POOLED`, `AUTOMERGED`, `MERGED`,
+`UPLOADED`
+- `createdTime`, as ISO 8601 date to filter by the file's creation time
+- `convertedTime`, as ISO 8601 date to filter by the time the files has finished
+converting
+- `operationStart`, as ISO 8601 date to filter by the operation's start time
+- `operationEnd`, as ISO 8601 date to filter by the operation's end time
 
-It returns a Json like the following:
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched
+- `size`, an integer specifying the size of the page
+
+It returns a JSON object like the following:
 
 ```json
 [
@@ -217,7 +211,7 @@ Returns a single JSON object:
 ### `GET /files/{id}/summary`
 Gets the summary, if available, for the file id.
 
-Returns a single GeoJSON feature containing the convex hull of all operation
+Returns a single [GeoJSON][2] feature containing the convex hull of all operation
 data and some statistics calculated from it.
 
 ```py
@@ -311,6 +305,15 @@ Returns a JSON list of the following format:
   ...
 ]
 ```
+
+The `property` refers to the property extracted from files' data to generate the
+image. In the example above, the image would represent the elevation.
+
+The `ramp` is the color ramp used to generate the image. The percentages
+correspond to the minimun (0%) and maximum (100%) values in the image. The
+listed values corresponde to RGB values used. The `nv` refers to `no value`. It
+is used internally to make the image transparent on places without data.
+Currently, this ramp is the same of all images processed.
 
 <Tabs
   defaultValue="js"
@@ -470,6 +473,15 @@ Returns a single JSON object:
 ### `POST /files/merge`
 Posts a merge operation to our server.
 
+A merge operation is performed asynchronously. Which means, this call will
+return immediately with the newly created file entry. But the file will not be
+already processed. You will need to make new GET requeust to the id returned and
+check the status of the return object for modifications.
+
+A merge process has some limitations however. The files passed must belong to
+the same user, be of the same operation type and have the status as `CONVERTED`.
+If any of those filters fail, the endpoint will result in HTTP 400 error.
+
 It receives a single JSON object with the `ids` entry. Example:
 
 ```json
@@ -541,3 +553,5 @@ Returns a single JSON object:
   </TabItem>
 </Tabs>
 
+[1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+[2]: https://tools.ietf.org/html/rfc7946

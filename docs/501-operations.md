@@ -1,5 +1,5 @@
 ---
-title: Operations Service
+title: Operations
 ---
 
 import Tabs from '@theme/Tabs';

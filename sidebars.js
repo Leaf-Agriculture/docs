@@ -1,7 +1,13 @@
 
 module.exports = {
-  docs: {
-    'Getting started': ['intro', 'auth'],
-    'REST API Reference': ['satellite', 'operations', 'converter'],
-  }
-};
+  docs: [
+    {
+      type: 'category',
+      label: 'Getting started',
+      items: [
+        '000-introduction',
+        '001-authentication',
+      ],
+    }
+  ]
+}

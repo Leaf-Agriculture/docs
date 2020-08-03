@@ -473,10 +473,11 @@ Returns a single JSON object:
 ### `POST /files/merge`
 Posts a merge operation to our server.
 
-A merge operation is performed asynchronously. Which means, this call will
-return immediately with the newly created file entry. But the file will not be
-already processed. You will need to make new GET requeust to the id returned and
-check the status of the return object for modifications.
+A merge operation is performed asynchronously. This call will return immediately
+with the newly created file entry, but at this point the file is not already
+processed and available. You will need to make new `GET /files` request for the
+new id and check the status. A status value of `CONVERTED` means the file is
+done merging.
 
 A merge process has some limitations however. The files passed must belong to
 the same user, be of the same operation type and have the status as `CONVERTED`.

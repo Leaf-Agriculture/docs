@@ -11,12 +11,19 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Guide',
+      items: [
+        '301-operations-guide',
+      ],
+    },
+    {
+      type: 'category',
       label: 'API Reference',
       items: [
         '500-converter',
         '501-operations',
         '502-satellite',
       ],
-    }
-  ]
+    },
+  ],
 }

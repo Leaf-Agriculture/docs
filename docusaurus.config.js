@@ -13,9 +13,9 @@ module.exports = {
 
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Leaf',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'logo',
         src: 'img/logo.png',
       },
       links: [
@@ -25,7 +25,11 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        {to: 'https://medium.com/leaf-agriculture', label: 'Blog', position: 'left'},
+        {
+          to: 'https://medium.com/leaf-agriculture',
+          label: 'Medium',
+          position: 'left'
+        },
         {
           href: 'https://github.com/leaf-agriculture',
           label: 'GitHub',
@@ -33,6 +37,7 @@ module.exports = {
         },
       ],
     },
+
     footer: {
       style: 'dark',
       links: [
@@ -93,14 +98,12 @@ module.exports = {
           homePageId: 'intro',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -108,4 +111,4 @@ module.exports = {
       },
     ],
   ]
-};
+}

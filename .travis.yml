@@ -12,7 +12,7 @@ install:
   - npm install
 
 script:
-  - npm run swizzle docusaurus-lunr-search SearchBar
+  - npm run swizzle
   - npm run build
 
 deploy:

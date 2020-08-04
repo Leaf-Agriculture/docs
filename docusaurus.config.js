@@ -7,8 +7,8 @@ module.exports = {
   organizationName: 'leaf-agriculture',
   projectName: 'docs',
 
-  baseUrl: '/',
-  url: 'https://leaf-agriculture.github.io/docs',
+  baseUrl: '/docs/',
+  url: 'https://leaf-agriculture.github.io',
   favicon: 'img/favicon.ico',
 
   plugins: [

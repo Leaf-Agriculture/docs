@@ -56,10 +56,12 @@ account and start using our operations service. Grab our [quickstart][quickstart
 Postman collection and follow along!
 
 #### 1. Get John Deere auth URL
+
 In Step 1 we will be generating tokens from John Deere. The goal In step 2 is we
 will get our John Deere `token_id` and `token_secret`.
 
 ##### Token Verifier
+
 In step 1 we will get a temporary "token verifier" from John Deere that confirms
 an user’s authentication of your application to access their John Deere data and
 generate credentials. We get that verifier by going through their authentication
@@ -91,6 +93,7 @@ https://leafagriculture.com.br/?oauth_token=TOKEN&oauth_verifier=CODE
 Paste it in the environment variable `jd_response_url`.
 
 #### 2. Get John Deere Tokens
+
 After updating the `jd_response_url` in Postman you can submit your credentials
 and receive your tokens.
 
@@ -101,6 +104,7 @@ Hit _Send_
 the next step.
 
 #### 3. Add John Deere credentials
+
 Now we can create a Developer-User pair credentials ID that will allow you to
 access your user’s John Deere data. We first add the John Deere credentials to
 Leaf API.
@@ -117,6 +121,7 @@ the next step.
 Grab our [quickstart][quickstart] Postman collection and follow along!
 
 #### 1. Get Climate Field View auth URL
+
 We will be generating a url to redirect your user to authenticate with Climate.
 
 Update environment variables `cfv_client_id` and `cfv_client_secret` to your
@@ -137,6 +142,7 @@ note: this code expires after 1 minute.
 Paste code value to environment variable `cfv_code`
 
 #### 2. Get Climate Field View tokens
+
 Hit "Send"
 
 A lot of information will be returned. The important ones are `access_token`
@@ -145,6 +151,7 @@ and `refresh_token`. These will be automatically transferred to
 used in the next step.
 
 #### 3. Add Climate Field View credentials
+
 Now we can create a Developer-User pair credentials ID that will allow you to
 access your user’s Climate data. We first add the Climate credentials to Leaf
 API, to do that: Hit "Send"
@@ -156,6 +163,7 @@ the next step.
 ### Leaf User
 
 #### Create Leaf User
+
 Now we have to attach credentials to a Leaf User. To do so, we can create a
 Leaf user and attach our John Deere and/or Climate Field View credentials via
 the credentials id. We can also attach credentials from other companies to this
@@ -174,6 +182,7 @@ Along with other information returned, there is an "id". This "id" is the
 files.
 
 #### Update Leaf User
+
 To update a Leaf User, let's say to add another provider credentials or change
 the user's address, we can use this PUT request. Since this method overwrites,
 remember to send all the user's information along with the information you want
@@ -182,12 +191,14 @@ user that already has ClimateFieldView credentials, remember to specify both
 credentials ids.
 
 #### Get specific Leaf User
+
 Get specific Leaf User With this endpoint you can query all information on a
 specific Leaf User, such as their address, email, credentials, etc. To do so,
 update the value of the environment variable `leaf_user_id` to the Leaf User id
 you want to query.
 
 #### Gel all Leaf Users
+
 Get all Leaf Users With this endpoint you can query all information on all your
 Leaf Users, such as their address, email, credentials, etc. Just hit 'send'.
 
@@ -198,15 +209,41 @@ operations of that field based on the operations' and on the field's
 coordinates. This process usually takes about 30 minutes.
 
 #### 1. Create Field
+
 Here we need to specify a leafUserId (that will be the Leaf User owner of that
 field), a externalId (that will be the name we give to the field) and the
 geojson geometry of the field (location). After creating the field we can query
 it (step 2)
 
 #### 2. Get operations' ids by Field
+
 To query all operations that happened in a specific field, just update the
 environment variable `field_external_id` to the field id you want to query
 files.
+
+### Merge Operation Files
+
+#### 1. Merge files
+
+Merging files with Leaf is a very simple process. You just have to list, in the
+request json body, the ids of the files you want to merge. Make sure the
+operations are of the same type (`APPLIED` or `HARVESTED` or `PLANTED`), so the
+results are consistent.
+
+After that, just hit "send" and an id for that merged file will be returned.
+You can query that file as any other. It will be listed when you query for all
+files and can also be queried specifically by its id
+
+#### 2. Query & access specific file
+
+You can query a merged file as any other. It will be listed when you query for
+all files and can also be queried specifically by its id. So this request is
+the same as seen on "Get Operation Files". You just have to update the
+environment variable "id" to the id of the merged file.
+
+Keep in mind that merging files is processing-heavy and may take about 20
+minutes to finish.
+
 
 [quickstart]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [johndeere]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-john-deere-fb1ba331d089

@@ -90,6 +90,29 @@ https://leafagriculture.com.br/?oauth_token=TOKEN&oauth_verifier=CODE
 
 Paste it in the environment variable `jd_response_url`.
 
+#### 2. Get John Deere Tokens
+After updating the `jd_response_url` in Postman you can submit your credentials
+and receive your tokens.
+
+Hit _Send_
+
+`token_id` and `token_secret_key` will be automatically transferred to
+`jd_token_id` and `jd_token_secret` environment variables and will be used in
+the next step.
+
+#### 3. Add John Deere credentials
+Now we can create a Developer-User pair credentials ID that will allow you to
+access your user’s John Deere data. We first add the John Deere credentials to
+Leaf API.
+
+Hit _Send_
+
+All the info needed has already been filled automatically in Step 2.
+
+An `id` for the credentials you just created will be returned. This `id` will
+be automatically transferred to the value of `jd_credentials_id` to be used in
+the next step.
+
 [quickstart]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [johndeere]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-john-deere-fb1ba331d089
 [climate]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-climate-fieldview-dda921f40291

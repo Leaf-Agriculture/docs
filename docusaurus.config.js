@@ -1,27 +1,31 @@
 const path = require('path');
 
 module.exports = {
-  plugins: [require.resolve('docusaurus-lunr-search')],
+  title: 'Leaf',
+  tagline: 'The easiest way to connect agriculture data across platforms',
 
-  title: 'Leaf Agriculture',
-  tagline: 'The easiest way to connect agriculture data across platforms.',
-  url: 'https://leaf-agriculture.github.io',
+  organizationName: 'leaf-agriculture',
+  projectName: 'docs',
+
   baseUrl: '/',
+  url: 'https://leaf-agriculture.github.io/docs',
   favicon: 'img/favicon.ico',
-  organizationName: 'leaf-agriculture', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+
+  plugins: [
+    require.resolve('docusaurus-lunr-search')
+  ],
 
   themeConfig: {
     navbar: {
-      title: 'Leaf',
       logo: {
         alt: 'logo',
         src: 'img/logo.png',
       },
+
       items: [
         {
           to: 'docs/',
-          activeBasePath: 'docs',
+          activeBasePath: './docs',
           label: 'Docs',
           position: 'left',
         },
@@ -44,16 +48,13 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          // It is recommended to set document id as docs home page (`docs/` path).
           homePageId: '000-introduction',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/Leaf-Agriculture/docs',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+          editUrl: 'https://github.com/Leaf-Agriculture/docs',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

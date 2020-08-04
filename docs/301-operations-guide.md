@@ -191,6 +191,23 @@ you want to query.
 Get all Leaf Users With this endpoint you can query all information on all your
 Leaf Users, such as their address, email, credentials, etc. Just hit 'send'.
 
+### Query Operations by Field
+To query all operations that happened in a specific field (step 2), we first
+need to create that field (step 1). Then, Leaf will automatically detect
+operations of that field based on the operations' and on the field's
+coordinates. This process usually takes about 30 minutes.
+
+#### 1. Create Field
+Here we need to specify a leafUserId (that will be the Leaf User owner of that
+field), a externalId (that will be the name we give to the field) and the
+geojson geometry of the field (location). After creating the field we can query
+it (step 2)
+
+#### 2. Get operations' ids by Field
+To query all operations that happened in a specific field, just update the
+environment variable `field_external_id` to the field id you want to query
+files.
+
 [quickstart]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [johndeere]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-john-deere-fb1ba331d089
 [climate]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-climate-fieldview-dda921f40291

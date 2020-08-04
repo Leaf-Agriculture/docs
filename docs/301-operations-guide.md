@@ -137,7 +137,6 @@ note: this code expires after 1 minute.
 Paste code value to environment variable `cfv_code`
 
 #### 2. Get Climate Field View tokens
-
 Hit "Send"
 
 A lot of information will be returned. The important ones are `access_token`
@@ -146,7 +145,6 @@ and `refresh_token`. These will be automatically transferred to
 used in the next step.
 
 #### 3. Add Climate Field View credentials
-
 Now we can create a Developer-User pair credentials ID that will allow you to
 access your user’s Climate data. We first add the Climate credentials to Leaf
 API, to do that: Hit "Send"
@@ -154,6 +152,44 @@ API, to do that: Hit "Send"
 An `id` for the credentials you just created will be returned. This `id` will
 be automatically transferred to the value of `cfv_credentials_id` to be used in
 the next step.
+
+### Leaf User
+
+#### Create Leaf User
+Now we have to attach credentials to a Leaf User. To do so, we can create a
+Leaf user and attach our John Deere and/or Climate Field View credentials via
+the credentials id. We can also attach credentials from other companies to this
+same user to query all available data by Grower/Farm/Field regardless of brand.
+
+Update (optional) fields "address", "email", "name" and "phone" with your
+user's information.
+
+We have automatically included our `jd_credentials_id` to this call and
+attached it to this user.
+
+Hit "Send"
+
+Along with other information returned, there is an "id". This "id" is the
+`leaf_user_id` that will be used in the next (final) Step to query and access
+files.
+
+#### Update Leaf User
+To update a Leaf User, let's say to add another provider credentials or change
+the user's address, we can use this PUT request. Since this method overwrites,
+remember to send all the user's information along with the information you want
+to add or update. For example, if you want to add John Deere credentials to a
+user that already has ClimateFieldView credentials, remember to specify both
+credentials ids.
+
+#### Get specific Leaf User
+Get specific Leaf User With this endpoint you can query all information on a
+specific Leaf User, such as their address, email, credentials, etc. To do so,
+update the value of the environment variable `leaf_user_id` to the Leaf User id
+you want to query.
+
+#### Gel all Leaf Users
+Get all Leaf Users With this endpoint you can query all information on all your
+Leaf Users, such as their address, email, credentials, etc. Just hit 'send'.
 
 [quickstart]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [johndeere]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-john-deere-fb1ba331d089

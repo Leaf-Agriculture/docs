@@ -113,6 +113,48 @@ An `id` for the credentials you just created will be returned. This `id` will
 be automatically transferred to the value of `jd_credentials_id` to be used in
 the next step.
 
+### Climate Field View
+Grab our [quickstart][quickstart] Postman collection and follow along!
+
+#### 1. Get Climate Field View auth URL
+We will be generating a url to redirect your user to authenticate with Climate.
+
+Update environment variables `cfv_client_id` and `cfv_client_secret` to your
+Climate Field View developer account credentials.
+
+Update environment variable `cfv_redirect_url` to your application's backend
+
+Redirect your user to the script's output url.
+
+They will authenticate and be redirected to the `redirect_uri`.
+
+A code will be sent to that `cfv_redirect_url`. We will need this code Step 2.
+
+Copy the code value.
+
+note: this code expires after 1 minute.
+
+Paste code value to environment variable `cfv_code`
+
+#### 2. Get Climate Field View tokens
+
+Hit "Send"
+
+A lot of information will be returned. The important ones are `access_token`
+and `refresh_token`. These will be automatically transferred to
+`cfv_access_token` and `cfv_refresh_token` environment variables and will be
+used in the next step.
+
+#### 3. Add Climate Field View credentials
+
+Now we can create a Developer-User pair credentials ID that will allow you to
+access your user’s Climate data. We first add the Climate credentials to Leaf
+API, to do that: Hit "Send"
+
+An `id` for the credentials you just created will be returned. This `id` will
+be automatically transferred to the value of `cfv_credentials_id` to be used in
+the next step.
+
 [quickstart]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [johndeere]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-john-deere-fb1ba331d089
 [climate]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-climate-fieldview-dda921f40291

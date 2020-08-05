@@ -44,6 +44,7 @@ can match each step of the process by passing one of the following: `EMPTY`,
 - `fileOrigin`, files have differnte origins in our services. You can filter by
 its origin using one of the following: `POOLED`, `AUTOMERGED`, `MERGED`,
 `UPLOADED`
+- `organizationId`, as the provider organizationId (only available for JohnDeere files)
 - `createdTime`, as ISO 8601 date to filter by the file's creation time
 - `convertedTime`, as ISO 8601 date to filter by the time the files has finished
 converting

@@ -34,22 +34,16 @@ Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-- `userId`, only matches files from this user
+- `leafUserId`, only matches files from this user
 - `provider`, filter by the provider. Currently we support the following providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView`
-- `status`, each file can be on a different step of our processing pipeline. You
-can match each step of the process by passing one of the following: `EMPTY`,
-`DOWNLOADED`, `CONVERTED`, `FAILED`, `GENERATED_GEOJSON`,
-`GENERATED_STANDARD_GEOJSON`, `GENERATED_PNGS`, `GENERATED_SUMMARY`,
-`SENT_TO_MERGE`
-- `fileOrigin`, files have differnte origins in our services. You can filter by
-its origin using one of the following: `POOLED`, `AUTOMERGED`, `MERGED`,
-`UPLOADED`
+- `status`You can match the step of the process by passing one of the following: `processed`, `failed` or `processing`
+- `origin`, files have differnte origins in our services. You can filter by
+its origin using one of the following: `provider`, `automerged`, `merged`,
+`uploaded`
 - `organizationId`, as the provider organizationId (only available for JohnDeere files)
 - `createdTime`, as ISO 8601 date to filter by the file's creation time
-- `convertedTime`, as ISO 8601 date to filter by the time the files has finished
-converting
-- `operationStart`, as ISO 8601 date to filter by the operation's start time
-- `operationEnd`, as ISO 8601 date to filter by the operation's end time
+- `operationStartTime`, as ISO 8601 date to filter by the operation's start time
+- `operationEndTime`, as ISO 8601 date to filter by the operation's end time
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -64,16 +58,13 @@ It returns a JSON object like the following:
   {
     "id": "UUID",
     "fileName": "filename.zip",
-    "providerFileId": "123456789",
     "providerName": "CNHI",
-    "providerId": 2,
-    "originalUrl": "S3_URL",
-    "rawGeojsonUrl": "S3_URL",
-    "status": "FAILED",
+    "originalFile": "S3_URL",
+    "rawGeojson": "S3_URL",
+    "status": "failed",
     "leafUserId": "UUID",
     "apiOwnerUsername": "CLIENT",
     "fileType": "PRESCRIPTION",
-    "convertedTime": "2020-04-23T13:56:02.68",
     "createdTime": "2020-04-16T21:14:03.518",
     "sizeInBytes": 123456789
   },
@@ -138,25 +129,22 @@ Returns a single JSON object:
 ```json
 {
   "apiOwnerUsername": "string",
-  "convertedTime": "2020-04-29T20:13:42.811Z",
   "createdTime": "2020-04-29T20:13:42.811Z",
-  "endTime": "2020-04-29T20:13:42.811Z",
+  "operationEndTime": "2020-04-29T20:13:42.811Z",
+  "operationStartTime": "2020-04-29T23:13:42.811Z",
   "fileFormat": "string",
   "fileName": "string",
   "fileType": "string",
   "id": "UUID",
   "leafUserId": "UUID",
-  "originalUrl": "string",
-  "pngUrl": "string",
-  "providerFieldId": "string",
-  "providerFileId": "string",
-  "providerId": 0,
-  "providerName": "string",
-  "rawGeojsonUrl": "string",
+  "originalFile": "string",
+  "zippedPNGs": "string",
+  "provider": "string",
+  "rawGeojson": "string",
   "sizeInBytes": 0,
-  "startTime": "2020-04-29T20:13:42.812Z",
   "status": "string",
-  "stdGeojsonUrl": "string"
+  "stdGeojson": "string",
+  "origin": "string"
 }
 ```
 
@@ -221,9 +209,7 @@ data and some statistics calculated from it.
   "properties": {
     # these properties and more
     "totalDistance": 19194.943013290438,
-    "startTime": "2017-10-27T08:56:52.124000+00:00",
-    "endTime": "2017-10-27T09:40:46.920000+00:00",
-    "operationType": "HARVESTED",
+    "operationType": "harvested",
     "totalArea": 131638.75702051684
   },
   "geometry": {
@@ -315,6 +301,9 @@ correspond to the minimun (0%) and maximum (100%) values in the image. The
 listed values corresponde to RGB values used. The `nv` refers to `no value`. It
 is used internally to make the image transparent on places without data.
 Currently, this ramp is the same of all images processed.
+
+We also generate an auxiliary `xml` with geographic information to handle this
+image on GIS environments. You just need to append the `".aux.xml"` string to the png url. 
 
 <Tabs
   defaultValue="js"

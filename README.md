@@ -13,6 +13,7 @@ $ npm install
 This commmand starts a local server with auto reload enabled. Every time you save a file it will refresh the page in the browser.
 
 ```
+$ npm run swizzle docusaurus-lunr-search SearchBar
 $ npm start
 ```
 

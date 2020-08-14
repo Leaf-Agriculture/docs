@@ -1,5 +1,5 @@
 ---
-title: Satellite
+title: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

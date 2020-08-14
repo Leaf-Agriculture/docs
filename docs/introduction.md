@@ -11,7 +11,7 @@ have implementation examples in cURL, NodeJS and Python!
 
 :::tip
 
-Please don't hesitate to [contact][contact] us to scheudle a demo, ask a question, request sample data, or suggest a feature!
+Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!
 
 :::
 

@@ -1,5 +1,5 @@
 ---
-title: Operations
+title: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';
@@ -27,7 +27,7 @@ DELETE /files/{id}
 
 ## Endpoints
 Here we list all the available endpoints from this microservice. For easily
-testing it, we recomend to see our Postman [collection][1].
+testing it, we recommend to see our Postman [collection][1].
 
 ### `GET /files`
 Gets a paged list of files that belong to the current logged in user. It is
@@ -303,7 +303,7 @@ is used internally to make the image transparent on places without data.
 Currently, this ramp is the same of all images processed.
 
 We also generate an auxiliary `xml` with geographic information to handle this
-image on GIS environments. You just need to append the `".aux.xml"` string to the png url. 
+image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
 
 <Tabs
   defaultValue="js"

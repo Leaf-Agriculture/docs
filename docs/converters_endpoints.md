@@ -1,5 +1,5 @@
 ---
-title: Converters
+title: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,5 +1,12 @@
 const path = require('path');
 
+var leaf_logo = 'img/logo4light_mode.png'
+var leaf_favicon_light = 'img/icon4dark_mode.png'
+
+var leaf_logo_dark = 'img/logo4dark_mode.png'
+var leaf_favicon_dark = 'img/icon4light_mode.png'
+
+
 module.exports = {
   title: 'Leaf',
   tagline: 'The easiest way to connect agriculture data across platforms',
@@ -9,7 +16,7 @@ module.exports = {
 
   baseUrl: '/docs/',
   url: 'https://leaf-agriculture.github.io',
-  favicon: 'img/favicon.ico',
+  favicon: leaf_favicon_light,
 
   plugins: [
     require.resolve('docusaurus-lunr-search')
@@ -19,7 +26,8 @@ module.exports = {
     navbar: {
       logo: {
         alt: 'logo',
-        src: 'img/logo.png',
+        src: leaf_logo,
+        srcDark: leaf_logo_dark,
       },
 
       items: [
@@ -48,7 +56,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          homePageId: '000-introduction',
+          homePageId: 'getting_started_overview',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/Leaf-Agriculture/docs',
         },

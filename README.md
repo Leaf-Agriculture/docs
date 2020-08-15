@@ -10,7 +10,8 @@ $ npm install
 ```
 
 ### Local Development
-This commmand starts a local server with auto reload enabled. Every time you save a file it will refresh the page in the browser.
+This commmand starts a local server with auto reload enabled. Every time you
+save a file it will refresh the page in the browser.
 
 ```
 $ npm run swizzle docusaurus-lunr-search SearchBar
@@ -18,7 +19,9 @@ $ npm start
 ```
 
 ### Build
-The search bar only works on the production build. That is because only the production build generates the data index that is searched. For more info, please check [here][2].
+The search bar only works on the production build. That is because only the
+production build generates the data index that is searched. For more info,
+please check [here][2].
 
 To build it:
 ```

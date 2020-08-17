@@ -7,6 +7,7 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
+
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
@@ -28,6 +29,14 @@ DELETE /files/{id}
 ## Endpoints
 Here we list all the available endpoints from this microservice. For easily
 testing it, we recommend to see our Postman [collection][1].
+
+
+:::info requires Leaf User with credentials
+To have access to operation files, you will need a Leaf User with valid credentials
+from the provider you want to access data. If you don't have a Leaf User or you
+have not connected it with any provider yet, see **[how to create a Leaf User][um.md]**
+or **[how to add credentials to a Leaf User](user_management_overview.md)**.
+:::
 
 ### `GET /files`
 Gets a paged list of files that belong to the current logged in user. It is

@@ -855,6 +855,23 @@ Gets all the climate field credentials and returns a JSON response as the follow
   </TabItem>
 </Tabs>
 
+
+### `POST /climate-field-view-credentials`
+Creates a "Climate Field View Credentials" resource.
+
+#### Request body
+
+```json
+{
+  "clientId": "str",
+  "clientSecret": "str",
+  "apiKey": "str",
+  "refreshToken": "str"
+}
+```
+
+#### Response
+
 :::tip
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!
 :::

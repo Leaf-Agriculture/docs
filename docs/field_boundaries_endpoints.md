@@ -616,7 +616,7 @@ A JSON list of Fields.
   ```
 
   </TabItem>
-  <TabItem value="sh">
+</Tabs>
 
 ### `POST /users/{leafUserId}/fields/same`
 Gets a boolean value answering if the Fields specified by a list of Field

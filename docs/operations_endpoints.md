@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://a.agrigate.io/services/operations/api
+https://api.withleaf.io/services/operations/api
 ```
 
 This service has the following endpoints available:
@@ -44,9 +44,9 @@ possible to filter the results by passing some query parameters. They are listed
 below.
 
 - `leafUserId`, only matches files from this user
-- `provider`, filter by the provider. Currently we support the following providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView`
-- `status`You can match the step of the process by passing one of the following: `processed`, `failed` or `processing`
-- `origin`, files have differnte origins in our services. You can filter by
+- `provider`, filter by the provider. Currently, we support the following providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView`
+- `status`, you can match the step of the process by passing one of the following: `processed`, `failed` or `processing`
+- `origin`, files have different origins in our services. You can filter by
 its origin using one of the following: `provider`, `automerged`, `merged`,
 `uploaded`
 - `organizationId`, as the provider organizationId (only available for JohnDeere files)
@@ -115,47 +115,34 @@ It returns a JSON object like the following:
 [
   {
     "id": "UUID",
-    "fileName": "filename.zip",
-    "providerName": "CNHI",
-    "originalFile": "S3_URL",
-    "rawGeojson": "S3_URL",
-    "status": "failed",
+    "fileName": "string",
+    "provider": "string",
+    "organizationId": "string",
+    "fileType": "string",
+    "fileFormat": "string",
+    "sizeInBytes": 0,
+    "originalFile": "string",
+    "rawGeojson": "string",
+    "standardGeojson": "string",
+    "zippedPNGs": "string",
     "leafUserId": "UUID",
-    "apiOwnerUsername": "CLIENT",
-    "fileType": "PRESCRIPTION",
-    "createdTime": "2020-04-16T21:14:03.518",
-    "sizeInBytes": 123456789
+    "apiOwnerUsername": "string",
+    "summary": "Feature",
+    "sourceFiles": [],
+    "status": "string",
+    "origin": "string",
+    "createdTime": "2020-04-29T20:13:42.811Z",
+    "operationEndTime": "2020-04-29T20:13:42.811Z",
+    "operationStartTime": "2020-04-29T23:13:42.811Z"
   },
   ...
 ]
 ```
 
+The `sourceFiles` entry is a list of file's ids that were used to create the file. It will appear only in `merge` and `automerged` files.
+
 ### `GET files/{id}`
 Gets a single file by its id.
-
-Returns a single JSON object:
-
-```json
-{
-  "apiOwnerUsername": "string",
-  "createdTime": "2020-04-29T20:13:42.811Z",
-  "operationEndTime": "2020-04-29T20:13:42.811Z",
-  "operationStartTime": "2020-04-29T23:13:42.811Z",
-  "fileFormat": "string",
-  "fileName": "string",
-  "fileType": "string",
-  "id": "UUID",
-  "leafUserId": "UUID",
-  "originalFile": "string",
-  "zippedPNGs": "string",
-  "provider": "string",
-  "rawGeojson": "string",
-  "sizeInBytes": 0,
-  "status": "string",
-  "stdGeojson": "string",
-  "origin": "string"
-}
-```
 
 <Tabs
   defaultValue="js"
@@ -206,27 +193,36 @@ Returns a single JSON object:
   </TabItem>
 </Tabs>
 
+Returns a single JSON object:
+
+```json
+{
+  "id": "UUID",
+  "fileName": "string",
+  "provider": "string",
+  "organizationId": "string",
+  "fileType": "string",
+  "fileFormat": "string",
+  "sizeInBytes": 0,
+  "originalFile": "string",
+  "rawGeojson": "string",
+  "standardGeojson": "string",
+  "zippedPNGs": "string",
+  "leafUserId": "UUID",
+  "apiOwnerUsername": "string",
+  "summary": "Feature",
+  "sourceFiles": [],
+  "status": "string",
+  "origin": "string",
+  "createdTime": "2020-04-29T20:13:42.811Z",
+  "operationEndTime": "2020-04-29T20:13:42.811Z",
+  "operationStartTime": "2020-04-29T23:13:42.811Z"
+}
+```
+
 ### `GET /files/{id}/summary`
 Gets the summary, if available, for the file id.
 
-Returns a single [GeoJSON][2] feature containing the convex hull of all operation
-data and some statistics calculated from it.
-
-```py
-{
-  "type": "Feature",
-  "properties": {
-    # these properties and more
-    "totalDistance": 19194.943013290438,
-    "operationType": "harvested",
-    "totalArea": 131638.75702051684
-  },
-  "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [...]
-  }
-}
-```
 
 <Tabs
   defaultValue="js"
@@ -236,6 +232,7 @@ data and some statistics calculated from it.
     { label: 'Bash', value: 'sh', },
   ]
 }>
+
   <TabItem value="js">
 
   ```js
@@ -277,42 +274,27 @@ data and some statistics calculated from it.
   </TabItem>
 </Tabs>
 
-### `GET /files/{id}/images`
-Gets a list of PNG images generated from the operation's file properties.
+Returns a single [GeoJSON][2] feature containing the convex hull of all operation
+data and some statistics calculated from it.
 
-Returns a JSON list of the following format:
-
-```json
-[
-  {
-    "property": "elevation",
-    "ramp": {
-      "0%":   [200,   0, 0],
-      "35%":  [255,  40, 0],
-      "45%":  [255, 150, 0],
-      "55%":  [255, 240, 0],
-      "65%":  [  0, 230, 0],
-      "75%":  [  0, 190, 0],
-      "100%": [  0, 130, 0],
-      "nv":   [  0,   0, 0, 0]
-    },
-    "url": "string"
+```py
+{
+  "type": "Feature",
+  "properties": {
+    # these properties and more
+    "totalDistance": 19194.943013290438,
+    "operationType": "harvested",
+    "totalArea": 131638.75702051684
   },
-  ...
-]
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [...]
+  }
+}
 ```
 
-The `property` refers to the property extracted from files' data to generate the
-image. In the example above, the image would represent the elevation.
-
-The `ramp` is the color ramp used to generate the image. The percentages
-correspond to the minimun (0%) and maximum (100%) values in the image. The
-listed values corresponde to RGB values used. The `nv` refers to `no value`. It
-is used internally to make the image transparent on places without data.
-Currently, this ramp is the same of all images processed.
-
-We also generate an auxiliary `xml` with geographic information to handle this
-image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
+### `GET /files/{id}/images`
+Gets a list of PNG images generated from the operation's file properties.
 
 <Tabs
   defaultValue="js"
@@ -363,11 +345,48 @@ image on GIS environments. You just need to append the `".aux.xml"` string to th
   </TabItem>
 </Tabs>
 
+
+Returns a JSON list of the following format:
+
+```json
+[
+  {
+    "property": "elevation",
+    "ramp": {
+      "0%":   [200,   0, 0],
+      "35%":  [255,  40, 0],
+      "45%":  [255, 150, 0],
+      "55%":  [255, 240, 0],
+      "65%":  [  0, 230, 0],
+      "75%":  [  0, 190, 0],
+      "100%": [  0, 130, 0],
+      "nv":   [  0,   0, 0, 0]
+    },
+    "url": "string"
+  },
+  ...
+]
+```
+
+The `property` refers to the property extracted from files' data to generate the
+image. In the example above, the image would represent the elevation.
+
+The `ramp` is the color ramp used to generate the image. The percentages
+correspond to the minimum (0%) and maximum (100%) values in the image. The
+listed values correspond to RGB values used. The `nv` refers to `no value`. It
+is used internally to make the image transparent on places without data.
+Currently, this ramp is the same in all images processed.
+
+We also generate an auxiliary `xml` with geographic information to handle this
+image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
+
+
 ### `POST /files`
 Posts/creates a new file in our server.
 
-This endpoint receives three query parameters. A `leafUserId`, `fileFormat` and
+This endpoint receives three required query parameters. A `leafUserId`, `fileFormat` and
 `provider`. The `fileFormat` must be one of the following:
+
 
 ```
 ADAPTADM
@@ -379,23 +398,14 @@ SHAPEFILE
 TRIMBLE
 ```
 
-Provider must be one of the following:
+The `provider` must be one of the following:
 
 ```
+Leaf
 ClimateFieldView
 CNHI
 JohnDeere
-Leaf
 Trimble
-```
-
-Returns a single JSON object:
-
-```json
-{
-  "message": "Your file is being processed and will be available in a few minutes",
-  "id": "id"
-}
 ```
 
 <Tabs
@@ -406,6 +416,7 @@ Returns a single JSON object:
     { label: 'Bash', value: 'sh', },
   ]
 }>
+  
   <TabItem value="js">
 
   ```js
@@ -469,17 +480,31 @@ Returns a single JSON object:
   </TabItem>
 </Tabs>
 
+
+Returns a single JSON object:
+
+```json
+{
+  "message": "Your file is being processed and will be available in a few minutes",
+  "id": "id"
+}
+```
+
+After a few minutes, you can consult the result of Leaf processing over this file by
+performing GET consults in this.
+
+
 ### `POST /files/merge`
 Posts a merge operation to our server.
 
 A merge operation is performed asynchronously. This call will return immediately
-with the newly created file entry, but at this point the file is not already
-processed and available. You will need to make new `GET /files` request for the
+with the newly created file entry, but at this point, the file is not already
+processed and available. You will need to make a new `GET /files` request for the
 new id and check the status. A status value of `CONVERTED` means the file is
 done merging.
 
-A merge process has some limitations however. The files passed must belong to
-the same user, be of the same operation type and have the status as `CONVERTED`.
+A merge process has some validations, the files passed must belong to
+the same `leafUserId`, be of the same operation type and have the status as `CONVERTED`.
 If any of those filters fail, the endpoint will result in HTTP 400 error.
 
 It receives a single JSON object with the `ids` entry. Example:
@@ -487,15 +512,6 @@ It receives a single JSON object with the `ids` entry. Example:
 ```json
 {
   "ids": [ "id1", "id2", "so on" ]
-}
-```
-
-Returns a single JSON object:
-
-```json
-{
-  "id": "id",
-  "status": "SENT_TO_MERGE"
 }
 ```
 
@@ -507,6 +523,7 @@ Returns a single JSON object:
     { label: 'Bash', value: 'sh', },
   ]
 }>
+
   <TabItem value="js">
 
   ```js
@@ -552,6 +569,18 @@ Returns a single JSON object:
 
   </TabItem>
 </Tabs>
+
+Returns a single JSON object:
+
+```json
+{
+  "id": "id",
+  "status": "SENT_TO_MERGE"
+}
+```
+
+After a few minutes, you can consult the result of Leaf processing over this file by
+performing GET consults in this.
 
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [2]: https://tools.ietf.org/html/rfc7946

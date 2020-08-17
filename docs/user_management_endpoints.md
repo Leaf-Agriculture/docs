@@ -43,7 +43,7 @@ Endpoints:
 GET    /users/{id}
 GET    /users/
 POST   /users
-PUT    /users/{id}
+PUT    /users
 DELETE /users/{id}
 ```
 
@@ -59,9 +59,9 @@ Endpoints:
 
 ```
 GET    /john-deere-credentials/{id}
-GET    /john-deere-credentials/
+GET    /john-deere-credentials
 POST   /john-deere-credentials
-PUT    /john-deere-credentials/{id}
+PUT    /john-deere-credentials
 DELETE /john-deere-credentials/{id}
 ```
 
@@ -77,9 +77,9 @@ Endpoints:
 
 ```
 GET    /john-deere-credentials/{id}
-GET    /john-deere-credentials/
+GET    /john-deere-credentials
 POST   /john-deere-credentials
-PUT    /john-deere-credentials/{id}
+PUT    /john-deere-credentials
 DELETE /john-deere-credentials/{id}
 ```
 
@@ -87,47 +87,47 @@ DELETE /john-deere-credentials/{id}
 
 Form of a Trimble Credentials resource:
 
-```
-GET    /users/{id}
-GET    /users/
-```
-
-#### CNHI Credentials 
-
-This service has the following enpoints.
-
+```json
 
 ```
-GET    /users/{id}
-GET    /users/
+
+Endpoints:
+
+```
+GET    /trimble-credentials/{id}
+GET    /trimble-credentials
+POST   /trimble-credentials
+PUT    /trimble-credentials
+DELETE /trimble-credentials/{id}
 ```
 
+#### CNHI Credentials
+
+Form of a CNHI Credentials resource:
+
+```json
+
+```
+
+Endpoints:
+
+```
+GET    /cnhi-credentials/{id}
+GET    /cnhi-credentials
+POST   /cnhi-credentials
+PUT    /cnhi-credentials
+DELETE /cnhi-credentials/{id}
+```
+
+---
 
 ## Endpoints
 
 ### `GET /users/{id}`
-Get a Leaf User.
+Get a Leaf User by its id.
 
-Gets a Leaf User based on your "id_token" and return a JSON response with your id and other atributes.
-
-```json
-{
-    "id": "UUID",
-    "apiOwnerUsername": "str",
-    "name": "str",
-    "email": "help@withleaf.io",
-    "phone": "str",
-    "address": "str",
-    "somarCredentials":  {"Object"},
-    "trimbleCredentials":  {"Object"},
-    "cnhiCredentials":  {"Object"},
-    "johnDeereCredentials":  {"Object"},
-    "ravenCredentials":  {"Object"},
-    "climatempoCredentials":  {"Object"},
-    "climateFieldViewCredentials": " {"Object"}
-}
-```
-
+#### Response
+A Leaf User as a JSON object.
 
 <Tabs
   defaultValue="js"
@@ -143,7 +143,7 @@ Gets a Leaf User based on your "id_token" and return a JSON response with your i
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://{{url}}/services/usermanagement/api/users/{{leaf-user-id}}'
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/users/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -159,7 +159,7 @@ Gets a Leaf User based on your "id_token" and return a JSON response with your i
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://{{url}}/services/usermanagement/api/users/{{leaf-user-id}}'
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/users/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -172,7 +172,7 @@ Gets a Leaf User based on your "id_token" and return a JSON response with your i
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://{{url}}/services/usermanagement/api/users/{{leaf-user-id}}'
+      'https://a.agrigate.io/services/usermanagement/api/users/{id}'
   ```
 
   </TabItem>
@@ -180,29 +180,11 @@ Gets a Leaf User based on your "id_token" and return a JSON response with your i
 
 
 ### `GET /users`
-Get all Leaf User.
+Get all Leaf Users.
 
-Gets all Leaf Users and return a JSON list response with your id and other atributes of all the users.
+#### Response
+A JSON array containing Leaf Users.
 
-
-```json
-[{
-    "id": "UUID",
-    "apiOwnerUsername": "str",
-    "name": "str",
-    "email": "help@withleaf.io",
-    "phone": "str",
-    "address": "str",
-    "somarCredentials":  {"Object"},
-    "trimbleCredentials":  {"Object"},
-    "cnhiCredentials":  {"Object"},
-    "johnDeereCredentials":  {"Object"},
-    "ravenCredentials":  {"Object"},
-    "climatempoCredentials":  {"Object"},
-    "climateFieldViewCredentials": " {"Object"}
-}]
-
-```
 
 <Tabs
   defaultValue="js"
@@ -218,7 +200,7 @@ Gets all Leaf Users and return a JSON list response with your id and other atrib
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://{{url}}/services/usermanagement/api/users/'
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/users'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -234,7 +216,7 @@ Gets all Leaf Users and return a JSON list response with your id and other atrib
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://{{url}}/services/usermanagement/api/users/'
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/users'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -247,14 +229,14 @@ Gets all Leaf Users and return a JSON list response with your id and other atrib
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://{{url}}/services/usermanagement/api/users/'
+      'https://a.agrigate.io/services/usermanagement/api/users'
   ```
 
   </TabItem>
 </Tabs>
 
 
-### `POST users/`
+### `POST /users`
 Creates a Leaf User.
 
 #### Request body
@@ -280,7 +262,7 @@ it will be bind to the Leaf User being created.
 ```
 
 #### Response
-A Leaf User with the id assigned to it.
+A Leaf User with the id assigned to it and it's credentials.
 
 ```json
 {
@@ -307,7 +289,7 @@ A Leaf User with the id assigned to it.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://{{url}}/services/usermanagement/api/users'
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/users'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -331,7 +313,7 @@ A Leaf User with the id assigned to it.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://{{url}}/services/usermanagement/api/users/'
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/users/'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -341,7 +323,7 @@ A Leaf User with the id assigned to it.
     'address': 'str',
   }
 
-  response = requests.get(endpoint, headers=headers, json=data)
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -349,34 +331,212 @@ A Leaf User with the id assigned to it.
   <TabItem value="sh">
 
   ```sh
-  curl -X GET \
+  curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
-      'https://{{url}}/services/usermanagement/api/users'
+      'https://a.agrigate.io/services/usermanagement/api/users'
   ```
 
   </TabItem>
 </Tabs>
 
 
-### `GET   john-deere-credentials/{id}`
+### `PUT /users`
+Edits an existing Leaf User by submitting a new one.
 
-To add your user's John Deere credentials, you will first need to have your clientKey and clientSecret from John Deere.
+#### Request body
 
-If you don't have these yet, please register as a John Deere developer.. After registering and confirming your email, click on your profile image, then on "Applications" and you will be taken to a new page. On this new page, click "Add Application". After that, you can see your "App ID" and "Shared Secret" on your app's details. These are what we are referring here as "clientKey" and "clientSecret" respectively.
+```json
+{
+  "leafUserId": "UUID",
+  "name": "str",
+  "email": "help@withleaf.io",
+  "phone": "str",
+  "address": "str",
+}
+```
+
+Note that if the existing resource has credentials and you don't include them
+in the body, the new Leaf User will have no credentials. Said that, for keeping
+the credentials or updating them, include in the JSON above an entry like this:
+
+```json
+  "johnDeereCredentials": {
+    "id": "UUID"
+  }
+```
+
+#### Response
+A Leaf User with the id assigned to it and it's credentials.
+
+```json
+{
+  "id": "UUID",
+  "name": "str",
+  "email": "help@withleaf.io",
+  "phone": "str",
+  "address": "str",
+}
+```
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/users'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
+  }
+
+  axios.put(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/users/'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.put(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://a.agrigate.io/services/usermanagement/api/users'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `DELETE /users/{id}`
+Deletes an existing Leaf User by id.
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/users/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/users/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://a.agrigate.io/services/usermanagement/api/users/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `GET john-deere-credentials/{id}`
+
+To add your user's John Deere credentials, you will first need to have your
+clientKey and clientSecret from John Deere.
+
+If you don't have these yet, please register as a John Deere developer. After
+registering and confirming your email, click on your profile image, then on
+"Applications" and you will be taken to a new page. On this new page, click
+"Add Application". After that, you can see your "App ID" and "Shared Secret" on
+your app's details. These are what we are referring here as "clientKey" and
+"clientSecret" respectively.
 
 **Get Your key and secret**
 
-To get your user's tokenId, tokenSecretKey and organization, you have to get your user's permission to access the service.
+To get your user's tokenId, tokenSecretKey and organization, you have to get
+your user's permission to access the service.
 
 To do so, we will generate an authentication link for them. For that, send a
 POST to https://gknk1zjl3b.execute-api.us-west-2.amazonaws.com/api/get_url
 
 containing a json like this:
+```json
 {"client_key": "YOUR_APP'S", "client_secret": "YOUR_APP'S"}
+```
 
 You will receive a json containing an url like this:
-{"authorization_url": "https://my.deere.com/consentToUseOfData?oauth_token=f2cf"}
+```json
+{"autho.rization_url": "https://my.deere.com/consentToUseOfData?oauth_token=f2cf"}
+```
 
 <Tabs
   defaultValue="js"
@@ -390,32 +550,32 @@ You will receive a json containing an url like this:
 
   ```js
   var request = require('request');
-  
+
   var headers = {
       'Content-type': 'application/json'
   };
-  
+
   var dataString = '{
       "client_key": "YOUR_APPS",
       "client_secret": "YOUR_APPS"
   }';
-  
+
   var options = {
       url: 'https://gknk1zjl3b.execute-api.us-west-2.amazonaws.com/api/get_url',
       method: 'POST',
       headers: headers,
       body: dataString
   };
-  
+
   function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
           console.log(body);
       }
   }
-  
+
   request(options, callback);
   returns json like this
-  
+
   {"authorization_url": "https://my.deere.com/consentToUseOfData?oauth_token=f2cf"}
   ```
 
@@ -423,8 +583,8 @@ You will receive a json containing an url like this:
   <TabItem value="py">
 
   ```py
-    import requests
-     
+  import requests
+
      url = 'https://gknk1zjl3b.execute-api.us-west-2.amazonaws.com/api/get_url'
      json = {
          "client_key": "YOURS",
@@ -433,7 +593,7 @@ You will receive a json containing an url like this:
      res = requests.post(url=url, json=json)
      print(res.json())
      returns json like this
-     
+
      {"authorization_url": "https://my.deere.com/consentToUseOfData?oauth_token=f2cf"}
   ```
 
@@ -443,11 +603,11 @@ You will receive a json containing an url like this:
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://{{url}}/services/usermanagement/api/users/'
+      'https://a.agrigate.io/services/usermanagement/api/users/'
   ```
 
   </TabItem>
-</Tabs>  
+</Tabs>
 
 **Get User's token id and token secret key**
 
@@ -474,31 +634,31 @@ You will receive a json like this:
 
   ```js
   var request = require('request');
-  
+
   var headers = {
       'Content-type': 'application/json'
   };
-  
+
   var dataString = '{
       "client_key": "YOURS",
       "client_secret": "YOURS",
       "token_id": "YOUR USERS",
       "token_secret_key": "YOUR USERS"
   }';
-  
+
   var options = {
       url: 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations',
       method: 'POST',
       headers: headers,
       body: dataString
   };
-  
+
   function callback(error, response, body) {
       if (!error && response.statusCode == 200) {
           console.log(body);
       }
   }
-  
+
   request(options, callback);
 ```
 
@@ -507,7 +667,7 @@ You will receive a json like this:
 
   ```py
     import requests
-    
+
     url = 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations'
     json = {
         "client_key": "YOURS",
@@ -534,7 +694,7 @@ You will receive a json like this:
   ```
 
   </TabItem>
-</Tabs>  
+</Tabs>
 
 **Get User's organization id**
 
@@ -576,44 +736,44 @@ Once you have these, adding John Deere credentials to a user is a simple process
 
   ```js
  ar request = require('request');
- 
+
  var headers = {
      'Content-type': 'application/json'
  };
- 
+
  var dataString = '{
      "client_key": "YOURS",
      "client_secret": "YOURS",
      "token_id": "YOUR USERS",
      "token_secret_key": "YOUR USERS"
  }';
- 
+
  var options = {
      url: 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations',
      method: 'POST',
      headers: headers,
      body: dataString
  };
- 
+
  function callback(error, response, body) {
      if (!error && response.statusCode == 200) {
          console.log(body);
      }
  }
- 
+
  request(options, callback);
 
 returns a json like this
 
-{  
-    "total": 1,  
-    "values": [{  
-        "@type": "Organization",   
-        "name": "USERS ORG NAME",  
-        "type": "customer",  
-        "member": true,  
-        "id": "THIS IS THE ID YOU WILL NEED"  
-    }]  
+{
+    "total": 1,
+    "values": [{
+        "@type": "Organization",
+        "name": "USERS ORG NAME",
+        "type": "customer",
+        "member": true,
+        "id": "THIS IS THE ID YOU WILL NEED"
+    }]
 }
 ```
 
@@ -622,7 +782,7 @@ returns a json like this
 
   ```py
     import requests
-    
+
     url = 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations'
     json = {
         "client_key": "YOURS",
@@ -649,8 +809,8 @@ returns a json like this
   ```
 
   </TabItem>
-</Tabs>  
-  
+</Tabs>
+
 :::tip
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!
 :::

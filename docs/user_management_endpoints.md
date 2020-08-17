@@ -17,7 +17,7 @@ See below the REST resources and their endpoints available in this service.
 
 #### Leaf Users Resources
 
-Form of a Leaf user:
+Form of a Leaf User resource:
 
 ```json
 {
@@ -42,38 +42,57 @@ Endpoints:
 ```
 GET    /users/{id}
 GET    /users/
+POST   /users
+PUT    /users/{id}
+DELETE /users/{id}
 ```
 
 #### John Deere Credentials
 
-Form of a John Deere Credentials:
+Form of a John Deere Credentials resource:
+
+```json
 
 ```
-GET    /credentials/{id}
-GET    /credentials/
+
+Endpoints:
+
+```
+GET    /john-deere-credentials/{id}
+GET    /john-deere-credentials/
+POST   /john-deere-credentials
+PUT    /john-deere-credentials/{id}
+DELETE /john-deere-credentials/{id}
 ```
 
 #### Climate FieldView Credentials
 
-Form of a John Deere Credentials:
+Form of a Climate FieldView Credentials resource:
 
-This service has the following enpoints.
+```json
+
+```
+
+Endpoints:
+
+```
+GET    /john-deere-credentials/{id}
+GET    /john-deere-credentials/
+POST   /john-deere-credentials
+PUT    /john-deere-credentials/{id}
+DELETE /john-deere-credentials/{id}
+```
+
+#### Trimble Credentials
+
+Form of a Trimble Credentials resource:
 
 ```
 GET    /users/{id}
 GET    /users/
 ```
 
-Trimble Credentials
-
-This service has the following enpoints.
-
-```
-GET    /users/{id}
-GET    /users/
-```
-
-CNHI Credentials 
+#### CNHI Credentials 
 
 This service has the following enpoints.
 

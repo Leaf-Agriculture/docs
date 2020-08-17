@@ -16,25 +16,25 @@ that requires file conversion, these converters will help.
 
 Today, you have the option to use these converters:
 
-- [Shapefile -> ISOXML](#shapefile-gt-isoxml)
-- [CNHI -> GeoJSON](#cnhi-gt-geojson)
-- [Trimble -> GeoJSON](#trimble-gt-geojson)
-- [Shapefile -> GeoJSON](#shapefile-gt-geojson)
-- [GeoJSON -> Shapefile](#geojson-gt-shapefile)
+- [Shapefile -> ISOXML](#shapefile---isoxml)
+- [CNHI .cn1 -> GeoJSON](#cnhi---geojson)
+- [Trimble -> GeoJSON](#trimble---geojson)
+- [Shapefile -> GeoJSON](#shapefile---geojson)
+- [GeoJSON -> Shapefile](#geojson---shapefile)
 
 ### Shapefile -> ISOXML
 
 Send this along with your zipped shapefile
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
-    { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'Python', value: 'python', },
+    { label: 'Bash', value: 'shell', },
     { label: 'JavaScript', value: 'js', },
   ]
 }>
-<TabItem value="py">
+<TabItem value="python">
 
 ```python
 import requests as req
@@ -50,7 +50,7 @@ print(r.text)
 ```
 
 </TabItem>
-<TabItem value="sh">
+<TabItem value="shell">
 
 ```shell
 curl \
@@ -62,7 +62,7 @@ curl \
 </TabItem>
 <TabItem value="js">
 
-```javascript--nodejs
+```js
 var request = require('request');
 
 var headers = {
@@ -110,7 +110,7 @@ Note that the return is plain text, not json.
 Send this along with your zipped file
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'Python', value: 'py', },
     { label: 'Bash', value: 'sh', },
@@ -146,7 +146,7 @@ curl \
 
 <TabItem value="js">
 
-```javascript--nodejs
+```js
 var request = require('request');
 
 var headers = {
@@ -187,10 +187,14 @@ Returns status 200 and a link where you can download your converted file from
 
 ### Trimble -> GeoJSON
 
+We expect Trimble data to be a zipped folder containing AgData, that is files
+with formats like: .agf (fields), .agi (implements), .agm (materials),
+.agt (tasks) and .agv (vehicles).
+
 Send this along with your zipped file
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'Python', value: 'py', },
     { label: 'Bash', value: 'sh', },
@@ -207,7 +211,7 @@ url = 'https://a.agrigate.io/quickstart/api/files/trimble'
 headers = {
 'Authorization': 'Bearer YOUR_TOKEN'
 }
-files = {'file': open('PATH/YOUR_FILE_NAME.cn1.zip','rb')}
+files = {'file': open('PATH/YOUR_FILE_NAME.zip','rb')}
 
 r = req.post(url, headers=headers, files=files)
 print(r.text)
@@ -227,7 +231,7 @@ curl \
 
 <TabItem value="js">
 
-```javascript--nodejs
+```js
 var request = require('request');
 
 var headers = {
@@ -270,7 +274,7 @@ To use, simply upload a zipped Trimble folder.
 Send this along with your zipped file
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'Python', value: 'py', },
     { label: 'Bash', value: 'sh', },
@@ -307,7 +311,7 @@ curl \
 </TabItem>
 <TabItem value="js">
 
-```javascript--nodejs
+```js
 var request = require('request');
 
 var headers = {
@@ -354,7 +358,7 @@ The output file will be a GeoJSON file.
 Send this along with your (Geo)JSON
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'Python', value: 'py', },
     { label: 'Bash', value: 'sh', },
@@ -391,7 +395,7 @@ curl \
 </TabItem>
 <TabItem value="js">
 
-```javascript--nodejs
+```js
 var request = require('request');
 
 var headers = {

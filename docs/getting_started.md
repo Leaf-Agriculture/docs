@@ -9,20 +9,30 @@ import TabItem from '@theme/TabItem';
 
 Welcome to Leaf's Documentation!
 
-Food and Agriculture developers use Leaf's API to access clean, standardized, and aggregated Farm data from all major sources. Use the  getting started section below  to help you access sample farm data quickly, easily, and securely. We have implementation examples in cURL, NodeJS and Python!
+Food and Agriculture developers use Leaf's API to access clean, standardized,
+and aggregated Farm data from all major sources. Use the  getting started
+section below  to help you access sample farm data quickly, easily, and securely.
+We have implementation examples in cURL, NodeJS and Python!
 
 Getting Started
 
-Leaf's API abstracts and standardizes across agricultural data sources to make things easy for you. There are just a few concepts that you need to get started and we provide sample data within new Leaf accounts to help you learn quickly.
+Leaf's API abstracts and standardizes across agricultural data sources to make
+things easy for you. There are just a few concepts that you need to get started
+and we provide sample data within new Leaf accounts to help you learn quickly.
 
-Below you'll find instructions using curl, but you may also follow along using the Postman collection if you're familiar.
+
+:::tip
+Below you'll find instructions using curl and python, but you may also follow
+along using our [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
+if you're familiar.
+:::
 
 ## Authentication
 After creating and confirming your account, the first step is to authenticate with your email and password to retrieve an API token. This token is what we'll use in subsequent steps to talk to the API. Be sure to keep a copy of this token for the remaining steps.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="py"
   values={[
     { label: 'Bash', value: 'sh', },
     { label: 'Python', value: 'py', },

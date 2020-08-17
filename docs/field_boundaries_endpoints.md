@@ -175,7 +175,7 @@ It returns a JSON object like the following:
   </TabItem>
 </Tabs>
 
-### `GET fields/{id}`
+### `GET /fields/{id}`
 Gets a single Field by its id.
 
 Returns a single JSON object:
@@ -247,47 +247,47 @@ Returns a single JSON object:
   </TabItem>
 </Tabs>
 
-### `GET /api/fields/between`
+### `GET /fields/between`
 Gets a list of all the fields created between the instants given with the
 query parameters `start` and `end`. Both in ISO date-time format. They
 respectively must be in the past and in the past or present.
 
-### `GET /api/fields/before`
+### `GET /fields/before`
 Gets a list of all the fields created before the instant given with the
 query parameter `instant` (ISO date-time format).  It must be a time in the
 past.
 
-### `GET /api/fields/after`
+### `GET /fields/after`
 Gets a list of all the fields created after the instant given with the query
 parameter `instant` (ISO date-time format).  It must be a time in the past.
 
-### `DELETE /api/users/{leafUserId}/fields/{id}`
+### `DELETE /users/{leafUserId}/fields/{id}`
 Deletes the field with the given id.
 
-### `POST /api/users/{leafUserId}/fields`
+### `POST /users/{leafUserId}/fields`
 Creates a field. The `id` is optional. `geometry` and `leafUserId` are
 mandatory. If no `id` is provided, then an UUID will be generated. The
-Field id CAN NOT be updated.
+Field id **can not** be updated.
 
-### `POST /api/users/{leafUserId}/fields/intersect`
+### `POST /users/{leafUserId}/fields/intersect`
 Gets a GeoJSON MultiPolygon corresponding to the intersection of the fields
 specified by the given id's.  Such field id's goes in a list, in the request
 body.
 
-### `POST /api/fields/query/intersects`
+### `POST /fields/query/intersects`
 Gets a list of fields that intersects with the GeoJSON MultiPolygon sent in
 the request body.
 
-### `POST /api/users/{leafUserId}/fields/same`
+### `POST /users/{leafUserId}/fields/same`
 Gets a boolean value answering if the fields specified by a list of field
 id's specified in the request body have the same values for their vertices, in
 exactly the same order.
 
-### `POST /api/users/{leafUserId}/fields/disjoint`
+### `POST /users/{leafUserId}/fields/disjoint`
 Gets a boolean value answering if the fields specified by a list of field
 id's in the request body are disjoint.
 
-### `POST /api/users/{leafUserId}/fields/integration`
+### `POST /users/{leafUserId}/fields/integration`
 Uploads fields to providers. Currently we only support Climate FieldView.
 However new integrations will be added soon.
 

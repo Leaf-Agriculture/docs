@@ -1,10 +1,10 @@
 const path = require('path');
 
-var leaf_logo = 'img/logo4light_mode.png'
-var leaf_favicon_light = 'img/icon4dark_mode.png'
+const leaf_logo = 'img/logo4light_mode.png'
+const leaf_favicon_light = 'img/icon4dark_mode.png'
 
-var leaf_logo_dark = 'img/logo4dark_mode.png'
-var leaf_favicon_dark = 'img/icon4light_mode.png'
+const leaf_logo_dark = 'img/logo4dark_mode.png'
+const leaf_favicon_dark = 'img/icon4light_mode.png'
 
 
 module.exports = {
@@ -23,30 +23,84 @@ module.exports = {
   ],
 
   themeConfig: {
+    // prism: {
+    //   theme: require('prism-react-renderer/themes/leaf'),
+    // },
     navbar: {
       logo: {
         alt: 'logo',
         src: leaf_logo,
         srcDark: leaf_logo_dark,
+        href: 'https://withleaf.io'
       },
 
       items: [
+        // begin workaround to center navigation items
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // end workaround to center navigation items
         {
-          to: 'docs/',
-          activeBasePath: './docs',
-          label: 'Docs',
+          to: 'https://leafagriculture.com.br/registration/',
+          activeBasePath: './',
+          label: 'Products',
           position: 'left',
         },
         {
-          to: 'https://medium.com/leaf-agriculture',
-          label: 'Medium',
-          position: 'left'
+          to: 'https://withleaf.io',
+          activeBasePath: './',
+          label: 'Website',
+          position: 'left',
         },
+        {
+          to: 'https://leafagriculture.com.br/pricing/',
+          activeBasePath: './',
+          label: 'Pricing',
+          position: 'left',
+        },
+        {
+          to: 'https://leafagriculture.com.br/careers/',
+          activeBasePath: './',
+          label: 'Work with us',
+          position: 'left',
+        },
+        {
+          to: 'https://leafagriculture.com.br/registration/',
+          activeBasePath: './',
+          label: 'Register',
+          position: 'left',
+        },
+        // {
+        //   to: 'https://medium.com/leaf-agriculture',
+        //   label: 'Medium',
+        //   position: 'left'
+        // },
         {
           href: 'https://github.com/leaf-agriculture',
           label: 'GitHub',
           position: 'right',
         },
+        // {
+        //   href: 'https://github.com/leaf-agriculture',
+        //   label: 'Log in',
+        //   position: 'right',
+        // },
+        // {
+        //   href: 'https://github.com/leaf-agriculture',
+        //   label: 'Get API keys',
+        //   position: 'right',
+        // },
       ],
     },
   },
@@ -56,13 +110,13 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          homePageId: 'getting_started_overview',
+          homePageId: 'introduction',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/Leaf-Agriculture/docs',
+          editUrl: 'https://github.com/Leaf-Agriculture',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/Leaf-Agriculture/docs',
+          editUrl: 'https://github.com/Leaf-Agriculture',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

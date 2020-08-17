@@ -166,8 +166,8 @@ A JSON array containing Fields.
   </TabItem>
 </Tabs>
 
+### `GET /fields/{id}`
 
-### `GET fields/{id}`
 Gets a single Field by its id.
 
 #### Response
@@ -221,7 +221,6 @@ A single Field as a JSON object.
 
   </TabItem>
 </Tabs>
-
 
 ### `GET /fields/before`
 Gets a list of all the Fields created **before** the instant given in the
@@ -419,6 +418,7 @@ A JSON list of Fields.
 Deletes the field with the given id.
 
 ### `POST /users/{leafUserId}/fields`
+
 Creates a Field for the user `leafUserId`. A resquest body must be provided
 containing the an entry `"geometry"`, which represents the boundaries of the
 Field being created as a GeoJSON geometry (it must be a `"MultiPolygon"`).
@@ -546,6 +546,7 @@ A JSON in the format of a GeoJSON geometry.
   }
 }
 ```
+
 
 ### `POST /fields/query/intersects`
 Gets a list of fields that intersects with the GeoJSON MultiPolygon sent in

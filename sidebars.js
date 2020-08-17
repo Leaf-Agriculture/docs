@@ -1,21 +1,6 @@
-// introduction
-// auth
-// sat
-// field
-// operations
-// converters
-// get credentials
-
-
 module.exports = {
   docs: [
-    {
-      type: 'category',
-      label: 'Getting Started',
-      items: [
-        'getting_started_overview', 'getting_started_endpoints',
-      ]
-    },
+    'getting_started',
     {
       type: 'category',
       label: 'API Reference',
@@ -43,22 +28,6 @@ module.exports = {
           items: ['converters_overview', 'converters_endpoints']
         },
       ],
-    },
-    // {
-    //   type: 'category',
-    //   label: 'Guide',
-    //   items: [
-    //     'operations_endpoints',
-    //   ],
-    // }
-    // {
-    //   type: 'category',
-    //   label: 'API Reference',
-    //   items: [
-    //     '500-converter',
-    //     '501-operations',
-    //     '502-satellite',
-    //   ],
-    // },
-  ],
+    }
+  ]
 }

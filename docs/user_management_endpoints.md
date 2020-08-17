@@ -348,7 +348,7 @@ Get the John Deere credentials of the user based own his id and returns a JSON w
 ```json
 {
     "id": "UUID",
-    "apiOwnerUsername": "help@withlife.io",
+    "apiOwnerUsername": "str",
     "clientKey": "str",
     "clientSecret": "str",
     "tokenId": "str",
@@ -428,7 +428,7 @@ Gets all the John Deere credentials and return a JSON response with the credenti
 ```json
 [{
     "id": "UUID",
-    "apiOwnerUsername": "help@withlife.io",
+    "apiOwnerUsername": "str",
     "clientKey": "str",
     "clientSecret": "str",
     "tokenId": "str",
@@ -439,7 +439,7 @@ Gets all the John Deere credentials and return a JSON response with the credenti
 ```json
 {
     "id": "UUID",
-    "apiOwnerUsername": "help@withlife.io",
+    "apiOwnerUsername": "str",
     "clientKey": "str",
     "clientSecret": "str",
     "tokenId": "str",
@@ -512,14 +512,111 @@ Gets all the John Deere credentials and return a JSON response with the credenti
   </TabItem>
 </Tabs>
 
+
+### `POST john-deere-credentials/`
+
+Create a John Deere credential for the Leaf User. 
+
+ #### Request body
+     
+ ```json
+   {
+     "clientKey": "str",
+     "clientSecret": "str",
+     "tokenId": "str",
+     "tokenSecretKey": "str"
+   }
+ ```
+
+#### Response
+A Leaf User with the id assigned to it.
+
+```json
+{
+     "id": "UUID",
+     "apiOwnerUsername": "str",
+     "clientKey": "str",
+     "clientSecret": "str",
+     "tokenId": "str",
+     "tokenSecretKey": "str"
+ }
+```
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://{{url}}/services/usermanagement/api/john-deere-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://{{url}}/services/usermanagement/api/john-deere-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://{{url}}/services/usermanagement/api/john-deere-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
 ### `GET climate-field-credentials/{id}`
 
 Get the credentials associated with the Leaf User id and returns a JSON response as the following.
 
 ```json
 {
-    "id": "4ddc9985-b0e9-4fe3-be36-043701fb32b0",
-    "apiOwnerUsername": "gustavo.pereira@leafagriculture.com.br",
+    "id": "UUID",
+    "apiOwnerUsername": "str",
     "clientId": "",
     "clientSecret": "",
     "apiKey": "",
@@ -598,7 +695,7 @@ Gets all the climate field credentials and returns a JSON response as the follow
 [
     {
         "id": "UUID",
-        "apiOwnerUsername": "help@withleaf.io",
+        "apiOwnerUsername": "str",
         "clientId": "str",
         "clientSecret": "str",
         "apiKey": "str",
@@ -608,8 +705,8 @@ Gets all the climate field credentials and returns a JSON response as the follow
 
 ```json
 {
-    "id": "4ddc9985-b0e9-4fe3-be36-043701fb32b0",
-    "apiOwnerUsername": "gustavo.pereira@leafagriculture.com.br",
+    "id": "UUID",
+    "apiOwnerUsername": "str",
     "clientId": "",
     "clientSecret": "",
     "apiKey": "",
@@ -680,6 +777,104 @@ Gets all the climate field credentials and returns a JSON response as the follow
 
   </TabItem>
 </Tabs>
+
+### `POST climate-field-credentials/{id}`
+
+
+Create a Climate Field View credential for the Leaf User. 
+
+ #### Request body
+     
+ ```json
+   {
+     "clientKey": "str",
+     "clientSecret": "str",
+     "tokenId": "str",
+     "tokenSecretKey": "str"
+   }
+ ```
+
+#### Response
+
+A Leaf User with the id assigned to it.
+
+```json
+{
+     "id": "UUID",
+     "apiOwnerUsername": "str",
+     "clientKey": "str",
+     "clientSecret": "str",
+     "tokenId": "str",
+     "tokenSecretKey": "str"
+ }
+```
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://{{url}}/services/usermanagement/api/climate-field-view-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://{{url}}/services/usermanagement/api/climate-field-view-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://{{url}}/services/usermanagement/api/climate-field-view-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 :::tip
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!

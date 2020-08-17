@@ -35,9 +35,9 @@ possible to filter the results by passing some query parameters. They are listed
 below.
 
 - `leafUserId`, only matches files from this user
-- `provider`, filter by the provider. Currently we support the following providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView`
-- `status`You can match the step of the process by passing one of the following: `processed`, `failed` or `processing`
-- `origin`, files have differnte origins in our services. You can filter by
+- `provider`, filter by the provider. Currently, we support the following providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView`
+- `status`, you can match the step of the process by passing one of the following: `processed`, `failed` or `processing`
+- `origin`, files have different origins in our services. You can filter by
 its origin using one of the following: `provider`, `automerged`, `merged`,
 `uploaded`
 - `organizationId`, as the provider organizationId (only available for JohnDeere files)
@@ -130,7 +130,7 @@ It returns a JSON object like the following:
 ]
 ```
 
-The `sourceFiles` entry is a list of file's ids that were used to create the file. It will appears only in `merge` and `automerged` files.
+The `sourceFiles` entry is a list of file's ids that were used to create the file. It will appear only in `merge` and `automerged` files.
 
 ### `GET files/{id}`
 Gets a single file by its id.
@@ -363,10 +363,10 @@ The `property` refers to the property extracted from files' data to generate the
 image. In the example above, the image would represent the elevation.
 
 The `ramp` is the color ramp used to generate the image. The percentages
-correspond to the minimun (0%) and maximum (100%) values in the image. The
-listed values corresponde to RGB values used. The `nv` refers to `no value`. It
+correspond to the minimum (0%) and maximum (100%) values in the image. The
+listed values correspond to RGB values used. The `nv` refers to `no value`. It
 is used internally to make the image transparent on places without data.
-Currently, this ramp is the same of all images processed.
+Currently, this ramp is the same in all images processed.
 
 We also generate an auxiliary `xml` with geographic information to handle this
 image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
@@ -389,7 +389,7 @@ SHAPEFILE
 TRIMBLE
 ```
 
-Provider must be one of the following:
+The `provider` must be one of the following:
 
 ```
 Leaf
@@ -481,7 +481,7 @@ Returns a single JSON object:
 }
 ```
 
-After few minutes, you can consult the result of Leaf processing over this file by
+After a few minutes, you can consult the result of Leaf processing over this file by
 performing GET consults in this.
 
 
@@ -489,12 +489,12 @@ performing GET consults in this.
 Posts a merge operation to our server.
 
 A merge operation is performed asynchronously. This call will return immediately
-with the newly created file entry, but at this point the file is not already
-processed and available. You will need to make new `GET /files` request for the
+with the newly created file entry, but at this point, the file is not already
+processed and available. You will need to make a new `GET /files` request for the
 new id and check the status. A status value of `CONVERTED` means the file is
 done merging.
 
-A merge process has some limitations however. The files passed must belong to
+A merge process has some validations, the files passed must belong to
 the same `leafUserId`, be of the same operation type and have the status as `CONVERTED`.
 If any of those filters fail, the endpoint will result in HTTP 400 error.
 
@@ -570,7 +570,7 @@ Returns a single JSON object:
 }
 ```
 
-After few minutes, you can consult the result of Leaf processing over this file by
+After a few minutes, you can consult the result of Leaf processing over this file by
 performing GET consults in this.
 
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection

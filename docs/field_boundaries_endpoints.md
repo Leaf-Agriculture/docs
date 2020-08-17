@@ -552,7 +552,6 @@ A JSON in the format of a GeoJSON geometry.
 }
 ```
 
-
 ### `POST /fields/query/intersects`
 Gets a list of fields that intersects with the GeoJSON MultiPolygon sent in
 the request body.
@@ -624,7 +623,6 @@ A JSON list of Fields.
 
   </TabItem>
 </Tabs>
-
 
 
 ### `POST /users/{leafUserId}/fields/same`

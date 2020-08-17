@@ -6,11 +6,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-## About
-
-Our API returns processed, cropped, and color-corrected RGB and NDVI images.
-
-<img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
 All HTTP methods should be prepended by this service's endpoint:
 

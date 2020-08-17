@@ -70,17 +70,22 @@ DELETE /john-deere-credentials/{id}
 Form of a Climate FieldView Credentials resource:
 
 ```json
-
+{
+  "clientId": "str",
+  "clientSecret": "str",
+  "apiKey": "str",
+  "refreshToken": "str"
+}
 ```
 
 Endpoints:
 
 ```
-GET    /john-deere-credentials/{id}
-GET    /john-deere-credentials
-POST   /john-deere-credentials
-PUT    /john-deere-credentials
-DELETE /john-deere-credentials/{id}
+GET    /climate-field-view-credentials/{id}
+GET    /climate-field-view-credentials
+POST   /climate-field-view-credentials
+PUT    /climate-field-view-credentials
+DELETE /climate-field-view-credentials/{id}
 ```
 
 #### Trimble Credentials

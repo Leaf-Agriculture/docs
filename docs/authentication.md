@@ -6,19 +6,23 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 To access our API, you just have to register using this [link][register]. After
-confirming your email, you will be able to request a token [JWT][jwt] through
+confirming your email, you will be able to request a token ([JWT][jwt]) through
 this endpoint:
 
 ```
 https://a.agrigate.io/api/authenticate
 ```
 
-You will receive an access token as response.
+You will receive your Leaf Token as response.
 
 **All set!** Include this token in your API calls and you will have access to
-Leaf's API. The token lasts for 24h. After that, just make the same request to
-the same endpoint and you will get a new access token. The examples below show
-you how to login.
+Leaf's API.
+
+Your Leaf Token lasts for 24h by default. Include `"rememberMe": "true"` in the
+json to make it last 30 days.
+
+After expiration, just make the same request to the same endpoint and you will
+get a new access token.
 
 <Tabs
   defaultValue="js"

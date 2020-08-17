@@ -93,6 +93,7 @@ They are:
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page
 
+#### Response
 It returns a JSON array containing Fields.
 
 <Tabs
@@ -148,7 +149,8 @@ It returns a JSON array containing Fields.
 ### `GET fields/{id}`
 Gets a single Field by its id.
 
-Returns a single Field as a JSON object.
+#### Response
+A single Field as a JSON object.
 
 <Tabs
   defaultValue="js"
@@ -200,12 +202,136 @@ Returns a single Field as a JSON object.
 </Tabs>
 
 
+### `GET /fields/before`
+Gets a list of all the Fields created **before** the instant given in the
+query parameter `instant` (ISO date-time format).  It must be a time in the
+past.
+
+#### Response
+A JSON list of Fields.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/fields/api/fields/before'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const param = {instant: 'END TIME'}
+
+  axios.get(endpoint, {headers, param})
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/fields/api/fields/before'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  param = {'instant': 'END TIME'}
+
+  response = requests.get(endpoint, headers=headers, params=param)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/fields/api/fields/before?instant=<END TIME>'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `GET /fields/after`
+Gets a list of all the fields created **after** the instant given in the query
+parameter `instant` (ISO date-time format).  It must be a time in the past.
+
+#### Response
+A JSON list of Fields.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/fields/api/fields/after'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const param = {instant: 'START TIME'}
+
+  axios.get(endpoint, {headers, param})
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/fields/api/fields/after'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  param = {'instant': 'END TIME'}
+
+  response = requests.get(endpoint, headers=headers, params=param)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/fields/api/fields/after?instant=<END TIME>'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
 ### `GET /fields/between`
-Gets a list of all the Fields created between the instants given by the
+Gets a list of all the Fields created **between** the instants given in the
 query parameters `start` and `end`. Both in ISO date-time format. They
 respectively must be in the past and in the past or present.
 
-Returns a single Field as a JSON object.
+#### Response
+A JSON list of Fields.
 
 <Tabs
   defaultValue="js"
@@ -267,69 +393,6 @@ Returns a single Field as a JSON object.
 </Tabs>
 
 
-### `GET /fields/before`
-Gets a list of all the Fields created before the instant given by the
-query parameter `instant` (ISO date-time format).  It must be a time in the
-past.
-
-Returns a single Field as a JSON object.
-
-<Tabs
-  defaultValue="js"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint ='https://a.agrigate.io/services/fields/api/fields/after'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  param = {'instant': 'START TIME'}
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://a.agrigate.io/services/fields/api/fields/between'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```sh
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/fields/api/fields/between'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-
-### `GET /fields/after`
-Gets a list of all the fields created after the instant given with the query
-parameter `instant` (ISO date-time format).  It must be a time in the past.
 
 ### `DELETE /users/{leafUserId}/fields/{id}`
 Deletes the field with the given id.

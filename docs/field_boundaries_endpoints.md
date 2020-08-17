@@ -28,7 +28,7 @@ Form of a Field:
   "leafUserId": "UUID",
   "organizationId": "str",
   "mergedFieldId": ["UUID"],
-  "files": ["UUID"]
+  "files": ["UUID"],
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [

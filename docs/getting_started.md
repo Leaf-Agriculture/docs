@@ -32,7 +32,7 @@ After creating and confirming your account, the first step is to authenticate wi
 
 
 <Tabs
-  defaultValue="py"
+  defaultValue="sh"
   values={[
     { label: 'Bash', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -43,6 +43,9 @@ After creating and confirming your account, the first step is to authenticate wi
 
   ```py
   import requests
+
+  # this is comment 1
+  ''' this is comment two '''
 
   url = "https://a.agrigate.io/api/authenticate"
 
@@ -66,69 +69,289 @@ After creating and confirming your account, the first step is to authenticate wi
   </TabItem>
 </Tabs>
 
+## Get sample Field
+Inside your account, we've created a sample LeafUser and populated it with data.
+Let's take a look at the fields endpoint to see the sample field:
 
-## Get sample LeafUser
-Inside your account, we've created a sample LeafUser and populated it with data. Let's take a look at the fields endpoint to see the sample field:
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'Bash', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
 
-[copied from fields page]
-curl -X GET \
-    -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/satellite/api/fields'
-[copied from fields page]
+  <TabItem value="sh">
 
-## Get sample operations files
-Next, let's look at operations data. 'Operations' refers to the data collected when a machine and any implements performed an operation on a farm. This command will list operations files available across your whole account:
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://a.agrigate.io/services/satellite/api/fields'
+  ```
 
-[Copied from operations page]
-curl -X GET \
-    -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/operations/api/files'
-[Copied from operations page]
+  </TabItem>
 
-## Get sample operation file
-Now that you have a file ID, you can query for the operations data itself and a summary as well.
+  <TabItem value="py">
 
-[Copied from operations page]
-curl -X GET \
-    -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/operations/api/files/{id}'
+  ```py
+  import requests
+
+  url = "https://a.agrigate.io/services/fields/api/fields"
+  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
+
+  response = requests.request("GET", url, headers=headers)
+  ```
+
+  </TabItem>
+</Tabs>
+
+## Get all sample operation files
+Next, let's look at operations data. 'Operations' refers to the data collected
+when a machine and any implements performed an operation on a farm. This command
+will list operations files available across your whole account:
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'Bash', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files'
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  url = "https://a.agrigate.io/services/operations/api/files"
+
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  ```
+
+  </TabItem>
+</Tabs>
+
+## Get specific sample operation file
+Now that you have a file ID, you can query for the operations data itself and a
+summary as well.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'Bash', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files/{id}'
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  url = "https://a.agrigate.io/services/operations/api/files/{file_id}"
+
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  ```
+
+  </TabItem>
+
+</Tabs>
+
 
 
 ## Get sample operation file summary
-curl -X GET \
-    -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/operations/api/files/{id}/summary'
-[Copied from operations page]
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'Bash', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files/{id}/summary'
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  url = "https://a.agrigate.io/services/operations/api/files/{file_id}/summary"
+
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  ```
+
+  </TabItem>
+</Tabs>
 
 
 ## Get sample operation file image
-You may have already noticed that we're seeing a lot of operations files for this one field and the timestamps span just a few days. This is because we're looking at multiple files output from a machine that effectively represent one large operation - a harvest. Before we talk about merging these pieces into a single operation, let's look at an image from one of the pieces:
+You may have already noticed that we're seeing a lot of operations files for
+this one field and the timestamps span just a few days. This is because we're
+looking at multiple files output from a machine that effectively represent one
+large operation - a harvest. Before we talk about merging these pieces into a
+single operation, let's look at an image from one of the pieces:
 
-[Copied from operations page]
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'Bash', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
 
-curl -X GET \
-    -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/operations/api/files/{id}/images'
-[Copied from operations page]
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files/{id}/images'
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  url = "https://a.agrigate.io/services/operations/api/files/{file_id}/images"
+
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  ```
+
+  </TabItem>
+</Tabs>
 
 ## Get sample auto-merged operation file
-A single strip appears in that image which is no mistake. It's also not as useful as seeing the whole operation across the whole field! To solve this, we automatically merge data and produce images for data of the same type and timeframe.
+A single strip appears in that image which is no mistake. It's also not as
+useful as seeing the whole operation across the whole field! To solve this,
+we automatically merge data and produce images for data of the same type and
+timeframe.
 
-Let's take a look at the automatically merged harvesting image which is colored to indicate the range of wet mass collected. To find the auto-merged files, just add a parameter to filter to origin=automerged:
+Let's take a look at the automatically merged harvesting image which is colored
+to indicate the range of wet mass collected. To find the auto-merged files, just
+add a parameter to filter to origin=automerged:
 
 :::warning
 review
 :::
 
-[Made this one myself, not sure I got it right]
-curl -X GET \
-    -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/operations/api/files/{id}?origin=automerged'
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'Bash', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files?origin=automerged'
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  url = "https://a.agrigate.io/services/operations/api/files?origin=automerged"
+
+  payload = {}
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+  }
+
+  response = requests.request("GET", url, headers=headers, data = payload)
+  ```
+
+  </TabItem>
+</Tabs>
 
 And finally, use that file ID to retrieve the image:
 
-[Copied from operations page]
-curl -X GET \
-    -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/operations/api/files/{id}/images'
-[Copied from operations page]
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'Bash', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://a.agrigate.io/services/operations/api/files/{id}/images'
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  url = "https://a.agrigate.io/services/operations/api/files/{file_id}/images"
+
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  ```
+
+  </TabItem>
+</Tabs>

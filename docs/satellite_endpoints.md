@@ -6,11 +6,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-## About
-
-Our API returns processed, cropped, and color-corrected RGB and NDVI images.
-
-<img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
 All HTTP methods should be prepended by this service's endpoint:
 
@@ -63,6 +58,7 @@ field
     { label: 'Bash', value: 'sh', },
   ]
 }>
+
 <TabItem value="js">
 
 ```js
@@ -226,36 +222,7 @@ The returned payload is like so:
     `tif_colorized`
     - `resolution`: resolution, in meters, of the image. See table below
 
-Usually, we generate a total of 17 images for each intersected field. A GeoTiff for each band from Sentinel; some utility images as well, RGB and NDVI. The following table shows all the images with its resolutions and types:
 
-| Name           | Resolution | Type          |
-|:---------------|:-----------|:--------------|
-| B01.tif        | 60 meters  | tif           |
-| B02.tif        | 10         | tif           |
-| B03.tif        | 10         | tif           |
-| B04.tif        | 10         | tif           |
-| B05.tif        | 20         | tif           |
-| B06.tif        | 20         | tif           |
-| B07.tif        | 20         | tif           |
-| B08.tif        | 10         | tif           |
-| B09.tif        | 60         | tif           |
-| B10.tif        | 60         | tif           |
-| B11.tif        | 20         | tif           |
-| B12.tif        | 20         | tif           |
-| NDVI.png       | NULL       | png           |
-| NDVI.tif       | 10         | ndvi          |
-| NDVI_color.tif | 10         | tif_colorized |
-| RGB.png        | NULL       | png           |
-| RGB.tif        | 10         | tif_colorized |
-
-PNG files do not have resolution because they are scaled up by 800%, so each pixel does not represent the correct size anymore.
-
-We generate a colorized `NDVI_color.tif` using a custom built color ramp. See
-the image below. If you want to use your own ramp, we recommend using `NDVI.tif`,
-which is a pre calculated NDVI file. You can import it into any GIS software,
-like [QGis][4], and use it as you please.
-
-<img alt="NDVI example" src={useBaseUrl('img/ndviexample.png')} />
 
 <Tabs
   defaultValue="js"
@@ -265,6 +232,7 @@ like [QGis][4], and use it as you please.
     { label: 'Bash', value: 'sh', },
   ]
 }>
+
 <TabItem value="js">
 
 ```js
@@ -534,4 +502,4 @@ curl -X DELETE \
 [1]: /img/fieldovertime.png
 [2]: /img/ndviexample.png
 [3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
-[4]: https://www.qgis.org/en/site/
+

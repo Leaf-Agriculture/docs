@@ -264,19 +264,25 @@ single operation, let's look at an image from one of the pieces:
   </TabItem>
 </Tabs>
 
-## Get sample auto-merged operation file
+## Get sample merged operation file
+
 A single strip appears in that image which is no mistake. It's also not as
+useful as seeing the whole operation across the whole field! To solve this, we
+allow you to request a merge of operations data and produce images for data of
+the same type and timeframe. The sample data already includes a merged file.
+
+Let's take a look at that merged harvesting image which is colored to indicate
+the range of wet mass collected. First, let's find the merged file by simply
+adding a parameter to filter to origin=merged
+
+<!-- A single strip appears in that image which is no mistake. It's also not as
 useful as seeing the whole operation across the whole field! To solve this,
 we automatically merge data and produce images for data of the same type and
 timeframe.
 
 Let's take a look at the automatically merged harvesting image which is colored
 to indicate the range of wet mass collected. To find the auto-merged files, just
-add a parameter to filter to origin=automerged:
-
-:::warning
-review
-:::
+add a parameter to filter to origin=automerged: -->
 
 
 <Tabs
@@ -292,7 +298,7 @@ review
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files?origin=automerged'
+      'https://a.agrigate.io/services/operations/api/files?origin=merged'
   ```
 
   </TabItem>
@@ -301,7 +307,7 @@ review
   ```py
   import requests
 
-  url = "https://a.agrigate.io/services/operations/api/files?origin=automerged"
+  url = "https://a.agrigate.io/services/operations/api/files?origin=merged"
 
   payload = {}
   headers = {

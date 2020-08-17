@@ -25,7 +25,8 @@ are part of the same operation in the field and automatically merge them.
 Alternatively, it is possible to manually upload files to be processed and merge them manually if desired. Keep in mind that merging files is processing-heavy
 and may take about 20 minutes to finish.
 
-### Roadmap (IDK, but needs to be updated)
+### Roadmap
+
 Today, you can connect to these companies:
 
 - John Deere ([Medium][johndeere])
@@ -44,4 +45,4 @@ Coming in the fourth quarter of 2020:
 - Stara
 
 We also provide a [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
- so you can follow along easily.
+so you can follow along easily.

@@ -13,9 +13,38 @@ All HTTP methods should be prepended by this service's endpoint:
 https://a.agrigate.io/services/fields/api
 ```
 
-This service has the following endpoints available:
+See below the REST resources and their endpoints available in this service.
 
-Field Resource
+#### Field Resource
+
+Form of a Field:
+```json
+  {
+    "id": "UUID",
+    "providerName": "JohnDeere",
+    "providerFieldId": "UUID",
+    "providerBoundaryId": "UUID",
+    "type": "ORIGINAL",
+    "leafUserId": "UUID",
+    "organizationId": "str",
+    "mergedFieldId": ["UUID"],
+    "files": ["UUID"]
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [-93.48821327980518, 41.77137549568163],
+            [-93.48817333680519, 41.77143534378164],
+            [-93.48821327390516, 41.76068857977987],
+            [-93.48821327980518, 41.77137549568163]
+          ]
+        ]
+      ]
+    },
+  }
+```
+
 ```
 GET    /fields
 GET    /fields/after
@@ -31,29 +60,12 @@ POST   /users/{leafUserId}/fields/{id}/integration
 DELETE /users/{leafUserId}/fields/{id}
 ```
 
-Operation Resource
+#### Operation Resource
 ```
 GET    /users/{leafUserId}/fields/{fieldId}/operations
 GET    /users/{leafUserId}/fields/{fieldId}/operations/{id}
 ```
 
-Farm Resource
-```
-GET    /farms
-GET    /farms/{id}
-POST   /farms
-PUT    /farms
-DELETE /farms
-```
-
-Grower Resource
-```
-GET    /growers
-GET    /growers/{id}
-POST   /growers
-PUT    /growers
-DELETE /growers
-```
 
 ## Endpoints
 Here we list all the available endpoints from this microservice. For easily
@@ -81,50 +93,7 @@ They are:
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page
 
-It returns a JSON object like the following:
-
-```json
-[
-  {
-    "id": "UUID",
-    "providerName": "JohnDeere",
-    "providerId": 2,
-    "providerFieldId": "fbf5c2c6-3e1a-4b0b-9dd9-e5f990f8ea44",
-    "providerBoundaryId": "46d8fd29-18b5-482c-85d9-06bf7aec6ed7",
-    "type": "ORIGINAL",
-    "leafUserId": "8a80ade8-711d-f5c7-0171-210733570007",
-    "organizationId": "462114",
-    "mergedFieldId": ["UUID"],
-    "files": ["8c834678-72b2-4194-acd1-5ea1eae07a77"]
-    "geometry": {
-      "type": "MultiPolygon",
-      "coordinates": [
-        [
-          [
-            [
-              -93.48821327980518,
-              41.77137549568163
-            ],
-            [
-              -93.48817333680519,
-              41.77143534378164
-            ],
-            [
-              -93.48821327390516,
-              41.7606885797798
-            ],
-            [
-              -93.48821327980518,
-              41.77137549568163
-            ]
-          ]
-        ]
-      ]
-    },
-  }
-    ...
-]
-```
+It returns a JSON array containing Fields.
 
 <Tabs
   defaultValue="js"
@@ -175,28 +144,11 @@ It returns a JSON object like the following:
   </TabItem>
 </Tabs>
 
+
 ### `GET fields/{id}`
 Gets a single Field by its id.
 
-Returns a single JSON object:
-
-```json
-{
-  "id": "UUID",
-  "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [...]
-  },
-  "providerName": "JohnDeere",
-  "providerId": 2,
-  "providerFieldId": "fbf5c2c6-3e1a-4b0b-9dd9-e5f990f8ea44",
-  "providerBoundaryId": "46d8fd29-18b5-482c-85d9-06bf7aec6ed7",
-  "type": "ORIGINAL",
-  "leafUserId": "8a80ade8-711d-f5c7-0171-210733570007",
-  "organizationId": "462114",
-  }
-}
-```
+Returns a single Field as a JSON object.
 
 <Tabs
   defaultValue="js"
@@ -247,47 +199,275 @@ Returns a single JSON object:
   </TabItem>
 </Tabs>
 
-### `GET /api/fields/between`
-Gets a list of all the fields created between the instants given with the
+
+### `GET /fields/between`
+Gets a list of all the Fields created between the instants given by the
 query parameters `start` and `end`. Both in ISO date-time format. They
 respectively must be in the past and in the past or present.
 
-### `GET /api/fields/before`
-Gets a list of all the fields created before the instant given with the
+Returns a single Field as a JSON object.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/fields/api/fields/between'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const interval = {
+    start: 'START TIME',
+    end: 'END TIME',
+  }
+
+  axios.get(endpoint, {headers, interval})
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/fields/api/fields/between'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  interval = {
+    'start': 'START TIME',
+    'end': 'END TIME',
+  }
+
+  response = requests.get(endpoint, headers=headers, params=interval)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/fields/api/fields/between?start=<START TIME>&end=<END TIME>'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `GET /fields/before`
+Gets a list of all the Fields created before the instant given by the
 query parameter `instant` (ISO date-time format).  It must be a time in the
 past.
 
-### `GET /api/fields/after`
+Returns a single Field as a JSON object.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/fields/api/fields/after'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  param = {'instant': 'START TIME'}
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/fields/api/fields/between'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/fields/api/fields/between'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+
+### `GET /fields/after`
 Gets a list of all the fields created after the instant given with the query
 parameter `instant` (ISO date-time format).  It must be a time in the past.
 
-### `DELETE /api/users/{leafUserId}/fields/{id}`
+### `DELETE /users/{leafUserId}/fields/{id}`
 Deletes the field with the given id.
 
-### `POST /api/users/{leafUserId}/fields`
-Creates a field. The `id` is optional. `geometry` and `leafUserId` are
-mandatory. If no `id` is provided, then an UUID will be generated. The
-Field id CAN NOT be updated.
+### `POST /users/{leafUserId}/fields`
+Creates a Field for the user `leafUserId`. A resquest body must be provided
+containing the an entry `"geometry"`, which represents the boundaries of the
+Field being created as a GeoJSON feature (it must be a `"MultiPolygon"`).
+The entry `"id"` is optional. If no id is provided, an UUID will be generated.
+The Field id CAN NOT be updated.
 
-### `POST /api/users/{leafUserId}/fields/intersect`
+Request body example:
+
+```json
+{
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [
+            -93.48821327980518,
+    41.77137549568163
+          ],
+          [
+            -93.48817333680519,
+          41.77143534378164
+          ],
+          [
+            -93.48821327390516,
+          41.7606885797798
+          ],
+          [
+            -93.48821327980518,
+          41.77137549568163
+          ]
+        ]
+      ]
+    ]
+  }
+}
+```
+
+Returns a single JSON object:
+
+```json
+{
+    "id": "dc00a051-94c5-45f9-968b-50b2d7db299c",
+    "leafUserId": "f2665a18-eb5b-4e91-967b-14ff2c1d15e1",
+    "geometry": {...},
+    "type": "ORIGINAL"
+}
+```
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://a.agrigate.io/services/fields/api/fields/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [...]
+    }
+  }
+
+  axios.get(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/fields/api/fields/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [...]
+    }
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
+      'https://a.agrigate.io/services/fields/api/fields/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `POST /users/{leafUserId}/fields/intersect`
 Gets a GeoJSON MultiPolygon corresponding to the intersection of the fields
 specified by the given id's.  Such field id's goes in a list, in the request
 body.
 
-### `POST /api/fields/query/intersects`
+### `POST /fields/query/intersects`
 Gets a list of fields that intersects with the GeoJSON MultiPolygon sent in
 the request body.
 
-### `POST /api/users/{leafUserId}/fields/same`
+### `POST /users/{leafUserId}/fields/same`
 Gets a boolean value answering if the fields specified by a list of field
 id's specified in the request body have the same values for their vertices, in
 exactly the same order.
 
-### `POST /api/users/{leafUserId}/fields/disjoint`
+### `POST /users/{leafUserId}/fields/disjoint`
 Gets a boolean value answering if the fields specified by a list of field
 id's in the request body are disjoint.
 
-### `POST /api/users/{leafUserId}/fields/integration`
+### `POST /users/{leafUserId}/fields/integration`
 Uploads fields to providers. Currently we only support Climate FieldView.
 However new integrations will be added soon.
 
@@ -335,17 +515,18 @@ They are:
 It returns a JSON object like the following:
 
 ```json
-[{
-  "id": "UUID",
-  "operationType": "planted",
-  "startTime": "2020-06-02T10:05:00Z",
-  "endTime": "2020-06-02T18:23:00Z",
-  "crops": ["corn"],
-  "varieties": ["corn variety"],
-  "providerFileId": "string",
-  "provider": "Trimble",
-  "leafUserId": "UUID"
-}, ...
+[
+  {
+    "id": "UUID",
+    "operationType": "planted",
+    "startTime": "2020-06-02T10:05:00Z",
+    "endTime": "2020-06-02T18:23:00Z",
+    "crops": ["corn"],
+    "varieties": ["corn variety"],
+    "providerFileId": "string",
+    "provider": "Trimble",
+    "leafUserId": "UUID"
+  }, ...
 ]
 ```
 

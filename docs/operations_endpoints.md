@@ -51,27 +51,6 @@ They are:
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page
 
-It returns a JSON object like the following:
-
-```json
-[
-  {
-    "id": "UUID",
-    "fileName": "filename.zip",
-    "providerName": "CNHI",
-    "originalFile": "S3_URL",
-    "rawGeojson": "S3_URL",
-    "status": "failed",
-    "leafUserId": "UUID",
-    "apiOwnerUsername": "CLIENT",
-    "fileType": "PRESCRIPTION",
-    "createdTime": "2020-04-16T21:14:03.518",
-    "sizeInBytes": 123456789
-  },
-  ...
-]
-```
-
 <Tabs
   defaultValue="js"
   values={[
@@ -97,7 +76,7 @@ It returns a JSON object like the following:
   </TabItem>
   <TabItem value="py">
 
-  ```py
+  ```python
   import requests
 
   TOKEN = 'YOUR_TOKEN'
@@ -112,7 +91,7 @@ It returns a JSON object like the following:
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://a.agrigate.io/services/operations/api/files'
@@ -120,6 +99,27 @@ It returns a JSON object like the following:
 
   </TabItem>
 </Tabs>
+
+It returns a JSON object like the following:
+
+```json
+[
+  {
+    "id": "UUID",
+    "fileName": "filename.zip",
+    "providerName": "CNHI",
+    "originalFile": "S3_URL",
+    "rawGeojson": "S3_URL",
+    "status": "failed",
+    "leafUserId": "UUID",
+    "apiOwnerUsername": "CLIENT",
+    "fileType": "PRESCRIPTION",
+    "createdTime": "2020-04-16T21:14:03.518",
+    "sizeInBytes": 123456789
+  },
+  ...
+]
+```
 
 ### `GET files/{id}`
 Gets a single file by its id.

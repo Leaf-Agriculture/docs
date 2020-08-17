@@ -1,10 +1,10 @@
 const path = require('path');
 
-var leaf_logo = 'img/logo4light_mode.png'
-var leaf_favicon_light = 'img/icon4dark_mode.png'
+const leaf_logo = 'img/logo4light_mode.png'
+const leaf_favicon_light = 'img/icon4dark_mode.png'
 
-var leaf_logo_dark = 'img/logo4dark_mode.png'
-var leaf_favicon_dark = 'img/icon4light_mode.png'
+const leaf_logo_dark = 'img/logo4dark_mode.png'
+const leaf_favicon_dark = 'img/icon4light_mode.png'
 
 
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
       items: [
         {
           to: 'docs/',
-          activeBasePath: './docs',
+          activeBasePath: './',
           label: 'Docs',
           position: 'left',
         },
@@ -56,13 +56,13 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          homePageId: 'getting_started_overview',
+          homePageId: 'getting_started',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/Leaf-Agriculture/docs',
+          editUrl: 'https://github.com/Leaf-Agriculture',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/Leaf-Agriculture/docs',
+          editUrl: 'https://github.com/Leaf-Agriculture',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

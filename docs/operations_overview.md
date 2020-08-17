@@ -16,21 +16,23 @@ All files will be passed through a processing chain that includes:
 - Creating a summary of the file with general information, such as averages,
 standard deviations, maximum and minimum values ​​for important properties, and more.
 
-This processing may take a few minutes to complete, that's why it will do it in
+This processing may take a few minutes to complete, that's why it will happen in
 background.
 
 This service also provides an auto-merge feature, which will identify files that
-are part of the same operation in the field and automatically merge them.
+are part of the same operation in the field and automatically merge them into a
+new file, so you still have access to the not-merged files.
 
-Alternatively, it is possible to manually upload files to be processed and merge them manually if desired. Keep in mind that merging files is processing-heavy
+Alternatively, it is possible to manually upload files to be processed and merge
+them manually if desired. Keep in mind that merging files is processing-heavy
 and may take about 20 minutes to finish.
 
 ### Roadmap
 
 Today, you can connect to these companies:
 
-- John Deere ([Medium][johndeere])
-- Climate FieldView ([Medium][climate])
+- John Deere
+- Climate Field View
 - CNHi
 - Trimble
 

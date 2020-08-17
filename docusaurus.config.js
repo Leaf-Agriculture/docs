@@ -34,17 +34,51 @@ module.exports = {
       },
 
       items: [
+        // begin workaround to center navigation items
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // end workaround to center navigation items
         {
           to: 'docs/',
           activeBasePath: './',
-          label: 'Docs',
+          label: 'Products',
           position: 'left',
         },
         {
-          to: 'https://medium.com/leaf-agriculture',
-          label: 'Medium',
-          position: 'left'
+          to: 'docs/',
+          activeBasePath: './',
+          label: 'Documentation',
+          position: 'left',
         },
+        {
+          to: 'docs/',
+          activeBasePath: './',
+          label: 'Pricing',
+          position: 'left',
+        },
+        {
+          to: 'docs/',
+          activeBasePath: './',
+          label: 'Company',
+          position: 'left',
+        },
+        // {
+        //   to: 'https://medium.com/leaf-agriculture',
+        //   label: 'Medium',
+        //   position: 'left'
+        // },
         {
           href: 'https://github.com/leaf-agriculture',
           label: 'GitHub',

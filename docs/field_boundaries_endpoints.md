@@ -166,6 +166,7 @@ A JSON array containing Fields.
   </TabItem>
 </Tabs>
 
+
 ### `GET /fields/{id}`
 
 Gets a single Field by its id.
@@ -221,6 +222,7 @@ A single Field as a JSON object.
 
   </TabItem>
 </Tabs>
+
 
 ### `GET /fields/before`
 Gets a list of all the Fields created **before** the instant given in the
@@ -345,6 +347,7 @@ A JSON list of Fields.
 </Tabs>
 
 
+
 ### `GET /fields/between`
 Gets a list of all the Fields created **between** the instants given in the
 query parameters `start` and `end`. Both in ISO date-time format. They
@@ -445,6 +448,7 @@ Request body example:
 }
 ```
 
+
 #### Response
 A Field as a JSON object.
 
@@ -511,6 +515,7 @@ A Field as a JSON object.
 
   </TabItem>
 </Tabs>
+
 
 
 ### `POST /users/{leafUserId}/fields/intersect`
@@ -587,13 +592,14 @@ A JSON list of Fields.
   </TabItem>
   <TabItem value="py">
 
+
   ```py
   import requests
 
   TOKEN = 'YOUR_TOKEN'
 
   endpoint = 'https://a.agrigate.io/services/fields/api/query/intersects'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
+  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
 
   data = {
     'geometry': {
@@ -617,7 +623,9 @@ A JSON list of Fields.
   ```
 
   </TabItem>
-  <TabItem value="sh">
+</Tabs>
+
+
 
 ### `POST /users/{leafUserId}/fields/same`
 Gets a boolean value answering if the Fields specified by a list of Field
@@ -730,4 +738,4 @@ A JSON array of Files.
 
 
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[2]: https://tools.ietf.org/html/rfc7946
+[2]: https://tools.ietf.org/html/rfc7946 -->

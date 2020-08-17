@@ -50,7 +50,8 @@ Coming in the fourth quarter of 2020:
 - AgLeader
 - Stara
 
-We also provide our [Leaf Postman collection](leaf_postman_url) so you can follow
+We also provide our [Leaf Postman collection][leaf_postman_url] so you can follow
 along easily.
+
 
 [leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection

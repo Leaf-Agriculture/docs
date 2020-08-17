@@ -13,27 +13,49 @@ All HTTP methods should be prepended by this service's endpoint:
 https://a.agrigate.io/services/usermanagement/api
 ```
 
-This service has the following endpoints available:
+See below the REST resources and their endpoints available in this service.
 
-Leaf Users Resources
+#### Leaf Users Resources
 
-This service has the following enpoints.
+Form of a Leaf user:
+
+```json
+{
+  "id": "UUID",
+  "apiOwnerUsername": "str",
+  "name": "str",
+  "email": "help@withleaf.io",
+  "phone": "str",
+  "address": "str",
+  "somarCredentials":  {"Object"},
+  "trimbleCredentials":  {"Object"},
+  "cnhiCredentials":  {"Object"},
+  "johnDeereCredentials":  {"Object"},
+  "ravenCredentials":  {"Object"},
+  "climatempoCredentials":  {"Object"},
+  "climateFieldViewCredentials": " {"Object"}
+}
+```
+
+Endpoints:
 
 ```
 GET    /users/{id}
 GET    /users/
 ```
 
-John Deere Credentials
+#### John Deere Credentials
 
-This service has the following enpoints.
+Form of a John Deere Credentials:
 
 ```
 GET    /credentials/{id}
 GET    /credentials/
 ```
 
-CFV Credentials
+#### Climate FieldView Credentials
+
+Form of a John Deere Credentials:
 
 This service has the following enpoints.
 
@@ -62,7 +84,9 @@ GET    /users/
 ```
 
 
-### `GET   /users/{id}`
+## Endpoints
+
+### `GET /users/{id}`
 Get a Leaf User.
 
 Gets a Leaf User based on your "id_token" and return a JSON response with your id and other atributes.
@@ -84,7 +108,6 @@ Gets a Leaf User based on your "id_token" and return a JSON response with your i
     "climateFieldViewCredentials": " {"Object"}
 }
 ```
-
 
 
 <Tabs
@@ -136,7 +159,8 @@ Gets a Leaf User based on your "id_token" and return a JSON response with your i
   </TabItem>
 </Tabs>
 
-### `GET   /users`
+
+### `GET /users`
 Get all Leaf User.
 
 Gets all Leaf Users and return a JSON list response with your id and other atributes of all the users.
@@ -159,9 +183,8 @@ Gets all Leaf Users and return a JSON list response with your id and other atrib
     "climateFieldViewCredentials": " {"Object"}
 }]
 
-
-
 ```
+
 <Tabs
   defaultValue="js"
   values={[
@@ -210,6 +233,112 @@ Gets all Leaf Users and return a JSON list response with your id and other atrib
 
   </TabItem>
 </Tabs>
+
+
+### `POST users/`
+Creates a Leaf User.
+
+#### Request body
+
+```json
+{
+  "name": "str",
+  "email": "help@withleaf.io",
+  "phone": "str",
+  "address": "str",
+}
+```
+
+Besides the four properties of the example above, if you already have created
+credentials for some provider like John Deere, you can add an entry like the
+following, specifying the id of the credentials object previously created, so
+it will be bind to the Leaf User being created.
+
+```json
+  "johnDeereCredentials": {
+    "id": "UUID"
+  }
+```
+
+#### Response
+A Leaf User with the id assigned to it.
+
+```json
+{
+  "id": "UUID",
+  "name": "str",
+  "email": "help@withleaf.io",
+  "phone": "str",
+  "address": "str",
+}
+```
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://{{url}}/services/usermanagement/api/users'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://{{url}}/services/usermanagement/api/users/'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://{{url}}/services/usermanagement/api/users'
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 ### `GET   john-deere-credentials/{id}`
 

@@ -513,34 +513,20 @@ Deletes an existing Leaf User by id.
 </Tabs>
 
 
-### `GET john-deere-credentials/{id}`
+### `GET  john-deere-credentials/{id}`
 
-To add your user's John Deere credentials, you will first need to have your
-clientKey and clientSecret from John Deere.
+Get the John Deere credentials of the user based own his id and returns a JSON with the credentials.
 
-If you don't have these yet, please register as a John Deere developer. After
-registering and confirming your email, click on your profile image, then on
-"Applications" and you will be taken to a new page. On this new page, click
-"Add Application". After that, you can see your "App ID" and "Shared Secret" on
-your app's details. These are what we are referring here as "clientKey" and
-"clientSecret" respectively.
 
-**Get Your key and secret**
-
-To get your user's tokenId, tokenSecretKey and organization, you have to get
-your user's permission to access the service.
-
-To do so, we will generate an authentication link for them. For that, send a
-POST to https://gknk1zjl3b.execute-api.us-west-2.amazonaws.com/api/get_url
-
-containing a json like this:
 ```json
-{"client_key": "YOUR_APP'S", "client_secret": "YOUR_APP'S"}
-```
-
-You will receive a json containing an url like this:
-```json
-{"autho.rization_url": "https://my.deere.com/consentToUseOfData?oauth_token=f2cf"}
+{
+    "id": "UUID",
+    "apiOwnerUsername": "help@withlife.io",
+    "clientKey": "str",
+    "clientSecret": "str",
+    "tokenId": "str",
+    "tokenSecretKey": "str"
+}
 ```
 
 <Tabs
@@ -554,34 +540,23 @@ You will receive a json containing an url like this:
   <TabItem value="js">
 
   ```js
-  var request = require('request');
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
 
-  var headers = {
-      'Content-type': 'application/json'
-  };
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/{{john-deere-credentials-id}}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-  var dataString = '{
-      "client_key": "YOUR_APPS",
-      "client_secret": "YOUR_APPS"
-  }';
-
-  var options = {
-      url: 'https://gknk1zjl3b.execute-api.us-west-2.amazonaws.com/api/get_url',
-      method: 'POST',
-      headers: headers,
-      body: dataString
-  };
-
-  function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-          console.log(body);
-      }
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
   }
 
-  request(options, callback);
-  returns json like this
-
-  {"authorization_url": "https://my.deere.com/consentToUseOfData?oauth_token=f2cf"}
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
   ```
 
   </TabItem>
@@ -590,16 +565,20 @@ You will receive a json containing an url like this:
   ```py
   import requests
 
-     url = 'https://gknk1zjl3b.execute-api.us-west-2.amazonaws.com/api/get_url'
-     json = {
-         "client_key": "YOURS",
-         "client_secret": "YOURS"
-     }
-     res = requests.post(url=url, json=json)
-     print(res.json())
-     returns json like this
+  TOKEN = 'YOUR_TOKEN'
 
-     {"authorization_url": "https://my.deere.com/consentToUseOfData?oauth_token=f2cf"}
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/{{john-deere-credentials-id}}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
   ```
 
   </TabItem>
@@ -608,24 +587,39 @@ You will receive a json containing an url like this:
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/usermanagement/api/users/'
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/{{john-deere-credentials-id}}'
   ```
 
   </TabItem>
 </Tabs>
 
-**Get User's token id and token secret key**
 
-You will redirect your user to this url, so that they can log in to his account and authorize your app to use their credentials. Once they log in, you will receive a response url. You will use it in the next step, to get your user's "oauth_token" and "oauth_token_secret", that we call "tokenId" and "tokenSecretKey" respectively.
+### `GET  john-deere-credentials/`
 
-Now, just send a
-POST to https://gknk1zjl3b.execute-api.us-west-2.amazonaws.com/api/get_token
+Gets all the John Deere credentials and return a JSON response with the credentials of the Leaf Users.
 
-with this json:
-{"client_key": "YOUR_APP'S", "response_url": "YOUR_RESPONSE_URL"}
+```json
+[{
+    "id": "UUID",
+    "apiOwnerUsername": "help@withlife.io",
+    "clientKey": "str",
+    "clientSecret": "str",
+    "tokenId": "str",
+    "tokenSecretKey": "str"
+}]
+```
 
-You will receive a json like this:
-{"oauth_token": "YOUR_USER'S", "oauth_token_secret": "YOUR_USER'S"}
+```json
+{
+    "id": "UUID",
+    "apiOwnerUsername": "help@withlife.io",
+    "clientKey": "str",
+    "clientSecret": "str",
+    "tokenId": "str",
+    "tokenSecretKey": "str"
+}
+```
 
 <Tabs
   defaultValue="js"
@@ -638,97 +632,74 @@ You will receive a json like this:
   <TabItem value="js">
 
   ```js
-  var request = require('request');
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
 
-  var headers = {
-      'Content-type': 'application/json'
-  };
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-  var dataString = '{
-      "client_key": "YOURS",
-      "client_secret": "YOURS",
-      "token_id": "YOUR USERS",
-      "token_secret_key": "YOUR USERS"
-  }';
-
-  var options = {
-      url: 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations',
-      method: 'POST',
-      headers: headers,
-      body: dataString
-  };
-
-  function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-          console.log(body);
-      }
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
   }
 
-  request(options, callback);
-```
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
 
   </TabItem>
   <TabItem value="py">
 
   ```py
-    import requests
+  import requests
 
-    url = 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations'
-    json = {
-        "client_key": "YOURS",
-        "client_secret": "YOURS",
-        "token_id": "YOUR USERS",
-        "token_secret_key": "YOUR USERS"
-    }
-    res = requests.post(url=url, json=json)
-    print(res.json())
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
   ```
 
   </TabItem>
   <TabItem value="sh">
 
   ```sh
-  curl -XPOST  \
-  -H "Content-type: application/json"  \
-  -d '{
-      "client_key": "YOURS",
-      "client_secret": "YOURS",
-      "token_id": "YOUR USERS",
-      "token_secret_key": "YOUR USERS"
-  }' 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations'
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/'
   ```
 
   </TabItem>
 </Tabs>
 
-**Get User's organization id**
+### `GET climate-field-credentials/{id}`
 
-Now, the last thing needed is your user's organization.
-To get it, just send a
-POST to https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations
+Get the credentials associated with the Leaf User id and returns a JSON response as the following.
 
-with this json:
+```json
 {
-"client_key": "{{client_key}}",
-"client_secret": "{{client_secret}}",
-"token_id": "{{token_id}}",
-"token_secret_key": "{{token_secret_key}}"
+    "id": "4ddc9985-b0e9-4fe3-be36-043701fb32b0",
+    "apiOwnerUsername": "gustavo.pereira@leafagriculture.com.br",
+    "clientId": "",
+    "clientSecret": "",
+    "apiKey": "",
+    "refreshToken": ""
 }
-
-You will receive a json like this:
-{
-  "total": 1,
-  "values": [{
-    "@type": "Organization",
-    "name": "USERS ORG NAME",
-    "type": "customer",
-    "member": true,
-    "id": "THIS IS THE ID YOU WILL NEED"
-  }]
-}
-
-Once you have these, adding John Deere credentials to a user is a simple process. Just follow the add John Deere credentials section.
-
+```
 <Tabs
   defaultValue="js"
   values={[
@@ -740,77 +711,145 @@ Once you have these, adding John Deere credentials to a user is a simple process
   <TabItem value="js">
 
   ```js
- ar request = require('request');
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
 
- var headers = {
-     'Content-type': 'application/json'
- };
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{{cfv-credentials-id}}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
- var dataString = '{
-     "client_key": "YOURS",
-     "client_secret": "YOURS",
-     "token_id": "YOUR USERS",
-     "token_secret_key": "YOUR USERS"
- }';
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
+  }
 
- var options = {
-     url: 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations',
-     method: 'POST',
-     headers: headers,
-     body: dataString
- };
-
- function callback(error, response, body) {
-     if (!error && response.statusCode == 200) {
-         console.log(body);
-     }
- }
-
- request(options, callback);
-
-returns a json like this
-
-{
-    "total": 1,
-    "values": [{
-        "@type": "Organization",
-        "name": "USERS ORG NAME",
-        "type": "customer",
-        "member": true,
-        "id": "THIS IS THE ID YOU WILL NEED"
-    }]
-}
-```
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
 
   </TabItem>
   <TabItem value="py">
 
   ```py
-    import requests
+  import requests
 
-    url = 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations'
-    json = {
-        "client_key": "YOURS",
-        "client_secret": "YOURS",
-        "token_id": "YOUR USERS",
-        "token_secret_key": "YOUR USERS"
-    }
-    res = requests.post(url=url, json=json)
-    print(res.json())
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{{cfv-credentials-id}}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
   ```
 
   </TabItem>
   <TabItem value="sh">
 
   ```sh
-  curl -XPOST  \
-  -H "Content-type: application/json"  \
-  -d '{
-      "client_key": "YOURS",
-      "client_secret": "YOURS",
-      "token_id": "YOUR USERS",
-      "token_secret_key": "YOUR USERS"
-  }' 'https://ivlsjyyip6.execute-api.us-west-2.amazonaws.com/api/organizations'
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{{cfv-credentials-id}}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### `GET climate-field-credentials/`
+
+Gets all the climate field credentials and returns a JSON response as the following.
+
+[
+    {
+        "id": "UUID",
+        "apiOwnerUsername": "help@withleaf.io",
+        "clientId": "str",
+        "clientSecret": "str",
+        "apiKey": "str",
+        "refreshToken": "str"
+    }
+]
+
+```json
+{
+    "id": "4ddc9985-b0e9-4fe3-be36-043701fb32b0",
+    "apiOwnerUsername": "gustavo.pereira@leafagriculture.com.br",
+    "clientId": "",
+    "clientSecret": "",
+    "apiKey": "",
+    "refreshToken": ""
+}
+```
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/'
   ```
 
   </TabItem>

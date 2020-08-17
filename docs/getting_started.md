@@ -359,3 +359,45 @@ operation property. From this response, you can load one of the sample images:
 
   </TabItem>
 </Tabs>
+
+### Get sample satellite imagery
+
+Finally, let's take a look at some satellite imagery. Using data from Sentinel-2,
+we produce NDVI images for fields you define to be monitored. We can pull up the
+sample NDVI image like this:
+
+
+    <Tabs
+      defaultValue="sh"
+      values={[
+        { label: 'cURL', value: 'sh', },
+        { label: 'Python', value: 'py', },
+      ]
+    }>
+
+      <TabItem value="sh">
+
+      ```shell
+      curl -X GET \
+          -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+          'https://a.agrigate.io/services/satellite/api/fields/{field_id}'
+      ```
+
+      </TabItem>
+      <TabItem value="py">
+
+      ```py
+      import requests
+
+      url = "https://a.agrigate.io/services/satellite/api/fields/demo_field/processes"
+
+      headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+      }
+
+      response = requests.request("GET", url, headers=headers)
+      ```
+
+      </TabItem>
+    </Tabs>

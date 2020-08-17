@@ -33,7 +33,7 @@ Form of a Leaf user:
   "johnDeereCredentials":  {"Object"},
   "ravenCredentials":  {"Object"},
   "climatempoCredentials":  {"Object"},
-  "climateFieldViewCredentials": " {"Object"}
+  "climateFieldViewCredentials": {"Object"}
 }
 ```
 

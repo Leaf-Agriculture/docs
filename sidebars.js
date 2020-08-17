@@ -9,6 +9,11 @@ module.exports = {
         'authentication',
         {
           type: 'category',
+          label: 'User Management',
+          items: ['user_management_overview', 'user_management_endpoints']
+        },
+        {
+          type: 'category',
           label: 'Satellite',
           items: ['satellite_overview', 'satellite_endpoints']
         },

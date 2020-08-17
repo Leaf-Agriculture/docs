@@ -61,11 +61,11 @@ They are:
 - `size`, an integer specifying the size of the page
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
-    { label: 'JavaScript', value: 'js', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -141,15 +141,15 @@ It returns a JSON object like the following:
 
 The `sourceFiles` entry is a list of file's ids that were used to create the file. It will appear only in `merge` and `automerged` files.
 
-### `GET files/{id}`
+### `GET /files/{id}`
 Gets a single file by its id.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
-    { label: 'JavaScript', value: 'js', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -225,11 +225,11 @@ Gets the summary, if available, for the file id.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
-    { label: 'JavaScript', value: 'js', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 
@@ -297,11 +297,11 @@ data and some statistics calculated from it.
 Gets a list of PNG images generated from the operation's file properties.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
-    { label: 'JavaScript', value: 'js', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -409,11 +409,11 @@ Trimble
 ```
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
-    { label: 'JavaScript', value: 'js', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 
@@ -500,11 +500,11 @@ Posts a merge operation to our server.
 A merge operation is performed asynchronously. This call will return immediately
 with the newly created file entry, but at this point, the file is not already
 processed and available. You will need to make a new `GET /files` request for the
-new id and check the status. A status value of `CONVERTED` means the file is
+new id and check the status. A status value of `processed` means the file is
 done merging.
 
 A merge process has some validations, the files passed must belong to
-the same `leafUserId`, be of the same operation type and have the status as `CONVERTED`.
+the same `leafUserId`, be of the same operation type and have the status as `processed`.
 If any of those filters fail, the endpoint will result in HTTP 400 error.
 
 It receives a single JSON object with the `ids` entry. Example:
@@ -516,11 +516,11 @@ It receives a single JSON object with the `ids` entry. Example:
 ```
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
-    { label: 'JavaScript', value: 'js', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 

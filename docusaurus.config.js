@@ -31,6 +31,7 @@ module.exports = {
         alt: 'logo',
         src: leaf_logo,
         srcDark: leaf_logo_dark,
+        href: 'https://withleaf.io'
       },
 
       items: [
@@ -51,27 +52,33 @@ module.exports = {
         { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // end workaround to center navigation items
         {
-          to: 'docs/',
+          to: 'https://leafagriculture.com.br/registration/',
           activeBasePath: './',
           label: 'Products',
           position: 'left',
         },
         {
-          to: 'docs/',
+          to: 'https://withleaf.io',
           activeBasePath: './',
-          label: 'Documentation',
+          label: 'Website',
           position: 'left',
         },
         {
-          to: 'docs/',
+          to: 'https://leafagriculture.com.br/pricing/',
           activeBasePath: './',
           label: 'Pricing',
           position: 'left',
         },
         {
-          to: 'docs/',
+          to: 'https://leafagriculture.com.br/careers/',
           activeBasePath: './',
-          label: 'Company',
+          label: 'Work with us',
+          position: 'left',
+        },
+        {
+          to: 'https://leafagriculture.com.br/registration/',
+          activeBasePath: './',
+          label: 'Register',
           position: 'left',
         },
         // {
@@ -84,6 +91,16 @@ module.exports = {
           label: 'GitHub',
           position: 'right',
         },
+        // {
+        //   href: 'https://github.com/leaf-agriculture',
+        //   label: 'Log in',
+        //   position: 'right',
+        // },
+        // {
+        //   href: 'https://github.com/leaf-agriculture',
+        //   label: 'Get API keys',
+        //   position: 'right',
+        // },
       ],
     },
   },

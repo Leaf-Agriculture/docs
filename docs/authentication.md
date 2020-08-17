@@ -80,7 +80,7 @@ This request will return your access token to Leaf's API:
 
 ```json
 {
-  "id_token" : "YOUR_TOKEN"
+  "id_token" : "YOUR_LEAF_TOKEN"
 }
 ```
 

@@ -34,7 +34,7 @@ After creating and confirming your account, the first step is to authenticate wi
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
   ]
 }>
@@ -73,7 +73,7 @@ Let's take a look at the fields endpoint to see the sample field:
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
   ]
 }>
@@ -110,7 +110,7 @@ will list operations files available across your whole account:
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
   ]
 }>
@@ -149,7 +149,7 @@ summary as well.
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
   ]
 }>
@@ -189,7 +189,7 @@ summary as well.
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
   ]
 }>
@@ -232,7 +232,7 @@ single operation, let's look at an image from one of the pieces:
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
   ]
 }>
@@ -288,7 +288,7 @@ add a parameter to filter to origin=automerged: -->
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
   ]
 }>
@@ -321,13 +321,14 @@ add a parameter to filter to origin=automerged: -->
   </TabItem>
 </Tabs>
 
-And finally, use that file ID to retrieve the image:
+And finally, use that file ID to retrieve a list of images, one for each
+operation property. From this response, you can load one of the sample images:
 
 
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
   ]
 }>

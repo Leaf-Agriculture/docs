@@ -44,9 +44,6 @@ After creating and confirming your account, the first step is to authenticate wi
   ```py
   import requests
 
-  # this is comment 1
-  ''' this is comment two '''
-
   url = "https://a.agrigate.io/api/authenticate"
 
   data = {'username':'your email', 'password':'your password', 'rememberMe':'true'}

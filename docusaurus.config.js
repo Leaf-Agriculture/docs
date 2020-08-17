@@ -59,7 +59,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          homePageId: 'getting_started',
+          homePageId: 'introduction',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/Leaf-Agriculture',
         },

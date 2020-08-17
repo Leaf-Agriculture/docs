@@ -10,8 +10,8 @@ every 30 minutes it will do a new pooling to keep files always up to date.
 :::info requires Leaf User with credentials
 To have access to operation files, you will need a Leaf User with valid credentials
 from the provider you want to access data. If you don't have a Leaf User or you
-have not connected it with any provider yet, see **[how to create a Leaf User][um.md]**
-or **[how to add credentials to a Leaf User](user_management_overview.md)**.
+have not connected it with any provider yet, see **[how to create a Leaf User]()**
+or **[how to add credentials to a Leaf User]()**.
 :::
 
 All files will be passed through a processing chain that includes:

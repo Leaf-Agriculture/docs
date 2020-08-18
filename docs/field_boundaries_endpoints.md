@@ -122,7 +122,7 @@ A JSON array containing Fields.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -179,7 +179,7 @@ A single Field as a JSON object.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -237,7 +237,7 @@ A JSON list of Fields.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -298,7 +298,7 @@ A JSON list of Fields.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -361,7 +361,7 @@ A JSON list of Fields.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -457,7 +457,7 @@ A Field as a JSON object.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -564,7 +564,7 @@ A JSON list of Fields.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -689,7 +689,7 @@ A JSON array of Files.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">

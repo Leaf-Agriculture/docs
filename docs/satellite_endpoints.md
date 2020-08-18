@@ -53,9 +53,9 @@ field
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 
@@ -125,9 +125,9 @@ field
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 
@@ -224,14 +224,14 @@ The returned payload is like so:
 
 
 
-<Tabs
-  defaultValue="js"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
+    <Tabs
+      defaultValue="js"
+      values={[
+        { label: 'cURL', value: 'sh', },
+        { label: 'Python', value: 'py', },
+        { label: 'JavaScript', value: 'js', },
+      ]
+    }>
 
 <TabItem value="js">
 
@@ -317,9 +317,9 @@ than ~28 thousand meters.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 <TabItem value="js">
@@ -381,9 +381,9 @@ geometry must respect the area and perimeter limits of `POST /fields`.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 <TabItem value="js">
@@ -449,9 +449,9 @@ the database as well.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 <TabItem value="js">

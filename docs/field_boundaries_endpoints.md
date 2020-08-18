@@ -120,9 +120,9 @@ A JSON array containing Fields.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -177,9 +177,9 @@ A single Field as a JSON object.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -235,9 +235,9 @@ A JSON list of Fields.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -296,9 +296,9 @@ A JSON list of Fields.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -359,9 +359,9 @@ A JSON list of Fields.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -455,9 +455,9 @@ A Field as a JSON object.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -562,9 +562,9 @@ A JSON list of Fields.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -687,9 +687,9 @@ A JSON array of Files.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">

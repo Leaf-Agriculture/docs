@@ -150,9 +150,9 @@ A Leaf User as a JSON object.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -207,9 +207,9 @@ A JSON array containing Leaf Users.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -296,9 +296,9 @@ A Leaf User with the id assigned to it and it's credentials.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -401,9 +401,9 @@ A Leaf User with the id assigned to it and it's credentials.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -471,9 +471,9 @@ Deletes an existing Leaf User by id.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -546,9 +546,9 @@ Get the John Deere credentials of the user based own his id and returns a JSON w
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -614,9 +614,9 @@ Gets all John Deere Credentials.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -700,9 +700,9 @@ A John Deere Credentials object with the id assigned to it.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -770,9 +770,9 @@ Delete a John Deere credentials by id.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -836,9 +836,9 @@ Get a Climate Field View Credentials object by its id.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -904,9 +904,9 @@ Gets all the Climate Field View credentials.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -958,9 +958,9 @@ Deletes a "Climate Field View Credentials" by id.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -1037,9 +1037,9 @@ A Leaf User with the id assigned to it.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">

@@ -47,9 +47,6 @@ module.exports = {
         { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // end workaround to center navigation items
         {
           to: 'https://leafagriculture.com.br/registration/',

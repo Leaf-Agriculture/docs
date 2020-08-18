@@ -8,13 +8,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-Using our Satellite service, you will be able to compare the field health evolution over time. This is possible because we fetch a new image bath for each field every 3 days on average. 
+Using Leaf's Satellite service you will be able to easily implement a satellite imagery program and compare the field health evolution over time. 
+Leaf's service uses Sentinel-2 data which has the highest resolution publicly available and revisits each field every 3 to 5 days. 
 
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
-Our API returns processed, cropped, and color-corrected RGB and NDVI images. The Leaf's Satellite Service keeps an eye on newly uploaded sentinel tiles and checks them against the fields that we have stored in our database. When there is an intersection, we crop a set of images of the field from the tile, process, and made available on Satellite endpoints. We also provide informations like cloud coverage and the Sentinel tile source.
+This API accepts field boundary polygons and returns processed, cropped, and color-corrected RGB and NDVI images every time there is a new image available. 
+We also provide information like percent cloud coverage of the field and the Sentinel tile source for each image.
 
-Usually, we generate a total of 17 images for each intersected field. A GeoTiff for each band from Sentinel; some utility images as well, RGB and NDVI. The following table shows all the images with its resolutions and types:
+We generate a total of 17 images for each intersected field: A GeoTiff for each band from Sentinel and processed RGB and NDVI images. 
+The following table shows all the images with its resolutions and types:
 
 | Name           | Resolution | Type          |
 |:---------------|:-----------|:--------------|
@@ -36,10 +39,10 @@ Usually, we generate a total of 17 images for each intersected field. A GeoTiff 
 | RGB.png        | NULL       | png           |
 | RGB.tif        | 10         | tif_colorized |
 
-PNG files do not have resolution because they are scaled up by 800%, so each pixel does not represent the correct size anymore.
+PNG files do not have resolution because they are scaled up by 800%.
 
 We generate a colorized `NDVI_color.tif` using a custom built color ramp. See
-the image below. If you want to use your own ramp, we recommend using `NDVI.tif`,
+the image below. If you prefer to use your own ramp, we recommend using `NDVI.tif`,
 which is a pre calculated NDVI file. You can import it into any GIS software,
 like [QGis][4], and use it as you please.
 

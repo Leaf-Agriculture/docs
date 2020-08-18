@@ -52,10 +52,11 @@ Form of a John Deere Credentials resource:
 
 ```json
 {
-  "clientKey": "",
-  "clientSecret": "",
-  "tokenId": "",
-  "tokenSecretKey": ""
+  "id": "UUID",
+  "clientKey": "str",
+  "clientSecret": "str",
+  "tokenId": "str",
+  "tokenSecretKey": "str"
 }
 ```
 
@@ -74,6 +75,7 @@ Form of a Climate FieldView Credentials resource:
 
 ```json
 {
+  "id": "UUID",
   "clientId": "str",
   "clientSecret": "str",
   "apiKey": "str",
@@ -95,7 +97,13 @@ DELETE /climate-field-view-credentials/{id}
 Form of a Trimble Credentials resource:
 
 ```json
-
+{
+  "id": "UUID",
+  "userName": "str",
+  "password": "str",
+  "applicationName": "str",
+  "serviceIdentityId": "str"
+}
 ```
 
 Endpoints:
@@ -112,7 +120,12 @@ DELETE /trimble-credentials/{id}
 Form of a CNHI Credentials resource:
 
 ```json
-
+{
+  "id": "UUID",
+  "clientId": "",
+  "clientSecret": "",
+  "refreshToken": ""
+}
 ```
 
 Endpoints:
@@ -1087,6 +1100,523 @@ A Leaf User with the id assigned to it.
 </Tabs>
 
 
+### `GET /trimble-credentials/{id}`
+
+Get a "Trimble Credentials" resource by its id.
+
+#### Response
+A "Trimble Credentials" resource as a JSON.
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `GET  /trimble-credentials`
+
+Gets all Trimble Credentials.
+
+#### Response
+A JSON array with Trimble Credentials.
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/usermanagement/api/trimble-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `POST /trimble-credentials`
+Create a "Trimble Credentials" for the Leaf User.
+
+#### Request body
+A "Trimble Credentials" without id.
+
+```json
+{
+  "userName": "str",
+  "password": "str",
+  "applicationName": "str",
+  "serviceIdentityId": "str"
+}
+```
+
+#### Response
+A "Trimble Credentials" with the id assigned to it.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://{{url}}/services/usermanagement/api/trimble-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://{{url}}/services/usermanagement/api/trimble-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://{{url}}/services/usermanagement/api/trimble-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `DELETE trimble-credentials/{id}`
+Delete a Trimble Credentials resource by id.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `GET /cnhi-credentials/{id}`
+
+Get a "CNHI Credentials" resource by its id.
+
+#### Response
+A "CNHI Credentials" resource as a JSON.
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `GET /cnhi-credentials`
+
+Gets all CNHI Credentials.
+
+#### Response
+A JSON array with CNHI Credentials.
+
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `POST /cnhi-credentials`
+Create a "CNHI Credentials" for the Leaf User.
+
+#### Request body
+A "CNHI Credentials" without id.
+
+```json
+{
+  "clientId": "",
+  "clientSecret": "",
+  "refreshToken": ""
+}
+```
+
+#### Response
+A "CNHI Credentials" with the id assigned to it.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://{{url}}/services/usermanagement/api/cnhi-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    id: "UUID",
+    name: "str",
+    email: "help@withleaf.io",
+    phone: "str",
+    address: "str"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://{{url}}/services/usermanagement/api/cnhi-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str",
+    'email': 'help@withleaf.io',
+    'phone': 'str',
+    'address': 'str',
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://{{url}}/services/usermanagement/api/cnhi-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `DELETE cnhi-credentials/{id}`
+Delete a CNHI Credentials resource by id.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
 :::tip
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!
 :::

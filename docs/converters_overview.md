@@ -2,12 +2,12 @@
 title: Overview
 ---
 
-Leaf's Converters API performs many conversions between the different types and formats of files that are made available by data providers.
+Leaf's File Conversion API performs conversions between the many types and (often unique) formats of farm data files.
 
-You can use this service to explore almost all the conversions that Leaf uses internally.
+This service allows you to access nearly all of the conversions that Leaf uses internally.
 
-:::info it doesn't process the file
-Unlike the Operation Data service, this service does not process and standardize the converted file. If you want a processed file, see **[how to upload a file to be processed]()**.
+:::info 
+These converters simply convert files and do not upload the result to a Leaf User, auto-merge, or generate summary data. If you'd instead like to upload a file to a Leaf User, please see **[how to upload a file to be processed](https://leaf-agriculture.github.io/docs/docs/operations_endpoints#post-files)**.
 :::
 
 ### Available conversions

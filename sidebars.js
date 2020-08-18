@@ -5,6 +5,7 @@ module.exports = {
     {
       type: 'category',
       label: 'API Reference',
+      collapsed: false,
       items: [
         'introduction',
         'authentication',

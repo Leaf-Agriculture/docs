@@ -36,36 +36,36 @@ module.exports = {
 
       items: [
         // begin workaround to center navigation items
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
-        { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
+        // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // end workaround to center navigation items
-        {
-          to: 'https://leafagriculture.com.br/registration/',
-          activeBasePath: './',
-          label: 'Products',
-          position: 'left',
-        },
+        // {
+        //   to: 'https://leafagriculture.com.br/registration/',
+        //   activeBasePath: './',
+        //   label: 'Products',
+        //   position: 'left',
+        // },
         {
           to: 'https://withleaf.io',
           activeBasePath: './',
           label: 'Website',
           position: 'left',
         },
-        {
-          to: 'https://leafagriculture.com.br/pricing/',
-          activeBasePath: './',
-          label: 'Pricing',
-          position: 'left',
-        },
+        // {
+        //   to: 'https://leafagriculture.com.br/pricing/',
+        //   activeBasePath: './',
+        //   label: 'Pricing',
+        //   position: 'left',
+        // },
         {
           to: 'https://leafagriculture.com.br/careers/',
           activeBasePath: './',
@@ -73,16 +73,16 @@ module.exports = {
           position: 'left',
         },
         {
+          to: 'https://medium.com/leaf-agriculture',
+          label: 'Medium',
+          position: 'left'
+        },
+        {
           to: 'https://leafagriculture.com.br/registration/',
           activeBasePath: './',
           label: 'Register',
           position: 'left',
         },
-        // {
-        //   to: 'https://medium.com/leaf-agriculture',
-        //   label: 'Medium',
-        //   position: 'left'
-        // },
         {
           href: 'https://github.com/leaf-agriculture',
           label: 'GitHub',

@@ -1,6 +1,7 @@
 module.exports = {
   docs: [
-    'getting_started',
+    'welcome',
+    'quickstart',
     {
       type: 'category',
       label: 'API Reference',
@@ -19,7 +20,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Operations',
+          label: 'Machine Operation Data',
           items: ['operations_overview', 'operations_endpoints']
         },
         {
@@ -29,7 +30,7 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Converters',
+          label: 'File Converters',
           items: ['converters_overview', 'converters_endpoints']
         },
       ],

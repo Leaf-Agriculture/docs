@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Quickstart
 ---
 
 import Tabs from '@theme/Tabs';
@@ -363,7 +363,7 @@ operation property. From this response, you can load one of the sample images:
   </TabItem>
 </Tabs>
 
-### Get sample satellite imagery
+## Get sample satellite imagery
 
 Finally, let's take a look at some satellite imagery. Using data from Sentinel-2,
 we produce NDVI images for fields you define to be monitored. We can pull up the
@@ -414,37 +414,37 @@ the fields being monitored from the satellite service:
 And then we can pull up the sample NDVI image of the sample field like this:
 
 
-    <Tabs
-      defaultValue="sh"
-      values={[
-        { label: 'cURL', value: 'sh', },
-        { label: 'Python', value: 'py', },
-      ]
-    }>
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
 
-      <TabItem value="sh">
+  <TabItem value="sh">
 
-      ```shell
-      curl -X GET \
-          -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-          'https://api.withleaf.io/services/satellite/api/fields/{field_id}/processes'
-      ```
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://api.withleaf.io/services/satellite/api/fields/{field_id}/processes'
+  ```
 
-      </TabItem>
-      <TabItem value="py">
+  </TabItem>
+  <TabItem value="py">
 
-      ```py
-      import requests
+  ```py
+  import requests
 
-      url = "https://api.withleaf.io/services/satellite/api/fields/{field_id}/processes"
+  url = "https://api.withleaf.io/services/satellite/api/fields/{field_id}/processes"
 
-      headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer YOUR_LEAF_TOKEN'
-      }
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+  }
 
-      response = requests.request("GET", url, headers=headers)
-      ```
+  response = requests.request("GET", url, headers=headers)
+  ```
 
-      </TabItem>
-    </Tabs>
+  </TabItem>
+</Tabs>

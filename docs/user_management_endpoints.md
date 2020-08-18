@@ -139,7 +139,7 @@ A Leaf User as a JSON object.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -196,7 +196,7 @@ A JSON array containing Leaf Users.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -285,7 +285,7 @@ A Leaf User with the id assigned to it and it's credentials.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -390,7 +390,7 @@ A Leaf User with the id assigned to it and it's credentials.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -460,7 +460,7 @@ Deletes an existing Leaf User by id.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -535,7 +535,7 @@ Get the John Deere credentials of the user based own his id and returns a JSON w
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -603,7 +603,7 @@ Gets all John Deere Credentials.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -689,7 +689,7 @@ A John Deere Credentials object with the id assigned to it.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -759,7 +759,7 @@ Delete a John Deere credentials by id.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -825,7 +825,7 @@ Get a Climate Field View Credentials object by its id.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -893,7 +893,7 @@ Gets all the Climate Field View credentials.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -947,7 +947,7 @@ Deletes a "Climate Field View Credentials" by id.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1026,7 +1026,7 @@ A Leaf User with the id assigned to it.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">

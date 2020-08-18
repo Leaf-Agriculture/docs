@@ -55,7 +55,7 @@ field
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
 
@@ -91,7 +91,7 @@ print(response.json())
 </TabItem>
 <TabItem value="sh">
 
-```bash
+```shell
 curl -X GET \
     -H 'Authorization: Bearer YOUR_TOKEN' \
     'https://a.agrigate.io/services/satellite/api/fields'
@@ -127,7 +127,7 @@ field
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
 
@@ -229,7 +229,7 @@ The returned payload is like so:
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
 
@@ -267,7 +267,7 @@ print(response.json())
 </TabItem>
 <TabItem value="sh">
 
-```bash
+```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
     'https://a.agrigate.io/services/satellite/api/fields/YOUR_ID/processes'
@@ -319,7 +319,7 @@ than ~28 thousand meters.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
 <TabItem value="js">
@@ -358,7 +358,7 @@ print(response.json())
 </TabItem>
 <TabItem value="sh">
 
-```bash
+```shell
 curl -X POST \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_TOKEN' \
@@ -383,7 +383,7 @@ geometry must respect the area and perimeter limits of `POST /fields`.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
 <TabItem value="js">
@@ -422,7 +422,7 @@ print(response.json())
 </TabItem>
 <TabItem value="sh">
 
-```bash
+```shell
 curl -X POST \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_TOKEN' \
@@ -451,7 +451,7 @@ the database as well.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
 <TabItem value="js">
@@ -489,7 +489,7 @@ print(response)
 </TabItem>
 <TabItem value="sh">
 
-```bash
+```shell
 curl -X DELETE \
     -H 'Authorization: Bearer YOUR_TOKEN' \
     'https://a.agrigate.io/services/satellite/api/fields/YOUR_ID'
@@ -502,4 +502,3 @@ curl -X DELETE \
 [1]: /img/fieldovertime.png
 [2]: /img/ndviexample.png
 [3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
-

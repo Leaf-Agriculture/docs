@@ -27,9 +27,9 @@ get a new access token.
 <Tabs
   defaultValue="js"
   values={[
-    { label: 'JavaScript', value: 'js', },
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -66,7 +66,7 @@ get a new access token.
   </TabItem>
   <TabItem value="sh">
 
-  ```bash
+  ```shell
   curl -X POST \
       -H 'Content-Type: application/json' \
       -d '{ "username": "username", "password": "password" }' \

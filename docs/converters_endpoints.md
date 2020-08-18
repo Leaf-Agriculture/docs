@@ -13,7 +13,7 @@ This service has the following endpoints available:
 
 ```
 POST   /{input}-{output}
-POST   with params instead of query str
+POST   /
 ```
 
 ## Endpoints

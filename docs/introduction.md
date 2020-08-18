@@ -14,4 +14,4 @@ examples in cURL, Python and NodeJS!
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!
 :::
 
-[contact]: mailto:connect@leafagriculture.com.br
+[contact]: mailto:help@withleaf.io

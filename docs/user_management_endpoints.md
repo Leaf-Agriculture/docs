@@ -1623,4 +1623,4 @@ Please don't hesitate to [contact][contact] us to schedule a demo, ask a questio
 
 
 
-[contact]: mailto:connect@leafagriculture.com.br
+[contact]: mailto:help@withleaf.io

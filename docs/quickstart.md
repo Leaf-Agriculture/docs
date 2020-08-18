@@ -8,11 +8,11 @@ import TabItem from '@theme/TabItem';
 
 ### Leaf Quickstart
 
-This quickstart tutorial is written help you quickly experience and start building with Leaf. 
-First, please [register on our website](https://leafagriculture.com.br/registration/) to receive your credentials. 
-We've included sample data in your account so you can begin querying data via Leaf immediately. 
+This quickstart tutorial is written help you quickly experience and start building with Leaf.
+First, please [register on our website](https://leafagriculture.com.br/registration/) to receive your credentials.
+We've included sample data in your account so you can begin querying data via Leaf immediately.
 
-:::tip: Leaf's Postman collection
+:::tip Leaf's Postman collection
 Below you'll find instructions using curl and python, and we've also built a [Postman](https://www.postman.com/) collection to accompany this tutorial. Please find it here: [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection)
 :::
 

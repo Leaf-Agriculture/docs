@@ -8,15 +8,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-Using Leaf's Satellite service you will be able to easily implement a satellite imagery program and compare the field health evolution over time. 
-Leaf's service uses Sentinel-2 data which has the highest resolution publicly available and revisits each field every 3 to 5 days. 
+Using Leaf's Satellite service you will be able to easily implement a satellite imagery program and compare the field health evolution over time.
+Leaf's service uses Sentinel-2 data which has the highest resolution publicly available and revisits each field every 3 to 5 days.
 
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
-This API accepts field boundary polygons and returns processed, cropped, and color-corrected RGB and NDVI images every time there is a new image available. 
+This API accepts field boundary polygons and returns processed, cropped, and color-corrected RGB and NDVI images every time there is a new image available.
 We also provide information like percent cloud coverage of the field and the Sentinel tile source for each image.
 
-We generate a total of 17 images for each intersected field: A GeoTiff for each band from Sentinel and processed RGB and NDVI images. 
+We generate a total of 17 images for each intersected field: A GeoTiff for each band from Sentinel and processed RGB and NDVI images.
 The following table shows all the images with its resolutions and types:
 
 | Name           | Resolution | Type          |
@@ -48,7 +48,7 @@ like [QGis][4], and use it as you please.
 
 <img alt="NDVI example" src={useBaseUrl('img/ndviexample.png')} />
 
-Currently, our Satellite service runs without a relationship between our Field Services and the User Management Services. However, we are working to integrate it into the `leafUser` hierarch and the Fields Service. 
+Currently, our Satellite service runs without a relationship between our Field Services and the User Management Services. However, we are working to integrate it into the `leafUser` hierarchy and the Fields Service.
 
 See the [Satellite API Reference][satellite_endpoints] for more information.
 

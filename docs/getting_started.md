@@ -5,9 +5,8 @@ title: Getting Started
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Overview
 
-Welcome to Leaf's Documentation!
+### Welcome to Leaf's Documentation!
 
 Food and Agriculture developers use Leaf's API to access clean, standardized,
 and aggregated Farm data from all major sources. Use the  getting started
@@ -44,7 +43,7 @@ After creating and confirming your account, the first step is to authenticate wi
   ```py
   import requests
 
-  url = "https://a.agrigate.io/api/authenticate"
+  url = "https://api.withleaf.io/api/authenticate"
 
   data = {'username':'your email', 'password':'your password', 'rememberMe':'true'}
 
@@ -60,13 +59,13 @@ After creating and confirming your account, the first step is to authenticate wi
   curl -X POST \
      -H 'Content-Type: application/json' \
      -d '{ "username":"username", "password":"password", "rememberMe":"true" }' \
-     'https://a.agrigate.io/api/authenticate'
+     'https://api.withleaf.io/api/authenticate'
   ```
 
   </TabItem>
 </Tabs>
 
-## Get sample Field
+## Get sample Field with attached operations
 Inside your account, we've created a sample LeafUser and populated it with data.
 Let's take a look at the fields endpoint to see the sample field:
 
@@ -83,7 +82,7 @@ Let's take a look at the fields endpoint to see the sample field:
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://a.agrigate.io/services/satellite/api/fields'
+      'https://api.withleaf.io/services/satellite/api/fields'
   ```
 
   </TabItem>
@@ -93,7 +92,7 @@ Let's take a look at the fields endpoint to see the sample field:
   ```py
   import requests
 
-  url = "https://a.agrigate.io/services/fields/api/fields"
+  url = "https://api.withleaf.io/services/fields/api/fields"
   headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
 
   response = requests.request("GET", url, headers=headers)
@@ -101,6 +100,10 @@ Let's take a look at the fields endpoint to see the sample field:
 
   </TabItem>
 </Tabs>
+
+It returns a JSON object representing the Fields and you can see that there are
+operations ids attached. Next section will explain how to get the operations by
+those ids.
 
 ## Get all sample operation files
 Next, let's look at operations data. 'Operations' refers to the data collected
@@ -120,7 +123,7 @@ will list operations files available across your whole account:
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files'
+      'https://api.withleaf.io/services/operations/api/files'
   ```
 
   </TabItem>
@@ -129,7 +132,7 @@ will list operations files available across your whole account:
   ```py
   import requests
 
-  url = "https://a.agrigate.io/services/operations/api/files"
+  url = "https://api.withleaf.io/services/operations/api/files"
 
   headers = {
     'Content-Type': 'application/json',
@@ -159,7 +162,7 @@ summary as well.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files/{id}'
+      'https://api.withleaf.io/services/operations/api/files/{id}'
   ```
 
   </TabItem>
@@ -168,7 +171,7 @@ summary as well.
   ```py
   import requests
 
-  url = "https://a.agrigate.io/services/operations/api/files/{file_id}"
+  url = "https://api.withleaf.io/services/operations/api/files/{file_id}"
 
   headers = {
     'Content-Type': 'application/json',
@@ -199,7 +202,7 @@ summary as well.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files/{id}/summary'
+      'https://api.withleaf.io/services/operations/api/files/{id}/summary'
   ```
 
   </TabItem>
@@ -208,7 +211,7 @@ summary as well.
   ```py
   import requests
 
-  url = "https://a.agrigate.io/services/operations/api/files/{file_id}/summary"
+  url = "https://api.withleaf.io/services/operations/api/files/{file_id}/summary"
 
   headers = {
     'Content-Type': 'application/json',
@@ -242,7 +245,7 @@ single operation, let's look at an image from one of the pieces:
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files/{id}/images'
+      'https://api.withleaf.io/services/operations/api/files/{id}/images'
   ```
 
   </TabItem>
@@ -251,7 +254,7 @@ single operation, let's look at an image from one of the pieces:
   ```py
   import requests
 
-  url = "https://a.agrigate.io/services/operations/api/files/{file_id}/images"
+  url = "https://api.withleaf.io/services/operations/api/files/{file_id}/images"
 
   headers = {
     'Content-Type': 'application/json',
@@ -298,7 +301,7 @@ add a parameter to filter to origin=automerged: -->
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files?origin=merged'
+      'https://api.withleaf.io/services/operations/api/files?origin=merged'
   ```
 
   </TabItem>
@@ -307,7 +310,7 @@ add a parameter to filter to origin=automerged: -->
   ```py
   import requests
 
-  url = "https://a.agrigate.io/services/operations/api/files?origin=merged"
+  url = "https://api.withleaf.io/services/operations/api/files?origin=merged"
 
   payload = {}
   headers = {
@@ -338,7 +341,7 @@ operation property. From this response, you can load one of the sample images:
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files/{id}/images'
+      'https://api.withleaf.io/services/operations/api/files/{id}/images'
   ```
 
   </TabItem>
@@ -347,7 +350,7 @@ operation property. From this response, you can load one of the sample images:
   ```py
   import requests
 
-  url = "https://a.agrigate.io/services/operations/api/files/{file_id}/images"
+  url = "https://api.withleaf.io/services/operations/api/files/{file_id}/images"
 
   headers = {
     'Content-Type': 'application/json',
@@ -366,6 +369,50 @@ Finally, let's take a look at some satellite imagery. Using data from Sentinel-2
 we produce NDVI images for fields you define to be monitored. We can pull up the
 sample NDVI image like this:
 
+Finally, let's take a look at some satellite imagery. Using data from Sentinel-2,
+we produce NDVI images for fields you define to be monitored. First we'll list
+the fields being monitored from the satellite service:
+
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+  ]
+}>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+      'https://api.withleaf.io/services/satellite/api/fields/'
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  url = "https://api.withleaf.io/services/satellite/api/fields"
+
+  headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN'
+  }
+
+  response = requests.request("GET", url, headers=headers)
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+And then we can pull up the sample NDVI image of the sample field like this:
+
 
     <Tabs
       defaultValue="sh"
@@ -380,7 +427,7 @@ sample NDVI image like this:
       ```shell
       curl -X GET \
           -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-          'https://a.agrigate.io/services/satellite/api/fields/{field_id}'
+          'https://api.withleaf.io/services/satellite/api/fields/{field_id}/processes'
       ```
 
       </TabItem>
@@ -389,7 +436,7 @@ sample NDVI image like this:
       ```py
       import requests
 
-      url = "https://a.agrigate.io/services/satellite/api/fields/demo_field/processes"
+      url = "https://api.withleaf.io/services/satellite/api/fields/{field_id}/processes"
 
       headers = {
         'Content-Type': 'application/json',

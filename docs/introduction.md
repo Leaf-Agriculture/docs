@@ -6,7 +6,7 @@ title: Introduction
 
 Food and Agriculture developers use Leaf's API to access clean, standardized,
 and aggregated Farm data from all major sources. Use the
-[Getting Started](/docs/docs/getting_started) section to help you start
+[Getting Started](/docs/docs/quickstart) section to help you start
 accessing sample farm data quickly, easily, and securely. We have implementation
 examples in cURL, Python and NodeJS!
 

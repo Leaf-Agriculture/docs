@@ -1,5 +1,5 @@
 ---
-title: User Management
+title: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';
@@ -879,5 +879,7 @@ A Leaf User with the id assigned to it.
 :::tip
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!
 :::
+
+
 
 [contact]: mailto:connect@leafagriculture.com.br

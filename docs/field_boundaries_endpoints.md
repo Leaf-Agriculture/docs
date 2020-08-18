@@ -476,7 +476,7 @@ A Field as a JSON object.
     }
   }
 
-  axios.get(endpoint, { headers, data })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -583,7 +583,7 @@ A JSON list of Fields.
     }
   }
 
-  axios.get(endpoint, { headers, data })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -636,7 +636,7 @@ id's in the request body are disjoint.
 
 ### `POST /users/{leafUserId}/fields/integration`
 Uploads fields to providers. Currently we only support Climate FieldView.
-However new integrations will be added soon.
+New integrations will come soon.
 
 Request body format:
 
@@ -733,6 +733,62 @@ A JSON array of Files.
   </TabItem>
 </Tabs>
 
+
+### `GET /users/{userId}/fields/{fieldId}/operations/{id}`
+
+Gets a single Operation File of a field by its id.
+
+#### Response
+A single Operation File.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
 
 
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection

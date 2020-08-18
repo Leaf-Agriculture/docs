@@ -61,7 +61,6 @@ Endpoints:
 GET    /john-deere-credentials/{id}
 GET    /john-deere-credentials
 POST   /john-deere-credentials
-PUT    /john-deere-credentials
 DELETE /john-deere-credentials/{id}
 ```
 
@@ -84,7 +83,6 @@ Endpoints:
 GET    /climate-field-view-credentials/{id}
 GET    /climate-field-view-credentials
 POST   /climate-field-view-credentials
-PUT    /climate-field-view-credentials
 DELETE /climate-field-view-credentials/{id}
 ```
 
@@ -102,7 +100,6 @@ Endpoints:
 GET    /trimble-credentials/{id}
 GET    /trimble-credentials
 POST   /trimble-credentials
-PUT    /trimble-credentials
 DELETE /trimble-credentials/{id}
 ```
 
@@ -120,7 +117,6 @@ Endpoints:
 GET    /cnhi-credentials/{id}
 GET    /cnhi-credentials
 POST   /cnhi-credentials
-PUT    /cnhi-credentials
 DELETE /cnhi-credentials/{id}
 ```
 
@@ -513,7 +509,7 @@ Deletes an existing Leaf User by id.
 </Tabs>
 
 
-### `GET  john-deere-credentials/{id}`
+### `GET  /john-deere-credentials/{id}`
 
 Get the John Deere credentials of the user based own his id and returns a JSON with the credentials.
 
@@ -595,14 +591,13 @@ Get the John Deere credentials of the user based own his id and returns a JSON w
 </Tabs>
 
 
-### `GET  john-deere-credentials/`
+### `GET  /john-deere-credentials`
 
 Gets all the John Deere credentials and return a JSON response with the credentials of the Leaf Users.
 
 ```json
 [{
     "id": "UUID",
-    "apiOwnerUsername": "help@withlife.io",
     "clientKey": "str",
     "clientSecret": "str",
     "tokenId": "str",
@@ -613,7 +608,6 @@ Gets all the John Deere credentials and return a JSON response with the credenti
 ```json
 {
     "id": "UUID",
-    "apiOwnerUsername": "help@withlife.io",
     "clientKey": "str",
     "clientSecret": "str",
     "tokenId": "str",
@@ -635,7 +629,7 @@ Gets all the John Deere credentials and return a JSON response with the credenti
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/'
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -659,7 +653,7 @@ Gets all the John Deere credentials and return a JSON response with the credenti
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/'
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -680,7 +674,7 @@ Gets all the John Deere credentials and return a JSON response with the credenti
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
-      'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/'
+      'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials'
   ```
 
   </TabItem>
@@ -738,7 +732,7 @@ Get the credentials associated with the Leaf User id and returns a JSON response
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{{cfv-credentials-id}}'
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -759,7 +753,7 @@ Get the credentials associated with the Leaf User id and returns a JSON response
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
-      'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{{cfv-credentials-id}}'
+      'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{id}'
   ```
 
   </TabItem>
@@ -769,27 +763,19 @@ Get the credentials associated with the Leaf User id and returns a JSON response
 
 Gets all the climate field credentials and returns a JSON response as the following.
 
-[
-    {
-        "id": "UUID",
-        "apiOwnerUsername": "help@withleaf.io",
-        "clientId": "str",
-        "clientSecret": "str",
-        "apiKey": "str",
-        "refreshToken": "str"
-    }
-]
+#### Response
 
 ```json
 {
-    "id": "4ddc9985-b0e9-4fe3-be36-043701fb32b0",
-    "apiOwnerUsername": "gustavo.pereira@leafagriculture.com.br",
+    "id": "UUID",
     "clientId": "",
     "clientSecret": "",
     "apiKey": "",
     "refreshToken": ""
 }
 ```
+
+
 <Tabs
   defaultValue="js"
   values={[
@@ -804,7 +790,7 @@ Gets all the climate field credentials and returns a JSON response as the follow
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/'
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -828,7 +814,7 @@ Gets all the climate field credentials and returns a JSON response as the follow
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/'
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -849,28 +835,67 @@ Gets all the climate field credentials and returns a JSON response as the follow
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
-      'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/'
+      'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials'
   ```
 
   </TabItem>
 </Tabs>
 
 
-### `POST /climate-field-view-credentials`
-Creates a "Climate Field View Credentials" resource.
+### `DELETE /climate-field-view-credentials/{id}`
+Deletes a "Climate Field View Credentials" by id.
 
-#### Request body
 
-```json
-{
-  "clientId": "str",
-  "clientSecret": "str",
-  "apiKey": "str",
-  "refreshToken": "str"
-}
-```
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
 
-#### Response
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.post(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://a.agrigate.io/services/usermanagement/api/climate-field-view-credentials/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
 
 :::tip
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!

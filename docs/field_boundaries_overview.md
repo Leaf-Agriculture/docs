@@ -2,7 +2,6 @@
 title: Overview
 ---
 
-## Overview
 
 Leaf's Field Boundaries API help you to operate with Field related data from all major machine brands.
 With this API you can synchronize fields stored on our back-end with existing fields in many platforms
@@ -43,4 +42,3 @@ from Season, Grower, Farm, Field and File (operations).
 - Farms can be grouped together into Growers.
 - A Season makes a relation among a Field, a Crop and a start and end dates.
 - Files or Operations are the results of operations in a given Field.
-

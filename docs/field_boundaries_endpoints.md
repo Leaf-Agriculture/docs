@@ -118,7 +118,7 @@ They are:
 A JSON array containing Fields.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -175,7 +175,7 @@ Gets a single Field by its id.
 A single Field as a JSON object.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -233,7 +233,7 @@ past.
 A JSON list of Fields.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -294,7 +294,7 @@ parameter `instant` (ISO date-time format).  It must be a time in the past.
 A JSON list of Fields.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -357,7 +357,7 @@ respectively must be in the past and in the past or present.
 A JSON list of Fields.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -453,7 +453,7 @@ Request body example:
 A Field as a JSON object.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -560,7 +560,7 @@ the request body.
 A JSON list of Fields.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -685,7 +685,7 @@ They are:
 A JSON array of Files.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -742,7 +742,7 @@ Gets a single Operation File of a field by its id.
 A single Operation File.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },

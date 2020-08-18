@@ -148,7 +148,7 @@ Get a Leaf User by its id.
 A Leaf User as a JSON object.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -205,7 +205,7 @@ A JSON array containing Leaf Users.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -294,7 +294,7 @@ A Leaf User with the id assigned to it and it's credentials.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -399,7 +399,7 @@ A Leaf User with the id assigned to it and it's credentials.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -469,7 +469,7 @@ Deletes an existing Leaf User by id.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -544,7 +544,7 @@ Get the John Deere credentials of the user based own his id and returns a JSON w
 ```
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -612,7 +612,7 @@ Gets all John Deere Credentials.
 ```
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -698,7 +698,7 @@ A John Deere Credentials object with the id assigned to it.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -768,7 +768,7 @@ A John Deere Credentials object with the id assigned to it.
 Delete a John Deere credentials by id.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -834,7 +834,7 @@ Get a Climate Field View Credentials object by its id.
 ```
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -902,7 +902,7 @@ Gets all the Climate Field View credentials.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -956,7 +956,7 @@ Deletes a "Climate Field View Credentials" by id.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -1035,7 +1035,7 @@ A Leaf User with the id assigned to it.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -1109,7 +1109,7 @@ A "Trimble Credentials" resource as a JSON.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
@@ -1167,7 +1167,7 @@ A JSON array with Trimble Credentials.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
@@ -1242,7 +1242,7 @@ A "Trimble Credentials" without id.
 A "Trimble Credentials" with the id assigned to it.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
@@ -1311,7 +1311,7 @@ A "Trimble Credentials" with the id assigned to it.
 Delete a Trimble Credentials resource by id.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
@@ -1369,7 +1369,7 @@ A "CNHI Credentials" resource as a JSON.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
@@ -1427,7 +1427,7 @@ A JSON array with CNHI Credentials.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
@@ -1501,7 +1501,7 @@ A "CNHI Credentials" without id.
 A "CNHI Credentials" with the id assigned to it.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
@@ -1570,7 +1570,7 @@ A "CNHI Credentials" with the id assigned to it.
 Delete a CNHI Credentials resource by id.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },

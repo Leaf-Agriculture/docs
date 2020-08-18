@@ -51,7 +51,7 @@ It returns a list of JSON objects like so:
 field
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -123,7 +123,7 @@ It returns a single JSON object with the following entries (like each item from
 field
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -224,14 +224,14 @@ The returned payload is like so:
 
 
 
-    <Tabs
-      defaultValue="js"
-      values={[
-        { label: 'cURL', value: 'sh', },
-        { label: 'Python', value: 'py', },
-        { label: 'JavaScript', value: 'js', },
-      ]
-    }>
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
 
 <TabItem value="js">
 
@@ -315,7 +315,7 @@ bigger than 50 million square meters and it cannot have a perimeter bigger
 than ~28 thousand meters.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -379,7 +379,7 @@ entry `geometry` which contains a MultiPolygon GeoJSON object. Again, the new
 geometry must respect the area and perimeter limits of `POST /fields`.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
@@ -447,7 +447,7 @@ the database as well.
 
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },

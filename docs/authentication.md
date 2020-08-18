@@ -25,7 +25,7 @@ After expiration, just make the same request to the same endpoint and you will
 get a new access token.
 
 <Tabs
-  defaultValue="js"
+  defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },

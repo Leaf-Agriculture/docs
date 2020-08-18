@@ -2,10 +2,10 @@
 title: Overview
 ---
 
-Leaf's Operation Data API returns aggregated, cleaned, and standardized data
+Leaf's Operation Data API returns clean, aggregated, and standardized data
 from all major machine data brands in a simple JSON response. After connecting
-to a company, our Operation Data Service will immediately pool machine data and
-every 30 minutes it will do a new pooling to keep files always up to date.
+to a data provider, our Operation Data Service will immediately pool machine data from the authorized account and
+automatically update every 30 minutes to keep files always up to date.
 
 :::info requires Leaf User with credentials
 To have access to operation files, you will need a Leaf User with valid credentials
@@ -15,21 +15,21 @@ or **[how to add credentials to a Leaf User]()**.
 :::
 
 All files will be passed through a processing chain that includes:
-- Converting different format files to a `rawGeoJSON`;
+- Converting raw proprietary format files to a `rawGeoJSON`;
 - Standardizing the `rawGeoJSON`;
 - Creating images for all the numerical attributes in the file;
-- Creating a summary of the file with general information, such as averages,
+- Creating a summary of the file with summary information, such as averages,
 standard deviations, maximum and minimum values ​​for important properties, and more.
 
-This processing may take a few minutes to complete, that's why it will happen
+This processing may take a few minutes to complete and happens continuously 
 in the background.
 
-Since one single operation can be represented in several files by the provider,
+Since one single operation can be represented in several (sometimes hundreds of) files by the provider,
 this service also provides an auto-merge feature, which will identify files that
- are part of the same operation in the field and automatically merge them.
+ belong to the same operation (planting, for example) and automatically merge them.
 
 Alternatively, it is possible to manually upload files to be processed and merge
-them manually if desired. Keep in mind that merging files is processing-heavy
+them manually if desired. Please keep in mind that merging files is processing-heavy
 and may take about 20 minutes to finish.
 
 ### Roadmap

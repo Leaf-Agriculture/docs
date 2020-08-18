@@ -8,32 +8,30 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>Easy to Use</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    title: <>Machine Data</>,
+    imageUrl: 'img/machine_data.png',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Instantly access aggregated & standardized machine data from any brand
+        or convert files directly within your app
       </>
     ),
   },
   {
-    title: <>Focus on What Matters</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    title: <>Field Boundaries</>,
+    imageUrl: 'img/field_boundaries.png',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Import, export, and sync field boundaries across 120+ AgTech platforms
       </>
     ),
   },
   {
-    title: <>Powered by React</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    title: <>Imagery</>,
+    imageUrl: 'img/imagery.png',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Receive imagery from all of your preferred satellite, airplane, and drone providers
       </>
     ),
   },
@@ -72,7 +70,7 @@ function Home() {
                 styles.getStarted,
               )}
               to={useBaseUrl('docs/')}>
-              Get Started
+              Documentation
             </Link>
           </div>
         </div>

@@ -75,7 +75,7 @@ module.exports = {
         },
         {
           to: 'https://medium.com/leaf-agriculture',
-          label: 'Medium',
+          label: 'Blog',
           position: 'left'
         },
         {

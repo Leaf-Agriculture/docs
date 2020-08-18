@@ -10,7 +10,7 @@ You can use this service to explore almost all the conversions that Leaf uses in
 Unlike the Operation Data service, this service does not process and standardize the converted file. If you want a processed file, see **[how to upload a file to be processed]()**.
 :::
 
-### Available Converters
+### Available conversions
 
 We currently have the following conversions available:
 

@@ -9,13 +9,8 @@ module.exports = {
         'authentication',
         {
           type: 'category',
-          label: 'User Management',
+          label: 'Leaf User',
           items: ['user_management_overview', 'user_management_endpoints']
-        },
-        {
-          type: 'category',
-          label: 'Satellite',
-          items: ['satellite_overview', 'satellite_endpoints']
         },
         {
           type: 'category',
@@ -26,6 +21,11 @@ module.exports = {
           type: 'category',
           label: 'Operations',
           items: ['operations_overview', 'operations_endpoints']
+        },
+        {
+          type: 'category',
+          label: 'Satellite',
+          items: ['satellite_overview', 'satellite_endpoints']
         },
         {
           type: 'category',

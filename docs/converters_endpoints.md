@@ -6,7 +6,7 @@ title: Endpoints
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://a.agrigate.io/services/converters/api
+https://api.withleaf.io/services/converters/api
 ```
 
 This service has the following endpoints available:
@@ -31,7 +31,7 @@ curl -X POST \
 -H 'Content-Type: multipart/form-data' \
 -H 'Accept: application/json' \
 -H 'Authorization: Bearer token' {"type":"formData"} \
-'https://a.agrigate.io/services/converters/api/geojson-shapefile?userId=uuid' \
+'https://api.withleaf.io/services/converters/api/geojson-shapefile?userId=uuid' \
 --form 'file=@path'
 ```
 
@@ -53,7 +53,7 @@ curl -X POST \
 --header 'Content-Type: multipart/form-data' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer token' {"type":"formData"} \
-'https://a.agrigate.io/services/converters/api/?input=geojson&output=shapefile&userId=uuid' \
+'https://api.withleaf.io/services/converters/api/?input=geojson&output=shapefile&userId=uuid' \
 --form 'file=@path'
 ```
 

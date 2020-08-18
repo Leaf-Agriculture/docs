@@ -10,7 +10,7 @@ confirming your email, you will be able to request a token ([JWT][jwt]) through
 this endpoint:
 
 ```
-https://a.agrigate.io/api/authenticate
+https://api.withleaf.io/api/authenticate
 ```
 
 You will receive your Leaf Token as response.
@@ -37,7 +37,7 @@ get a new access token.
   ```js
   const axios = require('axios')
 
-  const endpoint = 'https://a.agrigate.io/api/authenticate'
+  const endpoint = 'https://api.withleaf.io/api/authenticate'
 
   const data = { username: 'username', password: 'password' }
 
@@ -52,7 +52,7 @@ get a new access token.
   ```py
   import requests
 
-  endpoint = 'https://a.agrigate.io/api/authenticate'
+  endpoint = 'https://api.withleaf.io/api/authenticate'
 
   json = {
       'username': 'username',
@@ -70,7 +70,7 @@ get a new access token.
   curl -X POST \
       -H 'Content-Type: application/json' \
       -d '{ "username": "username", "password": "password" }' \
-      'https://a.agrigate.io/api/authenticate'
+      'https://api.withleaf.io/api/authenticate'
   ```
 
   </TabItem>

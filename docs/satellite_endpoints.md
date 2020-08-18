@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://a.agrigate.io/services/satellite/api
+https://api.withleaf.io/services/satellite/api
 ```
 
 This service has the following endpoints available:
@@ -65,7 +65,7 @@ field
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-const endpoint ='https://a.agrigate.io/services/satellite/api/fields'
+const endpoint ='https://api.withleaf.io/services/satellite/api/fields'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
 axios.get(endpoint, { headers })
@@ -81,7 +81,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = 'https://a.agrigate.io/services/satellite/api/fields'
+endpoint = 'https://api.withleaf.io/services/satellite/api/fields'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 response = requests.get(endpoint, headers=headers)
@@ -94,7 +94,7 @@ print(response.json())
 ```shell
 curl -X GET \
     -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/satellite/api/fields'
+    'https://api.withleaf.io/services/satellite/api/fields'
 ```
 
 </TabItem>
@@ -137,7 +137,7 @@ field
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-const endpoint ='https://a.agrigate.io/services/satellite/api/fields/YOUR_ID'
+const endpoint ='https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
 axios.get(endpoint, { headers })
@@ -154,7 +154,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = 'https://a.agrigate.io/services/satellite/api/fields/YOUR_ID'
+endpoint = 'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 response = requests.get(endpoint, headers=headers)
@@ -168,7 +168,7 @@ print(response.json())
 ```shell
 curl -X GET \
     -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/satellite/api/fields/YOUR_ID'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 ```
 
 </TabItem>
@@ -239,7 +239,7 @@ The returned payload is like so:
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-let endpoint = 'https://a.agrigate.io/services/satellite/api' +
+let endpoint = 'https://api.withleaf.io/services/satellite/api' +
                '/fields/YOUR_ID/processes'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
@@ -256,7 +256,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = ('https://a.agrigate.io/services/satellite/api'
+endpoint = ('https://api.withleaf.io/services/satellite/api'
             '/fields/YOUR_ID/processes')
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
@@ -270,7 +270,7 @@ print(response.json())
 ```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/satellite/api/fields/YOUR_ID/processes'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/processes'
 ```
 
 </TabItem>
@@ -328,7 +328,7 @@ than ~28 thousand meters.
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-let endpoint = 'https://a.agrigate.io/services/satellite/api/fields'
+let endpoint = 'https://api.withleaf.io/services/satellite/api/fields'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
 const data = { /* Your payload */ }
@@ -346,7 +346,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = 'https://a.agrigate.io/services/satellite/api/fields'
+endpoint = 'https://api.withleaf.io/services/satellite/api/fields'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 payload = {...}  # Payload
@@ -363,7 +363,7 @@ curl -X POST \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_TOKEN' \
     -d '{ your payload }' \
-    'https://a.agrigate.io/services/satellite/api/fields'
+    'https://api.withleaf.io/services/satellite/api/fields'
 ```
 
 </TabItem>
@@ -392,7 +392,7 @@ geometry must respect the area and perimeter limits of `POST /fields`.
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-let endpoint = 'https://a.agrigate.io/services/satellite/api/fields'
+let endpoint = 'https://api.withleaf.io/services/satellite/api/fields'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
 const data = { /* Your geometry */ }
@@ -410,7 +410,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = 'https://a.agrigate.io/services/satellite/api/fields'
+endpoint = 'https://api.withleaf.io/services/satellite/api/fields'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 payload = {...}  # Geometry
@@ -427,7 +427,7 @@ curl -X POST \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_TOKEN' \
     -d '{ your geometry }' \
-    'https://a.agrigate.io/services/satellite/api/fields'
+    'https://api.withleaf.io/services/satellite/api/fields'
 ```
 
 </TabItem>
@@ -462,7 +462,7 @@ const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
 const client = axios.create({
-  baseURL: 'https://a.agrigate.io',
+  baseURL: 'https://api.withleaf.io',
   headers: {'Authorization': `Bearer ${TOKEN}`}
 })
 
@@ -479,7 +479,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = 'https://a.agrigate.io/services/satellite/api/fields/YOUR_ID'
+endpoint = 'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 response = requests.delete(endpoint, headers=headers)
@@ -492,7 +492,7 @@ print(response)
 ```shell
 curl -X DELETE \
     -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://a.agrigate.io/services/satellite/api/fields/YOUR_ID'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 ```
 
 </TabItem>

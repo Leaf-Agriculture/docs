@@ -74,7 +74,7 @@ They are:
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/operations/api/files'
+  const endpoint ='https://api.withleaf.io/services/operations/api/files'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -90,7 +90,7 @@ They are:
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/operations/api/files'
+  endpoint = 'https://api.withleaf.io/services/operations/api/files'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -103,7 +103,7 @@ They are:
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files'
+      'https://api.withleaf.io/services/operations/api/files'
   ```
 
   </TabItem>
@@ -158,7 +158,7 @@ Gets a single file by its id.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/operations/api/files/{id}'
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -174,7 +174,7 @@ Gets a single file by its id.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/operations/api/files/{id}'
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -187,7 +187,7 @@ Gets a single file by its id.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files/{id}'
+      'https://api.withleaf.io/services/operations/api/files/{id}'
   ```
 
   </TabItem>
@@ -239,7 +239,7 @@ Gets the summary, if available, for the file id.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/operations/api/files/{id}/summary'
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/summary'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -255,7 +255,7 @@ Gets the summary, if available, for the file id.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/operations/api/files/{id}/summary'
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/summary'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -268,7 +268,7 @@ Gets the summary, if available, for the file id.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files/{id}/summary'
+      'https://api.withleaf.io/services/operations/api/files/{id}/summary'
   ```
 
   </TabItem>
@@ -310,7 +310,7 @@ Gets a list of PNG images generated from the operation's file properties.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/operations/api/files/{id}/images'
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/images'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -326,7 +326,7 @@ Gets a list of PNG images generated from the operation's file properties.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/operations/api/files/{id}/images'
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/images'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -339,7 +339,7 @@ Gets a list of PNG images generated from the operation's file properties.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/operations/api/files/{id}/images'
+      'https://api.withleaf.io/services/operations/api/files/{id}/images'
   ```
 
   </TabItem>
@@ -423,7 +423,7 @@ Trimble
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/operations/api/files'
+  const endpoint ='https://api.withleaf.io/services/operations/api/files'
 
   const headers = {
     'Authorization': `Bearer ${TOKEN}`
@@ -452,7 +452,7 @@ Trimble
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/operations/api/files'
+  endpoint = 'https://api.withleaf.io/services/operations/api/files'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   files = {'file': open('shapefile.zip')}
@@ -473,7 +473,7 @@ Trimble
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=shapefile.zip' \
-      'https://a.agrigate.io/services/operations/api/files?' \
+      'https://api.withleaf.io/services/operations/api/files?' \
       'fileFormat=SHAPEFILE&provider=JohnDeere&leafUserId=id'
   ```
 
@@ -530,7 +530,7 @@ It receives a single JSON object with the `ids` entry. Example:
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/operations/api/files/merge'
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/merge'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = { ids: [ 'id1', 'id2' ] }
@@ -548,7 +548,7 @@ It receives a single JSON object with the `ids` entry. Example:
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/operations/api/files/merge'
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/merge'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {'ids': ['id1', 'id2']}
@@ -564,7 +564,7 @@ It receives a single JSON object with the `ids` entry. Example:
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "ids": [ "id1", "id2" ] }'
-      'https://a.agrigate.io/services/operations/api/files/merge'
+      'https://api.withleaf.io/services/operations/api/files/merge'
   ```
 
   </TabItem>

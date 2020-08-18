@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://a.agrigate.io/services/fields/api
+https://api.withleaf.io/services/fields/api
 ```
 
 See below the REST resources and their endpoints available in this service.
@@ -131,7 +131,7 @@ A JSON array containing Fields.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/fields/api/fields'
+  const endpoint ='https://api.withleaf.io/services/fields/api/fields'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -147,7 +147,7 @@ A JSON array containing Fields.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/fields'
+  endpoint = 'https://api.withleaf.io/services/fields/api/fields'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -160,7 +160,7 @@ A JSON array containing Fields.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/fields/api/fields'
+      'https://api.withleaf.io/services/fields/api/fields'
   ```
 
   </TabItem>
@@ -188,7 +188,7 @@ A single Field as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -204,7 +204,7 @@ A single Field as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -217,7 +217,7 @@ A single Field as a JSON object.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{id}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
   ```
 
   </TabItem>
@@ -246,7 +246,7 @@ A JSON list of Fields.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/fields/api/fields/before'
+  const endpoint ='https://api.withleaf.io/services/fields/api/fields/before'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const param = {instant: 'END TIME'}
@@ -264,7 +264,7 @@ A JSON list of Fields.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/fields/before'
+  endpoint = 'https://api.withleaf.io/services/fields/api/fields/before'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   param = {'instant': 'END TIME'}
@@ -279,7 +279,7 @@ A JSON list of Fields.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/fields/api/fields/before?instant=<END TIME>'
+      'https://api.withleaf.io/services/fields/api/fields/before?instant=<END TIME>'
   ```
 
   </TabItem>
@@ -307,7 +307,7 @@ A JSON list of Fields.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/fields/api/fields/after'
+  const endpoint ='https://api.withleaf.io/services/fields/api/fields/after'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const param = {instant: 'START TIME'}
@@ -325,7 +325,7 @@ A JSON list of Fields.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/fields/after'
+  endpoint = 'https://api.withleaf.io/services/fields/api/fields/after'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   param = {'instant': 'END TIME'}
@@ -340,7 +340,7 @@ A JSON list of Fields.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/fields/api/fields/after?instant=<END TIME>'
+      'https://api.withleaf.io/services/fields/api/fields/after?instant=<END TIME>'
   ```
 
   </TabItem>
@@ -370,7 +370,7 @@ A JSON list of Fields.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/fields/api/fields/between'
+  const endpoint ='https://api.withleaf.io/services/fields/api/fields/between'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const interval = {
@@ -391,7 +391,7 @@ A JSON list of Fields.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/fields/between'
+  endpoint = 'https://api.withleaf.io/services/fields/api/fields/between'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   interval = {
@@ -409,7 +409,7 @@ A JSON list of Fields.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/fields/api/fields/between?start=<START TIME>&end=<END TIME>'
+      'https://api.withleaf.io/services/fields/api/fields/between?start=<START TIME>&end=<END TIME>'
   ```
 
   </TabItem>
@@ -466,7 +466,7 @@ A Field as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -489,7 +489,7 @@ A Field as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -510,7 +510,7 @@ A Field as a JSON object.
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
-      'https://a.agrigate.io/services/fields/api/fields/users/{leafUserId}/{id}'
+      'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
   ```
 
   </TabItem>
@@ -573,7 +573,7 @@ A JSON list of Fields.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/fields/api/fields/query/intersects'
+  const endpoint ='https://api.withleaf.io/services/fields/api/fields/query/intersects'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -597,7 +597,7 @@ A JSON list of Fields.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/query/intersects'
+  endpoint = 'https://api.withleaf.io/services/fields/api/query/intersects'
   headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
 
   data = {
@@ -618,7 +618,7 @@ A JSON list of Fields.
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
-      'https://a.agrigate.io/services/fields/api/fields/query/intersects'
+      'https://api.withleaf.io/services/fields/api/fields/query/intersects'
   ```
 
   </TabItem>
@@ -698,7 +698,7 @@ A JSON array of Files.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://a.agrigate.io/services/fields/api/users/{userId}/fields/{fieldId}/operations'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{userId}/fields/{fieldId}/operations'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -714,7 +714,7 @@ A JSON array of Files.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/users/{userId}/fields/{fieldId}/operations'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{userId}/fields/{fieldId}/operations'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -727,7 +727,7 @@ A JSON array of Files.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/fields/api/users/{userId}/fields/{fieldId}/operations'
+      'https://api.withleaf.io/services/fields/api/users/{userId}/fields/{fieldId}/operations'
   ```
 
   </TabItem>

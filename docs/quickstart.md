@@ -6,24 +6,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-### Welcome to Leaf's Documentation!
+### Leaf Quickstart
 
-Food and Agriculture developers use Leaf's API to access clean, standardized,
-and aggregated Farm data from all major sources. Use the  getting started
-section below  to help you access sample farm data quickly, easily, and securely.
-We have implementation examples in cURL, NodeJS and Python!
+This quickstart tutorial is written help you quickly experience and start building with Leaf. 
+First, please [register on our website](https://leafagriculture.com.br/registration/) to receive your credentials. 
+We've included sample data in your account so you can begin querying data via Leaf immediately. 
 
-Getting Started
-
-Leaf's API abstracts and standardizes across agricultural data sources to make
-things easy for you. There are just a few concepts that you need to get started
-and we provide sample data within new Leaf accounts to help you learn quickly.
-
-
-:::tip
-Below you'll find instructions using curl and python, but you may also follow
-along using our [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
-if you're familiar.
+:::tip: Leaf's Postman collection
+Below you'll find instructions using curl and python, and we've also built a [Postman](https://www.postman.com/) collection to accompany this tutorial. Please find it here: [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection)
 :::
 
 ## Authentication

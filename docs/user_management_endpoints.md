@@ -52,7 +52,12 @@ DELETE /users/{id}
 Form of a John Deere Credentials resource:
 
 ```json
-
+{
+  "clientKey": "",
+  "clientSecret": "",
+  "tokenId": "",
+  "tokenSecretKey": ""
+}
 ```
 
 Endpoints:
@@ -771,6 +776,61 @@ A Leaf User with the id assigned to it.
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
       'https://{{url}}/services/usermanagement/api/john-deere-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `DELETE  john-deere-credentials/{id}`
+
+Delete a John Deere credentials by id.
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Bash', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```sh
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
+      'https://a.agrigate.io/services/usermanagement/api/john-deere-credentials/{id}'
   ```
 
   </TabItem>

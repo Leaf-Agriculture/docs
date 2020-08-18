@@ -23,15 +23,15 @@ List of all the available endpoints.
 ### `POST /{input}-{output}`
 Posts a file, passed as a multipart to the service. The file will be converted from the format specified in `input` to the `output` format. All The valid combinations of input and output are described **[in this table](/docs/docs/converters_overview#available-converters)**
 
-It is possible to link this conversion with a Leaf User created, passing his ID as a query parameter: `userId`. But its use is not mandatory.
+It is possible to link this conversion with a Leaf User created, passing his ID as a query parameter: `leafUserId`. But its use is not mandatory.
 
 #### Example
 ```shell
 curl -X POST \
 -H 'Content-Type: multipart/form-data' \
 -H 'Accept: application/json' \
--H 'Authorization: Bearer token' {"type":"formData"} \
-'https://api.withleaf.io/services/converters/api/geojson-shapefile?userId=uuid' \
+-H 'Authorization: Bearer YOUR_LEAF_TOKEN' {"type":"formData"} \
+'https://api.withleaf.io/services/converters/api/geojson-shapefile?leafUserId=uuid' \
 --form 'file=@path'
 ```
 
@@ -52,8 +52,8 @@ variables in the path, you pass them via params. Like so:
 curl -X POST \
 --header 'Content-Type: multipart/form-data' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer token' {"type":"formData"} \
-'https://api.withleaf.io/services/converters/api/?input=geojson&output=shapefile&userId=uuid' \
+--header 'Authorization: Bearer YOUR_LEAF_TOKEN' {"type":"formData"} \
+'https://api.withleaf.io/services/converters/api/?input=geojson&output=shapefile&leafUserId=uuid' \
 --form 'file=@path'
 ```
 

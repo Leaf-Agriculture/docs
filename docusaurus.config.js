@@ -31,7 +31,8 @@ module.exports = {
         alt: 'logo',
         src: leaf_logo,
         srcDark: leaf_logo_dark,
-        href: 'https://withleaf.io'
+        href: '/docs/docs'
+        // href: 'https://withleaf.io'
       },
 
       items: [

@@ -68,7 +68,7 @@ module.exports = {
         //   position: 'left',
         // },
         {
-          to: 'https://leafagriculture.com.br/careers/',
+          to: 'https://withleaf.io/careers/',
           activeBasePath: './',
           label: 'Work with us',
           position: 'left',
@@ -79,7 +79,7 @@ module.exports = {
           position: 'left'
         },
         {
-          to: 'https://leafagriculture.com.br/registration/',
+          to: 'https://withleaf.io/registration/',
           activeBasePath: './',
           label: 'Register',
           position: 'left',

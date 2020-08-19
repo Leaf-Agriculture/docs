@@ -44,8 +44,7 @@ Check our blog post on [John Deere authentication with Leaf][jd]
 
 ## Integrate with Climate Field View
 
-For Climate Field View, you just need to follow Steps 3 and 4 of the following
-blog post and you are all set.
+We made this very easy on one of our blog posts.
 
 Check our blog Post on [How to use Leaf’s API to retrieve Machinery Data from Climate Field View.][cfv]
-[cfv]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-climate-fieldview-dda921f40291
+[cfv]: https://medium.com/leaf-agriculture/climate-field-view-authentication-with-leaf-386086804f73

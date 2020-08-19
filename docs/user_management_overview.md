@@ -36,17 +36,16 @@ standardized data in a simple JSON response.
 
 ## Integrate with John Deere
 
-We made this very easy on one of our blog posts, you just need to follow Steps 3
-and 4 and you are all set.
+We made this very easy on one of our blog posts.
 
-Check our blog post on [How to use Leaf’s API to retrieve Machinery Data from John Deere.][jd]
-[jd]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-john-deere-fb1ba331d089
+Check our blog post on [John Deere authentication with Leaf][jd]
+[jd]: https://medium.com/leaf-agriculture/john-deere-authentication-with-leaf-7691b155b744?sk=f3f4e2bdd6f6ec0f36e8a2290717dce4
 
 
 ## Integrate with Climate Field View
 
-We made this very easy on one of our blog posts, you just need to follow Steps 3
-and 4 and you are all set.
+For Climate Field View, you just need to follow Steps 3 and 4 of the following
+blog post and you are all set.
 
 Check our blog Post on [How to use Leaf’s API to retrieve Machinery Data from Climate Field View.][cfv]
 [cfv]: https://medium.com/leaf-agriculture/how-to-use-leafs-api-to-retrieve-machinery-data-from-climate-fieldview-dda921f40291

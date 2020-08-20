@@ -366,7 +366,7 @@ Edits an existing Leaf User by submitting a new one.
 
 ```json
 {
-  "leafUserId": "UUID",
+  "id": "UUID",
   "name": "str",
   "email": "help@withleaf.io",
   "phone": "str",

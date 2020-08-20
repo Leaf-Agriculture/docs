@@ -122,9 +122,9 @@ Form of a CNHI Credentials resource:
 ```json
 {
   "id": "UUID",
-  "clientId": "",
-  "clientSecret": "",
-  "refreshToken": ""
+  "clientId": "str",
+  "clientSecret": "str",
+  "refreshToken": "str"
 }
 ```
 

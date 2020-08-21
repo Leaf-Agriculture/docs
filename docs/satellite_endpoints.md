@@ -462,7 +462,7 @@ const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
 let endpoint = 'https://api.withleaf.io/services/satellite/api' +
-               '/fields/YOUR_ID/history/?end=2020-08-01&start=2020-07-01'
+               '/fields/YOUR_ID/history/?start=2020-07-01&end=2020-08-01'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
 axios.get(endpoint, { headers })
@@ -479,7 +479,7 @@ import requests
 TOKEN = 'YOUR_TOKEN'
 
 endpoint = ('https://api.withleaf.io/services/satellite/api'
-            '/fields/YOUR_ID/history/?end=2020-08-01&start=2020-07-01')
+            '/fields/YOUR_ID/history/?start=2020-07-01&end=2020-08-01')
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 response = requests.get(endpoint, headers=headers)
@@ -492,7 +492,7 @@ print(response.json())
 ```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/history/?end=2020-08-01&start=2020-07-01'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/history/?start=2020-07-01&end=2020-08-01'
 ```
 
 </TabItem>

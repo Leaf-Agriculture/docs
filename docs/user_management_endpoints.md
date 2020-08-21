@@ -1005,17 +1005,18 @@ Deletes a "Climate Field View Credentials" by id.
 </Tabs>
 
 
-### `POST climate-field-credentials/{id}`
+### `POST /climate-field-credentials`
 Create a Climate Field View credential for the Leaf User.
 
 #### Request body
 
 ```json
 {
-  "clientKey": "str",
+  "id": "UUID",
+  "clientId": "str",
   "clientSecret": "str",
-  "tokenId": "str",
-  "tokenSecretKey": "str"
+  "apiKey": "str",
+  "refreshToken": "str"
 }
 ```
 

@@ -435,6 +435,86 @@ curl -X POST \
 
 ---
 
+### `GET /fields/{id}/history`
+Searches for sentinel 2 images on the passed date range. It will return a list 
+of dates that contains images that intersect with the field geometry. It may
+return repeated dates because of geometries that are intersected by multiple
+sentinel tiles.
+
+
+- `startDate`: the start date of the satellite search
+- `endDate`: the end date of the satellite search
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+<TabItem value="js">
+
+```js
+const axios = require('axios')
+const TOKEN = 'YOUR_TOKEN'
+
+let endpoint = 'https://api.withleaf.io/services/satellite/api' +
+               '/fields/YOUR_ID/history/?end=2020-08-01&start=2020-07-01'
+const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+axios.get(endpoint, { headers })
+    .then(res => console.log(res.data))
+    .catch(console.error)
+```
+
+</TabItem>
+<TabItem value="py">
+
+```py
+import requests
+
+TOKEN = 'YOUR_TOKEN'
+
+endpoint = ('https://api.withleaf.io/services/satellite/api'
+            '/fields/YOUR_ID/history/?end=2020-08-01&start=2020-07-01')
+headers = {'Authorization': f'Bearer {TOKEN}'}
+
+response = requests.get(endpoint, headers=headers)
+print(response.json())
+```
+
+</TabItem>
+<TabItem value="sh">
+
+```shell
+curl -X GET \
+    --header 'Authorization: Bearer YOUR_TOKEN' \
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/history/?end=2020-08-01&start=2020-07-01'
+```
+
+</TabItem>
+</Tabs>
+
+
+The returned payload is like so:
+
+```py
+[
+    "2020-07-02",
+    "2020-07-04",
+    "2020-07-07",
+    # etc ...
+]
+```
+
+
+
+
+---
+
 ### `DELETE /fields/{id}`
 Deletes the field from our database.
 

@@ -1082,7 +1082,7 @@ A Leaf User with the id assigned to it.
     'address': 'str',
   }
 
-  response = requests.get(endpoint, headers=headers, json=data)
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -1090,7 +1090,7 @@ A Leaf User with the id assigned to it.
   <TabItem value="sh">
 
   ```sh
-  curl -X GET \
+  curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
       'https://{{url}}/services/usermanagement/api/climate-field-view-credentials'

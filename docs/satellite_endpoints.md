@@ -436,10 +436,10 @@ curl -X POST \
 ---
 
 ### `GET /fields/{id}/history`
-Searches for sentinel 2 images on the passed date range. It will return a list 
-of dates that contains images that intersect with the field geometry. It may
-return repeated dates because of geometries that are intersected by multiple
-sentinel tiles.
+Searches for Sentinel-2 images within the specified date range. It will return 
+a list of dates that contain images that intersect with the field geometry. It
+may return repeated dates because of geometries that are intersected by multiple
+Sentinel-2 tiles.
 
 
 - `startDate`: the start date of the satellite search

@@ -18,11 +18,6 @@ You will receive your Leaf Token as response.
 **All set!** Include this token in your API calls and you will have access to
 Leaf's API.
 
-Your Leaf Token lasts for 24h by default. Include `"rememberMe": "true"` in the
-json to make it last 30 days.
-
-After expiration, just make the same request to the same endpoint and you will
-get a new access token.
 
 <Tabs
   defaultValue="sh"
@@ -39,7 +34,7 @@ get a new access token.
 
   const endpoint = 'https://api.withleaf.io/api/authenticate'
 
-  const data = { username: 'username', password: 'password' }
+  const data = { username:'username', password:'password', rememberMe:'true'}
 
   axios.post(endpoint, { data })
       .then(res => console.log(res.data))
@@ -52,15 +47,13 @@ get a new access token.
   ```py
   import requests
 
-  endpoint = 'https://api.withleaf.io/api/authenticate'
+  url = "https://api.withleaf.io/api/authenticate"
 
-  json = {
-      'username': 'username',
-      'password': 'password'
-  }
+  data = {'username':'your email', 'password':'your password', 'rememberMe':'true'}
 
-  res = requests.post(endpoint, json=json)
-  print(res.json())
+  headers = {'Content-Type': 'application/json'}
+
+  response = requests.request("POST", url, headers=headers, json=data)
   ```
 
   </TabItem>
@@ -68,9 +61,9 @@ get a new access token.
 
   ```shell
   curl -X POST \
-      -H 'Content-Type: application/json' \
-      -d '{ "username": "username", "password": "password" }' \
-      'https://api.withleaf.io/api/authenticate'
+     -H 'Content-Type: application/json' \
+     -d '{ "username":"username", "password":"password", "rememberMe":"true" }' \
+     'https://api.withleaf.io/api/authenticate'
   ```
 
   </TabItem>
@@ -83,6 +76,11 @@ This request will return your access token to Leaf's API:
   "id_token" : "YOUR_LEAF_TOKEN"
 }
 ```
+
+_note: Your Leaf Token lasts for 30 days with "rememberMe": "true" in the
+json. If you want it to last only 24h, feel free to set "rememberMe" to "false"._  
+_After expiration, just make the same request to the same endpoint and you will
+get a new access token. _
 
 [register]: https://leafagriculture.com.br/registration/
 [jwt]: https://tools.ietf.org/html/rfc7519

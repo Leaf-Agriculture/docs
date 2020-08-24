@@ -17,7 +17,10 @@ Below you'll find instructions using curl and python, and we've also built a [Po
 :::
 
 ## Authentication
-After creating and confirming your account, the first step is to authenticate with your email and password to retrieve an API token. This token is what we'll use in subsequent steps to talk to the API. Be sure to keep a copy of this token for the remaining steps.
+After creating and confirming your account, the first step is to authenticate
+with your email and password to retrieve a Leaf token. This token is what we'll
+use in subsequent steps to talk to the API. Be sure to keep a copy of this token
+for the remaining steps.
 
 
 <Tabs
@@ -25,6 +28,7 @@ After creating and confirming your account, the first step is to authenticate wi
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
 
@@ -53,7 +57,27 @@ After creating and confirming your account, the first step is to authenticate wi
   ```
 
   </TabItem>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const endpoint = 'https://api.withleaf.io/api/authenticate'
+
+  const data = { username:'username', password:'password', rememberMe:'true'}
+
+  axios.post(endpoint, { data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
 </Tabs>
+
+_note: Your Leaf Token lasts for 30 days with "rememberMe": "true" in the
+json. If you want it to last only 24h, feel free to set "rememberMe" to "false"._  
+_After expiration, just make the same request to the same endpoint and you will
+get a new access token. _
 
 ## Get sample Field with attached operations
 Inside your account, we've created a sample LeafUser and populated it with data.

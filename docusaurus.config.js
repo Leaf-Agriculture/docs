@@ -110,11 +110,11 @@ module.exports = {
         docs: {
           homePageId: 'welcome',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/Leaf-Agriculture',
+          editUrl: 'https://github.com/Leaf-Agriculture/docs/tree/master',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/Leaf-Agriculture',
+          editUrl: 'https://youtu.be/gXVfKrud49c?t=73',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

@@ -51,8 +51,8 @@ GET    /fields/after
 GET    /fields/before
 GET    /fields/between
 GET    /users/{leafUserId}/fields/{id}
+POST   /fields/query/intersects
 POST   /users/{leafUserId}/fields
-POST   /users/{leafUserId}/fields/intersects
 POST   /users/{leafUserId}/fields/disjoint
 POST   /users/{leafUserId}/fields/integration
 POST   /users/{leafUserId}/fields/intersect

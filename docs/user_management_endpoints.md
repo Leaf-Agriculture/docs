@@ -1123,7 +1123,7 @@ A "Trimble Credentials" resource as a JSON.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -1139,7 +1139,7 @@ A "Trimble Credentials" resource as a JSON.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -1152,7 +1152,7 @@ A "Trimble Credentials" resource as a JSON.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+      'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
   ```
 
   </TabItem>
@@ -1181,7 +1181,7 @@ A JSON array with Trimble Credentials.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -1197,7 +1197,7 @@ A JSON array with Trimble Credentials.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -1217,7 +1217,7 @@ A JSON array with Trimble Credentials.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/usermanagement/api/trimble-credentials'
+      'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
   ```
 
   </TabItem>
@@ -1325,7 +1325,7 @@ Delete a Trimble Credentials resource by id.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.delete(endpoint, { headers })
@@ -1341,7 +1341,7 @@ Delete a Trimble Credentials resource by id.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.delete(endpoint, headers=headers)
@@ -1354,7 +1354,7 @@ Delete a Trimble Credentials resource by id.
   ```sh
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/usermanagement/api/trimble-credentials/{id}'
+      'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
   ```
 
   </TabItem>
@@ -1383,7 +1383,7 @@ A "CNHI Credentials" resource as a JSON.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -1399,7 +1399,7 @@ A "CNHI Credentials" resource as a JSON.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -1412,7 +1412,7 @@ A "CNHI Credentials" resource as a JSON.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+      'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials/{id}'
   ```
 
   </TabItem>
@@ -1441,7 +1441,7 @@ A JSON array with CNHI Credentials.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -1457,7 +1457,7 @@ A JSON array with CNHI Credentials.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -1477,7 +1477,7 @@ A JSON array with CNHI Credentials.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials'
+      'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials'
   ```
 
   </TabItem>
@@ -1584,7 +1584,7 @@ Delete a CNHI Credentials resource by id.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.delete(endpoint, { headers })
@@ -1600,7 +1600,7 @@ Delete a CNHI Credentials resource by id.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.delete(endpoint, headers=headers)
@@ -1613,7 +1613,7 @@ Delete a CNHI Credentials resource by id.
   ```sh
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/usermanagement/api/cnhi-credentials/{id}'
+      'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials/{id}'
   ```
 
   </TabItem>

@@ -756,7 +756,7 @@ A single Operation File.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -772,7 +772,7 @@ A single Operation File.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -785,7 +785,7 @@ A single Operation File.
   ```sh
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://a.agrigate.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
   ```
 
   </TabItem>

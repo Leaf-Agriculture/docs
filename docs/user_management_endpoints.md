@@ -187,7 +187,7 @@ A Leaf User as a JSON object.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/users/{id}'
@@ -244,7 +244,7 @@ A JSON array containing Leaf Users.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/users'
@@ -348,7 +348,7 @@ A Leaf User with the id assigned to it and it's credentials.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
@@ -453,7 +453,7 @@ A Leaf User with the id assigned to it and it's credentials.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X PUT \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
@@ -515,7 +515,7 @@ Deletes an existing Leaf User by id.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
@@ -583,7 +583,7 @@ Get the John Deere credentials of the user based own his id and returns a JSON w
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials/{id}'
@@ -658,7 +658,7 @@ Gets all John Deere Credentials.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials'
@@ -752,7 +752,7 @@ A John Deere Credentials object with the id assigned to it.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
@@ -807,7 +807,7 @@ Delete a John Deere credentials by id.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials/{id}'
@@ -873,7 +873,7 @@ Get a Climate Field View Credentials object by its id.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials/{id}'
@@ -941,7 +941,7 @@ Gets all the Climate Field View credentials.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials'
@@ -995,7 +995,7 @@ Deletes a "Climate Field View Credentials" by id.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials/{id}'
@@ -1090,7 +1090,7 @@ A Leaf User with the id assigned to it.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
@@ -1114,7 +1114,7 @@ A "Trimble Credentials" resource as a JSON.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1149,7 +1149,7 @@ A "Trimble Credentials" resource as a JSON.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
@@ -1172,7 +1172,7 @@ A JSON array with Trimble Credentials.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1214,7 +1214,7 @@ A JSON array with Trimble Credentials.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
@@ -1247,7 +1247,7 @@ A "Trimble Credentials" with the id assigned to it.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1297,7 +1297,7 @@ A "Trimble Credentials" with the id assigned to it.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
@@ -1316,7 +1316,7 @@ Delete a Trimble Credentials resource by id.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1351,7 +1351,7 @@ Delete a Trimble Credentials resource by id.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
@@ -1374,7 +1374,7 @@ A "CNHI Credentials" resource as a JSON.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1409,7 +1409,7 @@ A "CNHI Credentials" resource as a JSON.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials/{id}'
@@ -1432,7 +1432,7 @@ A JSON array with CNHI Credentials.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1474,7 +1474,7 @@ A JSON array with CNHI Credentials.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials'
@@ -1506,7 +1506,7 @@ A "CNHI Credentials" with the id assigned to it.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1556,7 +1556,7 @@ A "CNHI Credentials" with the id assigned to it.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "str", "email": "help@withleaf.io", "phone": "str", "address": "str"}'
@@ -1575,7 +1575,7 @@ Delete a CNHI Credentials resource by id.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -1610,7 +1610,7 @@ Delete a CNHI Credentials resource by id.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/cnhi-credentials/{id}'

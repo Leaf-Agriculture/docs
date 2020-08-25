@@ -158,7 +158,7 @@ A JSON array containing Fields.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/fields'
@@ -215,7 +215,7 @@ A single Field as a JSON object.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
@@ -277,7 +277,7 @@ A JSON list of Fields.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/fields/before?instant=<END TIME>'
@@ -338,7 +338,7 @@ A JSON list of Fields.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/fields/after?instant=<END TIME>'
@@ -407,7 +407,7 @@ A JSON list of Fields.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/fields/between?start=<START TIME>&end=<END TIME>'
@@ -507,7 +507,7 @@ A Field as a JSON object.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
@@ -615,7 +615,7 @@ A JSON list of Fields.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
@@ -725,7 +725,7 @@ A JSON array of Files.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/users/{userId}/fields/{fieldId}/operations'
@@ -747,7 +747,7 @@ A single Operation File.
   values={[
     { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
-    { label: 'Bash', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
   ]
 }>
   <TabItem value="js">
@@ -782,7 +782,7 @@ A single Operation File.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'

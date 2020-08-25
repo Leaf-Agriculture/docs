@@ -184,7 +184,7 @@ Gets a single file by its id.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/operations/api/files/{id}'
@@ -265,7 +265,7 @@ Gets the summary, if available, for the file id.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/operations/api/files/{id}/summary'
@@ -336,7 +336,7 @@ Gets a list of PNG images generated from the operation's file properties.
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/operations/api/files/{id}/images'
@@ -469,7 +469,7 @@ Trimble
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=shapefile.zip' \
@@ -560,7 +560,7 @@ It receives a single JSON object with the `ids` entry. Example:
   </TabItem>
   <TabItem value="sh">
 
-  ```sh
+  ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "ids": [ "id1", "id2" ] }'

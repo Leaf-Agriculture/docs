@@ -124,6 +124,7 @@ A JSON array containing Fields.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
   ]
 }>
   <TabItem value="js">
@@ -162,6 +163,54 @@ A JSON array containing Fields.
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/fields'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  [
+    {
+      "id": "3031c20d-4331-4a24-bac0-c27087fc901f",
+      "leafUserId": "5db46916-54a0-4b38-a9b1-d8e00673db63",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                  -48.62195051987687,
+                  -27.35030179570155
+              ],
+              [
+                  -48.62099028904954,
+                  -27.351783623790567
+              ],
+              [
+                  -48.61883379300156,
+                  -27.349906320545184
+              ],
+              [
+                  -48.619777930574806,
+                  -27.34842446734229
+              ],
+              [
+                  -48.62195051987687,
+                  -27.35030179570155
+              ]
+            ]
+          ]
+        ]
+      },
+      "providerName": "JohnDeere",
+      "providerId": 2,
+      "providerFieldId": "48926e0d-9bb7-4618-9214-3c2bf50d9ac2",
+      "providerBoundaryId": "5bfab976-df1b-44c7-ab83-ee5befdd45af",
+      "organizationId": "469039",
+      "type": "ORIGINAL",
+      "farmId": 1530952
+    }
+  ]
   ```
 
   </TabItem>

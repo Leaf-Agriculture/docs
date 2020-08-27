@@ -38,6 +38,8 @@ have not connected it with any provider yet, see **[how to create a Leaf User]()
 or **[how to add credentials to a Leaf User]()**.
 :::
 
+---
+
 ### `GET /files`
 Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
@@ -66,6 +68,7 @@ They are:
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -107,39 +110,44 @@ They are:
   ```
 
   </TabItem>
+  <TabItem value="json">
+
+  ```json
+  [
+    {
+      "id": "UUID",
+      "fileName": "string",
+      "provider": "string",
+      "organizationId": "string",
+      "fileType": "string",
+      "fileFormat": "string",
+      "sizeInBytes": 0,
+      "originalFile": "string",
+      "rawGeojson": "string",
+      "standardGeojson": "string",
+      "zippedPNGs": "string",
+      "leafUserId": "UUID",
+      "apiOwnerUsername": "string",
+      "summary": "Feature",
+      "sourceFiles": [],
+      "status": "string",
+      "origin": "string",
+      "createdTime": "2020-04-29T20:13:42.811Z",
+      "operationEndTime": "2020-04-29T20:13:42.811Z",
+      "operationStartTime": "2020-04-29T23:13:42.811Z"
+    },
+    ...
+  ]
+  ```
+
+  The `sourceFiles` entry in this JSON response is a list of files' ids that were
+  used to create the file. It will appear only in _"merge"_ and _"automerged"_ files.
+
+  </TabItem>
 </Tabs>
 
-It returns a JSON object like the following:
 
-```json
-[
-  {
-    "id": "UUID",
-    "fileName": "string",
-    "provider": "string",
-    "organizationId": "string",
-    "fileType": "string",
-    "fileFormat": "string",
-    "sizeInBytes": 0,
-    "originalFile": "string",
-    "rawGeojson": "string",
-    "standardGeojson": "string",
-    "zippedPNGs": "string",
-    "leafUserId": "UUID",
-    "apiOwnerUsername": "string",
-    "summary": "Feature",
-    "sourceFiles": [],
-    "status": "string",
-    "origin": "string",
-    "createdTime": "2020-04-29T20:13:42.811Z",
-    "operationEndTime": "2020-04-29T20:13:42.811Z",
-    "operationStartTime": "2020-04-29T23:13:42.811Z"
-  },
-  ...
-]
-```
-
-The `sourceFiles` entry is a list of file's ids that were used to create the file. It will appear only in `merge` and `automerged` files.
+---
 
 ### `GET /files/{id}`
 Gets a single file by its id.
@@ -150,6 +158,7 @@ Gets a single file by its id.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -191,34 +200,37 @@ Gets a single file by its id.
   ```
 
   </TabItem>
+  <TabItem value="json">
+
+  ```json
+  {
+    "id": "UUID",
+    "fileName": "string",
+    "provider": "string",
+    "organizationId": "string",
+    "fileType": "string",
+    "fileFormat": "string",
+    "sizeInBytes": 0,
+    "originalFile": "string",
+    "rawGeojson": "string",
+    "standardGeojson": "string",
+    "zippedPNGs": "string",
+    "leafUserId": "UUID",
+    "apiOwnerUsername": "string",
+    "summary": "Feature",
+    "sourceFiles": [],
+    "status": "string",
+    "origin": "string",
+    "createdTime": "2020-04-29T20:13:42.811Z",
+    "operationEndTime": "2020-04-29T20:13:42.811Z",
+    "operationStartTime": "2020-04-29T23:13:42.811Z"
+  }
+  ```
+
+  </TabItem>
 </Tabs>
 
-Returns a single JSON object:
-
-```json
-{
-  "id": "UUID",
-  "fileName": "string",
-  "provider": "string",
-  "organizationId": "string",
-  "fileType": "string",
-  "fileFormat": "string",
-  "sizeInBytes": 0,
-  "originalFile": "string",
-  "rawGeojson": "string",
-  "standardGeojson": "string",
-  "zippedPNGs": "string",
-  "leafUserId": "UUID",
-  "apiOwnerUsername": "string",
-  "summary": "Feature",
-  "sourceFiles": [],
-  "status": "string",
-  "origin": "string",
-  "createdTime": "2020-04-29T20:13:42.811Z",
-  "operationEndTime": "2020-04-29T20:13:42.811Z",
-  "operationStartTime": "2020-04-29T23:13:42.811Z"
-}
-```
+---
 
 ### `GET /files/{id}/summary`
 Gets the summary, if available, for the file id.
@@ -230,6 +242,7 @@ Gets the summary, if available, for the file id.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
   ]
 }>
 
@@ -272,26 +285,32 @@ Gets the summary, if available, for the file id.
   ```
 
   </TabItem>
+  <TabItem value="json">
+
+  Returns a single [GeoJSON][2] feature containing the convex hull of all operation
+  data and some statistics calculated from it.
+
+  ```json
+  {
+    "type": "Feature",
+    "properties": {
+      # these properties and more
+      "totalDistance": 19194.943013290438,
+      "operationType": "harvested",
+      "totalArea": 131638.75702051684
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [...]
+    }
+  }
+  ```
+
+  </TabItem>
 </Tabs>
 
-Returns a single [GeoJSON][2] feature containing the convex hull of all operation
-data and some statistics calculated from it.
 
-```py
-{
-  "type": "Feature",
-  "properties": {
-    # these properties and more
-    "totalDistance": 19194.943013290438,
-    "operationType": "harvested",
-    "totalArea": 131638.75702051684
-  },
-  "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [...]
-  }
-}
-```
+---
 
 ### `GET /files/{id}/images`
 Gets a list of PNG images generated from the operation's file properties.
@@ -302,6 +321,7 @@ Gets a list of PNG images generated from the operation's file properties.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -343,43 +363,48 @@ Gets a list of PNG images generated from the operation's file properties.
   ```
 
   </TabItem>
+  <TabItem value="json">
+
+  Returns a JSON list of the following format:
+
+  ```json
+  [
+    {
+      "property": "elevation",
+      "ramp": {
+        "0%":   [200,   0, 0],
+        "35%":  [255,  40, 0],
+        "45%":  [255, 150, 0],
+        "55%":  [255, 240, 0],
+        "65%":  [  0, 230, 0],
+        "75%":  [  0, 190, 0],
+        "100%": [  0, 130, 0],
+        "nv":   [  0,   0, 0, 0]
+      },
+      "url": "string"
+    },
+    ...
+  ]
+  ```
+
+  The `property` refers to the property extracted from files' data to generate the
+  image. In the example above, the image would represent the elevation.
+
+  The `ramp` is the color ramp used to generate the image. The percentages
+  correspond to the minimum (0%) and maximum (100%) values in the image. The
+  listed values correspond to RGB values used. The `nv` refers to `no value`. It
+  is used internally to make the image transparent on places without data.
+  Currently, this ramp is the same in all images processed.
+
+  We also generate an auxiliary `xml` with geographic information to handle this
+  image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
+
+  </TabItem>
 </Tabs>
 
 
-Returns a JSON list of the following format:
 
-```json
-[
-  {
-    "property": "elevation",
-    "ramp": {
-      "0%":   [200,   0, 0],
-      "35%":  [255,  40, 0],
-      "45%":  [255, 150, 0],
-      "55%":  [255, 240, 0],
-      "65%":  [  0, 230, 0],
-      "75%":  [  0, 190, 0],
-      "100%": [  0, 130, 0],
-      "nv":   [  0,   0, 0, 0]
-    },
-    "url": "string"
-  },
-  ...
-]
-```
-
-The `property` refers to the property extracted from files' data to generate the
-image. In the example above, the image would represent the elevation.
-
-The `ramp` is the color ramp used to generate the image. The percentages
-correspond to the minimum (0%) and maximum (100%) values in the image. The
-listed values correspond to RGB values used. The `nv` refers to `no value`. It
-is used internally to make the image transparent on places without data.
-Currently, this ramp is the same in all images processed.
-
-We also generate an auxiliary `xml` with geographic information to handle this
-image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
-
+---
 
 ### `POST /files`
 Posts/creates a new file in our server.
@@ -414,6 +439,7 @@ Trimble
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
   ]
 }>
 
@@ -478,21 +504,25 @@ Trimble
   ```
 
   </TabItem>
+  <TabItem value="json">
+
+  Returns a single JSON object:
+
+  ```json
+  {
+    "message": "Your file is being processed and will be available in a few minutes",
+    "id": "id"
+  }
+  ```
+
+  </TabItem>
 </Tabs>
-
-
-Returns a single JSON object:
-
-```json
-{
-  "message": "Your file is being processed and will be available in a few minutes",
-  "id": "id"
-}
-```
 
 After a few minutes, you can consult the result of Leaf processing over this file by
 performing GET consults in this.
 
+
+---
 
 ### `POST /files/merge`
 Posts a merge operation to our server.
@@ -521,6 +551,7 @@ It receives a single JSON object with the `ids` entry. Example:
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
   ]
 }>
 
@@ -568,19 +599,23 @@ It receives a single JSON object with the `ids` entry. Example:
   ```
 
   </TabItem>
+  <TabItem value="json">
+
+  Returns a single JSON object:
+
+  ```json
+  {
+    "id": "id",
+    "status": "SENT_TO_MERGE"
+  }
+  ```
+
+  After a few minutes, you can consult the result of Leaf processing over this file by
+  performing GET consults in this.
+
+  </TabItem>
 </Tabs>
 
-Returns a single JSON object:
-
-```json
-{
-  "id": "id",
-  "status": "SENT_TO_MERGE"
-}
-```
-
-After a few minutes, you can consult the result of Leaf processing over this file by
-performing GET consults in this.
 
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [2]: https://tools.ietf.org/html/rfc7946

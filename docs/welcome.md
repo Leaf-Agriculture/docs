@@ -6,11 +6,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-### Welcome to Leaf's Documentation!
+### Welcome to <a href="http://withleaf.io"><b>Leaf</b></a>'s Documentation!
 
 Developers use Leaf's API to access clean, standardized,
-and aggregated Farm data from all major food & agriculture brands. 
-Please see the [Quickstart](https://leaf-agriculture.github.io/docs/docs/quickstart) section to get started with sample farm data & popular use cases. 
+and aggregated Farm data from all major food & agriculture brands.
+Please see the [Quickstart](https://leaf-agriculture.github.io/docs/docs/quickstart) section to get started with sample farm data & popular use cases.
 We have implementation examples in cURL, NodeJS and Python!
 
 Getting Started

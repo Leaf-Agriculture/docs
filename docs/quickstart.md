@@ -380,10 +380,6 @@ operation property. From this response, you can load one of the sample images:
 ## Get sample satellite imagery
 
 Finally, let's take a look at some satellite imagery. Using data from Sentinel-2,
-we produce NDVI images for fields you define to be monitored. We can pull up the
-sample NDVI image like this:
-
-Finally, let's take a look at some satellite imagery. Using data from Sentinel-2,
 we produce NDVI images for fields you define to be monitored. First we'll list
 the fields being monitored from the satellite service:
 

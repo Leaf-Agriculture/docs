@@ -47,7 +47,7 @@ the image below. If you prefer to use your own ramp, we recommend using `NDVI.ti
 which is a pre calculated NDVI file. You can import it into any GIS software,
 like [QGis][4], and use it as you please.
 
-The difference between `NDVI_color.tif` and `NDVI_absolute.tif` is that for the
+The difference between `NDVI_color.png` and `NDVI_absolute.png` is that for the
 first one we first normalize the data between the min/max of the data before
 coloring it. For the second one we apply the color ramp as is. In practical terms
 the normalized version will have it's lowest values as a bright red and its

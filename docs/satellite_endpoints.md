@@ -310,6 +310,15 @@ The payload of this object should be like the following:
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
 field
 
+If you want historical data, you can specify, in the payload, how many days
+back in time, or a initial date, to fetch images. Note that it is not possible
+to place both.
+
+- (optional) `daysBefore`: a number greater than or equal to 0
+- (optional) `initialDate`: a ISO date in "yyyy-mm-dd" format
+
+This process will take place in the background. By default we get images for the last 30 days.
+
 There are some limitations regarding the geometry of the field. It cannot be
 bigger than 50 million square meters and it cannot have a perimeter bigger
 than ~28 thousand meters.

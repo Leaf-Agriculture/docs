@@ -19,7 +19,7 @@ module.exports = {
   favicon: leaf_favicon_light,
 
   plugins: [
-    require.resolve('@docusaurus/plugin-google-analytics')
+    require.resolve('docusaurus-lunr-search')
   ],
 
   themeConfig: {

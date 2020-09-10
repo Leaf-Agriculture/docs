@@ -19,10 +19,15 @@ module.exports = {
   favicon: leaf_favicon_light,
 
   plugins: [
-    require.resolve('docusaurus-lunr-search')
+    require.resolve('@docusaurus/plugin-google-analytics')
   ],
 
   themeConfig: {
+    googleAnalytics: {
+     trackingID: 'UA-151987025-2',
+     // Optional fields.
+     // anonymizeIP: true, // Should IPs be anonymized?
+     },
     // prism: {
     //   theme: require('prism-react-renderer/themes/leaf'),
     // },

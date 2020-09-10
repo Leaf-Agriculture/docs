@@ -14,7 +14,7 @@ Leaf's service uses Sentinel-2 data which has the highest resolution publicly av
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
 This API accepts field boundary polygons and returns processed, cropped, and color-corrected RGB and NDVI images every time there is a new image available.
-We also provide information like percent cloud coverage of the field, and the Sentinel tile source for each image.
+We also provide information like percent cloud coverage of the field, the data coverage percentage, and the Sentinel tile source for each image as well.
 
 We generate a total of 18 images for each intersected field: A GeoTiff for each band from Sentinel and processed RGB and NDVI images.
 The following table shows all the images with its resolutions and types:

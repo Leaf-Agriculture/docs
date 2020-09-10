@@ -334,8 +334,8 @@ By default, Leaf will retrieve and return images for your field from the last
 This process will take place in the background.
 
 There are some limitations regarding the geometry of the field. It cannot be
-bigger than 5k hectares (12.3k acres) and it cannot have a perimeter bigger
-than 28km (17.4 miles).
+bigger than 50k hectares (123.5k acres) and it cannot have a perimeter bigger
+than 89.4km (55.5 miles).
 
 <Tabs
   defaultValue="sh"

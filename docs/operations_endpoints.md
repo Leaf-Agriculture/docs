@@ -55,6 +55,7 @@ its origin using one of the following: `provider`, `automerged`, `merged`,
 - `createdTime`, as ISO 8601 date to filter by the file's creation time
 - `operationStartTime`, as ISO 8601 date to filter by the operation's start time
 - `operationEndTime`, as ISO 8601 date to filter by the operation's end time
+- `operationType`, files can represent different types of operation. You can filter by operation type using one of the following: `applied`, `planted`, `harvested`
 
 You can also pass some parameters used exclusively for paging through results.
 They are:

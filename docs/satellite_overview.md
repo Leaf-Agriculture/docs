@@ -8,8 +8,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-Using Leaf's Satellite service you will be able to easily implement a satellite imagery program and compare the field health evolution over time.
-Leaf's service uses Sentinel-2 data which has the highest resolution publicly available and revisits each field every 3 to 5 days.
+Using Leaf's Satellite service you will be able to easily implement a satellite
+imagery application and compare the field health evolution over time. Leaf's
+service uses Sentinel-2 data which has the highest resolution publicly available
+and revisits each field every 3 to 5 days.
+
+:::success You can get historical images with Leaf.
+
+By default, Leaf retrieves images from 30 days prior to the creation of your
+field. But you can increase that to as far back in time as you want.
+[Here's how](/docs/docs/satellite_endpoints#post-fields)
+:::
 
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 

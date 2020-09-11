@@ -318,7 +318,7 @@ If you want images further back than 30 days, you can specify it in the payload.
 
 There are two ways you can do that:
 
-- by setting a `initialDate`, a ISO date in "yyyy-mm-dd" format meaning we will 
+- by setting a `startDate`, a ISO date in "yyyy-mm-dd" format meaning we will 
 return all images for your field since this date.
 
 **or**

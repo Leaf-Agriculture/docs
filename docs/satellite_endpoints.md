@@ -185,7 +185,6 @@ access all images that each process generates.
 
 It is possible to filter the results by passing a date range parameters.
 
-
 - `startDate`, as ISO 8601 date format to filter processes createde before this day
 - `endDate`, as ISO 8601 date format to filter processes createde until this day
 
@@ -245,7 +244,7 @@ The returned payload is like so:
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-let endpoint = 'https://api.withleaf.io/services/satellite/api' + 
+let endpoint = 'https://api.withleaf.io/services/satellite/api' +
                '/fields/YOUR_ID/processes'
 
 const params = { startDate: '2020-06-03', endDate: '2020-06-10' }
@@ -286,26 +285,46 @@ curl -X GET \
 </TabItem>
 </Tabs>
 
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched
+- `size`, an integer specifying the size of the page
+
+:::info Important
+Default `page` is page zero and default `size` is 20. So, to see more images,
+you can either increase the size or the page number.
+:::
+
 ---
 
 ### `POST /fields`
-Creates a new field entry in the database.
+Creates a new field
 
-A field will be created and, _by default_, it will have images from the last 30 days. It
-will be continuously monitored forever, so new images will arrive every ~5 days (time it
-takes for the satellite to go over the same field when circling the Earth). If you want 
-to stop this process, you can delete the field. 
+It will be continuously monitored forever, and new images will arrive every ~5
+days (time it takes for the satellite to go over the same field when orbiting
+the Earth). If you don't need the field anymore, you can
+[delete the field.](/docs/docs/satellite_endpoints#delete-fieldsid)
 
-For deleting, use a `DELETE` HTTP request.
+:::success  Note
 
-:::caution
+By default, Leaf will retrieve and return images for your field from the last
+30 days (from the moment you create the field).
 
-Note that the field deletion is irreversible and all images will be lost.
-
-But you can always create a new field and get images from the past, as far
-as you want.
+You can change that by including a "startDate" or a "daysBefore" to the body
 
 :::
+
+There are two ways you can do that:
+
+1. set a `startDate` (ISO, "yyyy-mm-dd") meaning Leaf will
+return all images for your field since this date.  
+2. set how many `daysBefore` (an integer greater than or equal to 0) you
+want to get images from.
+
+Note that they are both _optional_, but you can **not** specify both.
+
+Now let's see the Payload
 
 #### Payload
 The payload of this object should be like the following:
@@ -313,6 +332,7 @@ The payload of this object should be like the following:
 ```py
 {
     "externalId": "your field id",
+    "startDate": "2019-01-01"
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
@@ -323,29 +343,6 @@ The payload of this object should be like the following:
 - `externalId`: external ID used in the field's registration
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
 field
-
-If you want images further back than 30 days, you can specify it in the payload.
-
-There are two ways you can do that:
-
-- by setting a `startDate`, a ISO date in "yyyy-mm-dd" format meaning we will 
-return all images for your field since this date.
-
-**or**
-
-- by setting how many `daysBefore` (an integer greater than or equal to 0) you 
-want to get images from. 
-
-Note that they are both _optional_, but you **can not** specify both. 
-
-By default, Leaf will retrieve and return images for your field from the last 
-30 days (from the moment you create the field). 
-
-This process will take place in the background.
-
-There are some limitations regarding the geometry of the field. It cannot be
-bigger than 50k hectares (123.5k acres) and it cannot have a perimeter bigger
-than 89.4km (55.5 miles).
 
 <Tabs
   defaultValue="sh"
@@ -401,6 +398,11 @@ curl -X POST \
 
 </TabItem>
 </Tabs>
+
+
+There are some limitations regarding the geometry of the field. It cannot be
+bigger than 50k hectares (123.5k acres) and it cannot have a perimeter bigger
+than 89.4km (55.5 miles).
 
 ---
 
@@ -471,12 +473,11 @@ curl -X POST \
 ### `DELETE /fields/{id}`
 Deletes the field from our database.
 
-:::caution
-
-Be careful when using this method. It will delete all the processed images from
-the database as well.
-
+:::warning
+Note that the field deletion is irreversible and all images will be lost.
 :::
+_(But you can always create a new field and get images from the past, as far
+as you want)._
 
 
 <Tabs

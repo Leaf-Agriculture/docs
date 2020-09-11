@@ -281,15 +281,19 @@ curl -X GET \
 ### `POST /fields`
 Creates a new field entry in the database.
 
-A field will start to be monitored as soon as it is added to our database. It
-will be continuously monitored for as long as it is in there. If you want to
-stop this process, you should remove the field from the database entirely.
-Use a `DELETE` HTTP request.
+A field will be created and, _by default_, it will have images from the last 30 days. It
+will be continuously monitored forever, so new images will arrive every ~5 days (time it
+takes for the satellite to go over the same field when circling the Earth). If you want 
+to stop this process, you can delete the field. 
+
+For deleting, use a `DELETE` HTTP request.
 
 :::caution
 
-Note that the field deletion cascades to all other tables. Meaning that all
-processed images will be lost.
+Note that the field deletion is irreversible and all images will be lost.
+
+But you can always create a new field and get images from the past, as far
+as you want.
 
 :::
 
@@ -310,9 +314,28 @@ The payload of this object should be like the following:
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
 field
 
+If you want images further back than 30 days, you can specify it in the payload.
+
+There are two ways you can do that:
+
+- by setting a `startDate`, a ISO date in "yyyy-mm-dd" format meaning we will 
+return all images for your field since this date.
+
+**or**
+
+- by setting how many `daysBefore` (an integer greater than or equal to 0) you 
+want to get images from. 
+
+Note that they are both _optional_, but you **can not** specify both. 
+
+By default, Leaf will retrieve and return images for your field from the last 
+30 days (from the moment you create the field). 
+
+This process will take place in the background.
+
 There are some limitations regarding the geometry of the field. It cannot be
-bigger than 50 million square meters and it cannot have a perimeter bigger
-than ~28 thousand meters.
+bigger than 50k hectares (123.5k acres) and it cannot have a perimeter bigger
+than 89.4km (55.5 miles).
 
 <Tabs
   defaultValue="sh"

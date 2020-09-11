@@ -45,17 +45,19 @@ Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-- `leafUserId`, only matches files from this user
-- `provider`, filter by the provider. Currently, we support the following providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView`
-- `status`, you can match the step of the process by passing one of the following: `processed`, `failed` or `processing`
-- `origin`, files have different origins in our services. You can filter by
-its origin using one of the following: `provider`, `automerged`, `merged`,
-`uploaded`
-- `organizationId`, as the provider organizationId (only available for JohnDeere files)
-- `createdTime`, as ISO 8601 date to filter by the file's creation time
-- `operationStartTime`, as ISO 8601 date to filter by the operation's start time
-- `operationEndTime`, as ISO 8601 date to filter by the operation's end time
-- `operationType`, files can represent different types of operation. You can filter by operation type using one of the following: `applied`, `planted`, `harvested`
+| Parameter (to filter by) | Values
+| - | - |
+| `leafUserId` | uuid of one of your users |
+| `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView` or `Leaf`|
+| `status` | `processed`, `failed` or `processing` |
+| `origin` | `provider`, `automerged`, `merged` or `uploaded` |
+| `organizationId` | the provider organizationId (only available for John Deere) |
+| `createdTime` | ISO 8601 date. Returns operations from the createdTime onward |
+| `operationStartTime` | ISO 8601 date. Returns operations from the operationStartTime onward |
+| `operationEndTime` | ISO 8601 date. Returns operations until the operationEndTime |
+| `operationType` | `applied`, `planted` or `harvested` |
+
+
 
 You can also pass some parameters used exclusively for paging through results.
 They are:

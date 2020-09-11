@@ -185,8 +185,8 @@ access all images that each process generates.
 
 It is possible to filter the results by passing a date range parameters.
 
-- `startDate`, as ISO 8601 date format to filter processes createde before this day
-- `endDate`, as ISO 8601 date format to filter processes createde until this day
+- `startDate`, as ISO 8601 date format to filter processes created before this day
+- `endDate`, as ISO 8601 date format to filter processes created until this day
 
 The returned payload is like so:
 

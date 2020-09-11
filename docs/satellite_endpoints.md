@@ -183,6 +183,12 @@ A _process_ is created by our servers whenever there is a new satellite image
 that intersects with one of your registered fields. This endpoint is used to
 access all images that each process generates.
 
+It is possible to filter the results by passing a date range parameters.
+
+
+- `startDate`, as ISO 8601 date format to filter processes createde before this day
+- `endDate`, as ISO 8601 date format to filter processes createde until this day
+
 The returned payload is like so:
 
 ```py
@@ -239,11 +245,13 @@ The returned payload is like so:
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-let endpoint = 'https://api.withleaf.io/services/satellite/api' +
+let endpoint = 'https://api.withleaf.io/services/satellite/api' + 
                '/fields/YOUR_ID/processes'
+
+const params = { startDate: '2020-06-03', endDate: '2020-06-10' }
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-axios.get(endpoint, { headers })
+axios.get(endpoint, { headers, params })
     .then(res => console.log(res.data))
     .catch(console.error)
 ```
@@ -258,9 +266,11 @@ TOKEN = 'YOUR_TOKEN'
 
 endpoint = ('https://api.withleaf.io/services/satellite/api'
             '/fields/YOUR_ID/processes')
+
+params = {'startDate': '2020-06-03', 'endDate': '2020-06-10'}
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
-response = requests.get(endpoint, headers=headers)
+response = requests.get(endpoint, headers=headers, params=params)
 print(response.json())
 ```
 
@@ -270,7 +280,7 @@ print(response.json())
 ```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/processes'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/processes?startDate=2020-06-03&endDate=2020-06-10'
 ```
 
 </TabItem>

@@ -90,30 +90,14 @@ testing it, we recommend to see our Postman [collection][1].
 
 ### `GET /fields`
 Gets a paged list of Fields. It is possible to filter the results by passing
-some query parameters.  They are listed below.
+some query parameters.
 
 - `leafUserId`, only matches files from this user (string).
-- `operationtype`, one of the following values: `harvested`, `planted`,
-  `applied`, `other` (string).
-- `operationProvider`, filter by the provider. Currently we support the
-  following providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView`
-  (string).
-- `operationCrop`, provider's identifier crop id. Requires `operationProvider`
-  (string).
-- `operationVariety` provider's identifier variety name/code. Requires
-  `operationProvider`.
-- `operationStartTime`, as ISO 8601 date to filter by the operation's start
-  time.
-- `operationEndTime`, as ISO 8601 date to filter by the operation's end time.
-
-If some operation parameter is passed, then the response will include the entry
-`"files"`, otherwise such entry won't be present.
-
-You can also pass some parameters used exclusively for paging through results.
-They are:
-
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page
+
+These last two parameters are used exclusively for paging through results.
+
 
 #### Response
 A JSON array containing Fields.

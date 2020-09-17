@@ -156,6 +156,7 @@ A JSON array containing Fields.
   [
     {
       "id": "3031c20d-4331-4a24-bac0-c27087fc901f",
+      "name": "str",
       "leafUserId": "5db46916-54a0-4b38-a9b1-d8e00673db63",
       "geometry": {
         "type": "MultiPolygon",

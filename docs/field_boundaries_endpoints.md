@@ -21,6 +21,7 @@ Form of a Field:
 ```json
 {
   "id": "UUID",
+  "name": "str",
   "providerName": "JohnDeere",
   "providerFieldId": "UUID",
   "providerBoundaryId": "UUID",
@@ -461,7 +462,10 @@ Creates a Field for the user `leafUserId`. A resquest body must be provided
 containing the an entry `"geometry"`, which represents the boundaries of the
 Field being created as a GeoJSON geometry (it must be a `"MultiPolygon"`).
 The entry `"id"` is optional. If no id is provided, an UUID will be generated.
-The Field id CAN NOT be updated.
+The Field id CAN NOT be updated. If you want upload a field to a provider, go 
+to the /integration endpoint, but have in mind that will you need to provide a
+ `"id"` in order to upload a field to a available provider.
+
 
 Request body example:
 
@@ -670,15 +674,17 @@ Gets a boolean value answering if the fields specified by a list of field
 id's in the request body are disjoint.
 
 ### `POST /users/{leafUserId}/fields/integration`
-Uploads fields to providers. Currently we only support Climate FieldView.
+Upload fields to providers. Currently, we only support Climate FieldView and John Deere.
+Each provider for this endpoint have its own implementation background, but all of them needs a `"id"`
+on the request body for the integration to work properly.
 New integrations will come soon.
 
 Request body format:
 
 ```json
 {
-  "fields": ["UUID"],
-  "providers": ["ClimateFieldView"]
+  "fields": ["str"],
+  "providers": ["ClimateFieldView","John Deere"]
 }
 ```
 

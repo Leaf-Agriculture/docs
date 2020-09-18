@@ -61,6 +61,27 @@ POST   /users/{leafUserId}/fields/{id}/integration
 DELETE /users/{leafUserId}/fields/{id}
 ```
 
+#### Farm Resource
+
+Form of a Farm:
+```json
+{
+  "name": "str",
+  "providerName": "str",
+  "providerFarmId": "UUID",
+  "leafUserId": "UUID",
+  "grower": {"id": "UUID"}
+}
+```
+
+```
+GET    /farms
+GET    /farms/{id}
+POST   /farms
+PUT    /farms
+DELETE /farms/{id}
+```
+
 #### Operation Resource
 
 Form of a Operation/File:
@@ -693,6 +714,408 @@ A JSON in the followin format.
   },
 }
 ```
+
+
+### `GET /farms`
+Gets a paged list of all Farms. It is possible to pass some query parameters.
+
+- `page`, an integer specifying the page being fetched
+- `size`, an integer specifying the size of the page
+
+The parameters are used exclusively for paging through results.
+
+#### Response
+A JSON array containing Farms.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/farms'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/farms'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/farms'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  [
+    {
+      "id": 1538766,
+      "apiOwnerUsername": "owner",
+      "name": "name",
+      "providerId": 2,
+      "providerName": "JohnDeere",
+      "providerFarmId": "00000000-0000-0000-0000-000000000000",
+      "leafUserId": "00000000-0000-0000-0000-000000000000",
+      "fields": null,
+      "grower": {
+        "id": 12345,
+        "leafUserId": "00000000-0000-0000-0000-000000000000",
+        "providerId": 2,
+        "providerName": "JohnDeere",
+        "providerOrganizationId": "12345",
+        "providerGrowerId": "12345",
+        "apiOwnerUsername": "owner"
+      }
+    }
+  ]
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `GET /farms/{id}`
+
+Gets a single Farm by its id.
+
+#### Response
+A single Farm as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/farms/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/farms/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/farms/{id}'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  {
+    "id": 1551010,
+    "apiOwnerUsername": "owner",
+    "name": "name",
+    "providerName": "JohnDeere",
+    "providerFarmId": "00000000-0000-0000-0000-000000000000",
+    "leafUserId": "00000000-0000-0000-0000-000000000000",
+    "fields": null,
+    "grower": {
+      "id": 12345,
+      "leafUserId": "00000000-0000-0000-0000-000000000000",
+      "providerId": 2,
+      "providerName": "JohnDeere",
+      "providerOrganizationId": "12345",
+      "providerGrowerId": "12345",
+      "apiOwnerUsername": "owner"
+    }
+  }
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `DELETE /farms/{id}`
+Deletes the farm with the given id.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/farms/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/farms/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/farms/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `POST /farms`
+
+Creates a Farm. The request's body can provide values for any of the farm
+parameters.
+
+Request body example:
+
+```json
+{
+  "name": "name",
+  "providerName": "JohnDeere",
+  "providerFarmId": "00000000-0000-0000-0000-000000000000",
+  "leafUserId": "00000000-0000-0000-0000-000000000000",
+  "grower": {
+    "id": 12345
+  }
+}
+```
+
+#### Response
+The created Farm as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/farms'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    name: "name",
+    grower: {
+      id: 12345
+    }
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/farms'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': "name",
+    'grower': {
+      'id': 12345
+    }
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "name", "grower": { "id": 12345 } }'
+      'https://api.withleaf.io/services/fields/api/farms'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `PUT /farms`
+
+Updates info from a Farm. The request's body must provide the target
+farm's id, and can provide new values for any of the farm parameters.
+
+Request body example:
+
+```json
+{
+  "id": 123,
+  "name": "name",
+  "providerName": "JohnDeere",
+  "providerFarmId": "00000000-0000-0000-0000-000000000000",
+  "leafUserId": "00000000-0000-0000-0000-000000000000",
+  "grower": {
+    "id": 12345
+  }
+}
+```
+
+#### Response
+The updated Farm as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/farms'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    id: 123,
+    name: "name",
+    grower: {
+      id: 12345
+    }
+  }
+
+  axios.put(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/farms'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'id': 123,
+    'name': "name",
+    'grower': {
+      'id': 12345
+    }
+  }
+
+  response = requests.put(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{"id": 123, "name": "name", "grower": { "id": 12345 } }'
+      'https://api.withleaf.io/services/fields/api/farms'
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 ### `GET /users/{userId}/fields/{fieldId}/operations`
 Gets a paged list of all operation files of the Field specified by the URL

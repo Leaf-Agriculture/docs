@@ -2,8 +2,8 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
-    target-branch: "dev"
+    target-branch: "master"
     schedule:
       interval: "weekly"
-      day: "monday"
-      time: "14:25"  # 11:25am Brasilia/Brazil
+      day: "thursday"
+      time: "15:05"  # 12:05pm Brasilia/Brazil

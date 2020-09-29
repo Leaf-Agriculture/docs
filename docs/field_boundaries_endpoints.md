@@ -926,7 +926,7 @@ Deletes the farm with the given id.
 
 ### `POST users/{leafUserId}/farms`
 
-Creates a Farm. The request's body can provide values for any of the farm
+Creates a Farm. The request's body can provide values for the farm
 parameters.
 
 Request body example:
@@ -936,7 +936,6 @@ Request body example:
   "name": "name",
   "providerName": "JohnDeere",
   "providerFarmId": "00000000-0000-0000-0000-000000000000",
-  "leafUserId": "00000000-0000-0000-0000-000000000000",
   "growerId": 12345
 }
 ```
@@ -1005,10 +1004,10 @@ The created Farm as a JSON object.
 </Tabs>
 
 
-### `PUT /farms`
+### `PUT users/{leafUserId}/farms`
 
 Updates info from a Farm. The request's body must provide the target
-farm's id, and can provide new values for any of the farm parameters.
+farm's id, and can provide new values for other farm parameters.
 
 Request body example:
 
@@ -1018,7 +1017,6 @@ Request body example:
   "name": "name",
   "providerName": "JohnDeere",
   "providerFarmId": "00000000-0000-0000-0000-000000000000",
-  "leafUserId": "00000000-0000-0000-0000-000000000000",
   "growerId": 12345
 }
 ```

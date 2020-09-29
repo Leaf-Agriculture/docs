@@ -66,20 +66,22 @@ DELETE /users/{leafUserId}/fields/{id}
 Form of a Farm:
 ```json
 {
+  "id": "long",
   "name": "str",
   "providerName": "str",
   "providerFarmId": "UUID",
   "leafUserId": "UUID",
-  "grower": {"id": "UUID"}
+  "growerId": "long",
+  "fieldIds": ["UUID"]
 }
 ```
 
 ```
 GET    /farms
-GET    /farms/{id}
-POST   /farms
-PUT    /farms
-DELETE /farms/{id}
+GET    /users/{leafUserId}/farms/{id}
+POST   /users/{leafUserId}/farms
+PUT    /users/{leafUserId}/farms
+DELETE /users/{leafUserId}/farms/{id}
 ```
 
 #### Operation Resource
@@ -781,22 +783,13 @@ A JSON array containing Farms.
   [
     {
       "id": 1538766,
-      "apiOwnerUsername": "owner",
       "name": "name",
       "providerId": 2,
       "providerName": "JohnDeere",
       "providerFarmId": "00000000-0000-0000-0000-000000000000",
       "leafUserId": "00000000-0000-0000-0000-000000000000",
-      "fields": null,
-      "grower": {
-        "id": 12345,
-        "leafUserId": "00000000-0000-0000-0000-000000000000",
-        "providerId": 2,
-        "providerName": "JohnDeere",
-        "providerOrganizationId": "12345",
-        "providerGrowerId": "12345",
-        "apiOwnerUsername": "owner"
-      }
+      "fieldIds": ["00000000-0000-0000-0000-000000000000"],
+      "growerId": 12345
     }
   ]
   ```
@@ -805,7 +798,7 @@ A JSON array containing Farms.
 </Tabs>
 
 
-### `GET /farms/{id}`
+### `GET /users/{leafUserId}/farms/{id}`
 
 Gets a single Farm by its id.
 
@@ -827,7 +820,7 @@ A single Farm as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/fields/api/farms/{id}'
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -843,7 +836,7 @@ A single Farm as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/farms/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -856,7 +849,7 @@ A single Farm as a JSON object.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/farms/{id}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
   ```
 
   </TabItem>
@@ -865,21 +858,12 @@ A single Farm as a JSON object.
   ```json
   {
     "id": 1551010,
-    "apiOwnerUsername": "owner",
     "name": "name",
     "providerName": "JohnDeere",
     "providerFarmId": "00000000-0000-0000-0000-000000000000",
     "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "fields": null,
-    "grower": {
-      "id": 12345,
-      "leafUserId": "00000000-0000-0000-0000-000000000000",
-      "providerId": 2,
-      "providerName": "JohnDeere",
-      "providerOrganizationId": "12345",
-      "providerGrowerId": "12345",
-      "apiOwnerUsername": "owner"
-    }
+    "fieldIds": ["00000000-0000-0000-0000-000000000000"],
+    "growerId": 123
   }
   ```
 
@@ -887,7 +871,7 @@ A single Farm as a JSON object.
 </Tabs>
 
 
-### `DELETE /farms/{id}`
+### `DELETE users/{leafUserId}/farms/{id}`
 Deletes the farm with the given id.
 
 <Tabs
@@ -904,7 +888,7 @@ Deletes the farm with the given id.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/fields/api/farms/{id}'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.delete(endpoint, { headers })
@@ -920,7 +904,7 @@ Deletes the farm with the given id.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/farms/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.delete(endpoint, headers=headers)
@@ -933,14 +917,14 @@ Deletes the farm with the given id.
   ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/farms/{id}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
   ```
 
   </TabItem>
 </Tabs>
 
 
-### `POST /farms`
+### `POST users/{leafUserId}/farms`
 
 Creates a Farm. The request's body can provide values for any of the farm
 parameters.
@@ -953,9 +937,7 @@ Request body example:
   "providerName": "JohnDeere",
   "providerFarmId": "00000000-0000-0000-0000-000000000000",
   "leafUserId": "00000000-0000-0000-0000-000000000000",
-  "grower": {
-    "id": 12345
-  }
+  "growerId": 12345
 }
 ```
 
@@ -976,14 +958,12 @@ The created Farm as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/fields/api/farms'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
     name: "name",
-    grower: {
-      id: 12345
-    }
+    growerId: 12345
   }
 
   axios.post(endpoint, { headers, data })
@@ -999,14 +979,12 @@ The created Farm as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/farms'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
     'name': "name",
-    'grower': {
-      'id': 12345
-    }
+    'growerId': 12345
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -1019,8 +997,8 @@ The created Farm as a JSON object.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "name": "name", "grower": { "id": 12345 } }'
-      'https://api.withleaf.io/services/fields/api/farms'
+      -d '{ "name": "name", "growerId": 12345 }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
   ```
 
   </TabItem>
@@ -1041,9 +1019,7 @@ Request body example:
   "providerName": "JohnDeere",
   "providerFarmId": "00000000-0000-0000-0000-000000000000",
   "leafUserId": "00000000-0000-0000-0000-000000000000",
-  "grower": {
-    "id": 12345
-  }
+  "growerId": 12345
 }
 ```
 
@@ -1064,15 +1040,13 @@ The updated Farm as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/fields/api/farms'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
     id: 123,
     name: "name",
-    grower: {
-      id: 12345
-    }
+    growerId: 12345
   }
 
   axios.put(endpoint, { headers, data })
@@ -1088,15 +1062,13 @@ The updated Farm as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/farms'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
     'id': 123,
     'name': "name",
-    'grower': {
-      'id': 12345
-    }
+    'growerId': 12345
   }
 
   response = requests.put(endpoint, headers=headers, json=data)
@@ -1109,8 +1081,8 @@ The updated Farm as a JSON object.
   ```shell
   curl -X PUT \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"id": 123, "name": "name", "grower": { "id": 12345 } }'
-      'https://api.withleaf.io/services/fields/api/farms'
+      -d '{"id": 123, "name": "name", "growerId": 12345 }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
   ```
 
   </TabItem>

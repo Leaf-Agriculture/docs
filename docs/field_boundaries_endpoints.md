@@ -84,6 +84,28 @@ PUT    /users/{leafUserId}/farms
 DELETE /users/{leafUserId}/farms/{id}
 ```
 
+#### Grower Resource
+
+Form of a Grower:
+
+```json
+{
+  "id": 2345,
+  "leafUserId": "UUID",
+  "providerName": "str",
+  "providerOrganizationId": "str",
+  "providerCompanyId": "str",
+  "providerUserId": "str",
+  "providerGrowerId": "str",
+  "farmIds": [4534]
+}
+```
+
+```
+GET    /growers
+GET    /growers/{id}
+```
+
 #### Operation Resource
 
 Form of a Operation/File:
@@ -1216,6 +1238,157 @@ A single Operation File.
 
   </TabItem>
 </Tabs>
+
+
+
+### `GET /growers`
+Gets a list of all Growers.
+
+#### Response
+A JSON array containing Growers.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/growers'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/growers'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/growers'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  [
+    {
+      "id": 2345,
+      "leafUserId": "UUID",
+      "providerName": "str",
+      "providerOrganizationId": "str",
+      "providerCompanyId": "str",
+      "providerUserId": "str",
+      "providerGrowerId": "str",
+      "farmIds": [4534]
+    }
+  ]
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `GET /growers/{id}`
+
+Gets a single Grower by its id.
+
+#### Response
+A single Grower as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/growers/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/growers/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/growers/{id}'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  {
+    "id": 2345,
+    "leafUserId": "UUID",
+    "providerName": "str",
+    "providerOrganizationId": "str",
+    "providerCompanyId": "str",
+    "providerUserId": "str",
+    "providerGrowerId": "str",
+    "farmIds": [4534]
+  }
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection

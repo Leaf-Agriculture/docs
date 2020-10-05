@@ -949,7 +949,7 @@ Deletes the farm with the given id.
 
 ### `POST users/{leafUserId}/farms`
 
-Creates a Farm. The request's body can provide values for the farm
+Creates a Farm. The request's body provides values for the farm
 parameters.
 
 Request body example:

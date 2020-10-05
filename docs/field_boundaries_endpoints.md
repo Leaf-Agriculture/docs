@@ -64,6 +64,7 @@ DELETE /users/{leafUserId}/fields/{id}
 #### Farm Resource
 
 Form of a Farm:
+
 ```json
 {
   "id": "long",

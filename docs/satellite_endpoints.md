@@ -187,6 +187,13 @@ It is possible to filter the results by passing a date range parameters.
 - `startDate`, as ISO 8601 date format to filter processes created before this day
 - `endDate`, as ISO 8601 date format to filter processes created until this day
 
+It is also possible to filter the results by maximum percentage of clouds and status.
+
+- `maxClouds`, as a number between 0.0 and 100.0 to filter processes with less than or equal to this percentage
+- `status`, as `SUCCESS`, `FAILED` or `STARTED`
+
+If not specified, the default values are: `maxClouds`:`100.0` and `status`:`SUCCESS`
+
 The returned payload is like so:
 
 ```py

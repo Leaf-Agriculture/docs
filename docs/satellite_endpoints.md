@@ -20,7 +20,6 @@ GET    /fields
 GET    /fields/{id}
 GET    /fields/{id}/processes
 POST   /fields
-PUT    /fields/{id}
 DELETE /fields/{id}
 ```
 
@@ -187,6 +186,13 @@ It is possible to filter the results by passing a date range parameters.
 
 - `startDate`, as ISO 8601 date format to filter processes created before this day
 - `endDate`, as ISO 8601 date format to filter processes created until this day
+
+It is also possible to filter the results by maximum percentage of clouds and status.
+
+- `maxClouds`, as a number between 0.0 and 100.0 to filter processes with less than or equal to this percentage
+- `status`, as `SUCCESS`, `FAILED` or `STARTED`
+
+If not specified, the default values are: `maxClouds`:`100.0` and `status`:`SUCCESS`
 
 The returned payload is like so:
 
@@ -403,70 +409,6 @@ curl -X POST \
 There are some limitations regarding the geometry of the field. It cannot be
 bigger than 50k hectares (123.5k acres) and it cannot have a perimeter bigger
 than 89.4km (55.5 miles).
-
----
-
-### `PUT /fields/{id}`
-Endpoint used to update the geometry of the field.
-
-You cannot update the external id. The payload is a single JSON object with an
-entry `geometry` which contains a MultiPolygon GeoJSON object. Again, the new
-geometry must respect the area and perimeter limits of `POST /fields`.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-<TabItem value="js">
-
-```js
-const axios = require('axios')
-const TOKEN = 'YOUR_TOKEN'
-
-let endpoint = 'https://api.withleaf.io/services/satellite/api/fields'
-const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-const data = { /* Your geometry */ }
-
-axios.post(endpoint, { headers, data })
-    .then(res => console.log(res.data))
-    .catch(console.error)
-```
-
-</TabItem>
-<TabItem value="py">
-
-```py
-import requests
-
-TOKEN = 'YOUR_TOKEN'
-
-endpoint = 'https://api.withleaf.io/services/satellite/api/fields'
-headers = {'Authorization': f'Bearer {TOKEN}'}
-
-payload = {...}  # Geometry
-
-response = requests.post(endpoint, headers=headers, json=payload)
-print(response.json())
-```
-
-</TabItem>
-<TabItem value="sh">
-
-```shell
-curl -X POST \
-    -H 'Content-Type: application/json' \
-    -H 'Authorization: Bearer YOUR_TOKEN' \
-    -d '{ your geometry }' \
-    'https://api.withleaf.io/services/satellite/api/fields'
-```
-
-</TabItem>
-</Tabs>
 
 ---
 

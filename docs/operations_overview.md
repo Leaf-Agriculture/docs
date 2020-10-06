@@ -21,7 +21,7 @@ All files will be passed through a processing chain that includes:
 - Creating a summary of the file with summary information, such as averages,
 standard deviations, maximum and minimum values ​​for important properties, and more.
 
-This processing may take a few minutes to complete and happens continuously 
+This processing may take a few minutes to complete and happens continuously
 in the background.
 
 Since one single operation can be represented in several (sometimes hundreds of) files by the provider,
@@ -33,6 +33,7 @@ them manually if desired. Please keep in mind that merging files is processing-h
 and may take about 20 minutes to finish.
 
 ### Roadmap
+
 Today, you can connect to these companies:
 
 - John Deere
@@ -40,15 +41,14 @@ Today, you can connect to these companies:
 - CNHi
 - Trimble
 
-Coming in the third quarter of 2020:
-
-- Raven
-- AGCO
-
-Coming in the fourth quarter of 2020:
+Coming soon:
 
 - AgLeader
+- Agvance
 - Stara
+- Solinftec
+- Raven
+- AGCO
 
 We also provide our [Leaf Postman collection][leaf_postman_url] so you can follow
 along easily.

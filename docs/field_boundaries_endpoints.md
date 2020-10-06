@@ -7,37 +7,21 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
+Here we list all the available endpoints from Fields API. For easily
+testing it, we recommend using [Leaf's Postman collection][1].
+
+[1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
 https://api.withleaf.io/services/fields/api
 ```
 
-See below the REST resources and their endpoints available in this service.
-
-
-```
-Common endpoints:
-GET    /fields
-GET    /users/{leafUserId}/fields/{id}
-POST   /users/{leafUserId}/fields
-DELETE /users/{leafUserId}/fields/{id}
-
-Query operations by field:
-GET /users/{leafUserId}/fields/{fieldId}/operations
-GET /users/{leafUserId}/fields/{fieldId}/operations/{id}
-
-Geometric queries:
-POST   /fields/query/intersects
-POST   /users/{leafUserId}/fields/intersect
-```
-
+There is a [REST resources](#rest-resources) section if you want to check it out.
 
 ## Endpoints
-Here we list all the available endpoints from Fields API. For easily
-testing it, we recommend using [Leaf's Postman collection][1].
 
-### `GET /fields`
+### GET /fields
 Gets a paged list of Fields. It is possible to filter the results by passing
 some query parameters.
 
@@ -151,7 +135,7 @@ A JSON array containing Fields.
 </Tabs>
 
 
-### `GET /users/{leafUserId}/fields/{id}`
+### GET /users/{id}/fields/{id}
 
 Gets a single Field by its id.
 
@@ -207,10 +191,10 @@ A single Field as a JSON object.
   </TabItem>
 </Tabs>
 
-### `DELETE /users/{leafUserId}/fields/{id}`
+### DELETE /users/{id}/fields/{id}
 Deletes the field with the given id.
 
-### `POST /users/{leafUserId}/fields`
+### POST /users/{id}/fields
 
 Creates a Field for the user `leafUserId`. A resquest body must be provided
 containing the an entry `"geometry"`, which represents the boundaries of the
@@ -308,7 +292,7 @@ A Field as a JSON object.
 
 
 
-### `POST /users/{leafUserId}/fields/intersect`
+### POST /users/{id}/fields/intersect
 Gets a GeoJSON MultiPolygon corresponding to the intersection of the Fields
 specified by the given id's. Such Field id's goes in a list, in the request
 body.
@@ -406,7 +390,7 @@ A JSON in the format of a GeoJSON geometry.
 
 
 
-### `POST /fields/query/intersects`
+### POST /fields/query/intersects
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body.
 
@@ -509,14 +493,14 @@ A JSON list of Fields.
 </Tabs>
 
 
-<!-- ### `POST /users/{leafUserId}/fields/same` -->
+<!-- ### POST /users/{id}/fields/same` --
 <!-- response needs to be a json, not documenting for now -->
 <!-- Gets a boolean value answering if the Fields specified by a list of Field
 id's sent in the request body have the same values for their vertices, in
 exactly the same order. -->
 
 
-<!-- ### `POST /users/{leafUserId}/fields/disjoint` -->
+<!-- ### POST /users/{id}/fields/disjoint` --
 <!-- response needs to be a json, not documenting for now -->
 <!-- Gets a boolean value answering if the fields specified by a list of field
 id's in the request body are disjoint.
@@ -583,7 +567,7 @@ true or false
 
 
 
-<!-- ### `POST /users/{leafUserId}/fields/integration`
+<!-- ### POST /users/{id}/fields/integration
 Uploads fields to providers. Currently we only support Climate FieldView.
 New integrations will come soon.
 
@@ -609,9 +593,12 @@ A JSON in the followin format.
 }
 ``` -->
 
-### `GET /users/{leafUserId}/fields/{fieldId}/operations`
-Gets a paged list of all operation files of the Field specified by the URL
-parameter `fieldId`. It is possible to filter the results by passing some query
+### GET /users/{id}/fields/{id}/operations
+
+Gets a paged list of all operation files of the Field and Leaf User specified in
+the URL.  
+
+It is possible to filter the results by passing some query
 parameters. They are listed below.
 
 - `operationtype`, one of the following values: `harvested`, `planted`,
@@ -683,7 +670,7 @@ A JSON array of Files.
 </Tabs>
 
 
-### `GET /users/{leafUserId}/fields/{fieldId}/operations/{id}`
+### GET /users/{id}/fields/{id}/operations/{id}
 
 Gets a single Operation File of a field by its id.
 
@@ -739,6 +726,402 @@ A single Operation File.
   </TabItem>
 </Tabs>
 
+### GET /farms
+Gets a paged list of all Farms. It is possible to pass some query parameters.
 
-[1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-<!-- [2]: https://tools.ietf.org/html/rfc7946 --> -->
+- `page`, an integer specifying the page being fetched
+- `size`, an integer specifying the size of the page
+
+The parameters are used exclusively for paging through results.
+
+#### Response
+A JSON array containing Farms.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/farms'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/farms'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/farms'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  [
+    {
+      "id": 1538766,
+      "name": "name",
+      "providerId": 2,
+      "providerName": "JohnDeere",
+      "providerFarmId": "00000000-0000-0000-0000-000000000000",
+      "leafUserId": "00000000-0000-0000-0000-000000000000",
+      "fieldIds": ["00000000-0000-0000-0000-000000000000"],
+      "growerId": 12345
+    }
+  ]
+  ```
+
+  </TabItem>
+</Tabs>
+
+### GET /users/{id}/farms/{id}
+Gets a single Farm by its id.
+
+#### Response
+A single Farm as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  {
+    "id": 1551010,
+    "name": "name",
+    "providerName": "JohnDeere",
+    "providerFarmId": "00000000-0000-0000-0000-000000000000",
+    "leafUserId": "00000000-0000-0000-0000-000000000000",
+    "fieldIds": ["00000000-0000-0000-0000-000000000000"],
+    "growerId": 123
+  }
+  ```
+
+  </TabItem>
+</Tabs>
+
+### GET /growers
+Gets a list of all Growers.
+
+#### Response
+A JSON array containing Growers.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/growers'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/growers'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/growers'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  [
+    {
+      "id": 2345,
+      "leafUserId": "UUID",
+      "providerName": "str",
+      "providerOrganizationId": "str",
+      "providerCompanyId": "str",
+      "providerUserId": "str",
+      "providerGrowerId": "str",
+      "farmIds": [4534]
+    }
+  ]
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### GET /growers/{id}
+
+Gets a single Grower by its id.
+
+#### Response
+A single Grower as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'res', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/growers/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/growers/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/growers/{id}'
+  ```
+
+  </TabItem>
+  <TabItem value="res">
+
+  ```json
+  {
+    "id": 2345,
+    "leafUserId": "UUID",
+    "providerName": "str",
+    "providerOrganizationId": "str",
+    "providerCompanyId": "str",
+    "providerUserId": "str",
+    "providerGrowerId": "str",
+    "farmIds": [4534]
+  }
+  ```
+
+  </TabItem>
+</Tabs>
+
+## REST Resources
+
+See below the REST resources and their endpoints.
+
+### Field Resource
+
+```json
+{
+  "id": "UUID",
+  "providerName": "JohnDeere",
+  "providerFieldId": "UUID",
+  "providerBoundaryId": "UUID",
+  "type": "ORIGINAL",
+  "leafUserId": "UUID",
+  "organizationId": "str",
+  "mergedFieldId": ["UUID"],
+  "files": ["UUID"],
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [-93.48821327980518, 41.77137549568163],
+          [-93.48817333680519, 41.77143534378164],
+          [-93.48821327390516, 41.76068857977987],
+          [-93.48821327980518, 41.77137549568163]
+        ]
+      ]
+    ]
+  },
+}
+```
+
+```
+GET    /fields
+GET    /users/{id}/fields/{id}
+POST   /users/{id}/fields
+DELETE /users/{id}/fields/{id}
+POST   /fields/query/intersects
+POST   /users/{id}/fields/intersect
+```
+
+### Operation Resource
+
+```json
+{
+  "id": "UUID",
+  "operationType": "planted",
+  "startTime": "ISO date-time",
+  "endTime": "ISO date-time",
+  "crops": ["str"],
+  "varieties": ["str"],
+  "providerFileId": "str",
+  "provider": "Trimble",
+  "leafUserId": "UUID"
+}
+```
+
+```
+GET /users/{id}/fields/{id}/operations
+GET /users/{id}/fields/{id}/operations/{id}
+```
+
+### Farm Resource
+
+```json
+{
+  "id": "long",
+  "name": "str",
+  "providerName": "str",
+  "providerFarmId": "UUID",
+  "leafUserId": "UUID",
+  "growerId": "long",
+  "fieldIds": ["UUID"]
+}
+```
+
+```
+GET    /farms
+GET    /users/{id}/farms/{id}
+```
+
+### Grower Resource
+
+```json
+{
+  "id": 2345,
+  "leafUserId": "UUID",
+  "providerName": "str",
+  "providerOrganizationId": "str",
+  "providerCompanyId": "str",
+  "providerUserId": "str",
+  "providerGrowerId": "str",
+  "farmIds": [4534]
+}
+```
+
+```
+GET    /growers
+GET    /growers/{id}
+```

@@ -287,25 +287,9 @@ A Field as a JSON object.
       'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
   ```
 
-Request body example:
+  </TabItem>
+</Tabs>
 
-```json
-{
-  "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [
-      [
-        [
-          [-93.48821327980518, 41.77137549568163],
-          [-93.48817333680519, 41.77143534378164],
-          [-93.48821327390516, 41.76068857977987],
-          [-93.48821327980518, 41.77137549568163]
-        ]
-      ]
-    ]
-  }
-}
-```
 
 
 ### POST /users/{id}/fields/intersect
@@ -411,8 +395,7 @@ Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body.
 
 #### Response
-A JSON in the format of a GeoJSON geometry.
-
+A JSON list of Fields.
 
 <Tabs
   defaultValue="sh"
@@ -531,7 +514,6 @@ true or false
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON sample response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -584,7 +566,6 @@ true or false
 </Tabs> -->
 
 
-  <TabItem value="json">
 
 <!-- ### POST /users/{id}/fields/integration
 Uploads fields to providers. Currently we only support Climate FieldView.
@@ -686,7 +667,7 @@ A JSON array of Files.
   ```
 
   </TabItem>
-</Tabs> -->
+</Tabs>
 
 
 ### GET /users/{id}/fields/{id}/operations/{id}

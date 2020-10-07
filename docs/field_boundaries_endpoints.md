@@ -21,7 +21,10 @@ There is a [REST resources](#rest-resources) section if you want to check it out
 
 ## Endpoints
 
-### GET /fields
+### Get all fields
+
+GET `/fields`
+
 Gets a paged list of Fields. It is possible to filter the results by passing
 some query parameters.
 
@@ -135,12 +138,14 @@ A JSON array containing Fields.
 </Tabs>
 
 
-### GET /users/{id}/fields/{id}
+### Get a field
+
+GET `/users/{id}/fields/{id}`
 
 Gets a single Field by its id.
 
 #### Response
-A single Field as a JSON object.
+A single [Field](#field-resource) as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -191,10 +196,9 @@ A single Field as a JSON object.
   </TabItem>
 </Tabs>
 
-### DELETE /users/{id}/fields/{id}
-Deletes the field with the given id.
+### Create a field
 
-### POST /users/{id}/fields
+POST `/users/{id}/fields`
 
 Creates a Field for the user `leafUserId`. A resquest body must be provided
 containing the an entry `"geometry"`, which represents the boundaries of the
@@ -290,16 +294,34 @@ A Field as a JSON object.
   </TabItem>
 </Tabs>
 
+### Get all operations of a field
 
+GET `/users/{id}/fields/{id}/operations`
 
-### POST /users/{id}/fields/intersect
-Gets a GeoJSON MultiPolygon corresponding to the intersection of the Fields
-specified by the given id's. Such Field id's goes in a list, in the request
-body.
+Gets a paged list of all operation files of the Field and Leaf User specified in
+the URL.  
+
+It is possible to filter the results by passing some query
+parameters. They are listed below.
+
+- `operationtype`, one of the following values: `harvested`, `planted`,
+  `applied`, `other` (string).
+- `provider`, filter by the provider. Currently we support the following
+  providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView` (string).
+- `crop`, provider's identifier crop id. Requires `operationProvider` (string).
+- `variety` provider's identifier variety name/code. Requires
+  `operationProvider`.
+- `startTime`, as ISO 8601 date to filter by the operation's start time.
+- `endTime`, as ISO 8601 date to filter by the operation's end time.
+
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched
+- `size`, an integer specifying the size of the page
 
 #### Response
-A JSON in the format of a GeoJSON geometry.
-
+A JSON array of Files.
 
 <Tabs
   defaultValue="sh"
@@ -307,90 +329,112 @@ A JSON in the format of a GeoJSON geometry.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON sample response', value: 'json', },
   ]
 }>
   <TabItem value="js">
 
   ```js
-  var axios = require('axios');
-  var data = JSON.stringify(["id1","id2"]);
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
 
-  var config = {
-    method: 'post',
-    url: 'https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect',
-    headers: {
-      'Authorization': 'Bearer YOUR_LEAF_TOKEN',
-      'Content-Type': 'application/json'
-    },
-    data : data
-  };
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-  axios(config)
-  .then(function (response) {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
   ```
 
   </TabItem>
   <TabItem value="py">
 
-
   ```py
   import requests
 
-  url = "https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect"
+  TOKEN = 'YOUR_TOKEN'
 
-  payload = "[\"id1\", \"id2\"]"
-  headers = {
-    'Authorization': 'Bearer YOUR_LEAF_TOKEN',
-    'Content-Type': 'application/json'
-  }
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.request("POST", url, headers=headers, data = payload)
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
   ```
 
   </TabItem>
   <TabItem value="sh">
 
   ```shell
-  curl --location --request \
-  POST 'https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect' \
-  --header 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-  --header 'Content-Type: application/json' \
-  --data-raw '["id1", "id2"]'
-  ```
-
-  </TabItem>
-
-  <TabItem value="json">
-
-  ```json
-  {
-      "type": "MultiPolygon",
-      "coordinates": [
-          [
-              [
-                  [-89.84388470649719,39.71943436012731],
-                  [-89.84392762184143,39.72439389620628],
-                  [-89.83936786651611,39.725392361998416],
-                  [-89.83928203582764,39.71951688444436],
-                  [-89.84388470649719,39.71943436012731]
-              ]
-          ]
-      ]
-  }
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
   ```
 
   </TabItem>
 </Tabs>
 
 
+### Get an operation of a field
 
-### POST /fields/query/intersects
+GET `/users/{id}/fields/{id}/operations/{id}`
+
+Gets a single Operation File of a field by its id.
+
+#### Response
+A single Operation File.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Get Fields by geometry
+
+POST `/fields/query/intersects`
+
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body.
 
@@ -487,6 +531,105 @@ A JSON list of Fields.
       "sources": []
     }
   ]
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Get intersection of fields
+
+POST `/users/{id}/fields/intersect`
+
+Gets a GeoJSON MultiPolygon corresponding to the intersection of the Fields
+specified by the given id's. Such Field id's goes in a list, in the request
+body.
+
+#### Response
+A JSON in the format of a GeoJSON geometry.
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON sample response', value: 'json', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  var axios = require('axios');
+  var data = JSON.stringify(["id1","id2"]);
+
+  var config = {
+    method: 'post',
+    url: 'https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect',
+    headers: {
+      'Authorization': 'Bearer YOUR_LEAF_TOKEN',
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+
+  ```py
+  import requests
+
+  url = "https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect"
+
+  payload = "[\"id1\", \"id2\"]"
+  headers = {
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN',
+    'Content-Type': 'application/json'
+  }
+
+  response = requests.request("POST", url, headers=headers, data = payload)
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl --location --request \
+  POST 'https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect' \
+  --header 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data-raw '["id1", "id2"]'
+  ```
+
+  </TabItem>
+
+  <TabItem value="json">
+
+  ```json
+  {
+      "type": "MultiPolygon",
+      "coordinates": [
+          [
+              [
+                  [-89.84388470649719,39.71943436012731],
+                  [-89.84392762184143,39.72439389620628],
+                  [-89.83936786651611,39.725392361998416],
+                  [-89.83928203582764,39.71951688444436],
+                  [-89.84388470649719,39.71943436012731]
+              ]
+          ]
+      ]
+  }
   ```
 
   </TabItem>
@@ -593,140 +736,16 @@ A JSON in the followin format.
 }
 ``` -->
 
-### GET /users/{id}/fields/{id}/operations
+### Delete a field
 
-Gets a paged list of all operation files of the Field and Leaf User specified in
-the URL.  
+DELETE `/users/{id}/fields/{id}`
 
-It is possible to filter the results by passing some query
-parameters. They are listed below.
+Deletes the field with the given id.
 
-- `operationtype`, one of the following values: `harvested`, `planted`,
-  `applied`, `other` (string).
-- `provider`, filter by the provider. Currently we support the following
-  providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView` (string).
-- `crop`, provider's identifier crop id. Requires `operationProvider` (string).
-- `variety` provider's identifier variety name/code. Requires
-  `operationProvider`.
-- `startTime`, as ISO 8601 date to filter by the operation's start time.
-- `endTime`, as ISO 8601 date to filter by the operation's end time.
+### Get all farms
 
-You can also pass some parameters used exclusively for paging through results.
-They are:
+GET `/farms`
 
-- `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page
-
-#### Response
-A JSON array of Files.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### GET /users/{id}/fields/{id}/operations/{id}
-
-Gets a single Operation File of a field by its id.
-
-#### Response
-A single Operation File.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
-### GET /farms
 Gets a paged list of all Farms. It is possible to pass some query parameters.
 
 - `page`, an integer specifying the page being fetched
@@ -805,7 +824,10 @@ A JSON array containing Farms.
   </TabItem>
 </Tabs>
 
-### GET /users/{id}/farms/{id}
+### Get a farm
+
+GET `/users/{id}/farms/{id}`
+
 Gets a single Farm by its id.
 
 #### Response
@@ -876,7 +898,10 @@ A single Farm as a JSON object.
   </TabItem>
 </Tabs>
 
-### GET /growers
+### Get all growers
+
+GET `/growers`
+
 Gets a list of all Growers.
 
 #### Response
@@ -951,7 +976,9 @@ A JSON array containing Growers.
 </Tabs>
 
 
-### GET /growers/{id}
+### Get a grower
+
+GET `/growers/{id}`
 
 Gets a single Grower by its id.
 

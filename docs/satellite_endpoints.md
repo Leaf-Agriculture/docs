@@ -17,11 +17,20 @@ This service has the following endpoints available:
 
 Description | Endpoints
 --- | ---
-Get all satellite fields | <span class="badge badge--success">GET</span> `/fields`
-Get a satellite field | <span class="badge badge--success">GET</span> `/fields/{id}`
-Get images of satellite field | <span class="badge badge--success">GET</span> `/fields/{id}/processes`
-Create satellite field | <span class="badge badge--warning">POST</span> `/fields`
-Delete satellite field | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
+[Get all satellite fields][4] | <span class="badge badge--success">GET</span> `/fields`
+[Get a satellite field][5] | <span class="badge badge--success">GET</span> `/fields/{id}`
+[Get images of satellite field][6] | <span class="badge badge--success">GET</span> `/fields/{id}/processes`
+[Create a satellite field][7] | <span class="badge badge--warning">POST</span> `/fields`
+[Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
+
+[1]: /img/fieldovertime.png
+[2]: /img/ndviexample.png
+[3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
+[4]: #get-all-satellite-fields
+[5]: #get-a-satellite-field
+[6]: #get-images-of-satellite-field
+[7]: #create-a-satellite-field
+[8]: #delete-a-satellite-field
 
 ---
 
@@ -488,8 +497,3 @@ curl -X DELETE \
 
 </TabItem>
 </Tabs>
-
-
-[1]: /img/fieldovertime.png
-[2]: /img/ndviexample.png
-[3]: https://tools.ietf.org/html/rfc7946#section-3.1.7

@@ -15,19 +15,22 @@ https://api.withleaf.io/services/satellite/api
 
 This service has the following endpoints available:
 
-```
-GET    /fields
-GET    /fields/{id}
-GET    /fields/{id}/processes
-POST   /fields
-DELETE /fields/{id}
-```
+Description | Endpoints
+--- | ---
+Get all satellite fields | <span class="badge badge--success">GET</span> `/fields`
+Get a satellite field | <span class="badge badge--success">GET</span> `/fields/{id}`
+Get images of satellite field | <span class="badge badge--success">GET</span> `/fields/{id}/processes`
+Create satellite field | <span class="badge badge--warning">POST</span> `/fields`
+Delete satellite field | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
 
 ---
 
 ## Endpoints
 
-### `GET /fields`
+### Get all satellite fields
+
+-> <span class="badge badge--success">GET</span> `/fields`
+
 Returns paged results for all fields registered.
 
 It returns a list of JSON objects like so:
@@ -101,7 +104,10 @@ curl -X GET \
 
 ---
 
-### `GET /fields/{id}`
+### Get a satellite field
+
+-> <span class="badge badge--success">GET</span> `/fields/{id}`
+
 Fetches a field entry based on its external id.
 
 It returns a single JSON object with the following entries (like each item from
@@ -175,7 +181,10 @@ curl -X GET \
 
 ---
 
-### `GET /fields/{id}/processes`
+### Get images of satellite field
+
+-> <span class="badge badge--success">GET</span> `/fields/{id}/processes`
+
 Returns all processes already handled by our service.
 
 A _process_ is created by our servers whenever there is a new satellite image
@@ -304,7 +313,10 @@ you can either increase the size or the page number.
 
 ---
 
-### `POST /fields`
+### Create a satellite field
+
+-> <span class="badge badge--warning">POST</span> `/fields`
+
 Creates a new field
 
 It will be continuously monitored forever, and new images will arrive every ~5
@@ -314,7 +326,7 @@ the Earth). If you don't need the field anymore, you can
 
 :::success  Note
 
-By default, Leaf will retrieve and return images for your field from the last
+By default, Leaf will return images for your field from the last
 30 days (from the moment you create the field).
 
 You can change that by including a "startDate" or a "daysBefore" to the body
@@ -405,14 +417,17 @@ curl -X POST \
 </TabItem>
 </Tabs>
 
-
-There are some limitations regarding the geometry of the field. It cannot be
-bigger than 50k hectares (123.5k acres) and it cannot have a perimeter bigger
-than 89.4km (55.5 miles).
+:::info field size limit
+- the field cannot be larger than 50k hectares (123k acres) and
+- cannot have a perimeter bigger than 300km (180 miles).
+:::
 
 ---
 
-### `DELETE /fields/{id}`
+### Delete a satellite field
+
+-> <span class="badge badge--danger">DELETE</span>  `/fields/{id}`
+
 Deletes the field from our database.
 
 :::warning

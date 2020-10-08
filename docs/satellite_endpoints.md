@@ -38,7 +38,7 @@ Description | Endpoints
 
 ### Get all satellite fields
 
--> <span class="badge badge--success">GET</span> `/fields`
+&nbsp<span class="badge badge--success">GET</span> `/fields`
 
 Returns paged results for all fields registered.
 
@@ -115,7 +115,7 @@ curl -X GET \
 
 ### Get a satellite field
 
--> <span class="badge badge--success">GET</span> `/fields/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/fields/{id}`
 
 Fetches a field entry based on its external id.
 
@@ -192,7 +192,7 @@ curl -X GET \
 
 ### Get images of satellite field
 
--> <span class="badge badge--success">GET</span> `/fields/{id}/processes`
+&nbsp<span class="badge badge--success">GET</span> `/fields/{id}/processes`
 
 Returns all processes already handled by our service.
 
@@ -324,7 +324,7 @@ you can either increase the size or the page number.
 
 ### Create a satellite field
 
--> <span class="badge badge--warning">POST</span> `/fields`
+&nbsp<span class="badge badge--warning">POST</span> `/fields`
 
 Creates a new field
 
@@ -435,7 +435,7 @@ curl -X POST \
 
 ### Delete a satellite field
 
--> <span class="badge badge--danger">DELETE</span>  `/fields/{id}`
+&nbsp<span class="badge badge--danger">DELETE</span>  `/fields/{id}`
 
 Deletes the field from our database.
 

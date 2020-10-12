@@ -304,7 +304,7 @@ the URL.
 It is possible to filter the results by passing some query
 parameters. They are listed below.
 
-- `operationtype`, one of the following values: `harvested`, `planted`,
+- `operationType`, one of the following values: `harvested`, `planted`,
   `applied`, `other` (string).
 - `provider`, filter by the provider. Currently we support the following
   providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView` (string).

@@ -194,67 +194,31 @@ curl -X GET \
 
 &nbsp<span class="badge badge--success">GET</span> `/fields/{id}/processes`
 
-Returns all processes already handled by our service.
+Returns images for a given field id.
 
-A _process_ is created by our servers whenever there is a new satellite image
-that intersects with one of your registered fields. This endpoint is used to
-access all images that each process generates.
+We return the following images, in the EPSG:4326 projection:
+  - RGB as tiff and as png (10m resolution)
+  - Colorized NDVI as tiff and as png (10m resolution)
+  - Raw NDVI as tiff (10m resolution)
+  - all 12 Sentinel-2 bands as tiff.
 
-It is possible to filter the results by date of creation and processing of the process, by passing date range parameters.
+It is possible to filter the results by a number of different parameters:
 
-- `startDate`, as ISO 8601 date format to filter processes created after this day
-- `endDate`, as ISO 8601 date format to filter processes created until this day
-- `startProcessedTimestamp`, as ISO 8601 datetime format to filter processes processed after this point in time
-- `endProcessedTimestamp`, as ISO 8601 datetime format to filter processes processed before this point in time
+| Parameter | Type | Description | Default |
+| - | - | - | - |
+| startDate | ISO 8601 datetime format | retrieve images taken after this day | - |
+| endDate | ISO 8601 datetime format | retrieve images taken until this day | - |
+| startProcessedTimestamp | ISO 8601 datetime format | retrieve images processed by Leaf after this day | - |
+| endProcessedTimestamp | ISO 8601 datetime format | retrieve images processed by Leaf until this day | - |
+| maxClouds | double between 0.0 and 100.0 | filter processes with less than or equal to this percentage | 100 |
+| status | string "SUCCESS", "FAILED" or "STARTED" | retrieve images with selected status | SUCCESS |
+| page | integer | page being fetched | 0 |
+| size | integer | how many processes (sets of all images) to return per page | 20 |
 
-It is also possible to filter the results by maximum percentage of clouds and status.
-
-- `maxClouds`, as a number between 0.0 and 100.0 to filter processes with less than or equal to this percentage
-- `status`, as `SUCCESS`, `FAILED` or `STARTED`
-
-If not specified, the default values are: `maxClouds`:`100.0` and `status`:`SUCCESS`
-
-The returned payload is like so:
-
-```py
-[
-    {
-        "date": "2020-06-03T19:03:57.882Z",
-        "clouds": 0,
-        "bucketName": "sentinel-s2-l1c",
-        "bucketKey": "tiles/10/S/FH/2020/6/3/0",
-        "bucketRegion": "eu-central-1",
-        "status": "SUCCESS",
-        "coverage": 100,
-        "images": [
-            {
-                "url": "url.to.your.image.tif",
-                "type": "tif",
-                "resolution": 20
-            },
-            # etc...
-        ],
-        "processedTimestamp": "2020-06-03T19:03:58.881731Z"
-    },
-    # etc...
-]
-```
-
-- `date`: the date of the satellite image
-- `clouds`: cloud coverage percentage of the field, from 0 to 100
-- `bucketName`: name of Sentinel's bucket where the original tile is. Usually
-`sentinel-s2-l1c`
-- `bucketRegion`: AWS region of original image's bucket. Usually `eu-central-1`
-- `bucketKey`: base path of original satellite image
-- `status`: status of the process. It will be either `SUCCESS` or `FAILURE`
-- `coverage`: data coverage percentage of the field, from 0 to 100
-- `images`: each image in this list will have the following data:
-    - `url`: URL of the image
-    - `type`: the type of the image. One of `tif`, `ndvi`, `png` and
-    `tif_colorized`
-    - `resolution`: resolution, in meters, of the image. See table below
-- `processedTimestamp`: the timestamp of when the process was processed
-
+:::info Important
+Default `page` is page 0 and default `size` is 20. So, to see more images,
+you can either increase the size or the page number.
+:::
 
 
 <Tabs
@@ -263,6 +227,7 @@ The returned payload is like so:
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json'},
   ]
 }>
 
@@ -311,18 +276,51 @@ curl -X GET \
 ```
 
 </TabItem>
+<TabItem value="json">
+
+
+```json
+[
+    {
+        "date": "2020-06-03T19:03:57.882Z",
+        "clouds": 0,
+        "bucketName": "sentinel-s2-l1c",
+        "bucketKey": "tiles/10/S/FH/2020/6/3/0",
+        "bucketRegion": "eu-central-1",
+        "status": "SUCCESS",
+        "coverage": 100,
+        "images": [
+            {
+                "url": "url.to.your.image.tif",
+                "type": "tif",
+                "resolution": 20
+            },
+            # etc...
+        ],
+        "processedTimestamp": "2020-06-03T19:03:58.881731Z"
+    },
+    # etc...
+]
+```
+
+- `date`: the date of the satellite image
+- `clouds`: cloud coverage percentage of the field, from 0 to 100
+- `bucketName`: name of Sentinel's bucket where the original tile is. Usually
+`sentinel-s2-l1c`
+- `bucketRegion`: AWS region of original image's bucket. Usually `eu-central-1`
+- `bucketKey`: base path of original satellite image
+- `status`: status of the process. It will be either `SUCCESS` or `FAILURE`
+- `coverage`: data coverage percentage of the field, from 0 to 100
+- `images`: each image in this list will have the following data:
+    - `url`: URL of the image
+    - `type`: the type of the image. One of `tif`, `ndvi`, `png` and
+    `tif_colorized`
+    - `resolution`: resolution, in meters, of the image. See table below
+- `processedTimestamp`: the timestamp of when the process was processed
+
+</TabItem>
 </Tabs>
 
-You can also pass some parameters used exclusively for paging through results.
-They are:
-
-- `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page
-
-:::info Important
-Default `page` is page zero and default `size` is 20. So, to see more images,
-you can either increase the size or the page number.
-:::
 
 ---
 

@@ -200,10 +200,12 @@ A _process_ is created by our servers whenever there is a new satellite image
 that intersects with one of your registered fields. This endpoint is used to
 access all images that each process generates.
 
-It is possible to filter the results by passing a date range parameters.
+It is possible to filter the results by date of creation and processing of the process, by passing date range parameters.
 
-- `startDate`, as ISO 8601 date format to filter processes created before this day
+- `startDate`, as ISO 8601 date format to filter processes created after this day
 - `endDate`, as ISO 8601 date format to filter processes created until this day
+- `startProcessedTimestamp`, as ISO 8601 datetime format to filter processes processed after this point in time
+- `endProcessedTimestamp`, as ISO 8601 datetime format to filter processes processed before this point in time
 
 It is also possible to filter the results by maximum percentage of clouds and status.
 
@@ -231,7 +233,8 @@ The returned payload is like so:
                 "resolution": 20
             },
             # etc...
-        ]
+        ],
+        "processedTimestamp": "2020-06-03T19:03:58.881731Z"
     },
     # etc...
 ]
@@ -250,6 +253,7 @@ The returned payload is like so:
     - `type`: the type of the image. One of `tif`, `ndvi`, `png` and
     `tif_colorized`
     - `resolution`: resolution, in meters, of the image. See table below
+- `processedTimestamp`: the timestamp of when the process was processed
 
 
 

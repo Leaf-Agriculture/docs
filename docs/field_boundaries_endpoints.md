@@ -1061,7 +1061,7 @@ See below the REST resources and their endpoints.
 {
   "id": "UUID",
   "providerName": "JohnDeere",
-  "providerFieldId": "UUID",
+  "providerFieldId": "str",
   "providerFieldName": "str",
   "providerBoundaryId": "UUID",
   "type": "ORIGINAL",

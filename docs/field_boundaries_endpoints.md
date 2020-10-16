@@ -1061,7 +1061,8 @@ See below the REST resources and their endpoints.
 {
   "id": "UUID",
   "providerName": "JohnDeere",
-  "providerFieldId": "UUID",
+  "providerFieldId": "str",
+  "providerFieldName": "str",
   "providerBoundaryId": "UUID",
   "type": "ORIGINAL",
   "leafUserId": "UUID",
@@ -1121,6 +1122,7 @@ GET /users/{id}/fields/{id}/operations/{id}
   "id": "long",
   "name": "str",
   "providerName": "str",
+  "providerFarmName": "str",
   "providerFarmId": "UUID",
   "leafUserId": "UUID",
   "growerId": "long",

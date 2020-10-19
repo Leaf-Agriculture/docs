@@ -6,11 +6,27 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+<!-- the following links are referenced throughout this document -->
+[1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+[2]: #get-all-fields
+[3]: #get-a-field
+[4]: #create-a-field
+[5]: #get-all-operations-of-a-field
+[6]: #get-an-operation-of-a-field
+[7]: #get-fields-by-geometry
+[8]: #get-intersection-of-fields
+[9]: #delete-a-field
+[10]: #get-all-farms
+[11]: #get-a-farm
+[12]: #get-all-growers
+[13]: #get-a-grower
+[14]: crops
+
+
 ## About
 Here we list all the available endpoints from Fields API. For easily
-testing it, we recommend using [Leaf's Postman collection][1].
+calling them, we recommend using [Leaf's Postman collection][1].
 
-[1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
@@ -19,11 +35,28 @@ https://api.withleaf.io/services/fields/api
 
 There is a [REST resources](#rest-resources) section if you want to check it out.
 
+This service has the following endpoints available:
+
+Description | Endpoints
+--- | ---
+[Get all fields][2] | <span class="badge badge--success">GET</span> `/fields`
+[Get a field][3] | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`
+[Create a field][4] | <span class="badge badge--warning">POST</span> `/users/{id}/fields`
+[Get all operations of a field][5] | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
+[Get an operation of a field][6] | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
+[Get fields by geometry][7] | <span class="badge badge--warning">POST</span> `/fields/query/intersects`
+[Get intersection of fields][8] | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
+[Delete a field][9] | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
+[Get all farms][10] | <span class="badge badge--success">GET</span> `/farms`
+[Get a farm][11] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+[Get all growers][12] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][13] | <span class="badge badge--success">GET</span> `/growers/{id}`
+
 ## Endpoints
 
 ### Get all fields
 
-GET `/fields`
+&nbsp<span class="badge badge--success">GET</span> `/fields`
 
 Gets a paged list of Fields. It is possible to filter the results by passing
 some query parameters.
@@ -140,7 +173,7 @@ A JSON array containing Fields.
 
 ### Get a field
 
-GET `/users/{id}/fields/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`
 
 Gets a single Field by its id.
 
@@ -198,7 +231,7 @@ A single [Field](#field-resource) as a JSON object.
 
 ### Create a field
 
-POST `/users/{id}/fields`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{id}/fields`
 
 Creates a Field for the user `leafUserId`. A resquest body must be provided
 containing the an entry `"geometry"`, which represents the boundaries of the
@@ -296,7 +329,7 @@ A Field as a JSON object.
 
 ### Get all operations of a field
 
-GET `/users/{id}/fields/{id}/operations`
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
 
 Gets a paged list of all operation files of the Field and Leaf User specified in
 the URL.
@@ -304,17 +337,14 @@ the URL.
 It is possible to filter the results by passing some query
 parameters. They are listed below.
 
-- `operationType`, one of the following values: `harvested`, `planted`,
-  `applied`, `other` (string).
-- `provider`, filter by the provider. Currently we support the following
-  providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView` (string).
-- `origin`, the origin of the operation file (`provider`, `automerged`,
-  `merged` or `uploaded`)
-- `crop`, provider's identifier crop id. Requires `operationProvider` (string).
-- `variety` provider's identifier variety name/code. Requires
-  `operationProvider`.
-- `startTime`, as ISO 8601 date to filter by the operation's start time.
-- `endTime`, as ISO 8601 date to filter by the operation's end time.
+| Parameter (to filter by) | Type | Description
+| - | - | - |
+| operationType | String "harvested", "planted", "applied" or "other" | retrieve operations of given type
+| provider | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView" | retrieve operations of given provider
+| origin | String "provider", "automerged", "merged" or "uploaded" | retrieve operations of given origin
+| crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here][14] | retrieve operations with this crop.
+| startTime | ISO 8601 datetime format | retrieve operations that started after this date
+| endTime | ISO 8601 datetime format | retrieve operations that ended before this date
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -377,7 +407,7 @@ A JSON array of Files.
 
 ### Get an operation of a field
 
-GET `/users/{id}/fields/{id}/operations/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
 
 Gets a single Operation File of a field by its id.
 
@@ -435,7 +465,7 @@ A single Operation File.
 
 ### Get Fields by geometry
 
-POST `/fields/query/intersects`
+&nbsp<span class="badge badge--warning">POST</span> `/fields/query/intersects`
 
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body.
@@ -540,7 +570,7 @@ A JSON list of Fields.
 
 ### Get intersection of fields
 
-POST `/users/{id}/fields/intersect`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
 
 Gets a GeoJSON MultiPolygon corresponding to the intersection of the Fields
 specified by the given id's. Such Field id's goes in a list, in the request
@@ -740,13 +770,13 @@ A JSON in the followin format.
 
 ### Delete a field
 
-DELETE `/users/{id}/fields/{id}`
+&nbsp<span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
 
 Deletes the field with the given id.
 
 ### Get all farms
 
-GET `/farms`
+&nbsp<span class="badge badge--success">GET</span> `/farms`
 
 Gets a paged list of all Farms. It is possible to pass some query parameters.
 
@@ -828,7 +858,7 @@ A JSON array containing Farms.
 
 ### Get a farm
 
-GET `/users/{id}/farms/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
 
 Gets a single Farm by its id.
 
@@ -902,7 +932,7 @@ A single Farm as a JSON object.
 
 ### Get all growers
 
-GET `/growers`
+&nbsp<span class="badge badge--success">GET</span> `/growers`
 
 Gets a list of all Growers.
 
@@ -980,7 +1010,7 @@ A JSON array containing Growers.
 
 ### Get a grower
 
-GET `/growers/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/growers/{id}`
 
 Gets a single Grower by its id.
 
@@ -1087,14 +1117,15 @@ See below the REST resources and their endpoints.
 }
 ```
 
-```
-GET    /fields
-GET    /users/{id}/fields/{id}
-POST   /users/{id}/fields
-DELETE /users/{id}/fields/{id}
-POST   /fields/query/intersects
-POST   /users/{id}/fields/intersect
-```
+| Description | Endpoints
+| - | - |
+[Get all fields][2] | <span class="badge badge--success">GET</span> `/fields`
+[Get a field][3] | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`
+[Create a field][4] | <span class="badge badge--warning">POST</span> `/users/{id}/fields`
+[Get fields by geometry][7] | <span class="badge badge--warning">POST</span> `/fields/query/intersects`
+[Get intersection of fields][8] | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
+[Delete a field][9] | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
+
 
 ### Operation Resource
 
@@ -1113,10 +1144,10 @@ POST   /users/{id}/fields/intersect
 }
 ```
 
-```
-GET /users/{id}/fields/{id}/operations
-GET /users/{id}/fields/{id}/operations/{id}
-```
+| Description | Endpoints
+| - | - |
+[Get all operations of a field][5] | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
+[Get an operation of a field][6] | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
 
 ### Farm Resource
 
@@ -1133,10 +1164,11 @@ GET /users/{id}/fields/{id}/operations/{id}
 }
 ```
 
-```
-GET    /farms
-GET    /users/{id}/farms/{id}
-```
+| Description | Endpoints
+| - | - |
+[Get all farms][10] | <span class="badge badge--success">GET</span> `/farms`
+[Get a farm][11] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+
 
 ### Grower Resource
 
@@ -1153,7 +1185,7 @@ GET    /users/{id}/farms/{id}
 }
 ```
 
-```
-GET    /growers
-GET    /growers/{id}
-```
+| Description | Endpoints
+| - | - |
+[Get all growers][12] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][13] | <span class="badge badge--success">GET</span> `/growers/{id}`

@@ -6,6 +6,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+<!-- the following links are referenced throughout this document -->
+[1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+[2]: https://tools.ietf.org/html/rfc7946
+[3]: #get-all-files
+[4]: #get-a-file
+[5]: #get-a-file-summary
+[6]: #get-a-files-images
+[7]: #upload-a-file
+[8]: #merge-files
+
 ## About
 
 All HTTP methods should be prepended by this service's endpoint:
@@ -16,15 +26,14 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-```
-GET    /files
-GET    /files/{id}
-GET    /files/{id}/summary
-GET    /files/{id}/images
-POST   /files
-POST   /files/merge
-DELETE /files/{id}
-```
+Description | Endpoints
+--- | ---
+[Get all files][3] | <span class="badge badge--success">GET</span> `/files`
+[Get a file][4] | <span class="badge badge--success">GET</span> `/files/{id}`
+[Get a file summary][5] | <span class="badge badge--success">GET</span> `/files/{id}/summary`
+[Get a file's images][6] | <span class="badge badge--success">GET</span> `/files/{id}/images`
+[Upload a file][7] | <span class="badge badge--warning">POST</span> `/files`
+[Merge files][8] | <span class="badge badge--warning">POST</span> `/files/merge`
 
 ## Endpoints
 Here we list all the available endpoints from this microservice. For easily
@@ -40,7 +49,10 @@ or **[how to add credentials to a Leaf User]()**.
 
 ---
 
-### `GET /files`
+### Get all files
+
+&nbsp<span class="badge badge--success">GET</span>  `/files`
+
 Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
@@ -152,7 +164,10 @@ They are:
 
 ---
 
-### `GET /files/{id}`
+### Get a file
+
+&nbsp<span class="badge badge--success">GET</span>  `/files/{id}`
+
 Gets a single file by its id.
 
 <Tabs
@@ -235,7 +250,10 @@ Gets a single file by its id.
 
 ---
 
-### `GET /files/{id}/summary`
+### Get a file summary
+
+&nbsp<span class="badge badge--success">GET</span>  `/files/{id}/summary`
+
 Gets the summary, if available, for the file id.
 
 
@@ -315,7 +333,10 @@ Gets the summary, if available, for the file id.
 
 ---
 
-### `GET /files/{id}/images`
+### Get a file's images
+
+&nbsp<span class="badge badge--success">GET</span>  `/files/{id}/images`
+
 Gets a list of PNG images generated from the operation's file properties.
 
 <Tabs
@@ -409,7 +430,10 @@ Gets a list of PNG images generated from the operation's file properties.
 
 ---
 
-### `POST /files`
+### Upload a file
+
+&nbsp<span class="badge badge--warning">POST</span> `/files`
+
 Posts/creates a new file in our server.
 
 This endpoint receives three required query parameters. A `leafUserId`, `fileFormat` and
@@ -527,7 +551,10 @@ performing GET consults in this.
 
 ---
 
-### `POST /files/merge`
+### Merge files
+
+&nbsp<span class="badge badge--warning">POST</span> `/files/merge`
+
 Posts a merge operation to our server.
 
 A merge operation is performed asynchronously. This call will return immediately
@@ -618,7 +645,3 @@ It receives a single JSON object with the `ids` entry. Example:
 
   </TabItem>
 </Tabs>
-
-
-[1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[2]: https://tools.ietf.org/html/rfc7946

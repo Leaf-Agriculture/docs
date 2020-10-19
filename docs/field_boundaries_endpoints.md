@@ -299,7 +299,7 @@ A Field as a JSON object.
 GET `/users/{id}/fields/{id}/operations`
 
 Gets a paged list of all operation files of the Field and Leaf User specified in
-the URL.  
+the URL.
 
 It is possible to filter the results by passing some query
 parameters. They are listed below.

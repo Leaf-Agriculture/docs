@@ -1101,7 +1101,7 @@ POST   /users/{id}/fields/intersect
 ```json
 {
   "id": "UUID",
-  "operationType": "planted",
+  "operationType": "harvested|planted|applied",
   "startTime": "ISO date-time",
   "endTime": "ISO date-time",
   "crops": ["str"],

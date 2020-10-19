@@ -308,6 +308,8 @@ parameters. They are listed below.
   `applied`, `other` (string).
 - `provider`, filter by the provider. Currently we support the following
   providers: `CNHI`, `JohnDeere`, `Trimble` and `ClimateFieldView` (string).
+- `origin`, the origin of the operation file (`provider`, `automerged`,
+  `merged` or `uploaded`)
 - `crop`, provider's identifier crop id. Requires `operationProvider` (string).
 - `variety` provider's identifier variety name/code. Requires
   `operationProvider`.
@@ -1106,6 +1108,7 @@ POST   /users/{id}/fields/intersect
   "varieties": ["str"],
   "providerFileId": "str",
   "provider": "Trimble",
+  "origin": "provider|merged|automerged|uploaded",
   "leafUserId": "UUID"
 }
 ```

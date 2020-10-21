@@ -934,7 +934,11 @@ A single Farm as a JSON object.
 
 &nbsp<span class="badge badge--success">GET</span> `/growers`
 
-Gets a list of all Growers.
+Gets a paged list of all Growers. Use the following parameters for paging
+through results.
+
+- `page`, an integer specifying the page being fetched
+- `size`, an integer specifying the size of the page
 
 #### Response
 A JSON array containing Growers.

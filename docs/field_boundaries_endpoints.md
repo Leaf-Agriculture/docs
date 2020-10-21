@@ -63,7 +63,7 @@ some query parameters.
 
 - `leafUserId`, only matches files from this user (string).
 - `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page
+- `size`, an integer specifying the size of the page (defaults to 20)
 
 These last two parameters are used exclusively for paging through results.
 
@@ -350,7 +350,7 @@ You can also pass some parameters used exclusively for paging through results.
 They are:
 
 - `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page
+- `size`, an integer specifying the size of the page (defaults to 20)
 
 #### Response
 A JSON array of Files.
@@ -781,7 +781,7 @@ Deletes the field with the given id.
 Gets a paged list of all Farms. It is possible to pass some query parameters.
 
 - `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page
+- `size`, an integer specifying the size of the page (defaults to 20)
 
 The parameters are used exclusively for paging through results.
 
@@ -938,7 +938,7 @@ Gets a paged list of all Growers. Use the following parameters for paging
 through results.
 
 - `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page
+- `size`, an integer specifying the size of the page (defaults to 20)
 
 #### Response
 A JSON array containing Growers.

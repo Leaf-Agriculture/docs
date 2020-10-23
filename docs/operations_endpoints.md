@@ -13,6 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: #get-a-file
 [5]: #get-a-file-summary
 [6]: #get-a-files-images
+[9]: #get-a-files-images
 [7]: #upload-a-file
 [8]: #merge-files
 
@@ -32,6 +33,7 @@ Description | Endpoints
 [Get a file][4] | <span class="badge badge--success">GET</span> `/files/{id}`
 [Get a file summary][5] | <span class="badge badge--success">GET</span> `/files/{id}/summary`
 [Get a file's images][6] | <span class="badge badge--success">GET</span> `/files/{id}/images`
+[Get a file's units][9] | <span class="badge badge--success">GET</span> `/files/{id}/units`
 [Upload a file][7] | <span class="badge badge--warning">POST</span> `/files`
 [Merge files][8] | <span class="badge badge--warning">POST</span> `/files/merge`
 
@@ -422,6 +424,91 @@ Gets a list of PNG images generated from the operation's file properties.
 
   We also generate an auxiliary `xml` with geographic information to handle this
   image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
+
+  </TabItem>
+</Tabs>
+
+
+
+---
+
+### Get a file's units
+
+&nbsp<span class="badge badge--success">GET</span>  `/files/{id}/units`
+
+Gets the file's properties and their units.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/units'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/units'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/units'
+  ```
+
+  </TabItem>
+  <TabItem value="json">
+
+  Returns a JSON like the following:
+
+  ```json
+  {
+      "distance": "ft",
+      "heading": "arcdeg",
+      "speed": "mi/hr",
+      "elevation": "ft",
+      "harvestMoisture": "prcnt",
+      "wetMass": "lb",
+      "yieldVolume": "bu",
+      "equipmentWidth": "ft"
+  }
+  ```
+
+These properties vary depending on the operationType, but you can expect the same,
+standardized keys, across different providers.
+
+Units usually don't change for the same Leaf User, since the providers units
+configuration is based on their location. But keep in mind that it's best to
+always take the units into consideration, just to be sure.
 
   </TabItem>
 </Tabs>

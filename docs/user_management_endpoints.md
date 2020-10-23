@@ -1618,6 +1618,7 @@ Delete a CNHI Credentials resource by id.
 
   </TabItem>
 </Tabs>
+
 :::tip
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!
 :::

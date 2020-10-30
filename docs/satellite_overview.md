@@ -60,6 +60,10 @@ In addition, you will get the NDVI (i.e., we call them at Leaf as `NDVI_relative
 
 <img alt="NDVI example: Left - NDVI relative, Center - NDVI absolute, Right - NDVI" src={useBaseUrl('img/ndvi_files.png')} />
 
+Left - NDVI relative. Center - NDVI absolute. Right - NDVI.  
+We recommend using the Right one (just ndvi.png)
+
+
 Currently, our Satellite service runs without a relationship between our Field Services, and the User Management Services.
 However, we are working to integrate it into the `leafUser` hierarchy, and the Fields Service.
 

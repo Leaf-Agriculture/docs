@@ -70,6 +70,7 @@ below.
 | `operationStartTime` | ISO 8601 date. Returns operations from the operationStartTime onward |
 | `operationEndTime` | ISO 8601 date. Returns operations until the operationEndTime |
 | `operationType` | `applied`, `planted` or `harvested` |
+| `minArea` | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 
 
 

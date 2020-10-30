@@ -39,12 +39,12 @@ The following table shows all the images with its resolutions and types:
 | B07.tif           | 20         | tif           |
 | B08.tif           | 10         | tif           |
 | B09.tif           | 60         | tif           |
-| B10.tif           | 60         | tif           |
 | B11.tif           | 20         | tif           |
 | B12.tif           | 20         | tif           |
 | NDVI.png          | NULL       | png           |
 | NDVI.tif          | 10         | ndvi          |
 | NDVI_color.tif    | 10         | tif_colorized |
+| NDVI_relative.png | NULL       | png           |
 | NDVI_absolute.png | NULL       | png           |
 | RGB.png           | NULL       | png           |
 | RGB.tif           | 10         | tif_colorized |
@@ -56,15 +56,9 @@ the image below. If you prefer to use your own ramp, we recommend using `NDVI.ti
 which is a pre calculated NDVI file. You can import it into any GIS software,
 like [QGis][4], and use it as you please.
 
-The difference between `NDVI_color.png` and `NDVI_absolute.png` is that for the
-first one we first normalize the data between the min/max of the data before
-coloring it. For the second one we apply the color ramp as is. In practical terms
-the normalized version will have it's lowest values as a bright red and its
-highest values as a bright green (see example image below). The absolute version
-will have the value at `-1` as the bright red and the value `1` as the bright
-green with the colors interpolated in between.
+In addition, you will get the NDVI (i.e., we call them at Leaf as `NDVI_relative.png`, `NDVI_absolute.png` and `NDVI.png`)  cut for your area of interest. The NDVI relative uses the minimum and maximum of the image of that date and, therefore, you would have a color scale to better visualize the differences of your harvest for that specific moment, whereas, the NDVI absolute and NDVI, whose range goes from `-1 `to `1`, you can make comparisons on different dates, the difference between these files are the color ramp applied (i.e., in the NDVI all the values below 0 are bright red while in the NDVI absolute the color ramp begins at `-1` as the bright red and the value `1` as the bright green inteporlated in between).
 
-<img alt="NDVI example" src={useBaseUrl('img/ndviexample.png')} />
+<img alt="NDVI example: Left - NDVI relative, Center - NDVI absolute, Right - NDVI" src={useBaseUrl('img/ndvi_files.png')} />
 
 Currently, our Satellite service runs without a relationship between our Field Services, and the User Management Services.
 However, we are working to integrate it into the `leafUser` hierarchy, and the Fields Service.

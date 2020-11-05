@@ -323,7 +323,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
   <TabItem value="harvested">
 
-This is one example of an automatically merged harvest operation
+This is an example of an automatically merged harvest operation
 
   ```json
   {

@@ -25,7 +25,7 @@ field. But you can increase that to as far back in time as you want.
 This API accepts field boundary polygons and returns processed, cropped, and color-corrected RGB and NDVI images every time there is a new image available.
 We also provide information like percent cloud coverage of the field, the data coverage percentage, and the Sentinel tile source for each image as well.
 
-We generate a total of 18 images for each intersected field: A GeoTiff for each band from Sentinel and processed RGB and NDVI images.
+We generate a total of 19 images for each intersected field: A GeoTiff for each band from Sentinel and processed RGB and NDVI images.
 The following table shows all the images with its resolutions and types:
 
 | Name              | Resolution | Type          |
@@ -41,6 +41,7 @@ The following table shows all the images with its resolutions and types:
 | B09.tif           | 60         | tif           |
 | B11.tif           | 20         | tif           |
 | B12.tif           | 20         | tif           |
+| B8A.tif           | 20         | tif           |
 | NDVI.png          | NULL       | png           |
 | NDVI.tif          | 10         | ndvi          |
 | NDVI_color.tif    | 10         | tif_colorized |
@@ -56,13 +57,12 @@ the image below. If you prefer to use your own ramp, we recommend using `NDVI.ti
 which is a pre calculated NDVI file. You can import it into any GIS software,
 like [QGis][4], and use it as you please.
 
-In addition, you will get the NDVI (i.e., we call them at Leaf as `NDVI_relative.png`, `NDVI_absolute.png` and `NDVI.png`)  cut for your area of interest. The NDVI relative uses the minimum and maximum of the image of that date and, therefore, you would have a color scale to better visualize the differences of your harvest for that specific moment, whereas, the NDVI absolute and NDVI, whose range goes from `-1 `to `1`, you can make comparisons on different dates, the difference between these files are the color ramp applied (i.e., in the NDVI all the values below 0 are bright red while in the NDVI absolute the color ramp begins at `-1` as the bright red and the value `1` as the bright green inteporlated in between).
+In addition, you will get the NDVI (i.e., we call them at Leaf as `NDVI_relative.png`, `NDVI_absolute.png` and `NDVI.png`)  cut for your area of interest. The NDVI relative uses the minimum and maximum of the image of that date and, therefore, you would have a color scale to better visualize the differences of your harvest for that specific moment, whereas, the NDVI absolute and NDVI, whose range goes from `-1 `to `1`, you can make comparisons on different dates, the difference between these files are the color ramp applied (i.e., in the NDVI all the values below `0` are bright red while in the NDVI absolute the color ramp begins at `-1` as the bright red and the value `1` as the bright green inteporlated in between).
 
 <img alt="NDVI example: Left - NDVI relative, Center - NDVI absolute, Right - NDVI" src={useBaseUrl('img/ndvi_files.png')} />
 
 Left - NDVI relative. Center - NDVI absolute. Right - NDVI.  
 We recommend using the Right one (just ndvi.png)
-
 
 Currently, our Satellite service runs without a relationship between our Field Services, and the User Management Services.
 However, we are working to integrate it into the `leafUser` hierarchy, and the Fields Service.

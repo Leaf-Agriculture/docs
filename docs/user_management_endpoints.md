@@ -79,7 +79,8 @@ Form of a Climate FieldView Credentials resource:
   "clientId": "str",
   "clientSecret": "str",
   "apiKey": "str",
-  "refreshToken": "str"
+  "refreshToken": "str",
+  "valid": "boolean",
 }
 ```
 
@@ -1012,7 +1013,6 @@ Create a Climate Field View credential for the Leaf User.
 
 ```json
 {
-  "id": "UUID",
   "clientId": "str",
   "clientSecret": "str",
   "apiKey": "str",

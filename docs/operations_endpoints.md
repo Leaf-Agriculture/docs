@@ -133,27 +133,81 @@ They are:
   ```json
   [
     {
-      "id": "UUID",
-      "fileName": "string",
-      "provider": "string",
-      "organizationId": "string",
-      "fileType": "string",
-      "fileFormat": "string",
-      "sizeInBytes": 0,
-      "originalFile": "string",
-      "rawGeojson": "string",
-      "standardGeojson": "string",
-      "zippedPNGs": "string",
-      "leafUserId": "UUID",
-      "apiOwnerUsername": "string",
-      "summary": "Feature",
-      "sourceFiles": [],
-      "status": "string",
-      "origin": "string",
-      "createdTime": "2020-04-29T20:13:42.811Z",
-      "operationEndTime": "2020-04-29T20:13:42.811Z",
-      "operationStartTime": "2020-04-29T23:13:42.811Z"
-    },
+         "id": "11e8df30-df5c-4373-8dc1-fb275cdd3ea4",
+         "provider": "ClimateFieldView",
+         "sizeInBytes": 24249,
+         "originalFile": "https://climate-prd-bucket-etko4ab64ih6.s3.us-west-2.amazonaws.com/19e9fe2e-399c-4735-b4b1-9b052840e2f5.zip",
+         "standardGeojson": "https://climate-prd-bucket-etko4ab64ih6.s3.us-west-2.amazonaws.com/14aa028a-72f0-473a-8fc8-e2b3edef7c3f.json",
+         "leafUserId": "1f351aa6-c05a-473a-89ba-d63a87d9b302",
+         "apiOwnerUsername": "leafdemos",
+         "status": "processed",
+         "origin": "provider",
+         "createdTime": "2020-10-29T19:44:57.723",
+         "operationStartTime": "2019-04-29T00:24:52.084",
+         "operationEndTime": "2019-04-29T00:43:03.276",
+         "summary": {
+             "type": "Feature",
+             "properties": {
+                 "totalDistance": 10900.947723655045,
+                 "speed": {
+                     "average": 10.33722442338795,
+                     "standardDeviation": 1.5361860364425932,
+                     "min": 0.3355403244495392,
+                     "max": 11.497848510742188
+                 },
+                 "elevation": {
+                     "average": 3577.9168289290683,
+                     "standardDeviation": 0.6729413774132946,
+                     "min": 3576.9,
+                     "max": 3578.9
+                 },
+                 "varieties": [
+                     "28-0-0 uan @ 160 lb/ac",
+                     "agrotain advanced @ 2.5 gal/ac",
+                     "bicep ii magnum @ 32 fl oz/ac",
+                     "fs optique @ 20 fl oz/ac",
+                     "roundup powermax (usa) @ 16 fl oz/ac",
+                     "sharpen powered by kixor @ 1 fl oz/ac"
+                 ],
+                 "appliedRate": {
+                     "average": 14.757733806861584,
+                     "standardDeviation": 0.3157623349195758,
+                     "min": 13.899999643744623,
+                     "max": 15.599999476023033
+                 },
+                 "operationType": "applied",
+                 "totalArea": 319471.8942196931,
+                 "machineSpecification": {
+                     "machineDescription": "Agco Rogator RG1300",
+                     "implementDescription": "Sprayer",
+                     "implementWidth": 1440.0000000000002
+                 }
+             },
+             "geometry": {
+                 "type": "MultiPolygon",
+                 "coordinates": [
+                     [
+                         [
+                             [-89.83382833, 39.71963950, 3578.8],
+                             [-89.83443583, 39.71966733, 3578.8],
+                             [-89.83452050, 39.71968466, 3578.6],
+                             [-89.83451283, 39.72648850, 3577.8],
+                             [-89.83010300, 39.72748950, 3577.2],
+                             [-89.83005766, 39.72749950, 3577.2],
+                             [-89.83001900, 39.72750716, 3577.2],
+                             [-89.82999183, 39.72751166, 3577.3],
+                             [-89.82997116, 39.72751383, 3577.3],
+                             [-89.82993383, 39.72020166, 3578.6],
+                             [-89.82993866, 39.71975133, 3578.2],
+                             [-89.82996366, 39.71968966, 3578.1],
+                             [-89.83382833, 39.71963950, 3578.8]
+                         ]
+                     ]
+                 ]
+             }
+         },
+         "sourceFiles": []
+     },
     ...
   ]
   ```
@@ -223,29 +277,84 @@ Gets a single file by its id.
   </TabItem>
   <TabItem value="json">
 
+  This is a sample response of "applied" operation type
   ```json
   {
-    "id": "UUID",
-    "fileName": "string",
-    "provider": "string",
-    "organizationId": "string",
-    "fileType": "string",
-    "fileFormat": "string",
-    "sizeInBytes": 0,
-    "originalFile": "string",
-    "rawGeojson": "string",
-    "standardGeojson": "string",
-    "zippedPNGs": "string",
-    "leafUserId": "UUID",
-    "apiOwnerUsername": "string",
-    "summary": "Feature",
-    "sourceFiles": [],
-    "status": "string",
-    "origin": "string",
-    "createdTime": "2020-04-29T20:13:42.811Z",
-    "operationEndTime": "2020-04-29T20:13:42.811Z",
-    "operationStartTime": "2020-04-29T23:13:42.811Z"
-  }
+       "id": "11e8df30-df5c-4373-8dc1-fb275cdd3ea4",
+       "provider": "ClimateFieldView",
+       "sizeInBytes": 24249,
+       "originalFile": "https://climate-prd-bucket-etko4ab64ih6.s3.us-west-2.amazonaws.com/19e9fe2e-399c-4735-b4b1-9b052840e2f5.zip",
+       "standardGeojson": "https://climate-prd-bucket-etko4ab64ih6.s3.us-west-2.amazonaws.com/14aa028a-72f0-473a-8fc8-e2b3edef7c3f.json",
+       "leafUserId": "1f351aa6-c05a-473a-89ba-d63a87d9b302",
+       "apiOwnerUsername": "leafdemos",
+       "status": "processed",
+       "origin": "provider",
+       "createdTime": "2020-10-29T19:44:57.723",
+       "operationStartTime": "2019-04-29T00:24:52.084",
+       "operationEndTime": "2019-04-29T00:43:03.276",
+       "summary": {
+           "type": "Feature",
+           "properties": {
+               "totalDistance": 10900.947723655045,
+               "speed": {
+                   "average": 10.33722442338795,
+                   "standardDeviation": 1.5361860364425932,
+                   "min": 0.3355403244495392,
+                   "max": 11.497848510742188
+               },
+               "elevation": {
+                   "average": 3577.9168289290683,
+                   "standardDeviation": 0.6729413774132946,
+                   "min": 3576.9,
+                   "max": 3578.9
+               },
+               "varieties": [
+                   "28-0-0 uan @ 160 lb/ac",
+                   "agrotain advanced @ 2.5 gal/ac",
+                   "bicep ii magnum @ 32 fl oz/ac",
+                   "fs optique @ 20 fl oz/ac",
+                   "roundup powermax (usa) @ 16 fl oz/ac",
+                   "sharpen powered by kixor @ 1 fl oz/ac"
+               ],
+               "appliedRate": {
+                   "average": 14.757733806861584,
+                   "standardDeviation": 0.3157623349195758,
+                   "min": 13.899999643744623,
+                   "max": 15.599999476023033
+               },
+               "operationType": "applied",
+               "totalArea": 319471.8942196931,
+               "machineSpecification": {
+                   "machineDescription": "Agco Rogator RG1300",
+                   "implementDescription": "Sprayer",
+                   "implementWidth": 1440.0000000000002
+               }
+           },
+           "geometry": {
+               "type": "MultiPolygon",
+               "coordinates": [
+                   [
+                       [
+                           [-89.83382833, 39.71963950, 3578.8],
+                           [-89.83443583, 39.71966733, 3578.8],
+                           [-89.83452050, 39.71968466, 3578.6],
+                           [-89.83451283, 39.72648850, 3577.8],
+                           [-89.83010300, 39.72748950, 3577.2],
+                           [-89.83005766, 39.72749950, 3577.2],
+                           [-89.83001900, 39.72750716, 3577.2],
+                           [-89.82999183, 39.72751166, 3577.3],
+                           [-89.82997116, 39.72751383, 3577.3],
+                           [-89.82993383, 39.72020166, 3578.6],
+                           [-89.82993866, 39.71975133, 3578.2],
+                           [-89.82996366, 39.71968966, 3578.1],
+                           [-89.83382833, 39.71963950, 3578.8]
+                       ]
+                   ]
+               ]
+           }
+       },
+       "sourceFiles": []
+   }
   ```
 
   </TabItem>
@@ -316,17 +425,65 @@ Gets the summary, if available, for the file id.
 
   ```json
   {
-    "type": "Feature",
-    "properties": {
-      # these properties and more
-      "totalDistance": 19194.943013290438,
-      "operationType": "harvested",
-      "totalArea": 131638.75702051684
-    },
-    "geometry": {
-      "type": "MultiPolygon",
-      "coordinates": [...]
-    }
+      "type": "Feature",
+      "properties": {
+          "totalDistance": 10900.947723655045,
+          "speed": {
+              "average": 10.33722442338795,
+              "standardDeviation": 1.5361860364425932,
+              "min": 0.3355403244495392,
+              "max": 11.497848510742188
+          },
+          "elevation": {
+              "average": 3577.9168289290683,
+              "standardDeviation": 0.6729413774132946,
+              "min": 3576.9,
+              "max": 3578.9
+          },
+          "varieties": [
+              "28-0-0 uan @ 160 lb/ac",
+              "agrotain advanced @ 2.5 gal/ac",
+              "bicep ii magnum @ 32 fl oz/ac",
+              "fs optique @ 20 fl oz/ac",
+              "roundup powermax (usa) @ 16 fl oz/ac",
+              "sharpen powered by kixor @ 1 fl oz/ac"
+          ],
+          "appliedRate": {
+              "average": 14.757733806861584,
+              "standardDeviation": 0.3157623349195758,
+              "min": 13.899999643744623,
+              "max": 15.599999476023033
+          },
+          "operationType": "applied",
+          "totalArea": 319471.8942196931,
+          "machineSpecification": {
+              "machineDescription": "Agco Rogator RG1300",
+              "implementDescription": "Sprayer",
+              "implementWidth": 1440.0000000000002
+          }
+      },
+      "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+              [
+                  [
+                      [-89.83382833, 39.71963950, 3578.8],
+                      [-89.83443583, 39.71966733, 3578.8],
+                      [-89.83452050, 39.71968466, 3578.6],
+                      [-89.83451283, 39.72648850, 3577.8],
+                      [-89.83010300, 39.72748950, 3577.2],
+                      [-89.83005766, 39.72749950, 3577.2],
+                      [-89.83001900, 39.72750716, 3577.2],
+                      [-89.82999183, 39.72751166, 3577.3],
+                      [-89.82997116, 39.72751383, 3577.3],
+                      [-89.82993383, 39.72020166, 3578.6],
+                      [-89.82993866, 39.71975133, 3578.2],
+                      [-89.82996366, 39.71968966, 3578.1],
+                      [-89.83382833, 39.71963950, 3578.8]
+                  ]
+              ]
+          ]
+      }
   }
   ```
 

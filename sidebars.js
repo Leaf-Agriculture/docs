@@ -22,7 +22,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Machine Operation Data',
-          items: ['operations_overview', 'operations_endpoints']
+          items: ['operations_overview', 'operations_endpoints', 'operations_sample_output']
         },
         {
           type: 'category',

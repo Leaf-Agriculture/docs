@@ -22,33 +22,38 @@ field. But you can increase that to as far back in time as you want.
 
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
-This API accepts field boundary polygons and returns processed, cropped, and color-corrected RGB and NDVI images every time there is a new image available.
-We also provide information like percent cloud coverage of the field, the data coverage percentage, and the Sentinel tile source for each image as well.
+This API accepts field boundary polygons and returns processed, cropped, and
+color-corrected RGB and NDVI images every time there is a new image available.
+We also provide information like percent cloud coverage of the field, the data
+coverage percentage, and the Sentinel tile source for each image as well.
 
-We generate a total of 19 images for each intersected field: A GeoTiff for each band from Sentinel and processed RGB and NDVI images.
+We generate a total of 19 images for each intersected field: A GeoTiff for each
+band from Sentinel and processed RGB and NDVI images.
+
 The following table shows all the images with its resolutions and types:
+(TIFs are EPSG:4326, PNGs are EPSG:3857).
 
-| Name              | Resolution | Type          |
-|:------------------|:-----------|:--------------|
-| B01.tif           | 60 meters  | tif           |
-| B02.tif           | 10         | tif           |
-| B03.tif           | 10         | tif           |
-| B04.tif           | 10         | tif           |
-| B05.tif           | 20         | tif           |
-| B06.tif           | 20         | tif           |
-| B07.tif           | 20         | tif           |
-| B08.tif           | 10         | tif           |
-| B09.tif           | 60         | tif           |
-| B11.tif           | 20         | tif           |
-| B12.tif           | 20         | tif           |
-| B8A.tif           | 20         | tif           |
-| NDVI.png          | NULL       | png           |
-| NDVI.tif          | 10         | ndvi          |
-| NDVI_color.tif    | 10         | tif_colorized |
-| NDVI_relative.png | NULL       | png           |
-| NDVI_absolute.png | NULL       | png           |
-| RGB.png           | NULL       | png           |
-| RGB.tif           | 10         | tif_colorized |
+| Name              | Resolution | Type               | Projection
+|:------------------|:-----------|:-------------------|:------------|
+| NDVI.png          | NULL       | png ndvi           | EPSG:3857   |
+| RGB.png           | NULL       | png RGB            | EPSG:3857   |
+| NDVI.tif          | 10         | tif raw ndvi values| EPSG:4326   |
+| NDVI_color.tif    | 10         | tif colored ndvi   | EPSG:4326   |
+| RGB.tif           | 10         | tif RGB            | EPSG:4326   |
+| B01.tif           | 60 meters  | single band        | EPSG:4326   |
+| B02.tif           | 10         | single band        | EPSG:4326   |
+| B03.tif           | 10         | single band        | EPSG:4326   |
+| B04.tif           | 10         | single band        | EPSG:4326   |
+| B05.tif           | 20         | single band        | EPSG:4326   |
+| B06.tif           | 20         | single band        | EPSG:4326   |
+| B07.tif           | 20         | single band        | EPSG:4326   |
+| B08.tif           | 10         | single band        | EPSG:4326   |
+| B8A.tif           | 20         | single band        | EPSG:4326   |
+| B09.tif           | 60         | single band        | EPSG:4326   |
+| B11.tif           | 20         | single band        | EPSG:4326   |
+| B12.tif           | 20         | single band        | EPSG:4326   |
+| NDVI_relative.png | NULL       | png relative ndvi  | EPSG:3857   |
+| NDVI_absolute.png | NULL       | png absolute ndvi  | EPSG:3857   |
 
 PNG files do not have resolution because they are scaled up by 800%.
 

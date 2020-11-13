@@ -196,7 +196,7 @@ curl -X GET \
 
 Returns images for a given field id.
 
-We return the following images, in the EPSG:4326 projection:
+We return the following images, (tifs are EPSG:4326, pngs are EPSG:3857):
   - RGB as tiff and as png (10m resolution)
   - Colorized NDVI as tiff and as png (10m resolution)
   - Raw NDVI as tiff (10m resolution)

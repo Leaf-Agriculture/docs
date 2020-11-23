@@ -780,7 +780,7 @@ Deletes the field with the given id.
 
 Gets a paged list of all Farms. It is possible to pass some query parameters.
 
-- `providerName`, only matches Farms from this provider (string)
+- `provider`, only matches Farms from this provider (string)
 - `leafUserId`, only matches Farms from this Leaf User (UUID)
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page (defaults to 20)

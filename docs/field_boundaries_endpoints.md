@@ -780,6 +780,8 @@ Deletes the field with the given id.
 
 Gets a paged list of all Farms. It is possible to pass some query parameters.
 
+- `provider`, only matches Farms from this provider (string)
+- `leafUserId`, only matches Farms from this Leaf User (UUID)
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page (defaults to 20)
 
@@ -937,6 +939,8 @@ A single Farm as a JSON object.
 Gets a paged list of all Growers. Use the following parameters for paging
 through results.
 
+- `provider`, only matches Growers from this provider (string)
+- `leafUserId`, only matches Growers from this Leaf User (UUID)
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page (defaults to 20)
 

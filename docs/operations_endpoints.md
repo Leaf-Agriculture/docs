@@ -783,7 +783,7 @@ Trimble
   ```json
   {
     "message": "Your file is being processed and will be available in a few minutes",
-    "ids": ["id1", "id"]
+    "ids": ["id1", "id2"]
   }
   ```
 

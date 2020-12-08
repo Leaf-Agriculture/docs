@@ -679,10 +679,14 @@ always take the units into consideration, just to be sure.
 
 &nbsp<span class="badge badge--warning">POST</span> `/files`
 
-Posts/creates a new file in our server.
+Posts/creates a new file in Leaf. The file must be sent as a zip.
 
-This endpoint receives three required query parameters. A `leafUserId`, `fileFormat` and
-`provider`. The `fileFormat` must be one of the following:
+This endpoint receives three query parameters, one of them is optional.
+
+A `leafUserId`, `provider` and `fileFormat` (optional). 
+
+When you are sure which file format to send, it's best to add the `fileFormat`,
+that must be one of the following:
 
 
 ```
@@ -695,7 +699,7 @@ SHAPEFILE
 TRIMBLE
 ```
 
-The `provider` must be one of the following:
+Along with the fileFormat, a `provider` must be set and be one of the following:
 
 ```
 Leaf
@@ -704,6 +708,11 @@ CNHI
 JohnDeere
 Trimble
 ```
+
+When unsure about the format or there can be more than one format, the 
+`provider` must be set to just `Leaf`. This way, Leaf will detect different 
+sources and file formats inside the zip in a number of different ways and 
+hierarchies and generate multiple separate file ids.
 
 <Tabs
   defaultValue="sh"
@@ -781,17 +790,23 @@ Trimble
   Returns a single JSON object:
 
   ```json
-  {
+{
     "message": "Your file is being processed and will be available in a few minutes",
-    "id": "id"
-  }
+    "ids": [
+        "file_id_1",
+        "file_id_2",
+        "file_id_...",
+        "file_id_n",
+    ]
+}
   ```
 
   </TabItem>
 </Tabs>
 
-After a few minutes, you can consult the result of Leaf processing over this file by
-performing GET consults in this.
+After a few minutes, you can query each of the files individually on 
+[Get a File](#get-a-file) or all of them, filtering by `createdDate` on 
+[Get all Files](#get-all-files)
 
 
 ---

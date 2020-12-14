@@ -685,8 +685,9 @@ This endpoint receives three query parameters, one of them is optional.
 
 A `leafUserId`, `provider` and `fileFormat` (optional). 
 
-When you are sure which file format to send, it's best to add the `fileFormat`,
-that must be one of the following:
+When you are sure which provider a file came from and that if there are multiple 
+files they belong to the same operations, you can add the `fileFormat`, that 
+must be one of the following:
 
 
 ```
@@ -709,10 +710,14 @@ JohnDeere
 Trimble
 ```
 
-When unsure about the format or there can be more than one format, the 
-`provider` must be set to just `Leaf`. This way, Leaf will detect different 
-sources and file formats inside the zip in a number of different ways and 
-hierarchies and generate multiple separate file ids.
+When unsure about the format or there can be more than one format in the same 
+zip, you can use our generic uploader and Leaf will detect the files present.
+For that, set `provider` to `Leaf` and don't include `fileFormat`. 
+Leaf will detect files present in a number of different ways and hierarchies and 
+create/return one file id for each detection. This is very important because it's 
+slightly different than when uploading a zip file you are sure refers to the 
+same operation and same provider, creating only one file even if the zip contains
+multiple files for the same operation
 
 <Tabs
   defaultValue="sh"

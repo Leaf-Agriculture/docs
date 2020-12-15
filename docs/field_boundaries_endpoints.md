@@ -127,6 +127,14 @@ A JSON array containing Fields.
       "id": "3031c20d-4331-4a24-bac0-c27087fc901f",
       "name": "str",
       "leafUserId": "5db46916-54a0-4b38-a9b1-d8e00673db63",
+      "providerName": "JohnDeere",
+      "providerFieldName": "Right side by the lake",
+      "providerId": 2,
+      "providerFieldId": "48926e0d-9bb7-4618-9214-3c2bf50d9ac2",
+      "providerBoundaryId": "5bfab976-df1b-44c7-ab83-ee5befdd45af",
+      "organizationId": "469039",
+      "type": "ORIGINAL",
+      "farmId": 1530952,
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -155,14 +163,7 @@ A JSON array containing Fields.
             ]
           ]
         ]
-      },
-      "providerName": "JohnDeere",
-      "providerId": 2,
-      "providerFieldId": "48926e0d-9bb7-4618-9214-3c2bf50d9ac2",
-      "providerBoundaryId": "5bfab976-df1b-44c7-ab83-ee5befdd45af",
-      "organizationId": "469039",
-      "type": "ORIGINAL",
-      "farmId": 1530952
+      }
     }
   ]
   ```
@@ -1100,7 +1101,8 @@ See below the REST resources and their endpoints.
 ```json
 {
   "id": "UUID",
-  "providerName": "JohnDeere",
+  "providerName": "str",
+  "providerFieldName": "str",
   "providerFieldId": "str",
   "providerFieldName": "str",
   "providerBoundaryId": "UUID",

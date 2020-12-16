@@ -910,3 +910,102 @@ It receives a single JSON object with the `ids` entry. Example:
 
   </TabItem>
 </Tabs>
+
+
+## REST Resources
+
+See below the REST resources and their endpoints.
+
+### Operations Resource
+
+Leaf returns operation files in a standardized format. Naturally, different 
+types of operations contain different properties. For instance, an `applied` 
+operation will contain `appliedRate`, whereas a `harvested` operation will 
+contain `wetMass`. The resource below shows a typical return. A list of 
+all properties is available here.
+
+```json
+{
+    "id": "f505092b-ab8f-4d87-a4b6-92cccb6b2515",
+    "fileName": "new_test_data.zip",
+    "provider": "Leaf",
+    "fileFormat": "DATCLIMATE",
+    "originalFile": "URL (String)",
+    "rawGeojson": "URL (String)",
+    "standardGeojson": "URL (String)",
+    "zippedPNGs": "URL (String)",
+    "leafUserId": "UUID",
+    "apiOwnerUsername": "email (String)",
+    "summary": {
+        "type": "Feature",
+        "properties": {
+            "property1": {
+                "average": float,
+                "standardDeviation": float,
+                "min": float,
+                "max": float
+            },
+            "property2": {
+                "average": float,
+                "standardDeviation": float,
+                "min": float,
+                "max": float
+            },
+            "propertyn": {
+                "average": float,
+                "standardDeviation": float,
+                "min": float,
+                "max": float
+            },
+            "crop": [
+                "String"
+            ],
+            "operationType": "String",
+            "totalArea": float
+        },
+        "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [[[
+              [-89.832583, 39.719780, 194.9],
+              [-89.832588, 39.719780, 194.9],
+              [-89.832519, 39.719806, 195.0],
+              [-89.832578, 39.719781, 195.0],
+              [-89.832583, 39.719780, 194.9]
+            ]]]
+        }
+    },
+    "sourceFiles": [],
+    "status": "processed, processing or failed",
+    "origin": "provider, uploaded, merged or automerged",
+    "createdTime": "ISO 8601 date",
+    "operationStartTime": "ISO 8601 date",
+    "operationEndTime": "ISO 8601 date"
+}
+```
+
+An operation returned by Leaf can be an individual file or contain multiple 
+individual files (uploaded, merged or uploaded).
+If the operation contains more than one individual file, another key is added to 
+the resource, the "sources" key, that is a list of individual file ids.
+
+### List of properties
+
+This is the list of all properties. When the data is present in the original 
+file, Leaf standardizes names (and units) to create the standardGeojson, the 
+summary and, when applicable, images for those properties.
+
+| planted | applied | harvested |
+| - | - | - |
+| crop | product | crop | 
+| seedRateTarget | appliedRateTarget | variety | 
+| seedRate | appliedRate | yieldVolume | 
+| machine | machine | machine | 
+| elevation | elevation | elevation | 
+| time | time | time | 
+| heading | heading | heading | 
+| distance | distance | distance | 
+| equipmentWidth | equipmentWidth | equipmentWidth | 
+| sectionId | sectionId | sectionId | 
+| | | moisture | 
+| | | dryMass | 
+| | | wetMass | 

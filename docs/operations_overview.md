@@ -41,17 +41,32 @@ Alternatively, it is possible to manually upload files to be processed and merge
 them manually if desired. Please keep in mind that merging files is processing-heavy
 and may take about 20 minutes to finish.
 
+When manually uploading (in a zip), you can select which provider the files
+inside the zip came from. If you are unsure or you know that there are files 
+from more than one provider, Leaf can automatically detect, detach and process
+each file. 
 
-Leaf can process any files you send from the following companies:
+Currently, Leaf is able to (detect and) process files from the following
+providers and formats:
 
-- John Deere
-- Climate FieldView
+- John Deere:
+    - Gen 4
+    - GS3
+    - Shapefile
+    - ADM (Adapt Data Format)
+- Climate Field View:
+    - .dat (Climate Field View proprietary)
+    - Shapefile
 - CNHi
+    - .cn1 (ISO11783)
+    - Shapefile
 - Trimble
+    - .agt (Trimble proprietary)
+    - Shapefile
 
 :::info File processing
-We are always improving how we process files. If you have any doubts or 
-suggestions, we will be happy to help at help@withleaf.io
+We are always improving our processing. If you have any doubts or suggestions, 
+we will be happy to help at help@withleaf.io
 :::
 
 

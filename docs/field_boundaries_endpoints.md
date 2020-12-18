@@ -1098,6 +1098,17 @@ See below the REST resources and their endpoints.
 
 ### Field Resource
 
+A field might have one or neither of the following keys: 
+- a "mergedFieldId" key or
+- a "sources" key
+
+A Field will only have one of the previous keys if it is either a field that 
+has been merged with other one(s) or if it is a result of a merge. Leaf merges
+fields that have any sort of overlap. This makes it easier for you to query 
+operations from a field by querying by the merged field. Because a field might 
+exist in multiple providers, Leaf detects that and creates a single field that 
+you can query for - and you can still query by the individual fields too.
+
 ```json
 {
   "id": "UUID",

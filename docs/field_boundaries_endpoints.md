@@ -61,9 +61,11 @@ Description | Endpoints
 Gets a paged list of Fields. It is possible to filter the results by passing
 some query parameters.
 
-- `leafUserId`, only matches files from this user (string).
-- `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page (defaults to 20)
+- `type`, only matches fields with this type (string).
+- `provider`, only matches fields from this provider (string).
+- `leafUserId`, only matches fields from this user (string).
+- `page`, an integer specifying the page being fetched.
+- `size`, an integer specifying the size of the page (defaults to 20).
 
 These last two parameters are used exclusively for paging through results.
 

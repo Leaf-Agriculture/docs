@@ -27,7 +27,11 @@ All files will be passed through a processing chain that includes:
 - Standardizing the `rawGeoJSON` to a `standardGeojson`;
 - Creating images for all the numerical attributes in the file;
 - Creating a summary of the file with summary information, such as averages,
-standard deviations, maximum and minimum values ​​for important properties, and more.
+standard deviations, maximum and minimum values ​​for important properties, and 
+more. This summary is usually used to have general information about the 
+operation without the need to download and open the standardGeojson file. For
+example, you can display the area of the operation, how much was harvested and
+the date it happened, all without opening big files.
 
 This processing may take a few minutes to complete and happens continuously
 in the background.

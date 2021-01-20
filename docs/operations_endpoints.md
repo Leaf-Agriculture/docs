@@ -37,9 +37,7 @@ Description | Endpoints
 [Upload a file][7] | <span class="badge badge--warning">POST</span> `/files`
 [Merge files][8] | <span class="badge badge--warning">POST</span> `/files/merge`
 
-## Endpoints
-Here we list all the available endpoints from this microservice. For easily
-testing it, we recommend to see our Postman [collection][1].
+For easily testing these endpoints, we recommend to see our Postman [collection][1].
 
 
 :::info requires Leaf User with credentials
@@ -1009,3 +1007,5 @@ summary and, when applicable, images for those properties.
 | | | moisture | 
 | | | dryMass | 
 | | | wetMass | 
+| | | dryYield | 
+| | | wetYield | 

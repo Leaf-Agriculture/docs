@@ -1007,3 +1007,5 @@ summary and, when applicable, images for those properties.
 | | | moisture | 
 | | | dryMass | 
 | | | wetMass | 
+| | | dryYield | 
+| | | wetYield | 

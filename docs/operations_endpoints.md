@@ -1004,7 +1004,7 @@ summary and, when applicable, images for those properties.
 | distance | distance | distance | 
 | equipmentWidth | equipmentWidth | equipmentWidth | 
 | sectionId | sectionId | sectionId | 
-| | | moisture | 
+| | | harvestMoisture | 
 | | | dryMass | 
 | | | wetMass | 
 | | | dryYield | 

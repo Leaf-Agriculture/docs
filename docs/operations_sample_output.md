@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 You can always check the `JSON Response` tab on each of our documented
 endpoints, but here is a more detailed list of sample outputs.
 
-### Operations JSON sample
+### Operations sample response
 
 You can move through the three tabs below to see a sample of how Leaf returns
 each of the operation types.
@@ -430,3 +430,5 @@ This is an example of a harvest operation
 Here is a sample Harvest Map you can get with Leaf
 
 <img alt="Sample Harvest Map" src={useBaseUrl('img/sample_harvest_map.png')} width="200" /> -->
+
+

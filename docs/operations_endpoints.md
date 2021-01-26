@@ -37,7 +37,7 @@ Description | Endpoints
 [Upload a file][7] | <span class="badge badge--warning">POST</span> `/files`
 [Merge files][8] | <span class="badge badge--warning">POST</span> `/files/merge`
 
-For easily testing these endpoints, we recommend to see our Postman [collection][1].
+For easily testing these endpoints, we recommend using our Postman [collection][1].
 
 
 :::info requires Leaf User with credentials
@@ -986,26 +986,242 @@ individual files (uploaded, merged or uploaded).
 If the operation contains more than one individual file, another key is added to 
 the resource, the "sources" key, that is a list of individual file ids.
 
-### List of properties
+## List of properties
 
-This is the list of all properties. When the data is present in the original 
+Below is the list of all properties. When the data is present in the original 
 file, Leaf standardizes names (and units) to create the standardGeojson, the 
-summary and, when applicable, images for those properties.
+summary and, when applicable, images for those properties. 
 
-| planted | applied | harvested |
-| - | - | - |
-| crop | product | crop | 
-| seedRateTarget | appliedRateTarget | variety | 
-| seedRate | appliedRate | yieldVolume | 
-| machine | machine | machine | 
-| elevation | elevation | elevation | 
-| time | time | time | 
-| heading | heading | heading | 
-| distance | distance | distance | 
-| equipmentWidth | equipmentWidth | equipmentWidth | 
-| sectionId | sectionId | sectionId | 
-| | | harvestMoisture | 
-| | | dryMass | 
-| | | wetMass | 
-| | | dryYield | 
-| | | wetYield | 
+Below we list all the properties in the standardGeojson and summary separately,
+since there are different properties present.
+
+### Summary properties
+
+Select the tab you want to see "planted", "applied" or "harvested"
+
+<Tabs
+  defaultValue="planted"
+  values={[
+    { label: 'Planted', value: 'planted', },
+    { label: 'Applied', value: 'applied', },
+    { label: 'Harvested', value: 'harvested', },
+  ]
+}>
+
+  <TabItem value="planted">
+
+  | key             | presence       | type | 
+  | -               | -              | - |
+  | crop            | always present | string | 
+  | seedRate        | always present | dict |
+  | operationType   | always present | string "planted" |
+  | totalArea       | always present | int (square meters) |
+  | elevation       | always present | dict |
+  | variety         | mostly present | string |
+  | seedRateTarget  | mostly present | dict |
+  | seedDepth       | mostly present | dict |
+  | machinery       | mostly present | list of strings |
+  | speed           | mostly present | dict |
+  | totalPlanted    | mostly present | int (number of seeds) |
+  
+
+  note: the dict properties will always contain a "min", "max", "avg" and "unit" 
+  key inside it, like the following example:
+
+  ```json
+  "seedRate": {
+      "min": 123,
+      "max": 140,
+      "avg": 126,
+      "unit": "seeds/ac"
+  }
+  ```
+
+  </TabItem>
+
+  <TabItem value="applied">
+
+  | key | presence | type | example
+  | - | - | - |
+  | appliedRate         | always present | dict |
+  | operationType       | always present | applied |
+  | elevation           | always present | dict |
+  | totalArea           | always present | int (square meters) |
+  | products            | mostly present | dict  |
+  | appliedRateTarget   | mostly present | dict |
+  | machinery           | mostly present | list of strings |
+  | speed               | mostly present | dict |
+  | totalApplied        | mostly present | float |
+
+  note: "products" dict contains one dict for every product used. Every product 
+  dict contains "minRate", "maxRate", "avgRate", "unit" and "description" like
+  shown below:
+
+  ```json
+  "products": {
+      "28-0-0 UAN": {
+          "minRate": 13.0,
+          "maxRate": 15.0,
+          "avgRate": 14.0,
+          "unit":"gal/ac",
+          "description": ""
+      },
+      "Agrotain Plus": {
+          "minRate": 1.1, 
+          "maxRate": 1.3,
+          "avgRate": 1.23,         
+          "unit": "lb/ac",
+          "description": ""
+      }
+  }
+  ```
+
+  note: with the exception of "products", all the dict properties contain "min", 
+  "max", "avg" and "unit" key inside it, like the following example:
+
+  ```json
+  "appliedRate": {
+      "min": 123.0,
+      "max": 140.0,
+      "avg": 126.0,
+      "unit": "gal/ac or l/ha"
+  },
+  ```
+
+  </TabItem>
+
+
+  <TabItem value="harvested">
+
+
+  | key | presence | type | example
+  | - | - | - |
+  | elevation         | always present | dict |
+  | harvestMoisture   | always present | dict |
+  | operationType     | always present | harvested |
+  | totalArea         | always present | int (square meters) |
+  | wetMass           | always present | dict | 
+  | wetMassPerArea    | always present | dict |
+  | wetVolume         | always present | dict |
+  | wetVolumePerArea  | always present | dict |
+  | totalWetVolume    | always present | float |
+  | totalWetMass      | always present | float |
+  | dryMass           | mostly present | dict |
+  | dryMassPerArea    | mostly present | dict |
+  | dryVolume         | mostly present | dict |
+  | dryVolumePerArea  | mostly present | dict |
+  | speed             | mostly present | dict |
+  | crop              | mostly present | string |
+  | variety           | mostly present | string |
+  | machinery         | mostly present | list of strings |
+
+  note: the dict properties will always contain a "min", "max", "avg" and "unit" 
+  key inside it, like the following example:
+
+  ```json
+  "harvestMoisture": {
+    "min": 17.0,
+    "max": 18.0,
+    "avg": 17.3,
+    "unit": "percentage"
+  }
+  ```
+
+
+  </TabItem>
+</Tabs>
+
+
+
+### Standard GEOJSON properties
+
+
+<Tabs
+  defaultValue="planted"
+  values={[
+    { label: 'Planted', value: 'planted', },
+    { label: 'Applied', value: 'applied', },
+    { label: 'Harvested', value: 'harvested', },
+  ]
+}>
+
+  <TabItem value="planted">
+
+  | key | presence | type | 
+  | - | - | - |
+  | coords          | required | x,y |
+  | time            | required | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | crop            | required | string |
+  | variety         | optional | string |
+  | area            | required | float (sqm)  |
+  | speed           | optional | float (ms) |
+  | heading         | required | int (0-360) |
+  | distance        | required | positive float |
+  | elevation       | required | float |   
+  | operationType   | required | string "applied" |
+  | equipmentWidth  | required | int  |
+  | recordingStatus | required | on |
+  | machinery       | optional | list of strings|
+  | sectionId       | optional | int |
+  | seedRate        | required | int |
+  | seedRateTarget  | optional | int |
+  | seedDepth       | optional | float (cm or inches) |
+
+  </TabItem>
+
+  <TabItem value="applied">
+  
+
+
+  | key | presence | type | 
+  | - | - | - |
+  | coords            | required | x,y  |
+  | distance          | required | positive float|
+  | heading           | required | int (0-360) |
+  | elevation         | required | float |
+  | speed             | optional | float (ms) |
+  | area              | required | float (sqm) |
+  | appliedRate       | required | float |
+  | appliedRateTarget | optional | float |
+  | recordingStatus   | required | on |
+  | time              | required | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | operationType     | required | string |
+  | products          | optional | dict (inside is a dict with key product name and there |
+  | equipmentWidth    | required | int  |
+  | machinery         | optional | list of strings) |
+  | sectionId         | optional | int |
+
+
+  </TabItem>
+
+  <TabItem value="harvested">
+
+  | key | presence | type | example units | description |
+  | - | - | - | - | - |
+  | coords            | required | Point (x,y) | -              | Point x,y (if there is z and no elevation -> add to elevation) |
+  | time              | required | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | crop              | required | string      | -              | string standardized to our reference table.json |
+  | area              | required | float       | ft² or m²      | float (sqm) if doesn't exist, calculate by distance*equipmentWidth |
+  | distance          | required | float       | ft or m        | positive float (if negative, take absolute) |
+  | elevation         | required | float       | ft or m        | float |
+  | operationType     | required | string      | -              | string "harvested" |
+  | equipmentWidth    | required | float       | ft or m        | float (doesn't exist? calculate area/distance (units!)) |
+  | recordingStatus   | required | Boolean     | -              | true  |
+  | harvestMoisture   | required | float       | % | float      | represents humidity of the crop
+  | wetMass           | required | float       | lb or kg       | wet mass harvested in that point |
+  | wetMassPerArea    | required | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
+  | wetVolume         | required | float       | bu or L        | wet volume harvested in that point |
+  | wetVolumePerArea  | required | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
+  | variety           | optional | string      | -              | string |
+  | speed             | optional | float       | ft/s or m/s    | float (ms) |
+  | heading           | optional | float       | degrees        | float (0.0-360.0) |
+  | machinery         | optional | list        | -              | list of string (name. Later will be uuid) |
+  | dryMass           | optional | float       | lb or kg       | dry mass harvested in that point |
+  | dryMassPerArea    | optional | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
+  | dryVolume         | optional | float       | bu or L        | dry volume harvested in that point |
+  | dryVolumePerArea  | optional | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
+  | sectionId         | optional | int         | int            | number of the section
+  </TabItem>
+</Tabs>
+
+

@@ -1150,7 +1150,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | key | presence | type | 
   | - | - | - |
   | coords          | always present | x,y |
-  | time            | always present | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | timestamp       | always present | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | crop            | always present | string |
   | area            | always present | float (sqm)  |
   | heading         | always present | float (0.0-360.0) |
@@ -1182,7 +1182,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | area              | always present | float (sqm) |
   | appliedRate       | always present | float |
   | recordingStatus   | always present | on |
-  | time              | always present | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | timestamp         | always present | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | operationType     | always present | string |
   | products          | always present | dict (inside is a dict with key product name and there |
   | equipmentWidth    | always present | int  |
@@ -1198,14 +1198,14 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
   | key | presence | type | example units | description |
   | - | - | - | - | - |
-  | coords            | always present | Point (x,y) | -              | Point x,y (if there is z and no elevation -> add to elevation) |
-  | time              | always present | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | coords            | always present | Point (x,y) | -              | Point x,y |
+  | timestamp         | always present | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | crop              | always present | string      | -              | string standardized to our reference table.json |
-  | area              | always present | float       | ft² or m²      | float (sqm) if doesn't exist, calculate by distance*equipmentWidth |
-  | distance          | always present | float       | ft or m        | positive float (if negative, take absolute) |
+  | area              | always present | float       | ft² or m²      | float (sqm) |
+  | distance          | always present | float       | ft or m        | positive float |
   | elevation         | always present | float       | ft or m        | float |
   | operationType     | always present | string      | -              | string "harvested" |
-  | equipmentWidth    | always present | float       | ft or m        | float (doesn't exist? calculate area/distance (units!)) |
+  | equipmentWidth    | always present | float       | ft or m        | float |
   | recordingStatus   | always present | Boolean     | -              | true  |
   | harvestMoisture   | always present | float       | % | float      | represents humidity of the crop
   | wetMass           | always present | float       | lb or kg       | wet mass harvested in that point |
@@ -1215,7 +1215,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | variety           | mostly present | string      | -              | string |
   | speed             | mostly present | float       | ft/s or m/s    | float (ms) |
   | heading           | mostly present | float       | degrees        | float (0.0-360.0) |
-  | machinery         | mostly present | list        | -              | list of string (name. Later will be uuid) |
+  | machinery         | mostly present | list        | -              | list of string |
   | dryMass           | mostly present | float       | lb or kg       | dry mass harvested in that point |
   | dryMassPerArea    | mostly present | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
   | dryVolume         | mostly present | float       | bu or L        | dry volume harvested in that point |

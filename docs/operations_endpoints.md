@@ -679,7 +679,7 @@ always take the units into consideration, just to be sure.
 
 Posts/creates a new file in Leaf. The file must be sent as a zip.
 
-This endpoint receives three query parameters, one of them is optional.
+This endpoint receives three URL parameters, one of them is optional.
 
 A `leafUserId`, `provider` and `fileFormat` (optional). 
 
@@ -698,7 +698,7 @@ SHAPEFILE
 TRIMBLE
 ```
 
-Along with the fileFormat, a `provider` must be set and be one of the following:
+Along with the `fileFormat`, a `provider` must be set and be one of the following:
 
 ```
 Leaf
@@ -708,14 +708,14 @@ JohnDeere
 Trimble
 ```
 
-When unsure about the format or there can be more than one format in the same 
+When unsure about the format or when there can be more than one format in the same 
 zip, you can use our generic uploader and Leaf will detect the files present.
 For that, set `provider` to `Leaf` and don't include `fileFormat`. 
 Leaf will detect files present in a number of different ways and hierarchies and 
 create/return one file id for each detection. This is very important because it's 
 slightly different than when uploading a zip file you are sure refers to the 
 same operation and same provider, creating only one file even if the zip contains
-multiple files for the same operation
+multiple files for the same operation.
 
 <Tabs
   defaultValue="sh"
@@ -808,8 +808,8 @@ multiple files for the same operation
 </Tabs>
 
 After a few minutes, you can query each of the files individually on 
-[Get a File](#get-a-file) or all of them, filtering by `createdDate` on 
-[Get all Files](#get-all-files)
+[Get a File](#get-a-file) or all of them, filtering by `createdDate`, on 
+[Get all Files](#get-all-files).
 
 
 ---

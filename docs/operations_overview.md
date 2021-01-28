@@ -5,7 +5,7 @@ title: Overview
 Leaf's Operation Data API returns clean, aggregated, and standardized data
 from all major machine data brands in a simple JSON response. 
 
-You can access users' permissoned-files in two ways:
+You can access user-permissoned files in two ways:
 
 1. Connecting to the company that holds your users' files. Our Operation Data 
 Service will immediately pool machine data from the authorized account and 

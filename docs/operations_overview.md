@@ -23,8 +23,8 @@ provider yet, see **[how to create a Leaf User](#)** and
 :::
 
 All files will be passed through a processing chain that includes:
-- Converting raw proprietary format files to a `rawGeoJSON`;
-- Standardizing the `rawGeoJSON` to a `standardGeojson`;
+- Converting raw proprietary format files to a `rawGeojson`;
+- Standardizing the `rawGeojson` to a `standardGeojson`;
 - Creating images for all the numerical attributes in the file;
 - Creating a summary of the file with summary information, such as averages,
 standard deviations, maximum and minimum values ​​for important properties, and 

@@ -39,7 +39,7 @@ in the background.
 Since one single operation can be represented in several (sometimes hundreds of) files by the provider,
 this service also provides an auto-merge feature, which will identify files that
 belong to the same operation (planting, for example) and same field and 
-automatically merge them.
+automatically merge them into a new file.
 
 Alternatively, it is possible to manually upload files to be processed and merge
 them manually if desired. Please keep in mind that merging files is processing-heavy

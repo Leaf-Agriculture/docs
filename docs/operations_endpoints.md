@@ -1028,7 +1028,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
           "variety": string,
           "area": float,
           "seedRate": int,
-          "seedRateTarget: int,
+          "seedRateTarget": int,
           "seedDepth": float,
       }
   }
@@ -1064,7 +1064,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
           "products": {
               "type": string
               "description": {
-                  string: string
+                  string: string,
+                  ...
               }
           },
           "appliedRate": float,

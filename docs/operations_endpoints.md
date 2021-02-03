@@ -1302,8 +1302,6 @@ Select the tab you want to see "planted", "applied" or "harvested"
   </TabItem>
 
   <TabItem value="applied">
-  
-
 
   | key | presence | type | example units | description |
   | - | - | - | - | - |
@@ -1353,6 +1351,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | dryVolume         | ** | float       | bu or L        | dry volume harvested in that point |
   | dryVolumePerArea  | ** | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
   | sectionId         | ** | int         | int            | ID of implement sensor section |
+
   </TabItem>
 </Tabs>
 

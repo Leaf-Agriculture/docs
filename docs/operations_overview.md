@@ -5,7 +5,7 @@ title: Overview
 Leaf's Operation Data API returns clean, aggregated, and standardized data
 from all major machine data brands in a simple JSON response. 
 
-You can access user users' permissoned-files in two ways
+You can access user-permissoned files in two ways:
 
 1. Connecting to the company that holds your users' files. Our Operation Data 
 Service will immediately pool machine data from the authorized account and 
@@ -23,8 +23,8 @@ provider yet, see **[how to create a Leaf User](#)** and
 :::
 
 All files will be passed through a processing chain that includes:
-- Converting raw proprietary format files to a `rawGeoJSON`;
-- Standardizing the `rawGeoJSON` to a `standardGeojson`;
+- Converting raw proprietary format files to a `rawGeojson`;
+- Standardizing the `rawGeojson` to a `standardGeojson`;
 - Creating images for all the numerical attributes in the file;
 - Creating a summary of the file with summary information, such as averages,
 standard deviations, maximum and minimum values ​​for important properties, and 
@@ -39,7 +39,7 @@ in the background.
 Since one single operation can be represented in several (sometimes hundreds of) files by the provider,
 this service also provides an auto-merge feature, which will identify files that
 belong to the same operation (planting, for example) and same field and 
-automatically merge them.
+automatically merge them into a new file.
 
 Alternatively, it is possible to manually upload files to be processed and merge
 them manually if desired. Please keep in mind that merging files is processing-heavy

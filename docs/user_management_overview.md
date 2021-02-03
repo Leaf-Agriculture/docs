@@ -11,7 +11,7 @@ To get said token, we will need to go through the data provider's authentication
 flow, which varies by data provider.
 
 To make things easy, we have created a section for the data providers
-authentication flow. After the end of each of any of this sections, the goal
+authentication flow. After the end this section, the goal
 is to have the user's token, so you can attach to the Leaf User and Leaf can
 return clean, aggregated, and standardized data in a simple JSON response.
 

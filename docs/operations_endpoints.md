@@ -914,12 +914,12 @@ It receives a single JSON object with the `ids` entry. Example:
 
 See below the REST resources and their endpoints.
 
-### Operations Resource
+### Operation File Summary Resource
 
-Leaf returns operation files in a standardized format. Naturally, different 
+Leaf returns operation file summaries in a standardized format. Summaries use the point data to derive basic information about the operation and include links to the original files and images of an operation.Naturally, different 
 types of operations contain different properties. For instance, an `applied` 
 operation will contain `appliedRate`, whereas a `harvested` operation will 
-contain `wetMass`. The resource below shows a typical return. A list of 
+contain `wetMass` and other Yield properties. The resource below shows a typical return. A list of 
 all properties is available here.
 
 ```json
@@ -985,6 +985,137 @@ An operation returned by Leaf can be an individual file or contain multiple
 individual files (uploaded, merged or uploaded).
 If the operation contains more than one individual file, another key is added to 
 the resource, the "sources" key, that is a list of individual file ids.
+
+### Standard Geojson Resource
+
+Each operation file returns with a "standardgeojson" URL that allows you to download a full point dataset from the operation in a standardized geojson format. Below is an example of the format of each point in these files.
+
+<Tabs
+  defaultValue="planted"
+  values={[
+    { label: 'Planted', value: 'planted', },
+    { label: 'Applied', value: 'applied', },
+    { label: 'Harvested', value: 'harvested', },
+  ]
+}>
+  
+  <TabItem value="planted">
+  
+  ```json
+  {
+      "type": "Feature",
+      "geometry": {
+          "type": "Point",
+          "coordinates": 
+          [
+              -74.83762110788625,
+              28.686604864693564
+          ]
+      },
+      "properties": {
+          "distance": float,
+          "heading": float,
+          "speed": float,
+          "elevation": float,
+          "harvestMoisture": float,
+          "equipmentWidth": float,
+          "recordingStatus": string,
+          "machinery": [string],
+          "sectionId" : int,
+          "timestamp": string,
+          "operationType": "planted",
+          "crop": string,
+          "variety": string,
+          "area": float,
+          "seedRate": int,
+          "seedRateTarget: int,
+          "seedDepth": float,
+      }
+  }
+  ```
+  
+  </TabItem>
+  <TabItem value="applied">
+
+  ```json
+  {
+      "type": "Feature",
+      "geometry": {
+          "type": "Point",
+          "coordinates": 
+          [
+              -74.83762110788625,
+              28.686604864693564
+          ]
+      },
+      "properties": {
+          "distance": float,
+          "heading": float,
+          "speed": float,
+          "elevation": float,
+          "equipmentWidth": float,
+          "recordingStatus": string,
+          "machinery": [string],
+          "sectionId" : int,
+          "timestamp": string,
+          "operationType": "applied",
+          "crop": string,
+          "area": float,
+          "products": {
+              "type": string
+              "description": {
+                  string: string
+              }
+          },
+          "appliedRate": float,
+          "appliedRateTarget": float,
+      }
+  }
+  ```
+  </TabItem>
+  <TabItem value="harvested">
+
+  ```json
+  {
+      "type": "Feature",
+      "geometry": {
+          "type": "Point",
+          "coordinates": 
+          [
+              -74.83762110788625,
+              28.686604864693564
+          ]
+      },
+      "properties": {
+          "distance": float,
+          "heading": float,
+          "speed": float,
+          "elevation": float,
+          "harvestMoisture": float,
+          "equipmentWidth": float,
+          "recordingStatus": string,
+          "machinery": [string],
+          "sectionId" : int,
+          "timestamp": string,
+          "operationType": "harvested",
+          "crop": string,
+          "variety": string,
+          "area": float,
+          "wetMass": float,
+          "wetVolume": float,
+          "wetMassPerArea": float,
+          "wetVolumePerArea": float,
+          "dryMass": float,
+          "dryVolume": float,
+          "dryMassPerArea": float,
+          "dryVolumePerArea": float
+      }
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+
 
 ## List of properties
 
@@ -1206,7 +1337,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | elevation         | * | float       | ft or m        | Distance to sea level |
   | operationType     | * | string      | -              | string "harvested" |
   | equipmentWidth    | * | float       | ft or m        | Width of implement |
-  | recordingStatus   | * | Boolean     | -              | Recording status of machine  |
+  | recordingStatus   | * | Boolean     | -              | Recording status of machine |
   | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
   | wetMass           | * | float       | lb or kg       | wet mass harvested in that point |
   | wetMassPerArea    | * | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |

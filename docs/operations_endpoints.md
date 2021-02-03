@@ -1147,25 +1147,25 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
   <TabItem value="planted">
 
-  | key | presence | type | 
-  | - | - | - |
-  | coords          | always present | x,y |
-  | timestamp       | always present | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop            | always present | string |
-  | area            | always present | float (sqm)  |
-  | heading         | always present | float (0.0-360.0) |
-  | distance        | always present | positive float |
-  | elevation       | always present | float |   
-  | operationType   | always present | string "applied" |
-  | equipmentWidth  | always present | int  |
-  | recordingStatus | always present | on |
-  | seedRate        | always present | int |
-  | variety         | mostly present | string |
-  | speed           | mostly present | float (ms) |
-  | sectionId       | mostly present | int |
-  | machinery       | mostly present | list of strings|
-  | seedRateTarget  | mostly present | int |
-  | seedDepth       | mostly present | float (cm or inches) |
+  | key | presence | type | example units | description |
+  | - | - | - | - | - |
+  | coords          | always present | Point (x,y)     | -                    | Point (x,y) |
+  | timestamp       | always present | string          | -                    | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | crop            | always present | string          | -                    | Crop type (normalized) |
+  | area            | always present | float           | ft² or m²            | Area represented by point |
+  | heading         | always present | float           | degrees              | Heading of machine at point |
+  | distance        | always present | float           | ft or m              | Distance travelled since previous point |
+  | elevation       | always present | float           | ft or m              | Distance to sea level |
+  | operationType   | always present | string          | -                    | string "planted" |
+  | equipmentWidth  | always present | int             | ft or m              | Width of implement |
+  | recordingStatus | always present | Boolean         | -                    | Recording status of machine at point |
+  | seedRate        | always present | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
+  | variety         | mostly present | string          | -                    | The variety of seed being planted |
+  | speed           | mostly present | float           | ft/s or m/s          | Speed of machine at point |
+  | sectionId       | mostly present | int             | -                    | ID of implement sensor section |
+  | machinery       | mostly present | list of strings | -                    | name of machine & implement |
+  | seedRateTarget  | mostly present | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
+  | seedDepth       | mostly present | float           | cm                   | The depth at which seeds were planted at point |
 
   </TabItem>
 
@@ -1173,23 +1173,23 @@ Select the tab you want to see "planted", "applied" or "harvested"
   
 
 
-  | key | presence | type | 
-  | - | - | - |
-  | coords            | always present | x,y  |
-  | distance          | always present | positive float|
-  | heading           | always present | float (0.0-360.0) |
-  | elevation         | always present | float |
-  | area              | always present | float (sqm) |
-  | appliedRate       | always present | float |
-  | recordingStatus   | always present | on |
-  | timestamp         | always present | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType     | always present | string |
-  | products          | always present | dict (inside is a dict with key product name and there |
-  | equipmentWidth    | always present | int  |
-  | speed             | mostly present | float (ms) |
-  | appliedRateTarget | mostly present | float |
-  | machinery         | mostly present | list of strings) |
-  | sectionId         | mostly present | int |
+  | key | presence | type | example units | description |
+  | - | - | - | - | - |
+  | coords            | always present | Point (x,y)       | -                | Point (x,y) |
+  | distance          | always present | float             | ft or m          | Distance travelled since previous point |
+  | heading           | always present | float             | -                | Heading of machine at point |
+  | elevation         | always present | float             | m                | Distance to sea level |
+  | area              | always present | float             | ft² or m²        | Area represented by point |
+  | appliedRate       | always present | float             | fl.oz/ac or L/m² | The amount of product being applied at point |
+  | recordingStatus   | always present | Boolean           | -                | Recording status of machine |
+  | timestamp         | always present | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | operationType     | always present | string            | -                | string "applied" |
+  | products          | always present | dict              | -                | tank mix including products and ratio |
+  | equipmentWidth    | always present | int               | ft or m          | Width of implement |
+  | speed             | mostly present | float             | ft/s or m/s      | Speed of machine at point |
+  | appliedRateTarget | mostly present | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
+  | machinery         | mostly present | list of strings   | -                | Name of machine and implement |
+  | sectionId         | mostly present | int               | -                | ID of implement sensor section |
 
 
   </TabItem>
@@ -1200,27 +1200,27 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | - | - | - | - | - |
   | coords            | always present | Point (x,y) | -              | Point x,y |
   | timestamp         | always present | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop              | always present | string      | -              | string standardized to our reference table.json |
-  | area              | always present | float       | ft² or m²      | float (sqm) |
-  | distance          | always present | float       | ft or m        | positive float |
-  | elevation         | always present | float       | ft or m        | float |
+  | crop              | always present | string      | -              | Crop type (normalized) |
+  | area              | always present | float       | ft² or m²      | Area represented by point |
+  | distance          | always present | float       | ft or m        | Distance travelled since previous point |
+  | elevation         | always present | float       | ft or m        | Distance to sea level |
   | operationType     | always present | string      | -              | string "harvested" |
-  | equipmentWidth    | always present | float       | ft or m        | float |
-  | recordingStatus   | always present | Boolean     | -              | true  |
-  | harvestMoisture   | always present | float       | % | float      | represents humidity of the crop
+  | equipmentWidth    | always present | float       | ft or m        | Width of implement |
+  | recordingStatus   | always present | Boolean     | -              | Recording status of machine  |
+  | harvestMoisture   | always present | float       | % | float      | % moisture of harvested crop |
   | wetMass           | always present | float       | lb or kg       | wet mass harvested in that point |
   | wetMassPerArea    | always present | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
   | wetVolume         | always present | float       | bu or L        | wet volume harvested in that point |
   | wetVolumePerArea  | always present | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
-  | variety           | mostly present | string      | -              | string |
-  | speed             | mostly present | float       | ft/s or m/s    | float (ms) |
-  | heading           | mostly present | float       | degrees        | float (0.0-360.0) |
-  | machinery         | mostly present | list        | -              | list of string |
+  | variety           | mostly present | string      | -              | The variety of seed being harvested |
+  | speed             | mostly present | float       | ft/s or m/s    | Speed of machine at point |
+  | heading           | mostly present | float       | degrees        | Heading of machine at point |
+  | machinery         | mostly present | list        | -              | name of machine & implement |
   | dryMass           | mostly present | float       | lb or kg       | dry mass harvested in that point |
   | dryMassPerArea    | mostly present | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
   | dryVolume         | mostly present | float       | bu or L        | dry volume harvested in that point |
   | dryVolumePerArea  | mostly present | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
-  | sectionId         | mostly present | int         | int            | number of the section
+  | sectionId         | mostly present | int         | int            | ID of implement sensor section |
   </TabItem>
 </Tabs>
 

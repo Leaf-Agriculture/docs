@@ -1172,7 +1172,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
   <TabItem value="applied">
 
-  | key | presence | type | example
+  | key | presence | type |
   | - | - | - |
   | appliedRate         | *  | dict |
   | operationType       | *  | applied |
@@ -1225,7 +1225,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   <TabItem value="harvested">
 
 
-  | key | presence | type | example
+  | key | presence | type |
   | - | - | - |
   | elevation         | *  | dict |
   | harvestMoisture   | *  | dict |

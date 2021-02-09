@@ -34,6 +34,11 @@ module.exports = {
           label: 'File Converters',
           items: ['converters_overview', 'converters_endpoints']
         },
+        {
+          type: 'category',
+          label: 'Alerts',
+          items: ['alerts_overview', 'alerts_endpoints']
+        },        
       ],
     }
   ]

@@ -1017,7 +1017,6 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
       "heading": "float",
       "speed": "float",
       "elevation": "float",
-      "harvestMoisture": "float",
       "equipmentWidth": "float",
       "recordingStatus": "string",
       "machinery": ["string"],
@@ -1144,17 +1143,17 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
   | key             | presence       | type | 
   | -               | -              | - |
-  | crop            | always present | string | 
-  | seedRate        | always present | dict |
-  | operationType   | always present | string "planted" |
-  | totalArea       | always present | int (square meters) |
-  | elevation       | always present | dict |
-  | variety         | mostly present | string |
-  | seedRateTarget  | mostly present | dict |
-  | seedDepth       | mostly present | dict |
-  | machinery       | mostly present | list of strings |
-  | speed           | mostly present | dict |
-  | totalPlanted    | mostly present | int (number of seeds) |
+  | crop            | *  | string | 
+  | seedRate        | *  | dict |
+  | operationType   | *  | string "planted" |
+  | totalArea       | *  | int (square meters) |
+  | elevation       | *  | dict |
+  | variety         | ** | string |
+  | seedRateTarget  | ** | dict |
+  | seedDepth       | ** | dict |
+  | machinery       | ** | list of strings |
+  | speed           | ** | dict |
+  | totalPlanted    | ** | int (number of seeds) |
   
 
   note: the dict properties will always contain a "min", "max", "avg" and "unit" 
@@ -1175,15 +1174,15 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
   | key | presence | type | example
   | - | - | - |
-  | appliedRate         | always present | dict |
-  | operationType       | always present | applied |
-  | elevation           | always present | dict |
-  | totalArea           | always present | int (square meters) |
-  | products            | always present | dict  |
-  | appliedRateTarget   | mostly present | dict |
-  | machinery           | mostly present | list of strings |
-  | speed               | mostly present | dict |
-  | totalApplied        | mostly present | float |
+  | appliedRate         | *  | dict |
+  | operationType       | *  | applied |
+  | elevation           | *  | dict |
+  | totalArea           | *  | int (square meters) |
+  | products            | *  | dict  |
+  | appliedRateTarget   | ** | dict |
+  | machinery           | ** | list of strings |
+  | speed               | ** | dict |
+  | totalApplied        | ** | float |
 
   note: "products" dict contains one dict for every product used. Every product 
   dict contains "minRate", "maxRate", "avgRate", "unit" and "description" like
@@ -1228,24 +1227,24 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
   | key | presence | type | example
   | - | - | - |
-  | elevation         | always present | dict |
-  | harvestMoisture   | always present | dict |
-  | operationType     | always present | harvested |
-  | totalArea         | always present | int (square meters) |
-  | wetMass           | always present | dict | 
-  | wetMassPerArea    | always present | dict |
-  | wetVolume         | always present | dict |
-  | wetVolumePerArea  | always present | dict |
-  | totalWetVolume    | always present | float |
-  | totalWetMass      | always present | float |
-  | crop              | always present | string |
-  | dryMass           | mostly present | dict |
-  | dryMassPerArea    | mostly present | dict |
-  | dryVolume         | mostly present | dict |
-  | dryVolumePerArea  | mostly present | dict |
-  | speed             | mostly present | dict |
-  | variety           | mostly present | string |
-  | machinery         | mostly present | list of strings |
+  | elevation         | *  | dict |
+  | harvestMoisture   | *  | dict |
+  | operationType     | *  | harvested |
+  | totalArea         | *  | int (square meters) |
+  | wetMass           | *  | dict | 
+  | wetMassPerArea    | *  | dict |
+  | wetVolume         | *  | dict |
+  | wetVolumePerArea  | *  | dict |
+  | totalWetVolume    | *  | float |
+  | totalWetMass      | *  | float |
+  | crop              | *  | string |
+  | dryMass           | ** | dict |
+  | dryMassPerArea    | ** | dict |
+  | dryVolume         | ** | dict |
+  | dryVolumePerArea  | ** | dict |
+  | speed             | ** | dict |
+  | variety           | ** | string |
+  | machinery         | ** | list of strings |
 
   note: the dict properties will always contain a "min", "max", "avg" and "unit" 
   key inside it, like the following example:
@@ -1263,6 +1262,8 @@ Select the tab you want to see "planted", "applied" or "harvested"
   </TabItem>
 </Tabs>
 
+\* = Always in response  
+\*\* = Usually in response but not required to pass tests
 
 
 ### Standard GEOJSON properties
@@ -1356,4 +1357,4 @@ Select the tab you want to see "planted", "applied" or "harvested"
 </Tabs>
 
 \* = Always in response  
-\*\* = Usually in response but not required.
+\*\* = Usually in response but not required to pass tests

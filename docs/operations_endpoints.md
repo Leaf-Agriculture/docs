@@ -16,6 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [9]: #get-a-files-images
 [7]: #upload-a-file
 [8]: #merge-files
+[sample_summary]: operations_sample_output
 
 ## About
 
@@ -922,64 +923,7 @@ operation will contain `appliedRate`, whereas a `harvested` operation will
 contain `wetMass` and other Yield properties. The resource below shows a typical return. A list of 
 all properties is available here.
 
-```json
-{
-    "id": "f505092b-ab8f-4d87-a4b6-92cccb6b2515",
-    "fileName": "new_test_data.zip",
-    "provider": "Leaf",
-    "fileFormat": "DATCLIMATE",
-    "originalFile": "URL (String)",
-    "rawGeojson": "URL (String)",
-    "standardGeojson": "URL (String)",
-    "zippedPNGs": "URL (String)",
-    "leafUserId": "UUID",
-    "apiOwnerUsername": "email (String)",
-    "summary": {
-        "type": "Feature",
-        "properties": {
-            "property1": {
-                "average": float,
-                "standardDeviation": float,
-                "min": float,
-                "max": float
-            },
-            "property2": {
-                "average": float,
-                "standardDeviation": float,
-                "min": float,
-                "max": float
-            },
-            "propertyn": {
-                "average": float,
-                "standardDeviation": float,
-                "min": float,
-                "max": float
-            },
-            "crop": [
-                "String"
-            ],
-            "operationType": "String",
-            "totalArea": float
-        },
-        "geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [[[
-              [-89.832583, 39.719780, 194.9],
-              [-89.832588, 39.719780, 194.9],
-              [-89.832519, 39.719806, 195.0],
-              [-89.832578, 39.719781, 195.0],
-              [-89.832583, 39.719780, 194.9]
-            ]]]
-        }
-    },
-    "sourceFiles": [],
-    "status": "processed, processing or failed",
-    "origin": "provider, uploaded, merged or automerged",
-    "createdTime": "ISO 8601 date",
-    "operationStartTime": "ISO 8601 date",
-    "operationEndTime": "ISO 8601 date"
-}
-```
+[Here][sample_summary] you can see a sample summary as response for an operation file
 
 An operation returned by Leaf can be an individual file or contain multiple 
 individual files (uploaded, merged or uploaded).
@@ -1141,6 +1085,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
   <TabItem value="planted">
 
+
   | key             | presence       | type | 
   | -               | -              | - |
   | crop            | *  | string | 
@@ -1155,18 +1100,11 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | speed           | ** | dict |
   | totalPlanted    | ** | int (number of seeds) |
   
+  \* = Always in response  
+  \*\* = Usually in response but not required to pass tests
 
-  note: the dict properties will always contain a "min", "max", "avg" and "unit" 
-  key inside it, like the following example:
+[Here][sample_summary] you can see a sample summary as response for an operation file
 
-  ```json
-  "seedRate": {
-      "min": 123,
-      "max": 140,
-      "avg": 126,
-      "unit": "seeds/ac"
-  }
-  ```
 
   </TabItem>
 
@@ -1184,40 +1122,12 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | speed               | ** | dict |
   | totalApplied        | ** | float |
 
-  note: "products" dict contains one dict for every product used. Every product 
-  dict contains "minRate", "maxRate", "avgRate", "unit" and "description" like
-  shown below:
 
-  ```json
-  "products": {
-      "28-0-0 UAN": {
-          "minRate": 13.0,
-          "maxRate": 15.0,
-          "avgRate": 14.0,
-          "unit":"gal/ac",
-          "description": ""
-      },
-      "Agrotain Plus": {
-          "minRate": 1.1, 
-          "maxRate": 1.3,
-          "avgRate": 1.23,         
-          "unit": "lb/ac",
-          "description": ""
-      }
-  }
-  ```
+  \* = Always in response  
+  \*\* = Usually in response but not required to pass tests
 
-  note: with the exception of "products", all the dict properties contain "min", 
-  "max", "avg" and "unit" key inside it, like the following example:
+  [Here][sample_summary] you can see a sample summary as response for an operation file
 
-  ```json
-  "appliedRate": {
-      "min": 123.0,
-      "max": 140.0,
-      "avg": 126.0,
-      "unit": "gal/ac or l/ha"
-  },
-  ```
 
   </TabItem>
 
@@ -1246,24 +1156,16 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | variety           | ** | string |
   | machinery         | ** | list of strings |
 
-  note: the dict properties will always contain a "min", "max", "avg" and "unit" 
-  key inside it, like the following example:
+  \* = Always in response  
+  \*\* = Usually in response but not required to pass tests
 
-  ```json
-  "harvestMoisture": {
-    "min": 17.0,
-    "max": 18.0,
-    "avg": 17.3,
-    "unit": "percentage"
-  }
-  ```
+  [Here][sample_summary] you can see a sample summary as response for an operation file
+
 
 
   </TabItem>
 </Tabs>
 
-\* = Always in response  
-\*\* = Usually in response but not required to pass tests
 
 
 ### Standard GEOJSON properties

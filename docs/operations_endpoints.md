@@ -673,14 +673,140 @@ always take the units into consideration, just to be sure.
 </Tabs>
 
 
-
 ---
 
 ### Upload a file
 
+&nbsp<span class="badge badge--warning">POST</span> `/batch`
+
+Posts/creates a new file in Leaf. The file must be sent as a zip.
+
+Leaf has two "file upload" enpoints. If you know that what provider a zip file 
+came from and also know that it contains only operations files from the same 
+operation, please use [our other endpoint][8]. For every other case, this endpoint
+is the right one.
+
+This endpoint receives two required URL parameters, a `leafUserId` and `provider` 
+
+A `provider` must be set and be one of the following:
+
+```
+Leaf
+ClimateFieldView
+CNHI
+JohnDeere
+Trimble
+```
+
+Leaf will detect files present in a number of different ways and hierarchies and 
+create/return one file id for each detection.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/batch'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const params = {
+    provider: 'JohnDeere',
+    leafUserId: 'id'
+  }
+
+  const form = new FormData()
+  form.append('file', 'shapefile.zip')
+
+  axios.post(endpoint, form, { headers, params })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/batch'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('shapefile.zip')}
+  params = {
+    'provider': 'JohnDeere',
+    'leafUserId': 'id'
+  }
+
+  response = requests.post(endpoint, headers=headers, files=files, params=params)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=shapefile.zip' \
+      'https://api.withleaf.io/services/operations/api/batch?' \
+      'provider=JohnDeere&leafUserId=id'
+  ```
+
+  </TabItem>
+  <TabItem value="json">
+
+  Returns a single JSON object:
+
+  ```json
+{
+    "message": "Your file is being processed and will be available in a few minutes",
+    "ids": [
+        "file_id_1",
+        "file_id_2",
+        "file_id_...",
+        "file_id_n",
+    ]
+}
+  ```
+
+  </TabItem>
+</Tabs>
+
+After a few minutes, you can query each of the files individually on 
+[Get a File](#get-a-file) or all of them, filtering by `createdDate`, on 
+[Get all Files](#get-all-files).
+
+
+---
+
+
+### Upload specific file
+
 &nbsp<span class="badge badge--warning">POST</span> `/files`
 
 Posts/creates a new file in Leaf. The file must be sent as a zip.
+
+Leaf has two "file upload" enpoints. If you know that what provider a zip file 
+came from and also know that it contains only operations files from the same 
+operation, this is the right endpoint. For every other case, please refer to 
+[our batch endpoint][7].
 
 This endpoint receives three URL parameters, one of them is optional.
 
@@ -788,127 +914,6 @@ multiple files for the same operation.
       -F 'file=shapefile.zip' \
       'https://api.withleaf.io/services/operations/api/files?' \
       'fileFormat=SHAPEFILE&provider=JohnDeere&leafUserId=id'
-  ```
-
-  </TabItem>
-  <TabItem value="json">
-
-  Returns a single JSON object:
-
-  ```json
-{
-    "message": "Your file is being processed and will be available in a few minutes",
-    "ids": [
-        "file_id_1",
-        "file_id_2",
-        "file_id_...",
-        "file_id_n",
-    ]
-}
-  ```
-
-  </TabItem>
-</Tabs>
-
-After a few minutes, you can query each of the files individually on 
-[Get a File](#get-a-file) or all of them, filtering by `createdDate`, on 
-[Get all Files](#get-all-files).
-
-
----
-
-### Upload specific file
-
-&nbsp<span class="badge badge--warning">POST</span> `/batch`
-
-Posts/creates a new file in Leaf. The file must be sent as a zip.
-
-Leaf has two "file upload" enpoints. If you know that what provider a zip file 
-came from and also know that it contains only operations files from the same 
-operation, please use [our other endpoint]. For every other case, this endpoint
-is the right one.
-
-This endpoint receives two required URL parameters, a `leafUserId` and `provider` 
-
-A `provider` must be set and be one of the following:
-
-```
-Leaf
-ClimateFieldView
-CNHI
-JohnDeere
-Trimble
-```
-
-Leaf will detect files present in a number of different ways and hierarchies and 
-create/return one file id for each detection.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
-  ]
-}>
-
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint ='https://api.withleaf.io/services/operations/api/batch'
-
-  const headers = {
-    'Authorization': `Bearer ${TOKEN}`
-    'Content-Type': 'multipart/form-data'
-  }
-
-  const params = {
-    provider: 'JohnDeere',
-    leafUserId: 'id'
-  }
-
-  const form = new FormData()
-  form.append('file', 'shapefile.zip')
-
-  axios.post(endpoint, form, { headers, params })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/operations/api/batch'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  files = {'file': open('shapefile.zip')}
-  params = {
-    'provider': 'JohnDeere',
-    'leafUserId': 'id'
-  }
-
-  response = requests.post(endpoint, headers=headers, files=files, params=params)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X POST \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      -F 'file=shapefile.zip' \
-      'https://api.withleaf.io/services/operations/api/batch?' \
-      'provider=JohnDeere&leafUserId=id'
   ```
 
   </TabItem>

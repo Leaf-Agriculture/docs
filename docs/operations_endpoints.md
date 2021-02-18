@@ -87,7 +87,6 @@ They are:
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -129,96 +128,22 @@ They are:
   ```
 
   </TabItem>
-  <TabItem value="json">
-
-  ```json
-  [
-    {
-         "id": "11e8df30-df5c-4373-8dc1-fb275cdd3ea4",
-         "provider": "ClimateFieldView",
-         "sizeInBytes": 24249,
-         "originalFile": "https://climate-prd-bucket-etko4ab64ih6.s3.us-west-2.amazonaws.com/19e9fe2e-399c-4735-b4b1-9b052840e2f5.zip",
-         "standardGeojson": "https://climate-prd-bucket-etko4ab64ih6.s3.us-west-2.amazonaws.com/14aa028a-72f0-473a-8fc8-e2b3edef7c3f.json",
-         "leafUserId": "1f351aa6-c05a-473a-89ba-d63a87d9b302",
-         "apiOwnerUsername": "leafdemos",
-         "status": "processed",
-         "origin": "provider",
-         "createdTime": "2020-10-29T19:44:57.723",
-         "operationStartTime": "2019-04-29T00:24:52.084",
-         "operationEndTime": "2019-04-29T00:43:03.276",
-         "summary": {
-             "type": "Feature",
-             "properties": {
-                 "totalDistance": 10900.947723655045,
-                 "speed": {
-                     "average": 10.33722442338795,
-                     "standardDeviation": 1.5361860364425932,
-                     "min": 0.3355403244495392,
-                     "max": 11.497848510742188
-                 },
-                 "elevation": {
-                     "average": 3577.9168289290683,
-                     "standardDeviation": 0.6729413774132946,
-                     "min": 3576.9,
-                     "max": 3578.9
-                 },
-                 "varieties": [
-                     "28-0-0 uan @ 160 lb/ac",
-                     "agrotain advanced @ 2.5 gal/ac",
-                     "bicep ii magnum @ 32 fl oz/ac",
-                     "fs optique @ 20 fl oz/ac",
-                     "roundup powermax (usa) @ 16 fl oz/ac",
-                     "sharpen powered by kixor @ 1 fl oz/ac"
-                 ],
-                 "appliedRate": {
-                     "average": 14.757733806861584,
-                     "standardDeviation": 0.3157623349195758,
-                     "min": 13.899999643744623,
-                     "max": 15.599999476023033
-                 },
-                 "operationType": "applied",
-                 "totalArea": 319471.8942196931,
-                 "machineSpecification": {
-                     "machineDescription": "Agco Rogator RG1300",
-                     "implementDescription": "Sprayer",
-                     "implementWidth": 1440.0000000000002
-                 }
-             },
-             "geometry": {
-                 "type": "MultiPolygon",
-                 "coordinates": [
-                     [
-                         [
-                             [-89.83382833, 39.71963950, 3578.8],
-                             [-89.83443583, 39.71966733, 3578.8],
-                             [-89.83452050, 39.71968466, 3578.6],
-                             [-89.83451283, 39.72648850, 3577.8],
-                             [-89.83010300, 39.72748950, 3577.2],
-                             [-89.83005766, 39.72749950, 3577.2],
-                             [-89.83001900, 39.72750716, 3577.2],
-                             [-89.82999183, 39.72751166, 3577.3],
-                             [-89.82997116, 39.72751383, 3577.3],
-                             [-89.82993383, 39.72020166, 3578.6],
-                             [-89.82993866, 39.71975133, 3578.2],
-                             [-89.82996366, 39.71968966, 3578.1],
-                             [-89.83382833, 39.71963950, 3578.8]
-                         ]
-                     ]
-                 ]
-             }
-         },
-         "sourceFiles": []
-     },
-    ...
-  ]
-  ```
-
-  The `sourceFiles` entry in this JSON response is a list of files' ids that were
-  used to create the file. It will appear only in _"merge"_ and _"automerged"_ files.
-
-  </TabItem>
 </Tabs>
 
+
+#### Response
+
+The response is a JSON with the key "operations" referring to a list of files.
+[Here's a link with sample responses][sample_summary] for "planted", "applied" 
+and "harvested" operation files.
+
+
+```json
+{
+    "message": "SUCCESS",
+    "operations": [OPERATION]
+}    
+```
 
 ---
 
@@ -234,7 +159,6 @@ Gets a single file by its id.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -274,92 +198,13 @@ Gets a single file by its id.
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/operations/api/files/{id}'
   ```
-
-  </TabItem>
-  <TabItem value="json">
-
-  This is a sample response of "applied" operation type
-  ```json
-  {
-       "id": "11e8df30-df5c-4373-8dc1-fb275cdd3ea4",
-       "provider": "ClimateFieldView",
-       "sizeInBytes": 24249,
-       "originalFile": "https://climate-prd-bucket-etko4ab64ih6.s3.us-west-2.amazonaws.com/19e9fe2e-399c-4735-b4b1-9b052840e2f5.zip",
-       "standardGeojson": "https://climate-prd-bucket-etko4ab64ih6.s3.us-west-2.amazonaws.com/14aa028a-72f0-473a-8fc8-e2b3edef7c3f.json",
-       "leafUserId": "1f351aa6-c05a-473a-89ba-d63a87d9b302",
-       "apiOwnerUsername": "leafdemos",
-       "status": "processed",
-       "origin": "provider",
-       "createdTime": "2020-10-29T19:44:57.723",
-       "operationStartTime": "2019-04-29T00:24:52.084",
-       "operationEndTime": "2019-04-29T00:43:03.276",
-       "summary": {
-           "type": "Feature",
-           "properties": {
-               "totalDistance": 10900.947723655045,
-               "speed": {
-                   "average": 10.33722442338795,
-                   "standardDeviation": 1.5361860364425932,
-                   "min": 0.3355403244495392,
-                   "max": 11.497848510742188
-               },
-               "elevation": {
-                   "average": 3577.9168289290683,
-                   "standardDeviation": 0.6729413774132946,
-                   "min": 3576.9,
-                   "max": 3578.9
-               },
-               "varieties": [
-                   "28-0-0 uan @ 160 lb/ac",
-                   "agrotain advanced @ 2.5 gal/ac",
-                   "bicep ii magnum @ 32 fl oz/ac",
-                   "fs optique @ 20 fl oz/ac",
-                   "roundup powermax (usa) @ 16 fl oz/ac",
-                   "sharpen powered by kixor @ 1 fl oz/ac"
-               ],
-               "appliedRate": {
-                   "average": 14.757733806861584,
-                   "standardDeviation": 0.3157623349195758,
-                   "min": 13.899999643744623,
-                   "max": 15.599999476023033
-               },
-               "operationType": "applied",
-               "totalArea": 319471.8942196931,
-               "machineSpecification": {
-                   "machineDescription": "Agco Rogator RG1300",
-                   "implementDescription": "Sprayer",
-                   "implementWidth": 1440.0000000000002
-               }
-           },
-           "geometry": {
-               "type": "MultiPolygon",
-               "coordinates": [
-                   [
-                       [
-                           [-89.83382833, 39.71963950, 3578.8],
-                           [-89.83443583, 39.71966733, 3578.8],
-                           [-89.83452050, 39.71968466, 3578.6],
-                           [-89.83451283, 39.72648850, 3577.8],
-                           [-89.83010300, 39.72748950, 3577.2],
-                           [-89.83005766, 39.72749950, 3577.2],
-                           [-89.83001900, 39.72750716, 3577.2],
-                           [-89.82999183, 39.72751166, 3577.3],
-                           [-89.82997116, 39.72751383, 3577.3],
-                           [-89.82993383, 39.72020166, 3578.6],
-                           [-89.82993866, 39.71975133, 3578.2],
-                           [-89.82996366, 39.71968966, 3578.1],
-                           [-89.83382833, 39.71963950, 3578.8]
-                       ]
-                   ]
-               ]
-           }
-       },
-       "sourceFiles": []
-   }
-  ```
-
   </TabItem>
 </Tabs>
+
+#### Response
+
+[Here's a link with sample responses][sample_summary] for "planted", "applied" 
+and "harvested" operation files.
 
 ---
 
@@ -376,7 +221,6 @@ Gets the summary, if available, for the file id.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
 
@@ -419,77 +263,14 @@ Gets the summary, if available, for the file id.
   ```
 
   </TabItem>
-  <TabItem value="json">
-
-  Returns a single [GeoJSON][2] feature containing the convex hull of all operation
-  data and some statistics calculated from it.
-
-  ```json
-  {
-      "type": "Feature",
-      "properties": {
-          "totalDistance": 10900.947723655045,
-          "speed": {
-              "average": 10.33722442338795,
-              "standardDeviation": 1.5361860364425932,
-              "min": 0.3355403244495392,
-              "max": 11.497848510742188
-          },
-          "elevation": {
-              "average": 3577.9168289290683,
-              "standardDeviation": 0.6729413774132946,
-              "min": 3576.9,
-              "max": 3578.9
-          },
-          "varieties": [
-              "28-0-0 uan @ 160 lb/ac",
-              "agrotain advanced @ 2.5 gal/ac",
-              "bicep ii magnum @ 32 fl oz/ac",
-              "fs optique @ 20 fl oz/ac",
-              "roundup powermax (usa) @ 16 fl oz/ac",
-              "sharpen powered by kixor @ 1 fl oz/ac"
-          ],
-          "appliedRate": {
-              "average": 14.757733806861584,
-              "standardDeviation": 0.3157623349195758,
-              "min": 13.899999643744623,
-              "max": 15.599999476023033
-          },
-          "operationType": "applied",
-          "totalArea": 319471.8942196931,
-          "machineSpecification": {
-              "machineDescription": "Agco Rogator RG1300",
-              "implementDescription": "Sprayer",
-              "implementWidth": 1440.0000000000002
-          }
-      },
-      "geometry": {
-          "type": "MultiPolygon",
-          "coordinates": [
-              [
-                  [
-                      [-89.83382833, 39.71963950, 3578.8],
-                      [-89.83443583, 39.71966733, 3578.8],
-                      [-89.83452050, 39.71968466, 3578.6],
-                      [-89.83451283, 39.72648850, 3577.8],
-                      [-89.83010300, 39.72748950, 3577.2],
-                      [-89.83005766, 39.72749950, 3577.2],
-                      [-89.83001900, 39.72750716, 3577.2],
-                      [-89.82999183, 39.72751166, 3577.3],
-                      [-89.82997116, 39.72751383, 3577.3],
-                      [-89.82993383, 39.72020166, 3578.6],
-                      [-89.82993866, 39.71975133, 3578.2],
-                      [-89.82996366, 39.71968966, 3578.1],
-                      [-89.83382833, 39.71963950, 3578.8]
-                  ]
-              ]
-          ]
-      }
-  }
-  ```
-
-  </TabItem>
 </Tabs>
+
+
+#### Response
+
+[Here's a link with sample responses][sample_summary] for "planted", "applied" 
+and "harvested" operation files.
+
 
 
 ---
@@ -1126,352 +907,7 @@ It receives a single JSON object with the `ids` entry. Example:
 </Tabs>
 
 
-## REST Resources
-
-See below the REST resources and their endpoints.
-
-### Operation File Summary Resource
-
-Leaf returns operation file summaries in a standardized format. Summaries use the point data to derive basic information about the operation and include links to the original files and images of an operation.Naturally, different 
-types of operations contain different properties. For instance, an `applied` 
-operation will contain `appliedRate`, whereas a `harvested` operation will 
-contain `wetMass` and other Yield properties. The resource below shows a typical return. A list of 
-all properties is available here.
-
-[Here][sample_summary] you can see a sample summary as response for an operation file
-
-An operation returned by Leaf can be an individual file or contain multiple 
-individual files (uploaded, merged or uploaded).
-If the operation contains more than one individual file, another key is added to 
-the resource, the "sources" key, that is a list of individual file ids.
-
-### Standard Geojson Resource
-
-Each operation file returns with a "standardgeojson" URL that allows you to download a full point dataset from the operation in a standardized geojson format. Below is an example of the format of each point in these files.
-
-<Tabs
-  defaultValue="planted"
-  values={[
-    { label: 'Planted', value: 'planted', },
-    { label: 'Applied', value: 'applied', },
-    { label: 'Harvested', value: 'harvested', },
-  ]
-}>
-  
-  <TabItem value="planted">
-
-  ```json
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": 
-      [
-        -74.83762110788625,
-        28.686604864693564
-      ]
-    },
-    "properties": {
-      "distance": "float",
-      "heading": "float",
-      "speed": "float",
-      "elevation": "float",
-      "equipmentWidth": "float",
-      "recordingStatus": "string",
-      "machinery": ["string"],
-      "sectionId" : "int",
-      "timestamp": "string",
-      "operationType": "planted",
-      "crop": "string",
-      "variety": "string",
-      "area": "float",
-      "seedRate": "int",
-      "seedRateTarget": "int",
-      "seedDepth": "float",
-    }
-  }
-  ```
-
-
-  </TabItem>
-  <TabItem value="applied">
-
-  ```json
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": 
-      [
-        -74.83762110788625,
-        28.686604864693564
-      ]
-    },
-    "properties": {
-      "distance": "float",
-      "heading": "float",
-      "speed": "float",
-      "elevation": "float",
-      "equipmentWidth": "float",
-      "recordingStatus": "string",
-      "machinery": ["string"],
-      "sectionId" : "int",
-      "timestamp": "string",
-      "operationType": "applied",
-      "crop": "string",
-      "area": "float",
-      "products": {
-        "type": "string",
-        "description": "string"
-      },
-      "appliedRate": "float",
-      "appliedRateTarget": "float",
-    }
-  }
-  ```
-
-  </TabItem>
-  <TabItem value="harvested">
-
-  ```json
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Point",
-      "coordinates": 
-      [
-        -74.83762110788625,
-        28.686604864693564
-      ]
-    },
-    "properties": {
-      "distance": "float",
-      "heading": "float",
-      "speed": "float",
-      "elevation": "float",
-      "harvestMoisture": "float",
-      "equipmentWidth": "float",
-      "recordingStatus": "string",
-      "machinery": ["string"],
-      "sectionId" : "int",
-      "timestamp": "string",
-      "operationType": "harvested",
-      "crop": "string",
-      "variety": "string",
-      "area": "float",
-      "wetMass": "float",
-      "wetVolume": "float",
-      "wetMassPerArea": "float",
-      "wetVolumePerArea": "float",
-      "dryMass": "float",
-      "dryVolume": "float",
-      "dryMassPerArea": "float",
-      "dryVolumePerArea": "float"
-    }
-  }
-  ```
-
-  </TabItem>
-</Tabs>
 
 
 
-## List of properties
 
-Below is the list of all properties. When the data is present in the original 
-file, Leaf standardizes names (and units) to create the standardGeojson, the 
-summary and, when applicable, images for those properties. 
-
-Below we list all the properties in the standardGeojson and summary separately,
-since there are different properties present.
-
-### Summary properties
-
-Select the tab you want to see "planted", "applied" or "harvested"
-
-<Tabs
-  defaultValue="planted"
-  values={[
-    { label: 'Planted', value: 'planted', },
-    { label: 'Applied', value: 'applied', },
-    { label: 'Harvested', value: 'harvested', },
-  ]
-}>
-
-  <TabItem value="planted">
-
-
-  | key             | presence       | type | 
-  | -               | -              | - |
-  | crop            | *  | string | 
-  | seedRate        | *  | dict |
-  | operationType   | *  | string "planted" |
-  | totalArea       | *  | int (square meters) |
-  | elevation       | *  | dict |
-  | variety         | ** | string |
-  | seedRateTarget  | ** | dict |
-  | seedDepth       | ** | dict |
-  | machinery       | ** | list of strings |
-  | speed           | ** | dict |
-  | totalPlanted    | ** | int (number of seeds) |
-  
-  \* = Always in response  
-  \*\* = Usually in response but not required to pass tests
-
-[Here][sample_summary] you can see a sample summary as response for an operation file
-
-
-  </TabItem>
-
-  <TabItem value="applied">
-
-  | key | presence | type |
-  | - | - | - |
-  | appliedRate         | *  | dict |
-  | operationType       | *  | applied |
-  | elevation           | *  | dict |
-  | totalArea           | *  | int (square meters) |
-  | products            | *  | dict  |
-  | appliedRateTarget   | ** | dict |
-  | machinery           | ** | list of strings |
-  | speed               | ** | dict |
-  | totalApplied        | ** | float |
-
-
-  \* = Always in response  
-  \*\* = Usually in response but not required to pass tests
-
-  [Here][sample_summary] you can see a sample summary as response for an operation file
-
-
-  </TabItem>
-
-
-  <TabItem value="harvested">
-
-
-  | key | presence | type |
-  | - | - | - |
-  | elevation         | *  | dict |
-  | harvestMoisture   | *  | dict |
-  | operationType     | *  | harvested |
-  | totalArea         | *  | int (square meters) |
-  | wetMass           | *  | dict | 
-  | wetMassPerArea    | *  | dict |
-  | wetVolume         | *  | dict |
-  | wetVolumePerArea  | *  | dict |
-  | totalWetVolume    | *  | float |
-  | totalWetMass      | *  | float |
-  | crop              | *  | string |
-  | dryMass           | ** | dict |
-  | dryMassPerArea    | ** | dict |
-  | dryVolume         | ** | dict |
-  | dryVolumePerArea  | ** | dict |
-  | speed             | ** | dict |
-  | variety           | ** | string |
-  | machinery         | ** | list of strings |
-
-  \* = Always in response  
-  \*\* = Usually in response but not required to pass tests
-
-  [Here][sample_summary] you can see a sample summary as response for an operation file
-
-
-
-  </TabItem>
-</Tabs>
-
-
-
-### Standard GEOJSON properties
-
-
-<Tabs
-  defaultValue="planted"
-  values={[
-    { label: 'Planted', value: 'planted', },
-    { label: 'Applied', value: 'applied', },
-    { label: 'Harvested', value: 'harvested', },
-  ]
-}>
-
-  <TabItem value="planted">
-
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords          | * | Point (x,y)     | -                    | Point (x,y) |
-  | timestamp       | * | string          | -                    | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop            | * | string          | -                    | Crop type (normalized) |
-  | area            | * | float           | ft² or m²            | Area represented by point |
-  | heading         | * | float           | degrees              | Heading of machine at point |
-  | distance        | * | float           | ft or m              | Distance travelled since previous point |
-  | elevation       | * | float           | ft or m              | Distance to sea level |
-  | operationType   | * | string          | -                    | string "planted" |
-  | equipmentWidth  | * | int             | ft or m              | Width of implement |
-  | recordingStatus | * | Boolean         | -                    | Recording status of machine at point |
-  | seedRate        | * | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
-  | variety         | ** | string          | -                    | The variety of seed being planted |
-  | speed           | ** | float           | ft/s or m/s          | Speed of machine at point |
-  | sectionId       | ** | int             | -                    | ID of implement sensor section |
-  | machinery       | ** | list of strings | -                    | name of machine & implement |
-  | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
-  | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
-
-  </TabItem>
-
-  <TabItem value="applied">
-
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords            | * | Point (x,y)       | -                | Point (x,y) |
-  | distance          | * | float             | ft or m          | Distance travelled since previous point |
-  | heading           | * | float             | -                | Heading of machine at point |
-  | elevation         | * | float             | m                | Distance to sea level |
-  | area              | * | float             | ft² or m²        | Area represented by point |
-  | appliedRate       | * | float             | fl.oz/ac or L/m² | The amount of product being applied at point |
-  | recordingStatus   | * | Boolean           | -                | Recording status of machine |
-  | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType     | * | string            | -                | string "applied" |
-  | products          | * | dict              | -                | tank mix including products and ratio |
-  | equipmentWidth    | * | int               | ft or m          | Width of implement |
-  | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
-  | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
-  | machinery         | ** | list of strings   | -                | Name of machine and implement |
-  | sectionId         | ** | int               | -                | ID of implement sensor section |
-
-
-  </TabItem>
-
-  <TabItem value="harvested">
-
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords            | * | Point (x,y) | -              | Point x,y |
-  | timestamp         | * | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop              | * | string      | -              | Crop type (normalized) |
-  | area              | * | float       | ft² or m²      | Area represented by point |
-  | distance          | * | float       | ft or m        | Distance travelled since previous point |
-  | elevation         | * | float       | ft or m        | Distance to sea level |
-  | operationType     | * | string      | -              | string "harvested" |
-  | equipmentWidth    | * | float       | ft or m        | Width of implement |
-  | recordingStatus   | * | Boolean     | -              | Recording status of machine |
-  | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
-  | wetMass           | * | float       | lb or kg       | wet mass harvested in that point |
-  | wetMassPerArea    | * | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
-  | wetVolume         | * | float       | bu or L        | wet volume harvested in that point |
-  | wetVolumePerArea  | * | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
-  | variety           | ** | string      | -              | The variety of seed being harvested |
-  | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
-  | heading           | ** | float       | degrees        | Heading of machine at point |
-  | machinery         | ** | list        | -              | name of machine & implement |
-  | dryMass           | ** | float       | lb or kg       | dry mass harvested in that point |
-  | dryMassPerArea    | ** | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
-  | dryVolume         | ** | float       | bu or L        | dry volume harvested in that point |
-  | dryVolumePerArea  | ** | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
-  | sectionId         | ** | int         | int            | ID of implement sensor section |
-
-  </TabItem>
-</Tabs>
-
-\* = Always in response  
-\*\* = Usually in response but not required to pass tests

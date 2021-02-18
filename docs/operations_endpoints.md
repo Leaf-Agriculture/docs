@@ -681,25 +681,26 @@ always take the units into consideration, just to be sure.
 
 Posts/creates a new file in Leaf. The file must be sent as a zip.
 
-Leaf has two "file upload" enpoints. If you know that what provider a zip file 
+Leaf has two "file upload" enpoints. This endpoint accepts a .zip of operation files, detects which files are in the .zip, and returns the ID of the process, which can in turn be used to retrieve the ID's of the files being processed. It almost every case, this endpoint is the correct one to use for file conversions. 
+If you know that which provider a zip file 
 came from and also know that it contains only operations files from the same 
-operation, please use [our other endpoint][8]. For every other case, this endpoint
-is the right one.
+operation, please use [our specific file upload endpoint][8]. 
 
 This endpoint receives two required URL parameters, a `leafUserId` and `provider` 
 
 A `provider` must be set and be one of the following:
 
 ```
-Leaf
+Other
 ClimateFieldView
 CNHI
 JohnDeere
 Trimble
 ```
+If provider is set to "Other", Leaf will detect which files are present in the .zip file and process them accordingly. 
 
-Leaf will detect files present in a number of different ways and hierarchies and 
-create/return one file id for each detection.
+Leaf will detect files present and 
+create/return one file id for each file that is detected. These individual files can then be accessed individually by their ID or via their associated field boundary.
 
 <Tabs
   defaultValue="sh"
@@ -776,22 +777,95 @@ create/return one file id for each detection.
 
   ```json
 {
-    "message": "Your file is being processed and will be available in a few minutes",
-    "ids": [
-        "file_id_1",
-        "file_id_2",
-        "file_id_...",
-        "file_id_n",
-    ]
+    "id": "f893c921-0f38-4f39-9f3e-be765ac61df0",
+    "leafUserId": "bdf5f624-fb9b-4294-949c-29e979f0ce5a",
+    "provider": "Other",
+    "status": "RECEIVED"
 }
   ```
 
   </TabItem>
 </Tabs>
 
-After a few minutes, you can query each of the files individually on 
+This id can then be queried to retreive the individual file ID's. 
+Alternatively, ou can query each of the files individually with 
 [Get a File](#get-a-file) or all of them, filtering by `createdDate`, on 
 [Get all Files](#get-all-files).
+
+---
+
+### Get Batch upload object
+
+
+```python
+import requests
+
+url = "https://api.withleaf.io/services/operations/api/batch/{batch_id}/"
+
+payload={}
+headers = {
+  'Authorization': 'Bearer '
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+
+```
+
+
+When you query a batch upload ID, you will receive a response like this:
+
+```json 
+{
+    "id": "f893c921-0f38-4f39-9f3e-be765ac61df0",
+    "leafUserId": "bdf5f624-fb9b-4294-949c-29e979f0ce5a",
+    "provider": "Other",
+    "status": "PROCESSED",
+    "leafFiles": [
+        "8334f4bb-48de-44e2-903b-6dedd6db6683",
+        "81778f58-8eed-41cc-a025-e653ea85b01e",
+        "0f606bef-b529-4899-854c-9b698cd08762",
+        "84fec273-b458-4be7-8feb-44204502f126",
+        "92b7367b-2ffd-4a82-ba9b-5a40e8b68714",
+        "90e7e130-8f33-4752-b8f4-3a132246f047",
+        "cb97857e-61b0-4fbe-a5c1-1083cfa6738f",
+        "0cded205-7734-40fb-8906-b82d36e35845",
+        "dc24d491-983c-4ebe-b961-8c749943529f",
+        "67af8697-47bc-4886-935f-5880d1eba31d",
+        "8b7d8b7b-e682-4c3e-aee2-3b7713cc81a4",
+        "e5067ed3-8463-43b9-a8a5-3b3c1eee44bc",
+        "b9d30d3a-0207-410f-81da-afb31a1b36cb",
+        "eace9b90-a520-4c4c-af89-4c3fd5da68fa",
+        "6ea55c68-203f-448b-9e7f-dcd014c31cc3"
+    ]
+}
+
+You can then query these files individually, merge the files, or query for them via [Get all Files](#get-all-files).
+
+```
+---
+
+### Get Batch upload object files
+
+```python
+import requests
+
+url = "https://api.withleaf.io/services/operations/api/batch/{batch_id}/"
+
+payload={}
+headers = {
+  'Authorization': 'Bearer '
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+
+```
+
+Which will result in a response containing each file's summary and processing status.
+
 
 
 ---

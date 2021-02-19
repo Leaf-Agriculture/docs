@@ -30,101 +30,6 @@ individual files (uploaded, merged or uploaded).
 If the operation contains more than one individual file, another key is added to 
 the resource, the "sources" key, that is a list of individual file ids.
 
-### Properties
-
-Select the tab you want to see "planted", "applied" or "harvested"
-
-<Tabs
-  defaultValue="planted"
-  values={[
-    { label: 'Planted', value: 'planted', },
-    { label: 'Applied', value: 'applied', },
-    { label: 'Harvested', value: 'harvested', },
-  ]
-}>
-
-  <TabItem value="planted">
-
-
-  | key             | presence       | type | 
-  | -               | -              | - |
-  | crop            | *  | string | 
-  | seedRate        | *  | dict |
-  | operationType   | *  | string "planted" |
-  | totalArea       | *  | int (square meters) |
-  | elevation       | *  | dict |
-  | variety         | ** | string |
-  | seedRateTarget  | ** | dict |
-  | seedDepth       | ** | dict |
-  | machinery       | ** | list of strings |
-  | speed           | ** | dict |
-  | totalPlanted    | ** | int (number of seeds) |
-  
-  \* = Always in response  
-  \*\* = Usually in response but not required to pass tests
-
-[Here][sample_summary] you can see a sample summary as response for an operation file
-
-
-  </TabItem>
-
-  <TabItem value="applied">
-
-  | key | presence | type |
-  | - | - | - |
-  | appliedRate         | *  | dict |
-  | operationType       | *  | applied |
-  | elevation           | *  | dict |
-  | totalArea           | *  | int (square meters) |
-  | products            | *  | dict  |
-  | appliedRateTarget   | ** | dict |
-  | machinery           | ** | list of strings |
-  | speed               | ** | dict |
-  | totalApplied        | ** | float |
-
-
-  \* = Always in response  
-  \*\* = Usually in response but not required to pass tests
-
-  [Here][sample_summary] you can see a sample summary as response for an operation file
-
-
-  </TabItem>
-
-
-  <TabItem value="harvested">
-
-
-  | key | presence | type |
-  | - | - | - |
-  | elevation         | *  | dict |
-  | harvestMoisture   | *  | dict |
-  | operationType     | *  | harvested |
-  | totalArea         | *  | int (square meters) |
-  | wetMass           | *  | dict | 
-  | wetMassPerArea    | *  | dict |
-  | wetVolume         | *  | dict |
-  | wetVolumePerArea  | *  | dict |
-  | totalWetVolume    | *  | float |
-  | totalWetMass      | *  | float |
-  | crop              | *  | string |
-  | dryMass           | ** | dict |
-  | dryMassPerArea    | ** | dict |
-  | dryVolume         | ** | dict |
-  | dryVolumePerArea  | ** | dict |
-  | speed             | ** | dict |
-  | variety           | ** | string |
-  | machinery         | ** | list of strings |
-
-  \* = Always in response  
-  \*\* = Usually in response but not required to pass tests
-
-  [Here][sample_summary] you can see a sample summary as response for an operation file
-
-
-
-  </TabItem>
-</Tabs>
 
 ### Sample response
 
@@ -147,7 +52,7 @@ This is an example of a summary for a "planted" operation
   ```json
 {
     "id": "uuid",
-    "provider": "provider name as string in our convention",
+    "provider": "provider name",
     "leafUserId": "uuid",
     "apiOwnerUsername": "email",
     "sourceFiles": [],
@@ -276,7 +181,7 @@ This is an example of a summary for an "applied" operation
   ```json
 {
     "id": "uuid",
-    "provider": "provider name as string in our convention",
+    "provider": "provider name",
     "leafUserId": "uuid",
     "apiOwnerUsername": "email",
     "sourceFiles": [],
@@ -393,7 +298,7 @@ This is an example of a summary for a "harvested" operation
   ```json
 {
     "id": "uuid",
-    "provider": "provider name as string in our convention",
+    "provider": "provider name",
     "leafUserId": "uuid",
     "apiOwnerUsername": "email",
     "sourceFiles": [],
@@ -556,16 +461,9 @@ This is an example of a summary for a "harvested" operation
 </Tabs>
 
 
-## Standard Geojson
-
-When the data is present in the original file, Leaf standardizes names and units
-to create the standardGeojson.
-
-Below we list all the properties in the standardGeojson.
-
-
 ### Properties
 
+Select the tab you want to see "planted", "applied" or "harvested"
 
 <Tabs
   defaultValue="planted"
@@ -578,84 +476,94 @@ Below we list all the properties in the standardGeojson.
 
   <TabItem value="planted">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords          | * | Point (x,y)     | -                    | Point (x,y) |
-  | timestamp       | * | string          | -                    | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop            | * | string          | -                    | Crop type (normalized) |
-  | area            | * | float           | ft² or m²            | Area represented by point |
-  | heading         | * | float           | degrees              | Heading of machine at point |
-  | distance        | * | float           | ft or m              | Distance travelled since previous point |
-  | elevation       | * | float           | ft or m              | Distance to sea level |
-  | operationType   | * | string          | -                    | string "planted" |
-  | equipmentWidth  | * | int             | ft or m              | Width of implement |
-  | recordingStatus | * | Boolean         | -                    | Recording status of machine at point |
-  | seedRate        | * | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
-  | variety         | ** | string          | -                    | The variety of seed being planted |
-  | speed           | ** | float           | ft/s or m/s          | Speed of machine at point |
-  | sectionId       | ** | int             | -                    | ID of implement sensor section |
-  | machinery       | ** | list of strings | -                    | name of machine & implement |
-  | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
-  | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
+
+  | key             | presence       | type | 
+  | -               | -              | - |
+  | crop            | *  | string | 
+  | seedRate        | *  | dict |
+  | operationType   | *  | string "planted" |
+  | totalArea       | *  | int |
+  | elevation       | *  | dict |
+  | variety         | ** | string |
+  | seedRateTarget  | ** | dict |
+  | seedDepth       | ** | dict |
+  | machinery       | ** | dict |
+  | speed           | ** | dict |
+  | totalPlanted    | ** | int (number of seeds) |
+  
+  \* = Always in response  
+  \*\* = Usually in response but not required to pass tests
+
+[Here][sample_summary] you can see a sample summary as response for an operation file
+
 
   </TabItem>
 
   <TabItem value="applied">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords            | * | Point (x,y)       | -                | Point (x,y) |
-  | distance          | * | float             | ft or m          | Distance travelled since previous point |
-  | heading           | * | float             | -                | Heading of machine at point |
-  | elevation         | * | float             | m                | Distance to sea level |
-  | area              | * | float             | ft² or m²        | Area represented by point |
-  | appliedRate       | * | float             | fl.oz/ac or L/m² | The amount of product being applied at point |
-  | recordingStatus   | * | Boolean           | -                | Recording status of machine |
-  | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType     | * | string            | -                | string "applied" |
-  | products          | * | dict              | -                | tank mix including products and ratio |
-  | equipmentWidth    | * | int               | ft or m          | Width of implement |
-  | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
-  | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
-  | machinery         | ** | list of strings   | -                | Name of machine and implement |
-  | sectionId         | ** | int               | -                | ID of implement sensor section |
+  | key | presence | type |
+  | - | - | - |
+  | appliedRate         | *  | dict |
+  | operationType       | *  | string "applied" |
+  | elevation           | *  | dict |
+  | totalArea           | *  | int |
+  | products            | *  | dict  |
+  | appliedRateTarget   | ** | dict |
+  | machinery           | ** | dict |
+  | speed               | ** | dict |
+  | totalApplied        | ** | float |
+
+
+  \* = Always in response  
+  \*\* = Usually in response but not required to pass tests
+
+  [Here][sample_summary] you can see a sample summary as response for an operation file
 
 
   </TabItem>
 
+
   <TabItem value="harvested">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords            | * | Point (x,y) | -              | Point x,y |
-  | timestamp         | * | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop              | * | string      | -              | Crop type (normalized) |
-  | area              | * | float       | ft² or m²      | Area represented by point |
-  | distance          | * | float       | ft or m        | Distance travelled since previous point |
-  | elevation         | * | float       | ft or m        | Distance to sea level |
-  | operationType     | * | string      | -              | string "harvested" |
-  | equipmentWidth    | * | float       | ft or m        | Width of implement |
-  | recordingStatus   | * | Boolean     | -              | Recording status of machine |
-  | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
-  | wetMass           | * | float       | lb or kg       | wet mass harvested in that point |
-  | wetMassPerArea    | * | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
-  | wetVolume         | * | float       | bu or L        | wet volume harvested in that point |
-  | wetVolumePerArea  | * | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
-  | variety           | ** | string      | -              | The variety of seed being harvested |
-  | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
-  | heading           | ** | float       | degrees        | Heading of machine at point |
-  | machinery         | ** | list        | -              | name of machine & implement |
-  | dryMass           | ** | float       | lb or kg       | dry mass harvested in that point |
-  | dryMassPerArea    | ** | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
-  | dryVolume         | ** | float       | bu or L        | dry volume harvested in that point |
-  | dryVolumePerArea  | ** | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
-  | sectionId         | ** | int         | int            | ID of implement sensor section |
+
+  | key | presence | type |
+  | - | - | - |
+  | elevation         | *  | dict |
+  | harvestMoisture   | *  | dict |
+  | operationType     | *  | string "harvested" |
+  | totalArea         | *  | int |
+  | wetMass           | *  | dict | 
+  | wetMassPerArea    | *  | dict |
+  | wetVolume         | *  | dict |
+  | wetVolumePerArea  | *  | dict |
+  | totalWetVolume    | *  | float |
+  | totalWetMass      | *  | float |
+  | crop              | *  | string |
+  | dryMass           | ** | dict |
+  | dryMassPerArea    | ** | dict |
+  | dryVolume         | ** | dict |
+  | dryVolumePerArea  | ** | dict |
+  | speed             | ** | dict |
+  | variety           | ** | string |
+  | machinery         | ** | dict |
+
+  \* = Always in response  
+  \*\* = Usually in response but not required to pass tests
+
+  [Here][sample_summary] you can see a sample summary as response for an operation file
+
+
 
   </TabItem>
 </Tabs>
 
-\* = Always in response  
-\*\* = Usually in response but not required to pass tests
+
+## Standard Geojson
+
+When the data is present in the original file, Leaf standardizes names and units
+to create the standardGeojson.
+
+Below we list all the properties in the standardGeojson.
 
 
 ### Sample Response
@@ -786,6 +694,99 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
   </TabItem>
 </Tabs>
+
+### Properties
+
+
+<Tabs
+  defaultValue="planted"
+  values={[
+    { label: 'Planted', value: 'planted', },
+    { label: 'Applied', value: 'applied', },
+    { label: 'Harvested', value: 'harvested', },
+  ]
+}>
+
+  <TabItem value="planted">
+
+  | key | presence | type | example units | description |
+  | - | - | - | - | - |
+  | coords          | * | Point (x,y)     | -                    | Point (x,y) |
+  | timestamp       | * | string          | -                    | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | crop            | * | string          | -                    | Crop type (normalized) |
+  | area            | * | float           | ft² or m²            | Area represented by point |
+  | heading         | * | float           | degrees              | Heading of machine at point |
+  | distance        | * | float           | ft or m              | Distance travelled since previous point |
+  | elevation       | * | float           | ft or m              | Distance to sea level |
+  | operationType   | * | string          | -                    | string "planted" |
+  | equipmentWidth  | * | int             | ft or m              | Width of implement |
+  | recordingStatus | * | Boolean         | -                    | Recording status of machine at point |
+  | seedRate        | * | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
+  | variety         | ** | string          | -                    | The variety of seed being planted |
+  | speed           | ** | float           | ft/s or m/s          | Speed of machine at point |
+  | sectionId       | ** | int             | -                    | ID of implement sensor section |
+  | machinery       | ** | list of strings | -                    | name of machine & implement |
+  | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
+  | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
+
+  </TabItem>
+
+  <TabItem value="applied">
+
+  | key | presence | type | example units | description |
+  | - | - | - | - | - |
+  | coords            | * | Point (x,y)       | -                | Point (x,y) |
+  | distance          | * | float             | ft or m          | Distance travelled since previous point |
+  | heading           | * | float             | -                | Heading of machine at point |
+  | elevation         | * | float             | m                | Distance to sea level |
+  | area              | * | float             | ft² or m²        | Area represented by point |
+  | appliedRate       | * | float             | fl.oz/ac or L/m² | The amount of product being applied at point |
+  | recordingStatus   | * | Boolean           | -                | Recording status of machine |
+  | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | operationType     | * | string            | -                | string "applied" |
+  | products          | * | dict              | -                | tank mix including products and ratio |
+  | equipmentWidth    | * | int               | ft or m          | Width of implement |
+  | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
+  | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
+  | machinery         | ** | list of strings   | -                | Name of machine and implement |
+  | sectionId         | ** | int               | -                | ID of implement sensor section |
+
+
+  </TabItem>
+
+  <TabItem value="harvested">
+
+  | key | presence | type | example units | description |
+  | - | - | - | - | - |
+  | coords            | * | Point (x,y) | -              | Point x,y |
+  | timestamp         | * | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
+  | crop              | * | string      | -              | Crop type (normalized) |
+  | area              | * | float       | ft² or m²      | Area represented by point |
+  | distance          | * | float       | ft or m        | Distance travelled since previous point |
+  | elevation         | * | float       | ft or m        | Distance to sea level |
+  | operationType     | * | string      | -              | string "harvested" |
+  | equipmentWidth    | * | float       | ft or m        | Width of implement |
+  | recordingStatus   | * | Boolean     | -              | Recording status of machine |
+  | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
+  | wetMass           | * | float       | lb or kg       | wet mass harvested in that point |
+  | wetMassPerArea    | * | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
+  | wetVolume         | * | float       | bu or L        | wet volume harvested in that point |
+  | wetVolumePerArea  | * | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
+  | variety           | ** | string      | -              | The variety of seed being harvested |
+  | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
+  | heading           | ** | float       | degrees        | Heading of machine at point |
+  | machinery         | ** | list        | -              | name of machine & implement |
+  | dryMass           | ** | float       | lb or kg       | dry mass harvested in that point |
+  | dryMassPerArea    | ** | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
+  | dryVolume         | ** | float       | bu or L        | dry volume harvested in that point |
+  | dryVolumePerArea  | ** | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
+  | sectionId         | ** | int         | int            | ID of implement sensor section |
+
+  </TabItem>
+</Tabs>
+
+\* = Always in response  
+\*\* = Usually in response but not required to pass tests
 
 
 

@@ -153,8 +153,9 @@ This is an example of a summary for a "planted" operation
     "sourceFiles": [],
     "status": "processed",
     "origin": "provider or Leaf",
-    "createdTime": "2020-10-13T12:30:49 (until seconds, no ms)",
+    "createdTime": "2020-10-13T12:30:49",
     "processedTime": "2020-10-13T12:38:12",
+    "lastUpdated": "2020-10-13T12:38:12",
     "fieldId": "uuid",
     "fieldName": "South river by the barn",
     "files": {
@@ -184,7 +185,18 @@ This is an example of a summary for a "planted" operation
             "avg": 7.0,
             "unit": "m/s"
         },
-        "machinery": ["machine1", "machine2"],        
+        "machinery": [
+            {
+                "name": "machine1", 
+                "implement": "",
+                "id": "uuid"
+            },
+            {
+                "name": "machine2",
+                "implement": "",
+                "id": "uuid"
+            }
+        ],       
         "varieties": [{
             "name": "var xx",
             "description": "",
@@ -270,8 +282,9 @@ This is an example of a summary for an "applied" operation
     "sourceFiles": [],
     "status": "processed",
     "origin": "provider or Leaf",
-    "createdTime": "2020-10-13T12:30:49 (until seconds, no ms)",
-    "processedTime": "2020-10-13T12:38:12",
+    "createdTime": "2020-10-13T20:28:31",
+    "processedTime": "2020-10-13T20:39:03",
+    "lastUpdated": "2020-10-13T20:39:03",
     "fieldId": "uuid",
     "fieldName": "South river by the barn",
     "files": {
@@ -301,7 +314,18 @@ This is an example of a summary for an "applied" operation
             "avg": 7.0,
             "unit": "m/s"
         },
-        "machinery": ["machine1", "machine2"],        
+        "machinery": [
+            {
+                "name": "machine1", 
+                "implement": "",
+                "id": "uuid"
+            },
+            {
+                "name": "machine2",
+                "implement": "",
+                "id": "uuid"
+            }
+        ],      
         "products": [{
             "name": "28-0-0 UAN",
             "description": "",
@@ -375,8 +399,9 @@ This is an example of a summary for a "harvested" operation
     "sourceFiles": [],
     "status": "processed",
     "origin": "provider or Leaf",
-    "createdTime": "2020-10-13T12:30:49 (until seconds, no ms)",
-    "processedTime": "2020-10-13T12:38:12",
+    "createdTime": "2020-10-13T20:19:01",
+    "processedTime": "2020-10-13T21:25:53",
+    "lastUpdated": "2020-10-13T21:25:53",
     "fieldId": "uuid",
     "fieldName": "South river by the barn",
     "files": {
@@ -406,7 +431,18 @@ This is an example of a summary for a "harvested" operation
             "avg": 4.1,
             "unit": "m/s"
         },
-        "machinery": ["machine1", "machine2"],        
+        "machinery": [
+            {
+                "name": "machine1", 
+                "implement": "",
+                "id": "uuid"
+            },
+            {
+                "name": "machine2",
+                "implement": "",
+                "id": "uuid"
+            }
+        ],          
         "varieties": [{
             "name": "var xx",
             "description": "",

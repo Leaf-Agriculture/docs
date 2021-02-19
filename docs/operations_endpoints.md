@@ -469,7 +469,7 @@ operation, please use [our specific file upload endpoint][8].
 
 This endpoint receives two required URL parameters, a `leafUserId` and `provider` 
 
-A `provider` must be set and be one of the following:
+A `provider` can be set as one of the following:
 
 ```
 Other
@@ -478,10 +478,10 @@ CNHI
 JohnDeere
 Trimble
 ```
-If provider is set to "Other", Leaf will detect which files are present in the .zip file and process them accordingly. 
+If provider is not set or set to "Other", Leaf will detect which files are present in the .zip file and process them accordingly. 
 
-Leaf will detect files present and 
-create/return one file id for each file that is detected. These individual files can then be accessed individually by their ID or via their associated field boundary.
+Leaf will detect files present in the uploaded .zip and 
+create/return one file id for each file that is detected. These individual files can then be accessed individually by their ID, or via their associated field boundary.
 
 <Tabs
   defaultValue="sh"
@@ -577,8 +577,9 @@ Alternatively, you can query each of the files individually with
 
 ### Get Batch upload object
 
-You can then query these files individually, merge the files, or query for them 
+Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
 via [Get all Files](#get-all-files).
+You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
 
 Move through the tabs below to see requests and response samples.
 
@@ -643,6 +644,8 @@ Move through the tabs below to see requests and response samples.
 ---
 
 ### Get Batch upload object files
+
+After uploading a file, you can see a summary of each individual file by querying the batch upload ID.
 
 ```python
 import requests

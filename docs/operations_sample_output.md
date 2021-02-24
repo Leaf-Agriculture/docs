@@ -62,7 +62,6 @@ This is an example of a summary for a "planted" operation
     "processedTime": "2020-10-13T12:38:12",
     "lastUpdated": "2020-10-13T12:38:12",
     "fieldId": "uuid",
-    "fieldName": "South river by the barn",
     "files": {
         "original": "abc.com",
         "rawGeojson": "abc.com",
@@ -197,7 +196,6 @@ This is an example of a summary for an "applied" operation
     "processedTime": "2020-10-13T20:39:03",
     "lastUpdated": "2020-10-13T20:39:03",
     "fieldId": "uuid",
-    "fieldName": "South river by the barn",
     "files": {
         "original": "abc.com",
         "rawGeojson": "abc.com",
@@ -320,7 +318,6 @@ This is an example of a summary for a "harvested" operation
     "processedTime": "2020-10-13T21:25:53",
     "lastUpdated": "2020-10-13T21:25:53",
     "fieldId": "uuid",
-    "fieldName": "South river by the barn",
     "files": {
         "original": "abc.com",
         "rawGeojson": "abc.com",

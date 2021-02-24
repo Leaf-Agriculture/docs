@@ -90,16 +90,22 @@ This is an example of a summary for a "planted" operation
             "avg": 7.0,
             "unit": "m/s"
         },
+        "totalDistance": {
+            "value": 12270.32,
+            "unit": "m"
+        },
         "machinery": [
             {
-                "name": "machine1", 
-                "implement": "",
-                "id": "uuid"
+                "machineName": "machine1", 
+                "machineId": "uuid",
+                "implementName": "",
+                "implementId": "uuid"
             },
             {
-                "name": "machine2",
-                "implement": "",
-                "id": "uuid"
+                "machineName": "machine2",
+                "machineId": "uuid",
+                "implementName": "",
+                "implementId": "uuid"
             }
         ],       
         "varieties": [{
@@ -219,16 +225,22 @@ This is an example of a summary for an "applied" operation
             "avg": 7.0,
             "unit": "m/s"
         },
+        "totalDistance": {
+            "value": 12270.32,
+            "unit": "m"
+        },
         "machinery": [
             {
-                "name": "machine1", 
-                "implement": "",
-                "id": "uuid"
+                "machineName": "machine1", 
+                "machineId": "uuid",
+                "implementName": "",
+                "implementId": "uuid"
             },
             {
-                "name": "machine2",
-                "implement": "",
-                "id": "uuid"
+                "machineName": "machine2",
+                "machineId": "uuid",
+                "implementName": "",
+                "implementId": "uuid"
             }
         ],      
         "products": [{
@@ -336,18 +348,24 @@ This is an example of a summary for a "harvested" operation
             "avg": 4.1,
             "unit": "m/s"
         },
+        "totalDistance": {
+            "value": 12270.32,
+            "unit": "m"
+        },
         "machinery": [
             {
-                "name": "machine1", 
-                "implement": "",
-                "id": "uuid"
+                "machineName": "machine1", 
+                "machineId": "uuid",
+                "implementName": "",
+                "implementId": "uuid"
             },
             {
-                "name": "machine2",
-                "implement": "",
-                "id": "uuid"
+                "machineName": "machine2",
+                "machineId": "uuid",
+                "implementName": "",
+                "implementId": "uuid"
             }
-        ],          
+        ],       
         "varieties": [{
             "name": "var xx",
             "description": "",

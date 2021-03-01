@@ -665,12 +665,28 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
       "operationType": "applied",
       "crop": "string",
       "area": "float",
-      "products": {
-        "type": "string",
-        "description": "string"
-      },
       "appliedRate": "float",
-      "appliedRateTarget": "float",
+      "appliedRateTarget": "float",      
+      "products": [
+        {
+            "name": "AMS",
+            "rate": {
+                "value": 15
+            }
+        },
+        {
+            "name": "Counter",
+            "rate": {
+                "value": 20
+            }
+        },
+        {
+            "name": "Water",
+            "rate": {
+                "value": 9.727
+             }
+        }
+    ],
     }
   }
   ```
@@ -768,7 +784,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | recordingStatus   | * | Boolean           | -                | Recording status of machine |
   | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | operationType     | * | string            | -                | string "applied" |
-  | products          | * | dict              | -                | tank mix including products and ratio |
+  | products          | * | list of dicts     | -                | tank mix including products and ratio |
   | equipmentWidth    | * | int               | ft or m          | Width of implement |
   | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
   | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |

@@ -609,30 +609,26 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   {
     "type": "Feature",
     "geometry": {
-      "type": "Point",
-      "coordinates": 
-      [
-        -74.83762110788625,
-        28.686604864693564
-      ]
+        "type": "Point",
+        "coordinates": [-74.83762110788625, 28.686604864693564]
     },
     "properties": {
-      "distance": "float",
-      "heading": "float",
-      "speed": "float",
-      "elevation": "float",
-      "equipmentWidth": "float",
-      "recordingStatus": "string",
-      "machinery": ["string"],
-      "sectionId" : "int",
-      "timestamp": "string",
-      "operationType": "planted",
-      "crop": "string",
-      "variety": "string",
-      "area": "float",
-      "seedRate": "int",
-      "seedRateTarget": "int",
-      "seedDepth": "float",
+        "distance": "float",
+        "heading": "float",
+        "speed": "float",
+        "elevation": "float",
+        "equipmentWidth": "float",
+        "recordingStatus": "string",
+        "machinery": ["string"],
+        "sectionId" : "int",
+        "timestamp": "string",
+        "operationType": "planted",
+        "crop": "string",
+        "variety": "string",
+        "area": "float",
+        "seedRate": "int",
+        "seedRateTarget": "int",
+        "seedDepth": "float",
     }
   }
   ```
@@ -645,29 +641,25 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   {
     "type": "Feature",
     "geometry": {
-      "type": "Point",
-      "coordinates": 
-      [
-        -74.83762110788625,
-        28.686604864693564
-      ]
+        "type": "Point",
+        "coordinates": [-74.83762110788625, 28.686604864693564]
     },
     "properties": {
-      "distance": "float",
-      "heading": "float",
-      "speed": "float",
-      "elevation": "float",
-      "equipmentWidth": "float",
-      "recordingStatus": "string",
-      "machinery": ["string"],
-      "sectionId" : "int",
-      "timestamp": "string",
-      "operationType": "applied",
-      "crop": "string",
-      "area": "float",
-      "appliedRate": "float",
-      "appliedRateTarget": "float",      
-      "products": [
+        "distance": "float",
+        "heading": "float",
+        "speed": "float",
+        "elevation": "float",
+        "equipmentWidth": "float",
+        "recordingStatus": "string",
+        "machinery": ["string"],
+        "sectionId" : "int",
+        "timestamp": "string",
+        "operationType": "applied",
+        "crop": "string",
+        "area": "float",
+        "appliedRate": "float",
+        "appliedRateTarget": "float",      
+        "products": [
         {
             "name": "AMS",
             "rate": {
@@ -684,9 +676,9 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
             "name": "Water",
             "rate": {
                 "value": 9.727
-             }
+                }
         }
-    ],
+        ],
     }
   }
   ```
@@ -698,36 +690,32 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   {
     "type": "Feature",
     "geometry": {
-      "type": "Point",
-      "coordinates": 
-      [
-        -74.83762110788625,
-        28.686604864693564
-      ]
+        "type": "Point",
+        "coordinates": [-74.83762110788625, 28.686604864693564]
     },
     "properties": {
-      "distance": "float",
-      "heading": "float",
-      "speed": "float",
-      "elevation": "float",
-      "harvestMoisture": "float",
-      "equipmentWidth": "float",
-      "recordingStatus": "string",
-      "machinery": ["string"],
-      "sectionId" : "int",
-      "timestamp": "string",
-      "operationType": "harvested",
-      "crop": "string",
-      "variety": "string",
-      "area": "float",
-      "wetMass": "float",
-      "wetVolume": "float",
-      "wetMassPerArea": "float",
-      "wetVolumePerArea": "float",
-      "dryMass": "float",
-      "dryVolume": "float",
-      "dryMassPerArea": "float",
-      "dryVolumePerArea": "float"
+        "distance": "float",
+        "heading": "float",
+        "speed": "float",
+        "elevation": "float",
+        "harvestMoisture": "float",
+        "equipmentWidth": "float",
+        "recordingStatus": "string",
+        "machinery": ["string"],
+        "sectionId" : "int",
+        "timestamp": "string",
+        "operationType": "harvested",
+        "crop": "string",
+        "variety": "string",
+        "area": "float",
+        "wetMass": "float",
+        "wetVolume": "float",
+        "wetMassPerArea": "float",
+        "wetVolumePerArea": "float",
+        "dryMass": "float",
+        "dryVolume": "float",
+        "dryMassPerArea": "float",
+        "dryVolumePerArea": "float"
     }
   }
   ```

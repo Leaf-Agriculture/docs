@@ -61,7 +61,7 @@ This is an example of a summary for a "planted" operation
     "createdTime": "2020-10-13T12:30:49",
     "processedTime": "2020-10-13T12:38:12",
     "lastUpdated": "2020-10-13T12:38:12",
-    "fieldId": "uuid",
+    "fieldId": ["uuid"],
     "files": {
         "original": "abc.com",
         "rawGeojson": "abc.com",
@@ -198,7 +198,7 @@ This is an example of a summary for an "applied" operation
     "createdTime": "2020-10-13T20:28:31",
     "processedTime": "2020-10-13T20:39:03",
     "lastUpdated": "2020-10-13T20:39:03",
-    "fieldId": "uuid",
+    "fieldId": ["uuid"],
     "files": {
         "original": "abc.com",
         "rawGeojson": "abc.com",
@@ -323,7 +323,7 @@ This is an example of a summary for a "harvested" operation
     "createdTime": "2020-10-13T20:19:01",
     "processedTime": "2020-10-13T21:25:53",
     "lastUpdated": "2020-10-13T21:25:53",
-    "fieldId": "uuid",
+    "fieldId": ["uuid"],
     "files": {
         "original": "abc.com",
         "rawGeojson": "abc.com",

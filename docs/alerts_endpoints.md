@@ -56,6 +56,7 @@ and try to register another one, you'll get a 400 response with error `eventRegi
 #### Request body
 
 | Parameter | Type | Description
+| - | - | - |
 | events | enum name of the event type | They are defined in the "Events" section of the services chapters (e.g. `newSatelliteImage`) |
 | name | string | The name of your webhook |
 | secret | string | The secret used for HMAC authentication. We sign payload with this secret. See more [here][6] |
@@ -86,6 +87,7 @@ Example in JSON:
   ]}
 >
   <TabItem value="js">
+
   ```js
   const axios = require('axios')
 
@@ -99,9 +101,11 @@ Example in JSON:
       .then(response => console.log(response.data))
       .catch(console.error)
   ```
+
   </TabItem>
 
   <TabItem value="py">
+
   ```py
   import requests
 
@@ -114,9 +118,11 @@ Example in JSON:
   response = requests.post(endpoint, headers=headers)
   print(response.json())
   ```
+
   </TabItem>
 
   <TabItem value="sh">
+
   ```shell
   curl -X POST \
       -H 'Content-Type: application/json' \
@@ -124,9 +130,11 @@ Example in JSON:
       -d 'Your paylaod as specified above'
       'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
   ```
+
   </TabItem>
 
   <TabItem value="json">
+
   ```json
   {
     "id": "UUID",
@@ -138,6 +146,7 @@ Example in JSON:
     "url": "https://agtech.com/leaf/satellite"
   }
   ```
+
   </TabItem>
 </Tabs>
 
@@ -161,6 +170,7 @@ Retrieve a specific webhook resource by its id.
   ]
 }>
   <TabItem value="js">
+
   ```js
   const axios = require('axios')
 
@@ -173,9 +183,11 @@ Retrieve a specific webhook resource by its id.
       .then(response => console.log(response.data))
       .catch(console.error)
   ```
+
   </TabItem>
 
   <TabItem value="py">
+
   ```py
   import requests
 
@@ -187,17 +199,21 @@ Retrieve a specific webhook resource by its id.
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
+
   </TabItem>
 
   <TabItem value="sh">
+
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/alerts/api/alerts/webhooks/WEBHOOK_UUID'
   ```
+
   </TabItem>
 
   <TabItem value="json">
+
   ```json
   {
     "id": "UUID",
@@ -209,6 +225,7 @@ Retrieve a specific webhook resource by its id.
     "url": "https://agtech.com/leaf/satellite"
   }
   ```
+
   </TabItem>
 </Tabs>
 
@@ -230,6 +247,7 @@ Retrieve all Webhooks.
   ]
 }>
   <TabItem value="js">
+
   ```js
   const axios = require('axios')
 
@@ -241,9 +259,11 @@ Retrieve all Webhooks.
       .then(response => console.log(response.data))
       .catch(console.error)
   ```
+
   </TabItem>
 
   <TabItem value="py">
+
   ```py
   import requests
 
@@ -254,17 +274,21 @@ Retrieve all Webhooks.
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
+
   </TabItem>
 
   <TabItem value="sh">
+
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
   ```
+
   </TabItem>
 
   <TabItem value="json">
+
   ```json
   [{
     "id": "UUID",
@@ -276,6 +300,7 @@ Retrieve all Webhooks.
     "url": "https://agtech.com/leaf/satellite"
   }]
   ```
+
   </TabItem>
 </Tabs>
 
@@ -303,6 +328,7 @@ webhook listens to.
   ]
 }>
   <TabItem value="js">
+
   ```js
   const axios = require('axios')
 
@@ -315,9 +341,11 @@ webhook listens to.
       .then(response => console.log(response.data))
       .catch(console.error)
   ```
+
   </TabItem>
 
   <TabItem value="py">
+
   ```py
   import requests
 
@@ -329,14 +357,17 @@ webhook listens to.
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
+
   </TabItem>
 
   <TabItem value="sh">
+
   ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/alerts/api/alerts/webhooks/WEBHOOK_ID'
   ```
+
   </TabItem>
 </Tabs>
 

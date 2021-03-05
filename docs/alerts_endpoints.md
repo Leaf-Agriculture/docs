@@ -71,6 +71,7 @@ Example in JSON:
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
   ]}
 >
   <TabItem value="js">
@@ -81,7 +82,9 @@ Example in JSON:
   const headers = {'Authorization': `Bearer ${TOKEN}`}
   const endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
 
-  axios.post(endpoint, {headers})
+  const data = { /* Your payload as specified above  */ }
+
+  axios.post(endpoint, {headers, data})
       .then(response => console.log(response.data))
       .catch(console.error)
   ```
@@ -95,6 +98,8 @@ Example in JSON:
   headers = {'Authorization': f'Bearer {TOKEN}'}
   endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
 
+  payload = {...}  # Your payload as specified above
+
   response = requests.post(endpoint, headers=headers)
   print(response.json())
   ```
@@ -103,7 +108,9 @@ Example in JSON:
   <TabItem value="sh">
   ```shell
   curl -X POST \
+      -H 'Content-Type: application/json' \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d 'Your paylaod as specified above'
       'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
   ```
   </TabItem>
@@ -111,7 +118,7 @@ Example in JSON:
   <TabItem value="json">
   ```json
   {
-    "id": "UUID"
+    "id": "UUID",
     "events": [
       "newSatelliteImage"
     ],
@@ -182,7 +189,7 @@ Retrieve a specific webhook resource by its id.
   <TabItem value="json">
   ```json
   {
-    "id": "UUID"
+    "id": "UUID",
     "events": [
       "newSatelliteImage"
     ],
@@ -249,7 +256,7 @@ Retrieve all Webhooks specific.
   <TabItem value="json">
   ```json
   [{
-    "id": "UUID"
+    "id": "UUID",
     "events": [
       "newSatelliteImage"
     ],

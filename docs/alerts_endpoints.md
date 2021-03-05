@@ -31,6 +31,12 @@ Description | Endpoints
 [Get all webhooks][3] | <span class="badge badge--success">GET</span> `/webhooks`
 [Delete a webhook][4] | <span class="badge badge--danger">DELETE</span> `/webhooks/{id}`
 
+Note that currently it's not possible to update a Webhook with a single
+request. If you want to update an existing Webhook resource, you have to delete
+it first and then recreate it. In doing so, be aware that if the update changes
+the Webhook URL, it's recommented that you keep the previous URL up and running
+until you get the response from the recreation request (POST).
+
 For easily testing these endpoints, we recommend using our Postman [collection][5].
 
 ---
@@ -40,7 +46,12 @@ For easily testing these endpoints, we recommend using our Postman [collection][
 &nbsp<span class="badge badge--warning">POST</span> `/webhooks`
 
 Creates a webhook resource, specifying what events you want to be notified about and
-where (server URL).
+where (server URL). As soon as the webhook is created, it already will be receiving
+events.
+
+It's not possible to create different webhooks that listen to the same events. So,
+for example, if you already have registered a webhook for listening to `newSatelliteImages`
+and try to register another one, you'll get a 400 response with error `eventRegisteredTwice`.
 
 #### Request body
 
@@ -205,7 +216,7 @@ Retrieve a specific webhook resource by its id.
 
 &nbsp<span class="badge badge--success">GET</span> `/webhooks`
 
-Retrieve all Webhooks specific.
+Retrieve all Webhooks.
 
 #### Sample code
 
@@ -275,6 +286,11 @@ Retrieve all Webhooks specific.
 
 Delete a specific Webhook resource by its id. Returns 204 status code if the
 delete succeeded.
+
+:::info Warning
+If you delete a Webhook resource, we no longer will send you the events the
+webhook listens to.
+:::
 
 #### Sample code
 

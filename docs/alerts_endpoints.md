@@ -37,7 +37,7 @@ it first and then recreate it. In doing so, be aware that if the update changes
 the Webhook URL, it's recommented that you keep the previous URL up and running
 until you get the response from the recreation request (POST).
 
-For easily testing these endpoints, we recommend using our Postman [collection][5].
+For easily testing these endpoints, we recommend using our [Postman collection][5].
 
 ---
 
@@ -305,7 +305,7 @@ Retrieve all Webhooks.
 </Tabs>
 
 
-### Delete webhook
+### Delete a webhook
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/webhooks/{id}`
 

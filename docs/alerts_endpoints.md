@@ -37,7 +37,7 @@ it first and then recreate it. In doing so, be aware that if the update changes
 the Webhook URL, it's recommented that you keep the previous URL up and running
 until you get the response from the recreation request (POST).
 
-For easily testing these endpoints, we recommend using our Postman [collection][5].
+For easy testing of these endpoints, we recommend using our Postman [collection][5].
 
 ---
 
@@ -45,12 +45,12 @@ For easily testing these endpoints, we recommend using our Postman [collection][
 
 &nbsp<span class="badge badge--warning">POST</span> `/webhooks`
 
-Creates a webhook resource, specifying what events you want to be notified about and
-where (server URL). As soon as the webhook is created, it already will be receiving
-events.
+Creates a webhook resource, specifying which events you want to be notified about and
+where (server URL). The webhook will begin receiving
+events immediately after it is created.
 
-It's not possible to create different webhooks that listen to the same events. So,
-for example, if you already have registered a webhook for listening to `newSatelliteImages`
+It's not possible to create different webhooks that listen to the same events. For example,
+if you have already registered a webhook listening for `newSatelliteImages`
 and try to register another one, you'll get a 400 response with error `eventRegisteredTwice`.
 
 #### Request body

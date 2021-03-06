@@ -8,6 +8,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
+With Alerts you can be notified when something happens or changes instead of needing to repeatedly query for changes. 
+Leaf Alerts support events that happen within Leaf and events that happen within supported 3rd party software. 
+
 Webhooks are user-defined HTTP callbacks. You send us a server URL (the address of
 the callback) specifying what things you want to know about so when they do happen,
 we tell you on that URL, by means of a HTTP request.

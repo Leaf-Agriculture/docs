@@ -37,7 +37,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Alerts',
-          items: ['alerts_overview', 'alerts_endpoints']
+          items: ['alerts_overview', 'alerts_endpoints', 'alerts_events']
         },        
       ],
     }

@@ -20,6 +20,7 @@ Description | Endpoints
 [Get all satellite fields][4] | <span class="badge badge--success">GET</span> `/fields`
 [Get a satellite field][5] | <span class="badge badge--success">GET</span> `/fields/{id}`
 [Get images of satellite field][6] | <span class="badge badge--success">GET</span> `/fields/{id}/processes`
+[Get an image of satellite field][10] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`
 [Create a satellite field][7] | <span class="badge badge--warning">POST</span> `/fields`
 [Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
 
@@ -32,6 +33,7 @@ Description | Endpoints
 [7]: #create-a-satellite-field
 [8]: #delete-a-satellite-field
 [9]: alerts_events#satellite-events
+[10]: #get-an-image-of-satellite-field
 
 ---
 
@@ -41,22 +43,7 @@ Description | Endpoints
 
 &nbsp<span class="badge badge--success">GET</span> `/fields`
 
-Returns paged results for all fields registered.
-
-It returns a list of JSON objects like so:
-
-```py
-[
-    {
-        "externalId": "your field id",
-        "geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [...]
-        }
-    },
-    # etc...
-]
-```
+Returns paged results for all satellite fields registered.
 
 - `externalId`: external ID used in the field's registration
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
@@ -112,6 +99,23 @@ curl -X GET \
 </TabItem>
 </Tabs>
 
+#### Response
+
+It returns a list of JSON objects 
+
+```json
+[
+    {
+        "externalId": "your field id",
+        "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [...]
+        }
+    },
+    # etc...
+]
+```
+
 ---
 
 ### Get a satellite field
@@ -119,19 +123,6 @@ curl -X GET \
 &nbsp<span class="badge badge--success">GET</span> `/fields/{id}`
 
 Fetches a field entry based on its external id.
-
-It returns a single JSON object with the following entries (like each item from
-`GET /fields` results):
-
-```py
-{
-    "externalId": "your field id",
-    "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [...]
-    }
-}
-```
 
 - `id`: external ID used in the field's registration
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
@@ -189,6 +180,21 @@ curl -X GET \
 </TabItem>
 </Tabs>
 
+#### Response
+
+It returns a single JSON object with the following entries (like each item from
+`GET /fields` results):
+
+```json
+{
+    "externalId": "your field id",
+    "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [...]
+    }
+}
+```
+
 ---
 
 ### Get images of satellite field
@@ -228,7 +234,6 @@ you can either increase the size or the page number.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json'},
   ]
 }>
 
@@ -277,12 +282,15 @@ curl -X GET \
 ```
 
 </TabItem>
-<TabItem value="json">
+</Tabs>
+
+#### Response
 
 
 ```json
 [
     {
+        "id": 0,
         "date": "2020-06-03T19:03:57.882Z",
         "clouds": 0,
         "bucketName": "sentinel-s2-l1c",
@@ -319,9 +327,93 @@ curl -X GET \
     - `resolution`: resolution, in meters, of the image. See table below
 - `processedTimestamp`: the timestamp of when the process was processed
 
+
+---
+
+&nbsp<span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`
+
+### Get an image of satellite field
+
+Returns a single process for the field.
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+<TabItem value="js">
+
+```js
+const axios = require('axios')
+const TOKEN = 'YOUR_TOKEN'
+
+let endpoint = 'https://api.withleaf.io/services/satellite/api' +
+               '/fields/YOUR_ID/processes/{id}'
+
+const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+axios.get(endpoint, { headers })
+    .then(res => console.log(res.data))
+    .catch(console.error)
+```
+
+</TabItem>
+<TabItem value="py">
+
+```py
+import requests
+
+TOKEN = 'YOUR_TOKEN'
+
+endpoint = ('https://api.withleaf.io/services/satellite/api'
+            '/fields/YOUR_ID/processes/{id}')
+
+headers = {'Authorization': f'Bearer {TOKEN}'}
+
+response = requests.get(endpoint, headers=headers)
+print(response.json())
+```
+
+</TabItem>
+<TabItem value="sh">
+
+```shell
+curl -X GET \
+    --header 'Authorization: Bearer YOUR_TOKEN' \
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/processes/{id}'
+```
+
 </TabItem>
 </Tabs>
 
+#### Response
+
+```json
+{
+  "id": 0,
+  "date": "2020-06-03T19:03:57.882Z",
+  "clouds": 0,
+  "bucketName": "sentinel-s2-l1c",
+  "bucketKey": "tiles/10/S/FH/2020/6/3/0",
+  "bucketRegion": "eu-central-1",
+  "status": "SUCCESS",
+  "coverage": 100,
+  "images": [
+    {
+      "url": "url.to.your.image.tif",
+      "type": "tif",
+      "resolution": 20
+    },
+    # etc...
+  ],
+  "processedTimestamp": "2020-06-03T19:03:58.881731Z"
+}
+```
 
 ---
 

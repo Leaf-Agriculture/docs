@@ -31,6 +31,7 @@ Description | Endpoints
 [6]: #get-images-of-satellite-field
 [7]: #create-a-satellite-field
 [8]: #delete-a-satellite-field
+[9]: alerts_events#satellite-events
 
 ---
 
@@ -499,3 +500,13 @@ curl -X DELETE \
 
 </TabItem>
 </Tabs>
+
+
+## Alerts
+
+With Alerts you can be notified when something happens or changes instead of needing to repeatedly query for changes. 
+Leaf Alerts support events that happen within Leaf and events that happen within supported 3rd party software. 
+
+### List of Satellite Events
+
+Leaf Satellite Service has can Alert you on these events: [list of Satellite Events][9]

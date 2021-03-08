@@ -8,14 +8,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-Alerts are how your application gets to know about an event on Leaf as soon as
-it happens. This event can be a new satellite image for one of your clients' 
-fields, a new processed operation file, and many others.
+With Alerts you can be notified when something happens or changes instead of needing to repeatedly query for changes. 
+Leaf Alerts support events that happen within Leaf and events that happen within supported 3rd party software. 
 
-To be alerted of these events, you are going to use Webhooks. Webhooks are 
-user-defined HTTP callbacks. You send us a server URL (the address of
-the callback) specifying what for what events you want to receive updates about 
-and when they do happen we send a (HTTP) message to the URL you registered with us.
+Webhooks are user-defined HTTP callbacks. You send us a server URL (the address of
+the callback) specifying what things you want to know about so when they do happen,
+we tell you on that URL, by means of a HTTP request.
+
+Those things are called "events", for example: "there's a new satellite image",
+"the processing of an operations file finished", or "these credentials expired".
 
 The following image shows how events are sent to your webhook. On the left, its
 the representation of a webhook registration. On the right, a satellite image

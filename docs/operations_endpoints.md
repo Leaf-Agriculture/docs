@@ -13,9 +13,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: #get-a-file
 [5]: #get-a-file-summary
 [6]: #get-a-files-images
-[9]: #get-a-files-images
 [7]: #upload-a-file
 [8]: #merge-files
+[9]: #get-a-files-images
+[10]: alerts_events#operation-events
 
 ## About
 
@@ -1358,3 +1359,13 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
 \* = Always in response  
 \*\* = Usually in response but not required to pass tests
+
+## Alerts
+
+With Alerts you can be notified when something happens or changes instead of needing to repeatedly query for changes. 
+Leaf Alerts support events that happen within Leaf and events that happen within supported 3rd party software. 
+
+
+### List of Operations Events
+
+Leaf Operations Service has can Alert you on these events: [list of Operations Events][10]

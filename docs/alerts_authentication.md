@@ -31,8 +31,8 @@ Here is an example on how to verify the request in your webhook:
 request_body_bytes = bytes(json.dumps(raw_content), 'utf-8')
 # Sign the request body received with your secret
 expected_sig = hmac.digest(msg=request_body_bytes,
-                         key=bytes('your secret', 'utf-8'),
-                         digest='sha256')
+                           key=bytes('your secret', 'utf-8'),
+                           digest='sha256')
 
 # Get the signature in the X-Leaf-Signature header
 request_sig = base64.b64decode(sig_header)

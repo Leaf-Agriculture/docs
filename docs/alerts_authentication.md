@@ -34,7 +34,7 @@ expected_sig = hmac.digest(msg=request_body_bytes,
                            key=bytes('your secret', 'utf-8'),
                            digest='sha256')
 
-# Get the signature in the X-Leaf-Signature header
+# Decode the X-Leaf-Signature header that is encoded in base 64
 request_sig = base64.b64decode(sig_header)
   
 # Compare both

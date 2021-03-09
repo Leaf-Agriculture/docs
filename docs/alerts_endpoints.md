@@ -39,6 +39,8 @@ until you get the response from the recreation request (POST).
 
 For easy testing of these endpoints, we recommend using our Postman [collection][5].
 
+To understand how to verify if an incoming request comes from Leaf, see the [Authentication section][6].
+
 ---
 
 ### Create a webhook

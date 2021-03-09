@@ -31,6 +31,8 @@ events from that service are available to webhooks.
 See the [Alerts API Reference][alerts_endpoints] for information on how to
 register, get and delete webhooks.
 
+To understand how to verify if an incoming request comes from Leaf, see the [Authentication section][alerts_auth].
 
 
 [alerts_endpoints]: alerts_endpoints.md
+[alerts_auth]: alerts_authentication.md

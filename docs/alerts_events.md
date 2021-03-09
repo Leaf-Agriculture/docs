@@ -28,9 +28,9 @@ The format of this alert event is:
 
 ### Uploaded File Processing Failed
 
-It happens when the processing of an operations file that was uploaded to Leaf is finished 
+It happens when the processing of an operations file that was uploaded to Leaf is finished
 but failed in one or more of the processing steps. This event can be useful for identifying
-files that have failed and are no longer being processed. 
+files that have failed and are no longer being processed.
 
 The format of this alert event is:
 ```json
@@ -48,7 +48,7 @@ The format of this alert event is:
 ### New Satellite Image
 
 This event happens when we finish processing a new satellite image for a monitored field.
-It can be useful for searching only the new and latest images available in our API. 
+It can be useful for searching only the new and latest images available in our API.
 
 The format of this alert event is:
 ```json

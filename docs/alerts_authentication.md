@@ -46,13 +46,13 @@ hmac.compare_digest(expected_sig, request_sig)
   <TabItem value="java">
 
   ```java
-byte[] sigHeader;  // Get from the request
-String rawContent; // Get from the request
+byte[] sigHeader;  // Get from the request headers
+byte[] rawContent;  // Get the request body
 
 String hmacAlgorithm = "HmacSHA256";
 Mac mac = Mac.getInstance("HmacSHA256");
 mac.init(new SecretKeySpec("your secret".getBytes(), hmacAlgorithm));
-byte[] signatureBytes = mac.doFinal(rawContent.getBytes());
+byte[] signatureBytes = mac.doFinal(rawContent);
 
 // Compare sigHeader with signatureBytes
 MessageDigest.isEqual(sigHeader, signatureBytes)

@@ -20,7 +20,7 @@ Description | Endpoints
 [Get all satellite fields][4] | <span class="badge badge--success">GET</span> `/fields`
 [Get a satellite field][5] | <span class="badge badge--success">GET</span> `/fields/{id}`
 [Get images of satellite field][6] | <span class="badge badge--success">GET</span> `/fields/{id}/processes`
-[Get an image of satellite field][9] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`
+[Get an image of satellite field][10] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`
 [Create a satellite field][7] | <span class="badge badge--warning">POST</span> `/fields`
 [Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
 
@@ -32,7 +32,8 @@ Description | Endpoints
 [6]: #get-images-of-satellite-field
 [7]: #create-a-satellite-field
 [8]: #delete-a-satellite-field
-[9]: #get-an-image-of-satellite-field
+[9]: alerts_events#satellite-events
+[10]: #get-an-image-of-satellite-field
 
 ---
 
@@ -591,3 +592,13 @@ curl -X DELETE \
 
 </TabItem>
 </Tabs>
+
+
+## Alerts
+
+With Alerts you can be notified when something happens or changes instead of needing to repeatedly query for changes. 
+Leaf Alerts support events that happen within Leaf and events that happen within supported 3rd party software. 
+
+### List of Satellite Events
+
+Leaf Satellite Service can Alert you on these events: [list of Satellite Events][9]

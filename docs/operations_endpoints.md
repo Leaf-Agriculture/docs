@@ -14,9 +14,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: #get-a-file-summary
 [6]: #get-a-files-images
 [7]: #upload-a-file
-[8]: #upload-specific-file
-[9]: #merge-files
-[10]: #get-a-files-units
+[8]: #merge-files
+[9]: #get-a-files-images
+[10]: alerts_events#operation-events
+[11]: #upload-specific-file
+[12]: #merge-files
+[13]: #get-a-files-units
 [sample_summary]: operations_sample_output
 
 ## About
@@ -35,10 +38,10 @@ Description | Endpoints
 [Get a file][4] | <span class="badge badge--success">GET</span> `/files/{id}`
 [Get a file summary][5] | <span class="badge badge--success">GET</span> `/files/{id}/summary`
 [Get a file's images][6] | <span class="badge badge--success">GET</span> `/files/{id}/images`
-[Get a file's units][10] | <span class="badge badge--success">GET</span> `/files/{id}/units`
+[Get a file's units][13] | <span class="badge badge--success">GET</span> `/files/{id}/units`
 [Upload a file][7] | <span class="badge badge--warning">POST</span> `/batch`
-[Upload specific file][8] | <span class="badge badge--warning">POST</span> `/files`
-[Merge files][9] | <span class="badge badge--warning">POST</span> `/files/merge`
+[Upload specific file][11] | <span class="badge badge--warning">POST</span> `/files`
+[Merge files][12] | <span class="badge badge--warning">POST</span> `/files/merge`
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
 
@@ -914,3 +917,15 @@ It receives a single JSON object with the `ids` entry. Example:
 
 
 
+\* = Always in response  
+\*\* = Usually in response but not required to pass tests
+
+## Alerts
+
+With Alerts you can be notified when something happens or changes instead of needing to repeatedly query for changes. 
+Leaf Alerts support events that happen within Leaf and events that happen within supported 3rd party software. 
+
+
+### List of Operations Events
+
+Leaf Operations Service can Alert you on these events: [list of Operations Events][10]

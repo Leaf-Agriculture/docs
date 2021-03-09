@@ -28,7 +28,6 @@ Here is an example on how to verify the request in your webhook:
   <TabItem value="py">
 
 ```py
-request_body_bytes = bytes(json.dumps(raw_content), 'utf-8')
 # Sign the request body received with your secret
 expected_sig = hmac.digest(msg=request_body_bytes,
                            key=bytes('your secret', 'utf-8'),
@@ -36,7 +35,7 @@ expected_sig = hmac.digest(msg=request_body_bytes,
 
 # Decode the X-Leaf-Signature header that is encoded in base 64
 request_sig = base64.b64decode(sig_header)
-  
+
 # Compare both
 hmac.compare_digest(expected_sig, request_sig)
 ```

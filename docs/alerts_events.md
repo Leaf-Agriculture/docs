@@ -22,7 +22,7 @@ The format of this alert event is:
 {
   "fileId": "the id of the uploaded file",
   "leafUserId": "the id of the file owner",
-  "timestamp": "YYYY-mm-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
   "type": "uploadedFileProcessingFinished"
 }
 ```
@@ -40,7 +40,7 @@ The format of this alert event is:
   "fileId": "the id of the uploaded file",
   "leafUserId": "the id of the file owner",
   "message": "details of what happened. May be empty",
-  "timestamp": "YYYY-mm-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
   "type": "uploadedFileProcessingFailed"
 }
 ```
@@ -57,7 +57,7 @@ The format of this alert event is:
 {
   "externalId": "the external id of the monitored field",
   "processId": "the id of the process containing new images",
-  "timestamp": "YYYY-mm-dd'T'HH-mm-ss.SSSSSS'Z'",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
   "type": "newSatelliteImage"
 }
 ```

@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: #delete-a-webhook
 
 [5]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[6]: #alerts_authentication.md
+[6]: alerts_authentication.md
 
 
 All HTTP methods should be prepended by this service's endpoint:

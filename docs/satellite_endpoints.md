@@ -601,4 +601,4 @@ Leaf Alerts support events that happen within Leaf and events that happen within
 
 ### List of Satellite Events
 
-Leaf Satellite Service has can Alert you on these events: [list of Satellite Events][9]
+Leaf Satellite Service can Alert you on these events: [list of Satellite Events][9]

@@ -17,6 +17,7 @@ This event can be used to activate a procedure that fetches the file from the ap
 since processing the file may take some time.
 
 The format of this alert event is:
+
 ```json
 {
   "fileId": "the id of the uploaded file",
@@ -33,6 +34,7 @@ but failed in one or more of the processing steps. This event can be useful for 
 files that have failed and are no longer being processed.
 
 The format of this alert event is:
+
 ```json
 {
   "fileId": "the id of the uploaded file",

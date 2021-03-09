@@ -8,11 +8,11 @@ import TabItem from '@theme/TabItem';
 ## Authentication
 
 It’s very important to confirm that requests received on your webhook are sent from Leaf, to avoid IP spoofing attacks.
-To the end, you should verify webhook signatures.
+To this end, you should verify webhook signatures.
 
 Leaf generates signatures using a hash-based message authentication code (HMAC) with SHA-256, and 
 the secret specified when you created the alerts' configuration as the HMAC key.
-The signed content has no line breaks, it's a string of the raw JSON with white-spaces after “:” and “,”.
+Be careful with deserialization of the request body when using it to verify the signature. It's recommended that you get the request body as bytes. The signed content has no line breaks, it's a string of the raw JSON with white-spaces after “:” and “,”.
 
 The digest is added to the X-Leaf-Signature header encoded in base 64.
 

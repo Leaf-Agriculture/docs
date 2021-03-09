@@ -28,6 +28,10 @@ Here is an example on how to verify the request in your webhook:
   <TabItem value="py">
 
 ```py
+import hmac
+import base64
+
+
 # Sign the request body received with your secret
 expected_sig = hmac.digest(msg=request_body_bytes,
                            key=bytes('your secret', 'utf-8'),
@@ -45,6 +49,10 @@ hmac.compare_digest(expected_sig, request_sig)
   <TabItem value="java">
 
   ```java
+// import java.util.Base64;
+// import javax.crypto.Mac;
+// import javax.crypto.spec.SecretKeySpec;
+
 byte[] sigHeader;  // Get from the request headers
 byte[] rawContent;  // Get the request body
 

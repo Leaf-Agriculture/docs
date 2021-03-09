@@ -21,7 +21,7 @@ The format of this alert event is:
 {
   "fileId": "the id of the uploaded file",
   "leafUserId": "the id of the file owner",
-  "timestamp": "YYYY-mm-dd'T'HH-mm-ss.SSSSSS'Z'",
+  "timestamp": "YYYY-mm-dd'T'HH:mm:ss.SSSSSS'Z'",
   "type": "uploadedFileProcessingFinished"
 }
 ```
@@ -38,7 +38,7 @@ The format of this alert event is:
   "fileId": "the id of the uploaded file",
   "leafUserId": "the id of the file owner",
   "message": "details of what happened. May be empty",
-  "timestamp": "YYYY-mm-dd'T'HH-mm-ss.SSSSSS'Z'",
+  "timestamp": "YYYY-mm-dd'T'HH:mm:ss.SSSSSS'Z'",
   "type": "uploadedFileProcessingFailed"
 }
 ```

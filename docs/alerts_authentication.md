@@ -5,8 +5,6 @@ title: Authentication
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Authentication
-
 It’s very important to confirm that requests received on your webhook are sent from Leaf, to avoid IP spoofing attacks.
 To this end, you should verify webhook signatures.
 

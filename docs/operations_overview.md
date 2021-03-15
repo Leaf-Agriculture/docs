@@ -62,7 +62,7 @@ providers and formats:
     - .dat (Climate Field View proprietary)
     - Shapefile
 - CNHi
-    - .cn1 (ISO11783)
+    - .cn1
     - Shapefile
 - Trimble
     - .agt (Trimble proprietary)

@@ -23,7 +23,7 @@ We currently have the following conversions available:
 
 | From       | To                       |
 |------------|--------------------------|
-| geojson    | shapefile, iso11783, png |
+| geojson    | shapefile, png           |
 | shapefile  | geojson                  |
 | trimble    | geojson                  |
 | cn1        | geojson                  |

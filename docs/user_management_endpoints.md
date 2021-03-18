@@ -528,7 +528,7 @@ Deletes an existing Leaf User by id.
 
 ### `GET  /john-deere-credentials/{id}`
 
-Get the John Deere credentials of the user based own his id and returns a JSON with the credentials.
+Get the John Deere credentials of the user based own his id and returns a JSON with the credentials. If during a background processing for Fields or Operations file we detect that this credential is no longer valid, the value of valid will be changed to false.
 
 
 #### Response
@@ -539,7 +539,8 @@ Get the John Deere credentials of the user based own his id and returns a JSON w
     "clientKey": "str",
     "clientSecret": "str",
     "tokenId": "str",
-    "tokenSecretKey": "str"
+    "tokenSecretKey": "str",
+    "valid": "true/false"
 }
 ```
 
@@ -606,7 +607,8 @@ Gets all John Deere Credentials.
     "clientKey": "str",
     "clientSecret": "str",
     "tokenId": "str",
-    "tokenSecretKey": "str"
+    "tokenSecretKey": "str",
+    "valid": "true/false"
   }
 ]
 ```
@@ -885,7 +887,7 @@ Get a Climate Field View Credentials object by its id. If during a background pr
 
 ### `GET /climate-field-credentials`
 
-Gets all the Climate Field View credentials. If during a background processing for Fields or Operations file we detect that this credential is no longer valid, the value of valid will be changed to false.
+Gets all the Climate Field View credentials.
 
 #### Response
 

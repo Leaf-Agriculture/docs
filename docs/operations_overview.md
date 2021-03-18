@@ -46,7 +46,7 @@ them manually if desired. Please keep in mind that merging files is processing-h
 and may take about 20 minutes to finish.
 
 :::info Merging operation files with Leaf
-Learn more about how to merge files into operations in our blog:  [Merging operation files with Leaf] [medium_url]
+Learn more about how to merge files into operations in our [blog][medium_url]
 :::
 
 When manually uploading (in a zip), you can select which provider the files

@@ -819,7 +819,7 @@ Delete a John Deere credentials by id.
 
 ### `GET climate-field-credentials/{id}`
 
-Get a Climate Field View Credentials object by its id.
+Get a Climate Field View Credentials object by its id. If during a background processing for Fields or Operations file we detect that this credential is no longer valid, the value of valid will be changed to false.
 
 #### Response
 
@@ -829,7 +829,8 @@ Get a Climate Field View Credentials object by its id.
   "clientId": "",
   "clientSecret": "",
   "apiKey": "",
-  "refreshToken": ""
+  "refreshToken": "",
+  "valid": "true/false"
 }
 ```
 
@@ -884,7 +885,7 @@ Get a Climate Field View Credentials object by its id.
 
 ### `GET /climate-field-credentials`
 
-Gets all the Climate Field View credentials.
+Gets all the Climate Field View credentials. If during a background processing for Fields or Operations file we detect that this credential is no longer valid, the value of valid will be changed to false.
 
 #### Response
 
@@ -895,7 +896,8 @@ Gets all the Climate Field View credentials.
     "clientId": "",
     "clientSecret": "",
     "apiKey": "",
-    "refreshToken": ""
+    "refreshToken": "",
+    "valid": "true/false"
   }
 ]
 ```

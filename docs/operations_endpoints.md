@@ -85,7 +85,9 @@ They are:
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page
 
+:::the default value for page size is 20
 If the parameters page and size are not set, the endpoint will return 20 results.
+:::
 
 <Tabs
   defaultValue="sh"

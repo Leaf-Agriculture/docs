@@ -596,7 +596,22 @@ RECEIVED | Is the default state for every batch created
 PROCESSED | When all the files included in the batch were processed successfully or not
 FAILED | The batch did not generated any leaf files
 
-The FAILED status have some common status details in the key *statusDetails* (this status are just informative and should not be used programatically):
+The messages with FAILED status have the informative key *statusDetails*. The statusDetails are just informative and should not be used programatically.
+
+```json
+{
+    "id": "996aea67-52bc-4d4b-9b77-028756dc0ee9",
+    "leafUserId": "ede8f781-1d55-4b2d-83a1-6785ddab6e1d",
+    "fileName": "Climate.zip",
+    "size": 8652951,
+    "provider": "Other",
+    "status": "FAILED",
+    "statusDetails": "No operation found. Check file format before re-trying or contact support. Check file format before re-trying or contact support", 
+    "uploadTimestamp": "2021-03-12T19:50:55.567755Z"
+}
+```
+
+The following status can be present on *statusDetails*:
 
 Status | Description
 --- | ---

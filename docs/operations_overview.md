@@ -46,7 +46,7 @@ them manually if desired. Please keep in mind that merging files is processing-h
 and may take about 20 minutes to finish.
 
 :::info Merging operation files with Leaf
-Learn more about how to merge files into operations in our blog:  [Merging operation files with Leaf] [https://medium.com/leaf-agriculture/merge-of-files-into-operations-1e62726df64d]
+Learn more about how to merge files into operations in our blog:  [Merging operation files with Leaf] [medium_url]
 :::
 
 When manually uploading (in a zip), you can select which provider the files
@@ -83,3 +83,4 @@ along easily.
 
 
 [leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+[medium_url]: https://medium.com/leaf-agriculture/merge-of-files-into-operations-1e62726df64d

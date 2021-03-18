@@ -585,15 +585,23 @@ Then you can query each of the files individually with
 [Get a File](#get-a-file) or all of them, filtering by `createdDate`, on 
 [Get all Files](#get-all-files).
 
+
+#### Batch status
+
 The *status* key will evolve accordingly to the following states:
 
-RECEIVED - Is the default state for every batch created
-PROCESSED - When all the files included in the batch were processed successfully or not
-FAILED - The batch did not generated any leaf files
+Status | Description
+--- | ---
+RECEIVED | Is the default state for every batch created
+PROCESSED | When all the files included in the batch were processed successfully or not
+FAILED | The batch did not generated any leaf files
 
 The FAILED status have some common status details in the key *statusDetails* (this status are just informative and should not be used programatically):
-Fail to decode - It means that the file uploaded is not a valid zip
-No operation found - We could not identify any valid machinery file inside the zip uploaded 
+
+Status | Description
+--- | ---
+Fail to decode | It means that the file uploaded is not a valid zip
+No operation found | We could not identify any valid machinery file inside the zip uploaded 
 
 ---
 

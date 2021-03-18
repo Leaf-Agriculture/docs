@@ -45,6 +45,10 @@ Alternatively, it is possible to manually upload files to be processed and merge
 them manually if desired. Please keep in mind that merging files is processing-heavy
 and may take about 20 minutes to finish.
 
+:::info Merging operation files with Leaf
+Learn more about how to merge files into operations in our blog:  [Merging operation files with Leaf] [https://medium.com/leaf-agriculture/merge-of-files-into-operations-1e62726df64d]
+:::
+
 When manually uploading (in a zip), you can select which provider the files
 inside the zip came from. If you are unsure or you know that there are files 
 from more than one provider, Leaf can automatically detect, detach and process

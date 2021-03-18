@@ -596,7 +596,7 @@ RECEIVED | Is the default state for every batch created
 PROCESSED | When all the files included in the batch were processed successfully or not
 FAILED | The batch did not generated any leaf files
 
-The messages with FAILED status have the informative key *statusDetails*. The statusDetails are just informative and should not be used programatically.
+The messages with FAILED status have the key *statusDetails*. The statusDetails are just informative and should not be used programatically.
 
 ```json
 {

@@ -97,16 +97,14 @@ This is an example of a summary for a "planted" operation
             },
             "machinery": [
                 {
-                    "machineName": "machine1", 
-                    "machineId": "uuid",
-                    "implementName": "",
-                    "implementId": "uuid"
+                    "name": "machine1", 
+                    "serialNumber": "uuid",
+                    "type": "machine"
                 },
                 {
-                    "machineName": "machine2",
-                    "machineId": "uuid",
-                    "implementName": "",
-                    "implementId": "uuid"
+                    "name": "implement1", 
+                    "serialNumber": "uuid",
+                    "type": "implement"
                 }
             ],       
             "varieties": [{
@@ -234,16 +232,14 @@ This is an example of a summary for an "applied" operation
             },
             "machinery": [
                 {
-                    "machineName": "machine1", 
-                    "machineId": "uuid",
-                    "implementName": "",
-                    "implementId": "uuid"
+                    "name": "machine1", 
+                    "serialNumber": "uuid",
+                    "type": "machine"
                 },
                 {
-                    "machineName": "machine2",
-                    "machineId": "uuid",
-                    "implementName": "",
-                    "implementId": "uuid"
+                    "name": "implement1", 
+                    "serialNumber": "uuid",
+                    "type": "implement"
                 }
             ],      
             "products": [{
@@ -359,16 +355,14 @@ This is an example of a summary for a "harvested" operation
             },
             "machinery": [
                 {
-                    "machineName": "machine1", 
-                    "machineId": "uuid",
-                    "implementName": "",
-                    "implementId": "uuid"
+                    "name": "machine1", 
+                    "serialNumber": "uuid",
+                    "type": "machine"
                 },
                 {
-                    "machineName": "machine2",
-                    "machineId": "uuid",
-                    "implementName": "",
-                    "implementId": "uuid"
+                    "name": "implement1", 
+                    "serialNumber": "uuid",
+                    "type": "implement"
                 }
             ],       
             "varieties": [{

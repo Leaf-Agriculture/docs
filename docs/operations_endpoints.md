@@ -593,8 +593,8 @@ The *status* key will evolve accordingly to the following states:
 Status | Description
 --- | ---
 RECEIVED | Is the default state for every batch created
-PROCESSED | When all the files included in the batch were processed successfully or not
-FAILED | The batch did not generated any leaf files
+PROCESSED | When all the files included in the batch were processed, and at least one file have status SUCCESS
+FAILED | The batch did not generated any leaf files with status SUCCESS
 
 The messages with FAILED status have the key *statusDetails*. The statusDetails are just informative and should not be used programatically.
 
@@ -615,8 +615,10 @@ The following status can be present on *statusDetails*:
 
 Status | Description
 --- | ---
-Fail to decode | It means that the file uploaded is not a valid zip
-No operation found | We could not identify any valid machinery file inside the zip uploaded 
+Failed to open Zip file | It means that the file uploaded is not a valid zip
+No operation found | We could not identify any **valid** machinery file inside the zip uploaded 
+No operation discovered | When we can't find any machinery file inside the batch
+Error extracting files from batch | When an error internal to our API happened
 
 ---
 

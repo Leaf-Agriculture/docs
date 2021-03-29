@@ -3,7 +3,7 @@ title: Overview
 ---
 
 :::caution use our Uploaders endpoint
-This service is currently under maintenance and will be updated on February 15th. We recommend using our 
+This service is currently being improved. We recommend using our 
 **[uploader](http://localhost:3000/docs/docs/operations_endpoints#upload-a-file)**
 endpoint, with more features such as standardization, operation images/maps and units.
 :::
@@ -23,7 +23,7 @@ We currently have the following conversions available:
 
 | From       | To                       |
 |------------|--------------------------|
-| geojson    | shapefile, iso11783, png |
+| geojson    | shapefile, png           |
 | shapefile  | geojson                  |
 | trimble    | geojson                  |
 | cn1        | geojson                  |

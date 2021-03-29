@@ -45,6 +45,10 @@ Alternatively, it is possible to manually upload files to be processed and merge
 them manually if desired. Please keep in mind that merging files is processing-heavy
 and may take about 20 minutes to finish.
 
+:::info Merging operation files with Leaf
+Learn more about how to merge files into operations in our [blog][medium_url]
+:::
+
 When manually uploading (in a zip), you can select which provider the files
 inside the zip came from. If you are unsure or you know that there are files 
 from more than one provider, Leaf can automatically detect, detach and process
@@ -62,7 +66,7 @@ providers and formats:
     - .dat (Climate Field View proprietary)
     - Shapefile
 - CNHi
-    - .cn1 (ISO11783)
+    - .cn1
     - Shapefile
 - Trimble
     - .agt (Trimble proprietary)
@@ -79,3 +83,4 @@ along easily.
 
 
 [leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+[medium_url]: https://medium.com/leaf-agriculture/merge-of-files-into-operations-1e62726df64d

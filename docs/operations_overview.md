@@ -71,6 +71,9 @@ providers and formats:
 - Trimble
     - .agt (Trimble proprietary)
     - Shapefile
+- AgLeader
+    - SMS Shapefile export
+    - .YLD
 
 :::info File processing
 We are always improving our processing. If you have any doubts or suggestions, 

@@ -3769,10 +3769,10 @@ dns-txt@^2.0.2:
   dependencies:
     buffer-indexof "^1.0.0"
 
-docusaurus-lunr-search@^2.1.10:
-  version "2.1.10"
-  resolved "https://registry.yarnpkg.com/docusaurus-lunr-search/-/docusaurus-lunr-search-2.1.10.tgz#1973da8d8aa6d953c0ea8f1915516bc7cc0d143a"
-  integrity sha512-UIb19XkoP9VyXoKxua99PS4wpfnifw/jwVUBok0B0NAm+3HSTfoJ8GQVZPHmc26h7jX/FnqfIeUKS+xcqlQPTw==
+docusaurus-lunr-search@^2.1.11:
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/docusaurus-lunr-search/-/docusaurus-lunr-search-2.1.11.tgz#023602bf51a2a946ee81db89743f6cf82bea7545"
+  integrity sha512-mWucbpuz3u+mQcp3+IpkLUSoWmjKKv5l8S9qeLQE+3se2Sf6xaT+quX4AZ4zI0T8YgNmMtUPC0eV+FnoK+XyuQ==
   dependencies:
     autocomplete.js "^0.37.0"
     classnames "^2.2.6"

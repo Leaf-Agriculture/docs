@@ -96,8 +96,8 @@ A JSON containing the configuration of the Api Owner.
   TOKEN=YOUR_TOKEN
 
   curl -X GET \
-      -H 'Authorization: Bearer ${TOKEN}' \
-      'https://api.withleaf.io/service/configs/api/configs'
+      -H "Authorization: Bearer ${TOKEN}" \
+      "https://api.withleaf.io/service/configs/api/configs"
   ```
 
   </TabItem>
@@ -174,8 +174,8 @@ A JSON containing the configuration of the Leaf User.
   LEAF_USER_ID=00000000-0000-0000-0000-000000000000
   
   curl -X GET \
-      -H 'Authorization: Bearer ${YOUR_TOKEN}' \
-      'https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}'
+      -H "Authorization: Bearer ${TOKEN}" \
+      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
   ```
 
   </TabItem>
@@ -198,8 +198,8 @@ A JSON containing the configuration of the Leaf User.
 
 &nbsp<span class="badge badge--warning">POST</span> `/configs/{leafUserId}`
 
-Creates the Configuration for the Leaf User `leafUserId`. A resquest body must be provided
-containing the configurations to be set. All entries are optional, if missing the configuration will be inherited from the Api Owner's Configuration.
+Creates the Configuration for the Leaf User `leafUserId`. A request body must be provided
+containing the configurations to be set. All entries are optional, any missing configuration will be inherited from the Api Owner's Configuration.
 
 Request body example:
 
@@ -275,9 +275,9 @@ A JSON containing the configuration of the Leaf User.
   LEAF_USER_ID=00000000-0000-0000-0000-000000000000
   
   curl -X POST \
-      -H 'Authorization: Bearer ${TOKEN}' \
+      -H "Authorization: Bearer ${TOKEN}" \
       -d '{ "operationsImageCreation": true, "operationsSummaryCreation": true, "fieldsAutoSync": true }' \
-      'https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}'
+      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
   ```
 
   </TabItem>
@@ -373,7 +373,7 @@ A JSON containing the configuration of the Api Owner.
   TOKEN = 'YOUR_TOKEN'
 
   curl -X PUT \
-      -H 'Authorization: Bearer ${TOKEN}' \
+      -H "Authorization: Bearer ${TOKEN}" \
       -d '{ "operationsImageCreation": true, "operationsSummaryCreation": true, "fieldsAutoSync": true }' \
       'https://api.withleaf.io/services/config/api/configs'
   ```
@@ -400,7 +400,7 @@ A JSON containing the configuration of the Api Owner.
 &nbsp<span class="badge badge--success">PUT</span> `/configs/{leafUserId}`
 
 Overrides the Configuration for the Leaf User `leafUserId`. A resquest body must be provided
-containing the configurations to be set. All entries are optional, if missing the configuration will be inherited from the Api Owner's Configuration.
+containing the configurations to be set. All entries are optional, any missing configuration will be inherited from the Api Owner's Configuration.
 
 Request body example:
 
@@ -475,9 +475,9 @@ A JSON containing the configuration of the Leaf User.
   LEAF_USER_ID=00000000-0000-0000-0000-000000000000
 
   curl -X PUT \
-      -H 'Authorization: Bearer ${TOKEN}' \
+      -H "Authorization: Bearer ${TOKEN}" \
       -d '{ "operationsImageCreation": true, "operationsSummaryCreation": true, "fieldsAutoSync": true }' \
-      'https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}'
+      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
   ```
 
   </TabItem>
@@ -750,8 +750,8 @@ Deletes the Configuration from the Leaf User `leafUserId`. Until a new Configura
   LEAF_USER_ID=00000000-0000-0000-0000-000000000000
 
   curl -X DELETE \
-      -H 'Authorization: Bearer ${TOKEN}' \
-      'https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}'
+      -H "Authorization: Bearer ${TOKEN}" \
+      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
   ```
 
   </TabItem>

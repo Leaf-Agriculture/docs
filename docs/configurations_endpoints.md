@@ -11,10 +11,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #get-api-owner-config
 [3]: #get-leaf-user-config
 [4]: #create-leaf-user-config
-[5]: #update-api-owner-config
-[6]: #update-leaf-user-config
-[7]: #patch-api-owner
-[8]: #patch-leaf-user-config
+[5]: #override-api-owner-config
+[6]: #override-leaf-user-config
+[7]: #update-api-owner
+[8]: #update-leaf-user-config
 [9]: #delete-leaf-user-config
 
 ## About
@@ -34,10 +34,10 @@ Description | Endpoints
 [Get Api Owner's Configuration][2] | <span class="badge badge--success">GET</span> `/configs`
 [Get Leaf User's Configuration][3] | <span class="badge badge--success">GET</span> `/configs/{leafUserId}`
 [Create Leaf User's Configuration][4] | <span class="badge badge--warning">POST</span> `/configs/{leafUserId}`
-[Update Api Owner's Configuration][5] | <span class="badge badge--success">PUT</span> `/configs`
-[Update Leaf User's Configuration][6] | <span class="badge badge--success">PUT</span> `/configs/{leafUserId}`
-[Patch Leaf User's Configuraiton][7] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
-[Patch Leaf User's Configuraiton][8] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
+[Override Api Owner's Configuration][5] | <span class="badge badge--success">PUT</span> `/configs`
+[Override Leaf User's Configuration][6] | <span class="badge badge--success">PUT</span> `/configs/{leafUserId}`
+[Update Leaf User's Configuraiton][7] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
+[Update Leaf User's Configuraiton][8] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
 [Delete Leaf User's Configuraiton][9] | <span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}`
 
 ## Endpoints
@@ -296,7 +296,7 @@ A JSON containing the configuration of the Leaf User.
   </TabItem>
 </Tabs>
 
-### Update Api Owner's Configuration
+### Override Api Owner's Configuration
 
 &nbsp<span class="badge badge--success">PUT</span> `/configs`
 
@@ -395,7 +395,7 @@ A JSON containing the configuration of the Api Owner.
 </Tabs>
 
 
-### Update Leaf User's Configuration
+### Override Leaf User's Configuration
 
 &nbsp<span class="badge badge--success">PUT</span> `/configs/{leafUserId}`
 
@@ -496,7 +496,7 @@ A JSON containing the configuration of the Leaf User.
   </TabItem>
 </Tabs>
 
-### Patch Api Owner's Configuration
+### Update Api Owner's Configuration
 
 &nbsp<span class="badge badge--success">PATCH</span> `/configs`
 
@@ -595,7 +595,7 @@ A JSON containing the configuration of the Api Owner.
 </Tabs>
 
 
-### Patch Leaf User's Configuration
+### Update Leaf User's Configuration
 
 &nbsp<span class="badge badge--success">PATCH</span> `/configs/{leafUserId}`
 

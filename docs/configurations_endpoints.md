@@ -36,7 +36,7 @@ Description | Endpoints
 [Create Leaf User's Configuration][4] | <span class="badge badge--warning">POST</span> `/configs/{leafUserId}`
 [Override Api Owner's Configuration][5] | <span class="badge badge--success">PUT</span> `/configs`
 [Override Leaf User's Configuration][6] | <span class="badge badge--success">PUT</span> `/configs/{leafUserId}`
-[Update Leaf User's Configuraiton][7] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
+[Update Api Owner's Configuraiton][7] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
 [Update Leaf User's Configuraiton][8] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
 [Delete Leaf User's Configuraiton][9] | <span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}`
 

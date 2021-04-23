@@ -446,13 +446,6 @@ want to get images from.
 
 Note that they are both _optional_, but you can **not** specify both.
 
-:::info Important
-
-There are the following limits for satellite field creation:
-The maximum area of the field have to be smaller than 500000000 &#13217; and the maximum perimeter smaler than 300000 meters.
-
-:::
-
 Now let's see the Payload
 
 #### Payload

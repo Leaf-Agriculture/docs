@@ -66,7 +66,7 @@ Alerts for this event are in the following format:
 ### Provider File Processing Failed
 
 Event for when the processing of an operations file from a provider 
-(either uploaded to provider mnaully or via Wireless Data Transfer) is finished
+(either uploaded to provider manually or via Wireless Data Transfer) is finished
 processing but failed in one or more of the processing steps. This event can be useful for identifying
 files that have failed and are no longer being processed.
 

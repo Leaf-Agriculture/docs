@@ -16,7 +16,7 @@ to Leaf are finished. This event can be useful to trigger a procedure that fetch
 This event can be used to activate a procedure that fetches the file from the api,
 since processing the file may take some time.
 
-TAlerts for this event are in the following format:
+Alerts for this event are in the following format:
 
 ```json
 {

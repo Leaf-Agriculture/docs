@@ -57,7 +57,6 @@ Alerts for this event are in the following format:
 {
   "fileId": "the id of the uploaded file",
   "leafUserId": "the id of the file owner",
-  "message": "details of what happened. May be empty",
   "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
   "type": "providerFileProcessingFinished"
 }

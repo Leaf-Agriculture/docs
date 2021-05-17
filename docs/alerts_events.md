@@ -48,7 +48,7 @@ Alerts for this event are in the following format:
 ### Provider File Processing Finished
 
 Event for when the processing of an operations file from a provider 
-(either uploaded to provider mnaully or via Wireless Data Transfer) has successfully finished
+(either uploaded to provider manually or via Wireless Data Transfer) has successfully finished
 processing. This event can be useful for identifying new files when they are available.
 
 Alerts for this event are in the following format:

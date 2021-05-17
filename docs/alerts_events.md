@@ -11,12 +11,12 @@ The types of events are grouped by the services that produce it.
 
 ### Uploaded File Processing Finished
 
-It happens when all steps of the processing of a machine operations file that was uploaded
+Event for when all steps of the processing of a machine operations file that was uploaded
 to Leaf are finished. This event can be useful to trigger a procedure that fetches the file from the API.
 This event can be used to activate a procedure that fetches the file from the api,
 since processing the file may take some time.
 
-The format of this alert event is:
+TAlerts for this event are in the following format:
 
 ```json
 {
@@ -29,11 +29,11 @@ The format of this alert event is:
 
 ### Uploaded File Processing Failed
 
-It happens when the processing of an operations file that was uploaded to Leaf is finished
+Event for when the processing of an operations file that was uploaded to Leaf is finished
 but failed in one or more of the processing steps. This event can be useful for identifying
 files that have failed and are no longer being processed.
 
-The format of this alert event is:
+Alerts for this event are in the following format:
 
 ```json
 {
@@ -45,6 +45,61 @@ The format of this alert event is:
 }
 ```
 
+### Provider File Processing Finished
+
+Event for when the processing of an operations file from a provider 
+(either uploaded to provider mnaully or via Wireless Data Transfer) has successfully finished
+processing. This event can be useful for identifying new files when they are available.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "message": "details of what happened. May be empty",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "providerFileProcessingFinished"
+}
+```
+
+### Provider File Processing Failed
+
+Event for when the processing of an operations file from a provider 
+(either uploaded to provider mnaully or via Wireless Data Transfer) is finished
+processing but failed in one or more of the processing steps. This event can be useful for identifying
+files that have failed and are no longer being processed.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "message": "details of what happened. May be empty",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "providerFileProcessingFailed"
+}
+```
+
+## Field Events
+
+### New Field
+
+Event for when a new field is created either in a connected provider account or directly within Leaf. 
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "source": "SYNC",
+  "leafUserId": "the id of the file owner",
+  "fieldId": "the id of the created field",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "fieldCreated"
+}
+```
+
 ## Satellite Events
 
 ### New Satellite Image
@@ -52,7 +107,8 @@ The format of this alert event is:
 This event happens when we finish processing a new satellite image for a monitored field.
 It can be useful for searching only the new and latest images available in our API.
 
-The format of this alert event is:
+Alerts for this event are in the following format:
+
 ```json
 {
   "externalId": "the external id of the monitored field",

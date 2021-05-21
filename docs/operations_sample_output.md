@@ -64,7 +64,7 @@ This is an example of a summary for a "planted" operation
     "original": "abc.com",
     "rawGeojson": "abc.com",
     "standardGeojson": "abc.com",
-    "zippedPNGs": "abc.com"
+    "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
         "properties": {
@@ -195,7 +195,7 @@ This is an example of a summary for an "applied" operation
     "original": "abc.com",
     "rawGeojson": "abc.com",
     "standardGeojson": "abc.com",
-    "zippedPNGs": "abc.com"
+    "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
         "properties": {        
@@ -314,7 +314,7 @@ This is an example of a summary for a "harvested" operation
     "original": "abc.com",
     "rawGeojson": "abc.com",
     "standardGeojson": "abc.com",
-    "zippedPNGs": "abc.com"
+    "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
         "properties": {              
@@ -483,7 +483,7 @@ This is an example of a summary for a "harvested" operation
     "original": "abc.com",
     "rawGeojson": "abc.com",
     "standardGeojson": "abc.com",
-    "zippedPNGs": "abc.com"
+    "zippedPNGs": "abc.com",
     "summary":{
       "type": "Feature",
       "properties": {
@@ -544,7 +544,8 @@ This is an example of a summary for a "harvested" operation
             ]]]
         }
     }
-}```  
+}
+```  
        
    
   </TabItem>
@@ -553,17 +554,19 @@ This is an example of a summary for a "harvested" operation
 
 ### Properties
 
-Select the tab you want to see "planted", "applied" or "harvested"
+Select the tab you want to see: "planted", "applied", "harvested", or "Tillage.
+
 
 <Tabs
   defaultValue="planted"
-  values={[
-    { label: 'Planted', value: 'planted', },
-    { label: 'Applied', value: 'applied', },
-    { label: 'Harvested', value: 'harvested', },
-    { label: 'Tillage', value: 'tillage', },
-  ]
-}>
+  values={
+      [
+        { label: 'Planted', value: 'planted', },
+        { label: 'Applied', value: 'applied', },
+        { label: 'Harvested', value: 'harvested', },
+        { label: 'Tillage', value: 'tillage', },
+      ]
+   }>
 
   <TabItem value="planted">
 
@@ -685,13 +688,14 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
 <Tabs
   defaultValue="planted"
-  values={[
-    { label: 'Planted', value: 'planted', },
-    { label: 'Applied', value: 'applied', },
-    { label: 'Harvested', value: 'harvested', },
-    { label: 'Tillage', value: 'tillage', },
-  ]
-}>
+  values={
+      [
+        { label: 'Planted', value: 'planted', },
+        { label: 'Applied', value: 'applied', },
+        { label: 'Harvested', value: 'harvested', },
+        { label: 'Tillage', value: 'tillage', },
+      ]
+  }>
   
   <TabItem value="planted">
 
@@ -813,8 +817,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   </TabItem>
   <TabItem value ="tillage">
   
-    ```json
-    {
+   ```json
+  {
     "type": "Feature",
     "geometry": {
         "type": "Point",
@@ -832,10 +836,9 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "elevation": "float",
         "area": "float"
     }
-}
+   }
+   ```
     
-    
-    ```
 </TabItem>
 </Tabs>
 

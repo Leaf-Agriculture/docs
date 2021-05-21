@@ -60,15 +60,11 @@ This is an example of a summary for a "planted" operation
     "status": "processed",
     "origin": "provider or Leaf",
     "createdTime": "2020-10-13T12:30:49",
-    "processedTime": "2020-10-13T12:38:12",
-    "lastUpdated": "2020-10-13T12:38:12",
-    "fieldId": ["uuid"],
-    "files": {
-        "original": "abc.com",
-        "rawGeojson": "abc.com",
-        "standardGeojson": "abc.com",
-        "zippedPNGs": "abc.com"
-    },
+    "fields": ["uuid"],
+    "original": "abc.com",
+    "rawGeojson": "abc.com",
+    "standardGeojson": "abc.com",
+    "zippedPNGs": "abc.com"
     "summary": {
         "type": "Feature",
         "properties": {
@@ -195,15 +191,11 @@ This is an example of a summary for an "applied" operation
     "status": "processed",
     "origin": "provider or Leaf",
     "createdTime": "2020-10-13T20:28:31",
-    "processedTime": "2020-10-13T20:39:03",
-    "lastUpdated": "2020-10-13T20:39:03",
-    "fieldId": ["uuid"],
-    "files": {
-        "original": "abc.com",
-        "rawGeojson": "abc.com",
-        "standardGeojson": "abc.com",
-        "zippedPNGs": "abc.com"
-    },
+    "fields": ["uuid"],
+    "original": "abc.com",
+    "rawGeojson": "abc.com",
+    "standardGeojson": "abc.com",
+    "zippedPNGs": "abc.com"
     "summary": {
         "type": "Feature",
         "properties": {        
@@ -318,15 +310,11 @@ This is an example of a summary for a "harvested" operation
     "status": "processed",
     "origin": "provider or Leaf",
     "createdTime": "2020-10-13T20:19:01",
-    "processedTime": "2020-10-13T21:25:53",
-    "lastUpdated": "2020-10-13T21:25:53",
-    "fieldId": ["uuid"],
-    "files": {
-        "original": "abc.com",
-        "rawGeojson": "abc.com",
-        "standardGeojson": "abc.com",
-        "zippedPNGs": "abc.com"
-    },
+    "fields": ["uuid"],
+    "original": "abc.com",
+    "rawGeojson": "abc.com",
+    "standardGeojson": "abc.com",
+    "zippedPNGs": "abc.com"
     "summary": {
         "type": "Feature",
         "properties": {              
@@ -491,15 +479,11 @@ This is an example of a summary for a "harvested" operation
     "status": "processed",
     "origin": "provider or Leaf",
     "createdTime": "2020-10-13T20:19:01",
-    "processedTime": "2020-10-13T21:25:53",
-    "lastUpdated": "2020-10-13T21:25:53",
     "fields": ["uuid"],
-    "files": {
-        "original": "abc.com",
-        "rawGeojson": "abc.com",
-        "standardGeojson": "abc.com",
-        "zippedPNGs": "abc.com"
-    },
+    "original": "abc.com",
+    "rawGeojson": "abc.com",
+    "standardGeojson": "abc.com",
+    "zippedPNGs": "abc.com"
     "summary":{
       "type": "Feature",
       "properties": {
@@ -594,7 +578,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | variety         | ** | string |
   | seedRateTarget  | ** | dict |
   | seedDepth       | ** | dict |
-  | machinery       | ** | dict |
+  | machinery       | ** | list of machineInfo objects |
   | speed           | ** | dict |
   | totalPlanted    | ** | int (number of seeds) |
   
@@ -616,7 +600,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | totalArea           | *  | int |
   | products            | *  | dict  |
   | appliedRateTarget   | ** | dict |
-  | machinery           | ** | dict |
+  | machinery           | ** | list of machineInfo objects |
   | speed               | ** | dict |
   | totalApplied        | ** | float |
 
@@ -652,7 +636,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | dryVolumePerArea  | ** | dict |
   | speed             | ** | dict |
   | variety           | ** | string |
-  | machinery         | ** | dict |
+  | machinery         | ** | list of machineInfo objects |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -674,7 +658,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | tillageDepthTarget| *  | int |
   | tillageDepthActual| ** | int |
   | speed             | ** | dict |
-  | machinery         | ** | dict |
+  | machinery         | ** | list of machineInfo objects |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -886,7 +870,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | variety         | ** | string          | -                    | The variety of seed being planted |
   | speed           | ** | float           | ft/s or m/s          | Speed of machine at point |
   | sectionId       | ** | int             | -                    | ID of implement sensor section |
-  | machinery       | ** | list of strings | -                    | name of machine & implement |
+  | machinery       | ** | list of machineInfo objects | -                    | name of machine & implement |
   | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
   | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
 
@@ -909,7 +893,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | equipmentWidth    | * | int               | ft or m          | Width of implement |
   | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
   | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
-  | machinery         | ** | list of strings   | -                | Name of machine and implement |
+  | machinery         | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId         | ** | int               | -                | ID of implement sensor section |
 
 
@@ -936,7 +920,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | variety           | ** | string      | -              | The variety of seed being harvested |
   | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
   | heading           | ** | float       | degrees        | Heading of machine at point |
-  | machinery         | ** | list        | -              | name of machine & implement |
+  | machinery         | ** | list of machineInfo objects        | -              | name of machine & implement |
   | dryMass           | ** | float       | lb or kg       | dry mass harvested in that point |
   | dryMassPerArea    | ** | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
   | dryVolume         | ** | float       | bu or L        | dry volume harvested in that point |
@@ -961,7 +945,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | tillageDepthTarget | *  | float             | fl.oz/ac or L/m² | The target depth |
   | speed              | ** | float             | ft/s or m/s      | Speed of machine at point |
   | tillageDepthActual | ** | float             | fl.oz/ac or L/m² | The actual depth |
-  | machinery          | ** | list of strings   | -                | Name of machine and implement |
+  | machinery          | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId          | ** | int               | -                | ID of implement sensor section |
 
 

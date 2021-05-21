@@ -956,7 +956,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | area               | *  | float             | ft² or m²        | Area represented by point |
   | recordingStatus    | *  | Boolean           | -                | Recording status of machine |
   | timestamp          | *  | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType      | *  | string            | -                | string "applied" |
+  | operationType      | *  | string            | -                | string "tillage" |
   | equipmentWidth     | *  | float             | ft or m          | Width of implement |
   | tillageDepthTarget | *  | float             | fl.oz/ac or L/m² | The target depth |
   | speed              | ** | float             | ft/s or m/s      | Speed of machine at point |

@@ -493,7 +493,7 @@ This is an example of a summary for a "harvested" operation
     "createdTime": "2020-10-13T20:19:01",
     "processedTime": "2020-10-13T21:25:53",
     "lastUpdated": "2020-10-13T21:25:53",
-    "fieldId": ["uuid"],
+    "fields": ["uuid"],
     "files": {
         "original": "abc.com",
         "rawGeojson": "abc.com",
@@ -979,5 +979,4 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 Here is a sample Harvest Map you can get with Leaf
 
 <img alt="Sample Harvest Map" src={useBaseUrl('img/sample_harvest_map.png')} width="200" /> -->
-
 

@@ -175,7 +175,7 @@ This is an example of a summary for a "planted" operation
         }
     }
 }
-  ```
+```
   </TabItem>
   <TabItem value="applied">
 
@@ -294,7 +294,7 @@ This is an example of a summary for an "applied" operation
         }
     }
 }
-  ```
+```
   </TabItem>
   <TabItem value="harvested">
 
@@ -463,7 +463,7 @@ This is an example of a summary for a "harvested" operation
         }
     }
 }
-  ```
+```
   </TabItem>
   <TabItem value="tillage">
    
@@ -554,7 +554,7 @@ This is an example of a summary for a "harvested" operation
 
 ### Properties
 
-Select the tab you want to see: "planted", "applied", "harvested", or "Tillage.
+Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
 
 <Tabs
@@ -649,8 +649,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "Tillage.
 
 
   </TabItem>
-  
-    <TabItem value="tillage">
+  <TabItem value="tillage">
 
 
   | key | presence | type |
@@ -671,7 +670,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "Tillage.
 
 
   </TabItem>
-</Tabs>
+  </Tabs>
 
 
 ## Standard Geojson

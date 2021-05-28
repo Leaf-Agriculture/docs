@@ -60,15 +60,11 @@ This is an example of a summary for a "planted" operation
     "status": "processed",
     "origin": "provider or Leaf",
     "createdTime": "2020-10-13T12:30:49",
-    "processedTime": "2020-10-13T12:38:12",
-    "lastUpdated": "2020-10-13T12:38:12",
-    "fieldId": ["uuid"],
-    "files": {
-        "original": "abc.com",
-        "rawGeojson": "abc.com",
-        "standardGeojson": "abc.com",
-        "zippedPNGs": "abc.com"
-    },
+    "fields": ["uuid"],
+    "original": "abc.com",
+    "rawGeojson": "abc.com",
+    "standardGeojson": "abc.com",
+    "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
         "properties": {
@@ -179,7 +175,8 @@ This is an example of a summary for a "planted" operation
         }
     }
 }
-  ```
+```
+
   </TabItem>
   <TabItem value="applied">
 
@@ -195,15 +192,11 @@ This is an example of a summary for an "applied" operation
     "status": "processed",
     "origin": "provider or Leaf",
     "createdTime": "2020-10-13T20:28:31",
-    "processedTime": "2020-10-13T20:39:03",
-    "lastUpdated": "2020-10-13T20:39:03",
-    "fieldId": ["uuid"],
-    "files": {
-        "original": "abc.com",
-        "rawGeojson": "abc.com",
-        "standardGeojson": "abc.com",
-        "zippedPNGs": "abc.com"
-    },
+    "fields": ["uuid"],
+    "original": "abc.com",
+    "rawGeojson": "abc.com",
+    "standardGeojson": "abc.com",
+    "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
         "properties": {        
@@ -302,7 +295,8 @@ This is an example of a summary for an "applied" operation
         }
     }
 }
-  ```
+```
+
   </TabItem>
   <TabItem value="harvested">
 
@@ -318,15 +312,11 @@ This is an example of a summary for a "harvested" operation
     "status": "processed",
     "origin": "provider or Leaf",
     "createdTime": "2020-10-13T20:19:01",
-    "processedTime": "2020-10-13T21:25:53",
-    "lastUpdated": "2020-10-13T21:25:53",
-    "fieldId": ["uuid"],
-    "files": {
-        "original": "abc.com",
-        "rawGeojson": "abc.com",
-        "standardGeojson": "abc.com",
-        "zippedPNGs": "abc.com"
-    },
+    "fields": ["uuid"],
+    "original": "abc.com",
+    "rawGeojson": "abc.com",
+    "standardGeojson": "abc.com",
+    "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
         "properties": {              
@@ -475,11 +465,11 @@ This is an example of a summary for a "harvested" operation
         }
     }
 }
-  ```
+```
   </TabItem>
   <TabItem value="tillage">
-   
-  This is an example of a summary for a "tillage" operation
+
+This is an example of a summary for a "tillage" operation
 
    ```json
 {
@@ -491,15 +481,11 @@ This is an example of a summary for a "harvested" operation
     "status": "processed",
     "origin": "provider or Leaf",
     "createdTime": "2020-10-13T20:19:01",
-    "processedTime": "2020-10-13T21:25:53",
-    "lastUpdated": "2020-10-13T21:25:53",
-    "fieldId": ["uuid"],
-    "files": {
-        "original": "abc.com",
-        "rawGeojson": "abc.com",
-        "standardGeojson": "abc.com",
-        "zippedPNGs": "abc.com"
-    },
+    "fields": ["uuid"],
+    "original": "abc.com",
+    "rawGeojson": "abc.com",
+    "standardGeojson": "abc.com",
+    "zippedPNGs": "abc.com",
     "summary":{
       "type": "Feature",
       "properties": {
@@ -560,26 +546,26 @@ This is an example of a summary for a "harvested" operation
             ]]]
         }
     }
-}```  
-       
-   
+}
+```  
   </TabItem>
-</Tabs>
+ </Tabs>
 
 
 ### Properties
 
-Select the tab you want to see "planted", "applied" or "harvested"
+Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
 <Tabs
   defaultValue="planted"
-  values={[
-    { label: 'Planted', value: 'planted', },
-    { label: 'Applied', value: 'applied', },
-    { label: 'Harvested', value: 'harvested', },
-    { label: 'Tillage', value: 'tillage', },
-  ]
-}>
+  values={
+      [
+        { label: 'Planted', value: 'planted', },
+        { label: 'Applied', value: 'applied', },
+        { label: 'Harvested', value: 'harvested', },
+        { label: 'Tillage', value: 'tillage', },
+      ]
+   }>
 
   <TabItem value="planted">
 
@@ -594,7 +580,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | variety         | ** | string |
   | seedRateTarget  | ** | dict |
   | seedDepth       | ** | dict |
-  | machinery       | ** | dict |
+  | machinery       | ** | list of machineInfo objects |
   | speed           | ** | dict |
   | totalPlanted    | ** | int (number of seeds) |
   
@@ -616,7 +602,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | totalArea           | *  | int |
   | products            | *  | dict  |
   | appliedRateTarget   | ** | dict |
-  | machinery           | ** | dict |
+  | machinery           | ** | list of machineInfo objects |
   | speed               | ** | dict |
   | totalApplied        | ** | float |
 
@@ -652,7 +638,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | dryVolumePerArea  | ** | dict |
   | speed             | ** | dict |
   | variety           | ** | string |
-  | machinery         | ** | dict |
+  | machinery         | ** | list of machineInfo objects |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -662,8 +648,7 @@ Select the tab you want to see "planted", "applied" or "harvested"
 
 
   </TabItem>
-  
-    <TabItem value="tillage">
+  <TabItem value="tillage">
 
 
   | key | presence | type |
@@ -674,17 +659,15 @@ Select the tab you want to see "planted", "applied" or "harvested"
   | tillageDepthTarget| *  | int |
   | tillageDepthActual| ** | int |
   | speed             | ** | dict |
-  | machinery         | ** | dict |
+  | machinery         | ** | list of machineInfo objects |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
 
   [Here][sample_summary] you can see a sample summary as response for an operation file
 
-
-
   </TabItem>
-</Tabs>
+  </Tabs>
 
 
 ## Standard Geojson
@@ -701,14 +684,15 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
 <Tabs
   defaultValue="planted"
-  values={[
-    { label: 'Planted', value: 'planted', },
-    { label: 'Applied', value: 'applied', },
-    { label: 'Harvested', value: 'harvested', },
-    { label: 'Tillage', value: 'tillage', },
-  ]
-}>
-  
+  values={
+      [
+        { label: 'Planted', value: 'planted', },
+        { label: 'Applied', value: 'applied', },
+        { label: 'Harvested', value: 'harvested', },
+        { label: 'Tillage', value: 'tillage', },
+      ]
+  }>
+
   <TabItem value="planted">
 
   ```json
@@ -738,7 +722,6 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
   }
   ```
-
 
   </TabItem>
   <TabItem value="applied">
@@ -828,9 +811,9 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
   </TabItem>
   <TabItem value ="tillage">
-  
-    ```json
-    {
+
+   ```json
+  {
     "type": "Feature",
     "geometry": {
         "type": "Point",
@@ -848,11 +831,9 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "elevation": "float",
         "area": "float"
     }
-}
-    
-    
-    ```
-</TabItem>
+   }
+   ```
+  </TabItem>
 </Tabs>
 
 ### Properties
@@ -886,12 +867,11 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | variety         | ** | string          | -                    | The variety of seed being planted |
   | speed           | ** | float           | ft/s or m/s          | Speed of machine at point |
   | sectionId       | ** | int             | -                    | ID of implement sensor section |
-  | machinery       | ** | list of strings | -                    | name of machine & implement |
+  | machinery       | ** | list of machineInfo objects | -                    | name of machine & implement |
   | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
   | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
 
   </TabItem>
-
   <TabItem value="applied">
 
   | key | presence | type | example units | description |
@@ -909,12 +889,10 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | equipmentWidth    | * | int               | ft or m          | Width of implement |
   | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
   | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
-  | machinery         | ** | list of strings   | -                | Name of machine and implement |
+  | machinery         | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId         | ** | int               | -                | ID of implement sensor section |
 
-
   </TabItem>
-
   <TabItem value="harvested">
 
   | key | presence | type | example units | description |
@@ -936,7 +914,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | variety           | ** | string      | -              | The variety of seed being harvested |
   | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
   | heading           | ** | float       | degrees        | Heading of machine at point |
-  | machinery         | ** | list        | -              | name of machine & implement |
+  | machinery         | ** | list of machineInfo objects        | -              | name of machine & implement |
   | dryMass           | ** | float       | lb or kg       | dry mass harvested in that point |
   | dryMassPerArea    | ** | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
   | dryVolume         | ** | float       | bu or L        | dry volume harvested in that point |
@@ -944,7 +922,6 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId         | ** | int         | int            | ID of implement sensor section |
 
   </TabItem>
-  
    <TabItem value="tillage">
 
   | key | presence | type | example units | description |
@@ -956,14 +933,13 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | area               | *  | float             | ft² or m²        | Area represented by point |
   | recordingStatus    | *  | Boolean           | -                | Recording status of machine |
   | timestamp          | *  | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType      | *  | string            | -                | string "applied" |
-  | equipmentWidth     | *  | int               | ft or m          | Width of implement |
+  | operationType      | *  | string            | -                | string "tillage" |
+  | equipmentWidth     | *  | float             | ft or m          | Width of implement |
   | tillageDepthTarget | *  | float             | fl.oz/ac or L/m² | The target depth |
   | speed              | ** | float             | ft/s or m/s      | Speed of machine at point |
   | tillageDepthActual | ** | float             | fl.oz/ac or L/m² | The actual depth |
-  | machinery          | ** | list of strings   | -                | Name of machine and implement |
+  | machinery          | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId          | ** | int               | -                | ID of implement sensor section |
-
 
   </TabItem>
 </Tabs>
@@ -971,13 +947,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 \* = Always in response  
 \*\* = Usually in response but not required to pass tests
 
-
-
-
 <!-- ### Operation Maps
 
 Here is a sample Harvest Map you can get with Leaf
 
 <img alt="Sample Harvest Map" src={useBaseUrl('img/sample_harvest_map.png')} width="200" /> -->
-
-

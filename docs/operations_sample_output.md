@@ -176,9 +176,12 @@ This is an example of a summary for a "planted" operation
     }
 }
 ```
+
   </TabItem>
   <TabItem value="applied">
+
 This is an example of a summary for an "applied" operation
+
   ```json
 {
     "id": "uuid",
@@ -293,9 +296,12 @@ This is an example of a summary for an "applied" operation
     }
 }
 ```
+
   </TabItem>
   <TabItem value="harvested">
+
 This is an example of a summary for a "harvested" operation
+
   ```json
 {
     "id": "uuid",
@@ -462,7 +468,9 @@ This is an example of a summary for a "harvested" operation
 ```
   </TabItem>
   <TabItem value="tillage">
-  This is an example of a summary for a "tillage" operation
+
+This is an example of a summary for a "tillage" operation
+
    ```json
 {
     "id": "uuid",
@@ -547,7 +555,6 @@ This is an example of a summary for a "harvested" operation
 ### Properties
 
 Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
-
 
 <Tabs
   defaultValue="planted"
@@ -685,7 +692,9 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         { label: 'Tillage', value: 'tillage', },
       ]
   }>
+
   <TabItem value="planted">
+
   ```json
   {
     "type": "Feature",
@@ -713,8 +722,10 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
   }
   ```
+
   </TabItem>
   <TabItem value="applied">
+
   ```json
   {
     "type": "Feature",
@@ -760,8 +771,10 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
   }
   ```
+
   </TabItem>
   <TabItem value="harvested">
+
   ```json
   {
     "type": "Feature",
@@ -795,8 +808,10 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
   }
   ```
+
   </TabItem>
   <TabItem value ="tillage">
+
    ```json
   {
     "type": "Feature",
@@ -818,7 +833,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
    }
    ```
-</TabItem>
+  </TabItem>
 </Tabs>
 
 ### Properties
@@ -857,7 +872,6 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
 
   </TabItem>
-
   <TabItem value="applied">
 
   | key | presence | type | example units | description |
@@ -878,9 +892,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | machinery         | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId         | ** | int               | -                | ID of implement sensor section |
 
-
   </TabItem>
-
   <TabItem value="harvested">
 
   | key | presence | type | example units | description |
@@ -910,7 +922,6 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId         | ** | int         | int            | ID of implement sensor section |
 
   </TabItem>
-  
    <TabItem value="tillage">
 
   | key | presence | type | example units | description |
@@ -930,15 +941,11 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | machinery          | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId          | ** | int               | -                | ID of implement sensor section |
 
-
   </TabItem>
 </Tabs>
 
 \* = Always in response  
 \*\* = Usually in response but not required to pass tests
-
-
-
 
 <!-- ### Operation Maps
 

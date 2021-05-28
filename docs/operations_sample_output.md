@@ -178,9 +178,7 @@ This is an example of a summary for a "planted" operation
 ```
   </TabItem>
   <TabItem value="applied">
-
 This is an example of a summary for an "applied" operation
-
   ```json
 {
     "id": "uuid",
@@ -297,9 +295,7 @@ This is an example of a summary for an "applied" operation
 ```
   </TabItem>
   <TabItem value="harvested">
-
 This is an example of a summary for a "harvested" operation
-
   ```json
 {
     "id": "uuid",
@@ -466,9 +462,7 @@ This is an example of a summary for a "harvested" operation
 ```
   </TabItem>
   <TabItem value="tillage">
-   
   This is an example of a summary for a "tillage" operation
-
    ```json
 {
     "id": "uuid",
@@ -546,10 +540,8 @@ This is an example of a summary for a "harvested" operation
     }
 }
 ```  
-       
-   
   </TabItem>
-</Tabs>
+ </Tabs>
 
 
 ### Properties
@@ -667,8 +659,6 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   [Here][sample_summary] you can see a sample summary as response for an operation file
 
-
-
   </TabItem>
   </Tabs>
 
@@ -695,9 +685,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         { label: 'Tillage', value: 'tillage', },
       ]
   }>
-  
   <TabItem value="planted">
-
   ```json
   {
     "type": "Feature",
@@ -725,11 +713,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
   }
   ```
-
-
   </TabItem>
   <TabItem value="applied">
-
   ```json
   {
     "type": "Feature",
@@ -775,10 +760,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
   }
   ```
-
   </TabItem>
   <TabItem value="harvested">
-
   ```json
   {
     "type": "Feature",
@@ -812,10 +795,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
   }
   ```
-
   </TabItem>
   <TabItem value ="tillage">
-  
    ```json
   {
     "type": "Feature",
@@ -837,7 +818,6 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
     }
    }
    ```
-    
 </TabItem>
 </Tabs>
 

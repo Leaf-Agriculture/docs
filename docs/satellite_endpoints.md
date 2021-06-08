@@ -213,8 +213,8 @@ It is possible to filter the results by a number of different parameters:
 
 | Parameter | Type | Description | Default |
 | - | - | - | - |
-| startDate | ISO 8601 datetime format | retrieve images taken after this day | - |
-| endDate | ISO 8601 datetime format | retrieve images taken until this day | - |
+| processStartDate | ISO 8601 datetime format | retrieve images taken after this day | - |
+| processEndDate | ISO 8601 datetime format | retrieve images taken until this day | - |
 | startProcessedTimestamp | ISO 8601 datetime format | retrieve images processed by Leaf after this day | - |
 | endProcessedTimestamp | ISO 8601 datetime format | retrieve images processed by Leaf until this day | - |
 | maxClouds | double between 0.0 and 100.0 | filter processes with less than or equal to this percentage | 100 |
@@ -246,7 +246,7 @@ const TOKEN = 'YOUR_TOKEN'
 let endpoint = 'https://api.withleaf.io/services/satellite/api' +
                '/fields/YOUR_ID/processes'
 
-const params = { startDate: '2020-06-03', endDate: '2020-06-10' }
+const params = { processStartDate: '2020-06-03', processEndDate: '2020-06-10' }
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
 axios.get(endpoint, { headers, params })
@@ -265,7 +265,7 @@ TOKEN = 'YOUR_TOKEN'
 endpoint = ('https://api.withleaf.io/services/satellite/api'
             '/fields/YOUR_ID/processes')
 
-params = {'startDate': '2020-06-03', 'endDate': '2020-06-10'}
+params = {'processStartDate': '2020-06-03', 'processEndDate': '2020-06-10'}
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 response = requests.get(endpoint, headers=headers, params=params)
@@ -278,7 +278,7 @@ print(response.json())
 ```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/processes?startDate=2020-06-03&endDate=2020-06-10'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/processes?processStartDate=2020-06-03&processEndDate=2020-06-10'
 ```
 
 </TabItem>

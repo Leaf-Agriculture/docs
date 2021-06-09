@@ -53,10 +53,13 @@ Form of a John Deere Credentials resource:
 ```json
 {
   "id": "UUID",
+  "apiOwnerUsername": "str",
+  "status": "str",
   "clientKey": "str",
   "clientSecret": "str",
   "tokenId": "str",
-  "tokenSecretKey": "str"
+  "tokenSecretKey": "str",
+  "accessToken": "str"
 }
 ```
 
@@ -76,6 +79,8 @@ Form of a Climate FieldView Credentials resource:
 ```json
 {
   "id": "UUID",
+  "apiOwnerUsername": "str",
+  "status": "str",
   "clientId": "str",
   "clientSecret": "str",
   "apiKey": "str",
@@ -99,6 +104,8 @@ Form of a Trimble Credentials resource:
 ```json
 {
   "id": "UUID",
+  "apiOwnerUsername": "str",
+  "status": "str",
   "userName": "str",
   "password": "str",
   "applicationName": "str",
@@ -122,6 +129,8 @@ Form of a CNHI Credentials resource:
 ```json
 {
   "id": "UUID",
+  "apiOwnerUsername": "str",
+  "status": "str",
   "clientId": "str",
   "clientSecret": "str",
   "refreshToken": "str"

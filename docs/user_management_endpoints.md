@@ -59,7 +59,9 @@ Form of a John Deere Credentials resource:
   "clientSecret": "str",
   "tokenId": "str",
   "tokenSecretKey": "str",
-  "accessToken": "str"
+  "accessToken": "str",
+  "refreshToken": "str"
+
 }
 ```
 
@@ -84,6 +86,7 @@ Form of a Climate FieldView Credentials resource:
   "clientId": "str",
   "clientSecret": "str",
   "apiKey": "str",
+  "accessToken": "str",
   "refreshToken": "str"
 }
 ```

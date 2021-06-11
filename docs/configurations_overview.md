@@ -14,17 +14,17 @@ Currently, available configurations are:
 - `geoimagesResolution` - Resolution of the generated images of operations. The default value is `0.00001`.
 - `geoimagesShape` - Shape of points to be used when generating images of operations. It can assume the values `ROUND` and `SQUARE`. The default value is `SQUARE`.
 - `geoimagesProjection` - Projection to be used when generating images of operations. It can assume the values `EPSG:3857` and `EPSG:4326`. The default value is `EPSG:3857`.
-- `geoimagesColorRamp` - The color ramp to be used when generating images of operations. It's a map from a percentage value to a list containing a color in RGB. The last entry in the map must contain a value for the `nv` key, mapping to the RGBA for null values. The default value is
+- `geoimagesColorRamp` - The color ramp to be used when generating images of operations. It's a map from a percentage value to a list containing a color in RGB or RGBA. The last entry in the map must contain a value for the `nv` key, mapping to the color for null values. The default value is
 ```
 {
-    "0%"  : {200,   0, 0},
-    "35%" : {255,  40, 0},
-    "45%" : {255, 150, 0},
-    "55%" : {255, 240, 0},
-    "65%" : {  0, 230, 0},
-    "75%" : {  0, 190, 0},
-    "100%": {  0, 130, 0},
-    "nv"  : {  0,   0, 0, 0}
+    "0%"  : [200,   0, 0],
+    "35%" : [255,  40, 0],
+    "45%" : [255, 150, 0],
+    "55%" : [255, 240, 0],
+    "65%" : [  0, 230, 0],
+    "75%" : [  0, 190, 0],
+    "100%": [  0, 130, 0],
+    "nv"  : [  0,   0, 0, 0]
 }
 ```
 - `fieldsAutoSync` - If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.

@@ -93,7 +93,7 @@ A JSON containing the configuration of the Api Owner.
 
   curl -X GET \
       -H "Authorization: Bearer ${TOKEN}" \
-      "https://api.withleaf.io/service/configs/api/configs"
+      "https://api.withleaf.io/services/config/api/configs"
   ```
 
   </TabItem>
@@ -258,7 +258,7 @@ A JSON containing the configuration of the Leaf User.
     "fieldsAutoSync": true
   }
 
-  axios.post(endpoint, { headers, data })
+  axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -276,8 +276,8 @@ A JSON containing the configuration of the Leaf User.
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    'operationsImageCreation': true,
-    'fieldsAutoSync': true
+    'operationsImageCreation': True,
+    'fieldsAutoSync': True
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -293,6 +293,7 @@ A JSON containing the configuration of the Leaf User.
   
   curl -X POST \
       -H "Authorization: Bearer ${TOKEN}" \
+      -H "Content-Type: application/json" \
       -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
       "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
   ```
@@ -367,7 +368,7 @@ A JSON containing the configuration of the Api Owner.
     "fieldsAutoSync": true
   }
 
-  axios.patch(endpoint, { headers, data })
+  axios.patch(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -384,8 +385,8 @@ A JSON containing the configuration of the Api Owner.
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    'operationsImageCreation': true,
-    'fieldsAutoSync': true
+    'operationsImageCreation': True,
+    'fieldsAutoSync': True
   }
 
   response = requests.patch(endpoint, headers=headers, json=data)
@@ -399,7 +400,8 @@ A JSON containing the configuration of the Api Owner.
   TOKEN = 'YOUR_TOKEN'
 
   curl -X PATCH \
-      -H 'Authorization: Bearer ${TOKEN}' \
+      -H "Authorization: Bearer ${TOKEN}" \
+      -H "Content-Type: application/json" \
       -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
       'https://api.withleaf.io/services/config/api/configs'
   ```
@@ -475,7 +477,7 @@ A JSON containing the configuration of the Leaf User.
     "fieldsAutoSync": true
   }
 
-  axios.patch(endpoint, { headers, data })
+  axios.patch(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -493,8 +495,8 @@ A JSON containing the configuration of the Leaf User.
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    'operationsImageCreation': true,
-    'fieldsAutoSync': true
+    'operationsImageCreation': True,
+    'fieldsAutoSync': True
   }
 
   response = requests.patch(endpoint, headers=headers, json=data)
@@ -509,9 +511,10 @@ A JSON containing the configuration of the Leaf User.
   LEAF_USER_ID=00000000-0000-0000-0000-000000000000
 
   curl -X PATCH \
-      -H 'Authorization: Bearer ${TOKEN}' \
+      -H "Authorization: Bearer ${TOKEN}" \
+      -H "Content-Type: application/json" \
       -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
-      'https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}'
+      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
   ```
 
   </TabItem>
@@ -586,7 +589,7 @@ Deletes the Configuration from the Leaf User `leafUserId`. Until a new Configura
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.delete(endpoint, headers=headers)
-  print(response.json())
+  print(response.status_code)
   ```
 
   </TabItem>

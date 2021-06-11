@@ -11,4 +11,4 @@ Leaf Users do not start with Configuration, but they inherit the configurations 
 Currently, available configurations are:
 
 - `operationsImageCreation` - If set to `true`, Leaf will generate images of operations when processing them. If set to `false`, Leaf won't create the images. The default value is `true`.
-- `fieldsAutoSync` - If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually required via endpoint. The default value is `true`.
+- `fieldsAutoSync` - If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.

@@ -104,6 +104,19 @@ A JSON containing the configuration of the Api Owner.
     "apiOwnerUsername": "api-owner",
     "leafUserId": "",
     "operationsImageCreation": true,
+    "geoimagesResolution": 0.00001,
+    "geoimagesShape": "SQUARE",
+    "geoimagesProjection": "EPSG:3857",
+    "geoimagesColorRamp": {
+      "0%"  : {200,   0, 0},
+      "35%" : {255,  40, 0},
+      "45%" : {255, 150, 0},
+      "55%" : {255, 240, 0},
+      "65%" : {  0, 230, 0},
+      "75%" : {  0, 190, 0},
+      "100%": {  0, 130, 0},
+      "nv"  : {  0,   0, 0, 0}
+    },
     "fieldsAutoSync": true
   }
   ```
@@ -181,6 +194,19 @@ A JSON containing the configuration of the Leaf User.
     "apiOwnerUsername": "api-owner",
     "leafUserId": "00000000-0000-0000-0000-000000000000",
     "operationsImageCreation": true,
+    "geoimagesResolution": 0.00001,
+    "geoimagesShape": "SQUARE",
+    "geoimagesProjection": "EPSG:3857",
+    "geoimagesColorRamp": {
+      "0%"  : {200,   0, 0},
+      "35%" : {255,  40, 0},
+      "45%" : {255, 150, 0},
+      "55%" : {255, 240, 0},
+      "65%" : {  0, 230, 0},
+      "75%" : {  0, 190, 0},
+      "100%": {  0, 130, 0},
+      "nv"  : {  0,   0, 0, 0}
+    },
     "fieldsAutoSync": true
   }
   ```
@@ -279,6 +305,19 @@ A JSON containing the configuration of the Leaf User.
     "apiOwnerUsername": "api-owner",
     "leafUserId": "00000000-0000-0000-0000-000000000000",
     "operationsImageCreation": true,
+    "geoimagesResolution": 0.00001,
+    "geoimagesShape": "SQUARE",
+    "geoimagesProjection": "EPSG:3857",
+    "geoimagesColorRamp": {
+      "0%"  : {200,   0, 0},
+      "35%" : {255,  40, 0},
+      "45%" : {255, 150, 0},
+      "55%" : {255, 240, 0},
+      "65%" : {  0, 230, 0},
+      "75%" : {  0, 190, 0},
+      "100%": {  0, 130, 0},
+      "nv"  : {  0,   0, 0, 0}
+    },
     "fieldsAutoSync": true
   }
   ```
@@ -373,6 +412,19 @@ A JSON containing the configuration of the Api Owner.
     "apiOwnerUsername": "api-owner",
     "leafUserId": "",
     "operationsImageCreation": true,
+    "geoimagesResolution": 0.00001,
+    "geoimagesShape": "SQUARE",
+    "geoimagesProjection": "EPSG:3857",
+    "geoimagesColorRamp": {
+      "0%"  : {200,   0, 0},
+      "35%" : {255,  40, 0},
+      "45%" : {255, 150, 0},
+      "55%" : {255, 240, 0},
+      "65%" : {  0, 230, 0},
+      "75%" : {  0, 190, 0},
+      "100%": {  0, 130, 0},
+      "nv"  : {  0,   0, 0, 0}
+    },
     "fieldsAutoSync": true
   }
   ```
@@ -470,6 +522,19 @@ A JSON containing the configuration of the Leaf User.
     "apiOwnerUsername": "api-owner",
     "leafUserId": "00000000-0000-0000-0000-000000000000",
     "operationsImageCreation": true,
+    "geoimagesResolution": 0.00001,
+    "geoimagesShape": "SQUARE",
+    "geoimagesProjection": "EPSG:3857",
+    "geoimagesColorRamp": {
+      "0%"  : {200,   0, 0},
+      "35%" : {255,  40, 0},
+      "45%" : {255, 150, 0},
+      "55%" : {255, 240, 0},
+      "65%" : {  0, 230, 0},
+      "75%" : {  0, 190, 0},
+      "100%": {  0, 130, 0},
+      "nv"  : {  0,   0, 0, 0}
+    },
     "fieldsAutoSync": true
   }
   ```

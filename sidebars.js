@@ -16,6 +16,11 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Configurations',
+          items: ['configurations_overview', 'configurations_endpoints']
+        },
+        {
+          type: 'category',
           label: 'Field Boundaries',
           items: ['field_boundaries_overview', 'field_boundaries_endpoints']
         },

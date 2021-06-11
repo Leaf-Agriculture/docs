@@ -10,6 +10,5 @@ Leaf Users do not start with Configuration, but they inherit the configurations 
 
 Currently, available configurations are:
 
-- `operationsSummaryCreation` - If set to `true`, Leaf will generate a summary of each operation when processing them, to be attached to the related fields. If set to `false`, Leaf won't create summaries when processing operations. The default value is `true`.
 - `operationsImageCreation` - If set to `true`, Leaf will generate images of operations when processing them. If set to `false`, Leaf won't create the images. The default value is `true`.
 - `fieldsAutoSync` - If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually required via endpoint. The default value is `true`.

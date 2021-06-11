@@ -11,11 +11,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #get-api-owner-config
 [3]: #get-leaf-user-config
 [4]: #create-leaf-user-config
-[5]: #override-api-owner-config
-[6]: #override-leaf-user-config
-[7]: #update-api-owner
-[8]: #update-leaf-user-config
-[9]: #delete-leaf-user-config
+[5]: #update-api-owner
+[6]: #update-leaf-user-config
+[7]: #delete-leaf-user-config
 
 ## About
 Here we list all the available endpoints from Configuration API. For easily
@@ -34,11 +32,9 @@ Description | Endpoints
 [Get Api Owner's Configuration][2] | <span class="badge badge--success">GET</span> `/configs`
 [Get Leaf User's Configuration][3] | <span class="badge badge--success">GET</span> `/configs/{leafUserId}`
 [Create Leaf User's Configuration][4] | <span class="badge badge--warning">POST</span> `/configs/{leafUserId}`
-[Override Api Owner's Configuration][5] | <span class="badge badge--success">PUT</span> `/configs`
-[Override Leaf User's Configuration][6] | <span class="badge badge--success">PUT</span> `/configs/{leafUserId}`
-[Update Api Owner's Configuration][7] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
-[Update Leaf User's Configuration][8] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
-[Delete Leaf User's Configuration][9] | <span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}`
+[Update Api Owner's Configuration][5] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
+[Update Leaf User's Configuration][6] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
+[Delete Leaf User's Configuration][7] | <span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}`
 
 ## Endpoints
 
@@ -107,7 +103,6 @@ A JSON containing the configuration of the Api Owner.
   {
     "apiOwnerUsername": "api-owner",
     "leafUserId": "",
-    "operationsSummaryCreation": true,
     "operationsImageCreation": true,
     "fieldsAutoSync": true
   }
@@ -185,7 +180,6 @@ A JSON containing the configuration of the Leaf User.
   {
     "apiOwnerUsername": "api-owner",
     "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "operationsSummaryCreation": true,
     "operationsImageCreation": true,
     "fieldsAutoSync": true
   }
@@ -206,7 +200,6 @@ Request body example:
 ```json
 {
   "operationsImageCreation": true,
-  "operationsSummaryCreation": true,
   "fieldsAutoSync": true
 }
 ```
@@ -236,7 +229,6 @@ A JSON containing the configuration of the Leaf User.
 
   const data = {
     "operationsImageCreation": true,
-    "operationsSummaryCreation": true,
     "fieldsAutoSync": true
   }
 
@@ -259,7 +251,6 @@ A JSON containing the configuration of the Leaf User.
 
   data = {
     'operationsImageCreation': true,
-    'operationsSummaryCreation': true,
     'fieldsAutoSync': true
   }
 
@@ -276,7 +267,7 @@ A JSON containing the configuration of the Leaf User.
   
   curl -X POST \
       -H "Authorization: Bearer ${TOKEN}" \
-      -d '{ "operationsImageCreation": true, "operationsSummaryCreation": true, "fieldsAutoSync": true }' \
+      -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
       "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
   ```
 
@@ -287,207 +278,6 @@ A JSON containing the configuration of the Leaf User.
   {
     "apiOwnerUsername": "api-owner",
     "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "operationsSummaryCreation": true,
-    "operationsImageCreation": true,
-    "fieldsAutoSync": true
-  }
-  ```
-
-  </TabItem>
-</Tabs>
-
-### Override Api Owner's Configuration
-
-&nbsp<span class="badge badge--success">PUT</span> `/configs`
-
-Overrides the Configuration for the Api Owner. A resquest body must be provided
-containing the configurations to be set. All entries are required.
-
-Request body example:
-
-```json
-{
-  "operationsImageCreation": true,
-  "operationsSummaryCreation": true,
-  "fieldsAutoSync": true
-}
-```
-
-#### Response
-A JSON containing the configuration of the Api Owner.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint ='https://api.withleaf.io/services/config/api/configs'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  const data = {
-    "operationsImageCreation": true,
-    "operationsSummaryCreation": true,
-    "fieldsAutoSync": true
-  }
-
-  axios.put(endpoint, { headers, data })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/config/api/configs'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  data = {
-    'operationsImageCreation': true,
-    'operationsSummaryCreation': true,
-    'fieldsAutoSync': true
-  }
-
-  response = requests.put(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  TOKEN = 'YOUR_TOKEN'
-
-  curl -X PUT \
-      -H "Authorization: Bearer ${TOKEN}" \
-      -d '{ "operationsImageCreation": true, "operationsSummaryCreation": true, "fieldsAutoSync": true }' \
-      'https://api.withleaf.io/services/config/api/configs'
-  ```
-
-  </TabItem>
-  <TabItem value="res">
-
-  ```json
-  {
-    "apiOwnerUsername": "api-owner",
-    "leafUserId": "",
-    "operationsSummaryCreation": true,
-    "operationsImageCreation": true,
-    "fieldsAutoSync": true
-  }
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### Override Leaf User's Configuration
-
-&nbsp<span class="badge badge--success">PUT</span> `/configs/{leafUserId}`
-
-Overrides the Configuration for the Leaf User `leafUserId`. A resquest body must be provided
-containing the configurations to be set. All entries are optional, any missing configuration will be inherited from the Api Owner's Configuration.
-
-Request body example:
-
-```json
-{
-  "operationsImageCreation": true,
-  "operationsSummaryCreation": true,
-  "fieldsAutoSync": true
-}
-```
-
-#### Response
-A JSON containing the configuration of the Leaf User.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-    { label: 'JSON Response', value: 'res', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-  const LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
-
-  const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  const data = {
-    "operationsImageCreation": true,
-    "operationsSummaryCreation": true,
-    "fieldsAutoSync": true
-  }
-
-  axios.put(endpoint, { headers, data })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-  LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
-
-  endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  data = {
-    'operationsImageCreation': true,
-    'operationsSummaryCreation': true,
-    'fieldsAutoSync': true
-  }
-
-  response = requests.put(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  TOKEN=YOUR_TOKEN
-  LEAF_USER_ID=00000000-0000-0000-0000-000000000000
-
-  curl -X PUT \
-      -H "Authorization: Bearer ${TOKEN}" \
-      -d '{ "operationsImageCreation": true, "operationsSummaryCreation": true, "fieldsAutoSync": true }' \
-      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
-  ```
-
-  </TabItem>
-  <TabItem value="res">
-
-  ```json
-  {
-    "apiOwnerUsername": "api-owner",
-    "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "operationsSummaryCreation": true,
     "operationsImageCreation": true,
     "fieldsAutoSync": true
   }
@@ -508,7 +298,6 @@ Request body example:
 ```json
 {
   "operationsImageCreation": true,
-  "operationsSummaryCreation": true,
   "fieldsAutoSync": true
 }
 ```
@@ -536,7 +325,6 @@ A JSON containing the configuration of the Api Owner.
 
   const data = {
     "operationsImageCreation": true,
-    "operationsSummaryCreation": true,
     "fieldsAutoSync": true
   }
 
@@ -558,7 +346,6 @@ A JSON containing the configuration of the Api Owner.
 
   data = {
     'operationsImageCreation': true,
-    'operationsSummaryCreation': true,
     'fieldsAutoSync': true
   }
 
@@ -574,7 +361,7 @@ A JSON containing the configuration of the Api Owner.
 
   curl -X PATCH \
       -H 'Authorization: Bearer ${TOKEN}' \
-      -d '{ "operationsImageCreation": true, "operationsSummaryCreation": true, "fieldsAutoSync": true }' \
+      -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
       'https://api.withleaf.io/services/config/api/configs'
   ```
 
@@ -585,7 +372,6 @@ A JSON containing the configuration of the Api Owner.
   {
     "apiOwnerUsername": "api-owner",
     "leafUserId": "",
-    "operationsSummaryCreation": true,
     "operationsImageCreation": true,
     "fieldsAutoSync": true
   }
@@ -606,7 +392,6 @@ Request body example:
 ```json
 {
   "operationsImageCreation": true,
-  "operationsSummaryCreation": true,
   "fieldsAutoSync": true
 }
 ```
@@ -635,7 +420,6 @@ A JSON containing the configuration of the Leaf User.
 
   const data = {
     "operationsImageCreation": true,
-    "operationsSummaryCreation": true,
     "fieldsAutoSync": true
   }
 
@@ -658,7 +442,6 @@ A JSON containing the configuration of the Leaf User.
 
   data = {
     'operationsImageCreation': true,
-    'operationsSummaryCreation': true,
     'fieldsAutoSync': true
   }
 
@@ -675,7 +458,7 @@ A JSON containing the configuration of the Leaf User.
 
   curl -X PATCH \
       -H 'Authorization: Bearer ${TOKEN}' \
-      -d '{ "operationsImageCreation": true, "operationsSummaryCreation": true, "fieldsAutoSync": true }' \
+      -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
       'https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}'
   ```
 
@@ -686,7 +469,6 @@ A JSON containing the configuration of the Leaf User.
   {
     "apiOwnerUsername": "api-owner",
     "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "operationsSummaryCreation": true,
     "operationsImageCreation": true,
     "fieldsAutoSync": true
   }

@@ -77,7 +77,8 @@ and vice-versa.
 | european triticale     | 58  | 
 | european wheat feed    | 60  | 
 | european wheat wtr     | 60  | 
-| rapeseed e oil         | 52  | 
+| rapeseed e oil         | 52  |
+| oilseed rape winter    | 52  | 
 | buckwheat              | 44  | 
 | lucerne                | 54  | 
 | peanuts                | 45  | 

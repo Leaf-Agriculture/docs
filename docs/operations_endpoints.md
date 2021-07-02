@@ -71,6 +71,7 @@ below.
 | `status` | `processed`, `failed` or `processing` |
 | `origin` | `provider`, `automerged`, `merged` or `uploaded` |
 | `organizationId` | the provider organizationId (only available for John Deere) |
+| `batchId` | uuid of the upload response (only available for uploaded files) |
 | `createdTime` | ISO 8601 date. Returns operations from the createdTime onward |
 | `operationStartTime` | ISO 8601 date. Returns operations from the operationStartTime onward |
 | `operationEndTime` | ISO 8601 date. Returns operations until the operationEndTime |
@@ -583,7 +584,7 @@ Returns a single JSON object, as shown below:
 
 This id can then be queried to retrieve on [Get batch][8] to get the individual file ID's. 
 Then you can query each of the files individually with 
-[Get a File](#get-a-file) or all of them, filtering by `createdDate`, on 
+[Get a File](#get-a-file) or all of them, filtering by `batchId`, on
 [Get all Files](#get-all-files).
 
 

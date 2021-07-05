@@ -29,7 +29,7 @@ An operation returned by Leaf can be an individual file or contain multiple
 individual files (uploaded, merged or uploaded).
 If the operation contains more than one individual file, another key is added to 
 the resource, the `"sources"` key, that is a list of individual file ids.
-If the operations was created by an upload on the /batch endpoint, the `"batchId"`
+If the operation was created by an upload on the `/batch` endpoint, the `"batchId"`
 key will be added to the resource with the corresponding uuid.
 
 

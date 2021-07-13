@@ -28,7 +28,9 @@ file is included below.
 An operation returned by Leaf can be an individual file or contain multiple 
 individual files (uploaded, merged or uploaded).
 If the operation contains more than one individual file, another key is added to 
-the resource, the "sources" key, that is a list of individual file ids.
+the resource, the `"sources"` key, that is a list of individual file ids.
+If the operation was created by an upload on the `/batch` endpoint, the `"batchId"`
+key will be added to the resource with the corresponding uuid.
 
 
 ### Sample Summary response
@@ -575,7 +577,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | crop            | *  | string | 
   | seedRate        | *  | dict |
   | operationType   | *  | string "planted" |
-  | totalArea       | *  | int |
+  | totalArea       | *  | float |
   | elevation       | *  | dict |
   | variety         | ** | string |
   | seedRateTarget  | ** | dict |
@@ -599,7 +601,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | appliedRate         | *  | dict |
   | operationType       | *  | string "applied" |
   | elevation           | *  | dict |
-  | totalArea           | *  | int |
+  | totalArea           | *  | float |
   | products            | *  | dict  |
   | appliedRateTarget   | ** | dict |
   | machinery           | ** | list of machineInfo objects |
@@ -624,7 +626,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | elevation         | *  | dict |
   | harvestMoisture   | *  | dict |
   | operationType     | *  | string "harvested" |
-  | totalArea         | *  | int |
+  | totalArea         | *  | float |
   | wetMass           | *  | dict | 
   | wetMassPerArea    | *  | dict |
   | wetVolume         | *  | dict |
@@ -655,9 +657,9 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | - | - | - |
   | elevation         | *  | dict |
   | operationType     | *  | string "tillage" |
-  | totalArea         | *  | int |
-  | tillageDepthTarget| *  | int |
-  | tillageDepthActual| ** | int |
+  | totalArea         | *  | float |
+  | tillageDepthTarget| *  | float |
+  | tillageDepthActual| ** | float |
   | speed             | ** | dict |
   | machinery         | ** | list of machineInfo objects |
 
@@ -861,7 +863,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | distance        | * | float           | ft or m              | Distance travelled since previous point |
   | elevation       | * | float           | ft or m              | Distance to sea level |
   | operationType   | * | string          | -                    | string "planted" |
-  | equipmentWidth  | * | int             | ft or m              | Width of implement |
+  | equipmentWidth  | * | float           | ft or m              | Width of implement |
   | recordingStatus | * | Boolean         | -                    | Recording status of machine at point |
   | seedRate        | * | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
   | variety         | ** | string          | -                    | The variety of seed being planted |
@@ -886,7 +888,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | operationType     | * | string            | -                | string "applied" |
   | products          | * | list of dicts     | -                | tank mix including products and ratio |
-  | equipmentWidth    | * | int               | ft or m          | Width of implement |
+  | equipmentWidth    | * | float             | ft or m          | Width of implement |
   | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
   | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
   | machinery         | ** | list of machineInfo objects   | -                | Name of machine and implement |

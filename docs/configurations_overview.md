@@ -28,3 +28,5 @@ Currently, available configurations are:
 }
 ```
 - `fieldsAutoSync` - If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.
+- `fieldsMergeIntersection` - Minimum intersection between two fields to merge then. A new field of type MERGED will be created based in the intersection of the fields, while the original fields will be kept. This property supports a floating point between 0 and 100. The default value is `0.01`.
+- `fieldsAttachIntersection` - Minimum intersection between a field and an operation. An intersection within this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100. The default value is `0.01`. 

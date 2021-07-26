@@ -117,7 +117,9 @@ A JSON containing the configuration of the Api Owner.
       "100%": [  0, 130, 0],
       "nv"  : [  0,   0, 0, 0]
     },
-    "fieldsAutoSync": true
+    "fieldsAutoSync": true,
+    "fieldsMergeIntersection": 0.01,
+    "fieldsAttachIntersection": 0.01
   }
   ```
 
@@ -207,7 +209,9 @@ A JSON containing the configuration of the Leaf User.
       "100%": [  0, 130, 0],
       "nv"  : [  0,   0, 0, 0]
     },
-    "fieldsAutoSync": true
+    "fieldsAutoSync": true,
+    "fieldsMergeIntersection": 0.01,
+    "fieldsAttachIntersection": 0.01
   }
   ```
 
@@ -319,7 +323,9 @@ A JSON containing the configuration of the Leaf User.
       "100%": [  0, 130, 0],
       "nv"  : [  0,   0, 0, 0]
     },
-    "fieldsAutoSync": true
+    "fieldsAutoSync": true,
+    "fieldsMergeIntersection": 0.01,
+    "fieldsAttachIntersection": 0.01
   }
   ```
 
@@ -427,7 +433,9 @@ A JSON containing the configuration of the Api Owner.
       "100%": [  0, 130, 0],
       "nv"  : [  0,   0, 0, 0]
     },
-    "fieldsAutoSync": true
+    "fieldsAutoSync": true,
+    "fieldsMergeIntersection": 0.01,
+    "fieldsAttachIntersection": 0.01
   }
   ```
 
@@ -538,7 +546,9 @@ A JSON containing the configuration of the Leaf User.
       "100%": [  0, 130, 0],
       "nv"  : [  0,   0, 0, 0]
     },
-    "fieldsAutoSync": true
+    "fieldsAutoSync": true,
+    "fieldsMergeIntersection": 0.01,
+    "fieldsAttachIntersection": 0.01
   }
   ```
 

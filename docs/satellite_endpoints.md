@@ -217,7 +217,8 @@ It is possible to filter the results by a number of different parameters:
 | endDate | ISO 8601 datetime format | retrieve images taken until this day | - |
 | startProcessedTimestamp | ISO 8601 datetime format | retrieve images processed by Leaf after this day | - |
 | endProcessedTimestamp | ISO 8601 datetime format | retrieve images processed by Leaf until this day | - |
-| maxClouds | double between 0.0 and 100.0 | filter processes with less than or equal to this percentage | 100 |
+| maxClouds | double between 0.0 and 100.0 | filter processes with clouds less than or equal to this percentage | 100 |
+| minCoverage | double between 0.0 and 100.0 | filter processes with coverage greater than or equal to this percentage | 0.0 |
 | status | string "SUCCESS", "FAILED" or "STARTED" | retrieve images with selected status | SUCCESS |
 | page | integer | page being fetched | 0 |
 | size | integer | how many processes (sets of all images) to return per page | 20 |

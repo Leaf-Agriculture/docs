@@ -352,8 +352,8 @@ parameters. They are listed below.
 You can also pass some parameters used exclusively for paging through results.
 They are:
 
-- `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page (defaults to 20)
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (default is 20, max is 100)
 
 #### Response
 A JSON array of Files.

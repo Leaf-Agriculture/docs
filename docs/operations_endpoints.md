@@ -84,8 +84,8 @@ crop density using this [table](operations_density_table.md).
 You can also pass some parameters used exclusively for paging through results.
 They are:
 
-- `page`, an integer specifying the page being fetched
-- `size`, an integer specifying the size of the page
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (max is 100)
 
 :::info the default value for page size is 20
 If the parameters page and size are not set, the endpoint will return 20 results.

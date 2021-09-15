@@ -6,6 +6,20 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+<!-- the following links are referenced throughout this document -->
+[1]: #get-usersleafuseridjohn-deere-credentials
+[2]: #post-usersleafuseridjohn-deere-credentials
+[3]: #delete-usersleafuseridjohn-deere-credentials
+[4]: #get-usersleafuseridclimate-field-view-credentials
+[5]: #post-usersleafuseridclimate-field-view-credentials
+[6]: #delete-usersleafuseridclimate-field-view-credentials
+[7]: #get-usersleafuseridtrimble-credentials
+[8]: #post-usersleafuseridtrimble-credentials
+[9]: #delete-usersleafuseridtrimble-credentials
+[10]: #get-usersleafuseridcnhi-credentials
+[11]: #post-usersleafuseridcnhi-credentials
+[12]: #delete-usersleafuseridcnhi-credentials
+
 ## About
 All HTTP methods should be prepended by this service's endpoint:
 
@@ -565,7 +579,9 @@ Deletes an existing Leaf User by id.
   </TabItem>
 </Tabs>
 
-### `GET  /john-deere-credentials/{id}`
+### `GET  /john-deere-credentials/{id}` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/john-deere-credentials`][1] to GET John Deere credentials.
 
 Get the John Deere credentials of the user based on its id and returns a JSON with the credentials. If during background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
@@ -633,7 +649,9 @@ Get the John Deere credentials of the user based on its id and returns a JSON wi
 </Tabs>
 
 
-### `GET  /john-deere-credentials`
+### `GET  /john-deere-credentials` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/john-deere-credentials`][1] to GET John Deere credentials.
 
 Gets all John Deere Credentials.
 
@@ -702,7 +720,9 @@ Gets all John Deere Credentials.
 </Tabs>
 
 
-### `POST /john-deere-credentials`
+### `POST /john-deere-credentials` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/john-deere-credentials`][2] to POST John Deere credentials.
 
 Create a John Deere credentials for the Leaf User.
 
@@ -796,7 +816,9 @@ A John Deere Credentials object with the id assigned to it.
 </Tabs>
 
 
-### `DELETE  /john-deere-credentials/{id}`
+### `DELETE  /john-deere-credentials/{id}` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/john-deere-credentials`][3] to DELETE John Deere credentials.
 
 Delete a John Deere credentials by id.
 
@@ -1069,7 +1091,9 @@ Delete Leaf User's John Deere credentials.
 </Tabs>
 
 
-### `GET /climate-field-view-credentials/{id}`
+### `GET /climate-field-view-credentials/{id}` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/climate-field-view-credentials`][4] to GET Climate Field View credentials.
 
 Get a Climate Field View credentials object by its id. If during background processing we detect that this credential is no longer valid, the value of valid will be changed.
 
@@ -1135,7 +1159,9 @@ Get a Climate Field View credentials object by its id. If during background proc
   </TabItem>
 </Tabs>
 
-### `GET /climate-field-view-credentials`
+### `GET /climate-field-view-credentials` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/climate-field-view-credentials`][4] to GET Climate Field View credentials.
 
 Gets all the Climate Field View credentials.
 
@@ -1205,7 +1231,10 @@ Gets all the Climate Field View credentials.
 </Tabs>
 
 
-### `POST /climate-field-view-credentials`
+### `POST /climate-field-view-credentials` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/climate-field-view-credentials`][5] to POST Climate Field View credentials.
+
 Create a Climate Field View credentials for the Leaf User.
 
 #### Request body
@@ -1298,7 +1327,10 @@ A Climate Field View credentials.
   </TabItem>
 </Tabs>
 
-### `DELETE /climate-field-view-credentials/{id}`
+### `DELETE /climate-field-view-credentials/{id}` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/climate-field-view-credentials`][6] to DELETE Climate Field View credentials.
+
 Deletes a "Climate Field View Credentials" by id.
 
 
@@ -1565,7 +1597,9 @@ Delete Leaf User's Climate Field View credentials.
 </Tabs>
 
 
-### `GET /trimble-credentials/{id}`
+### `GET /trimble-credentials/{id}` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/trimble-credentials`][7] to GET Trimble credentials.
 
 Get a "Trimble Credentials" resource by its id.
 
@@ -1623,7 +1657,9 @@ A "Trimble Credentials" resource as a JSON.
 </Tabs>
 
 
-### `GET /trimble-credentials`
+### `GET /trimble-credentials` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/trimble-credentials`][7] to GET Trimble credentials.
 
 Gets all Trimble Credentials.
 
@@ -1681,7 +1717,10 @@ A JSON array with Trimble Credentials.
 </Tabs>
 
 
-### `POST /trimble-credentials`
+### `POST /trimble-credentials` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/trimble-credentials`][8] to POST Trimble credentials.
+
 Create a "Trimble Credentials" for the Leaf User.
 
 #### Request body
@@ -1764,7 +1803,10 @@ A "Trimble Credentials" with the id assigned to it.
 </Tabs>
 
 
-### `DELETE trimble-credentials/{id}`
+### `DELETE trimble-credentials/{id}` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/trimble-credentials`][9] to DELETE Trimble credentials.
+
 Delete a Trimble Credentials resource by id.
 
 <Tabs
@@ -2010,7 +2052,9 @@ Delete a Leaf User's Trimble credentials.
 </Tabs>
 
 
-### `GET /cn-hi-credentials/{id}`
+### `GET /cn-hi-credentials/{id}` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][10] to GET CNHI credentials.
 
 Get a "CNHI Credentials" resource by its id.
 
@@ -2069,7 +2113,9 @@ A "CNHI Credentials" resource as a JSON.
 
 
 
-### `GET /cn-hi-credentials`
+### `GET /cn-hi-credentials` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][10] to GET CNHI credentials.
 
 Gets all CNHI Credentials.
 
@@ -2127,7 +2173,10 @@ A JSON array with CNHI Credentials.
 </Tabs>
 
 
-### `POST /cn-hi-credentials`
+### `POST /cn-hi-credentials` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][11] to POST CNHI credentials.
+
 Create a "CNHI Credentials" for the Leaf User.
 
 #### Request body
@@ -2211,7 +2260,10 @@ A "CNHI Credentials" with the id assigned to it.
 </Tabs>
 
 
-### `DELETE /cn-hi-credentials/{id}`
+### `DELETE /cn-hi-credentials/{id}` - DEPRECATED
+
+This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][12] to DELETE credentials.
+
 Delete a CNHI Credentials resource by id.
 
 <Tabs

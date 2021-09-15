@@ -2262,7 +2262,7 @@ A "CNHI Credentials" with the id assigned to it.
 
 ### `DELETE /cn-hi-credentials/{id}` - DEPRECATED
 
-This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][12] to DELETE credentials.
+This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][12] to DELETE CNHI credentials.
 
 Delete a CNHI Credentials resource by id.
 

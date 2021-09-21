@@ -199,6 +199,27 @@ POST   /cn-hi-credentials
 DELETE /cn-hi-credentials/{id}
 ```
 
+#### Raven Credentials
+
+Form of a Raven Credentials resource:
+
+```json
+{
+  "accessToken": "str",
+  "refreshToken": "str",
+  "clientId": "str",
+  "clientSecret": "str",
+  "status": "str" 
+}
+```
+
+Endpoints:
+
+```
+GET    /users/{leafUserId}/raven-credentials
+POST   /users/{leafUserId}/raven-credentials
+DELETE /users/{leafUserId}/raven-credentials
+```
 ---
 
 ## Endpoints
@@ -2503,6 +2524,195 @@ Delete Leaf User's CNHI credentials.
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/cnhi-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### `GET /users/{leafUserId}/raven-credentials`
+
+Get the Raven credentials of the Leaf User based on its id and returns a JSON with the credentials.
+
+#### Response
+A Raven credentials resource as a JSON.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `POST /users/{leafUserId}/raven-credentials`
+Create a Raven credentials for the Leaf User.
+
+#### Request body
+A Raven credentials.
+
+```json
+{
+  "clientId": "str",
+  "clientSecret": "str",
+  "refreshToken": "str"
+}
+```
+
+#### Response
+A Raven Credentials with status.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    "clientId": "str",
+    "clientSecret": "str",
+    "refreshToken": "str"
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    "clientId": "str",
+    "clientSecret": "str",
+    "refreshToken": "str"
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+curl -X POST \
+-H 'Authorization: Bearer YOUR_TOKEN' \
+-H 'Content-Type: application/json' \
+-d '{ "clientId": "str","clientSecret": "str","refreshToken":"str"}' \
+'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### `DELETE /users/{leafUserId}/raven-credentials`
+Delete Leaf User's Raven credentials.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
   ```
 
   </TabItem>

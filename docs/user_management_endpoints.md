@@ -170,11 +170,10 @@ Form of a CNHI Credentials resource:
 
 ```json
 {
-  "id": "UUID",
-  "apiOwnerUsername": "str",
   "status": "str",
   "clientId": "str",
   "clientSecret": "str",
+  "subscriptionKey": "str",
   "refreshToken": "str",
   "clientEnvironment": "STAGE or PRODUCTION"
 }
@@ -186,17 +185,6 @@ Endpoints:
 GET    /users/{leafUserId}/cnhi-credentials
 POST   /users/{leafUserId}/cnhi-credentials
 DELETE /users/{leafUserId}/cnhi-credentials
-```
-
-The above endpoints won't return fields *id* and *apiOwnerUsername*.
-
-Deprecated Endpoints:
-
-```
-GET    /cn-hi-credentials/{id}
-GET    /cn-hi-credentials
-POST   /cn-hi-credentials
-DELETE /cn-hi-credentials/{id}
 ```
 
 #### Raven Credentials
@@ -2072,270 +2060,6 @@ Delete a Leaf User's Trimble credentials.
   </TabItem>
 </Tabs>
 
-
-### `GET /cn-hi-credentials/{id}` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][10] to GET CNHI credentials.
-
-Get a "CNHI Credentials" resource by its id.
-
-#### Response
-A "CNHI Credentials" resource as a JSON.
-
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-
-### `GET /cn-hi-credentials` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][10] to GET CNHI credentials.
-
-Gets all CNHI Credentials.
-
-#### Response
-A JSON array with CNHI Credentials.
-
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `POST /cn-hi-credentials` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][11] to POST CNHI credentials.
-
-Create a "CNHI Credentials" for the Leaf User.
-
-#### Request body
-A "CNHI Credentials" without id.
-
-```json
-{
-  "clientId": "str",
-  "clientSecret": "str",
-  "refreshToken": "str",
-  "clientEnvironment": "STAGE or PRODUCTION"
-}
-```
-
-#### Response
-A "CNHI Credentials" with the id assigned to it.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  const data = {
-    "clientId": "str",
-    "clientSecret": "str",
-    "refreshToken": "str",
-    "clientEnvironment": "STAGE or PRODUCTION"
-  }
-
-  axios.post(endpoint, data, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  data = {
-    "clientId": "str",
-    "clientSecret": "str",
-    "refreshToken": "str",
-    "clientEnvironment": "STAGE or PRODUCTION"
-  }
-
-  response = requests.post(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X POST \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      -H 'Content-Type: application/json' \
-      -d '{"clientId": "str", "clientSecret": "str", "refreshToken": "str", "clientEnvironment": "STAGE or PRODUCTION"}' \
-      'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `DELETE /cn-hi-credentials/{id}` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/cnhi-credentials`][12] to DELETE CNHI credentials.
-
-Delete a CNHI Credentials resource by id.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.delete(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.delete(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X DELETE \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/cn-hi-credentials/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
 ### `GET /users/{leafUserId}/cnhi-credentials`
 
 Get the CNHI credentials of the Leaf User based on its id and returns a JSON with the credentials.
@@ -2403,6 +2127,7 @@ A CNHI credentials.
 {
   "clientId": "str",
   "clientSecret": "str",
+  "subscriptionKey": "str",
   "refreshToken": "str",
   "clientEnvironment": "STAGE or PRODUCTION"
 }
@@ -2431,6 +2156,7 @@ A CNHI Credentials with status.
   const data = {
     "clientId": "str",
     "clientSecret": "str",
+    "subscriptionKey": "str",
     "refreshToken": "str",
     "clientEnvironment": "STAGE or PRODUCTION"
   }
@@ -2454,6 +2180,7 @@ A CNHI Credentials with status.
   data = {
     "clientId": "str",
     "clientSecret": "str",
+    "subscriptionKey": "str",
     "refreshToken": "str",
     "clientEnvironment": "STAGE or PRODUCTION"
   }
@@ -2469,7 +2196,7 @@ A CNHI Credentials with status.
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -H 'Content-Type: application/json' \
-      -d '{"clientId": "str", "clientSecret": "str", "refreshToken": "str", "clientEnvironment": "STAGE or PRODUCTION"}' \
+      -d '{"clientId": "str", "clientSecret": "str", "subscriptionKey": "str", "refreshToken": "str", "clientEnvironment": "STAGE or PRODUCTION"}' \
       'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/cnhi-credentials'
   ```
 

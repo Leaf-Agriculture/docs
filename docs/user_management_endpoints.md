@@ -40,12 +40,10 @@ Form of a Leaf User resource:
   "email": "help@withleaf.io",
   "phone": "str",
   "address": "str",
-  "somarCredentials":  {"Object"},
   "trimbleCredentials":  {"Object"},
   "cnhiCredentials":  {"Object"},
   "johnDeereCredentials":  {"Object"},
   "ravenCredentials":  {"Object"},
-  "climatempoCredentials":  {"Object"},
   "climateFieldViewCredentials": {"Object"}
 }
 ```

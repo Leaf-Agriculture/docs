@@ -48,3 +48,10 @@ We made this very easy on one of our blog posts.
 
 Check our blog Post on [Climate Field View authentication with Leaf][cfv]
 [cfv]: https://medium.com/leaf-agriculture/climate-field-view-authentication-with-leaf-386086804f73
+
+## Integrate with AgLeader 
+
+We made this very easy on one of our blog posts.
+
+Check our blog Post on [AgLeader Authentication with Leaf][agleader]
+[agleader]: // TODO: Insert the blog post url here 

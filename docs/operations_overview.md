@@ -74,6 +74,7 @@ providers and formats:
 - AgLeader
     - SMS Shapefile export
     - .YLD
+    - .agdata
 
 
 ## Operations

@@ -56,3 +56,10 @@ We made this very easy on one of our blog posts.
 
 Check our blog Post on [CNHi authentication with Leaf][cnhi]
 [cnhi]: https://blog.withleaf.io/en/cnhi-authentication-with-leaf
+
+## Integrate with AgLeader 
+
+We made this very easy on one of our blog posts.
+
+Check our blog Post on [AgLeader Authentication with Leaf][agleader]
+[agleader]: // TODO: Insert the blog post url here 

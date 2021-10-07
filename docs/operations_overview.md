@@ -75,6 +75,20 @@ providers and formats:
     - SMS Shapefile export
     - .YLD
 
+
+## Operations
+
+The main goal of this entity is to present, in a unified way and 
+agnostic from the source of the files, operations executed in a given
+field. For all operating identified on Leaf, you also will find the standard
+geojson, images and summary as you can find for each file. 
+
+The operations entity will be automaticlly generate by the Leaf's API, 
+considering operations files that were executed on the same field and type of
+the operation. You can found more information on how to 
+extract on [Operations endpoint page][operations_endpoints].
+
+
 :::info File processing
 We are always improving our processing. If you have any doubts or suggestions, 
 we will be happy to help at help@withleaf.io
@@ -87,3 +101,4 @@ along easily.
 
 [leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [medium_url]: https://medium.com/leaf-agriculture/merge-of-files-into-operations-1e62726df64d
+[operations_endpoints]: operations_endpoints

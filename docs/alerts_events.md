@@ -161,6 +161,38 @@ Alerts for this event are in the following format:
 }
 ```
 
+### Operation created
+
+Event for when an operation has successfully created. 
+This event can be useful for identifying new operations when they are available.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "operationCreated"
+}
+```
+
+### Operation updated
+
+Event for when an operation has updated. 
+This event can be useful for identifying new operations when they are available.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "operationUpdated"
+}
+```
+
 ## Field Events
 
 ### New Field

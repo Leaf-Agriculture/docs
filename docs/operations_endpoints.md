@@ -1280,7 +1280,7 @@ Gets the operations's properties and their units.
       "elevation": "ft",
       "harvestMoisture": "prcnt",
       "wetMass": "lb",
-      "yieldVolume": "bu",
+      "dryVolume": "bu",
       "equipmentWidth": "ft"
   }
   ```

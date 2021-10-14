@@ -180,7 +180,7 @@ Alerts for this event are in the following format:
 ### Operation updated
 
 Event for when an operation has updated. 
-This event can be useful for identifying new operations when they are available.
+This event can be useful for identifying changes to operations.
 
 Alerts for this event are in the following format:
 

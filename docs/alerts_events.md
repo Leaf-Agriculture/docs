@@ -163,7 +163,7 @@ Alerts for this event are in the following format:
 
 ### Operation created
 
-Event for when an operation has successfully created. 
+Event for when an operation is successfully created. 
 This event can be useful for identifying new operations when they are available.
 
 Alerts for this event are in the following format:

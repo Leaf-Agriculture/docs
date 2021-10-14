@@ -145,7 +145,7 @@ Alerts for this event are in the following format:
 
 ### Automerged File Processing Failed
 
-Event for when the processing of a automerged operations is finished
+Event for when the processing of an automerged operation file is finished
 processing but failed in one or more of the processing steps. This event can be useful for identifying
 automerged files that have failed and are no longer being processed.
 

@@ -129,7 +129,7 @@ Alerts for this event are in the following format:
 
 ### Automerged File Processing Finished
 
-Event for when the processing of a automerged operations file has successfully finished
+Event for when the processing of an automerged operation file has successfully finished
 processing. This event can be useful for identifying new automerged files when they are available.
 
 Alerts for this event are in the following format:

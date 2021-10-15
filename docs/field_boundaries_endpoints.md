@@ -13,14 +13,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: #create-a-field
 [5]: #get-all-operations-of-a-field
 [6]: #get-an-operation-of-a-field
-[7]: #get-fields-by-geometry
-[8]: #get-intersection-of-fields
-[9]: #delete-a-field
-[10]: #get-all-farms
-[11]: #get-a-farm
-[12]: #get-all-growers
-[13]: #get-a-grower
-[14]: crops
+[7]: #get-fields-by-geometry-(deprecated)
+[8]: #get-fields-by-geometry
+[9]: #get-intersection-of-fields
+[10]: #delete-a-field
+[11]: #get-all-farms
+[12]: #get-a-farm
+[13]: #get-all-growers
+[14]: #get-a-grower
+[15]: crops
 
 
 ## About
@@ -466,9 +467,11 @@ A single Operation File.
   </TabItem>
 </Tabs>
 
-### Get Fields by geometry
+### Get Fields by geometry (deprecated)
 
 &nbsp<span class="badge badge--warning">POST</span> `/fields/query/intersects`
+
+Use [this endpoint](#UpdatedEndpoint) instead.
 
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body.
@@ -535,7 +538,7 @@ A JSON list of Fields.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
+      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
       'https://api.withleaf.io/services/fields/api/fields/query/intersects'
   ```
 
@@ -570,6 +573,114 @@ A JSON list of Fields.
 
   </TabItem>
 </Tabs>
+
+### <a id="UpdatedEndpoint"></a>Get Fields by geometry 
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`
+
+Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
+the request body, the default value of intersectionThreshold is 0.0001.
+
+#### Response
+A JSON list of Fields.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON sample response', value: 'json', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/fields/query/intersects'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [...]
+    },
+    'intersectionThreshold': numbers
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/query/intersects'
+  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
+
+  data = {
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [...]
+    },
+    'intersectionThreshold': float
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] }, "intersectionThreshold": number}'
+      'https://api.withleaf.io/services/fields/api/fields/query/intersects'
+  ```
+
+  </TabItem>
+
+  <TabItem value="json">
+
+  ```shell
+  [
+    {
+      "id": "id",
+      "leafUserId": "uuid",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [-89.84388470649719,39.71943436012731],
+              [-89.84392762184143,39.72439389620628],
+              [-89.83936786651611,39.725392361998416],
+              [-89.83928203582764,39.71951688444436],
+              [-89.84388470649719,39.71943436012731]
+            ]
+          ]
+        ]
+      },
+      "type": "MERGED",
+      "sources": []
+    }
+  ]
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 ### Get intersection of fields
 
@@ -769,7 +880,7 @@ A JSON in the followin format.
     },
   },
 }
-``` -->
+``` --> (depr
 
 ### Delete a field
 

@@ -45,13 +45,14 @@ Description | Endpoints
 [Create a field][4] | <span class="badge badge--warning">POST</span> `/users/{id}/fields`
 [Get all operations of a field][5] | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
 [Get an operation of a field][6] | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
-[Get fields by geometry][7] | <span class="badge badge--warning">POST</span> `/fields/query/intersects`
-[Get intersection of fields][8] | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
-[Delete a field][9] | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
-[Get all farms][10] | <span class="badge badge--success">GET</span> `/farms`
-[Get a farm][11] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
-[Get all growers][12] | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower][13] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Get fields by geometry (deprecated)][7] | <span class="badge badge--warning">POST</span> `/fields/query/intersects`
+[Get fields by geometry][8] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`
+[Get intersection of fields][9] | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
+[Delete a field][10] | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
+[Get all farms][11] | <span class="badge badge--success">GET</span> `/farms`
+[Get a farm][12] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+[Get all growers][13] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][14] | <span class="badge badge--success">GET</span> `/growers/{id}`
 
 ## Endpoints
 
@@ -880,7 +881,7 @@ A JSON in the followin format.
     },
   },
 }
-``` --> (depr
+``` --> 
 
 ### Delete a field
 

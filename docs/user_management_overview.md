@@ -48,3 +48,11 @@ We made this very easy on one of our blog posts.
 
 Check our blog Post on [Climate Field View authentication with Leaf][cfv]
 [cfv]: https://medium.com/leaf-agriculture/climate-field-view-authentication-with-leaf-386086804f73
+
+
+## Integrate with CNHi
+
+We made this very easy on one of our blog posts.
+
+Check our blog Post on [CNHi authentication with Leaf][cnhi]
+[cnhi]: https://medium.com/leaf-agriculture/cnhi-authentication-with-leaf-98188a093791

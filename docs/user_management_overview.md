@@ -39,7 +39,7 @@ standardized data in a simple JSON response.
 We made this very easy on one of our blog posts.
 
 Check our blog post on [John Deere authentication with Leaf][jd]
-[jd]: https://medium.com/leaf-agriculture/john-deere-authentication-with-leaf-7691b155b744?sk=f3f4e2bdd6f6ec0f36e8a2290717dce4
+[jd]: https://blog.withleaf.io/en/john-deere-authentication-with-leaf
 
 
 ## Integrate with Climate Field View
@@ -47,4 +47,12 @@ Check our blog post on [John Deere authentication with Leaf][jd]
 We made this very easy on one of our blog posts.
 
 Check our blog Post on [Climate Field View authentication with Leaf][cfv]
-[cfv]: https://medium.com/leaf-agriculture/climate-field-view-authentication-with-leaf-386086804f73
+[cfv]: https://blog.withleaf.io/en/climate-fieldview-authentication-with-leaf
+
+
+## Integrate with CNHi
+
+We made this very easy on one of our blog posts.
+
+Check our blog Post on [CNHi authentication with Leaf][cnhi]
+[cnhi]: https://blog.withleaf.io/en/cnhi-authentication-with-leaf

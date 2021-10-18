@@ -111,7 +111,7 @@ Alerts for this event are in the following format:
 
 ### Merged File Processing Failed
 
-Event for when the processing of a merged operations is finished
+Event for when the processing of a merged operation file is finished
 processing but failed in one or more of the processing steps. This event can be useful for identifying
 merged files that have failed and are no longer being processed.
 

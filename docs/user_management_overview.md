@@ -54,4 +54,4 @@ Check our blog Post on [Climate Field View authentication with Leaf][cfv]
 We made this very easy on one of our blog posts.
 
 Check our blog Post on [AgLeader Authentication with Leaf][agleader]
-[agleader]: // TODO: Insert the blog post url here 
+[agleader]: https://blog.withleaf.io/en/agleader-authentication-with-leaf

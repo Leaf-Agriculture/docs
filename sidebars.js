@@ -16,13 +16,18 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Configurations',
+          items: ['configurations_overview', 'configurations_endpoints']
+        },
+        {
+          type: 'category',
           label: 'Field Boundaries',
           items: ['field_boundaries_overview', 'field_boundaries_endpoints']
         },
         {
           type: 'category',
           label: 'Machine Operation Data',
-          items: ['operations_overview', 'operations_endpoints', 'operations_sample_output']
+          items: ['operations_overview', 'operations_endpoints', 'operations_sample_output', 'operations_density_table']
         },
         {
           type: 'category',

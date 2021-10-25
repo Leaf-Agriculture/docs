@@ -79,7 +79,7 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'https://medium.com/leaf-agriculture',
+          to: 'https://blog.withleaf.io/en',
           label: 'Blog',
           position: 'left'
         },

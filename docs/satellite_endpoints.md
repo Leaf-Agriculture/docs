@@ -45,6 +45,8 @@ Description | Endpoints
 
 Returns paged results for all satellite fields registered.
 
+Test this thing.
+
 - `externalId`: external ID used in the field's registration
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
 field

@@ -49,6 +49,12 @@ We made this very easy on one of our blog posts.
 Check our blog Post on [Climate Field View authentication with Leaf][cfv]
 [cfv]: https://blog.withleaf.io/en/climate-fieldview-authentication-with-leaf
 
+## Integrate with AgLeader 
+
+We made this very easy on one of our blog posts.
+
+Check our blog Post on [AgLeader Authentication with Leaf][agleader]
+[agleader]: https://blog.withleaf.io/en/agleader-authentication-with-leaf
 
 ## Integrate with CNHi
 
@@ -56,10 +62,3 @@ We made this very easy on one of our blog posts.
 
 Check our blog Post on [CNHi authentication with Leaf][cnhi]
 [cnhi]: https://blog.withleaf.io/en/cnhi-authentication-with-leaf
-
-## Integrate with AgLeader 
-
-We made this very easy on one of our blog posts.
-
-Check our blog Post on [AgLeader Authentication with Leaf][agleader]
-[agleader]: https://blog.withleaf.io/en/agleader-authentication-with-leaf

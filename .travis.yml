@@ -10,6 +10,7 @@ cache:
 
 install:
   - npm install
+  - npx browserslist@latest --update-db
 
 script:
   - npm run swizzle docusaurus-lunr-search SearchBar

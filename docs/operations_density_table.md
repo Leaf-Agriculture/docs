@@ -26,8 +26,8 @@ Here we have a table containing the density for most of the crops extracted
 from Leaf's providers, where using these values we can generate volumetric representations of harvest yield from mass
 and vice-versa. 
 
-| Crops                  |Density (lb/bu)| 
-|------------------------|-----| 
+| Crops                    |Density (lb/bu)| 
+|--------------------------|--------| 
 | sunflower                | 30     |
 | turnips                  | 55     |
 | wheat (hrd rd spr)       | 60     |

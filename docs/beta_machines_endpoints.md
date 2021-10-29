@@ -34,9 +34,9 @@ Description | Endpoints
 --- | ---
 [Get all machines][3] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines`
 [Create a machine][4] | <span class="badge badge--success">POST</span> `/users/{leafUserId}/machines`
-[Get a machine][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machine_id}`
-[Delete a machine][6] | <span class="badge badge--success">DELETE</span> `/users/{leafUserId}/machines/{machine_id}`
-[Update a machine][7] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/machines/{machine_id}`
+[Get a machine][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}`
+[Delete a machine][6] | <span class="badge badge--success">DELETE</span> `/users/{leafUserId}/machines/{machineId}`
+[Update a machine][7] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/machines/{machineId}`
 
 ### Get all machines
 
@@ -211,7 +211,7 @@ A new machine assigned to the given LeafUserId.
 
 ### Get a machine
 
-&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/machines/{machine_id}`
+&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/machines/{machineId}`
 
 Get the details of a given machine by its id
 
@@ -279,7 +279,7 @@ A machine record with more details
 
 ### Delete a machine
 
-&nbsp<span class="badge badge--success">DELETE</span>  `/api/users/{leafUserId}/machines/{machine_id}`
+&nbsp<span class="badge badge--success">DELETE</span>  `/api/users/{leafUserId}/machines/{machineId}`
 
 Delete a machine data
 
@@ -335,7 +335,7 @@ values={[
 
 ### Update a machine
 
-&nbsp<span class="badge badge--success">PATCH</span>  `/api/users/{leafUserId}/machines/{machine_id}`
+&nbsp<span class="badge badge--success">PATCH</span>  `/api/users/{leafUserId}/machines/{machineId}`
 
 Update a machine for a specific LeafUser. 
 

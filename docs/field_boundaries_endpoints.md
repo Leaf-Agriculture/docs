@@ -580,7 +580,8 @@ A JSON list of Fields.
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`
 
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
-the request body, the default value of intersectionThreshold is 0.0001.
+the request body. The minimum intersection percentage is given by 
+`intersectionThreshold`, its default value is 0.01%.
 
 #### Response
 A JSON list of Fields.
@@ -608,7 +609,7 @@ A JSON list of Fields.
       type: "MultiPolygon",
       coordinates: [...]
     },
-    'intersectionThreshold': numbers
+    'intersectionThreshold': 25.7
   }
 
   axios.post(endpoint, { headers, data })
@@ -633,7 +634,7 @@ A JSON list of Fields.
       'type': "MultiPolygon",
       'coordinates': [...]
     },
-    'intersectionThreshold': float
+    'intersectionThreshold': 25.7
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -646,7 +647,7 @@ A JSON list of Fields.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] }, "intersectionThreshold": number }'
+      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] }, "intersectionThreshold": 25.7 }'
       'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/intersects'
   ```
 

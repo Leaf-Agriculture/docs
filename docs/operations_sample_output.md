@@ -612,9 +612,6 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
 
-  [Here][sample_summary] you can see a sample summary as response for an operation file
-
-
   </TabItem>
 
 

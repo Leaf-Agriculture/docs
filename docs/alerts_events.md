@@ -93,6 +93,106 @@ Alerts for this event are in the following format:
 }
 ```
 
+### Merged File Processing Finished
+
+Event for when the processing of a merged operation file has successfully finished
+processing. This event can be useful for identifying new merged files when they are available.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "mergedFileProcessingFinished"
+}
+```
+
+### Merged File Processing Failed
+
+Event for when the processing of a merged operation file is finished
+processing but failed in one or more of the processing steps. This event can be useful for identifying
+merged files that have failed and are no longer being processed.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "message": "details of what happened. May be empty",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "mergedFileProcessingFailed"
+}
+```
+
+### Automerged File Processing Finished
+
+Event for when the processing of an automerged operation file has successfully finished
+processing. This event can be useful for identifying new automerged files when they are available.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "automergedFileProcessingFinished"
+}
+```
+
+### Automerged File Processing Failed
+
+Event for when the processing of an automerged operation file is finished
+processing but failed in one or more of the processing steps. This event can be useful for identifying
+automerged files that have failed and are no longer being processed.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "message": "details of what happened. May be empty",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "automergedFileProcessingFailed"
+}
+```
+
+### Operation created
+
+Event for when an operation is successfully created. 
+This event can be useful for identifying new operations when they are available.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "operationCreated"
+}
+```
+
+### Operation updated
+
+Event for when an operation has updated. 
+This event can be useful for identifying changes to operations.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "fileId": "the id of the uploaded file",
+  "leafUserId": "the id of the file owner",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "operationUpdated"
+}
+```
+
 ## Field Events
 
 ### New Field

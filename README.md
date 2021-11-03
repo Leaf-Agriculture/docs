@@ -1,5 +1,5 @@
 # Documentation
-Leaf's documentation
+Leaf's documentation 
 
 ## About
 This documentation website was built using [Docusaurus 2][1]

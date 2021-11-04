@@ -44,6 +44,18 @@ module.exports = {
           label: 'Alerts',
           items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
         },
+        {
+          type: 'category',
+          label: 'Beta',
+          items: [
+            'beta_features_overview',
+            {
+              type: 'category',
+              label: 'Machines',
+              items: ['beta_machines_endpoints']
+            },
+          ]
+        },
       ],
     }
   ]

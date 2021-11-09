@@ -483,8 +483,8 @@ always take the units into consideration, just to be sure.
 Posts/creates a new file in Leaf. The file must be sent as a zip.
 
 This endpoint accepts a .zip of operation files, detects which files are in the 
-.zip, and returns the ID of the process, which can in turn be used to retrieve 
-the ID's of the files being processed.
+.zip, and returns the ID of the batch, which can in turn be used to retrieve 
+the ID's of the identified operation files.
 
 This endpoint receives two required URL parameters, a `leafUserId` and `provider` 
 
@@ -498,13 +498,62 @@ JohnDeere
 Trimble
 ```
 
-If provider is set to "Other", Leaf will detect which files are 
-present in the .zip file and process them accordingly.
-
-Leaf will detect files present in the uploaded .zip and 
-create/return one file id for each file that is detected. These individual files 
+Leaf will detect files present in the uploaded .zip and convert them, returning
+one file id for each individual operation detected. These individual files 
 can then be accessed individually by their ID, or via their associated field 
 boundary.
+
+The following file formats from each provider are supported:
+
+
+#### JohnDeere
+
+| File Format | Monitor Model | Details                                         |
+|------------ | -------------------------------- | ------------------------------------------------|
+| GS2         | GreenStar 2 – 1800/2600          | `/RCD/global.ver`                               |
+| GS3         | GreenStar 3 – 2630               | `/GS3_2630/profile/RCD/EIC/global.ver`          |
+| Gen4        | Gen 4 - 4600/4630                | `/JD-Data/log/user defined name/*.jdl`          |
+| Shapefile   | Exported from MyJohnDeere        | Shapefile with extra metadata in a `.json` file |
+
+#### Climate FieldView
+
+| File Format | Monitor Model                    | Details                                         |
+|-------------|----------------------------------|-------------------------------------------------|
+| dat         | All files from Climate FieldView | A zip with `.dat` files                         |
+
+#### CNHI
+
+| File Format | Monitor Model                    | Details                                         |
+|-------------|----------------------------------|-------------------------------------------------|
+| CN1         | CaseIH monitors or exported from | `/file.cn1/index.vy1`                           |
+
+#### AgLeader
+
+| File Format | Monitor Model                           | Details                                |
+|-------------|-----------------------------------------|----------------------------------------|
+| yld         | YM2000, PFAdvantage & other OEM systems | A zip with `.yld` files                |
+| ilf         | INTEGRA / Insight / Edge                | A zip with `.ilf` files                |
+| agdata      | INTEGRA / VERSA / COMPASS               | A zip with `.agdata` files             |
+
+#### Trimble
+
+| File Format | Monitor Model                    | Details                                         |
+|-------------|----------------------------------|-------------------------------------------------|
+| AgData      | FMX and CFX monitors             | `/AgData/`                                      |
+| AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |
+
+#### Other
+
+| File Format | Details                                         |
+|-------------|-------------------------------------------------|
+| Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used.|
+
+
+
+
+
+
+
 
 <Tabs
   defaultValue="sh"

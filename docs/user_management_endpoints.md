@@ -88,15 +88,6 @@ DELETE /users/{leafUserId}/john-deere-credentials
 ```
 The above endpoints won't return fields *id* and *apiOwnerUsername*.
 
-Deprecated Endpoints:
-
-```
-GET    /john-deere-credentials/{id}
-GET    /john-deere-credentials
-POST   /john-deere-credentials
-DELETE /john-deere-credentials/{id}
-```
-
 #### Climate FieldView Credentials
 
 Form of a Climate FieldView Credentials resource:
@@ -123,14 +114,6 @@ DELETE /users/{leafUserId}/climate-field-view-credentials
 ```
 The above endpoints won't return fields *id* and *apiOwnerUsername*.
 
-Deprecated Endpoints:
-
-```
-GET    /climate-field-view-credentials/{id}
-GET    /climate-field-view-credentials
-POST   /climate-field-view-credentials
-DELETE /climate-field-view-credentials/{id}
-```
 #### Trimble Credentials
 
 Form of a Trimble Credentials resource:
@@ -155,15 +138,6 @@ POST   /users/{leafUserId}/trimble-credentials
 DELETE /users/{leafUserId}/trimble-credentials
 ```
 The above endpoints won't return fields *id* and *apiOwnerUsername*.
-
-Deprecated Endpoints:
-
-```
-GET    /trimble-credentials/{id}
-GET    /trimble-credentials
-POST   /trimble-credentials
-DELETE /trimble-credentials/{id}
-```
 
 #### CNHI Credentials
 
@@ -234,7 +208,7 @@ DELETE /users/{leafUserId}/agleader-credentials
 
 ---
 
-## Endpoints
+## User Endpoints
 
 ### `GET /users/{id}`
 Get a Leaf User by its id.
@@ -612,298 +586,7 @@ Deletes an existing Leaf User by id.
   </TabItem>
 </Tabs>
 
-### `GET  /john-deere-credentials/{id}` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/john-deere-credentials`][1] to GET John Deere credentials.
-
-Get the John Deere credentials of the user based on its id and returns a JSON with the credentials. If during background processing we detect that this credential is no longer valid, the value of the status will be changed.
-
-
-#### Response
-
-```json
-{
-    "id": "UUID",
-    "clientKey": "str",
-    "clientSecret": "str",
-    "tokenId": "str",
-    "tokenSecretKey": "str",
-    "status": "str"
-}
-```
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `GET  /john-deere-credentials` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/john-deere-credentials`][1] to GET John Deere credentials.
-
-Gets all John Deere Credentials.
-
-#### Response
-
-```json
-[
-  {
-    "id": "UUID",
-    "clientKey": "str",
-    "clientSecret": "str",
-    "tokenId": "str",
-    "tokenSecretKey": "str",
-    "valid": "true/false"
-  }
-]
-```
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `POST /john-deere-credentials` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/john-deere-credentials`][2] to POST John Deere credentials.
-
-Create a John Deere credentials for the Leaf User.
-
-#### Request body
-
-```json
-{
-  "clientKey": "str",
-  "clientSecret": "str",
-  "tokenId": "str",
-  "tokenSecretKey": "str"
-}
-```
-
-#### Response
-A John Deere Credentials object with the id assigned to it.
-
-```json
-{
-  "id": "UUID",
-  "clientKey": "str",
-  "clientSecret": "str",
-  "tokenId": "str",
-  "tokenSecretKey": "str"
-}
-```
-
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  const data = {
-    "clientKey": "str",
-    "clientSecret": "str",
-    "tokenId": "str",
-    "tokenSecretKey": "str"
-  }
-
-  axios.post(endpoint, data, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  data = {
-    "clientKey": "str",
-    "clientSecret": "str",
-    "tokenId": "str",
-    "tokenSecretKey": "str"
-  }
-
-  response = requests.post(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X POST \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"clientKey": "str","clientSecret": "str","tokenId": "str","tokenSecretKey": "str"}' \
-      'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `DELETE  /john-deere-credentials/{id}` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/john-deere-credentials`][3] to DELETE John Deere credentials.
-
-Delete a John Deere credentials by id.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.delete(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.delete(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X DELETE \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/john-deere-credentials/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
+## John Deere Credentials Endpoints
 
 ### `GET /users/{leafUserId}/john-deere-credentials`
 
@@ -1123,299 +806,7 @@ Delete Leaf User's John Deere credentials.
   </TabItem>
 </Tabs>
 
-
-### `GET /climate-field-view-credentials/{id}` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/climate-field-view-credentials`][4] to GET Climate Field View credentials.
-
-Get a Climate Field View credentials object by its id. If during background processing we detect that this credential is no longer valid, the value of valid will be changed.
-
-#### Response
-
-```json
-{
-  "id": "UUID",
-  "clientId": "",
-  "clientSecret": "",
-  "apiKey": "",
-  "refreshToken": "",
-  "valid": "true/false"
-}
-```
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
-### `GET /climate-field-view-credentials` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/climate-field-view-credentials`][4] to GET Climate Field View credentials.
-
-Gets all the Climate Field View credentials.
-
-#### Response
-
-```json
-[
-  {
-    "id": "UUID",
-    "clientId": "",
-    "clientSecret": "",
-    "apiKey": "",
-    "refreshToken": "",
-    "valid": "true/false"
-  }
-]
-```
-
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `POST /climate-field-view-credentials` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/climate-field-view-credentials`][5] to POST Climate Field View credentials.
-
-Create a Climate Field View credentials for the Leaf User.
-
-#### Request body
-
-```json
-{
-  "clientId": "str",
-  "clientSecret": "str",
-  "apiKey": "str",
-  "refreshToken": "str"
-}
-```
-
-#### Response
-
-A Climate Field View credentials.
-
-```json
-{
-   "id": "UUID",
-   "clientKey": "str",
-   "clientSecret": "str",
-   "tokenId": "str",
-   "tokenSecretKey": "str"
- }
-```
-
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  const data = {
-    "clientId": "str",
-    "clientSecret": "str",
-    "apiKey": "str",
-    "refreshToken": "str"
-  }
-
-  axios.post(endpoint, data, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  data = {
-    "clientId": "str",
-    "clientSecret": "str",
-    "apiKey": "str",
-    "refreshToken": "str"
-  }
-
-  response = requests.post(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X POST \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"clientId": "str","clientSecret": "str","apiKey": "str","refreshToken": "str"}' \
-      'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials'
-  ```
-
-  </TabItem>
-</Tabs>
-
-### `DELETE /climate-field-view-credentials/{id}` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/climate-field-view-credentials`][6] to DELETE Climate Field View credentials.
-
-Deletes a "Climate Field View Credentials" by id.
-
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.delete(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.post(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X DELETE \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/climate-field-view-credentials/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
+## Climate Field View Credentials Endpoints
 
 ### `GET /users/{leafUserId}/climate-field-view-credentials`
 
@@ -1629,267 +1020,7 @@ Delete Leaf User's Climate Field View credentials.
   </TabItem>
 </Tabs>
 
-
-### `GET /trimble-credentials/{id}` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/trimble-credentials`][7] to GET Trimble credentials.
-
-Get a "Trimble Credentials" resource by its id.
-
-#### Response
-A "Trimble Credentials" resource as a JSON.
-
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `GET /trimble-credentials` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/trimble-credentials`][7] to GET Trimble credentials.
-
-Gets all Trimble Credentials.
-
-#### Response
-A JSON array with Trimble Credentials.
-
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `POST /trimble-credentials` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/trimble-credentials`][8] to POST Trimble credentials.
-
-Create a "Trimble Credentials" for the Leaf User.
-
-#### Request body
-A "Trimble Credentials" without id.
-
-```json
-{
-  "userName": "str",
-  "password": "str",
-  "applicationName": "str",
-  "serviceIdentityId": "str"
-}
-```
-
-#### Response
-A "Trimble Credentials" with the id assigned to it.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  const data = {
-    "userName": "str",
-    "password": "str",
-    "applicationName": "str",
-    "serviceIdentityId": "str"
-  }
-
-  axios.post(endpoint, data, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  data = {
-    "userName": "str",
-    "password": "str",
-    "applicationName": "str",
-    "serviceIdentityId": "str"
-  }
-
-  response = requests.post(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X POST \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"userName": "str","password": "str","applicationName": "str","serviceIdentityId": "str"}' \
-      'https://api.withleaf.io/services/usermanagement/api/trimble-credentials'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### `DELETE trimble-credentials/{id}` - DEPRECATED
-
-This endpoint is deprecated. Please use [`/users/{leafUserId}/trimble-credentials`][9] to DELETE Trimble credentials.
-
-Delete a Trimble Credentials resource by id.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.delete(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.delete(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X DELETE \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/trimble-credentials/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
+## Trimble Credentials Endpoints
 
 ### `GET /users/{leafUserId}/trimble-credentials`
 
@@ -2083,6 +1214,8 @@ Delete a Leaf User's Trimble credentials.
 
   </TabItem>
 </Tabs>
+
+## CNHI Credentials Endpoints
 
 ### `GET /users/{leafUserId}/cnhi-credentials`
 
@@ -2280,6 +1413,8 @@ Delete Leaf User's CNHI credentials.
   </TabItem>
 </Tabs>
 
+## Raven Credentials Endpoints
+
 ### `GET /users/{leafUserId}/raven-credentials`
 
 Get the Raven credentials of the Leaf User based on its id and returns a JSON with the credentials.
@@ -2473,11 +1608,13 @@ Delete Leaf User's Raven credentials.
 Please don't hesitate to [contact][contact] us to schedule a demo, ask a question, request sample data, or suggest a feature!
 :::
 
+## AgLeader Credentials Endpoints
+
 ### `GET /users/{leafUserId}/agleader-credentials`
 
 Get the AgLeader credentials of the Leaf User based on its id and returns a JSON with the credentials.
 
-### Response
+#### Response
 A AgLeader credentials resources as a JSON. 
 
 <Tabs
@@ -2532,7 +1669,8 @@ A AgLeader credentials resources as a JSON.
 ### `POST /users/{leafUserId}/agleader-credentials`
 Create a AgLeader credentials for the Leaf User. 
 
-###Request body
+#### Request body
+
 A AgLeader credentials.
 
 ```json
@@ -2665,5 +1803,197 @@ Delete Leaf User's AgLeader credentials.
   </TabItem>
 </Tabs>
 
+
+## Raven Slingshot Credentials Endpoints
+
+### `GET /users/{leafUserId}/raven-slingshot-credentials`
+
+Get the Raven Slingshot credentials of the Leaf User based on its id and returns a JSON with the credentials.
+
+#### Response
+A Raven Slingshot credentials resources as a JSON. 
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### `POST /users/{leafUserId}/raven-slingshot-credentials`
+Create a Raven Slingshot credentials for the Leaf User. 
+
+#### Request body
+
+A Raven Slingshot credentials.
+
+```json
+{
+    "apiKey": "str",
+    "accessKey": "str",
+    "sharedSecret": "str"
+}
+```
+
+#### Response 
+
+A Raven Credentials with status.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    "apiKey": "str",
+    "accessKey": "str",
+    "sharedSecret": "str"
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    "apiKey": "str",
+    "accessKey": "str",
+    "sharedSecret": "str"
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+curl -X POST \
+-H 'Authorization: Bearer YOUR_TOKEN' \
+-H 'Content-Type: application/json' \
+-d '{ "apiKey": "str", "accessKey": "str", "sharedSecret": "str" }' \
+'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### `DELETE /users/{leafUserId}/raven-slingshot-credentials`
+Delete Leaf User's Raven Slingshot credentials.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
 
 [contact]: mailto:help@withleaf.io

@@ -177,7 +177,7 @@ DELETE /users/{leafUserId}/raven-credentials
 
 #### AgLeader Credentials
 
-Form of a AgLeader Credentials resource:
+Form of an AgLeader Credentials resource:
 
 ```json
 {
@@ -195,6 +195,28 @@ Endpoints:
 GET    /users/{leafUserId}/agleader-credentials
 POST   /users/{leafUserId}/agleader-credentials
 DELETE /users/{leafUserId}/agleader-credentials
+```
+
+
+#### Raven Slingshot Credentials
+
+Form of a Raven Slingshot Credentials resource:
+
+```json
+{
+  "apiKey": "str",
+  "accessKey": "str",
+  "sharedSecret": "str",
+  "status": "str" 
+}
+```
+
+Endpoints:
+
+```
+GET    /users/{leafUserId}/raven-slingshot-credentials
+POST   /users/{leafUserId}/raven-slingshot-credentials
+DELETE /users/{leafUserId}/raven-slingshot-credentials
 ```
 
 ---
@@ -997,7 +1019,7 @@ Delete Leaf User's Climate Field View credentials.
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/climate-field-view-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.post(endpoint, headers=headers)
+  response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
 
@@ -1667,6 +1689,7 @@ A AgLeader credentials resources as a JSON.
 Create a AgLeader credentials for the Leaf User. 
 
 #### Request body
+
 A AgLeader credentials.
 
 ```json
@@ -1799,5 +1822,200 @@ Delete Leaf User's AgLeader credentials.
   </TabItem>
 </Tabs>
 
+
+## Raven Slingshot Credentials Endpoints
+
+### `GET /users/{leafUserId}/raven-slingshot-credentials`
+
+Get the Raven Slingshot credentials of the Leaf User based on its id and returns a JSON with the credentials.
+
+#### Response
+
+A Raven Slingshot credentials resources as a JSON. 
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### `POST /users/{leafUserId}/raven-slingshot-credentials`
+
+Create a Raven Slingshot credentials for the Leaf User. 
+
+#### Request body
+
+A Raven Slingshot credentials.
+
+```json
+{
+    "apiKey": "str",
+    "accessKey": "str",
+    "sharedSecret": "str"
+}
+```
+
+#### Response 
+
+A Raven Credentials with status.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    "apiKey": "str",
+    "accessKey": "str",
+    "sharedSecret": "str"
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    "apiKey": "str",
+    "accessKey": "str",
+    "sharedSecret": "str"
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+curl -X POST \
+-H 'Authorization: Bearer YOUR_TOKEN' \
+-H 'Content-Type: application/json' \
+-d '{ "apiKey": "str", "accessKey": "str", "sharedSecret": "str" }' \
+'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### `DELETE /users/{leafUserId}/raven-slingshot-credentials`
+
+Delete Leaf User's Raven Slingshot credentials.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'cURL', value: 'sh', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
 
 [contact]: mailto:help@withleaf.io

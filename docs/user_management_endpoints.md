@@ -1900,7 +1900,7 @@ A Raven Slingshot credentials.
 
 #### Response 
 
-A Raven Credentials with status.
+A Raven Slingshot Credentials with status.
 
 <Tabs
   defaultValue="sh"

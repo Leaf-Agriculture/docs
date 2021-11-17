@@ -53,7 +53,7 @@ Description | Endpoints
 [Get intersection of fields][8] | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
 [Delete a field][9] | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
 [Get all boundaries from field][10] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`
-[Get a boundary from field][11] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}`
+[Get a boundary from field][11] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`
 [Get active boundary from field][12] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`
 [Get all farms][13] | <span class="badge badge--success">GET</span> `/farms`
 [Get a farm][14] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
@@ -999,7 +999,7 @@ A list of [Boundary](#boundary-resource) as a JSON object.
 
 ### Get a boundary from field
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`
 
 Gets a single Boundary from a field by its id.
 
@@ -1020,7 +1020,7 @@ A single [Boundary](#boundary-resource) as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}'
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -1036,7 +1036,7 @@ A single [Boundary](#boundary-resource) as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -1049,7 +1049,7 @@ A single [Boundary](#boundary-resource) as a JSON object.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}'
   ```
 
   </TabItem>
@@ -1554,7 +1554,7 @@ Each boundary has a `status` and `providerStatus`.
 | Description | Endpoints
 | - | - |
 [Get all boundaries from field][10] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`
-[Get a boundary from field][11] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}`
+[Get a boundary from field][11] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`
 [Get active boundary from field][12] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`
 
 ### Operation Resource

@@ -1447,7 +1447,7 @@ operations from a field by querying by the merged field. Because a field might
 exist in multiple providers, Leaf detects that and creates a single field that 
 you can query for - and you can still query by the individual fields too.
 
-**`geometry` and `area` are deprecated key** that contains the geometry of the active boundary and its area, respectively.
+**`geometry` and `area` are deprecated keys** that contains the geometry of the active boundary and its area, respectively.
 
 ```json
 {

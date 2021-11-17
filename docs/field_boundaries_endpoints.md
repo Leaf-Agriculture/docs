@@ -16,12 +16,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [7]: #get-fields-by-geometry-deprecated
 [8]: #get-intersection-of-fields
 [9]: #delete-a-field
-[10]: #get-all-farms
-[11]: #get-a-farm
-[12]: #get-all-growers
-[13]: #get-a-grower
-[14]: crops
-[15]: #get-fields-by-geometry 
+[10]: #get-all-boundaries-from-field
+[11]: #get-a-boundary-from-field
+[12]: #get-active-boundary-from-field
+[13]: #get-all-farms
+[14]: #get-a-farm
+[15]: #get-all-growers
+[16]: #get-a-grower
+[17]: crops
+[18]: #get-fields-by-geometry 
 
 
 ## About
@@ -49,10 +52,13 @@ Description | Endpoints
 [Get fields by geometry][15] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`
 [Get intersection of fields][8] | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
 [Delete a field][9] | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
-[Get all farms][10] | <span class="badge badge--success">GET</span> `/farms`
-[Get a farm][11] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
-[Get all growers][12] | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower][13] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Get all boundaries from field][10] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`
+[Get a boundary from field][11] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}`
+[Get active boundary from field][12] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`
+[Get all farms][13] | <span class="badge badge--success">GET</span> `/farms`
+[Get a farm][14] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+[Get all growers][15] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][16] | <span class="badge badge--success">GET</span> `/growers/{id}`
 
 ## Endpoints
 
@@ -889,6 +895,224 @@ A JSON in the followin format.
 
 Deletes the field with the given id.
 
+### Get all boundaries from field
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundaries`
+
+Gets a list of boundaries from a field.
+
+#### Response
+A list of [Boundary](#boundary-resource) as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/boundaries'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/boundaries'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/boundaries'
+  ```
+
+  </TabItem>
+    <TabItem value="res">
+
+  ```json
+  [
+      {
+          "id": "90060545-d448-493a-965f-625a17916067",
+          "status": "ACTIVE",
+          "geometry": {
+              "type": "MultiPolygon",
+              "coordinates": [
+                  [
+                      [
+                          [
+                              -89.84392762184143,
+                              39.72439389620628
+                          ],
+                          [
+                              -89.84388470649719,
+                              39.71943436012731
+                          ],
+                          [
+                              -89.83928203582764,
+                              39.71951688444436
+                          ],
+                          [
+                              -89.83936786651611,
+                              39.725392361998416
+                          ],
+                          [
+                              -89.84392762184143,
+                              39.72439389620628
+                          ]
+                      ]
+                  ]
+              ]
+          },
+          "area": {
+              "value": 23.659422807502747,
+              "unit": "ha"
+          }
+      }
+  ]
+  ```
+  </TabItem>
+</Tabs>
+
+### Get a boundary from field
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}`
+
+Gets a single Boundary from a field by its id.
+
+#### Response
+A single [Boundary](#boundary-resource) as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Get active boundary from field
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundary`
+
+Gets the active Boundary from a field.
+
+#### Response
+A single [Boundary](#boundary-resource) as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  ```
+
+  </TabItem>
+</Tabs>
+
 ### Get all farms
 
 &nbsp<span class="badge badge--success">GET</span> `/farms`
@@ -1223,6 +1447,8 @@ operations from a field by querying by the merged field. Because a field might
 exist in multiple providers, Leaf detects that and creates a single field that 
 you can query for - and you can still query by the individual fields too.
 
+**`geometry` and `area` are deprecated key** that contains the geometry of the active boundary and its area, respectively.
+
 ```json
 {
   "id": "UUID",
@@ -1236,6 +1462,7 @@ you can query for - and you can still query by the individual fields too.
   "organizationId": "str",
   "mergedFieldId": ["UUID"],
   "files": ["UUID"],
+  "boundaries": ["UUID"],
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [
@@ -1249,6 +1476,10 @@ you can query for - and you can still query by the individual fields too.
       ]
     ]
   },
+  "area": {
+    "value": double,
+    "unit": "ha"
+  }
 }
 ```
 
@@ -1261,6 +1492,70 @@ you can query for - and you can still query by the individual fields too.
 [Get intersection of fields][8] | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
 [Delete a field][9] | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
 
+### Boundary Resource
+
+Every Field at Leaf can have 0 or many boundaries. Only one boundary may be the active boundary, the others are inactive boundaries. Boundaries cannot be deleted or have its geometry updated. Every update generates a new Boundary, and Leaf keeps a history of all seen Boundaries.
+
+Each boundary has a `status` and `providerStatus`.
+
+- `status` - Represents the current status of the boundary:
+  - `ACTIVE` - If the boundary was created at Leaf, it is the active boundary. If it is from a provider,
+ this boundary exists at the provider and is the active boundary there.
+  - `INACTIVE` - If the boundary was created at Leaf, it is an inactive boundary. If it is from a provider, this boundary exists at the provider and is inactive there.
+  - `OUTDATED_ON_PROVIDER` - The boundary is from a provider. The boundary once existed on the provider exactly as it is in that boundary, but it was edited (e.g. has a new geometry but the same provider boundary id).
+  - `DELETED_ON_PROVIDER` - The boundary is from a provider. The boundary once existed on the provider, but it was deleted. The user won't find that boundary in the provider.
+
+- `providerStatus` - Is the status of the boundary on the provider.
+  - `ACTIVE` - The boundary is the active boundary in the provider.
+  - `INACTIVE` - The boundary is inactive in the provider.
+
+`providerStatus`, just like the geometry, is a static attribute. In case this attribute is changed at the provider, the boundary's `status` is updated and a new boundary is created with the updated `providerStatus` in order to maintain history.
+
+```json
+{
+  "id": "UUID",
+  "status": "ACTIVE",
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [
+            -89.84392762184143,
+            39.72439389620628
+          ],
+          [
+            -89.84388470649719,
+            39.71943436012731
+          ],
+          [
+            -89.83928203582764,
+            39.71951688444436
+          ],
+          [
+            -89.83936786651611,
+            39.725392361998416
+          ],
+          [
+            -89.84392762184143,
+            39.72439389620628
+          ]
+        ]
+      ]
+    ]
+  },
+  "area": {
+    "value": double,
+    "unit": "ha"
+  }
+}
+```
+
+| Description | Endpoints
+| - | - |
+[Get all boundaries from field][10] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`
+[Get a boundary from field][11] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary/{boundaryId}`
+[Get active boundary from field][12] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`
 
 ### Operation Resource
 
@@ -1301,8 +1596,8 @@ you can query for - and you can still query by the individual fields too.
 
 | Description | Endpoints
 | - | - |
-[Get all farms][10] | <span class="badge badge--success">GET</span> `/farms`
-[Get a farm][11] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+[Get all farms][13] | <span class="badge badge--success">GET</span> `/farms`
+[Get a farm][14] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
 
 
 ### Grower Resource
@@ -1322,5 +1617,5 @@ you can query for - and you can still query by the individual fields too.
 
 | Description | Endpoints
 | - | - |
-[Get all growers][12] | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower][13] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Get all growers][15] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][16] | <span class="badge badge--success">GET</span> `/growers/{id}`

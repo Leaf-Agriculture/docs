@@ -542,6 +542,12 @@ The following file formats from each provider are supported:
 | AgData      | FMX and CFX monitors             | `/AgData/`                                      |
 | AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |
 
+#### Farmobile
+
+| File Format | Details                                         |
+|-------------|-------------------------------------------------|
+| GeoJSON     | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used.|
+
 #### Other
 
 | File Format | Details                                         |

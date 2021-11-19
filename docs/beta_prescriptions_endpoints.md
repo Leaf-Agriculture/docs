@@ -254,7 +254,7 @@ values={[
 
 #### Response
 
-The response is json with the id of the file uploaded to the provider .
+The response is json with the id of the file uploaded to the provider.
 
 ```json
 {

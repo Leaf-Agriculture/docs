@@ -12,8 +12,7 @@ Currently, we are working in the following features:
 
 ## Machines
 
-This feature will fetch machine data from the providers like (JohnDeere, ClimateFieldView, CNHI) and store this data.
-It is possible to query 
+This feature will fetch machine data from the providers (like JohnDeere, ClimateFieldView, CNHI) and store this data.
  
 Currently, we are obtaining data from providers:
    * JohnDeere
@@ -28,6 +27,6 @@ The variable rate application can be done through prescription maps, which can b
 
 The prescription file is a zip file that should contain at least **three** files with the same name and specific extensions (**shp**, **dbf** and **shx**)
 
-Our suppored providers are:
+Our supported providers are:
 * Raven Slingshot
 * ClimateFieldView

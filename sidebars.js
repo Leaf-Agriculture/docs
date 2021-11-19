@@ -54,6 +54,11 @@ module.exports = {
               label: 'Machines',
               items: ['beta_machines_endpoints']
             },
+            {
+              type: 'category',
+              label: 'Prescriptions',
+              items: ['beta_prescriptions_endpoints']
+            },
           ]
         },
       ],

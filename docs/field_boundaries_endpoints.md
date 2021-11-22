@@ -19,12 +19,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: #get-all-boundaries-from-field
 [11]: #get-a-boundary-from-field
 [12]: #get-active-boundary-from-field
-[13]: #get-all-farms
-[14]: #get-a-farm
-[15]: #get-all-growers
-[16]: #get-a-grower
-[17]: crops
-[18]: #get-fields-by-geometry 
+[13]: #update-active-boundary-from-field
+[14]: #get-all-farms
+[15]: #get-a-farm
+[16]: #get-all-growers
+[17]: #get-a-grower
+[18]: crops
+[19]: #get-fields-by-geometry 
 
 
 ## About
@@ -55,10 +56,11 @@ Description | Endpoints
 [Get all boundaries from field][10] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`
 [Get a boundary from field][11] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`
 [Get active boundary from field][12] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`
-[Get all farms][13] | <span class="badge badge--success">GET</span> `/farms`
-[Get a farm][14] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
-[Get all growers][15] | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower][16] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Update active boundary from field][12] | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`
+[Get all farms][14] | <span class="badge badge--success">GET</span> `/farms`
+[Get a farm][15] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+[Get all growers][16] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][17] | <span class="badge badge--success">GET</span> `/growers/{id}`
 
 ## Endpoints
 
@@ -353,7 +355,7 @@ parameters. They are listed below.
 | operationType | String "harvested", "planted", "applied" or "other" | retrieve operations of given type
 | provider | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView" | retrieve operations of given provider
 | origin | String "provider", "automerged", "merged" or "uploaded" | retrieve operations of given origin
-| crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here][14] | retrieve operations with this crop.
+| crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here][18] | retrieve operations with this crop.
 | startTime | ISO 8601 datetime format | retrieve operations that started after this date
 | endTime | ISO 8601 datetime format | retrieve operations that ended before this date
 
@@ -1113,6 +1115,100 @@ A single [Boundary](#boundary-resource) as a JSON object.
   </TabItem>
 </Tabs>
 
+### Update active boundary from field
+
+&nbsp<span class="badge badge--warning">PUT</span> `/users/{leafUserId}/fields/{fieldId}/boundary`
+
+Updates the active boundary of field `fieldId`. The previous active boundary is not deleted, but set as inactive.
+
+Request body example:
+
+```json
+{
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [-93.48821327980518, 41.77137549568163],
+          [-93.48817333680519, 41.77143534378164],
+          [-93.48821327390516, 41.76068857977987],
+          [-93.48821327980518, 41.77137549568163]
+        ]
+      ]
+    ]
+  }
+}
+```
+
+
+#### Response
+A Field as a JSON object.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [...]
+    }
+  }
+
+  axios.put(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [...]
+    }
+  }
+
+  response = requests.put(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  ```
+
+  </TabItem>
+</Tabs>
+
 ### Get all farms
 
 &nbsp<span class="badge badge--success">GET</span> `/farms`
@@ -1556,6 +1652,7 @@ Each boundary has a `status` and `providerStatus`.
 [Get all boundaries from field][10] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`
 [Get a boundary from field][11] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`
 [Get active boundary from field][12] | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`
+[Update active boundary from field][13] | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`
 
 ### Operation Resource
 
@@ -1596,8 +1693,8 @@ Each boundary has a `status` and `providerStatus`.
 
 | Description | Endpoints
 | - | - |
-[Get all farms][13] | <span class="badge badge--success">GET</span> `/farms`
-[Get a farm][14] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+[Get all farms][14] | <span class="badge badge--success">GET</span> `/farms`
+[Get a farm][15] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
 
 
 ### Grower Resource
@@ -1617,5 +1714,5 @@ Each boundary has a `status` and `providerStatus`.
 
 | Description | Endpoints
 | - | - |
-[Get all growers][15] | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower][16] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Get all growers][16] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][17] | <span class="badge badge--success">GET</span> `/growers/{id}`

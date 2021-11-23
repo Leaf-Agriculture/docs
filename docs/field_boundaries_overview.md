@@ -34,8 +34,8 @@ fields will automatically be bound to the fields you create with Field Boundarie
 Leaf uses a Grower/Farm/Field hierarchy to store data. Below please find a
 breakdown of these concepts and how they relate to one another:
 
-- Fields are the central concept of this section. Every Field has boundaries which
-  is the geometry that defines its borders.
+- Fields are the central concept of this section. Every Field may have boundaries, which
+  are the geometries that defines its borders. A Field can have only one active boundary, that defines its current border.
 - Most Fields are part of a Farm and every Farm can have one or more Fields.
 - Farms can be grouped together under a Grower.
 - A grower (also known as Leaf User) is the data owner entity to which credentials are attached.

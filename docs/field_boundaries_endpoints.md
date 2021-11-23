@@ -1590,7 +1590,7 @@ you can query for - and you can still query by the individual fields too.
 
 ### Boundary Resource
 
-Every Field at Leaf can have 0 or many boundaries. Only one boundary may be the active boundary, the others are inactive boundaries. Boundaries cannot be deleted or have its geometry updated. Every update generates a new Boundary, and Leaf keeps a history of all seen Boundaries.
+Every Field at Leaf can have 0 or many boundaries. Fields created via Leaf's endpoints must have at least one boundary. Only one boundary may be active, the others are inactive boundaries. Boundaries cannot be deleted or have its geometry updated. Every update generates a new Boundary, and Leaf keeps a history of all seen Boundaries.
 
 Each boundary has a `status` and `providerStatus`.
 

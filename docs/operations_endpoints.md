@@ -525,7 +525,7 @@ The following file formats from each provider are supported:
 
 | File Format | Monitor Model                    | Details                                         |
 |-------------|----------------------------------|-------------------------------------------------|
-| CN1         | CaseIH monitors or exported from | `/file.cn1/index.vy1`                           |
+| CN1         | CaseIH monitors or exported from CNH Connects | `/file.cn1/index.vy1`                           |
 
 #### AgLeader
 

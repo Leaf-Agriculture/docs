@@ -228,3 +228,50 @@ Alerts for this event are in the following format:
   "type": "newSatelliteImage"
 }
 ```
+
+## Machines (Beta) Events
+
+### New Machine
+
+This event happens when a new machine is created, either from operations files, or from provider data sync, or created by the user.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "type": "machineCreated",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+  "machineId": "UUID",
+  "leafUserId": "UUID"
+}
+```
+
+### Updated Machine
+
+This event happens when a machine is updated, either from operations files, or from provider data sync, or by the user.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "type": "machineUpdated",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+  "machineId": "UUID",
+  "leafUserId": "UUID"
+}
+```
+
+### Deleted Machine
+
+This event happens when a machine is deleted by the user.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "type": "machineDeleted",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+  "machineId": "UUID",
+  "leafUserId": "UUID"
+}
+```

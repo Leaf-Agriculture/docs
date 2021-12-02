@@ -101,7 +101,7 @@ values={[
 
 #### Response
 
-The response is a JSON array contain machine records.
+The response is a JSON array containing machine records.
 
 ```json
 [
@@ -196,7 +196,7 @@ values={[
 
 
 #### Response
-A new machine assigned to the given LeafUserId.
+A new machine is assigned to the given LeafUserId.
 
 ```json
 {
@@ -213,7 +213,7 @@ A new machine assigned to the given LeafUserId.
 
 &nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/machines/{machineId}`
 
-Get the details of a given machine by its id
+Get the details of a given machine by its id.
 
 
 <Tabs
@@ -262,9 +262,8 @@ values={[
   </TabItem>
 </Tabs>
 
-
 #### Response
-A machine record with more details
+A machine record with more details.
 
 ```json
 {
@@ -275,6 +274,91 @@ A machine record with more details
   "providerMachineId": null,
   "providerOrganizationId": null
 }
+```
+
+### Get machine files
+
+&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/machines/{machineId}/files`
+
+Get the details of machine operations files given a machine id.
+
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  ```
+  </TabItem>
+</Tabs>
+
+#### Response
+A json array containing the machine operations files details.
+
+```json
+[
+  {
+    "id": "f2a7c02a-0746-4175-b35b-5a0bfb42071a",
+    "leafFileId": "a66516b4-ebaa-4c47-bbf4-33aa1d5b3647",
+    "machineId": "b5d5b1aa-166c-4e16-8eb2-61f449135bca",
+    "startTime": "2018-05-10T00:08:24Z",
+    "endTime": "2018-05-10T00:10:55Z",
+    "distance": {
+      "value": 1273.7428553195657,
+      "unit": "ft"
+    },
+    "fuelConsumption": null
+  },
+  {
+    "id": "ae20796d-4f5a-4ea4-a1dd-1e4b676b052f",
+    "leafFileId": "cb5c8bc4-2323-49fa-a30f-bdaac9dc068c",
+    "machineId": "b5d5b1aa-166c-4e16-8eb2-61f449135bca",
+    "startTime": "2018-05-10T00:16:50Z",
+    "endTime": "2018-05-10T00:49:33.441Z",
+    "distance": {
+      "value": 14923.442689567402,
+      "unit": "ft"
+    },
+    "fuelConsumption": null
+  }
+]
 ```
 
 ### Delete a machine

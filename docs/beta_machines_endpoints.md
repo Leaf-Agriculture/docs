@@ -335,28 +335,34 @@ A json array containing the machine operations files details.
 ```json
 [
   {
-    "id": "f2a7c02a-0746-4175-b35b-5a0bfb42071a",
-    "leafFileId": "a66516b4-ebaa-4c47-bbf4-33aa1d5b3647",
-    "machineId": "b5d5b1aa-166c-4e16-8eb2-61f449135bca",
-    "startTime": "2018-05-10T00:08:24Z",
-    "endTime": "2018-05-10T00:10:55Z",
+    "id": "UUID",
+    "leafFileId": "UUID",
+    "machineId": "UUID",
+    "startTime": "YYYY-mm-ddThh:mm:ssZ",
+    "endTime": "YYYY-mm-ddThh:mm:ssZ",
     "distance": {
-      "value": 1273.7428553195657,
+      "value": float,
       "unit": "ft"
     },
-    "fuelConsumption": null
+    "fuelConsumption": {
+      "value": float,
+      "unit": "US gal"
+    }
   },
   {
-    "id": "ae20796d-4f5a-4ea4-a1dd-1e4b676b052f",
-    "leafFileId": "cb5c8bc4-2323-49fa-a30f-bdaac9dc068c",
-    "machineId": "b5d5b1aa-166c-4e16-8eb2-61f449135bca",
-    "startTime": "2018-05-10T00:16:50Z",
-    "endTime": "2018-05-10T00:49:33.441Z",
+    "id": "UUID",
+    "leafFileId": "UUID",
+    "machineId": "UUID",
+    "startTime": "YYYY-mm-ddThh:mm:ssZ",
+    "endTime": "YYYY-mm-ddThh:mm:ssZ",
     "distance": {
-      "value": 14923.442689567402,
+      "value": float,
       "unit": "ft"
     },
-    "fuelConsumption": null
+    "fuelConsumption": {
+      "value": float,
+      "unit": "US gal"
+    }
   }
 ]
 ```

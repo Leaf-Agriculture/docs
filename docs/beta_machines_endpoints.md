@@ -14,7 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: #get-a-machine
 [6]: #delete-a-machine
 [7]: #update-a-machine
-
+[8]: #get-machine-files
 ## About
 All HTTP methods should be prepended by this service's endpoint:
 
@@ -35,6 +35,7 @@ Description | Endpoints
 [Get all machines][3] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines`
 [Create a machine][4] | <span class="badge badge--success">POST</span> `/users/{leafUserId}/machines`
 [Get a machine][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}`
+[Get machine files][8] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/machines/{machineId}/files`
 [Delete a machine][6] | <span class="badge badge--success">DELETE</span> `/users/{leafUserId}/machines/{machineId}`
 [Update a machine][7] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/machines/{machineId}`
 
@@ -101,7 +102,7 @@ values={[
 
 #### Response
 
-The response is a JSON array contain machine records.
+The response is a JSON array containing machine records.
 
 ```json
 [
@@ -196,7 +197,7 @@ values={[
 
 
 #### Response
-A new machine assigned to the given LeafUserId.
+A new machine is assigned to the given LeafUserId.
 
 ```json
 {
@@ -213,7 +214,7 @@ A new machine assigned to the given LeafUserId.
 
 &nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/machines/{machineId}`
 
-Get the details of a given machine by its id
+Get the details of a given machine by its id.
 
 
 <Tabs
@@ -262,9 +263,8 @@ values={[
   </TabItem>
 </Tabs>
 
-
 #### Response
-A machine record with more details
+A machine record with more details.
 
 ```json
 {
@@ -275,6 +275,97 @@ A machine record with more details
   "providerMachineId": null,
   "providerOrganizationId": null
 }
+```
+
+### Get machine files
+
+&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/machines/{machineId}/files`
+
+Get the details of machine operations files given a machine id.
+
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  ```
+  </TabItem>
+</Tabs>
+
+#### Response
+A json array containing the machine operations files details.
+
+```json
+[
+  {
+    "id": "UUID",
+    "leafFileId": "UUID",
+    "machineId": "UUID",
+    "startTime": "YYYY-mm-ddThh:mm:ssZ",
+    "endTime": "YYYY-mm-ddThh:mm:ssZ",
+    "distance": {
+      "value": float,
+      "unit": "ft"
+    },
+    "fuelConsumption": {
+      "value": float,
+      "unit": "US gal"
+    }
+  },
+  {
+    "id": "UUID",
+    "leafFileId": "UUID",
+    "machineId": "UUID",
+    "startTime": "YYYY-mm-ddThh:mm:ssZ",
+    "endTime": "YYYY-mm-ddThh:mm:ssZ",
+    "distance": {
+      "value": float,
+      "unit": "ft"
+    },
+    "fuelConsumption": {
+      "value": float,
+      "unit": "US gal"
+    }
+  }
+]
 ```
 
 ### Delete a machine

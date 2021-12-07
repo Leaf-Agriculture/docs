@@ -14,7 +14,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: #get-a-machine
 [6]: #delete-a-machine
 [7]: #update-a-machine
-
+[8]: #get-machine-files
 ## About
 All HTTP methods should be prepended by this service's endpoint:
 
@@ -35,6 +35,7 @@ Description | Endpoints
 [Get all machines][3] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines`
 [Create a machine][4] | <span class="badge badge--success">POST</span> `/users/{leafUserId}/machines`
 [Get a machine][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}`
+[Get machine files][8] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/machines/{machineId}/files`
 [Delete a machine][6] | <span class="badge badge--success">DELETE</span> `/users/{leafUserId}/machines/{machineId}`
 [Update a machine][7] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/machines/{machineId}`
 

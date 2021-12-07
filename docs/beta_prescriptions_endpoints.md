@@ -345,6 +345,8 @@ A json array of prescriptions available in this provider.
 
 Upload a prescription using the John Deere credentials of the LeafUserId.
 
+There is a required request param called organizationId for this endpoint to work.
+This property should be the id of the organization at JohnDeere.
 
 <Tabs
 defaultValue="sh"
@@ -361,7 +363,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere'
+  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
 
   const headers = {
     'Authorization': `Bearer ${TOKEN}`
@@ -384,7 +386,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere'
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   files = {'file': open('prescription_rx_map.zip')}
@@ -400,7 +402,7 @@ values={[
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=prescription_rx_map.zip' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere'
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   ```
 
   </TabItem>

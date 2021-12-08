@@ -166,7 +166,6 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "name": "str"}' \
       'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
   ```
 
@@ -316,7 +315,6 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "name": "str"}' \
       'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere'
   ```
 

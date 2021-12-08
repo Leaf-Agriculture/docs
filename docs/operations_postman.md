@@ -87,7 +87,7 @@ They will authenticate and be redirected to the `redirect_url`.
 Copy the entire url you were redirected to. It looks like:
 
 ```
-https://leafagriculture.com.br/?oauth_token=TOKEN&oauth_verifier=CODE
+https://withleaf.io/?oauth_token=TOKEN&oauth_verifier=CODE
 ```
 
 Paste it in the environment variable `jd_response_url`.

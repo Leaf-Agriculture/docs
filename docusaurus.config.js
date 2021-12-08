@@ -55,7 +55,7 @@ module.exports = {
         // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // end workaround to center navigation items
         // {
-        //   to: 'https://leafagriculture.com.br/register/',
+        //   to: 'https://withleaf.io/register/',
         //   activeBasePath: './',
         //   label: 'Products',
         //   position: 'left',
@@ -67,7 +67,7 @@ module.exports = {
           position: 'left',
         },
         // {
-        //   to: 'https://leafagriculture.com.br/pricing/',
+        //   to: 'https://withleaf.io/pricing/',
         //   activeBasePath: './',
         //   label: 'Pricing',
         //   position: 'left',

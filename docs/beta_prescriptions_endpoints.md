@@ -8,9 +8,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[2]: #upload-prescription-raven-slingshot
-[3]: #get-prescription-raven-slingshot
-[4]: #upload-prescription-climate-field-view
+[2]: #upload-prescription-to-raven-slingshot
+[3]: #list-prescriptions-from-raven-slingshot
+[4]: #upload-prescription-to-climate-fieldview
+[5]: #list-prescriptions-from-john-deere
+[6]: #upload-prescription-to-john-deere
+
 
 ## About
 All HTTP methods should be prepended by this service's endpoint:
@@ -32,6 +35,9 @@ Description | Endpoints
 [Upload prescription to Raven Slingshot][2] | <span class="badge badge--success">POST</span> `/users/{leafUserId}/ravenSlingshot`
 [List prescriptions from Raven Slingshot][3] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/ravenSlingshot`
 [Upload prescription to Climate FieldView][4] | <span class="badge badge--success">POST</span> `/users/{leafUserId}/climateFieldView`
+[Lists prescriptions from John Deere][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/johnDeere`
+[Upload prescription to John Deere][6] | <span class="badge badge--success">POST</span> `/users/{leafUserId}/johnDeere`
+
 
 
 ### Upload prescription to Raven Slingshot
@@ -117,7 +123,7 @@ The response is json with the id of the file uploaded to the provider .
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/ravenSlingshot`
 
-List the existing prescriptions available in the provider
+List the existing prescriptions available in the provider.
 
 <Tabs
 defaultValue="sh"
@@ -160,7 +166,6 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "name": "str"}' \
       'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
   ```
 
@@ -175,11 +180,11 @@ A json array of prescriptions available in this provider
 [
   {
     "id": "str",
-    "name": "str,"
+    "name": "str"
   },
   {
     "id": "str",
-    "name": "str,"
+    "name": "str"
   }
 ]
 ```
@@ -263,4 +268,156 @@ The response is json with the id of the file uploaded to the provider.
 }
 ```
 
+### List prescriptions from John Deere
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/johnDeere`
+
+List the existing prescriptions available in the provider.
+
+There is a required request param called organizationId for this endpoint to work.
+This property should be the id of the organization at JohnDeere.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+A json array of prescriptions available in this provider.
+
+```json
+[
+  {
+    "id": "str",
+    "name": "str"
+  },
+  {
+    "id": "str",
+    "name": "str"
+  }
+]
+```
+### Upload prescription to John Deere
+
+&nbsp<span class="badge badge--success">POST</span> `/users/{leafUserId}/johnDeere`
+
+Upload a prescription using the John Deere credentials of the LeafUserId.
+
+There is a required request param called organizationId for this endpoint to work.
+This property should be the id of the organization at JohnDeere.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const form = new FormData()
+  form.append('file', 'prescription_rx_map.zip')
+
+  axios.post(endpoint, form, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('prescription_rx_map.zip')}
+
+  response = requests.post(endpoint, headers=headers, files=files)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=prescription_rx_map.zip' \
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+The response is json with the id of the file uploaded to the provider.
+
+```json
+{
+  "id": "str",
+  "name": "str"
+}
+```
 [contact]: mailto:help@withleaf.io

@@ -270,9 +270,12 @@ The response is json with the id of the file uploaded to the provider.
 
 ### List prescriptions from John Deere
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/ravenSlingshot`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/johnDeere`
 
 List the existing prescriptions available in the provider.
+
+There is a required request param called organizationId for this endpoint to work.
+This property should be the id of the organization at JohnDeere.
 
 <Tabs
 defaultValue="sh"
@@ -287,7 +290,7 @@ values={[
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere'
+  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -302,7 +305,7 @@ values={[
   import requests
   
   TOKEN = 'YOUR_TOKEN'
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere'
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers, json=data)
@@ -315,7 +318,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere'
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   ```
 
   </TabItem>

@@ -82,5 +82,5 @@ json. If you want it to last only 24h, feel free to set "rememberMe" to "false".
 _After expiration, just make the same request to the same endpoint and you will
 get a new access token. _
 
-[register]: https://leafagriculture.com.br/registration/
+[register]: https://withleaf.io/register/
 [jwt]: https://tools.ietf.org/html/rfc7519

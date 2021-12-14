@@ -22,9 +22,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [13]: #get-a-files-units
 [14]: #get-all-operations
 [15]: #get-an-operation
-[16]: #get-an-operation-summary
-[17]: #get-an-operations-images
-[18]: #get-an-operations-units
+[16]: #get-an-operation-standardgeojson
+[17]: #get-an-operation-summary
+[18]: #get-an-operations-images
+[19]: #get-an-operations-units
+[20]: #crop-operation-by-field
 [sample_summary]: operations_sample_output
 
 ## About
@@ -50,9 +52,11 @@ Description | Endpoints
 [Merge files][12] | <span class="badge badge--warning">POST</span> `/files/merge`
 [Get all operations][14] | <span class="badge badge--success">GET</span> `/operations`
 [Get an operation][15] | <span class="badge badge--success">GET</span> `/operations/{id}`
-[Get an operation summary][16] | <span class="badge badge--success">GET</span> `/operations/{id}/summary`
-[Get an operation's images][17] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
-[Get an operation's units][18] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
+[Get an operation standardGeojson][16] | <span class="badge badge--success">GET</span> `/operations/{id}/standardGeojson`
+[Get an operation summary][17] | <span class="badge badge--success">GET</span> `/operations/{id}/summary`
+[Get an operation's images][18] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
+[Get an operation's units][19] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
+[Crop operation by field][20] | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
 
@@ -1107,6 +1111,72 @@ Gets a single operation by its id.
 
 ---
 
+
+### Get an operation standardGeojson
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/standardGeojson`
+
+Gets the summary, if available, for the operation id.
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+[Here's a link with sample responses][sample_summary] for "planted", "applied" 
+and "harvested" operations.
+
+---
+
 ### Get an operation summary
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/summary`
@@ -1350,6 +1420,85 @@ always take the units into consideration, just to be sure.
   </TabItem>
 </Tabs>
 
+
+---
+
+
+### Crop operation by field
+
+&nbsp<span class="badge badge--warning">POST</span>  `/operations/cropOperationByField`
+
+This endpoint is responsible to remove points from the operation that are outside the field geometry.
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/cropOperationByField'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  const data = { 'id': 'operationId' }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/cropOperationByField'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {'id': 'operationId'}
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "id": "operationId"}' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/operations/cropOperationByField'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+Returns a single JSON object:
+
+```json
+{
+    "id": "163982a0-d4e8-49a0-9572-9079e17f7c7d",
+    "message": "Sent operation to be processed.",
+    "leafFileId": "8924ca07-4168-4f15-83ec-37dd344888f6"
+}
+```
+
+You could monitor the processing using the `leafFileId` by our [Alerts Service][10].
 
 ---
 

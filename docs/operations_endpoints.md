@@ -1028,7 +1028,7 @@ If the parameters page and size are not set, the endpoint will return 20 results
 ---
 
 
-### Get a operation
+### Get an operation
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}`
 

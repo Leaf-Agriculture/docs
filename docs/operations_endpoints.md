@@ -1498,7 +1498,7 @@ Returns a single JSON object:
 }
 ```
 
-You could monitor the processing using the `leafFileId` by our [Alerts Service][10].
+You could monitor the processing status using the `leafFileId` by our [Alerts Service][10].
 
 ---
 

@@ -1116,7 +1116,7 @@ Gets a single operation by its id.
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/standardGeojson`
 
-Gets the summary, if available, for the operation id.
+Gets the standardGeojson, if available, for the operation id.
 
 
 <Tabs

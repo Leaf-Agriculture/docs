@@ -1428,7 +1428,7 @@ always take the units into consideration, just to be sure.
 
 &nbsp<span class="badge badge--warning">POST</span>  `/operations/cropOperationByField`
 
-This endpoint is responsible to remove points from the operation that are outside the field geometry.
+This endpoint can be used to remove points from the operation standardGeojson that are outside of the field geometry.
 
 
 <Tabs

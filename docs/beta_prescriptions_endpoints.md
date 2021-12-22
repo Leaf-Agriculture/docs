@@ -46,6 +46,14 @@ Description | Endpoints
 
 Upload a prescription using the Raven Slingshot credentials of the LeafUserId.
 
+The file to be uploaded needs to be .zip and contain one of each of the following file extension: shp, dbf, shx; and all files must have the same name.
+
+#### Example:
+
+A zip file named “prescription_rx_map”, containing the following files:
+- prescription_rx_map.shp
+- prescription_rx_map.dbf
+- prescription_rx_map.shx
 
 <Tabs
 defaultValue="sh"
@@ -195,6 +203,14 @@ A json array of prescriptions available in this provider
 
 Upload a prescription using the Climate FieldView credentials of the LeafUserId.
 
+The file to be uploaded needs to be .zip and contain one of each of the following file extension: shp, dbf, shx; and all files must have the same name.
+
+#### Example:
+
+A zip file named “prescription_rx_map”, containing the following files:
+- prescription_rx_map.shp
+- prescription_rx_map.dbf
+- prescription_rx_map.shx
 
 <Tabs
 defaultValue="sh"
@@ -348,6 +364,16 @@ Upload a prescription using the John Deere credentials of the LeafUserId.
 
 There is a required request param called organizationId for this endpoint to work.
 This property should be the id of the organization at JohnDeere.
+
+The file to be uploaded needs to be .zip and have a folder called "Rx" containing one of each of the following file extension: shp, dbf, shx; and all files must have the same name.
+
+#### Example:
+
+A .zip file named “prescription_rx_map”, having a parent folder called "Rx", containing the following files:
+- Rx/
+  - prescription_rx_map.shp
+  - prescription_rx_map.dbf
+  - prescription_rx_map.shx
 
 <Tabs
 defaultValue="sh"

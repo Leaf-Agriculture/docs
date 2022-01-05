@@ -9,6 +9,7 @@ module.exports = {
       items: [
         'introduction',
         'authentication',
+        'pagination',
         {
           type: 'category',
           label: 'Leaf User',

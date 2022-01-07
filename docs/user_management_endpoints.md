@@ -23,8 +23,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [14]: #post-usersleafuseridagleader-credentials
 [15]: #delete-usersleafuseridagleader-credentials
 [16]: #get-usersleafuseridstara-credentials
-[16]: #post-usersleafuseridstara-credentials
-[16]: #delete-usersleafuseridstara-credentials
+[17]: #post-usersleafuseridstara-credentials
+[18]: #delete-usersleafuseridstara-credentials
 
 
 ## About
@@ -1551,10 +1551,10 @@ values={[
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
-  "apiKey": "str",
-  "accessToken": "str",
-  "accessTokenClient": "str",
-  "refreshToken": "str"
+    "apiKey": "str",
+    "accessToken": "str",
+    "accessTokenClient": "str",
+    "refreshToken": "str"
   }
 
   axios.post(endpoint, data, { headers })
@@ -1574,11 +1574,11 @@ values={[
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-  "apiKey": "str",
-  "accessToken": "str",
-  "accessTokenClient": "str",
-  "refreshToken": "str"
-  }
+    "apiKey": "str",
+    "accessToken": "str",
+    "accessTokenClient": "str",
+    "refreshToken": "str"
+   }
 
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())

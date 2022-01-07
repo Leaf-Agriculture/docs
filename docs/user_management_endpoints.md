@@ -22,6 +22,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [13]: #get-usersleafuseridagleader-credentials
 [14]: #post-usersleafuseridagleader-credentials
 [15]: #delete-usersleafuseridagleader-credentials
+[16]: #get-usersleafuseridstara-credentials
+[16]: #post-usersleafuseridstara-credentials
+[16]: #delete-usersleafuseridstara-credentials
+
 
 ## About
 All HTTP methods should be prepended by this service's endpoint:
@@ -128,6 +132,28 @@ Endpoints:
 GET    /users/{leafUserId}/trimble-credentials
 POST   /users/{leafUserId}/trimble-credentials
 DELETE /users/{leafUserId}/trimble-credentials
+```
+
+#### Stara Credentials
+
+Form of a Stara Credentials resource:
+
+```json
+{
+  "status": "str",
+  "apiKey": "str",
+  "accessToken": "str",
+  "accessTokenClient": "str",
+  "refreshToken": "str"
+}
+```
+
+Endpoints:
+
+```
+GET    /users/{leafUserId}/stara-credentials
+POST   /users/{leafUserId}/stara-credentials
+DELETE /users/{leafUserId}/stara-credentials
 ```
 
 #### CNHI Credentials
@@ -346,7 +372,7 @@ Creates a Leaf User.
   "name": "str",
   "email": "help@withleaf.io",
   "phone": "str",
-  "address": "str",
+  "address": "str"
 }
 ```
 
@@ -370,7 +396,7 @@ A Leaf User with the id assigned to it and it's credentials.
   "name": "str",
   "email": "help@withleaf.io",
   "phone": "str",
-  "address": "str",
+  "address": "str"
 }
 ```
 
@@ -451,7 +477,7 @@ Edits an existing Leaf User by submitting a new one.
   "name": "str",
   "email": "help@withleaf.io",
   "phone": "str",
-  "address": "str",
+  "address": "str"
 }
 ```
 
@@ -474,7 +500,7 @@ A Leaf User with the id assigned to it and it's credentials.
   "name": "str",
   "email": "help@withleaf.io",
   "phone": "str",
-  "address": "str",
+  "address": "str"
 }
 ```
 
@@ -1430,6 +1456,200 @@ Delete Leaf User's CNHI credentials.
   </TabItem>
 </Tabs>
 
+## Stara Credentials Endpoints
+
+### `GET /users/{leafUserId}/stara-credentials`
+
+Get the Stara credentials of the Leaf User based on its id and returns a JSON with the credentials.
+
+#### Response
+A Stara credentials resource as a JSON.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'JavaScript', value: 'js', },
+{ label: 'Python', value: 'py', },
+{ label: 'cURL', value: 'sh', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `POST /users/{leafUserId}/stara-credentials`
+Create a Stara credential for the Leaf User.
+
+#### Request body
+A Stara credential.
+
+```json
+{
+  "apiKey": "str",
+  "accessToken": "str",
+  "accessTokenClient": "str",
+  "refreshToken": "str"
+}
+```
+
+#### Response
+A Stara Credentials with status.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'JavaScript', value: 'js', },
+{ label: 'Python', value: 'py', },
+{ label: 'cURL', value: 'sh', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+  "apiKey": "str",
+  "accessToken": "str",
+  "accessTokenClient": "str",
+  "refreshToken": "str"
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+  "apiKey": "str",
+  "accessToken": "str",
+  "accessTokenClient": "str",
+  "refreshToken": "str"
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -H 'Content-Type: application/json' \
+      -d '{"apiKey": "str", "accessToken": "str", "accessTokenClient": "str", "refreshToken": "str"}' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### `DELETE /users/{leafUserId}/stara-credentials`
+Delete Leaf User's Stara credentials.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'JavaScript', value: 'js', },
+{ label: 'Python', value: 'py', },
+{ label: 'cURL', value: 'sh', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
+  ```
+
+  </TabItem>
+</Tabs>
 
 ## Raven Credentials Endpoints
 
@@ -1697,7 +1917,7 @@ A AgLeader credentials.
   "accessToken": "str",
   "refreshToken": "str",
   "publicKey": "str",
-  "privateKey": "str",
+  "privateKey": "str"
 }
 ```
 

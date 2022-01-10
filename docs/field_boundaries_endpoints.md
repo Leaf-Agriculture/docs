@@ -1312,7 +1312,7 @@ A JSON array containing farms.
 Gets a single farm by its `id` from the user `leafUserId`.
 
 #### Response
-A single farm as a JSON object.
+A single [Farm](#farm-resource) as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -1384,10 +1384,18 @@ A single farm as a JSON object.
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`
 
 Creates a farm for the user `leafUserId`. It's possible to pass both the `farmName` and the `growerId` on the body of 
-the request. The body can be empty.
+the request.
+
+Request body example:
+```json
+{
+  "name": "Farm 01",
+  "growerId": 123
+}
+```
 
 #### Response
-A single farm as a JSON object.
+A single [Farm](#farm-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -1456,8 +1464,16 @@ values={[
 Updates the farm with id `id` for the user `leafUserId`. It's possible to pass both the `farmName` and the `growerId`
 on the body of the request.
 
+Request body example:
+```json
+{
+  "name": "Updated Farm Name",
+  "growerId": 123
+}
+```
+
 #### Response
-A single farm as a JSON object.
+A single [Farm](#farm-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -1665,7 +1681,7 @@ A JSON array containing growers.
 Gets a single grower by its `id` from the user `leafUserId`.
 
 #### Response
-A single Grower as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
+A single [Grower](#grower-resource) as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
 attribute `name` comes directly from the Client's name for growers with John Deere as provider.
 
 <Tabs
@@ -1739,10 +1755,17 @@ attribute `name` comes directly from the Client's name for growers with John Dee
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
 
-Creates a grower for the user `leafUserId`. It's possible to pass `name` on the body of the request. The body can be empty.
+Creates a grower for the user `leafUserId`. It's possible to pass `name` on the body of the request.
+
+Request body example:
+```json
+{
+  "name": "Example Grower Name"
+}
+```
 
 #### Response
-A single grower as a JSON object.
+A single [Grower](#grower-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -1808,8 +1831,15 @@ values={[
 
 Updates the grower with id `id` for the user `leafUserId`. It's possible to pass only the `name` on the body of the request.
 
+Request body example:
+```json
+{
+  "name": "Updated Grower Name"
+}
+```
+
 #### Response
-A single grower as a JSON object.
+A single [Grower](#grower-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -2093,6 +2123,9 @@ Each boundary has a `status` and `providerStatus`.
 | - | - |
 [Get all farms][14] | <span class="badge badge--success">GET</span> `/farms`
 [Get a farm][15] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+[Create a farm][16] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`
+[Update a farm][17] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`
+[Delete a farm][18] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/farms/{id}`
 
 
 ### Grower Resource
@@ -2112,5 +2145,9 @@ Each boundary has a `status` and `providerStatus`.
 
 | Description | Endpoints
 | - | - |
-[Get all growers][16] | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower][17] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Get all growers][19] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][20] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Create a grower][21] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
+[Update a grower][22] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
+[Delete a grower][23] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/growers/{id}`
+

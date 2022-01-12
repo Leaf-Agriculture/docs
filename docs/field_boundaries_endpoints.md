@@ -67,12 +67,10 @@ Description | Endpoints
 [Get a farm][15] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
 [Create a farm][16] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`
 [Update a farm][17] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`
-[Delete a farm][18] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/farms/{id}`
 [Get all growers][19] | <span class="badge badge--success">GET</span> `/growers`
 [Get a grower][20] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`
 [Create a grower][21] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
 [Update a grower][22] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
-[Delete a grower][23] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/growers/{id}`
 
 ## Endpoints
 
@@ -1415,11 +1413,10 @@ values={[
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
-    name: farmName,
-    growerId: growerId
+    name: 'farmName',
   }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1437,10 +1434,9 @@ values={[
 
   data = {
     'name': 'farmName',
-    'growerId': 'growerId'
   }
 
-  response = requests.post(endpoint, headers=headers)
+  response = requests.post(endpoint, data=data, headers=headers)
   print(response.json())
   ```
 
@@ -1450,7 +1446,7 @@ values={[
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "name": "farmName", "growerId": "growerId }'
+      -d '{ "name": "farmName" }'
       'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
   ```
 
@@ -1493,11 +1489,10 @@ values={[
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
-    name: newFarmName,
-    growerId: newGrowerId
-  }s
+    name: 'newFarmName'
+  }
 
-  axios.put(endpoint, { headers })
+  axios.put(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1514,11 +1509,10 @@ values={[
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    'name': 'newFarmName',
-    'growerId': 'newGrowerId'
+    'name': 'newFarmName'
   }
 
-  response = requests.put(endpoint, headers=headers)
+  response = requests.put(endpoint, data=data, headers=headers)
   print(response.json())
   ```
 
@@ -1535,60 +1529,6 @@ values={[
   </TabItem>
 </Tabs>
 
-### Delete a farm
-
-&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/farms/{id}`
-
-Deletes the farm with the given `id` from the user `leafUserId`.
-
-<Tabs
-defaultValue="sh"
-values={[
-{ label: 'cURL', value: 'sh', },
-{ label: 'Python', value: 'py', },
-{ label: 'JavaScript', value: 'js', },
-]
-}>
-<TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.DELETE(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.delete(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X DELETE \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
 
 ### Get all growers
 
@@ -1785,10 +1725,10 @@ values={[
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
-    name: growerName
+    name: 'growerName'
   }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1808,7 +1748,7 @@ values={[
     'name': 'growerName'
   }
 
-  response = requests.post(endpoint, headers=headers)
+  response = requests.post(endpoint, data=data, headers=headers)
   print(response.json())
   ```
 
@@ -1859,10 +1799,10 @@ values={[
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
-    name: newGrowerName
-  }s
+    name: 'newGrowerName'
+  }
 
-  axios.put(endpoint, { headers })
+  axios.put(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1882,7 +1822,7 @@ values={[
     'name': 'newGrowerName'
   }
 
-  response = requests.put(endpoint, headers=headers)
+  response = requests.put(endpoint, data=data, headers=headers)
   print(response.json())
   ```
 
@@ -1899,60 +1839,6 @@ values={[
   </TabItem>
 </Tabs>
 
-### Delete a grower
-
-&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/growers/{id}`
-
-Deletes the grower with the given `id` from the user `leafUserId`.
-
-<Tabs
-defaultValue="sh"
-values={[
-{ label: 'cURL', value: 'sh', },
-{ label: 'Python', value: 'py', },
-{ label: 'JavaScript', value: 'js', },
-]
-}>
-<TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.DELETE(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.delete(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X DELETE \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
 
 ## REST Resources
 
@@ -2125,7 +2011,6 @@ Each boundary has a `status` and `providerStatus`.
 [Get a farm][15] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
 [Create a farm][16] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`
 [Update a farm][17] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`
-[Delete a farm][18] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/farms/{id}`
 
 
 ### Grower Resource
@@ -2149,5 +2034,4 @@ Each boundary has a `status` and `providerStatus`.
 [Get a grower][20] | <span class="badge badge--success">GET</span> `/growers/{id}`
 [Create a grower][21] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
 [Update a grower][22] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
-[Delete a grower][23] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/growers/{id}`
 

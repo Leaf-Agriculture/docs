@@ -1436,7 +1436,7 @@ values={[
     'name': 'farmName',
   }
 
-  response = requests.post(endpoint, data=data, headers=headers)
+  response = requests.post(endpoint, json=data, headers=headers)
   print(response.json())
   ```
 
@@ -1512,7 +1512,7 @@ values={[
     'name': 'newFarmName'
   }
 
-  response = requests.put(endpoint, data=data, headers=headers)
+  response = requests.put(endpoint, json=data, headers=headers)
   print(response.json())
   ```
 
@@ -1748,7 +1748,7 @@ values={[
     'name': 'growerName'
   }
 
-  response = requests.post(endpoint, data=data, headers=headers)
+  response = requests.post(endpoint, json=data, headers=headers)
   print(response.json())
   ```
 
@@ -1822,7 +1822,7 @@ values={[
     'name': 'newGrowerName'
   }
 
-  response = requests.put(endpoint, data=data, headers=headers)
+  response = requests.put(endpoint, json=data, headers=headers)
   print(response.json())
   ```
 

@@ -22,10 +22,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [13]: #update-active-boundary-from-field
 [14]: #get-all-farms
 [15]: #get-a-farm
-[16]: #get-all-growers
-[17]: #get-a-grower
-[18]: crops
-[19]: #get-fields-by-geometry 
+[16]: #create-a-farm
+[17]: #update-a-farm
+[18]: #delete-a-farm
+[19]: #get-all-growers
+[20]: #get-a-grower
+[21]: #create-a-grower
+[22]: #update-a-grower
+[23]: #delete-a-grower
+[24]: crops
+[25]: #get-fields-by-geometry 
 
 
 ## About
@@ -59,8 +65,12 @@ Description | Endpoints
 [Update active boundary from field][12] | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`
 [Get all farms][14] | <span class="badge badge--success">GET</span> `/farms`
 [Get a farm][15] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
-[Get all growers][16] | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower][17] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Create a farm][16] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`
+[Update a farm][17] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`
+[Get all growers][19] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][20] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`
+[Create a grower][21] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
+[Update a grower][22] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
 
 ## Endpoints
 
@@ -1213,7 +1223,7 @@ A Field as a JSON object.
 
 &nbsp<span class="badge badge--success">GET</span> `/farms`
 
-Gets a paged list of all Farms. It is possible to pass some query parameters.
+Gets a paged list of all farms. It is possible to pass some query parameters.
 
 - `provider`, only matches Farms from this provider (string)
 - `leafUserId`, only matches Farms from this Leaf User (UUID)
@@ -1223,7 +1233,7 @@ Gets a paged list of all Farms. It is possible to pass some query parameters.
 The parameters are used exclusively for paging through results.
 
 #### Response
-A JSON array containing Farms.
+A JSON array containing farms.
 
 <Tabs
   defaultValue="sh"
@@ -1295,12 +1305,12 @@ A JSON array containing Farms.
 
 ### Get a farm
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/farms/{id}`
 
-Gets a single Farm by its id.
+Gets a single farm by its `id` from the user `leafUserId`.
 
 #### Response
-A single Farm as a JSON object.
+A single [Farm](#farm-resource) as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -1367,11 +1377,164 @@ A single Farm as a JSON object.
   </TabItem>
 </Tabs>
 
+### Create a farm
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`
+
+Creates a farm for the user `leafUserId`. It's possible to pass both the `farmName` and the `growerId` on the body of 
+the request.
+
+Request body example:
+```json
+{
+  "name": "Farm 01",
+  "growerId": 123
+}
+```
+
+#### Response
+A single [Farm](#farm-resource) as a JSON object.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', }
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    name: 'farmName',
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'farmName',
+  }
+
+  response = requests.post(endpoint, json=data, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "farmName" }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Update a farm
+
+&nbsp<span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`
+
+Updates the farm with id `id` for the user `leafUserId`. It's possible to pass both the `farmName` and the `growerId`
+on the body of the request.
+
+Request body example:
+```json
+{
+  "name": "Updated Farm Name",
+  "growerId": 123
+}
+```
+
+#### Response
+A single [Farm](#farm-resource) as a JSON object.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', }
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    name: 'newFarmName'
+  }
+
+  axios.put(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'newFarmName'
+  }
+
+  response = requests.put(endpoint, json=data, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "newFarmName", "growerId": "newGrowerId }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
 ### Get all growers
 
 &nbsp<span class="badge badge--success">GET</span> `/growers`
 
-Gets a paged list of all Growers. Use the following parameters for paging
+Gets a paged list of all growers. Use the following parameters for paging
 through results.
 
 - `provider`, only matches Growers from this provider (string)
@@ -1380,7 +1543,7 @@ through results.
 - `size`, an integer specifying the size of the page (defaults to 20)
 
 #### Response
-A JSON array containing Growers.
+A JSON array containing growers.
 
 <Tabs
   defaultValue="sh"
@@ -1453,12 +1616,13 @@ A JSON array containing Growers.
 
 ### Get a grower
 
-&nbsp<span class="badge badge--success">GET</span> `/growers/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`
 
-Gets a single Grower by its id.
+Gets a single grower by its `id` from the user `leafUserId`.
 
 #### Response
-A single Grower as a JSON object.
+A single [Grower](#grower-resource) as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
+attribute `name` comes directly from the Client's name for growers with John Deere as provider.
 
 <Tabs
   defaultValue="sh"
@@ -1475,7 +1639,7 @@ A single Grower as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/fields/api/growers/{id}'
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserID}/growers/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -1491,7 +1655,7 @@ A single Grower as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/growers/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserID}/growers/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -1504,7 +1668,7 @@ A single Grower as a JSON object.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/growers/{id}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
   ```
 
   </TabItem>
@@ -1513,6 +1677,7 @@ A single Grower as a JSON object.
   ```json
   {
     "id": 2345,
+    "name": "str",
     "leafUserId": "UUID",
     "providerName": "str",
     "providerOrganizationId": "str",
@@ -1525,6 +1690,155 @@ A single Grower as a JSON object.
 
   </TabItem>
 </Tabs>
+
+### Create a grower
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
+
+Creates a grower for the user `leafUserId`. It's possible to pass `name` on the body of the request.
+
+Request body example:
+```json
+{
+  "name": "Example Grower Name"
+}
+```
+
+#### Response
+A single [Grower](#grower-resource) as a JSON object.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', }
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    name: 'growerName'
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'growerName'
+  }
+
+  response = requests.post(endpoint, json=data, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "growerName" }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Update a grower
+
+&nbsp<span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
+
+Updates the grower with id `id` for the user `leafUserId`. It's possible to pass only the `name` on the body of the request.
+
+Request body example:
+```json
+{
+  "name": "Updated Grower Name"
+}
+```
+
+#### Response
+A single [Grower](#grower-resource) as a JSON object.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', }
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    name: 'newGrowerName'
+  }
+
+  axios.put(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'newGrowerName'
+  }
+
+  response = requests.put(endpoint, json=data, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "newGrowerName"}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 ## REST Resources
 
@@ -1695,6 +2009,8 @@ Each boundary has a `status` and `providerStatus`.
 | - | - |
 [Get all farms][14] | <span class="badge badge--success">GET</span> `/farms`
 [Get a farm][15] | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
+[Create a farm][16] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`
+[Update a farm][17] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`
 
 
 ### Grower Resource
@@ -1714,5 +2030,8 @@ Each boundary has a `status` and `providerStatus`.
 
 | Description | Endpoints
 | - | - |
-[Get all growers][16] | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower][17] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Get all growers][19] | <span class="badge badge--success">GET</span> `/growers`
+[Get a grower][20] | <span class="badge badge--success">GET</span> `/growers/{id}`
+[Create a grower][21] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
+[Update a grower][22] | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
+

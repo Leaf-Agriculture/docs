@@ -70,110 +70,160 @@ This is an example of a summary for a "planted" operation
     "summary": {
         "type": "Feature",
         "properties": {
-            "operationType": "planted",
-            "crop": "soybeans",
-            "totalArea": {
-                "value": 1032183,
-                "unit": "m2"
-            },
-            "startTime": "2015-09-23T20:29:01",
-            "endTime": "2015-09-23T20:31:46",
             "elevation": {
-                "min": 220.0,
-                "max": 236.0,
-                "avg": 234.0,
-                "unit": "m"
+                "avg": 784.1533510349966,
+                "min": 779.62913693,
+                "max": 787.06455821,
+                "unit": "ft"
             },
-            "speed": {
-                "min": 0.0,
-                "max": 9.0,
-                "avg": 7.0,
-                "unit": "m/s"
+            "harvestMoisture": {
+                "avg": 12.888719743652945,
+                "min": 1.0,
+                "max": 15.95,
+                "unit": "percentage"
             },
+            "wetVolume": {
+                "avg": 0.04798510370695135,
+                "min": 5.321358838842975E-11,
+                "max": 0.348360994170295,
+                "unit": "bu"
+            },
+            "wetVolumePerArea": {
+                "avg": 77.48316026098765,
+                "min": 1.595E-7,
+                "max": 1666.6666666666667,
+                "unit": "bu/ac"
+            },
+            "totalWetMass": {
+                "value": 116805.33944346363,
+                "unit": "lb"
+            },
+            "wetMassPerArea": {
+                "avg": 4648.989615659259,
+                "min": 9.57E-6,
+                "max": 100000.0,
+                "unit": "lb/ac"
+            },
+            "totalWetVolume": {
+                "value": 1946.75565739101,
+                "unit": "bu"
+            },
+            "varieties": [
+                {
+                    "harvestMoisture": {
+                        "avg": 12.888719743652945,
+                        "min": 1.0,
+                        "max": 15.95,
+                        "unit": "percentage"
+                    },
+                    "wetMass": {
+                        "value": 116805.33944346363,
+                        "unit": "lb"
+                    },
+                    "wetMassPerArea": {
+                        "value": 1.1487903524141723,
+                        "unit": "lb/ac"
+                    },
+                    "wetVolume": {
+                        "value": 1946.75565739101,
+                        "unit": "bu"
+                    },
+                    "area": {
+                        "value": 101676.81091506233,
+                        "unit": "m2"
+                    },
+                    "name": "variety"
+                }
+            ],
+            "startTime": "2016-09-19T16:45:51.002Z",
+            "operationType": "harvested",
+            "endTime": "2016-09-19T19:50:25.991Z",
             "totalDistance": {
-                "value": 12270.32,
-                "unit": "m"
+                "value": 36481.33613821037,
+                "unit": "ft"
             },
-            "machinery": [
-                {
-                    "name": "machine1", 
-                    "serialNumber": "uuid",
-                    "type": "machine"
-                },
-                {
-                    "name": "implement1", 
-                    "serialNumber": "uuid",
-                    "type": "implement"
-                }
-            ],       
-            "varieties": [{
-                "name": "var xx",
-                "description": "",
-                "totalPlanted": {
-                    "value": 14225476,
-                    "unit": "seeds"
-                },
-                "rate": {
-                    "min": 15.97,
-                    "max": 35.12,
-                    "avg": 28.32,
-                    "minTarget": 15.5,
-                    "maxTarget": 35.5,
-                    "avgTarget": 29.0,
-                    "unit": "seeds/m2"
-                },
-                "seedDepth": {
-                    "min": 20.0,
-                    "max": 26.0,
-                    "avg": 24.0,
-                    "unit": "cm or in"
-                },   
-                "area": {
-                    "value": 502312,
-                    "unit": "m2"
-                }
+            "wetMass": {
+                "avg": 2.8791062224170814,
+                "min": 3.192815303305785E-9,
+                "max": 20.9016596502177,
+                "unit": "lb"
             },
-            {
-                "name": "var yy",
-                "description": "",
-                "totalPlanted": {
-                    "value": 14825791,
-                    "unit": "seeds"
-                },       
-                "rate": {
-                    "min": 14.23,
-                    "max": 36.10,
-                    "avg": 27.98,
-                    "minTarget": 15.5,
-                    "maxTarget": 35.5,
-                    "avgTarget": 29.0,
-                    "unit": "seeds/m2"
-                },
-                "seedDepth": {
-                    "min": 20.0,
-                    "max": 26.0,
-                    "avg": 24.0,
-                    "unit": "cm or in"
-                },
-                "area": {
-                    "value": 529871,
-                    "unit": "m2"
-                }
-            }]
+            "crop": [
+                "crop1"
+            ],
+            "totalArea": {
+                "value": 101676.81091506233,
+                "unit": "m2"
+            }
         },
         "geometry": {
             "type": "MultiPolygon",
-            "coordinates": [[[
-                [-89.80434894561768,40.47791686563837],
-                [-89.80756759643555,40.4757623387113],
-                [-89.80746030807495,40.47302011353734],
-                [-89.80475664138794,40.47070219301965],
-                [-89.80080842971802,40.47068586935202],
-                [-89.79797601699828,40.472709973879255],
-                [-89.7978687286377,40.47569704893722],
-                [-89.80117321014404,40.47808008455794],
-                [-89.80434894561768,40.47791686563837]
-            ]]]
+            "coordinates": [
+                [
+                    [
+                        [
+                            -93.15293318935461,
+                            41.666154183730384
+                        ],
+                        [
+                            -93.15157497170613,
+                            41.66615564092445
+                        ],
+                        [
+                            -93.15150181019263,
+                            41.666157942756215
+                        ],
+                        [
+                            -93.15132668295342,
+                            41.66616474394135
+                        ],
+                        [
+                            -93.15052273668357,
+                            41.66620287885797
+                        ],
+                        [
+                            -93.15050691368018,
+                            41.66620406686359
+                        ],
+                        [
+                            -93.15049287031056,
+                            41.66620642015011
+                        ],
+                        [
+                            -93.15045606134805,
+                            41.66621305142664
+                        ],
+                        [
+                            -93.15044299447136,
+                            41.66621581158665
+                        ],
+                        [
+                            -93.15043101898975,
+                            41.66621931291359
+                        ],
+                        [
+                            -93.15041885676902,
+                            41.66622407726536
+                        ],
+                        [
+                            -93.15040617311696,
+                            41.6662301328353
+                        ],
+                        [
+                            -93.15038065996804,
+                            41.66624420049737
+                        ],
+                        [
+                            -93.15036867839534,
+                            41.66625217220658
+                        ],
+                        [
+                            -93.15035869483324,
+                            41.66625959737893
+                        ]
+                    ]
+                ]
+            ]
         }
     }
 }
@@ -941,6 +991,531 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
 \* = Always in response  
 \*\* = Usually in response but not required to pass tests
+
+### Images
+
+Also, Leaf displays all the numerical properties across all operation types via a png file. Here's a sample response from a Leaf harvested file.
+
+```json
+{
+        "property": "area",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "wetMass",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "wetVolume",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "distance",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "wetVolumePerArea",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "equipmentWidth",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "wetMassPerArea",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "sectionId",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "elevation",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "harvestMoisture",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "heading",
+        "ramp": {
+            "0%": [
+                200,
+                0,
+                0
+            ],
+            "35%": [
+                255,
+                40,
+                0
+            ],
+            "45%": [
+                255,
+                150,
+                0
+            ],
+            "55%": [
+                255,
+                240,
+                0
+            ],
+            "65%": [
+                0,
+                230,
+                0
+            ],
+            "75%": [
+                0,
+                190,
+                0
+            ],
+            "100%": [
+                0,
+                130,
+                0
+            ],
+            "nv": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    }
+]
+```
 
 <!-- ### Operation Maps
 

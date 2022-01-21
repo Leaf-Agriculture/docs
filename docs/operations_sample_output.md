@@ -71,88 +71,52 @@ This is an example of a summary for a "planted" operation
         "type": "Feature",
         "properties": {
             "elevation": {
-                "avg": 784.1533510349966,
-                "min": 779.62913693,
-                "max": 787.06455821,
+                "avg": 772.194895030409,
+                "min": 767.21031609,
+                "max": 775.38288827,
                 "unit": "ft"
             },
-            "harvestMoisture": {
-                "avg": 12.888719743652945,
-                "min": 1.0,
-                "max": 15.95,
-                "unit": "percentage"
-            },
-            "wetVolume": {
-                "avg": 0.04798510370695135,
-                "min": 5.321358838842975E-11,
-                "max": 0.348360994170295,
-                "unit": "bu"
-            },
-            "wetVolumePerArea": {
-                "avg": 77.48316026098765,
-                "min": 1.595E-7,
-                "max": 1666.6666666666667,
-                "unit": "bu/ac"
-            },
-            "totalWetMass": {
-                "value": 116805.33944346363,
-                "unit": "lb"
-            },
-            "wetMassPerArea": {
-                "avg": 4648.989615659259,
-                "min": 9.57E-6,
-                "max": 100000.0,
-                "unit": "lb/ac"
-            },
-            "totalWetVolume": {
-                "value": 1946.75565739101,
-                "unit": "bu"
+            "totalPlanted": {
+                "value": 3433593,
+                "unit": "seeds"
             },
             "varieties": [
                 {
-                    "harvestMoisture": {
-                        "avg": 12.888719743652945,
-                        "min": 1.0,
-                        "max": 15.95,
-                        "unit": "percentage"
-                    },
-                    "wetMass": {
-                        "value": 116805.33944346363,
-                        "unit": "lb"
-                    },
-                    "wetMassPerArea": {
-                        "value": 1.1487903524141723,
-                        "unit": "lb/ac"
-                    },
-                    "wetVolume": {
-                        "value": 1946.75565739101,
-                        "unit": "bu"
+                    "name": "variety1",
+                    "rate": {
+                        "avg": 138845.7555144055,
+                        "min": 42265.36847555,
+                        "max": 256056.74641452,
+                        "unit": "seeds/ac",
+                        "minTarget": 139996.95107651,
+                        "maxTarget": 139996.95107651,
+                        "avgTarget": 139996.95107651004
                     },
                     "area": {
-                        "value": 101676.81091506233,
+                        "value": 100986.63117147879,
                         "unit": "m2"
                     },
-                    "name": "variety"
+                    "totalPlanted": {
+                        "value": 3464790,
+                        "unit": "seeds"
+                    }
                 }
             ],
-            "startTime": "2016-09-19T16:45:51.002Z",
-            "operationType": "harvested",
-            "endTime": "2016-09-19T19:50:25.991Z",
             "totalDistance": {
-                "value": 36481.33613821037,
+                "value": 9058.425426796379,
                 "unit": "ft"
             },
-            "wetMass": {
-                "avg": 2.8791062224170814,
-                "min": 3.192815303305785E-9,
-                "max": 20.9016596502177,
-                "unit": "lb"
+            "seedRate": {
+                "avg": 137595.61319571827,
+                "min": 42265.36847555,
+                "max": 256056.74641452,
+                "unit": "seeds/ac"
             },
             "crop": [
                 "crop1"
             ],
             "totalArea": {
-                "value": 101676.81091506233,
+                "value": 100986.63117147879,
                 "unit": "m2"
             }
         },
@@ -316,135 +280,92 @@ This is an example of a summary for a "harvested" operation
     "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
-        "properties": {              
-            "operationType": "harvested",
-            "crop": "soybeans",
-            "totalArea": {
-                "value": 1032183,
-                "unit": "m2"
-            },
-            "startTime": "2015-12-23T20:29:01",
-            "endTime": "2015-12-29T20:31:46",
+        "properties": {
             "elevation": {
-                "min": 220.0,
-                "max": 236.0,
-                "avg": 234.0,
-                "unit": "m"
+                "avg": 784.1533510349966,
+                "min": 779.62913693,
+                "max": 787.06455821,
+                "unit": "ft"
             },
-            "speed": {
-                "min": 0.0,
-                "max": 3.1,
-                "avg": 4.1,
-                "unit": "m/s"
+            "harvestMoisture": {
+                "avg": 12.888719743652945,
+                "min": 1.0,
+                "max": 15.95,
+                "unit": "percentage"
             },
+            "wetVolume": {
+                "avg": 0.04798510370695135,
+                "min": 5.321358838842975E-11,
+                "max": 0.348360994170295,
+                "unit": "bu"
+            },
+            "wetVolumePerArea": {
+                "avg": 77.48316026098765,
+                "min": 1.595E-7,
+                "max": 1666.6666666666667,
+                "unit": "bu/ac"
+            },
+            "totalWetMass": {
+                "value": 116805.33944346363,
+                "unit": "lb"
+            },
+            "wetMassPerArea": {
+                "avg": 4648.989615659259,
+                "min": 9.57E-6,
+                "max": 100000.0,
+                "unit": "lb/ac"
+            },
+            "totalWetVolume": {
+                "value": 1946.75565739101,
+                "unit": "bu"
+            },
+            "varieties": [
+                {
+                    "harvestMoisture": {
+                        "avg": 12.888719743652945,
+                        "min": 1.0,
+                        "max": 15.95,
+                        "unit": "percentage"
+                    },
+                    "wetMass": {
+                        "value": 116805.33944346363,
+                        "unit": "lb"
+                    },
+                    "wetMassPerArea": {
+                        "value": 1.1487903524141723,
+                        "unit": "lb/ac"
+                    },
+                    "wetVolume": {
+                        "value": 1946.75565739101,
+                        "unit": "bu"
+                    },
+                    "area": {
+                        "value": 101676.81091506233,
+                        "unit": "m2"
+                    },
+                    "name": "variety"
+                }
+            ],
+            "startTime": "2016-09-19T16:45:51.002Z",
+            "operationType": "harvested",
+            "endTime": "2016-09-19T19:50:25.991Z",
             "totalDistance": {
-                "value": 12270.32,
-                "unit": "m"
+                "value": 36481.33613821037,
+                "unit": "ft"
             },
-            "machinery": [
-                {
-                    "name": "machine1", 
-                    "serialNumber": "uuid",
-                    "type": "machine"
-                },
-                {
-                    "name": "implement1", 
-                    "serialNumber": "uuid",
-                    "type": "implement"
-                }
-            ],       
-            "varieties": [{
-                "name": "var xx",
-                "description": "",
-                "wetMass": {
-                    "value": 238907,
-                    "unit": "kg"
-                },
-                "wetVolume": {
-                    "value": 123456,
-                    "unit": "liters"
-                },
-                "wetMassPerArea": {
-                    "value": 2.57908,
-                    "unit": "kg/m2"
-                },       
-                "wetVolumePerArea": {
-                    "value": 3.23456,
-                    "unit": "liters/m2"
-                },      
-                "dryMassPerArea": {
-                    "value": 2.5,
-                    "unit": "kg/m2"
-                },  
-                "dryVolumePerArea": {
-                    "value": 2.7,
-                    "unit": "l/m2"
-                },                        
-                "harvestMoisture": {
-                    "min": 15.0,
-                    "max": 22.1,
-                    "avg": 18.2,
-                    "unit": "%"
-                },   
-                "dryMass": {
-                    "value": 238907,
-                    "unit": "kg"
-                },
-                "dryVolume": {
-                    "value": 123456,
-                    "unit": "liters"
-                },
-                "area": {
-                    "value": 502312,
-                    "unit": "m2"
-                }
+            "wetMass": {
+                "avg": 2.8791062224170814,
+                "min": 3.192815303305785E-9,
+                "max": 20.9016596502177,
+                "unit": "lb"
             },
-            {
-                "name": "var yy",
-                "description": "",
-                "wetMass": {
-                    "value": 257908,
-                    "unit": "kg"
-                },       
-                "wetVolume": {
-                    "value": 123456,
-                    "unit": "liters"
-                },
-                "wetMassPerArea": {
-                    "value": 2.57908,
-                    "unit": "kg/m2"
-                },       
-                "wetVolumePerArea": {
-                    "value": 3.23456,
-                    "unit": "liters/m2"
-                },            
-                "harvestMoisture": {
-                    "min": 15.0,
-                    "max": 22.1,
-                    "avg": 18.2,
-                    "unit": "%"
-                },
-                "dryMass": {
-                    "value": 257908,
-                    "unit": "kg"
-                },  
-                "dryVolume": {
-                    "value": 123456,
-                    "unit": "liters"
-                },
-                "dryMassPerArea": {
-                    "value": 2.5,
-                    "unit": "kg/m2"
-                },  
-                "dryVolumePerArea": {
-                    "value": 2.7,
-                    "unit": "l/m2"
-                },
-                "area": {
-                    "value": 529871,
-                    "unit": "m2"
-                }
-            }]
+            "crop": [
+                "crop1"
+            ],
+            "totalArea": {
+                "value": 101676.81091506233,
+                "unit": "m2"
+            }
         },
         "geometry": {
             "type": "MultiPolygon",

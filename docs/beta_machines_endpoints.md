@@ -44,14 +44,15 @@ Description | Endpoints
 &nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/machines`
 
 Get the list of machines that are related to a given LeafUserId. Some fields can be sent as query parameters to filter the machines, such as:
-- `name`, to filter by machine name
-- `provider`, to fitler by Provider
-- `providerOrganizationId`, to filter by the organization id
-- `serialNumber`, to filter by the machine serial number
-- `originType`, to filter by the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
-- `createdAt`, to filter by the exact time of the record creation
-- `beforeCreatedAt`, filters for records created before the datetime
-- `afterCreatedAt`, filters for records created after the datetime
+
+- `name`, text 
+- `provider`, text (JohnDeere, CaseIH, Stara, etc)
+- `providerOrganizationId`, text
+- `serialNumber`, text
+- `originType`, specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
+- `createdAt`, must match exactly the time of the record creation, ISO 8601 without timezone
+- `beforeCreatedAt`, filters for records created before the datetime, ISO 8601 without timezone
+- `afterCreatedAt`, filters for records created after the datetime, ISO 8601 without timezone
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -60,6 +61,7 @@ They are:
 - `size`, an integer specifying the size of the page (max is 100)
 - `sort`, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc
 
+For more request examples see [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
 
 <Tabs
 defaultValue="sh"
@@ -293,13 +295,13 @@ A machine record with more details.
 
 Get the details of machine operations files given a machine id. Some fields can be sent as query parameters to filter the machine files, such as:
 
-- `leafFileId`, to filter by the leafFile ID
-- `startTime`, to filter by the exact time of the start of the operation
-- `endTime`, to filter by the exact time of the end of the operation
-- `originType`, to filter by the origin of the machine file, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
-- `createdAt`, to filter by the exact time of the record creation
-- `beforeCreatedAt`, filters for records created before the datetime
-- `afterCreatedAt`, filters for records created after the datetime
+- `leafFileId`, UUID
+- `startTime`, must match exactly the time of the start of the operation, ISO 8601 without timezone
+- `endTime`, must match exactly the time of the end of the operation, ISO 8601 without timezone
+- `originType`, filter by the origin of the machine file, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
+- `createdAt`, must match exactly the time of the record creation, ISO 8601 without timezone
+- `beforeCreatedAt`, filters for records created before the datetime, ISO 8601 without timezone
+- `afterCreatedAt`, filters for records created after the datetime, ISO 8601 without timezone
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -307,6 +309,8 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
 - `sort`, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc
+
+For more request examples see [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
 
 <Tabs
 defaultValue="sh"

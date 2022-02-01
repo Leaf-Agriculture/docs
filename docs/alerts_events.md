@@ -211,6 +211,38 @@ Alerts for this event are in the following format:
 }
 ```
 
+## Field Boundary Events
+
+### Field Boundary Created
+Event for when a fieldBoundary is created.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "boundaryId": "the id of the created field boundary",
+  "leafUserId": "the id of the file owner",
+  "fieldId": "the field related to the created field boundary",
+  "type": "fieldBoundaryCreated",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+}
+```
+
+### Field Boundary Updated
+Event for when a fieldBoundary is updated.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "boundaryId": "the id of the updeted field boundary",
+  "leafUserId": "the id of the file owner",
+  "fieldId": "the field related to the updated field boundary",
+  "type": "fieldBoundaryUpdated",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+}
+```
+
 ## Satellite Events
 
 ### New Satellite Image

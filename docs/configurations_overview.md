@@ -10,7 +10,7 @@ Leaf Users do not start with Configuration, but they inherit the configurations 
 
 Currently, available configurations are:
 
-- `operationsImageCreation` - If set to `true`, Leaf will generate images of operations when processing them. If set to `false`, Leaf won't create the images. The default value is `true`.
+- `operationsImageCreation` - If set to `true`, Leaf will generate images of operations when processing them. If set to `false`, Leaf won't create the images. The default value is `false`.
 - `geoimagesResolution` - Resolution of the generated images of operations. The default value is `0.00001`.
 - `geoimagesShape` - Shape of points to be used when generating images of operations. It can assume the values `ROUND` and `SQUARE`. The default value is `SQUARE`.
 - `geoimagesProjection` - Projection to be used when generating images of operations. It can assume the values `EPSG:3857` and `EPSG:4326`. The default value is `EPSG:3857`.

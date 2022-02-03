@@ -235,7 +235,7 @@ Alerts for this event are in the following format:
 
 ```json
 {
-  "boundaryId": "the id of the updeted field boundary",
+  "boundaryId": "the id of the updated field boundary",
   "leafUserId": "the id of the file owner",
   "fieldId": "the field related to the updated field boundary",
   "type": "fieldBoundaryUpdated",

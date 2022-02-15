@@ -934,8 +934,8 @@ below.
 | Parameter (to filter by) | Values
 | - | - |
 | `leafUserId` | uuid of one of your users |
-| `startTime` | ISO 8601 date. Returns operations from the operationStartTime onward |
-| `endTime` | ISO 8601 date. Returns operations until the operationEndTime |
+| `startTime` | ISO 8601 date. Returns operations from the startTime onward |
+| `endTime` | ISO 8601 date. Returns operations until the endTime |
 | `operationType` | `applied`, `planted` or `harvested` |
 | `fieldId` | uuid of one of your fields |
 | `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|

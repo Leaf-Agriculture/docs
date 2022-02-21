@@ -643,7 +643,8 @@ Get the John Deere credentials of the Leaf User based on its id and returns a JS
     "tokenSecretKey": "str",
     "accessToken": "str",
     "refreshToken": "str",
-    "status": "str"
+    "status": "str",
+    "clientEnvironment": "STAGE or PRODUCTION"
 }
 ```
 
@@ -708,7 +709,8 @@ Create a John Deere credentials for the Leaf User.
   "clientKey": "str",
   "clientSecret": "str",
   "accessToken": "str",
-  "refreshToken": "str"
+  "refreshToken": "str",
+  "clientEnvironment": "STAGE or PRODUCTION"
 }
 ```
 
@@ -724,6 +726,8 @@ A John Deere credentials with status.
   "accessToken": "str",
   "refreshToken": "str",
   "status": "str",
+  "clientEnvironment": "STAGE or PRODUCTION"
+
 }
 ```
 
@@ -749,7 +753,8 @@ A John Deere credentials with status.
     "clientKey": "str",
     "clientSecret": "str",
     "accessToken": "str",
-    "refreshToken": "str"
+    "refreshToken": "str",
+    "clientEnvironment": "STAGE or PRODUCTION"
   }
 
   axios.post(endpoint, data, { headers })
@@ -772,7 +777,8 @@ A John Deere credentials with status.
     "clientKey": "str",
     "clientSecret": "str",
     "accessToken": "str",
-    "refreshToken": "str"
+    "refreshToken": "str",
+    "clientEnvironment": "STAGE or PRODUCTION"
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -785,7 +791,7 @@ A John Deere credentials with status.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"clientKey": "str","clientSecret": "str","accessToken": "str","refreshToken": "str"}' \
+      -d '{"clientKey": "str","clientSecret": "str","accessToken": "str","refreshToken": "str","clientEnvironment": "STAGE or PRODUCTION"}' \
       'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/john-deere-credentials'
   ```
 

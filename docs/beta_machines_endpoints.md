@@ -300,14 +300,14 @@ Get the details of machine operations files given a machine id. Some fields can 
 | Parameter (to filter by) | Values
 | - | - |
 | `leafFileId` | UUID |
-| `originType`|  USER_CREATED, PROVIDER_POOLED or FILE_POOLED
+| `originType`|  specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
 | `createdAt`| an ISO 8601 without timezone specifying the machine files exact created time |
 | `beforeCreatedAt`|  filters for records created before the datetime, ISO 8601 without timezone |
 | `afterCreatedAt` |  filters for records created after the datetime, ISO 8601 without timezone |
 | `startTime`| must match exactly the time of the start of the operation, ISO 8601 without timezone |
 | `endTime` |   must match exactly the time of the end of the operation, ISO 8601 without timezone |
 | `beforeStartTime`|  an ISO 8601 without timezone, returns all machine files that started before the specified time |
-| `afterStartTime`|  aan ISO 8601 without timezone, returns all machine files that started after the specified time|
+| `afterStartTime`|  an ISO 8601 without timezone, returns all machine files that started after the specified time|
 | `beforeEndTime`|  an ISO 8601 without timezone, returns all machine files that ended before the specified time  |
 | `afterEndtime` |  an ISO 8601 without timezone, returns all machine files that ended after the specified time |
 | `distanceValue` |  a double value for the distance |

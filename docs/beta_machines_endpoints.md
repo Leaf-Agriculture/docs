@@ -45,14 +45,16 @@ Description | Endpoints
 
 Get the list of machines that are related to a given LeafUserId. Some fields can be sent as query parameters to filter the machines, such as:
 
-- `name`, text 
-- `provider`, text (JohnDeere, CaseIH, Stara, etc)
-- `providerOrganizationId`, text
-- `serialNumber`, text
-- `originType`, specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
-- `createdAt`, must match exactly the time of the record creation, ISO 8601 without timezone
-- `beforeCreatedAt`, filters for records created before the datetime, ISO 8601 without timezone
-- `afterCreatedAt`, filters for records created after the datetime, ISO 8601 without timezone
+| Parameter (to filter by) | Values
+| - | - |
+| `name` | text |
+| `provider` |  text (JohnDeere, CaseIH, Stara, etc)|
+| `providerOrganizationId` | text |
+| `serialNumber` | text |
+| `originType`| specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
+| `createdAt`| must match exactly the time of the record creation, ISO 8601 without timezone |
+| `beforeCreatedAt`|  filters for records created before the datetime, ISO 8601 without timezone |
+| `afterCreatedAt` | filters for records created after the datetime, ISO 8601 without timezone |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -295,13 +297,21 @@ A machine record with more details.
 
 Get the details of machine operations files given a machine id. Some fields can be sent as query parameters to filter the machine files, such as:
 
-- `leafFileId`, UUID
-- `startTime`, must match exactly the time of the start of the operation, ISO 8601 without timezone
-- `endTime`, must match exactly the time of the end of the operation, ISO 8601 without timezone
-- `originType`, filter by the origin of the machine file, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
-- `createdAt`, must match exactly the time of the record creation, ISO 8601 without timezone
-- `beforeCreatedAt`, filters for records created before the datetime, ISO 8601 without timezone
-- `afterCreatedAt`, filters for records created after the datetime, ISO 8601 without timezone
+| Parameter (to filter by) | Values
+| - | - |
+| `leafFileId` | UUID |
+| `originType`|  USER_CREATED, PROVIDER_POOLED or FILE_POOLED
+| `createdAt`| an ISO 8601 without timezone specifying the machine files exact created time |
+| `beforeCreatedAt`|  filters for records created before the datetime, ISO 8601 without timezone |
+| `afterCreatedAt` |  filters for records created after the datetime, ISO 8601 without timezone |
+| `startTime`| must match exactly the time of the start of the operation, ISO 8601 without timezone |
+| `endTime` |   must match exactly the time of the end of the operation, ISO 8601 without timezone |
+| `beforeStartTime`|  an ISO 8601 without timezone, returns all machine files that started before the specified time |
+| `afterStartTime`|  aan ISO 8601 without timezone, returns all machine files that started after the specified time|
+| `beforeEndTime`|  an ISO 8601 without timezone, returns all machine files that ended before the specified time  |
+| `afterEndtime` |  an ISO 8601 without timezone, returns all machine files that ended after the specified time |
+| `distanceValue` |  a double value for the distance |
+| `distanceUnit` | must be "Mile", "mile", "Feet" or "ft" |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:

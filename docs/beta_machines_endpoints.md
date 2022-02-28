@@ -311,6 +311,8 @@ Get the details of machine operations files given a machine id. Some fields can 
 | `beforeEndTime`|  an ISO 8601 without timezone, returns all operations that ended before the specified time  |
 | `afterEndtime` |  an ISO 8601 without timezone, returns all operations that ended after the specified time |
 | `distanceValue` |  a double value for the distance |
+| `greaterThanDistanceValue` |  a double value for the distance, returns all operations that have a distance value greater than the specified distance |
+| `lessThanDistanceValue` |  a double value for the distance, returns all operations that have a distance value lesser than the specified distance  |
 | `distanceUnit` | must be "Mile", "mile", "Feet" or "ft" |
 
 You can also pass some parameters used exclusively for paging through results.

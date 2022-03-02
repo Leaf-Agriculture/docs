@@ -20,7 +20,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [11]: #get-all-batches
 [12]: #merge-files
 [13]: #get-a-files-units
-[sample_summary]: operations_sample_output
+[sample_summary]: files_sample_output
 
 Here we have a table containing the density for most of the crops extracted 
 from Leaf's providers, where using these values we can generate volumetric representations of harvest yield from mass

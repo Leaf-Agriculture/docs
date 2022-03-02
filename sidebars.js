@@ -27,8 +27,13 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Field Operations',
+          items: ['operations_overview', 'operations_endpoints', 'operations_sample_output']
+        },
+        {
+          type: 'category',
           label: 'Machine Operation Data',
-          items: ['operations_overview', 'operations_endpoints', 'operations_sample_output', 'operations_density_table']
+          items: ['files_overview', 'files_endpoints', 'files_sample_output', 'files_density_table']
         },
         {
           type: 'category',

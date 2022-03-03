@@ -527,7 +527,7 @@ This is an example of a summary for a "planted" operation
 }
   ```
   </TabItem>
-
+  </Tabs>
 
 ###Field Operations Images 
 

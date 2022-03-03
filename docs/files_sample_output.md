@@ -858,6 +858,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 \* = Always in response  
 \*\* = Usually in response but not required to pass tests
 
+Despite the example units, Leaf's API will push through every unit, if the processed file contains the `required` (marked with *) properties.
+
 ### Images
 
 Also, Leaf displays all the numerical properties across all operation types via a png file. Here's a sample response from a Leaf harvested file.

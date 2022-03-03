@@ -9,7 +9,9 @@ import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import use
 This page shows and describes sample responses from Leaf API, along with a list of what properties you can expect for
 each type of data.
 
+
 ## Field Operations
+
 
 A Field Operation processed by Leaf's API returns a list of content that contains most of the basic info related to the
 authenticated user, and also the Field Boundaries and File Operations attached to each other by the background
@@ -56,8 +58,13 @@ Here's an example of a standard geojson from a Field Operation
 
 ### Field Operations Summary
 
+
 Here's an example of a summary from a Field Operation. It's important to mention that the output displayed in the Field
 Operation Summary is heavily impacted by the `opeartionType` property.
+
+You can move through the four tabs below to see a sample of how Leaf returns
+each of the operation types.
+
 
 <Tabs defaultValue="harvested"
 values={[
@@ -70,10 +77,11 @@ values={[
 
   <TabItem value="planted">
 
-This is an example of a summary for a "planted" operation
+This is an example of a summary for a `planted` operation
 
   ```json
 {
+
   "type": "Feature",
   "properties": {
     "totalDistance": {
@@ -201,12 +209,204 @@ This is an example of a summary for a "planted" operation
       ]
     ]
   }
+
+    "type": "Feature",
+    "properties": {
+        "totalDistance": {
+            "value": 57358.032123869874,
+            "unit": "ft"
+        },
+        "startTime": "2017-10-16T13:44:18.232+00:00",
+        "endTime": "2017-10-16T13:48:51.620+00:00",
+        "totalArea": {
+            "value": 13321.838881812788,
+            "unit": "m2"
+        },
+        "elevation": {
+            "avg": 977.0246474907251,
+            "min": 972.03542784,
+            "max": 984.38861026,
+            "unit": "ft"
+        },
+        "crop": [
+            "corn"
+        ],
+        "operationType": "planted",
+        "seedRate": {
+            "avg": 36299.73813341886,
+            "min": 0,
+            "max": 40040,
+            "unit": "seeds/ac"
+        },
+        "totalPlanted": {
+            "value": 119494,
+            "unit": "seeds"
+        },
+        "varieties": [
+            {
+                "name": "variety1",
+                "rate": {
+                    "avg": 36299.73813341886,
+                    "min": 0,
+                    "max": 40040,
+                    "unit": "seeds/ac",
+                    "minTarget": 36000,
+                    "maxTarget": 36000,
+                    "avgTarget": 36000
+                },
+                "area": {
+                    "value": 13321.838881812788,
+                    "unit": "m2"
+                },
+                "totalPlanted": {
+                    "value": 119494,
+                    "unit": "seeds"
+                }
+            }
+        ]
+    },
+    "geometry": {
+        "type": "MultiPolygon",
+            "coordinates": [[[
+                [-89.80434894561768,40.47791686563837],
+                [-89.80756759643555,40.4757623387113],
+                [-89.80746030807495,40.47302011353734],
+                [-89.80475664138794,40.47070219301965],
+                [-89.80080842971802,40.47068586935202],
+                [-89.79797601699828,40.472709973879255],
+                [-89.7978687286377,40.47569704893722],
+                [-89.80117321014404,40.47808008455794],
+                [-89.80434894561768,40.47791686563837]
+            ]]]
+    }
+}
+```
+
+  </TabItem>
+  <TabItem value="applied">
+
+This is an example of a summary for an `applied` operation
+
+  ```json
+{
+    "type": "Feature",
+    "properties": {
+        "totalDistance": {
+            "value": 18438.707685163776,
+            "unit": "ft"
+        },
+        "speed": {
+            "avg": 10.663143473019328,
+            "min": 2.8856468200683594,
+            "max": 11.497848510742188,
+            "unit": "mi/hr"
+        },
+        "startTime": "2019-04-29T00:24:53.085+00:00",
+        "endTime": "2019-04-29T00:52:19.331+00:00",
+        "totalArea": {
+            "value": 122599.17343819344,
+            "unit": "m2"
+        },
+        "elevation": {
+            "avg": 3577.9149279050043,
+            "min": 3576.9,
+            "max": 3579.3,
+            "unit": "ft"
+        },
+        "products": [
+            {
+                "name": "Agrotain Advanced",
+                "rate": {
+                    "unit": "gal/ac",
+                    "value": 2.5
+                },
+                "totalApplied": {
+                    "value": 75.73698585115766,
+                    "unit": "gal"
+                },
+                "area": {
+                    "value": 122599.17343819344,
+                    "unit": "m2"
+                }
+            },
+            {
+                "name": "Carrier",
+                "rate": {
+                    "unit": "gal/ac",
+                    "value": 11.9609375
+                },
+                "totalApplied": {
+                    "value": 362.3541416816324,
+                    "unit": "gal"
+                },
+                "area": {
+                    "value": 122599.17343819344,
+                    "unit": "m2"
+                }
+            },
+            {
+                "name": "28-0-0 UAN",
+                "rate": {
+                    "unit": "lb/ac",
+                    "value": 160
+                },
+                "totalApplied": {
+                    "value": 4847.16709447409,
+                    "unit": "lb"
+                },
+                "area": {
+                    "value": 122599.17343819344,
+                    "unit": "m2"
+                }
+            }
+        ],
+        "crop": [],
+        "operationType": "applied",
+        "appliedRate": {
+            "avg": 15.746140809254529,
+            "min": 4.499999771231767,
+            "max": 328.4000097549022,
+            "unit": "gal/ac"
+        },
+        "totalApplied": {
+            "value": 477,
+            "unit": "gal"
+        },
+        "machinery": [
+            {
+                "name": "machine1",
+                "type": "implement"
+            },
+            {
+                "name": "machine2",
+                "type": "machine",
+                "serialNumber": "uuid"
+            }
+        ]
+    },
+    "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [[[
+                [-89.80434894561768,40.47791686563837],
+                [-89.80756759643555,40.4757623387113],
+                [-89.80746030807495,40.47302011353734],
+                [-89.80475664138794,40.47070219301965],
+                [-89.80080842971802,40.47068586935202],
+                [-89.79797601699828,40.472709973879255],
+                [-89.7978687286377,40.47569704893722],
+                [-89.80117321014404,40.47808008455794],
+                [-89.80434894561768,40.47791686563837]
+        ]]]
+    }
+
 }
 ```
 
   </TabItem>
   <TabItem value="harvested">
 
+This is an example of a summary for a `harvested` operation
+    
   ```json
 {
         "type": "Feature",
@@ -330,9 +530,9 @@ This is an example of a summary for a "planted" operation
                     [-89.80434894561768,40.47791686563837]
                 ]]]
             }
-      }
-```
+      }                    
 
+    
   </TabItem>
   <TabItem value="planted">
 
@@ -409,6 +609,7 @@ This is an example of a summary for a "planted" operation
                 "type": "string",
                 "serialNumber": "string",
                 "brand": "string"
+
             }
         ]
     },
@@ -430,7 +631,7 @@ This is an example of a summary for a "planted" operation
   ```
   
   </TabItem>
-  <TabItem value="planted">
+  <TabItem value="tillage">
 
   ```json
     {
@@ -480,50 +681,20 @@ This is an example of a summary for a "planted" operation
     ]
   },
   "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [
-      [
-        [
-          [
-            -89.80434894561768,
-            40.47791686563837
-          ],
-          [
-            -89.80756759643555,
-            40.4757623387113
-          ],
-          [
-            -89.80746030807495,
-            40.47302011353734
-          ],
-          [
-            -89.80475664138794,
-            40.47070219301965
-          ],
-          [
-            -89.80080842971802,
-            40.47068586935202
-          ],
-          [
-            -89.79797601699828,
-            40.472709973879255
-          ],
-          [
-            -89.7978687286377,
-            40.47569704893722
-          ],
-          [
-            -89.80117321014404,
-            40.47808008455794
-          ],
-          [
-            -89.80434894561768,
-            40.47791686563837
-          ]
-        ]
-      ]
-    ]
-  }
+                "type": "MultiPolygon",
+                "coordinates": [[[
+                    [-89.80434894561768,40.47791686563837],
+                    [-89.80756759643555,40.4757623387113],
+                    [-89.80746030807495,40.47302011353734],
+                    [-89.80475664138794,40.47070219301965],
+                    [-89.80080842971802,40.47068586935202],
+                    [-89.79797601699828,40.472709973879255],
+                    [-89.7978687286377,40.47569704893722],
+                    [-89.80117321014404,40.47808008455794],
+                    [-89.80434894561768,40.47791686563837]
+                ]]]
+            }
+  
 }
   ```
   </TabItem>

@@ -492,7 +492,7 @@ This is an example of a summary for an `applied` operation
   </TabItem>
   <TabItem value="harvested">
 
-This is an example of a summary for a "harvested" operation
+This is an example of a summary for a `harvested` operation
 
   ```json
 {
@@ -628,7 +628,7 @@ This is an example of a summary for a "harvested" operation
   </TabItem>
   <TabItem value="tillage">
 
-This is an example of a summary for a "tillage" operation
+This is an example of a summary for a `tillage` operation
 
    ```json
 {
@@ -698,7 +698,7 @@ This is an example of a summary for a "tillage" operation
 
 ### Properties
 
-Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
+Select the tab you want to see: `planted`, `applied`, `harvested`, or `tillage`.
 
 <Tabs
   defaultValue="planted"

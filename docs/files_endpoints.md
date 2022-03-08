@@ -20,11 +20,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [11]: #get-all-batches
 [12]: #merge-files
 [13]: #get-a-files-units
-[14]: #get-all-operations
-[15]: #get-an-operation
-[16]: #get-an-operation-summary
-[17]: #get-an-operations-images
-[18]: #get-an-operations-units
 [sample_summary]: files_sample_output
 
 ## About
@@ -48,11 +43,6 @@ Description | Endpoints
 [Get a batch][8] | <span class="badge badge--success">GET</span> `/batch/{id}`
 [Get all batches][11] | <span class="badge badge--success">GET</span> `/batch`
 [Merge files][12] | <span class="badge badge--warning">POST</span> `/files/merge`
-[Get all operations][14] | <span class="badge badge--success">GET</span> `/operations`
-[Get an operation][15] | <span class="badge badge--success">GET</span> `/operations/{id}`
-[Get an operation summary][16] | <span class="badge badge--success">GET</span> `/operations/{id}/summary`
-[Get an operation's images][17] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
-[Get an operation's units][18] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
 

@@ -68,9 +68,9 @@ each of the operation types.
 
 <Tabs defaultValue="harvested"
 values={[
-{ label: 'Planted', value: 'applied', }, 
+{ label: 'Planted', value: 'planted', }, 
 { label: 'Harvested', value: 'harvested', },
-{ label: 'Applied', value: 'planted', },
+{ label: 'Applied', value: 'applied', },
 { label: 'Tillage', value: 'tillage', },
 ]
 }>

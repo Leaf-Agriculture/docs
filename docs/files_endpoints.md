@@ -496,6 +496,58 @@ create/return one file id for each file that is detected. These individual files
 can then be accessed individually by their ID, or via their associated field 
 boundary.
 
+The following file formats from each provider are supported:
+
+
+#### JohnDeere
+
+| File Format | Monitor Model | Details                                         |
+|------------ | -------------------------------- | ------------------------------------------------|
+| GS2         | GreenStar 2 – 1800/2600          | `/RCD/global.ver`                               |
+| GS3         | GreenStar 3 – 2630               | `/GS3_2630/profile/RCD/EIC/global.ver`          |
+| Gen4        | Gen 4 - 4600/4630                | `/JD-Data/log/user defined name/*.jdl`          |
+| Shapefile   | Exported from MyJohnDeere        | Shapefile with extra metadata in a `.json` file |
+
+#### Climate FieldView
+
+| File Format | Monitor Model                    | Details                                         |
+|-------------|----------------------------------|-------------------------------------------------|
+| dat         | All files from Climate FieldView | A zip with `.dat` files                         |
+
+#### CNHI
+
+| File Format | Monitor Model                    | Details                                         |
+|-------------|----------------------------------|-------------------------------------------------|
+| CN1         | CaseIH monitors or exported from CNH Connects | `/file.cn1/index.vy1`                           |
+
+#### AgLeader
+
+| File Format | Monitor Model                           | Details                                |
+|-------------|-----------------------------------------|----------------------------------------|
+| yld         | YM2000, PFAdvantage & other OEM systems | A zip with `.yld` files                |
+| ilf         | INTEGRA / Insight / Edge                | A zip with `.ilf` files                |
+| agdata      | INTEGRA / VERSA / COMPASS               | A zip with `.agdata` files             |
+
+#### Trimble
+
+| File Format | Monitor Model                    | Details                                         |
+|-------------|----------------------------------|-------------------------------------------------|
+| AgData      | FMX and CFX monitors             | `/AgData/`                                      |
+| AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |
+
+#### Farmobile
+
+| File Format | Details                                         |
+|-------------|-------------------------------------------------|
+| GeoJSON     | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used.|
+
+#### Other
+
+| File Format | Details                                         |
+|-------------|-------------------------------------------------|
+| Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used.|
+
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -850,5 +902,14 @@ It receives a single JSON object with the `ids` entry. Example:
   </TabItem>
 </Tabs>
 
+## Alerts
+
+With Alerts you can be notified when something happens or changes instead of needing to repeatedly query for changes. 
+Leaf Alerts support events that happen within Leaf and events that happen within supported 3rd party software. 
+
+
+### List of Operations Events
+
+Leaf Operations Service can Alert you on these events: [list of Operations Events][10]
 
 ---

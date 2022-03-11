@@ -26,11 +26,11 @@ This service has the following endpoints available:
 
 Description | Endpoints
 --- | ---
-[Get all operations][14] | <span class="badge badge--success">GET</span> `/operations`
-[Get an operation][15] | <span class="badge badge--success">GET</span> `/operations/{id}`
-[Get an operation summary][16] | <span class="badge badge--success">GET</span> `/operations/{id}/summary`
-[Get an operation's images][17] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
-[Get an operation's units][18] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
+[Get all operations][1] | <span class="badge badge--success">GET</span> `/operations`
+[Get an operation][2] | <span class="badge badge--success">GET</span> `/operations/{id}`
+[Get an operation summary][3] | <span class="badge badge--success">GET</span> `/operations/{id}/summary`
+[Get an operation's images][4] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
+[Get an operation's units][5] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
 
@@ -465,6 +465,81 @@ always take the units into consideration, just to be sure.
   </TabItem>
 </Tabs>
 
+### Crop operation by field
+
+&nbsp<span class="badge badge--warning">POST</span>  `/operations/cropOperationByField`
+
+This endpoint can be used to remove points from the operation standardGeojson that are outside of the field geometry.
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/cropOperationByField'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  const data = { 'id': 'operationId' }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/cropOperationByField'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {'id': 'operationId'}
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "id": "operationId"}' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/operations/cropOperationByField'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+Returns a single JSON object:
+
+```json
+{
+    "id": "163982a0-d4e8-49a0-9572-9079e17f7c7d",
+    "message": "Sent operation to be processed.",
+    "leafFileId": "8924ca07-4168-4f15-83ec-37dd344888f6"
+}
+```
+
+You could monitor the processing status using the `leafFileId` by our [Alerts Service][10].
 
 ---
 

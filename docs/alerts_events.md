@@ -193,6 +193,23 @@ Alerts for this event are in the following format:
 }
 ```
 
+### Operation Processing Finished
+
+Event when a Field Operation has successfully finished.
+This event could be useful for fetching the resources of an operation and
+such as images, summary and units.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "operationId": "704362a3-d776-4364-8f65-04a4266d0743",
+  "leafUserId": "8a7dec31-47d6-4c09-8c3d-26092b679eb4",
+  "type": "operationProcessingFinished",
+  "timestamp": "2022-03-14T20:02:14.297063Z"
+}
+```
+
 ## Field Events
 
 ### New Field

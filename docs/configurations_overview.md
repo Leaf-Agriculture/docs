@@ -32,3 +32,5 @@ Currently, available configurations are:
 - `fieldsAttachIntersection` - Minimum intersection between a field and an operation. An intersection within this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100. The default value is `0.01`. 
 - `operationsMergeRange` - Range used to consider if files are in the same operation. Default value is `5` days.
 - `operationsMergeRangeHarvested` - Range used to consider if harvest files are in the same operation. Default value is `21` days.
+- `fieldsAutoMerge` - Feature automatically merges fields that passes through the intersection parameter. Default value is `true`
+- 

@@ -196,8 +196,7 @@ Alerts for this event are in the following format:
 ### Operation Processing Finished
 
 Event when a Field Operation has successfully finished.
-This event could be useful for fetching the resources of an operation and
-such as images, summary and units.
+This event could be useful for fetching the resources of an operation such as images, summary and units.
 
 Alerts for this event are in the following format:
 

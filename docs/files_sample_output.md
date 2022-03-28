@@ -489,18 +489,19 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
 
   | key             | presence       | type | 
-  | -               | -              | - |
-  | crop            | *  | string | 
-  | seedRate        | *  | dict |
-  | operationType   | *  | string "planted" |
-  | totalArea       | *  | float |
-  | elevation       | *  | dict |
-  | variety         | ** | string |
-  | seedRateTarget  | ** | dict |
-  | seedDepth       | ** | dict |
-  | machinery       | ** | list of machineInfo objects |
-  | speed           | ** | dict |
-  | totalPlanted    | ** | int (number of seeds) |
+  | -                    | -              | - |
+  | crop                 | *  | string | 
+  | seedRate             | *  | dict |
+  | operationType        | *  | string "planted" |
+  | totalArea            | *  | float |
+  | elevation            | *  | dict |
+  | variety              | ** | string |
+  | seedRateTarget       | ** | dict |
+  | seedDepth            | ** | dict |
+  | machinery            | ** | list of machineInfo objects |
+  | speed                | ** | dict |
+  | totalPlanted         | ** | int (number of seeds) |
+  | operationDescription | ** | string |
   
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -513,15 +514,16 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   | key | presence | type |
   | - | - | - |
-  | appliedRate         | *  | dict |
-  | operationType       | *  | string "applied" |
-  | elevation           | *  | dict |
-  | totalArea           | *  | float |
-  | products            | *  | dict  |
-  | appliedRateTarget   | ** | dict |
-  | machinery           | ** | list of machineInfo objects |
-  | speed               | ** | dict |
-  | totalApplied        | ** | float |
+  | appliedRate          | *  | dict |
+  | operationType        | *  | string "applied" |
+  | elevation            | *  | dict |
+  | totalArea            | *  | float |
+  | products             | *  | dict  |
+  | appliedRateTarget    | ** | dict |
+  | machinery            | ** | list of machineInfo objects |
+  | speed                | ** | dict |
+  | totalApplied         | ** | float |
+  | operationDescription | ** | string |
 
 
   \* = Always in response  
@@ -535,24 +537,25 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   | key | presence | type |
   | - | - | - |
-  | elevation         | *  | dict |
-  | harvestMoisture   | *  | dict |
-  | operationType     | *  | string "harvested" |
-  | totalArea         | *  | float |
-  | wetMass           | *  | dict | 
-  | wetMassPerArea    | *  | dict |
-  | wetVolume         | *  | dict |
-  | wetVolumePerArea  | *  | dict |
-  | totalWetVolume    | *  | float |
-  | totalWetMass      | *  | float |
-  | crop              | *  | string |
-  | dryMass           | ** | dict |
-  | dryMassPerArea    | ** | dict |
-  | dryVolume         | ** | dict |
-  | dryVolumePerArea  | ** | dict |
-  | speed             | ** | dict |
-  | variety           | ** | string |
-  | machinery         | ** | list of machineInfo objects |
+  | elevation            | *  | dict |
+  | harvestMoisture      | *  | dict |
+  | operationType        | *  | string "harvested" |
+  | totalArea            | *  | float |
+  | wetMass              | *  | dict | 
+  | wetMassPerArea       | *  | dict |
+  | wetVolume            | *  | dict |
+  | wetVolumePerArea     | *  | dict |
+  | totalWetVolume       | *  | float |
+  | totalWetMass         | *  | float |
+  | crop                 | *  | string |
+  | dryMass              | ** | dict |
+  | dryMassPerArea       | ** | dict |
+  | dryVolume            | ** | dict |
+  | dryVolumePerArea     | ** | dict |
+  | speed                | ** | dict |
+  | variety              | ** | string |
+  | machinery            | ** | list of machineInfo objects |
+  | operationDescription | ** | string |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -565,13 +568,14 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   | key | presence | type |
   | - | - | - |
-  | elevation         | *  | dict |
-  | operationType     | *  | string "tillage" |
-  | totalArea         | *  | float |
-  | tillageDepthTarget| *  | float |
-  | tillageDepthActual| ** | float |
-  | speed             | ** | dict |
-  | machinery         | ** | list of machineInfo objects |
+  | elevation            | *  | dict |
+  | operationType        | *  | string "tillage" |
+  | totalArea            | *  | float |
+  | tillageDepthTarget   | *  | float |
+  | tillageDepthActual   | ** | float |
+  | speed                | ** | dict |
+  | machinery            | ** | list of machineInfo objects |
+  | operationDescription | ** | string |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests

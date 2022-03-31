@@ -16,7 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://api.withleaf.io/services/beta/api/input
+https://api.withleaf.io/services/beta/api
 ```
 
 See below the REST resources and their endpoints available in this service.
@@ -43,7 +43,7 @@ Get all varieties from a leaf user.
 | Parameter (to filter by) | Values
 | - | - |
 | `name` | text |
-| `crops` |  array text (["str, str"])|
+| `crops` | text |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:

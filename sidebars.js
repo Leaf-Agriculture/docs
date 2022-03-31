@@ -65,6 +65,11 @@ module.exports = {
               label: 'Prescriptions',
               items: ['beta_prescriptions_endpoints']
             },
+            {
+              type: 'category',
+              label: 'Input',
+              items: ['beta_input_endpoints']
+            }
           ]
         },
       ],

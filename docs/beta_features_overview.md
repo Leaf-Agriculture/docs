@@ -30,3 +30,9 @@ The prescription file is a zip file that should contain at least **three** files
 Our supported providers are:
 * Raven Slingshot
 * ClimateFieldView
+
+[3]: #input
+
+## Input
+
+This feature will fetch, from operation files, varieties of crops harvested/planted and products applied and store this data.

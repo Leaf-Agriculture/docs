@@ -2,6 +2,8 @@
 title: Overview
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 Leaf's system can be customized to present different behaviours across services. This is done using Configurations.
 
 All Api Owners start with a default configuration set. These configurations can be changed, but they can not be deleted or set to `null`.
@@ -33,4 +35,8 @@ Currently, available configurations are:
 - `operationsMergeRange` - Range used to consider if files are in the same operation. Default value is `5` days.
 - `operationsMergeRangeHarvested` - Range used to consider if harvest files are in the same operation. Default value is `21` days.
 - `fieldsAutoMerge` - Feature automatically merges fields that passes through the intersection parameter. Default value is `true`
-- 
+- `summaryGeometry` - Define how the summary geometry will be generated based in the operations geometries. It can assume the values `CONVEX_HULL` or `BUFFER`. The default value is `CONVEX_HULL`.
+<p align="center">
+    <img alt="Configuration comparison" src={useBaseUrl('img/config_summaryGeometry_comp.png')} />
+    <em>Operation points x CONVEX_HULL x BUFFER</em>
+</p>

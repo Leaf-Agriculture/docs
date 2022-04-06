@@ -506,7 +506,8 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
 
-
+Note: For `leafUsers` that has the `standardConfig` set to `off` the properties for the summary can have
+a different behavior depending on the operation to be processed. Check the Properties for the Standard Geojson section for more info
 
   </TabItem>
 
@@ -861,6 +862,10 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
 \* = Always in response  
 \*\* = Usually in response but not required to pass tests
+
+In order to turn our `Standard Geojson` more flexible, the configuration `operationStandard` is a toggle feature is available
+so the user can process files across the `operationType` that does not get accommodated by our model but still adds value to your 
+application
 
 Despite the example units, Leaf's API will push through every unit, if the processed file contains the `required` (marked with *) properties.
 

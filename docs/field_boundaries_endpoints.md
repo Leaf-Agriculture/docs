@@ -572,7 +572,32 @@ A JSON list of Fields.
 
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body. The minimum intersection percentage is given by 
-`intersectionThreshold`, its default value is 0.01%.
+`intersectionThreshold` and can range from 0.01% to 100%, its default value is `0.01`.
+
+<p align="center">
+  <img alt="How it works" width="75%" src={useBaseUrl('img/field_by_geometry.png')} />
+</p>
+
+
+The `intersectionThreshold` can be compared with the "intersected area x total field area" ratio or the "intersected area x geometry area" ratio. Whichever is satisfied first.
+
+Here we have a sample for a field of 100 area unit and a geometry of 10 area unit:  
+
+<p align="center">
+  <img alt="How it works" width="35%" src={useBaseUrl('img/field_by_geometry_intersectionThreshold.png')} />
+</p>
+
+So, in this case:  
+
+| intersectionThreshold (%) | satisfied |
+| - | - |
+| 3 | ✅ |
+| 5 | ✅ |
+| 37 | ✅ |
+| 50 | ✅ |
+| 75 | ❌ |
+| 100 | ❌ |
+
 
 #### Response
 A JSON list of Fields.

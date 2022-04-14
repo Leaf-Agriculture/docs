@@ -328,7 +328,7 @@ A Field as a JSON object.
 
 &nbsp<span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/fields/{id}`
 
-Update the Field by `id` for the user `leafUserId`. Request body accept the updatable field properties like `"name"` to update the field name, `"farmId"` to update the related Farm of the Field and `"geometry"`, which represents the boundaries of the
+Update the Field by `id` for the user `leafUserId`. The request body accepts updatable field properties like `"name"` to update the field name, `"farmId"` to update the related Farm of the Field and `"geometry"`, which represents the boundaries of the
 Field as a GeoJSON geometry (it must be a `"MultiPolygon"`).
 
 Request body example:

@@ -579,15 +579,15 @@ the request body. The minimum intersection percentage is given by
 </p>
 
 
-The `intersectionThreshold` can be compared with the "intersected area x total field area" ratio or the "intersected area x geometry area" ratio. Whichever is satisfied first.
+The `intersectionThreshold` can be compared with the "intersection by field" ratio or the "intersection by geometry" ratio. Whichever is satisfied first.
 
-Here we have a sample for a field of 100 area unit and a geometry of 10 area unit:  
+Here we have a sample for a field with 100 area unit and a geometry with 10 area unit:  
 
 <p align="center">
   <img alt="How it works" width="35%" src={useBaseUrl('img/field_by_geometry_intersectionThreshold.png')} />
 </p>
 
-So, in this case:  
+So, in this case, if the `intersectionThreshold` were 3, then the condition would be satisfied and the field would be returned, but if the value was greater than 50, then it would not satisfy the condition, as 50% is the highest intersection value:
 
 | intersectionThreshold (%) | satisfied |
 | - | - |

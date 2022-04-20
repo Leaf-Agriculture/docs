@@ -26,6 +26,7 @@ This service has the following endpoints available:
 | [Get all fields](#get-all-fields)                                         | <span class="badge badge--success">GET</span> `/fields`                                                     |
 | [Get a field](#get-a-field)                                               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                     |
 | [Create a field](#create-a-field)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
+| [Update a field](#update-a-field)                                         | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
 | [Get all operations of a field](#get-all-operations-of-a-field)           | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
 | [Get an operation of a field](#get-an-operation-of-a-field)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
 | [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated) | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
@@ -317,6 +318,117 @@ A Field as a JSON object.
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
+      'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Update a Field
+
+&nbsp<span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/fields/{id}`
+
+Update the Field by `"id"` for the user `"leafUserId"`. The request body accepts updatable field properties like `"name"` to update the field name, `"farmId"` to update the related Farm of the Field and `"geometry"`, which represents the boundaries of the
+Field as a GeoJSON geometry (it must be a `"MultiPolygon"`).
+
+Request body example:
+
+```json
+{
+  "name": "updatedName",
+  "farmId": 1,
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [-93.48821327980518, 41.77137549568163],
+          [-93.48817333680519, 41.77143534378164],
+          [-93.48821327390516, 41.76068857977987],
+          [-93.48821327980518, 41.77137549568163]
+        ]
+      ]
+    ]
+  }
+}
+```
+
+
+#### Response
+A [Field](#field-resource) as a JSON object.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    name: "updatedName",
+    farmId: 1,
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [
+        [-93.48821327980518, 41.77137549568163],
+        [-93.48817333680519, 41.77143534378164],
+        [-93.48821327390516, 41.76068857977987],
+        [-93.48821327980518, 41.77137549568163]
+      ]
+    }
+  }
+
+  axios.patch(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'updatedName',
+    'farmId': 1,
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [
+        [-93.48821327980518, 41.77137549568163],
+        [-93.48817333680519, 41.77143534378164],
+        [-93.48821327390516, 41.76068857977987],
+        [-93.48821327980518, 41.77137549568163]
+      ]
+    }
+  }
+
+  response = requests.patch(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PATCH \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "updatedName", "farmId": 1, "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
       'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
   ```
 

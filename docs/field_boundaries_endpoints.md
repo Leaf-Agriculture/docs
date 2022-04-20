@@ -120,27 +120,45 @@ A JSON array containing Fields.
   [
     {
       "id": "3031c20d-4331-4a24-bac0-c27087fc901f",
+      "name": "str",
       "leafUserId": "5db46916-54a0-4b38-a9b1-d8e00673db63",
-      "area": {
-        "value": 20.25,
-        "unit": "ha"
-      },
-      "boundaries": [
-        "b1bbce79-b3ef-463b-adee-3308f0d5a5a4"
-      ],
       "providerName": "JohnDeere",
+      "providerFieldName": "Right side by the lake",
       "providerId": 2,
       "providerFieldId": "48926e0d-9bb7-4618-9214-3c2bf50d9ac2",
       "providerBoundaryId": "5bfab976-df1b-44c7-ab83-ee5befdd45af",
-      "providerFieldName": "Right side by the lake",
       "organizationId": "469039",
       "type": "ORIGINAL",
-      "name": "field with name",
-      "createTime": "2022-04-19T20:15:54.465147Z",
-      "updatedTime": "2022-04-19T22:15:54.465147Z",
       "farmId": 1530952,
-      "mergedFieldId" : "2642d479-e66a-4c06-855e-20119056ed2c",
-      "sources" : [] 
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                  -48.62195051987687,
+                  -27.35030179570155
+              ],
+              [
+                  -48.62099028904954,
+                  -27.351783623790567
+              ],
+              [
+                  -48.61883379300156,
+                  -27.349906320545184
+              ],
+              [
+                  -48.619777930574806,
+                  -27.34842446734229
+              ],
+              [
+                  -48.62195051987687,
+                  -27.35030179570155
+              ]
+            ]
+          ]
+        ]
+      }
     }
   ]
   ```
@@ -626,25 +644,29 @@ A JSON list of Fields.
 
   </TabItem>
 
-  <TabItem value="res">
+  <TabItem value="json">
 
-  ```json
+  ```shell
   [
     {
-      "id": "5790b0a9-66a2-45fe-a992-db7c3a3d9a19",
-      "leafUserId": "64025f44-9483-4666-829c-8d9ecfd25d11",
-      "area": {
-        "value": 23.659422807502747,
-        "unit": "ha"
-        },
-        "boundaries": [
-          "136b16e9-ee4a-4469-872c-ff5fe4b019b7"
-        ],
-        "type": "ORIGINAL",
-        "name": "newField",
-        "createdTime": "2022-04-19T20:22:04.406470Z",
-        "updatedTime": "2022-04-19T20:22:04.406470Z",
-        "sources": []
+      "id": "id",
+      "leafUserId": "uuid",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [-89.84388470649719,39.71943436012731],
+              [-89.84392762184143,39.72439389620628],
+              [-89.83936786651611,39.725392361998416],
+              [-89.83928203582764,39.71951688444436],
+              [-89.84388470649719,39.71943436012731]
+            ]
+          ]
+        ]
+      },
+      "type": "MERGED",
+      "sources": []
     }
   ]
   ```

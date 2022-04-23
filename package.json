@@ -1,17 +1,22 @@
 {
   "name": "leaf",
-  "version": "0.0.0",
+  "version": "2.82.0",
   "private": true,
   "scripts": {
+    "start:dev": "npm run swizzle docusaurus-lunr-search SearchBar && npm start",
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "serve": "docusaurus serve"
+    "serve": "docusaurus serve",
+    "test": "jest"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.16.7",
+    "@babel/runtime": "^7.17.9",
     "@docusaurus/core": "^2.0.0-alpha.61",
     "@docusaurus/preset-classic": "^2.0.0-alpha.61",
+    "@testing-library/jest-dom": "^5.16.4",
     "classnames": "^2.3.0",
     "docusaurus-lunr-search": "^2.1.11",
     "node": "^16.10.0",
@@ -29,5 +34,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@testing-library/react": "^12.1.2",
+    "jest": "^27.5.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }

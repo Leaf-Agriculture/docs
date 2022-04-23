@@ -18,7 +18,6 @@ You will receive your Leaf Token as response.
 **All set!** Include this token in your API calls and you will have access to
 Leaf's API.
 
-
 <Tabs
   defaultValue="sh"
   values={[
@@ -77,7 +76,7 @@ This request will return your access token to Leaf's API:
 }
 ```
 
-_note: Your Leaf Token lasts for 30 days with "rememberMe": "true" in the
+_Note: Your Leaf Token lasts for 30 days with "rememberMe": "true" in the
 json. If you want it to last only 24h, feel free to set "rememberMe" to "false"._  
 _After expiration, just make the same request to the same endpoint and you will
 get a new access token. _

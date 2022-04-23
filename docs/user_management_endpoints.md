@@ -268,10 +268,8 @@ A Leaf User as a JSON object.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -282,12 +280,9 @@ A Leaf User as a JSON object.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -325,10 +320,8 @@ A JSON array containing Leaf Users.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -339,12 +332,9 @@ A JSON array containing Leaf Users.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -414,17 +404,14 @@ A Leaf User with the id assigned to it and it's credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     name: "str",
     email: "help@withleaf.io",
     phone: "str",
     address: "str"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -435,19 +422,15 @@ A Leaf User with the id assigned to it and it's credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     'name': 'str",
     'email': 'help@withleaf.io',
     'phone': 'str',
     'address': 'str',
   }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -518,10 +501,8 @@ A Leaf User with the id assigned to it and it's credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     id: "UUID",
     name: "str",
@@ -529,7 +510,6 @@ A Leaf User with the id assigned to it and it's credentials.
     phone: "str",
     address: "str"
   }
-
   axios.put(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -540,12 +520,9 @@ A Leaf User with the id assigned to it and it's credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     'id': "UUID",
     'name': 'str",
@@ -553,7 +530,6 @@ A Leaf User with the id assigned to it and it's credentials.
     'phone': 'str',
     'address': 'str',
   }
-
   response = requests.put(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -589,10 +565,8 @@ Deletes an existing Leaf User by id.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -603,12 +577,9 @@ Deletes an existing Leaf User by id.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
@@ -661,10 +632,8 @@ Get the John Deere credentials of the Leaf User based on its id and returns a JS
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/john-deere-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -675,12 +644,9 @@ Get the John Deere credentials of the Leaf User based on its id and returns a JS
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/john-deere-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -727,7 +693,6 @@ A John Deere credentials with status.
   "refreshToken": "str",
   "status": "str",
   "clientEnvironment": "STAGE or PRODUCTION"
-
 }
 ```
 
@@ -745,10 +710,8 @@ A John Deere credentials with status.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/john-deere-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     "clientKey": "str",
     "clientSecret": "str",
@@ -756,7 +719,6 @@ A John Deere credentials with status.
     "refreshToken": "str",
     "clientEnvironment": "STAGE or PRODUCTION"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -767,12 +729,9 @@ A John Deere credentials with status.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/john-deere-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     "clientKey": "str",
     "clientSecret": "str",
@@ -780,7 +739,6 @@ A John Deere credentials with status.
     "refreshToken": "str",
     "clientEnvironment": "STAGE or PRODUCTION"
   }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -816,10 +774,8 @@ Delete Leaf User's John Deere credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/john-deere-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -830,12 +786,9 @@ Delete Leaf User's John Deere credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/john-deere-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
@@ -884,10 +837,8 @@ Get a Climate Field View credentials object by its id. If during background proc
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/climate-field-view-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -898,12 +849,9 @@ Get a Climate Field View credentials object by its id. If during background proc
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/climate-field-view-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -963,17 +911,14 @@ A Climate Field View credential with status.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/climate-field-view-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     "clientId": "str",
     "clientSecret": "str",
     "apiKey": "str",
     "refreshToken": "str"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -984,19 +929,15 @@ A Climate Field View credential with status.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/climate-field-view-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     "clientId": "str",
     "clientSecret": "str",
     "apiKey": "str",
     "refreshToken": "str"
   }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -1031,10 +972,8 @@ Delete Leaf User's Climate Field View credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/climate-field-view-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1045,12 +984,9 @@ Delete Leaf User's Climate Field View credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/climate-field-view-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1091,10 +1027,8 @@ A Trimble credentials resource as a JSON.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/trimble-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1105,12 +1039,9 @@ A Trimble credentials resource as a JSON.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/trimble-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1159,17 +1090,14 @@ A Trimble credentials with status.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/trimble-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     "userName": "str",
     "password": "str",
     "applicationName": "str",
     "serviceIdentityId": "str"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1180,19 +1108,15 @@ A Trimble credentials with status.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/trimble-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     "userName": "str",
     "password": "str",
     "applicationName": "str",
     "serviceIdentityId": "str"
   }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -1227,10 +1151,8 @@ Delete a Leaf User's Trimble credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/trimble-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1241,12 +1163,9 @@ Delete a Leaf User's Trimble credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/trimble-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1286,10 +1205,8 @@ A CNHI credentials resource as a JSON.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/cnhi-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1300,12 +1217,9 @@ A CNHI credentials resource as a JSON.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/cnhi-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1355,10 +1269,8 @@ A CNHI Credentials with status.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/cnhi-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     "clientId": "str",
     "clientSecret": "str",
@@ -1366,7 +1278,6 @@ A CNHI Credentials with status.
     "refreshToken": "str",
     "clientEnvironment": "STAGE or PRODUCTION"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1377,12 +1288,9 @@ A CNHI Credentials with status.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/cnhi-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     "clientId": "str",
     "clientSecret": "str",
@@ -1390,7 +1298,6 @@ A CNHI Credentials with status.
     "refreshToken": "str",
     "clientEnvironment": "STAGE or PRODUCTION"
   }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -1426,10 +1333,8 @@ Delete Leaf User's CNHI credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/cnhi-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1440,12 +1345,9 @@ Delete Leaf User's CNHI credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/cnhi-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1484,10 +1386,8 @@ values={[
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1498,12 +1398,9 @@ values={[
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1552,17 +1449,14 @@ values={[
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     "apiKey": "str",
     "accessToken": "str",
     "accessTokenClient": "str",
     "refreshToken": "str"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1573,19 +1467,15 @@ values={[
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     "apiKey": "str",
     "accessToken": "str",
     "accessTokenClient": "str",
     "refreshToken": "str"
    }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -1621,10 +1511,8 @@ values={[
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1635,12 +1523,9 @@ values={[
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1679,10 +1564,8 @@ A Raven credentials resource as a JSON.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1693,12 +1576,9 @@ A Raven credentials resource as a JSON.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1746,16 +1626,13 @@ A Raven Credentials with status.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     "clientId": "str",
     "clientSecret": "str",
     "refreshToken": "str"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1766,18 +1643,14 @@ A Raven Credentials with status.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     "clientId": "str",
     "clientSecret": "str",
     "refreshToken": "str"
   }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -1812,10 +1685,8 @@ Delete Leaf User's Raven credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1826,12 +1697,9 @@ Delete Leaf User's Raven credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1875,10 +1743,8 @@ A AgLeader credentials resources as a JSON.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1889,12 +1755,9 @@ A AgLeader credentials resources as a JSON.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1944,17 +1807,14 @@ A Raven Credentials with status.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     "accessToken": "str", 
     "refreshToken": "str", 
     "privateKey": "str", 
     "publicKey": "str"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -1965,19 +1825,15 @@ A Raven Credentials with status.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     "accessToken": "str", 
     "refreshToken": "str", 
     "privateKey": "str", 
     "publicKey": "str"
   }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -2012,10 +1868,8 @@ Delete Leaf User's AgLeader credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -2026,12 +1880,9 @@ Delete Leaf User's AgLeader credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```
@@ -2072,10 +1923,8 @@ A Raven Slingshot credentials resources as a JSON.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -2086,12 +1935,9 @@ A Raven Slingshot credentials resources as a JSON.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
@@ -2141,16 +1987,13 @@ A Raven Slingshot Credentials with status.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   const data = {
     "apiKey": "str",
     "accessKey": "str",
     "sharedSecret": "str"
   }
-
   axios.post(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -2161,18 +2004,14 @@ A Raven Slingshot Credentials with status.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   data = {
     "apiKey": "str",
     "accessKey": "str",
     "sharedSecret": "str"
   }
-
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
@@ -2208,10 +2047,8 @@ Delete Leaf User's Raven Slingshot credentials.
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
   axios.delete(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
@@ -2222,12 +2059,9 @@ Delete Leaf User's Raven Slingshot credentials.
 
   ```py
   import requests
-
   TOKEN = 'YOUR_TOKEN'
-
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/raven-slingshot-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
   response = requests.delete(endpoint, headers=headers)
   print(response.json())
   ```

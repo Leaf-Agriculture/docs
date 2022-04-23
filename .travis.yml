@@ -15,6 +15,7 @@ install:
   - npx browserslist@latest --update-db
 
 script:
+  - npm run test
   - npm run swizzle docusaurus-lunr-search SearchBar
   - npm run build
 

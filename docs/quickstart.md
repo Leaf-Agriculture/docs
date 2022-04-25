@@ -96,7 +96,7 @@ Let's take a look at the fields endpoint to see the sample field:
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-      'https://api.withleaf.io/services/satellite/api/fields'
+      'https://api.withleaf.io/services/fields/api/fields'
   ```
 
   </TabItem>

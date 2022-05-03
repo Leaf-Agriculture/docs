@@ -62,6 +62,7 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
 - `sort`, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc
+  - Valid values for sorting are: id, leafUserId, name, provider, providerOrganizationId, providerMachineId, serialNumber, vin, model, make, category
 
 For more request examples see [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
 
@@ -321,6 +322,7 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
 - `sort`, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc
+  - Valid values for sorting are: id, leafUserId, machineId, startTime, endTime, createdAt, leafFileId
 
 For more request examples see [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
 

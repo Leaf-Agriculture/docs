@@ -55,6 +55,7 @@ Get the list of machines that are related to a given LeafUserId. Some fields can
 | `createdAt`| must match exactly the time of the record creation, ISO 8601 without timezone |
 | `beforeCreatedAt`|  filters for records created before the datetime, ISO 8601 without timezone |
 | `afterCreatedAt` | filters for records created after the datetime, ISO 8601 without timezone |
+| `vin` | filters machines that have this Vehicle Identification Number |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -125,17 +126,33 @@ The response is a JSON array containing machine records.
     "id": "UUID",
     "leafUserId": "UUID",
     "name": "str",
-    "provider": "str",
-    "providerMachineId": "str",
-    "providerOrganizationId": "str"
+    "provider": null,
+    "providerMachineId": null,
+    "providerOrganizationId": null,
+    "originType": "PROVIDER_POOLED",
+    "createdAt": "2022-02-22T20:06:25.411Z",
+    "serialNumber": "123456",
+    "vin": "1234567890ABC",
+    "model": "ModelName",
+    "make": "MakerOfMachine",
+    "category": "Sprayer",
+    "modelYear": 2000
   },
   {
     "id": "UUID",
     "leafUserId": "UUID",
     "name": "str",
-    "provider": "str",
-    "providerMachineId": "str",
-    "providerOrganizationId": "str"
+    "provider": null,
+    "providerMachineId": null,
+    "providerOrganizationId": null,
+    "originType": "FILE_POOLED",
+    "createdAt": "2022-02-22T20:06:25.411Z",
+    "serialNumber": "123456",
+    "vin": "1234567890ABC",
+    "model": "ModelName",
+    "make": "MakerOfMachine",
+    "category": "Harvester",
+    "modelYear": 2020
   }
 ]
 ```
@@ -288,7 +305,15 @@ A machine record with more details.
   "name": "str",
   "provider": null,
   "providerMachineId": null,
-  "providerOrganizationId": null
+  "providerOrganizationId": null,
+  "originType": "PROVIDER_POOLED",
+  "createdAt": "2022-02-22T20:06:25.411Z",
+  "serialNumber": "123456",
+  "vin": "1234567890ABC",
+  "model": "ModelName",
+  "make": "MakerOfMachine",
+  "category": "Sprayer",
+  "modelYear": 2000
 }
 ```
 

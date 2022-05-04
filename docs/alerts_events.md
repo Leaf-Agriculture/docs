@@ -170,7 +170,7 @@ Alerts for this event are in the following format:
 
 ```json
 {
-  "fileId": "the id of the uploaded file",
+  "operationId": "the id of the operation created",
   "leafUserId": "the id of the file owner",
   "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
   "type": "operationCreated"
@@ -186,7 +186,7 @@ Alerts for this event are in the following format:
 
 ```json
 {
-  "fileId": "the id of the uploaded file",
+  "operationId": "the id of the operation uploaded",
   "leafUserId": "the id of the file owner",
   "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
   "type": "operationUpdated"
@@ -202,10 +202,10 @@ Alerts for this event are in the following format:
 
 ```json
 {
-  "operationId": "704362a3-d776-4364-8f65-04a4266d0743",
-  "leafUserId": "8a7dec31-47d6-4c09-8c3d-26092b679eb4",
+  "operationId": "the id of the operation uploaded",
+  "leafUserId": "the id of the file owner",
   "type": "operationProcessingFinished",
-  "timestamp": "2022-03-14T20:02:14.297063Z"
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -289,8 +289,8 @@ Alerts for this event are in the following format:
 {
   "type": "machineCreated",
   "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-  "machineId": "UUID",
-  "leafUserId": "UUID"
+  "machineId": "the id of the new machine",
+  "leafUserId": "the id of the file owner",
 }
 ```
 
@@ -304,8 +304,8 @@ Alerts for this event are in the following format:
 {
   "type": "machineUpdated",
   "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-  "machineId": "UUID",
-  "leafUserId": "UUID"
+  "machineId": "the id of the machine uploaded",
+  "leafUserId": "the id of the file owner",
 }
 ```
 
@@ -319,7 +319,7 @@ Alerts for this event are in the following format:
 {
   "type": "machineDeleted",
   "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-  "machineId": "UUID",
-  "leafUserId": "UUID"
+  "machineId": "the id of the machine deleted",
+  "leafUserId": "the id of the file owner",
 }
 ```

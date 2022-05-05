@@ -1,5 +1,5 @@
 ---
-title: General Setup Info
+title: General Setup Information
 ---
 
 # Pagination

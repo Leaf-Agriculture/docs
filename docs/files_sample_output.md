@@ -558,9 +558,10 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | operationDescription | ** | string |
 
   \* = Always in response  
-  \*\* = Usually in response but not required to pass tests
-    \$ = Not available when the crop type is *sugarcane*
-
+  \*\* = Usually in response but not required to pass tests  
+    $ = Not available when the crop is *sugarcane*
+  
+  
   </TabItem>
   <TabItem value="tillage">
 
@@ -859,8 +860,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 </Tabs>
 
 \* = Always in response  
-\*\* = Usually in response but not required to pass tests
-\$ = Not available when the crop type is *sugarcane*
+\*\* = Usually in response but not required to pass tests  
+\$ = Not available when the crop is *sugarcane*
 
 Despite the example units, Leaf's API will push through every unit, if the processed file contains the `required` (marked with *) properties.
 

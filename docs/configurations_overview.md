@@ -33,4 +33,4 @@ Currently, available configurations are:
 - `operationsMergeRange` - Range used to consider if files are in the same operation. Default value is `5` days.
 - `operationsMergeRangeHarvested` - Range used to consider if harvest files are in the same operation. Default value is `21` days.
 - `fieldsAutoMerge` - Feature automatically merges fields that passes through the intersection parameter. Default value is `true`
-- 
+- `operationsAutoSync` -  If set to `true`, Leaf will automatically synchronize provider's operations. The default value is `true`.

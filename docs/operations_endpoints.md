@@ -47,6 +47,7 @@ below.
 | `leafUserId` | uuid of one of your users |
 | `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|
 | `startTime` | ISO 8601 date. Returns operations from the startTime onward |
+| `updatedTime` | ISO 8601 date. Returns operations from the updatedTime onward |
 | `endTime` | ISO 8601 date. Returns operations until the endTime |
 | `operationType` | `applied`, `planted` or `harvested` |
 | `fieldId` | the field where the operation happened |

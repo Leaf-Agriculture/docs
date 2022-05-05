@@ -543,8 +543,8 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | totalArea            | *  | float |
   | wetMass              | *  | dict | 
   | wetMassPerArea       | *  | dict |
-  | wetVolume            | *  | dict |
-  | wetVolumePerArea     | *  | dict |
+  | wetVolume            | *$  | dict |
+  | wetVolumePerArea     | *$  | dict |
   | totalWetVolume       | *  | float |
   | totalWetMass         | *  | float |
   | crop                 | *  | string |
@@ -559,8 +559,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
-
-
+    \$ = Not available when the crop type is *sugarcane*
 
   </TabItem>
   <TabItem value="tillage">
@@ -824,16 +823,16 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
   | wetMass           | * | float       | lb or kg       | wet mass harvested in that point |
   | wetMassPerArea    | * | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
-  | wetVolume         | * | float       | bu or L        | wet volume harvested in that point |
-  | wetVolumePerArea  | * | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
+  | wetVolume         | *$ | float       | bu or L        | wet volume harvested in that point |
+  | wetVolumePerArea  | *$ | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
   | variety           | ** | string      | -              | The variety of seed being harvested |
   | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
   | heading           | ** | float       | degrees        | Heading of machine at point |
   | machinery         | ** | list of machineInfo objects        | -              | name of machine & implement |
   | dryMass           | ** | float       | lb or kg       | dry mass harvested in that point |
   | dryMassPerArea    | ** | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
-  | dryVolume         | ** | float       | bu or L        | dry volume harvested in that point |
-  | dryVolumePerArea  | ** | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
+  | dryVolume         | **$ | float       | bu or L        | dry volume harvested in that point |
+  | dryVolumePerArea  | **$ | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
   | sectionId         | ** | int         | int            | ID of implement sensor section |
 
   </TabItem>
@@ -861,6 +860,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
 \* = Always in response  
 \*\* = Usually in response but not required to pass tests
+\$ = Not available when the crop type is *sugarcane*
 
 Despite the example units, Leaf's API will push through every unit, if the processed file contains the `required` (marked with *) properties.
 

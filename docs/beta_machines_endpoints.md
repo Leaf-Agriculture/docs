@@ -55,6 +55,11 @@ Get the list of machines that are related to a given LeafUserId. Some fields can
 | `createdAt`| must match exactly the time of the record creation, ISO 8601 without timezone |
 | `beforeCreatedAt`|  filters for records created before the datetime, ISO 8601 without timezone |
 | `afterCreatedAt` | filters for records created after the datetime, ISO 8601 without timezone |
+| `vin` | vehicle identification number (VIN) i |
+| `model` | text |
+| `make` | text |
+| `category` | text |
+| `modelYear` | number |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:

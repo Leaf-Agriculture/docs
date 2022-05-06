@@ -7,22 +7,6 @@ Leaf's
 service uses Sentinel-2 data which has the highest resolution publicly available
 and revisits each field every 3 to 5 days.
 
-:::success You can get historical images with Leaf.
-
-By default, Leaf retrieves images from 30 days prior to the creation of your
-field. But you can increase that to as far back in time as you want.
-[Here's how](/docs/docs/satellite_endpoints#post-fields)
-:::
-
-<!--
-<img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
--->
-
-This API accepts field boundary polygons and returns processed, cropped, and
-color-corrected RGB and NDVI images every time there is a new image available.
-We also provide information like percent cloud coverage of the field, the data
-coverage percentage, and the Sentinel tile source for each image as well.
-
 We generate a total of 19 images for each intersected field: A GeoTiff for each
 band from Sentinel and processed RGB and NDVI images.
 
@@ -66,9 +50,6 @@ In addition, you will get the NDVI (i.e., we call them at Leaf as `NDVI_relative
 
 Left - NDVI relative. Center - NDVI absolute. Right - NDVI.  
 We recommend using the Right one (just ndvi.png)
-
-Currently, our Satellite service runs without a relationship between our Field Services, and the User Management Services.
-However, we are working to integrate it into the `leafUser` hierarchy, and the Fields Service.
 
 See the [Satellite API Reference][satellite_endpoints] for more information.
 

@@ -870,15 +870,17 @@ Despite the example units, Leaf's API will push through every unit, if the proce
 
 The points in the standardGeoJSON are considered valid if all the following rules are true:
 
-"wetMass" > 0.0
-"wetMassPerArea" > 0.0
-"wetVolume" > 0.0
-"wetVolumePerArea" > 0.0
-"harvestMoisture" > 0.0
-"appliedRate" > 0.0
-"seedRate" > 0.0
-"tillageDepthActual" > 0.0
-"recordingStatus" == "On"
+| property  |  rule |
+|---|---|
+|  wetMass |  > 0.0 |
+|  wetMassPerArea |  > 0.0 |
+|  wetVolume |  > 0.0 |
+|  wetVolumePerArea |  > 0.0 |
+|  harvestMoisture |  > 0.0 |
+|  appliedRate |  > 0.0 |
+|  seedRate |  > 0.0 |
+|  tillageDepthActual |  > 0.0 |
+|  recordingStatus | = "On" |
 
 If necessary Leaf API can automatically clean these points up using the configuration [`cleanupStandardGeojson`](configurations_overview.md).
 

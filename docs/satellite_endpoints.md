@@ -111,10 +111,10 @@ It returns a list of JSON objects
             "type": "MultiPolygon",
             "coordinates": [...]
         }
+        "providers": [
+          "sentinel", "planet"
+        ]
     },
-    "providers": [
-      "sentinel", "planet"
-    ]
 ]
 ```
 

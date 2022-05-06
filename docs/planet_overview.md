@@ -35,3 +35,8 @@ The following table shows all the images with its resolutions and types:
 
 * A fifth band will be available by using the `assetType`: `analitic_5b` (red egde band) were the default value is 
 `analitic_sr` which are images with atmospheric reflectance correction.
+
+Currently, our Satellite service runs without a relationship between our Field Services, and the User Management Services.
+However, we are working to integrate it into the `leafUser` hierarchy, and the Fields Service.
+
+See the [Satellite API Reference][satellite_endpoints] for more information.

@@ -38,7 +38,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Satellite',
-          items: ['satellite_overview', 'satellite_endpoints']
+          items: ['satellite_overview', 'sentinel_overview', 'satellite_endpoints']
         },
         {
           type: 'category',

@@ -861,7 +861,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
 \* = Always in response  
 \*\* = Usually in response but not required to pass tests  
-\$ = Not available when the crop is *sugarcane*
+$ = Not available when the crop is *sugarcane*
 
 Despite the example units, Leaf's API will push through every unit, if the processed file contains the `required` (marked with *) properties.
 

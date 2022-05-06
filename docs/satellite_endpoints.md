@@ -34,6 +34,7 @@ Description | Endpoints
 [8]: #delete-a-satellite-field
 [9]: alerts_events#satellite-events
 [10]: #get-an-image-of-satellite-field
+[11]: satellite_overview#providers
 
 ---
 
@@ -206,13 +207,15 @@ It returns a single JSON object with the following entries (like each item from
 
 &nbsp<span class="badge badge--success">GET</span> `/fields/{id}/processes`
 
-Returns images for a given field id.
+Returns images for a given field `id`.
 
 We return the following images, (tifs are EPSG:4326, pngs are EPSG:3857):
-  - RGB as tiff and as png (10m resolution)
-  - Colorized NDVI as tiff and as png (10m resolution)
-  - Raw NDVI as tiff (10m resolution)
-  - all 12 Sentinel-2 bands as tiff.
+- RGB as tiff and as png
+- Colorized NDVI as tiff and as png
+- Raw NDVI as tiff
+- All bands as tiff.
+
+_Check the [comparison page][11] to identify the resolution and bands available for each provider._
 
 It is possible to filter the results by a number of different parameters:
 

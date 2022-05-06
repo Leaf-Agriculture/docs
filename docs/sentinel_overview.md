@@ -14,7 +14,9 @@ field. But you can increase that to as far back in time as you want.
 [Here's how](/docs/docs/satellite_endpoints#post-fields)
 :::
 
+<!--
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
+-->
 
 This API accepts field boundary polygons and returns processed, cropped, and
 color-corrected RGB and NDVI images every time there is a new image available.
@@ -58,7 +60,9 @@ like [QGis][4], and use it as you please.
 
 In addition, you will get the NDVI (i.e., we call them at Leaf as `NDVI_relative.png`, `NDVI_absolute.png` and `NDVI.png`)  cut for your area of interest. The NDVI relative uses the minimum and maximum of the image of that date and, therefore, you would have a color scale to better visualize the differences of your harvest for that specific moment, whereas, the NDVI absolute and NDVI, whose range goes from `-1 `to `1`, you can make comparisons on different dates, the difference between these files are the color ramp applied (i.e., in the NDVI all the values below `0` are bright red while in the NDVI absolute the color ramp begins at `-1` as the bright red and the value `1` as the bright green inteporlated in between).
 
+<!--
 <img alt="NDVI example: Left - NDVI relative, Center - NDVI absolute, Right - NDVI" src={useBaseUrl('img/ndvi_files.png')} />
+-->
 
 Left - NDVI relative. Center - NDVI absolute. Right - NDVI.  
 We recommend using the Right one (just ndvi.png)

@@ -76,3 +76,20 @@ See the [Satellite API Reference][satellite_endpoints] for more information.
 
 [satellite_endpoints]: satellite_endpoints.md
 [4]: https://www.qgis.org/en/site/
+
+## Providers
+
+Leaf currently offers access to Sentinel-2 and PlanetScope images through its API.
+Here is a summary comparison between the providers:
+
+|                     |  Sentinel-2 | PlanetScope |
+|---------------------|:-----------:|:-----------:|
+| Spatial resolution  | 10 m - 60 m |     3 m     |
+| Temporal resolution |  3 - 5 days |    1 day    |
+| Spectral resolution |  12 bands   | 4 - 5* bands|
+
+_* the number of bands will depend on the asset type requested_
+
+For all providers, in addition to the images of the isolated bands, the RGB and NDVI composition are available:
+
+<img alt="sentinel x planet rgb" src={useBaseUrl('img/sentinel_planet.png')} />

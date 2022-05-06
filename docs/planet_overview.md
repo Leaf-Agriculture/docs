@@ -22,8 +22,8 @@ The following table shows all the images with its resolutions and types:
 
 | Name           | Resolution (m) | Type               | Projection
 |:---------------|:---------------|:-------------------|:------------|
-| NDVI.png       | NULL           | png ndvi           | EPSG:4326   |
-| RGB.png        | NULL           | png RGB            | EPSG:4326   |
+| NDVI.png       | NULL           | png ndvi           | EPSG:3857   |
+| RGB.png        | NULL           | png RGB            | EPSG:3857   |
 | NDVI.tif       | 3              | tif raw ndvi values| EPSG:4326   |
 | NDVI_color.tif | 3              | tif colored ndvi   | EPSG:4326   |
 | RGB.tif        | 3              | tif RGB            | EPSG:4326   |

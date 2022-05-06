@@ -467,7 +467,8 @@ The payload of this object should be like the following:
 ```py
 {
     "externalId": "your field id",
-    "startDate": "2019-01-01"
+    "startDate": "2019-01-01",
+    "providers" : ["sentinel"],
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
@@ -477,6 +478,8 @@ The payload of this object should be like the following:
 
 - `externalId`: external ID used in the field's registration
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
+- `providers`: define the providers that will be used. Can be set to `planet`, `sentinel` or both. If not specified, is set to `sentinel` by default . 
+
 field
 
 <Tabs

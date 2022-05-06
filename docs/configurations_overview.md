@@ -35,3 +35,4 @@ Currently, available configurations are:
 - `fieldsAutoMerge` - Feature automatically merges fields that passes through the intersection parameter. Default value is `true`
 - `operationsAutoSync` -  If set to `true`, Leaf will automatically synchronize provider's operations. The default value is `true`.
 - `cleanupStandardGeojson` -  If set to `true`, Leaf will automatically remove [invalid points](files_sample_output.md#valid-points) from the standardGeoJSON file for operations. The default value is `false`.
+- `splitOperationsByField` - If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`.

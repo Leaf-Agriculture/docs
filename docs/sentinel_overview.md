@@ -3,6 +3,11 @@ title: Sentinel Overview
 ---
 
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+
 Leaf's
 service uses Sentinel-2 data which has the highest resolution publicly available
 and revisits each field every 3 to 5 days.
@@ -44,9 +49,7 @@ like [QGis][4], and use it as you please.
 
 In addition, you will get the NDVI (i.e., we call them at Leaf as `NDVI_relative.png`, `NDVI_absolute.png` and `NDVI.png`)  cut for your area of interest. The NDVI relative uses the minimum and maximum of the image of that date and, therefore, you would have a color scale to better visualize the differences of your harvest for that specific moment, whereas, the NDVI absolute and NDVI, whose range goes from `-1 `to `1`, you can make comparisons on different dates, the difference between these files are the color ramp applied (i.e., in the NDVI all the values below `0` are bright red while in the NDVI absolute the color ramp begins at `-1` as the bright red and the value `1` as the bright green inteporlated in between).
 
-<!--
 <img alt="NDVI example: Left - NDVI relative, Center - NDVI absolute, Right - NDVI" src={useBaseUrl('img/ndvi_files.png')} />
--->
 
 Left - NDVI relative. Center - NDVI absolute. Right - NDVI.  
 We recommend using the Right one (just ndvi.png)

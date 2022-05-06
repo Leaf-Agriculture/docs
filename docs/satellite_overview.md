@@ -48,3 +48,6 @@ _* the number of bands will depend on the asset type requested_
 For all providers, in addition to the images of the isolated bands, the RGB and NDVI composition are available:
 
 <img alt="sentinel x planet rgb" src={useBaseUrl('img/sentinel_planet.png')} />
+
+Currently, our Satellite service runs without a relationship between our Field Services, and the User Management Services.
+However, we are working to integrate it into the `leafUser` hierarchy, and the Fields Service.

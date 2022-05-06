@@ -21,30 +21,32 @@ There is a [REST resources](#rest-resources) section if you want to check it out
 
 This service has the following endpoints available:
 
-| Description                                                               | Endpoints                                                                                                   |
-|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| [Get all fields](#get-all-fields)                                         | <span class="badge badge--success">GET</span> `/fields`                                                     |
-| [Get a field](#get-a-field)                                               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                     |
-| [Create a field](#create-a-field)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
-| [Update a field](#update-a-field)                                         | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
-| [Get all operation files of a field](#get-all-operation-files-of-a-field)      | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
-| [Get an operation of a field](#get-an-operation-of-a-field)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
-| [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated) | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
-| [Get fields by geometry](#get-fields-by-geometry)                         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
-| [Get intersection of fields](#get-intersection-of-fields)                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
-| [Delete a field](#delete-a-field)                                         | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                   |
-| [Get all boundaries from field](#get-all-boundaries-from-field)           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`              |
-| [Get a boundary from field](#get-a-boundary-from-field)                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}` |
-| [Get active boundary from field](#get-active-boundary-from-field)         | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
-| [Update active boundary from field](#update-active-boundary-from-field)   | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
-| [Get all farms](#get-all-farms)                                           | <span class="badge badge--success">GET</span> `/farms`                                                      |
-| [Get a farm](#get-a-farm)                                                 | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                      |
-| [Create a farm](#create-a-farm)                                           | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                  |
-| [Update a farm](#update-a-farm)                                           | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`                              |
-| [Get all growers](#get-all-growers)                                       | <span class="badge badge--success">GET</span> `/growers`                                                    |
-| [Get a grower](#get-a-grower)                                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`                            |
-| [Create a grower](#create-a-grower)                                       | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                |
-| [Update a grower](#update-a-grower)                                       | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                            |
+| Description                                                                                       | Endpoints                                                                                                   |
+|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| [Get all fields](#get-all-fields)                                                                 | <span class="badge badge--success">GET</span> `/fields`                                                     |
+| [Get a field](#get-a-field)                                                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                     |
+| [Create a field](#create-a-field)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
+| [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
+| [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
+| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/files`                               |
+| [Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
+| [Get an operation of a field](#get-an-operation-of-a-field)                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/files/{id}`                          |
+| [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
+| [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
+| [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
+| [Delete a field](#delete-a-field)                                                                 | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                   |
+| [Get all boundaries from field](#get-all-boundaries-from-field)                                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`              |
+| [Get a boundary from field](#get-a-boundary-from-field)                                           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}` |
+| [Get active boundary from field](#get-active-boundary-from-field)                                 | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
+| [Update active boundary from field](#update-active-boundary-from-field)                           | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
+| [Get all farms](#get-all-farms)                                                                   | <span class="badge badge--success">GET</span> `/farms`                                                      |
+| [Get a farm](#get-a-farm)                                                                         | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                      |
+| [Create a farm](#create-a-farm)                                                                   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                  |
+| [Update a farm](#update-a-farm)                                                                   | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`                              |
+| [Get all growers](#get-all-growers)                                                               | <span class="badge badge--success">GET</span> `/growers`                                                    |
+| [Get a grower](#get-a-grower)                                                                     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`                            |
+| [Create a grower](#create-a-grower)                                                               | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                |
+| [Update a grower](#update-a-grower)                                                               | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                            |
 
 ## Endpoints
 
@@ -435,7 +437,9 @@ values={[
   </TabItem>
 </Tabs>
 
-### Get all operation files of a field
+### Get all operation files of a field (deprecated)
+
+Use [this endpoint](#get-all-operation-files-of-a-field-deprecated) instead
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
 
@@ -512,8 +516,87 @@ A JSON array of Files.
   </TabItem>
 </Tabs>
 
+### Get all operation files of a field
 
-### Get an operation of a field
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/files`
+
+Gets a paged list of all operation files of the Field and Leaf User specified in
+the URL.
+
+It is possible to filter the results by passing some query
+parameters. They are listed below.
+
+| Parameter (to filter by) | Type | Description
+| - | - | - |
+| operationType | String "harvested", "planted", "applied" or "other" | retrieve operations of given type
+| provider | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView" | retrieve operations of given provider
+| origin | String "provider", "automerged", "merged" or "uploaded" | retrieve operations of given origin
+| crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here](crops.md) | retrieve operations with this crop.
+| startTime | ISO 8601 datetime format | retrieve operations that started after this date
+| endTime | ISO 8601 datetime format | retrieve operations that ended before this date
+
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (default is 20, max is 100)
+
+#### Response
+A JSON array of Files.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+### Get an operation of a field (deprecated)
+
+See [this endpoint](#get-an-operation-of-a-field-deprecated) instead
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
 
@@ -566,6 +649,62 @@ A single Operation File.
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/files/{id}`
+
+Gets a single Operation File of a field by its id.
+
+#### Response
+A single Operation File.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'JavaScript', value: 'js', },
+{ label: 'Python', value: 'py', },
+{ label: 'cURL', value: 'sh', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files/{id}'
   ```
 
   </TabItem>

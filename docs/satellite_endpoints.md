@@ -112,7 +112,9 @@ It returns a list of JSON objects
             "coordinates": [...]
         }
     },
-    # etc...
+    "providers": [
+      "sentinel", "planet"
+    ]
 ]
 ```
 
@@ -191,7 +193,10 @@ It returns a single JSON object with the following entries (like each item from
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
-    }
+    },
+    "providers": [
+      "sentinel", "planet"
+    ]
 }
 ```
 
@@ -222,6 +227,7 @@ It is possible to filter the results by a number of different parameters:
 | status | string "SUCCESS", "FAILED" or "STARTED" | retrieve images with selected status | SUCCESS |
 | page | integer | page being fetched | 0 |
 | size | integer | how many processes (sets of all images) to return per page | 20 |
+| provider | string | sentinel or planet | - |
 
 :::info Important
 Default `page` is page 0 and default `size` is 20. So, to see more images,
@@ -293,7 +299,8 @@ curl -X GET \
     {
         "id": 0,
         "date": "2020-06-03T19:03:57.882Z",
-        "clouds": 0,
+        "clouds": 0, 
+        "provider": "sentinel",
         "bucketName": "sentinel-s2-l1c",
         "bucketKey": "tiles/10/S/FH/2020/6/3/0",
         "bucketRegion": "eu-central-1",
@@ -315,6 +322,7 @@ curl -X GET \
 
 - `date`: the date of the satellite image
 - `clouds`: cloud coverage percentage of the field, from 0 to 100
+- `provider`: the satellite provider (sentinel or planet) from where this process was created.
 - `bucketName`: name of Sentinel's bucket where the original tile is. Usually
 `sentinel-s2-l1c`
 - `bucketRegion`: AWS region of original image's bucket. Usually `eu-central-1`
@@ -399,6 +407,7 @@ curl -X GET \
   "id": 0,
   "date": "2020-06-03T19:03:57.882Z",
   "clouds": 0,
+  "provider": "sentinel",
   "bucketName": "sentinel-s2-l1c",
   "bucketKey": "tiles/10/S/FH/2020/6/3/0",
   "bucketRegion": "eu-central-1",

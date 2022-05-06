@@ -326,8 +326,8 @@ curl -X GET \
 - `date`: the date of the satellite image
 - `clouds`: cloud coverage percentage of the field, from 0 to 100
 - `provider`: the satellite provider (sentinel or planet) from where this process was created.
-- `bucketName`: name of Sentinel's bucket where the original tile is. Usually
-`sentinel-s2-l1c`
+- `bucketName`: name of satellite image bucket where the original tile is. Usually
+`sentinel-s2-l1c` or `leaf-planet-images-prd`
 - `bucketRegion`: AWS region of original image's bucket. Usually `eu-central-1`
 - `bucketKey`: base path of original satellite image
 - `status`: status of the process. It will be either `SUCCESS` or `FAILURE`
@@ -436,8 +436,8 @@ curl -X GET \
 
 Creates a new field
 
-It will be continuously monitored forever, and new images will arrive every ~5
-days (time it takes for the satellite to go over the same field when orbiting
+It will be continuously monitored forever, and new images will arrive based on the [provider selected][11], 
+because each one of them has a different temporal resolution (time it takes for the satellite to go over the same field when orbiting
 the Earth). If you don't need the field anymore, you can
 [delete the field.](/docs/docs/satellite_endpoints#delete-fieldsid)
 
@@ -467,7 +467,9 @@ The payload of this object should be like the following:
 ```py
 {
     "externalId": "your field id",
-    "startDate": "2019-01-01"
+    "startDate": "2019-01-01", 
+    "providers": ["sentinel", "planet"],
+    "assetType": "analytic_sr"
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
@@ -475,9 +477,11 @@ The payload of this object should be like the following:
 }
 ```
 
-- `externalId`: external ID used in the field's registration
+- `externalId`: external ID used in the field's registration.
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
-field
+field.
+- `providers`: Specify the satellite imagery source, if none is specified, Sentinel images will be retrived by default.
+- `assetType`: If the `providers` property contains `planet` you can select which `assetType` will be retrived. Default value is `analytic_sr`.
 
 <Tabs
   defaultValue="sh"

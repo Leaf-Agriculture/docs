@@ -28,9 +28,9 @@ This service has the following endpoints available:
 | [Create a field](#create-a-field)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
 | [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
 | [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
-| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/files`                               |
+| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`                    |
 | [Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
-| [Get an operation of a field](#get-an-operation-of-a-field)                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/files/{id}`                          |
+| [Get an operation of a field](#get-an-operation-of-a-field)                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`               |
 | [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
 | [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
 | [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
@@ -439,7 +439,7 @@ values={[
 
 ### Get all operation files of a field (deprecated)
 
-Use [this endpoint](#get-all-operation-files-of-a-field-deprecated) instead
+Use [this endpoint](#get-all-operation-files-of-a-field) instead
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
 
@@ -518,7 +518,7 @@ A JSON array of Files.
 
 ### Get all operation files of a field
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/files`
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`
 
 Gets a paged list of all operation files of the Field and Leaf User specified in
 the URL.
@@ -558,7 +558,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -574,7 +574,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -587,7 +587,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
   ```
 
   </TabItem>
@@ -596,7 +596,7 @@ values={[
 
 ### Get an operation of a field (deprecated)
 
-See [this endpoint](#get-an-operation-of-a-field-deprecated) instead
+Use [this endpoint](#get-an-operation-of-a-field) instead
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
 
@@ -654,7 +654,9 @@ A single Operation File.
   </TabItem>
 </Tabs>
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/files/{id}`
+### Get an operation of a field 
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`
 
 Gets a single Operation File of a field by its id.
 
@@ -675,7 +677,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files/{id}'
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -691,7 +693,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -704,7 +706,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/files/{id}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
   ```
 
   </TabItem>
@@ -2236,8 +2238,10 @@ Each boundary has a `status` and `providerStatus`.
 
 | Description | Endpoints
 | - | - |
-[Get all operations of a field](#get-all-operations-of-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
-[Get an operation of a field](#get-an-operation-of-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
+[Get all operations of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
+[Get all operations of a field](#get-all-operation-files-of-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`
+[Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
+[Get an operation of a field](#get-an-operation-of-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`
 
 ### Farm Resource
 

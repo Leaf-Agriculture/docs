@@ -865,6 +865,23 @@ $ = Not available when the crop is *sugarcane*
 
 Despite the example units, Leaf's API will push through every unit, if the processed file contains the `required` (marked with *) properties.
 
+
+### Valid points
+
+The points in the standardGeoJSON are considered valid if all the following rules are true:
+
+"wetMass" > 0.0
+"wetMassPerArea" > 0.0
+"wetVolume" > 0.0
+"wetVolumePerArea" > 0.0
+"harvestMoisture" > 0.0
+"appliedRate" > 0.0
+"seedRate" > 0.0
+"tillageDepthActual" > 0.0
+"recordingStatus" == "On"
+
+If necessary Leaf API can automatically clean these points up using the configuration [`cleanupStandardGeojson`](configurations_overview.md).
+
 ### Images
 
 Also, Leaf displays all the numerical properties across all operation types via a png file. Here's a sample response from a Leaf harvested file.

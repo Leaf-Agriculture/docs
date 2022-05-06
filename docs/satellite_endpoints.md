@@ -227,7 +227,7 @@ It is possible to filter the results by a number of different parameters:
 | status | string "SUCCESS", "FAILED" or "STARTED" | retrieve images with selected status | SUCCESS |
 | page | integer | page being fetched | 0 |
 | size | integer | how many processes (sets of all images) to return per page | 20 |
-| provider | string | sentinel or planet | - |
+| provider | string | sentinel or planet | If none is defined, it will created with *sentinel* only |
 
 :::info Important
 Default `page` is page 0 and default `size` is 20. So, to see more images,

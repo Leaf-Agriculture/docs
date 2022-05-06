@@ -6,11 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-### Planet Images
-
-
-
-Additionally, to Sentinel 2 images, Leaf provides an integration with Planet, fetching PlanetScope images from a back-fill and forward-fill specified by the user.
+Leaf provides an integration with Planet, fetching PlanetScope images from a back-fill and forward-fill specified by the user.
 We generate 4-5* multi spectral bands and a total of 10-11* images between RBG and NDVI GeoTiffs. PlanetScope provides numerus categories of products from different
 satellite sensors called `itemTypes` and for each one of the we have many `assetType`. For now, we only support `PSOrthoTile` and the assets `analytic_5b` and `analytic_sr` 
 for more information on those assets check the [documentation](https://developers.planet.com/docs/data/psorthotile/#available-asset-types).
@@ -40,3 +36,5 @@ Currently, our Satellite service runs without a relationship between our Field S
 However, we are working to integrate it into the `leafUser` hierarchy, and the Fields Service.
 
 See the [Satellite API Reference][satellite_endpoints] for more information.
+
+[satellite_endpoints]: satellite_endpoints.md

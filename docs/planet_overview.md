@@ -8,7 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Leaf provides an integration with Planet, fetching PlanetScope images from a back-fill and forward-fill specified by the user.
 We generate 4-5* multi spectral bands and a total of 10-11* images between RBG and NDVI GeoTiffs. PlanetScope provides numerus categories of products from different
-satellite sensors called `itemTypes` and for each one of the we have many `assetType`. For now, we only support `PSOrthoTile` and the assets `analytic_5b` and `analytic_sr` 
+satellite sensors called `itemTypes` and for each one, we have different `assetType`. For now, we only support `PSOrthoTile` and the assets `analytic_5b` and `analytic_sr` 
 for more information on those assets check the [documentation](https://developers.planet.com/docs/data/psorthotile/#available-asset-types).
 
 Also, Leaf handles all the subscription process internally in order to bring foward-filled images as area available from Planet. 

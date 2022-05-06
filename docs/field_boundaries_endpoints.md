@@ -27,7 +27,7 @@ This service has the following endpoints available:
 | [Get a field](#get-a-field)                                               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                     |
 | [Create a field](#create-a-field)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
 | [Update a field](#update-a-field)                                         | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
-| [Get all operations of a field](#get-all-operations-of-a-field)           | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
+| [Get all operation files of a field](#get-all-operation-files-of-a-field)      | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
 | [Get an operation of a field](#get-an-operation-of-a-field)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
 | [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated) | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
 | [Get fields by geometry](#get-fields-by-geometry)                         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
@@ -435,7 +435,7 @@ values={[
   </TabItem>
 </Tabs>
 
-### Get all operations of a field
+### Get all operation files of a field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
 
@@ -684,7 +684,32 @@ A JSON list of Fields.
 
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body. The minimum intersection percentage is given by 
-`intersectionThreshold`, its default value is 0.01%.
+`intersectionThreshold` and can range from 0.01% to 100%, its default value is `0.01`.
+
+<p align="center">
+  <img alt="How it works" width="75%" src={useBaseUrl('img/field_by_geometry.png')} />
+</p>
+
+
+The `intersectionThreshold` can be compared with the "intersection by field" ratio or the "intersection by geometry" ratio. Whichever is satisfied first.
+
+Here we have a sample for a field with 100 area unit and a geometry with 10 area unit:  
+
+<p align="center">
+  <img alt="How it works" width="35%" src={useBaseUrl('img/field_by_geometry_intersectionThreshold.png')} />
+</p>
+
+So, in this case, if the `intersectionThreshold` were 3, then the condition would be satisfied and the field would be returned, but if the value was greater than 50, then it would not satisfy the condition, as 50% is the highest intersection value:
+
+| intersectionThreshold (%) | satisfied |
+| - | - |
+| 3 | ✅ |
+| 5 | ✅ |
+| 37 | ✅ |
+| 50 | ✅ |
+| 75 | ❌ |
+| 100 | ❌ |
+
 
 #### Response
 A JSON list of Fields.

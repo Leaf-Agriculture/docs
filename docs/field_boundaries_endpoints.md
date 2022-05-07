@@ -228,13 +228,12 @@ A single [Field](#field-resource) as a JSON object.
 
 ### Create a field
 
-&nbsp<span class="badge badge--warning">POST</span> `/users/{id}/fields`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields`
 
 Creates a Field for the user `leafUserId`. A request body must be provided
-containing the entry `"geometry"`, which represents the boundaries of the
-Field being created as a GeoJSON geometry (it must be a `"MultiPolygon"`).
-The entry `"id"` is optional. If no id is provided, an UUID will be generated.
-The Field id CAN NOT be updated.
+containing the entry `"geometry"` object which need to have the properties `"type"` and `"coordinates"`. 
+The geometry represents the boundaries of the Field being created as a GeoJSON geometry 
+(`"type"` property must be a `"MultiPolygon"`).
 
 Request body example:
 
@@ -258,7 +257,30 @@ Request body example:
 
 
 #### Response
-A Field as a JSON object.
+
+You can expect a response with a JSON Object containing the following properties.
+
+```json
+{
+    "id": "string",
+    "leafUserId": "string",
+    "area": {
+        "value": float,
+        "unit": "ha"
+    },
+    "boundaries": [
+        "UUID"
+    ],
+    "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [...]
+    },
+    "type": "string",
+    "createdTime": "timestamp",
+    "updatedTime": "timestamp"
+}
+```
+You can try some requests on the create fields API using the examples below.
 
 <Tabs
   defaultValue="sh"
@@ -274,7 +296,7 @@ A Field as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -297,7 +319,7 @@ A Field as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -317,8 +339,8 @@ A Field as a JSON object.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
-      'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
+      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
   ```
 
   </TabItem>

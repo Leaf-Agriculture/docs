@@ -495,7 +495,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | crop                 | *  | string | 
   | seedRate             | *  | dict |
   | operationType        | *  | string "planted" |
-  | originalOperationType        | *  | string |
+  | originalOperationType        | **  | string |
   | totalArea            | *  | float |
   | elevation            | *  | dict |
   | variety              | ** | string |
@@ -519,7 +519,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | - | - | - |
   | appliedRate          | *  | dict |
   | operationType        | *  | string "applied" |
-  | originalOperationType        | *  | string |
+  | originalOperationType        | **  | string |
   | elevation            | *  | dict |
   | totalArea            | *  | float |
   | products             | *  | dict  |
@@ -544,7 +544,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | elevation            | *  | dict |
   | harvestMoisture      | *  | dict |
   | operationType        | *  | string "harvested" |
-  | originalOperationType        | *  | string |
+  | originalOperationType        | **  | string |
   | totalArea            | *  | float |
   | wetMass              | *  | dict | 
   | wetMassPerArea       | *  | dict |
@@ -575,7 +575,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | - | - | - |
   | elevation            | *  | dict |
   | operationType        | *  | string "tillage" |
-  | originalOperationType        | *  | string |
+  | originalOperationType        | **  | string |
   | totalArea            | *  | float |
   | tillageDepthTarget   | *  | float |
   | tillageDepthActual   | ** | float |

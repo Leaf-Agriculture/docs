@@ -69,7 +69,9 @@ This is an example of a summary for a "planted" operation
     "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
-        "properties": {
+        "properties": {        
+            "operationType": "planted",
+            "originalOperationType": "name of the operation as returned by the provider",
             "elevation": {
                 "avg": 772.194895030409,
                 "min": 767.21031609,

@@ -162,6 +162,7 @@ This is an example of a summary for an "applied" operation
         "type": "Feature",
         "properties": {        
             "operationType": "applied",
+            "originalOperationType": "name of the operation as returned by the provider",
             "crop": "soybeans",
             "totalArea": {
                 "value": 1032183,
@@ -348,6 +349,7 @@ This is an example of a summary for a "harvested" operation
             ],
             "startTime": "2016-09-19T16:45:51.002Z",
             "operationType": "harvested",
+            "originalOperationType": "name of the operation as returned by the provider",
             "endTime": "2016-09-19T19:50:25.991Z",
             "totalDistance": {
                 "value": 36481.33613821037,
@@ -431,6 +433,7 @@ This is an example of a summary for a "tillage" operation
         },
         "crop": [],
         "operationType": "tillage",
+        "originalOperationType": "name of the operation as returned by the provider",
         "tillageDepthTarget": {
           "avg": 5.999999999999999,
           "min": 5.999999999999999,
@@ -487,12 +490,12 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   <TabItem value="planted">
 
-
   | key             | presence       | type | 
   | -                    | -              | - |
   | crop                 | *  | string | 
   | seedRate             | *  | dict |
   | operationType        | *  | string "planted" |
+  | originalOperationType        | *  | string |
   | totalArea            | *  | float |
   | elevation            | *  | dict |
   | variety              | ** | string |
@@ -516,6 +519,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | - | - | - |
   | appliedRate          | *  | dict |
   | operationType        | *  | string "applied" |
+  | originalOperationType        | *  | string |
   | elevation            | *  | dict |
   | totalArea            | *  | float |
   | products             | *  | dict  |
@@ -540,6 +544,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | elevation            | *  | dict |
   | harvestMoisture      | *  | dict |
   | operationType        | *  | string "harvested" |
+  | originalOperationType        | *  | string |
   | totalArea            | *  | float |
   | wetMass              | *  | dict | 
   | wetMassPerArea       | *  | dict |
@@ -570,6 +575,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | - | - | - |
   | elevation            | *  | dict |
   | operationType        | *  | string "tillage" |
+  | originalOperationType        | *  | string |
   | totalArea            | *  | float |
   | tillageDepthTarget   | *  | float |
   | tillageDepthActual   | ** | float |
@@ -628,6 +634,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "sectionId" : "int",
         "timestamp": "string",
         "operationType": "planted",
+        "originalOperationType": "name of the operation as returned by the provider",
         "crop": "string",
         "variety": "string",
         "area": "float",
@@ -659,6 +666,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "sectionId" : "int",
         "timestamp": "string",
         "operationType": "applied",
+        "originalOperationType": "name of the operation as returned by the provider",
         "crop": "string",
         "area": "float",
         "appliedRate": "float",
@@ -709,6 +717,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "sectionId" : "int",
         "timestamp": "string",
         "operationType": "harvested",
+        "originalOperationType": "name of the operation as returned by the provider",
         "crop": "string",
         "variety": "string",
         "area": "float",
@@ -742,6 +751,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "recordingStatus": "string",
         "timestamp": "string",
         "operationType": "tillage",
+        "originalOperationType": "name of the operation as returned by the provider",
         "equipmentWidth": "float",
         "elevation": "float",
         "area": "float"
@@ -776,6 +786,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | distance        | * | float           | ft or m              | Distance travelled since previous point |
   | elevation       | * | float           | ft or m              | Distance to sea level |
   | operationType   | * | string          | -                    | string "planted" |
+  | originalOperationType     | ** | string            | -                | string  |
   | equipmentWidth  | * | float           | ft or m              | Width of implement |
   | recordingStatus | * | Boolean         | -                    | Recording status of machine at point |
   | seedRate        | * | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
@@ -800,6 +811,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | recordingStatus   | * | Boolean           | -                | Recording status of machine |
   | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | operationType     | * | string            | -                | string "applied" |
+  | originalOperationType     | ** | string            | -                | string  |
   | products          | * | list of dicts     | -                | tank mix including products and ratio |
   | equipmentWidth    | * | float             | ft or m          | Width of implement |
   | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
@@ -819,6 +831,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | distance          | * | float       | ft or m        | Distance travelled since previous point |
   | elevation         | * | float       | ft or m        | Distance to sea level |
   | operationType     | * | string      | -              | string "harvested" |
+  | originalOperationType     | ** | string            | -                | string  |
   | equipmentWidth    | * | float       | ft or m        | Width of implement |
   | recordingStatus   | * | Boolean     | -              | Recording status of machine |
   | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
@@ -849,6 +862,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | recordingStatus    | *  | Boolean           | -                | Recording status of machine |
   | timestamp          | *  | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | operationType      | *  | string            | -                | string "tillage" |
+  | originalOperationType     | ** | string            | -                | string  |
   | equipmentWidth     | *  | float             | ft or m          | Width of implement |
   | tillageDepthTarget | *  | float             | fl.oz/ac or L/m² | The target depth |
   | speed              | ** | float             | ft/s or m/s      | Speed of machine at point |

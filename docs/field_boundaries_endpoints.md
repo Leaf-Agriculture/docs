@@ -28,7 +28,7 @@ This service has the following endpoints available:
 | [Create a field](#create-a-field)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
 | [Update a field](#update-a-field)                                         | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
 | [Get all operation files of a field](#get-all-operation-files-of-a-field)      | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
-| [Get an operation file of a field](#get-an-operation-of-a-field)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
+| [Get an operation file of a field](#get-an-operation-file-of-a-field)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
 | [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated) | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
 | [Get fields by geometry](#get-fields-by-geometry)                         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
 | [Get intersection of fields](#get-intersection-of-fields)                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |

@@ -28,7 +28,7 @@ This service has the following endpoints available:
 | [Create a field](#create-a-field)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
 | [Update a field](#update-a-field)                                         | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
 | [Get all operation files of a field](#get-all-operation-files-of-a-field)      | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
-| [Get an operation of a field](#get-an-operation-of-a-field)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
+| [Get an operation file of a field](#get-an-operation-of-a-field)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
 | [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated) | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
 | [Get fields by geometry](#get-fields-by-geometry)                         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
 | [Get intersection of fields](#get-intersection-of-fields)                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
@@ -460,8 +460,7 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (default is 20, max is 100)
 
-#### Response
-A JSON array of Files.
+#### Request
 
 <Tabs
   defaultValue="sh"
@@ -512,6 +511,9 @@ A JSON array of Files.
   </TabItem>
 </Tabs>
 
+#### Response
+
+A JSON array of Files.
 
 ### Get an operation of a field
 
@@ -519,8 +521,7 @@ A JSON array of Files.
 
 Gets a single Operation File of a field by its id.
 
-#### Response
-A single Operation File.
+#### Request
 
 <Tabs
   defaultValue="sh"
@@ -570,6 +571,10 @@ A single Operation File.
 
   </TabItem>
 </Tabs>
+
+#### Response
+
+A single Operation File.
 
 ### Get Fields by geometry (deprecated)
 

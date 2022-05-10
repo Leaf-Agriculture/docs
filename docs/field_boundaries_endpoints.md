@@ -515,7 +515,7 @@ They are:
 
 A JSON array of Files.
 
-### Get an operation of a field
+### Get an operation file of a field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
 

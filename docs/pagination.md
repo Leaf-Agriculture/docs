@@ -13,3 +13,8 @@ All endpoints that return a list of resources are paginated. You can select the 
 # Date format
 
 All the dates follow ISO 8601 format. Specifically, all the dates should be in the format "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'".
+
+
+# File archiving 
+
+Be default, our API archive the files to a slower storage after 180 days without access. The file will be available again after the next request.

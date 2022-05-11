@@ -513,7 +513,26 @@ They are:
 
 #### Response
 
-A JSON array of Files.
+```json
+[
+  {
+    "crops": [
+      "string"
+    ],
+    "endTime": "2022-05-11T13:11:57.994Z",
+    "id": "string",
+    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "operationType": "other",
+    "origin": "automerged",
+    "provider": "Other",
+    "providerFileId": "string",
+    "startTime": "2022-05-11T13:11:57.994Z",
+    "varieties": [
+      "string"
+    ]
+  }
+]
+```
 
 ### Get an operation file of a field
 
@@ -574,7 +593,24 @@ Gets a single Operation File of a field by its id.
 
 #### Response
 
-A single Operation File.
+```json
+{
+  "crops": [
+    "string"
+  ],
+  "endTime": "2022-05-11T13:13:01.548Z",
+  "id": "string",
+  "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "operationType": "other",
+  "origin": "automerged",
+  "provider": "Other",
+  "providerFileId": "string",
+  "startTime": "2022-05-11T13:13:01.548Z",
+  "varieties": [
+    "string"
+  ]
+}
+```
 
 ### Get Fields by geometry (deprecated)
 

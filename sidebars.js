@@ -2,6 +2,7 @@ module.exports = {
   docs: [
     'welcome',
     'quickstart',
+    'release_notes',
     {
       type: 'category',
       label: 'API Reference',

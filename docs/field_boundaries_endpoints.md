@@ -235,10 +235,15 @@ containing the entry `"geometry"` object which need to have the properties `"typ
 The geometry represents the boundaries of the Field being created as a GeoJSON geometry 
 (`"type"` property must be a `"MultiPolygon"`).
 
+Consider that you can also set the `id` and `name` properties (both of them optional) in the request body. If no `id` is provided
+an UUID will be generated and this property **can not** be updated.
+
 Request body example:
 
 ```json
 {
+  "id": "string", // optional
+  "name": "string", // optional
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [

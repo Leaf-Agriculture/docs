@@ -17,4 +17,4 @@ All the dates follow ISO 8601 format. Specifically, all the dates should be in t
 
 # File archiving 
 
-Be default, our API archive the files to a slower storage after 180 days without access. The file will be available again after the next request.
+Be default, our API archive the files to a slower storage after 180 days without access. The file will be available again only upon a support request.

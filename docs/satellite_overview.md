@@ -6,6 +6,10 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+<!-- the following links are referenced throughout this document -->
+[1]: sentinel_overview
+[2]: planet_overview
+
 ## About
 
 Using Leaf's Satellite service you will be able to easily implement a satellite
@@ -34,7 +38,7 @@ See the [Satellite API Reference][satellite_endpoints] for more information.
 
 ## Providers
 
-Leaf currently offers access to Sentinel-2 and PlanetScope images through its API.
+Leaf currently offers access to [Sentinel-2][1] and [PlanetScope][2] images through its API.
 Here is a summary comparison between the providers:
 
 |                     |  Sentinel-2 | PlanetScope |
@@ -48,6 +52,3 @@ _* the number of bands will depend on the asset type requested_
 For all providers, in addition to the images of the isolated bands, the RGB and NDVI composition are available:
 
 <img alt="sentinel x planet rgb" src={useBaseUrl('img/sentinel_planet.png')} />
-
-Currently, our Satellite service runs without a relationship between our Field Services, and the User Management Services.
-However, we are working to integrate it into the `leafUser` hierarchy, and the Fields Service.

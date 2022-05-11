@@ -29,8 +29,8 @@ The following table shows all the images with its resolutions and types:
 | B04.tif        | 3              | single band        | EPSG:4326   |
 | B05.tif *      | 3              | single band        | EPSG:4326   |
 
-* A fifth band will be available by using the `assetType`: `analitic_5b` (red egde band) were the default value is 
-`analitic_sr` which are images with atmospheric reflectance correction.
+_* A fifth band will be available by using the `assetType`: `analitic_5b` (red egde band) were the default value is 
+`analitic_sr` which are images with atmospheric reflectance correction._
 
 See the [Satellite API Reference][satellite_endpoints] for more information.
 

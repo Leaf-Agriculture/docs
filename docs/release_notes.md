@@ -9,6 +9,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: files_sample_output#valid-points
 [3]: configurations_overview
 
+### 2.84.0
+*2022-05-11*
+
+**Machine operations**
+- New config available: `splitOperationsByField`    
+If set to true, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is false. 
+Check all the configurations available [here][3].
+
 ### 2.83.0
 *2022-05-03*
 

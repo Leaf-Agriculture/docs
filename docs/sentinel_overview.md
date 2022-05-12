@@ -54,6 +54,11 @@ In addition, you will get the NDVI (i.e., we call them at Leaf as `NDVI_relative
 Left - NDVI relative. Center - NDVI absolute. Right - NDVI.  
 We recommend using the Right one (just ndvi.png)
 
+## Clouds
+
+We use the cloud mask provided by Sentinel-2 to calculate the clouds coverage percentage. 
+
+
 See the [Satellite API Reference][satellite_endpoints] for more information.
 
 [satellite_endpoints]: satellite_endpoints.md

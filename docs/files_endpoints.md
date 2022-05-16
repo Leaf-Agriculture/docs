@@ -486,6 +486,8 @@ ClimateFieldView
 CNHI
 JohnDeere
 Trimble
+AgLeader
+Farmobile
 ```
 
 If provider is set to "Other", Leaf will detect which files are 

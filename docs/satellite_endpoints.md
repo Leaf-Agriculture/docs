@@ -34,6 +34,7 @@ Description | Endpoints
 [8]: #delete-a-satellite-field
 [9]: alerts_events#satellite-events
 [10]: #get-an-image-of-satellite-field
+[11]: satellite_overview#providers
 
 ---
 
@@ -111,8 +112,10 @@ It returns a list of JSON objects
             "type": "MultiPolygon",
             "coordinates": [...]
         }
+        "providers": [
+          "sentinel", "planet"
+        ]
     },
-    # etc...
 ]
 ```
 
@@ -191,7 +194,10 @@ It returns a single JSON object with the following entries (like each item from
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
-    }
+    },
+    "providers": [
+      "sentinel", "planet"
+    ]
 }
 ```
 
@@ -201,13 +207,15 @@ It returns a single JSON object with the following entries (like each item from
 
 &nbsp<span class="badge badge--success">GET</span> `/fields/{id}/processes`
 
-Returns images for a given field id.
+Returns images for a given field `id`.
 
 We return the following images, (tifs are EPSG:4326, pngs are EPSG:3857):
-  - RGB as tiff and as png (10m resolution)
-  - Colorized NDVI as tiff and as png (10m resolution)
-  - Raw NDVI as tiff (10m resolution)
-  - all 12 Sentinel-2 bands as tiff.
+- RGB as tiff and as png
+- Colorized NDVI as tiff and as png
+- Raw NDVI as tiff
+- All bands as tiff.
+
+_Check the [comparison page][11] to identify the resolution and bands available for each provider._
 
 It is possible to filter the results by a number of different parameters:
 
@@ -222,6 +230,7 @@ It is possible to filter the results by a number of different parameters:
 | status | string "SUCCESS", "FAILED" or "STARTED" | retrieve images with selected status | SUCCESS |
 | page | integer | page being fetched | 0 |
 | size | integer | how many processes (sets of all images) to return per page | 20 |
+| providers | array of string | sentinel or/and planet | If none is defined, it will created with *sentinel* only |
 
 :::info Important
 Default `page` is page 0 and default `size` is 20. So, to see more images,
@@ -293,7 +302,8 @@ curl -X GET \
     {
         "id": 0,
         "date": "2020-06-03T19:03:57.882Z",
-        "clouds": 0,
+        "clouds": 0, 
+        "provider": "sentinel",
         "bucketName": "sentinel-s2-l1c",
         "bucketKey": "tiles/10/S/FH/2020/6/3/0",
         "bucketRegion": "eu-central-1",
@@ -315,8 +325,9 @@ curl -X GET \
 
 - `date`: the date of the satellite image
 - `clouds`: cloud coverage percentage of the field, from 0 to 100
-- `bucketName`: name of Sentinel's bucket where the original tile is. Usually
-`sentinel-s2-l1c`
+- `provider`: the satellite provider (sentinel or planet) from where this process was created.
+- `bucketName`: name of satellite image bucket where the original tile is. Usually
+`sentinel-s2-l1c` or `leaf-planet-images-prd`
 - `bucketRegion`: AWS region of original image's bucket. Usually `eu-central-1`
 - `bucketKey`: base path of original satellite image
 - `status`: status of the process. It will be either `SUCCESS` or `FAILURE`
@@ -399,6 +410,7 @@ curl -X GET \
   "id": 0,
   "date": "2020-06-03T19:03:57.882Z",
   "clouds": 0,
+  "provider": "sentinel",
   "bucketName": "sentinel-s2-l1c",
   "bucketKey": "tiles/10/S/FH/2020/6/3/0",
   "bucketRegion": "eu-central-1",
@@ -424,8 +436,8 @@ curl -X GET \
 
 Creates a new field
 
-It will be continuously monitored forever, and new images will arrive every ~5
-days (time it takes for the satellite to go over the same field when orbiting
+It will be continuously monitored forever, and new images will arrive based on the [provider selected][11], 
+because each one of them has a different temporal resolution (time it takes for the satellite to go over the same field when orbiting
 the Earth). If you don't need the field anymore, you can
 [delete the field.](/docs/docs/satellite_endpoints#delete-fieldsid)
 
@@ -455,7 +467,9 @@ The payload of this object should be like the following:
 ```py
 {
     "externalId": "your field id",
-    "startDate": "2019-01-01"
+    "startDate": "2019-01-01", 
+    "providers": ["sentinel", "planet"],
+    "assetType": "analytic_sr"
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
@@ -463,9 +477,11 @@ The payload of this object should be like the following:
 }
 ```
 
-- `externalId`: external ID used in the field's registration
+- `externalId`: external ID used in the field's registration.
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
-field
+field.
+- `providers`: Specify the satellite imagery source, if none is specified, Sentinel images will be retrived by default.
+- `assetType`: If the `providers` property contains `planet` you can select which `assetType` will be retrived. Default value is `analytic_sr`.
 
 <Tabs
   defaultValue="sh"

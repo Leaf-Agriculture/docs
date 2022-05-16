@@ -29,8 +29,8 @@ This service has the following endpoints available:
 | [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
 | [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
 | [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`                    |
-| [Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
-| [Get an operation of a field](#get-an-operation-of-a-field)                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`               |
+| [Get an operation file of a field (deprecated)](#get-an-operation-of-a-field-deprecated)          | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
+| [Get an operation file of a field](#get-an-operation-of-a-field)                                  | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`               |
 | [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
 | [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
 | [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
@@ -230,18 +230,22 @@ A single [Field](#field-resource) as a JSON object.
 
 ### Create a field
 
-&nbsp<span class="badge badge--warning">POST</span> `/users/{id}/fields`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields`
 
 Creates a Field for the user `leafUserId`. A request body must be provided
-containing the entry `"geometry"`, which represents the boundaries of the
-Field being created as a GeoJSON geometry (it must be a `"MultiPolygon"`).
-The entry `"id"` is optional. If no id is provided, an UUID will be generated.
-The Field id CAN NOT be updated.
+containing the entry `"geometry"` object which need to have the properties `"type"` and `"coordinates"`. 
+The geometry represents the boundaries of the Field being created as a GeoJSON geometry 
+(`"type"` property must be a `"MultiPolygon"`).
+
+Consider that you can also set the `id` and `name` properties (both of them optional) in the request body. If no `id` is provided
+an UUID will be generated and this property **can not** be updated.
 
 Request body example:
 
 ```json
 {
+  "id": "string", // optional
+  "name": "string", // optional
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [
@@ -260,7 +264,30 @@ Request body example:
 
 
 #### Response
-A Field as a JSON object.
+
+You can expect a response with a JSON Object containing the following properties.
+
+```json
+{
+    "id": "string",
+    "leafUserId": "string",
+    "area": {
+        "value": float,
+        "unit": "ha"
+    },
+    "boundaries": [
+        "UUID"
+    ],
+    "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [...]
+    },
+    "type": "string",
+    "createdTime": "timestamp",
+    "updatedTime": "timestamp"
+}
+```
+You can try some requests on the create fields API using the examples below.
 
 <Tabs
   defaultValue="sh"
@@ -276,7 +303,7 @@ A Field as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -299,7 +326,7 @@ A Field as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -319,8 +346,8 @@ A Field as a JSON object.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
-      'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
+      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
   ```
 
   </TabItem>
@@ -464,8 +491,7 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (default is 20, max is 100)
 
-#### Response
-A JSON array of Files.
+#### Request
 
 <Tabs
   defaultValue="sh"
@@ -534,6 +560,7 @@ parameters. They are listed below.
 | crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here](crops.md) | retrieve operations with this crop.
 | startTime | ISO 8601 datetime format | retrieve operations that started after this date
 | endTime | ISO 8601 datetime format | retrieve operations that ended before this date
+#### Response
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -597,13 +624,34 @@ values={[
 ### Get an operation of a field (deprecated)
 
 Use [this endpoint](#get-an-operation-of-a-field) instead
+```json
+[
+  {
+    "crops": [
+      "string"
+    ],
+    "endTime": "2022-05-11T13:11:57.994Z",
+    "id": "string",
+    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "operationType": "other",
+    "origin": "automerged",
+    "provider": "Other",
+    "providerFileId": "string",
+    "startTime": "2022-05-11T13:11:57.994Z",
+    "varieties": [
+      "string"
+    ]
+  }
+]
+```
+
+### Get an operation file of a field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
 
 Gets a single Operation File of a field by its id.
 
-#### Response
-A single Operation File.
+#### Request
 
 <Tabs
   defaultValue="sh"
@@ -711,6 +759,27 @@ values={[
 
   </TabItem>
 </Tabs>
+
+#### Response
+
+```json
+{
+  "crops": [
+    "string"
+  ],
+  "endTime": "2022-05-11T13:13:01.548Z",
+  "id": "string",
+  "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "operationType": "other",
+  "origin": "automerged",
+  "provider": "Other",
+  "providerFileId": "string",
+  "startTime": "2022-05-11T13:13:01.548Z",
+  "varieties": [
+    "string"
+  ]
+}
+```
 
 ### Get Fields by geometry (deprecated)
 

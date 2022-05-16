@@ -14,7 +14,24 @@ module.exports = {
         {
           type: 'category',
           label: 'Leaf User',
-          items: ['user_management_overview', 'user_management_endpoints']
+          items: [
+            'user_management_overview',
+            'user_management_endpoints',
+            {
+              type: 'category',
+              label: 'Providers credentials',
+              items: [
+                'credentials_agleader',
+                'credentials_cfv',
+                'credentials_cnhi',
+                'credentials_john_deere',
+                'credentials_raven',
+                'credentials_raven_slingshot',
+                'credentials_stara',
+                'credentials_trimble'
+              ]
+            }
+          ]
         },
         {
           type: 'category',

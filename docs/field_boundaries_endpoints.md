@@ -29,8 +29,8 @@ This service has the following endpoints available:
 | [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
 | [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
 | [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`                    |
-| [Get an operation file of a field (deprecated)](#get-an-operation-of-a-field-deprecated)          | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
-| [Get an operation file of a field](#get-an-operation-of-a-field)                                  | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`               |
+| [Get an operation file of a field (deprecated)](#get-an-operation-file-of-a-field-deprecated)     | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
+| [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`               |
 | [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
 | [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
 | [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
@@ -542,6 +542,29 @@ They are:
   </TabItem>
 </Tabs>
 
+### Response
+
+```json
+[
+  {
+    "crops": [
+      "string"
+    ],
+    "endTime": "2022-05-11T13:11:57.994Z",
+    "id": "string",
+    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "operationType": "other",
+    "origin": "automerged",
+    "provider": "Other",
+    "providerFileId": "string",
+    "startTime": "2022-05-11T13:11:57.994Z",
+    "varieties": [
+      "string"
+    ]
+  }
+]
+```
+
 ### Get all operation files of a field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`
@@ -560,7 +583,7 @@ parameters. They are listed below.
 | crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here](crops.md) | retrieve operations with this crop.
 | startTime | ISO 8601 datetime format | retrieve operations that started after this date
 | endTime | ISO 8601 datetime format | retrieve operations that ended before this date
-#### Response
+
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -568,8 +591,7 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (default is 20, max is 100)
 
-#### Response
-A JSON array of Files.
+#### Request
 
 <Tabs
 defaultValue="sh"
@@ -620,10 +642,8 @@ values={[
   </TabItem>
 </Tabs>
 
+### Response
 
-### Get an operation of a field (deprecated)
-
-Use [this endpoint](#get-an-operation-of-a-field) instead
 ```json
 [
   {
@@ -645,7 +665,9 @@ Use [this endpoint](#get-an-operation-of-a-field) instead
 ]
 ```
 
-### Get an operation file of a field
+### Get an operation file of a field (deprecated)
+
+Use [this endpoint](#get-an-operation-file-of-a-field) instead
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
 
@@ -702,7 +724,30 @@ Gets a single Operation File of a field by its id.
   </TabItem>
 </Tabs>
 
-### Get an operation of a field 
+### Response
+
+```json
+[
+  {
+    "crops": [
+      "string"
+    ],
+    "endTime": "2022-05-11T13:11:57.994Z",
+    "id": "string",
+    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "operationType": "other",
+    "origin": "automerged",
+    "provider": "Other",
+    "providerFileId": "string",
+    "startTime": "2022-05-11T13:11:57.994Z",
+    "varieties": [
+      "string"
+    ]
+  }
+]
+```
+
+### Get an operation file of a field 
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`
 

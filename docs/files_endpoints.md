@@ -73,8 +73,8 @@ below.
 | `organizationId` | the provider organizationId (only available for John Deere) |
 | `batchId` | uuid of the upload response (only available for uploaded files) |
 | `createdTime` | ISO 8601 date. Returns operations from the createdTime onward |
-| `operationStartTime` | ISO 8601 date. Returns operations from the operationStartTime onward |
-| `operationEndTime` | ISO 8601 date. Returns operations until the operationEndTime |
+| `startTime` | ISO 8601 date. Returns operations from the startTime onward |
+| `endTime` | ISO 8601 date. Returns operations until the endTime |
 | `operationType` | `applied`, `planted` or `harvested` |
 | `minArea` | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 

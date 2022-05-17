@@ -30,7 +30,7 @@ The properties `vin`, `model`, `make`, `category` and `modelYear` are now also a
 
 **Machine operations**
 - New config available: `splitOperationsByField`    
-If set to true, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is fal.se. 
+If set to true, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is false. 
 Check all the configurations available [here][3].
 
 ### 2.83.0

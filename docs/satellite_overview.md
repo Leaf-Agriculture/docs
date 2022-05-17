@@ -7,8 +7,8 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
-[1]: sentinel_overview
-[2]: planet_overview
+[1]: /docs/docs/sentinel_overview
+[2]: /docs/docs/planet_overview
 
 ## About
 

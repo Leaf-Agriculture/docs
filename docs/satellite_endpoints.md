@@ -32,9 +32,9 @@ Description | Endpoints
 [6]: #get-images-of-satellite-field
 [7]: #create-a-satellite-field
 [8]: #delete-a-satellite-field
-[9]: alerts_events#satellite-events
+[9]: /docs/docs/alerts_events#satellite-events
 [10]: #get-an-image-of-satellite-field
-[11]: satellite_overview#providers
+[11]: /docs/docs/satellite_overview#providers
 
 ---
 

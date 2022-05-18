@@ -21,32 +21,32 @@ There is a [REST resources](#rest-resources) section if you want to check it out
 
 This service has the following endpoints available:
 
-| Description                                                                                       | Endpoints                                                                                                   |
-|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| [Get all fields](#get-all-fields)                                                                 | <span class="badge badge--success">GET</span> `/fields`                                                     |
-| [Get a field](#get-a-field)                                                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                     |
-| [Create a field](#create-a-field)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
-| [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
-| [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`             |
-| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`            |
-| [Get an operation file of a field (deprecated)](#get-an-operation-file-of-a-field-deprecated)     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{id}`             |
-| [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{id}`       |
-| [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
-| [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
-| [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
-| [Delete a field](#delete-a-field)                                                                 | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                   |
-| [Get all boundaries from field](#get-all-boundaries-from-field)                                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`              |
-| [Get a boundary from field](#get-a-boundary-from-field)                                           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}` |
-| [Get active boundary from field](#get-active-boundary-from-field)                                 | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
-| [Update active boundary from field](#update-active-boundary-from-field)                           | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
-| [Get all farms](#get-all-farms)                                                                   | <span class="badge badge--success">GET</span> `/farms`                                                      |
-| [Get a farm](#get-a-farm)                                                                         | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                      |
-| [Create a farm](#create-a-farm)                                                                   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                  |
-| [Update a farm](#update-a-farm)                                                                   | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`                              |
-| [Get all growers](#get-all-growers)                                                               | <span class="badge badge--success">GET</span> `/growers`                                                    |
-| [Get a grower](#get-a-grower)                                                                     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`                            |
-| [Create a grower](#create-a-grower)                                                               | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                |
-| [Update a grower](#update-a-grower)                                                               | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                            |
+| Description                                                                                       | Endpoints                                                                                                      |
+|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| [Get all fields](#get-all-fields)                                                                 | <span class="badge badge--success">GET</span> `/fields`                                                        |
+| [Get a field](#get-a-field)                                                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                        |
+| [Create a field](#create-a-field)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                            |
+| [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                      |
+| [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`                |
+| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`          |
+| [Get an operation file of a field (deprecated)](#get-an-operation-file-of-a-field-deprecated)     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`       |
+| [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}` |
+| [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                      |
+| [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                         |
+| [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                                  |
+| [Delete a field](#delete-a-field)                                                                 | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                      |
+| [Get all boundaries from field](#get-all-boundaries-from-field)                                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`                 |
+| [Get a boundary from field](#get-a-boundary-from-field)                                           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`    |
+| [Get active boundary from field](#get-active-boundary-from-field)                                 | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
+| [Update active boundary from field](#update-active-boundary-from-field)                           | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
+| [Get all farms](#get-all-farms)                                                                   | <span class="badge badge--success">GET</span> `/farms`                                                         |
+| [Get a farm](#get-a-farm)                                                                         | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                         |
+| [Create a farm](#create-a-farm)                                                                   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                     |
+| [Update a farm](#update-a-farm)                                                                   | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`                                 |
+| [Get all growers](#get-all-growers)                                                               | <span class="badge badge--success">GET</span> `/growers`                                                       |
+| [Get a grower](#get-a-grower)                                                                     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`                               |
+| [Create a grower](#create-a-grower)                                                               | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                   |
+| [Update a grower](#update-a-grower)                                                               | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                               |
 
 ## Endpoints
 

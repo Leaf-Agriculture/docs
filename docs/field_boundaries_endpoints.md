@@ -27,10 +27,10 @@ This service has the following endpoints available:
 | [Get a field](#get-a-field)                                                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                     |
 | [Create a field](#create-a-field)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
 | [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                   |
-| [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
-| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`                    |
-| [Get an operation file of a field (deprecated)](#get-an-operation-file-of-a-field-deprecated)     | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
-| [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`               |
+| [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`             |
+| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`            |
+| [Get an operation file of a field (deprecated)](#get-an-operation-file-of-a-field-deprecated)     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{id}`             |
+| [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{id}`       |
 | [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
 | [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
 | [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
@@ -468,7 +468,7 @@ values={[
 
 Use [this endpoint](#get-all-operation-files-of-a-field) instead
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`
 
 Gets a paged list of all operation files of the Field and Leaf User specified in
 the URL.
@@ -567,7 +567,7 @@ They are:
 
 ### Get all operation files of a field
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`
 
 Gets a paged list of all operation files of the Field and Leaf User specified in
 the URL.
@@ -669,7 +669,7 @@ values={[
 
 Use [this endpoint](#get-an-operation-file-of-a-field) instead
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`
 
 Gets a single Operation File of a field by its id.
 
@@ -749,7 +749,7 @@ Gets a single Operation File of a field by its id.
 
 ### Get an operation file of a field 
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}`
 
 Gets a single Operation File of a field by its id.
 
@@ -2352,10 +2352,10 @@ Each boundary has a `status` and `providerStatus`.
 
 | Description | Endpoints
 | - | - |
-[Get all operations of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
-[Get all operations of a field](#get-all-operation-files-of-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files`
-[Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
-[Get an operation of a field](#get-an-operation-of-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/files/{id}`
+[Get all operations of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`
+[Get all operations of a field](#get-all-operation-files-of-a-field) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`
+[Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`
+[Get an operation of a field](#get-an-operation-of-a-field) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}`
 
 ### Farm Resource
 

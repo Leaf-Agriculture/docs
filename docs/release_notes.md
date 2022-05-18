@@ -5,9 +5,25 @@ title: Release notes
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
-[1]: satellite_endpoints#create-a-satellite-field
-[2]: files_sample_output#valid-points
-[3]: configurations_overview
+[1]: /docs/docs/satellite_endpoints#create-a-satellite-field
+[2]: /docs/docs/files_sample_output#valid-points
+[3]: /docs/docs/configurations_overview
+[4]: /docs/docs/files_endpoints#get-a-file
+[5]: /docs/docs/files_sample_output#operation-summary
+[6]: /docs/docs/beta_machines_endpoints#create-a-machine
+
+### 2.85.0
+*2022-05-17*
+
+**Machine operations**
+- Machine list available in the operation files  
+The new property `machine` list all machine ids under the files entity (not to be confused with `machinery` property available in the summary).
+More information [here][5].
+
+**Beta**
+- Machine information      
+The properties `vin`, `model`, `make`, `category` and `modelYear` are now also available in the [Machine POST endpoint][6].
+
 
 ### 2.84.0
 *2022-05-11*

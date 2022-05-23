@@ -23,6 +23,7 @@ Description | Endpoints
 [Get an image of satellite field][10] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`
 [Create a satellite field][7] | <span class="badge badge--warning">POST</span> `/fields`
 [Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
+[Get subscription for Planet][12] | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
 
 [1]: /img/fieldovertime.png
 [2]: /img/ndviexample.png
@@ -35,6 +36,7 @@ Description | Endpoints
 [9]: /docs/docs/alerts_events#satellite-events
 [10]: #get-an-image-of-satellite-field
 [11]: /docs/docs/satellite_overview#providers
+[12]: #get-subscription-for-planet
 
 ---
 
@@ -610,6 +612,81 @@ curl -X DELETE \
 </TabItem>
 </Tabs>
 
+
+### Get subscription for Planet
+
+&nbsp <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
+
+Get the subscription from Planet. It returns the assetTypes, itemTypes and startDate for a field.
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+<TabItem value="js">
+
+```js
+const axios = require('axios')
+const TOKEN = 'YOUR_TOKEN'
+
+let endpoint = 'https://api.withleaf.io/services/satellite/api' +
+               '/fields/YOUR_ID/subscription'
+
+const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+axios.get(endpoint, { headers })
+    .then(res => console.log(res.data))
+    .catch(console.error)
+```
+
+</TabItem>
+<TabItem value="py">
+
+```py
+import requests
+
+TOKEN = 'YOUR_TOKEN'
+
+endpoint = ('https://api.withleaf.io/services/satellite/api'
+            '/fields/YOUR_ID/subscription')
+
+headers = {'Authorization': f'Bearer {TOKEN}'}
+
+response = requests.get(endpoint, headers=headers)
+print(response.json())
+```
+
+</TabItem>
+<TabItem value="sh">
+
+```shell
+curl -X GET \
+    --header 'Authorization: Bearer YOUR_TOKEN' \
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/subscription'
+```
+
+</TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+    "planetAssetTypes": [
+        "analytic_sr"
+    ],
+    "planetItemTypes": [
+        "PSOrthoTile"
+    ],
+    "startDate": "2022-04-01T00:00:00Z"
+}
+```
 
 ## Alerts
 

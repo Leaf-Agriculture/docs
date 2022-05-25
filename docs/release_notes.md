@@ -11,6 +11,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: /docs/docs/files_endpoints#get-a-file
 [5]: /docs/docs/files_sample_output#operation-summary
 [6]: /docs/docs/beta_machines_endpoints#create-a-machine
+[7]: /docs/docs/files_sample_output#standard-geojson
+
+### 2.86.0
+*2022-05-24*
+
+**Machine operations**
+- New properties on the Standard GeoJSON  
+Optional properties: `cropFlow`, `productIndex`, `proteinPercentage`, `samplingInterval`, `xOffset` and `yOffset`.  
+More information [here][7].
 
 ### 2.85.0
 *2022-05-17*

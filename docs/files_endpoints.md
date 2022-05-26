@@ -476,6 +476,14 @@ This endpoint accepts a .zip of operation files, detects which files are in the
 .zip, and returns the ID of the process, which can in turn be used to retrieve 
 the ID's of the files being processed.
 
+
+:::info File size limit of 3 GB
+
+Currently, our upload endpoints accepts files with the maximum size limited to 3 gigabytes.
+
+:::
+
+
 This endpoint receives two required URL parameters, a `leafUserId` and `provider` 
 
 A `provider` can be set as one of the following:

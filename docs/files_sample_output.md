@@ -802,6 +802,9 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | machinery       | ** | list of machineInfo objects | -                    | name of machine & implement |
   | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
   | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
+  | productIndex    | ** | int             | -                    | Index of the applied product |
+  | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
+  | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
   <TabItem value="applied">
@@ -824,6 +827,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
   | machinery         | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId         | ** | int               | -                | ID of implement sensor section |
+  | xOffset           | ** | float             | m                | Vertical offset from the instrumentation sensor and the monitor GPS system |
+  | yOffset           | ** | float             | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
   <TabItem value="harvested">
@@ -854,6 +859,11 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | dryVolume         | **$ | float       | bu or L        | dry volume harvested in that point |
   | dryVolumePerArea  | **$ | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
   | sectionId         | ** | int         | int            | ID of implement sensor section |
+  | cropFlow          | ** | float           | tonne/h    | Massic flow of the harvested crop |
+  | proteinPercentage    | ** | float        | %                  | Amount of protein content for the harvested product |
+  | samplingInterval| ** | float           | s                    | Delta time from the previous recorded feature |
+  | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
+  | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
    <TabItem value="tillage">
@@ -875,6 +885,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | tillageDepthActual | ** | float             | fl.oz/ac or L/m² | The actual depth |
   | machinery          | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId          | ** | int               | -                | ID of implement sensor section |
+  | xOffset            | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
+  | yOffset            | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
 </Tabs>

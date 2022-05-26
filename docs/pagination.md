@@ -22,4 +22,4 @@ Be default, our API archive the files to a slower storage after 180 days without
 
 ## File size
 
-Currently, our API have a 3Gb limit for file uploads. This is applied in the file upload [endpoint](files_endpoints.md/#upload-a-file) 
+Currently, our API have a 3 gigabytes limit for file uploads. This is applied in the file upload [endpoint](files_endpoints.md/#upload-a-file) 

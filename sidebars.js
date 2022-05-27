@@ -24,7 +24,7 @@ module.exports = {
                 'credentials_john_deere',
                 'credentials_cfv',
                 'credentials_cnhi',
-                'credentials_trimble'
+                'credentials_trimble',
                 'credentials_raven',
                 'credentials_raven_slingshot',
                 'credentials_agleader',

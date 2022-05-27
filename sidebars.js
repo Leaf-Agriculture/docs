@@ -83,6 +83,11 @@ module.exports = {
               label: 'Prescriptions',
               items: ['beta_prescriptions_endpoints']
             },
+            {
+              type: 'category',
+              label: 'Layers',
+              items: ['beta_layers_endpoints']
+            },
           ]
         },
       ],

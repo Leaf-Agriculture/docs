@@ -12,7 +12,7 @@ Currently, we are working in the following features:
 
 ## Machines
 
-This product will fetch machine data from the providers (like JohnDeere, ClimateFieldView, CNHI) and store this data.
+This product fetchs machine data from the providers (like JohnDeere, ClimateFieldView, CNHI) and store this data.
  
 Currently, we are obtaining data from providers:
    * JohnDeere

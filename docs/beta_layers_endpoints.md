@@ -52,7 +52,7 @@ values={[
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/layers'
+  const endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -67,7 +67,7 @@ values={[
   import requests
   
   TOKEN = 'YOUR_TOKEN'
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/layers'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers, json=data)
@@ -80,7 +80,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/layers'
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers'
   ```
 
   </TabItem>

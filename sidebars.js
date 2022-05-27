@@ -21,14 +21,15 @@ module.exports = {
               type: 'category',
               label: 'Providers credentials',
               items: [
-                'credentials_agleader',
+                'credentials_john_deere',
                 'credentials_cfv',
                 'credentials_cnhi',
-                'credentials_john_deere',
+                'credentials_trimble'
                 'credentials_raven',
                 'credentials_raven_slingshot',
+                'credentials_agleader',
                 'credentials_stara',
-                'credentials_trimble'
+                'credentials_sentera'
               ]
             }
           ]

@@ -23,7 +23,21 @@ See below the REST resources and their endpoints available in this service.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/layers`
 
-List the existing layers for a Leaf User
+Gets a paged list of layers that belong for a Leaf User. This endpoint point can be filtered by the following layer types. Note that these types are related to Sentera integration, please check the details[here](https://blog.withleaf.io/en/senteraintegrationwithleaf).
+
+| Parameter (to filter by) | Values
+| - | - |
+| `type` | `TASSEL_COUNT`, `STAND_COUNT`, `NVDI`, and `RGB`|
+
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (max is 100)
+
+:::info the default value for page size is 20
+If the parameters page and size are not set, the endpoint will return 20 results.
+:::
 
 <Tabs
 defaultValue="sh"

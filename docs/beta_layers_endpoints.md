@@ -23,7 +23,7 @@ See below the REST resources and their endpoints available in this service.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/layers`
 
-Gets a paged list of layers that belong for a Leaf User. This endpoint point can be filtered by the following layer types. Note that these types are related to Sentera integration, please check the details[here](https://blog.withleaf.io/en/senteraintegrationwithleaf).
+Gets a paged list of layers that belong for a Leaf User. This endpoint point can be filtered by the following layer types. Note that these types are related to Sentera integration, please check the details [here](https://blog.withleaf.io/en/senteraintegrationwithleaf).
 
 | Parameter (to filter by) | Values
 | - | - |

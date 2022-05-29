@@ -13,11 +13,9 @@ Form of an Sentera Credentials resource:
 
 ```json
 {
-  "accessToken": "str",
-  "refreshToken": "str",
-  "privateKey": "str",
-  "publicKey": "str",
-  "status": "str" 
+  "username": "str",
+  "password": "str",
+  "organizationName": "str"
 }
 ```
 
@@ -104,10 +102,9 @@ A Sentera credentials.
 
 ```json
 {
-  "accessToken": "str",
-  "refreshToken": "str",
-  "publicKey": "str",
-  "privateKey": "str"
+  "username":"Username",
+  "password":"Password",
+  "organizationName":"NameOfTheOrganizationInTheFieldAgent"
 }
 ```
 
@@ -129,10 +126,9 @@ A Sentera credentials.
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
-    "accessToken": "str", 
-    "refreshToken": "str", 
-    "privateKey": "str", 
-    "publicKey": "str"
+    "username": "str", 
+    "password": "str", 
+    "organizationName": "str"
   }
 
   axios.post(endpoint, data, { headers })
@@ -152,10 +148,9 @@ A Sentera credentials.
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    "accessToken": "str", 
-    "refreshToken": "str", 
-    "privateKey": "str", 
-    "publicKey": "str"
+    "username": "str", 
+    "password": "str", 
+    "organizationName": "str"
   }
 
   response = requests.post(endpoint, headers=headers, json=data)

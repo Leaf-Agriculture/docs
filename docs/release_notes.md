@@ -16,7 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ### 2.86.0
 *2022-05-24*
 
-**Machine operations**
+**Machine operation data**
 - New properties on the Standard GeoJSON  
 Optional properties: `cropFlow`, `productIndex`, `proteinPercentage`, `samplingInterval`, `xOffset` and `yOffset`.  
 More information [here][7].
@@ -24,20 +24,20 @@ More information [here][7].
 ### 2.85.0
 *2022-05-17*
 
-**Machine operations**
+**Machine operation data**
 - Machine list available in the operation files  
 The new property `machine` list all machine ids under the files entity (not to be confused with `machinery` property available in the summary).
 More information [here][5].
 
 **Beta**
-- Machine information      
+- Machines      
 The properties `vin`, `model`, `make`, `category` and `modelYear` are now also available in the [Machine POST endpoint][6].
 
 
 ### 2.84.0
 *2022-05-11*
 
-**Machine operations**
+**Machine operation data**
 - New config available: `splitOperationsByField`    
 If set to true, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is false. 
 Check all the configurations available [here][3].
@@ -46,7 +46,7 @@ Check all the configurations available [here][3].
 *2022-05-03*
 
 **Beta**
-- Machine information   
+- Machines   
 New machine properties available: `vin`, `model`, `make`, `category` and `modelYear`.
 The `vin` property can be used to query.
 
@@ -54,7 +54,7 @@ The `vin` property can be used to query.
 ### 2.82.0
 *2022-04-26*
 
-**Machine operations**
+**Machine operation data**
 - Sugar cane  
 Leaf API now also support sugar cane files. Be aware that volume measurements will not be available for this crop type.
 
@@ -66,17 +66,15 @@ Check all the configurations available [here][3].
 ### 2.81.0
 *2022-04-20*
 
-**Machine operations**
+**Machine operation data**
 - New config available: `cleanupStandardGeojson`   
 If set to `true` (default), Leaf will automatically remove [invalid points][2] from the standardGeoJSON file for operations.  
 Check all the configurations available [here][3].
 
-
-
 - `(0,0)` point removed  
 All `(0,0)` points are now automatically removed in our converters.
   
-**Imagery**  
+**Satellite**  
 - Planet: new asset type available    
 Leaf API now also supports PlanetScope's `analytics_5b` asset type which has 5 bands: Red, Green, Blue, Red-Edge and Near infrared.  
 You can check our [documentation][1]  for how to filter images by different asset types.

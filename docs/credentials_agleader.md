@@ -25,16 +25,16 @@ Form of an AgLeader Credentials resource:
 
 Description | Endpoints
 --- | ---
-[Get the AgLeader credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/agleader-credentials`
-[Create a AgLeader credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/agleader-credentials`
-[Delete AgLeader credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/agleader-credentials`
+[Get the AgLeader credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/ag-leader-credentials`
+[Create a AgLeader credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/ag-leader-credentials`
+[Delete AgLeader credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/ag-leader-credentials`
 
 
 ## AgLeader Credentials Endpoints
 
 ### Get the AgLeader credentials
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/agleader-credentials`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/ag-leader-credentials`
 
 Get the AgLeader credentials of the Leaf User based on its `id` and returns a JSON with the credentials.
 
@@ -54,7 +54,7 @@ Get the AgLeader credentials of the Leaf User based on its `id` and returns a JS
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   ```
 
   </TabItem>
@@ -64,7 +64,7 @@ Get the AgLeader credentials of the Leaf User based on its `id` and returns a JS
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -80,7 +80,7 @@ Get the AgLeader credentials of the Leaf User based on its `id` and returns a JS
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -95,7 +95,7 @@ A AgLeader credentials resources as a JSON.
 
 
 ### Create a AgLeader credentials
-&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/agleader-credentials`  
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/ag-leader-credentials`  
 
 Create a AgLeader credentials for the Leaf User. 
 
@@ -125,7 +125,7 @@ A AgLeader credentials.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -148,7 +148,7 @@ A AgLeader credentials.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -170,7 +170,7 @@ curl -X POST \
 -H 'Authorization: Bearer YOUR_TOKEN' \
 -H 'Content-Type: application/json' \
 -d '{ "accessToken": "str","refreshToken": "str","privateKey":"str", "publicKey":"str"}' \
-'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   ```
 
   </TabItem>
@@ -180,7 +180,7 @@ curl -X POST \
 A AgLeader Credentials with status.
 
 ### Delete AgLeader credentials
-&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/agleader-credentials`
+&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/ag-leader-credentials`
 
 Delete Leaf User's AgLeader credentials.
 
@@ -198,7 +198,7 @@ Delete Leaf User's AgLeader credentials.
   ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   ```
 
   </TabItem>
@@ -208,7 +208,7 @@ Delete Leaf User's AgLeader credentials.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.delete(endpoint, { headers })
@@ -224,7 +224,7 @@ Delete Leaf User's AgLeader credentials.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/agleader-credentials'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.delete(endpoint, headers=headers)

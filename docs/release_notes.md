@@ -13,6 +13,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: /docs/docs/beta_machines_endpoints#create-a-machine
 [7]: /docs/docs/files_sample_output#standard-geojson
 
+
+### 2.87.0
+*2022-05-24*
+
+**Machine operation data**
+- Added support for ISOXML files
+
 ### 2.86.0
 *2022-05-24*
 

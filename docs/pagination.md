@@ -27,10 +27,9 @@ Currently, our API have a 3 gigabytes limit for file uploads. This is applied in
 
 ## Error codes
 
-
-Service | Endpoint | Message | HTTP Status | Description
+Service | Endpoint | Message | HTTP Status | Reason
 --- | --- | --- | --- | --- 
-Field Operations | [Upload a file](files_endpoints.md/#upload-a-file) | Bad Request | 400 | Currently we have a limit of 3GB upload
+Field Operations | [Upload a file](files_endpoints.md/#upload-a-file) | Bad Request | 400 | The uploaded file is bigger than 3 GB <!-- not standartized -->
 
 
 

@@ -83,10 +83,8 @@ We are always improving our processing. If you have any doubts or suggestions,
 we will be happy to help at help@withleaf.io
 :::
 
-
 We also provide our [Leaf Postman collection][leaf_postman_url] so you can follow
 along easily.
-
 
 [leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [medium_url]: https://medium.com/leaf-agriculture/merge-of-files-into-operations-1e62726df64d

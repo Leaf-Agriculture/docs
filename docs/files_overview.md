@@ -75,6 +75,7 @@ providers and formats:
     - SMS Shapefile export
     - .YLD
     - .agdata
+    - .ilf
 - ISOXML
 
 :::info File processing

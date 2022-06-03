@@ -52,9 +52,9 @@ Get the list of machines that are related to a given LeafUserId. Some fields can
 | `providerOrganizationId` | text |
 | `serialNumber` | text |
 | `originType`| specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
-| `createdAt`| must match exactly the time of the record creation, ISO 8601 without timezone |
-| `beforeCreatedAt`|  filters for records created before the datetime, ISO 8601 without timezone |
-| `afterCreatedAt` | filters for records created after the datetime, ISO 8601 without timezone |
+| `createdTime`| must match exactly the time of the record creation, ISO 8601 without timezone |
+| `beforeCreatedTime`|  filters for records created before the datetime, ISO 8601 without timezone |
+| `afterCreatedTime` | filters for records created after the datetime, ISO 8601 without timezone |
 | `vin` | filters machines by Vehicle Identification Number |
 
 You can also pass some parameters used exclusively for paging through results.
@@ -130,7 +130,7 @@ The response is a JSON array containing machine records.
     "providerMachineId": null,
     "providerOrganizationId": null,
     "originType": "PROVIDER_POOLED",
-    "createdAt": "2022-02-22T20:06:25.411Z",
+    "createdTime": "2022-02-22T20:06:25.411Z",
     "serialNumber": "123456",
     "vin": "1234567890ABC",
     "model": "ModelName",
@@ -146,7 +146,7 @@ The response is a JSON array containing machine records.
     "providerMachineId": null,
     "providerOrganizationId": null,
     "originType": "FILE_POOLED",
-    "createdAt": "2022-02-22T20:06:25.411Z",
+    "createdTime": "2022-02-22T20:06:25.411Z",
     "serialNumber": "123456",
     "vin": "1234567890ABC",
     "model": "ModelName",
@@ -307,7 +307,7 @@ A machine record with more details.
   "providerMachineId": null,
   "providerOrganizationId": null,
   "originType": "PROVIDER_POOLED",
-  "createdAt": "2022-02-22T20:06:25.411Z",
+  "createdTime": "2022-02-22T20:06:25.411Z",
   "serialNumber": "123456",
   "vin": "1234567890ABC",
   "model": "ModelName",
@@ -327,15 +327,15 @@ Get the details of machine operations files given a machine id. Some fields can 
 | - | - |
 | `leafFileId` | UUID |
 | `originType`|  specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED
-| `createdAt`| an ISO 8601 without timezone specifying the operation exact created time |
-| `beforeCreatedAt`|  filters for records created before the datetime, ISO 8601 without timezone |
-| `afterCreatedAt` |  filters for records created after the datetime, ISO 8601 without timezone |
+| `createdTime`| an ISO 8601 without timezone specifying the operation exact created time |
+| `beforeCreatedTime`|  filters for records created before the datetime, ISO 8601 without timezone |
+| `afterCreatedTime` |  filters for records created after the datetime, ISO 8601 without timezone |
 | `startTime`| must match exactly the time of the start of the operation, ISO 8601 without timezone |
 | `endTime` |   must match exactly the time of the end of the operation, ISO 8601 without timezone |
 | `beforeStartTime`|  an ISO 8601 without timezone, returns all operations that started before the specified time |
 | `afterStartTime`|  an ISO 8601 without timezone, returns all operations that started after the specified time|
 | `beforeEndTime`|  an ISO 8601 without timezone, returns all operations that ended before the specified time  |
-| `afterEndtime` |  an ISO 8601 without timezone, returns all operations that ended after the specified time |
+| `afterEndTime` |  an ISO 8601 without timezone, returns all operations that ended after the specified time |
 | `distanceValue` |  a double value for the distance |
 | `greaterThanDistanceValue` |  a double value for the distance, returns all operations that have a distance value greater than the specified distance |
 | `lessThanDistanceValue` |  a double value for the distance, returns all operations that have a distance value lesser than the specified distance  |
@@ -347,7 +347,7 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
 - `sort`, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc
-  - Valid values for sorting are: id, leafUserId, machineId, startTime, endTime, createdAt, leafFileId
+  - Valid values for sorting are: id, leafUserId, machineId, startTime, endTime, createdTime, leafFileId
 
 For more request examples see [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
 

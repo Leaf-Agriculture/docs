@@ -20,9 +20,9 @@ script:
 
 deploy:
   provider: pages:git
-  edge: true
-  cleanup: false
-  token: $GITHUB_TOKEN
+  edge: false
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
   local_dir: ./build
   on:
     branch: fix-travis-deploy

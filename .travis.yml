@@ -22,7 +22,7 @@ deploy:
   provider: pages
   strategy: git
   edge: true
-  cleanup: false
+  skip_cleanup: true
   local_dir: ./build
   on:
-    branch: master
+    branch: fix-travis-deploy

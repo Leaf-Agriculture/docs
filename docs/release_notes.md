@@ -12,7 +12,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: /docs/docs/files_sample_output#operation-summary
 [6]: /docs/docs/beta_machines_endpoints#create-a-machine
 [7]: /docs/docs/files_sample_output#standard-geojson
+[8]: /docs/docs/alerts_events/#field-boundary-events
 
+### 2.88.0
+*2022-06-07*
+
+**Beta**
+- Machines      
+Deprecated field `createdAt` in Machines. Use `createdTime` to obtain the creation time instead.
+
+**Fields**  
+- Fixing alerts related to creating and updating field boundaries  
+There was an issue interpreting updates from a provider. More information about alerts [here][8].
 
 ### 2.87.0
 *2022-05-24*

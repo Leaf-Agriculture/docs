@@ -19,7 +19,8 @@ script:
   - npm run build
 
 deploy:
-  provider: pages:git
+  provider: pages
+  strategy: git
   edge: false
   skip_cleanup: true
   github_token: $GITHUB_TOKEN

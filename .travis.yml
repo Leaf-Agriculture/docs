@@ -19,11 +19,10 @@ script:
   - npm run build
 
 deploy:
-  provider: pages
-  strategy: git
+  provider: pages:git
   edge: true
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  cleanup: false
+  token: $GITHUB_TOKEN
   local_dir: ./build
   on:
     branch: fix-travis-deploy

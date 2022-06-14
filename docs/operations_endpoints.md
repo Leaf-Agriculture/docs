@@ -12,7 +12,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [3]: #get-an-operation-summary
 [4]: #get-an-operations-images
 [5]: #get-an-operations-units
+[6]: /docs/docs/alerts_overview
+[7]: /docs/docs/alerts_events#operation-events
 [sample_summary]: files_sample_output
+
 
 ## About
 
@@ -544,7 +547,7 @@ Returns a single JSON object:
 }
 ```
 
-You could monitor the processing status using the `leafFileId` by our [Alerts Service][10].
+You could monitor the processing status using the `leafFileId` by our [Alerts Service][6].
 
 ---
 
@@ -556,4 +559,4 @@ Leaf Alerts support events that happen within Leaf and events that happen within
 
 ### List of Operations Events
 
-Leaf Operations Service can Alert you on these events: [list of Operations Events][10]
+Leaf Operations Service can Alert you on these events: [list of Operations Events][7]

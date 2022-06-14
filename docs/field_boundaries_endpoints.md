@@ -58,6 +58,7 @@ Gets a paged list of Fields. It is possible to filter the results by passing
 some query parameters.
 
 - `type`, only matches fields with this type (string).
+- `farmId`, only matches fields from this farmId (integer).
 - `provider`, only matches fields from this provider (string).
 - `leafUserId`, only matches fields from this user (string).
 - `page`, an integer specifying the page being fetched.
@@ -1590,6 +1591,7 @@ A Field as a JSON object.
 
 Gets a paged list of all farms. It is possible to pass some query parameters.
 
+- `growerId`, only matches Farms from this growerId (integer)
 - `provider`, only matches Farms from this provider (string)
 - `leafUserId`, only matches Farms from this Leaf User (UUID)
 - `page`, an integer specifying the page being fetched

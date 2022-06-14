@@ -12,7 +12,30 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: /docs/docs/files_sample_output#operation-summary
 [6]: /docs/docs/beta_machines_endpoints#create-a-machine
 [7]: /docs/docs/files_sample_output#standard-geojson
+[8]: /docs/docs/beta_machines_endpoints
+[9]: /docs/docs/alerts_events/#field-boundary-events
 
+### 2.89.0
+*2022-06-14*
+
+**Machine operation data**
+- Added support for 20|20 files from Precision Planting      
+
+**Fields**
+- New filter available in the fields and farms endpoints
+It is now possible to filter fields by farm and farms by grower.     
+
+
+### 2.88.0
+*2022-06-07*
+
+**Beta**
+- Machines      
+Deprecated property `createdAt` in [Machines][8]. Use `createdTime` to obtain the creation time instead.
+
+**Fields**  
+- Fixing alerts related to creating and updating field boundaries  
+There was an issue interpreting updates from a provider. More information about alerts [here][9].
 
 ### 2.87.0
 *2022-05-24*

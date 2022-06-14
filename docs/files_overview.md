@@ -77,6 +77,8 @@ providers and formats:
     - .agdata
     - .ilf
 - ISOXML
+- Precision Planting
+    - .2020
 
 :::info File processing
 We are always improving our processing. If you have any doubts or suggestions, 

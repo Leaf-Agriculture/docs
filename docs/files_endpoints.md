@@ -546,11 +546,11 @@ The following file formats from each provider are supported:
 | AgData      | FMX and CFX monitors             | `/AgData/`                                      |
 | AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |
 
-#### Precision Planting
+#### Precision Planting (beta)
 
 | File Format | Monitor Model                           | Details                                |
 |-------------|-----------------------------------------|----------------------------------------|
-| PP2020      | 20\|20                                  | A zip with `.2020` files               |
+| PP2020      | 20\|20                                  | A zip with `.2020` files.              |
 
 #### Farmobile
 

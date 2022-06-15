@@ -19,10 +19,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 *2022-06-14*
 
 **Machine operation data**
-- Added support for 20|20 files from Precision Planting      
+- **[beta]** Added support for 20|20 files from Precision Planting      
 
 **Fields**
-- New filter available in the fields and farms endpoints
+- New filter available in the fields and farms GET endpoints
 It is now possible to filter fields by farm and farms by grower.     
 
 

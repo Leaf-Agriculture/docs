@@ -239,9 +239,6 @@ The response is a JSON array containing machine records.
 
 ```json
 [
-esponse body
-Download
-[
   {
     "externalProductId": "XXXX23916",
     "name": "Roundhouse 1 EC",

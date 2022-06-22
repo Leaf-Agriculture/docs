@@ -239,11 +239,30 @@ The response is a JSON array containing machine records.
 
 ```json
 [
+esponse body
+Download
+[
   {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "string"
+    "externalProductId": "XXXX23916",
+    "name": "Roundhouse 1 EC",
+    "registration": "34704-1129",
+    "distributor": null,
+    "registrant": "Loveland Products, Inc.",
+    "productType": null,
+    "formulationType": null,
+    "labelProvider": "AGRIAN"
   },
+  {
+    "externalProductId": "XXXX4592",
+    "name": "Roundup PowerMAX Herbicide",
+    "registration": "524-549",
+    "distributor": null,
+    "registrant": "Bayer CropScience",
+    "productType": null,
+    "formulationType": null,
+    "labelProvider": "AGRIAN"
+  },
+  ....
 ]
 ```
 

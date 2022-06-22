@@ -3,7 +3,7 @@ dist: bionic
 
 language: node_js
 node_js:
-  - node
+  - 16.15.0
 
 cache:
   npm: true
@@ -21,8 +21,9 @@ script:
 deploy:
   provider: pages
   strategy: git
-  edge: true
-  cleanup: false
+  edge: false
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
   local_dir: ./build
   on:
     branch: master

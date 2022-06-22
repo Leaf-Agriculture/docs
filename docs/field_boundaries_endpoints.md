@@ -21,29 +21,32 @@ There is a [REST resources](#rest-resources) section if you want to check it out
 
 This service has the following endpoints available:
 
-| Description                                                               | Endpoints                                                                                                   |
-|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| [Get all fields](#get-all-fields)                                         | <span class="badge badge--success">GET</span> `/fields`                                                     |
-| [Get a field](#get-a-field)                                               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                     |
-| [Create a field](#create-a-field)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                         |
-| [Get all operations of a field](#get-all-operations-of-a-field)           | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`                          |
-| [Get an operation of a field](#get-an-operation-of-a-field)               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`                     |
-| [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated) | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                   |
-| [Get fields by geometry](#get-fields-by-geometry)                         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                      |
-| [Get intersection of fields](#get-intersection-of-fields)                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                               |
-| [Delete a field](#delete-a-field)                                         | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                   |
-| [Get all boundaries from field](#get-all-boundaries-from-field)           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`              |
-| [Get a boundary from field](#get-a-boundary-from-field)                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}` |
-| [Get active boundary from field](#get-active-boundary-from-field)         | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
-| [Update active boundary from field](#update-active-boundary-from-field)   | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
-| [Get all farms](#get-all-farms)                                           | <span class="badge badge--success">GET</span> `/farms`                                                      |
-| [Get a farm](#get-a-farm)                                                 | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                      |
-| [Create a farm](#create-a-farm)                                           | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                  |
-| [Update a farm](#update-a-farm)                                           | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`                              |
-| [Get all growers](#get-all-growers)                                       | <span class="badge badge--success">GET</span> `/growers`                                                    |
-| [Get a grower](#get-a-grower)                                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`                            |
-| [Create a grower](#create-a-grower)                                       | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                |
-| [Update a grower](#update-a-grower)                                       | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                            |
+| Description                                                                                       | Endpoints                                                                                                      |
+|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| [Get all fields](#get-all-fields)                                                                 | <span class="badge badge--success">GET</span> `/fields`                                                        |
+| [Get a field](#get-a-field)                                                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                        |
+| [Create a field](#create-a-field)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                            |
+| [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                      |
+| [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`                |
+| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`          |
+| [Get an operation file of a field (deprecated)](#get-an-operation-file-of-a-field-deprecated)     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`       |
+| [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}` |
+| [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                      |
+| [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                         |
+| [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                                  |
+| [Delete a field](#delete-a-field)                                                                 | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                      |
+| [Get all boundaries from field](#get-all-boundaries-from-field)                                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`                 |
+| [Get a boundary from field](#get-a-boundary-from-field)                                           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`    |
+| [Get active boundary from field](#get-active-boundary-from-field)                                 | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
+| [Update active boundary from field](#update-active-boundary-from-field)                           | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
+| [Get all farms](#get-all-farms)                                                                   | <span class="badge badge--success">GET</span> `/farms`                                                         |
+| [Get a farm](#get-a-farm)                                                                         | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                         |
+| [Create a farm](#create-a-farm)                                                                   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                     |
+| [Update a farm](#update-a-farm)                                                                   | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`                                 |
+| [Get all growers](#get-all-growers)                                                               | <span class="badge badge--success">GET</span> `/growers`                                                       |
+| [Get a grower](#get-a-grower)                                                                     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`                               |
+| [Create a grower](#create-a-grower)                                                               | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                   |
+| [Update a grower](#update-a-grower)                                                               | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                               |
 
 ## Endpoints
 
@@ -55,6 +58,7 @@ Gets a paged list of Fields. It is possible to filter the results by passing
 some query parameters.
 
 - `type`, only matches fields with this type (string).
+- `farmId`, only matches fields from this farmId (integer).
 - `provider`, only matches fields from this provider (string).
 - `leafUserId`, only matches fields from this user (string).
 - `page`, an integer specifying the page being fetched.
@@ -227,18 +231,22 @@ A single [Field](#field-resource) as a JSON object.
 
 ### Create a field
 
-&nbsp<span class="badge badge--warning">POST</span> `/users/{id}/fields`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields`
 
 Creates a Field for the user `leafUserId`. A request body must be provided
-containing the entry `"geometry"`, which represents the boundaries of the
-Field being created as a GeoJSON geometry (it must be a `"MultiPolygon"`).
-The entry `"id"` is optional. If no id is provided, an UUID will be generated.
-The Field id CAN NOT be updated.
+containing the entry `"geometry"` object which need to have the properties `"type"` and `"coordinates"`. 
+The geometry represents the boundaries of the Field being created as a GeoJSON geometry 
+(`"type"` property must be a `"MultiPolygon"`).
+
+Consider that you can also set the `id` and `name` properties (both of them optional) in the request body. If no `id` is provided
+an UUID will be generated and this property **can not** be updated.
 
 Request body example:
 
 ```json
 {
+  "id": "string", // optional
+  "name": "string", // optional
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [
@@ -257,7 +265,30 @@ Request body example:
 
 
 #### Response
-A Field as a JSON object.
+
+You can expect a response with a JSON Object containing the following properties.
+
+```json
+{
+    "id": "string",
+    "leafUserId": "string",
+    "area": {
+        "value": float,
+        "unit": "ha"
+    },
+    "boundaries": [
+        "UUID"
+    ],
+    "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [...]
+    },
+    "type": "string",
+    "createdTime": "timestamp",
+    "updatedTime": "timestamp"
+}
+```
+You can try some requests on the create fields API using the examples below.
 
 <Tabs
   defaultValue="sh"
@@ -273,7 +304,7 @@ A Field as a JSON object.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -296,7 +327,7 @@ A Field as a JSON object.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -316,16 +347,129 @@ A Field as a JSON object.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
+      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Update a Field
+
+&nbsp<span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/fields/{id}`
+
+Update the Field by `"id"` for the user `"leafUserId"`. The request body accepts updatable field properties like `"name"` to update the field name, `"farmId"` to update the related Farm of the Field and `"geometry"`, which represents the boundaries of the
+Field as a GeoJSON geometry (it must be a `"MultiPolygon"`).
+
+Request body example:
+
+```json
+{
+  "name": "updatedName",
+  "farmId": 1,
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [-93.48821327980518, 41.77137549568163],
+          [-93.48817333680519, 41.77143534378164],
+          [-93.48821327390516, 41.76068857977987],
+          [-93.48821327980518, 41.77137549568163]
+        ]
+      ]
+    ]
+  }
+}
+```
+
+
+#### Response
+A [Field](#field-resource) as a JSON object.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    name: "updatedName",
+    farmId: 1,
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [
+        [-93.48821327980518, 41.77137549568163],
+        [-93.48817333680519, 41.77143534378164],
+        [-93.48821327390516, 41.76068857977987],
+        [-93.48821327980518, 41.77137549568163]
+      ]
+    }
+  }
+
+  axios.patch(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'updatedName',
+    'farmId': 1,
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [
+        [-93.48821327980518, 41.77137549568163],
+        [-93.48817333680519, 41.77143534378164],
+        [-93.48821327390516, 41.76068857977987],
+        [-93.48821327980518, 41.77137549568163]
+      ]
+    }
+  }
+
+  response = requests.patch(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PATCH \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "updatedName", "farmId": 1, "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
       'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
   ```
 
   </TabItem>
 </Tabs>
 
-### Get all operations of a field
+### Get all operation files of a field (deprecated)
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
+Use [this endpoint](#get-all-operation-files-of-a-field) instead
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`
 
 Gets a paged list of all operation files of the Field and Leaf User specified in
 the URL.
@@ -348,8 +492,7 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (default is 20, max is 100)
 
-#### Response
-A JSON array of Files.
+#### Request
 
 <Tabs
   defaultValue="sh"
@@ -400,15 +543,138 @@ A JSON array of Files.
   </TabItem>
 </Tabs>
 
+### Response
 
-### Get an operation of a field
+```json
+[
+  {
+    "crops": [
+      "string"
+    ],
+    "endTime": "2022-05-11T13:11:57.994Z",
+    "id": "string",
+    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "operationType": "other",
+    "origin": "automerged",
+    "provider": "Other",
+    "providerFileId": "string",
+    "startTime": "2022-05-11T13:11:57.994Z",
+    "varieties": [
+      "string"
+    ]
+  }
+]
+```
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
+### Get all operation files of a field
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`
+
+Gets a paged list of all operation files of the Field and Leaf User specified in
+the URL.
+
+It is possible to filter the results by passing some query
+parameters. They are listed below.
+
+| Parameter (to filter by) | Type | Description
+| - | - | - |
+| operationType | String "harvested", "planted", "applied" or "other" | retrieve operations of given type
+| provider | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView" | retrieve operations of given provider
+| origin | String "provider", "automerged", "merged" or "uploaded" | retrieve operations of given origin
+| crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here](crops.md) | retrieve operations with this crop.
+| startTime | ISO 8601 datetime format | retrieve operations that started after this date
+| endTime | ISO 8601 datetime format | retrieve operations that ended before this date
+
+
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (default is 20, max is 100)
+
+#### Request
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Response
+
+```json
+[
+  {
+    "crops": [
+      "string"
+    ],
+    "endTime": "2022-05-11T13:11:57.994Z",
+    "id": "string",
+    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "operationType": "other",
+    "origin": "automerged",
+    "provider": "Other",
+    "providerFileId": "string",
+    "startTime": "2022-05-11T13:11:57.994Z",
+    "varieties": [
+      "string"
+    ]
+  }
+]
+```
+
+### Get an operation file of a field (deprecated)
+
+Use [this endpoint](#get-an-operation-file-of-a-field) instead
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`
 
 Gets a single Operation File of a field by its id.
 
-#### Response
-A single Operation File.
+#### Request
 
 <Tabs
   defaultValue="sh"
@@ -458,6 +724,108 @@ A single Operation File.
 
   </TabItem>
 </Tabs>
+
+### Response
+
+```json
+[
+  {
+    "crops": [
+      "string"
+    ],
+    "endTime": "2022-05-11T13:11:57.994Z",
+    "id": "string",
+    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "operationType": "other",
+    "origin": "automerged",
+    "provider": "Other",
+    "providerFileId": "string",
+    "startTime": "2022-05-11T13:11:57.994Z",
+    "varieties": [
+      "string"
+    ]
+  }
+]
+```
+
+### Get an operation file of a field 
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}`
+
+Gets a single Operation File of a field by its id.
+
+#### Response
+A single Operation File.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'JavaScript', value: 'js', },
+{ label: 'Python', value: 'py', },
+{ label: 'cURL', value: 'sh', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+  "crops": [
+    "string"
+  ],
+  "endTime": "2022-05-11T13:13:01.548Z",
+  "id": "string",
+  "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "operationType": "other",
+  "origin": "automerged",
+  "provider": "Other",
+  "providerFileId": "string",
+  "startTime": "2022-05-11T13:13:01.548Z",
+  "varieties": [
+    "string"
+  ]
+}
+```
 
 ### Get Fields by geometry (deprecated)
 
@@ -572,7 +940,32 @@ A JSON list of Fields.
 
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body. The minimum intersection percentage is given by 
-`intersectionThreshold`, its default value is 0.01%.
+`intersectionThreshold` and can range from 0.01% to 100%, its default value is `0.01`.
+
+<p align="center">
+  <img alt="How it works" width="75%" src={useBaseUrl('img/field_by_geometry.png')} />
+</p>
+
+
+The `intersectionThreshold` can be compared with the "intersection by field" ratio or the "intersection by geometry" ratio. Whichever is satisfied first.
+
+Here we have a sample for a field with 100 area unit and a geometry with 10 area unit:  
+
+<p align="center">
+  <img alt="How it works" width="35%" src={useBaseUrl('img/field_by_geometry_intersectionThreshold.png')} />
+</p>
+
+So, in this case, if the `intersectionThreshold` were 3, then the condition would be satisfied and the field would be returned, but if the value was greater than 50, then it would not satisfy the condition, as 50% is the highest intersection value:
+
+| intersectionThreshold (%) | satisfied |
+| - | - |
+| 3 | ✅ |
+| 5 | ✅ |
+| 37 | ✅ |
+| 50 | ✅ |
+| 75 | ❌ |
+| 100 | ❌ |
+
 
 #### Response
 A JSON list of Fields.
@@ -1198,6 +1591,7 @@ A Field as a JSON object.
 
 Gets a paged list of all farms. It is possible to pass some query parameters.
 
+- `growerId`, only matches Farms from this growerId (integer)
 - `provider`, only matches Farms from this provider (string)
 - `leafUserId`, only matches Farms from this Leaf User (UUID)
 - `page`, an integer specifying the page being fetched
@@ -1960,8 +2354,10 @@ Each boundary has a `status` and `providerStatus`.
 
 | Description | Endpoints
 | - | - |
-[Get all operations of a field](#get-all-operations-of-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations`
-[Get an operation of a field](#get-an-operation-of-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}/operations/{id}`
+[Get all operations of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`
+[Get all operations of a field](#get-all-operation-files-of-a-field) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`
+[Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`
+[Get an operation of a field](#get-an-operation-of-a-field) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}`
 
 ### Farm Resource
 

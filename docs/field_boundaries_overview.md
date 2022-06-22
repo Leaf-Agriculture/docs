@@ -39,5 +39,4 @@ breakdown of these concepts and how they relate to one another:
 - Most Fields are part of a Farm and every Farm can have one or more Fields.
 - Farms can be grouped together under a Grower.
 - A grower (also known as Leaf User) is the data owner entity to which credentials are attached.
-- A Season makes a relation among a Field, a Crop and a start and end dates.
 - Files or Operations are the results of operations in a given Field.

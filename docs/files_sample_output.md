@@ -61,6 +61,7 @@ This is an example of a summary for a "planted" operation
     "sourceFiles": [],
     "status": "processed",
     "origin": "provider or Leaf",
+    "machines": ["uuid"],
     "createdTime": "2020-10-13T12:30:49",
     "fields": ["uuid"],
     "original": "abc.com",
@@ -69,7 +70,9 @@ This is an example of a summary for a "planted" operation
     "zippedPNGs": "abc.com",
     "summary": {
         "type": "Feature",
-        "properties": {
+        "properties": {        
+            "operationType": "planted",
+            "originalOperationType": "name of the operation as returned by the provider",
             "elevation": {
                 "avg": 772.194895030409,
                 "min": 767.21031609,
@@ -152,6 +155,7 @@ This is an example of a summary for an "applied" operation
     "sourceFiles": [],
     "status": "processed",
     "origin": "provider or Leaf",
+    "machines": ["uuid"],
     "createdTime": "2020-10-13T20:28:31",
     "fields": ["uuid"],
     "original": "abc.com",
@@ -162,6 +166,7 @@ This is an example of a summary for an "applied" operation
         "type": "Feature",
         "properties": {        
             "operationType": "applied",
+            "originalOperationType": "name of the operation as returned by the provider",
             "crop": "soybeans",
             "totalArea": {
                 "value": 1032183,
@@ -272,6 +277,7 @@ This is an example of a summary for a "harvested" operation
     "sourceFiles": [],
     "status": "processed",
     "origin": "provider or Leaf",
+    "machines": ["uuid"],
     "createdTime": "2020-10-13T20:19:01",
     "fields": ["uuid"],
     "original": "abc.com",
@@ -348,6 +354,7 @@ This is an example of a summary for a "harvested" operation
             ],
             "startTime": "2016-09-19T16:45:51.002Z",
             "operationType": "harvested",
+            "originalOperationType": "name of the operation as returned by the provider",
             "endTime": "2016-09-19T19:50:25.991Z",
             "totalDistance": {
                 "value": 36481.33613821037,
@@ -398,6 +405,7 @@ This is an example of a summary for a "tillage" operation
     "sourceFiles": [],
     "status": "processed",
     "origin": "provider or Leaf",
+    "machines": ["uuid"],
     "createdTime": "2020-10-13T20:19:01",
     "fields": ["uuid"],
     "original": "abc.com",
@@ -431,6 +439,7 @@ This is an example of a summary for a "tillage" operation
         },
         "crop": [],
         "operationType": "tillage",
+        "originalOperationType": "name of the operation as returned by the provider",
         "tillageDepthTarget": {
           "avg": 5.999999999999999,
           "min": 5.999999999999999,
@@ -487,20 +496,21 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   <TabItem value="planted">
 
-
   | key             | presence       | type | 
-  | -               | -              | - |
-  | crop            | *  | string | 
-  | seedRate        | *  | dict |
-  | operationType   | *  | string "planted" |
-  | totalArea       | *  | float |
-  | elevation       | *  | dict |
-  | variety         | ** | string |
-  | seedRateTarget  | ** | dict |
-  | seedDepth       | ** | dict |
-  | machinery       | ** | list of machineInfo objects |
-  | speed           | ** | dict |
-  | totalPlanted    | ** | int (number of seeds) |
+  | -                    | -              | - |
+  | crop                 | *  | string | 
+  | seedRate             | *  | dict |
+  | operationType        | *  | string "planted" |
+  | originalOperationType        | **  | string |
+  | totalArea            | *  | float |
+  | elevation            | *  | dict |
+  | variety              | ** | string |
+  | seedRateTarget       | ** | dict |
+  | seedDepth            | ** | dict |
+  | machinery            | ** | list of machineInfo objects |
+  | speed                | ** | dict |
+  | totalPlanted         | ** | int (number of seeds) |
+  | operationDescription | ** | string |
   
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -513,15 +523,17 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   | key | presence | type |
   | - | - | - |
-  | appliedRate         | *  | dict |
-  | operationType       | *  | string "applied" |
-  | elevation           | *  | dict |
-  | totalArea           | *  | float |
-  | products            | *  | dict  |
-  | appliedRateTarget   | ** | dict |
-  | machinery           | ** | list of machineInfo objects |
-  | speed               | ** | dict |
-  | totalApplied        | ** | float |
+  | appliedRate          | *  | dict |
+  | operationType        | *  | string "applied" |
+  | originalOperationType        | **  | string |
+  | elevation            | *  | dict |
+  | totalArea            | *  | float |
+  | products             | *  | dict  |
+  | appliedRateTarget    | ** | dict |
+  | machinery            | ** | list of machineInfo objects |
+  | speed                | ** | dict |
+  | totalApplied         | ** | float |
+  | operationDescription | ** | string |
 
 
   \* = Always in response  
@@ -535,43 +547,47 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   | key | presence | type |
   | - | - | - |
-  | elevation         | *  | dict |
-  | harvestMoisture   | *  | dict |
-  | operationType     | *  | string "harvested" |
-  | totalArea         | *  | float |
-  | wetMass           | *  | dict | 
-  | wetMassPerArea    | *  | dict |
-  | wetVolume         | *  | dict |
-  | wetVolumePerArea  | *  | dict |
-  | totalWetVolume    | *  | float |
-  | totalWetMass      | *  | float |
-  | crop              | *  | string |
-  | dryMass           | ** | dict |
-  | dryMassPerArea    | ** | dict |
-  | dryVolume         | ** | dict |
-  | dryVolumePerArea  | ** | dict |
-  | speed             | ** | dict |
-  | variety           | ** | string |
-  | machinery         | ** | list of machineInfo objects |
+  | elevation            | *  | dict |
+  | harvestMoisture      | *  | dict |
+  | operationType        | *  | string "harvested" |
+  | originalOperationType        | **  | string |
+  | totalArea            | *  | float |
+  | wetMass              | *  | dict | 
+  | wetMassPerArea       | *  | dict |
+  | wetVolume            | *$  | dict |
+  | wetVolumePerArea     | *$  | dict |
+  | totalWetVolume       | *  | float |
+  | totalWetMass         | *  | float |
+  | crop                 | *  | string |
+  | dryMass              | ** | dict |
+  | dryMassPerArea       | ** | dict |
+  | dryVolume            | ** | dict |
+  | dryVolumePerArea     | ** | dict |
+  | speed                | ** | dict |
+  | variety              | ** | string |
+  | machinery            | ** | list of machineInfo objects |
+  | operationDescription | ** | string |
 
   \* = Always in response  
-  \*\* = Usually in response but not required to pass tests
-
-
-
+  \*\* = Usually in response but not required to pass tests  
+    $ = Not available when the crop is *sugarcane*
+  
+  
   </TabItem>
   <TabItem value="tillage">
 
 
   | key | presence | type |
   | - | - | - |
-  | elevation         | *  | dict |
-  | operationType     | *  | string "tillage" |
-  | totalArea         | *  | float |
-  | tillageDepthTarget| *  | float |
-  | tillageDepthActual| ** | float |
-  | speed             | ** | dict |
-  | machinery         | ** | list of machineInfo objects |
+  | elevation            | *  | dict |
+  | operationType        | *  | string "tillage" |
+  | originalOperationType        | **  | string |
+  | totalArea            | *  | float |
+  | tillageDepthTarget   | *  | float |
+  | tillageDepthActual   | ** | float |
+  | speed                | ** | dict |
+  | machinery            | ** | list of machineInfo objects |
+  | operationDescription | ** | string |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -624,6 +640,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "sectionId" : "int",
         "timestamp": "string",
         "operationType": "planted",
+        "originalOperationType": "name of the operation as returned by the provider",
         "crop": "string",
         "variety": "string",
         "area": "float",
@@ -655,6 +672,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "sectionId" : "int",
         "timestamp": "string",
         "operationType": "applied",
+        "originalOperationType": "name of the operation as returned by the provider",
         "crop": "string",
         "area": "float",
         "appliedRate": "float",
@@ -705,6 +723,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "sectionId" : "int",
         "timestamp": "string",
         "operationType": "harvested",
+        "originalOperationType": "name of the operation as returned by the provider",
         "crop": "string",
         "variety": "string",
         "area": "float",
@@ -738,6 +757,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "recordingStatus": "string",
         "timestamp": "string",
         "operationType": "tillage",
+        "originalOperationType": "name of the operation as returned by the provider",
         "equipmentWidth": "float",
         "elevation": "float",
         "area": "float"
@@ -772,6 +792,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | distance        | * | float           | ft or m              | Distance travelled since previous point |
   | elevation       | * | float           | ft or m              | Distance to sea level |
   | operationType   | * | string          | -                    | string "planted" |
+  | originalOperationType     | ** | string            | -                | string  |
   | equipmentWidth  | * | float           | ft or m              | Width of implement |
   | recordingStatus | * | Boolean         | -                    | Recording status of machine at point |
   | seedRate        | * | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
@@ -781,6 +802,9 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | machinery       | ** | list of machineInfo objects | -                    | name of machine & implement |
   | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
   | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
+  | productIndex    | ** | int             | -                    | Index of the applied product |
+  | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
+  | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
   <TabItem value="applied">
@@ -796,12 +820,15 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | recordingStatus   | * | Boolean           | -                | Recording status of machine |
   | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | operationType     | * | string            | -                | string "applied" |
+  | originalOperationType     | ** | string            | -                | string  |
   | products          | * | list of dicts     | -                | tank mix including products and ratio |
   | equipmentWidth    | * | float             | ft or m          | Width of implement |
   | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
   | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
   | machinery         | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId         | ** | int               | -                | ID of implement sensor section |
+  | xOffset           | ** | float             | m                | Vertical offset from the instrumentation sensor and the monitor GPS system |
+  | yOffset           | ** | float             | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
   <TabItem value="harvested">
@@ -815,22 +842,28 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | distance          | * | float       | ft or m        | Distance travelled since previous point |
   | elevation         | * | float       | ft or m        | Distance to sea level |
   | operationType     | * | string      | -              | string "harvested" |
+  | originalOperationType     | ** | string            | -                | string  |
   | equipmentWidth    | * | float       | ft or m        | Width of implement |
   | recordingStatus   | * | Boolean     | -              | Recording status of machine |
   | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
   | wetMass           | * | float       | lb or kg       | wet mass harvested in that point |
   | wetMassPerArea    | * | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
-  | wetVolume         | * | float       | bu or L        | wet volume harvested in that point |
-  | wetVolumePerArea  | * | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
+  | wetVolume         | *$ | float       | bu or L        | wet volume harvested in that point |
+  | wetVolumePerArea  | *$ | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
   | variety           | ** | string      | -              | The variety of seed being harvested |
   | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
   | heading           | ** | float       | degrees        | Heading of machine at point |
   | machinery         | ** | list of machineInfo objects        | -              | name of machine & implement |
   | dryMass           | ** | float       | lb or kg       | dry mass harvested in that point |
   | dryMassPerArea    | ** | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
-  | dryVolume         | ** | float       | bu or L        | dry volume harvested in that point |
-  | dryVolumePerArea  | ** | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
+  | dryVolume         | **$ | float       | bu or L        | dry volume harvested in that point |
+  | dryVolumePerArea  | **$ | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
   | sectionId         | ** | int         | int            | ID of implement sensor section |
+  | cropFlow          | ** | float           | tonne/h    | Massic flow of the harvested crop |
+  | proteinPercentage    | ** | float        | %                  | Amount of protein content for the harvested product |
+  | samplingInterval| ** | float           | s                    | Delta time from the previous recorded feature |
+  | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
+  | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
    <TabItem value="tillage">
@@ -845,20 +878,43 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | recordingStatus    | *  | Boolean           | -                | Recording status of machine |
   | timestamp          | *  | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
   | operationType      | *  | string            | -                | string "tillage" |
+  | originalOperationType     | ** | string            | -                | string  |
   | equipmentWidth     | *  | float             | ft or m          | Width of implement |
   | tillageDepthTarget | *  | float             | fl.oz/ac or L/m² | The target depth |
   | speed              | ** | float             | ft/s or m/s      | Speed of machine at point |
   | tillageDepthActual | ** | float             | fl.oz/ac or L/m² | The actual depth |
   | machinery          | ** | list of machineInfo objects   | -                | Name of machine and implement |
   | sectionId          | ** | int               | -                | ID of implement sensor section |
+  | xOffset            | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
+  | yOffset            | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
 </Tabs>
 
 \* = Always in response  
-\*\* = Usually in response but not required to pass tests
+\*\* = Usually in response but not required to pass tests  
+$ = Not available when the crop is *sugarcane*
 
 Despite the example units, Leaf's API will push through every unit, if the processed file contains the `required` (marked with *) properties.
+
+
+### Valid points
+
+The points in the standardGeoJSON are considered valid if all the following rules are true:
+
+| property  |  rule |
+|---|---|
+|  wetMass |  > 0.0 |
+|  wetMassPerArea |  > 0.0 |
+|  wetVolume |  > 0.0 |
+|  wetVolumePerArea |  > 0.0 |
+|  harvestMoisture |  > 0.0 |
+|  appliedRate |  > 0.0 |
+|  seedRate |  > 0.0 |
+|  tillageDepthActual |  > 0.0 |
+|  recordingStatus | = "On" |
+
+If necessary Leaf API can automatically clean these points up using the configuration [`cleanupStandardGeojson`](configurations_overview.md).
 
 ### Images
 

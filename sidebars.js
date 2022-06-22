@@ -2,6 +2,7 @@ module.exports = {
   docs: [
     'welcome',
     'quickstart',
+    'release_notes',
     {
       type: 'category',
       label: 'API Reference',
@@ -9,11 +10,29 @@ module.exports = {
       items: [
         'introduction',
         'authentication',
-        'pagination',
+        'setup_information',
         {
           type: 'category',
           label: 'Leaf User',
-          items: ['user_management_overview', 'user_management_endpoints']
+          items: [
+            'user_management_overview',
+            'user_management_endpoints',
+            {
+              type: 'category',
+              label: 'Providers credentials',
+              items: [
+                'credentials_john_deere',
+                'credentials_cfv',
+                'credentials_cnhi',
+                'credentials_trimble',
+                'credentials_raven',
+                'credentials_raven_slingshot',
+                'credentials_agleader',
+                'credentials_stara',
+                'credentials_sentera'
+              ]
+            }
+          ]
         },
         {
           type: 'category',
@@ -38,7 +57,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Satellite',
-          items: ['satellite_overview', 'satellite_endpoints']
+          items: ['satellite_overview', 'sentinel_overview',  'planet_overview',  'satellite_endpoints']
         },
         {
           type: 'category',
@@ -64,6 +83,11 @@ module.exports = {
               type: 'category',
               label: 'Prescriptions',
               items: ['beta_prescriptions_endpoints']
+            },
+            {
+              type: 'category',
+              label: 'Layers',
+              items: ['beta_layers_endpoints']
             },
             {
               type: 'category',

@@ -73,8 +73,8 @@ below.
 | `organizationId` | the provider organizationId (only available for John Deere) |
 | `batchId` | uuid of the upload response (only available for uploaded files) |
 | `createdTime` | ISO 8601 date. Returns operations from the createdTime onward |
-| `operationStartTime` | ISO 8601 date. Returns operations from the operationStartTime onward |
-| `operationEndTime` | ISO 8601 date. Returns operations until the operationEndTime |
+| `startTime` | ISO 8601 date. Returns operations from the startTime onward |
+| `endTime` | ISO 8601 date. Returns operations until the endTime |
 | `operationType` | `applied`, `planted` or `harvested` |
 | `minArea` | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 
@@ -476,6 +476,14 @@ This endpoint accepts a .zip of operation files, detects which files are in the
 .zip, and returns the ID of the process, which can in turn be used to retrieve 
 the ID's of the files being processed.
 
+
+:::info File size limit of 3 GB
+
+Currently, our upload endpoints accepts files with the maximum size limited to 3 gigabytes.
+
+:::
+
+
 This endpoint receives two required URL parameters, a `leafUserId` and `provider` 
 
 A `provider` can be set as one of the following:
@@ -486,6 +494,9 @@ ClimateFieldView
 CNHI
 JohnDeere
 Trimble
+AgLeader
+Farmobile
+PrecisionPlanting
 ```
 
 If provider is set to "Other", Leaf will detect which files are 
@@ -534,6 +545,12 @@ The following file formats from each provider are supported:
 |-------------|----------------------------------|-------------------------------------------------|
 | AgData      | FMX and CFX monitors             | `/AgData/`                                      |
 | AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |
+
+#### Precision Planting (beta)
+
+| File Format | Monitor Model                           | Details                                |
+|-------------|-----------------------------------------|----------------------------------------|
+| PP2020      | 20\|20                                  | A zip with `.2020` files.              |
 
 #### Farmobile
 

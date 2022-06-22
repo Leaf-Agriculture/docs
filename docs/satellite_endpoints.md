@@ -23,6 +23,7 @@ Description | Endpoints
 [Get an image of satellite field][10] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`
 [Create a satellite field][7] | <span class="badge badge--warning">POST</span> `/fields`
 [Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
+[Get subscription for Planet][12] | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
 
 [1]: /img/fieldovertime.png
 [2]: /img/ndviexample.png
@@ -32,8 +33,10 @@ Description | Endpoints
 [6]: #get-images-of-satellite-field
 [7]: #create-a-satellite-field
 [8]: #delete-a-satellite-field
-[9]: alerts_events#satellite-events
+[9]: /docs/docs/alerts_events#satellite-events
 [10]: #get-an-image-of-satellite-field
+[11]: /docs/docs/satellite_overview#providers
+[12]: #get-subscription-for-planet
 
 ---
 
@@ -111,8 +114,10 @@ It returns a list of JSON objects
             "type": "MultiPolygon",
             "coordinates": [...]
         }
+        "providers": [
+          "sentinel", "planet"
+        ]
     },
-    # etc...
 ]
 ```
 
@@ -191,7 +196,10 @@ It returns a single JSON object with the following entries (like each item from
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
-    }
+    },
+    "providers": [
+      "sentinel", "planet"
+    ]
 }
 ```
 
@@ -201,13 +209,15 @@ It returns a single JSON object with the following entries (like each item from
 
 &nbsp<span class="badge badge--success">GET</span> `/fields/{id}/processes`
 
-Returns images for a given field id.
+Returns images for a given field `id`.
 
 We return the following images, (tifs are EPSG:4326, pngs are EPSG:3857):
-  - RGB as tiff and as png (10m resolution)
-  - Colorized NDVI as tiff and as png (10m resolution)
-  - Raw NDVI as tiff (10m resolution)
-  - all 12 Sentinel-2 bands as tiff.
+- RGB as tiff and as png
+- Colorized NDVI as tiff and as png
+- Raw NDVI as tiff
+- All bands as tiff.
+
+_Check the [comparison page][11] to identify the resolution and bands available for each provider._
 
 It is possible to filter the results by a number of different parameters:
 
@@ -222,6 +232,7 @@ It is possible to filter the results by a number of different parameters:
 | status | string "SUCCESS", "FAILED" or "STARTED" | retrieve images with selected status | SUCCESS |
 | page | integer | page being fetched | 0 |
 | size | integer | how many processes (sets of all images) to return per page | 20 |
+| providers | array of string | sentinel or/and planet | If none is defined, it will created with *sentinel* only |
 
 :::info Important
 Default `page` is page 0 and default `size` is 20. So, to see more images,
@@ -293,7 +304,8 @@ curl -X GET \
     {
         "id": 0,
         "date": "2020-06-03T19:03:57.882Z",
-        "clouds": 0,
+        "clouds": 0, 
+        "provider": "sentinel",
         "bucketName": "sentinel-s2-l1c",
         "bucketKey": "tiles/10/S/FH/2020/6/3/0",
         "bucketRegion": "eu-central-1",
@@ -315,8 +327,9 @@ curl -X GET \
 
 - `date`: the date of the satellite image
 - `clouds`: cloud coverage percentage of the field, from 0 to 100
-- `bucketName`: name of Sentinel's bucket where the original tile is. Usually
-`sentinel-s2-l1c`
+- `provider`: the satellite provider (sentinel or planet) from where this process was created.
+- `bucketName`: name of satellite image bucket where the original tile is. Usually
+`sentinel-s2-l1c` or `leaf-planet-images-prd`
 - `bucketRegion`: AWS region of original image's bucket. Usually `eu-central-1`
 - `bucketKey`: base path of original satellite image
 - `status`: status of the process. It will be either `SUCCESS` or `FAILURE`
@@ -399,6 +412,7 @@ curl -X GET \
   "id": 0,
   "date": "2020-06-03T19:03:57.882Z",
   "clouds": 0,
+  "provider": "sentinel",
   "bucketName": "sentinel-s2-l1c",
   "bucketKey": "tiles/10/S/FH/2020/6/3/0",
   "bucketRegion": "eu-central-1",
@@ -424,8 +438,8 @@ curl -X GET \
 
 Creates a new field
 
-It will be continuously monitored forever, and new images will arrive every ~5
-days (time it takes for the satellite to go over the same field when orbiting
+It will be continuously monitored forever, and new images will arrive based on the [provider selected][11], 
+because each one of them has a different temporal resolution (time it takes for the satellite to go over the same field when orbiting
 the Earth). If you don't need the field anymore, you can
 [delete the field.](/docs/docs/satellite_endpoints#delete-fieldsid)
 
@@ -455,7 +469,9 @@ The payload of this object should be like the following:
 ```py
 {
     "externalId": "your field id",
-    "startDate": "2019-01-01"
+    "startDate": "2019-01-01", 
+    "providers": ["sentinel", "planet"],
+    "assetType": "analytic_sr"
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
@@ -463,9 +479,11 @@ The payload of this object should be like the following:
 }
 ```
 
-- `externalId`: external ID used in the field's registration
+- `externalId`: external ID used in the field's registration.
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
-field
+field.
+- `providers`: Specify the satellite imagery source, if none is specified, Sentinel images will be retrived by default.
+- `assetType`: If the `providers` property contains `planet` you can select which `assetType` will be retrived. Default value is `analytic_sr`.
 
 <Tabs
   defaultValue="sh"
@@ -594,6 +612,81 @@ curl -X DELETE \
 </TabItem>
 </Tabs>
 
+
+### Get subscription for Planet
+
+&nbsp <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
+
+Get the subscription from Planet. It returns the assetTypes, itemTypes and startDate for a field.
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+<TabItem value="js">
+
+```js
+const axios = require('axios')
+const TOKEN = 'YOUR_TOKEN'
+
+let endpoint = 'https://api.withleaf.io/services/satellite/api' +
+               '/fields/YOUR_ID/subscription'
+
+const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+axios.get(endpoint, { headers })
+    .then(res => console.log(res.data))
+    .catch(console.error)
+```
+
+</TabItem>
+<TabItem value="py">
+
+```py
+import requests
+
+TOKEN = 'YOUR_TOKEN'
+
+endpoint = ('https://api.withleaf.io/services/satellite/api'
+            '/fields/YOUR_ID/subscription')
+
+headers = {'Authorization': f'Bearer {TOKEN}'}
+
+response = requests.get(endpoint, headers=headers)
+print(response.json())
+```
+
+</TabItem>
+<TabItem value="sh">
+
+```shell
+curl -X GET \
+    --header 'Authorization: Bearer YOUR_TOKEN' \
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/subscription'
+```
+
+</TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+    "planetAssetTypes": [
+        "analytic_sr"
+    ],
+    "planetItemTypes": [
+        "PSOrthoTile"
+    ],
+    "startDate": "2022-04-01T00:00:00Z"
+}
+```
 
 ## Alerts
 

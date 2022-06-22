@@ -12,7 +12,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [3]: #get-an-operation-summary
 [4]: #get-an-operations-images
 [5]: #get-an-operations-units
+[6]: /docs/docs/alerts_overview
+[7]: /docs/docs/alerts_events#operation-events
 [sample_summary]: files_sample_output
+
 
 ## About
 
@@ -45,7 +48,12 @@ below.
 | Parameter (to filter by) | Values
 | - | - |
 | `leafUserId` | uuid of one of your users |
-
+| `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|
+| `startTime` | ISO 8601 date. Returns operations from the startTime onward |
+| `updatedTime` | ISO 8601 date. Returns operations from the updatedTime onward |
+| `endTime` | ISO 8601 date. Returns operations until the endTime |
+| `operationType` | `applied`, `planted` or `harvested` |
+| `fieldId` | the field where the operation happened |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -139,7 +147,7 @@ If the parameters page and size are not set, the endpoint will return 20 results
 ---
 
 
-### Get a operation
+### Get an operation
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}`
 
@@ -539,7 +547,7 @@ Returns a single JSON object:
 }
 ```
 
-You could monitor the processing status using the `leafFileId` by our [Alerts Service][10].
+You could monitor the processing status using the `leafFileId` by our [Alerts Service][6].
 
 ---
 
@@ -551,4 +559,4 @@ Leaf Alerts support events that happen within Leaf and events that happen within
 
 ### List of Operations Events
 
-Leaf Operations Service can Alert you on these events: [list of Operations Events][10]
+Leaf Operations Service can Alert you on these events: [list of Operations Events][7]

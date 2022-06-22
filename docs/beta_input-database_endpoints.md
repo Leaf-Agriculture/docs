@@ -173,4 +173,78 @@ The response is a JSON array containing machine records.
 ]
 ```
 
+### Search for products
+
+&nbsp<span class="badge badge--success">GET</span>  `/beta/products/search`
+
+Get the details of machine operations files given a machine id. Some fields can be sent as query parameters to filter the machine files, such as:
+
+| Parameter (to filter by) | Values
+| - | - |
+| `leafFileId` | UUID |
+| `search`| part of the product name to be searched
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/products/search'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/products/search'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/products/search'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+The response is a JSON array containing machine records.
+
+```json
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "string"
+  },
+]
+```
+
 [contact]: mailto:help@withleaf.io

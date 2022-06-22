@@ -11,6 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: https://tools.ietf.org/html/rfc7946
 [3]: #get-all-machines
 [4]: #create-a-machine=
+[5]: #create-a-machine=
 ## About
 All HTTP methods should be prepended by this service's endpoint:
 

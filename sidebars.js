@@ -89,6 +89,11 @@ module.exports = {
               label: 'Layers',
               items: ['beta_layers_endpoints']
             },
+            {
+              type: 'category',
+              label: 'Input',
+              items: ['beta_input_endpoints']
+            }
           ]
         },
       ],

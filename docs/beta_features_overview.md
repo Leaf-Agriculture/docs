@@ -39,3 +39,9 @@ Layers is a product that will organize the information that is related to field 
 
 Our supported providers are:
 * [Sentera](https://blog.withleaf.io/en/senteraintegrationwithleaf).
+
+[4]: #input
+
+## Input
+
+This feature will fetch, from operation files, varieties of crops harvested/planted and products applied and store this data.

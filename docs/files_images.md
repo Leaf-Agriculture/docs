@@ -33,13 +33,32 @@ Gets a paged list of operations that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values
+| Parameter | Values
 | - | - |
-| `leafUserId` | uuid of one of your users |
-| `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|
+| `colorRamp` | the ranges for the color ramp |
+| `projection` | `EPSG_3857`|
+| `resolution` | >0|
+| `shape` | `ROUND`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|
 
 #### Request examples
 
+```json
+{
+  "colorRamp": {
+    "0%"  : [200,   0, 0],
+    "35%" : [255,  40, 0],
+    "45%" : [255, 150, 0],
+    "55%" : [255, 240, 0],
+    "65%" : [  0, 230, 0],
+    "75%" : [  0, 190, 0],
+    "100%": [  0, 130, 0],
+    "nv"  : [  0,   0, 0, 0]
+  },
+  "projection": "EPSG_3857",
+  "resolution": 1,
+  "shape": "ROUND"
+}
+```
 
 You can also pass some parameters used exclusively for paging through results.
 They are:

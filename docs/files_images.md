@@ -43,7 +43,7 @@ below.
 <Tabs
   defaultValue="sh"
   values={
-  'colorRamp': {
+  colorRamp: {
     '0%'  : [200,   0, 0],
     '35%' : [255,  40, 0],
     '45%' : [255, 150, 0],

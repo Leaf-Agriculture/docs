@@ -15,6 +15,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [8]: /docs/docs/beta_machines_endpoints
 [9]: /docs/docs/alerts_events/#field-boundary-events
 
+### 2.91.0
+*2022-06-29*
+
+**Satellite**
+- NDRE images 
+Normalized difference red edge (NDRE) index is now available for Sentinel and Planet.  
+
+**Machine operation data**
+- Added support for Avoirdupois ounce unit of measure.     
+
 ### 2.89.0
 *2022-06-14*
 
@@ -69,7 +79,7 @@ The properties `vin`, `model`, `make`, `category` and `modelYear` are now also a
 
 **Machine operation data**
 - New config available: `splitOperationsByField`    
-If set to true, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is false. 
+If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`. 
 Check all the configurations available [here][3].
 
 ### 2.83.0

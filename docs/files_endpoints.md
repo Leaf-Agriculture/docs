@@ -611,7 +611,7 @@ The following file formats from each provider are supported:
   endpoint = 'https://api.withleaf.io/services/operations/api/batch'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  files = {'file': open('shapefile.zip')}
+  files = {'file': open('shapefile.zip', 'rb')}
   params = {
     'provider': 'JohnDeere',
     'leafUserId': 'id'

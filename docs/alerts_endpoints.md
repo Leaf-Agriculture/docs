@@ -117,7 +117,7 @@ Example in JSON:
 
   payload = {...}  # Your payload as specified above
 
-  response = requests.post(endpoint, headers=headers)
+  response = requests.post(endpoint, headers=headers, json=payload)
   print(response.json())
   ```
 
@@ -354,7 +354,7 @@ webhook listens to.
   TOKEN = 'YOUR_TOKEN'
   headers = {'Authorization': f'Bearer {TOKEN}'}
   id = 'webhook uuid'
-  endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks/${id}'
+  endpoint = f'https://api.withleaf.io/services/alerts/api/alerts/webhooks/{id}'
 
   response = requests.delete(endpoint, headers=headers)
   print(response.json())

@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Leaf provides an integration with Planet, fetching PlanetScope images from a back-fill and forward-fill specified by the user.
-We generate 4-5* multi spectral bands and a total of 10-11* images between RBG and NDVI GeoTiffs. PlanetScope provides numerus categories of products from different
+We generate 4-5* multi spectral bands and a total of 16-17* images between RBG, NDVI, and NDRE GeoTiffs. PlanetScope provides numerus categories of products from different
 satellite sensors called `itemTypes` and for each one, we have different `assetType`. For now, we only support `PSOrthoTile` and the assets `analytic_5b` and `analytic_sr` 
 for more information on those assets check the [documentation](https://developers.planet.com/docs/data/psorthotile/#available-asset-types).
 
@@ -18,18 +18,25 @@ The following table shows all the images with its resolutions and types:
 
 | Name           | Resolution (m) | Type               | Projection
 |:---------------|:---------------|:-------------------|:------------|
-| NDVI.png       | NULL           | png ndvi           | EPSG:3857   |
+| NDVI.png       | NULL           | png NDVI           | EPSG:3857   |
+| NDRE.png       | NULL           | png NDRE           | EPSG:3857   |
 | RGB.png        | NULL           | png RGB            | EPSG:3857   |
-| NDVI.tif       | 3              | tif raw ndvi values| EPSG:4326   |
-| NDVI_color.tif | 3              | tif colored ndvi   | EPSG:4326   |
+| NDVI.tif       | 3              | tif raw NDVI values| EPSG:4326   |
+| NDVI_color.tif | 3              | tif colored NDVI   | EPSG:4326   |
+| NDRE.tif       | 3              | tif raw NDRE values| EPSG:4326   |
+| NDRE_color.tif | 3              | tif colored NDRE   | EPSG:4326   |
 | RGB.tif        | 3              | tif RGB            | EPSG:4326   |
 | B01.tif        | 3              | single band        | EPSG:4326   |
 | B02.tif        | 3              | single band        | EPSG:4326   |
 | B03.tif        | 3              | single band        | EPSG:4326   |
 | B04.tif        | 3              | single band        | EPSG:4326   |
 | B05.tif *      | 3              | single band        | EPSG:4326   |
+| NDVI_relative.png | NULL       | png relative NDVI   | EPSG:3857   |
+| NDVI_absolute.png | NULL       | png absolute NDVI   | EPSG:3857   |
+| NDRE_relative.png | NULL       | png relative NDRE   | EPSG:3857   |
+| NDRE_absolute.png | NULL       | png absolute NDRE   | EPSG:3857   |
 
-_* A fifth band will be available by using the `assetType`: `analitic_5b` (red egde band) were the default value is 
+_* A fifth band will be available by using the `assetType`: `analitic_5b` (red edge band) where the default value is 
 `analitic_sr` which are images with atmospheric reflectance correction._
 
 See the [Satellite API Reference][satellite_endpoints] for more information.

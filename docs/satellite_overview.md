@@ -25,7 +25,7 @@ field. But you can increase that to as far back in time as you want.
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
 This API accepts field boundary polygons and returns processed, cropped, and
-color-corrected RGB and NDVI images every time there is a new image available.
+color-corrected RGB, NDVI, and NDRE images every time there is a new image available.
 We also provide information like percent cloud coverage of the field, the data
 coverage percentage, and the tile source for each image as well.
 
@@ -49,6 +49,6 @@ Here is a summary comparison between the providers:
 
 _* the number of bands will depend on the asset type requested_
 
-For all providers, in addition to the images of the isolated bands, the RGB and NDVI composition are available:
+For all providers, in addition to the images of the isolated bands, the RGB, NDVI, and NDRE composition are available:
 
 <img alt="sentinel x planet rgb" src={useBaseUrl('img/sentinel_planet.png')} />

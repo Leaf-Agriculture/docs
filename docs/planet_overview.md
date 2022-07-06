@@ -7,8 +7,8 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Leaf provides an integration with Planet, fetching PlanetScope images from a back-fill and forward-fill specified by the user.
-We generate 4-5* multi spectral bands and a total of 16-17* images between RBG, NDVI, and NDRE GeoTiffs. PlanetScope provides numerus categories of products from different
-satellite sensors called `itemTypes` and for each one, we have different `assetType`. For now, we only support `PSOrthoTile` and the assets `analytic_5b` and `analytic_sr` 
+We generate 4-5\* multi spectral bands and a total of 16-17\* images between RBG, NDVI, and NDRE GeoTiffs. PlanetScope provides numerus categories of products from different
+satellite sensors called `itemTypes` and for each one, we have different `assetType`. For now, we only support `PSOrthoTile` and the assets `analytic_5b`, `analytic_sr`, and `udm2` 
 for more information on those assets check the [documentation](https://developers.planet.com/docs/data/psorthotile/#available-asset-types).
 
 Also, Leaf handles all the subscription process internally in order to bring foward-filled images as area available from Planet. 
@@ -37,8 +37,49 @@ The following table shows all the images with its resolutions and types:
 | NDRE_absolute.png | NULL       | png absolute NDRE   | EPSG:3857   |
 
 _* A fifth band will be available by using the `assetType`: `analitic_5b` (red edge band) where the default value is 
-`analitic_sr` which are images with atmospheric reflectance correction._
+`analitic_sr` which are images with atmospheric reflectance correction. Be aware, in this case the red-edge band is the B04._
 
 See the [Satellite API Reference][satellite_endpoints] for more information.
 
 [satellite_endpoints]: satellite_endpoints.md
+
+## PSOrthoTile
+More info at [Planet documentation][planet_psorthotile].
+
+### Available asset types
+#### analytic_sr
+Atmospherically corrected surface reflectance GeoTiff product.
+
+| File           | Band name      |
+|:---------------|:---------------|
+| B01.tif        | Blue           |
+| B02.tif        | Green          |
+| B03.tif        | Red            |
+| B04.tif        | Near-infrared  |
+
+
+#### analytic_5b
+Radiometrically calibrated GeoTiff product suitable for analytic applications. Has 5 analytic bands, including red-edge.
+
+| File           | Band name      |
+|:---------------|:---------------|
+| B01.tif        | Blue           |
+| B02.tif        | Green          |
+| B03.tif        | Red            |
+| B04.tif        | Red-Edge       |
+| B05.tif        | Near-infrared  |
+
+#### udm2
+Usable Data Mask 2.0.
+
+| File               |
+|:-------------------|
+| clear_map.tif      |
+| snow_map.tif       |
+| shadow_map.tif     |
+| light_haze_map.tif |
+| heavy_haze_map.tif |
+| cloud_map.tif      |
+| confidence_map.tif |
+
+[planet_psorthotile]: https://developers.planet.com/docs/data/psorthotile/

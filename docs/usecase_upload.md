@@ -2,6 +2,8 @@
 title: How to upload a file and images
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 This use case describes how to get the information and images from uploaded files.
 
 The following steps will be necessary:
@@ -385,12 +387,12 @@ The following steps will be necessary:
                   parseFloat(resultado[1].trim()) + parseInt(e.height) * resultado[2];
                   let BRY = parseFloat(resultado[3].trim()) + parseInt(e.width) * 
                   parseFloat(resultado[4].trim()) + parseInt(e.height) * resultado[5];
-                  [Image here](https://i.imgur.com/ha3PLon.png)
+                  /*See image1.*/
                   let x0 = TLX * (180 / Math.PI) / 6378137.0;
                   let y0 = (Math.PI * 0.5 - 2.0 * Math.atan(Math.exp(-TLY / 6378137.0))) * 180 / Math.PI;
                   let x1 = BRX * (180 / Math.PI) / 6378137.0;
                   let y1 = (Math.PI * 0.5 - 2.0 * Math.atan(Math.exp(-BRY / 6378137.0))) * 180 / Math.PI;
-                  [Image here](https://i.imgur.com/ClDfSGS.png)
+                  /*See image2.*/
                   let obj = {
                     '1': x0 + ", " + y0,
                     '2': x1 + ", " + y0,
@@ -399,7 +401,7 @@ The following steps will be necessary:
                     '5': e.url,
                     '6': e.type
                   }
-                  [Image here](https://i.imgur.com/G14RPaL.png)
+                  /*See image3.*/
                   results.push(obj);
                   //This part does 'expeting - 1' every forEach, and when it hits 0 
                   //(all the array processed) it calls the callback function.
@@ -424,6 +426,11 @@ The following steps will be necessary:
       })
     });
     ```
+    <p align="center">
+   <img alt="Image1" src={useBaseUrl('img/usecase_upload_twosides.png')} />
+   <img alt="Image2" src={useBaseUrl('img/usecase_upload_x_y.png')} />
+   <img alt="Image3" src={useBaseUrl('img/usecase_upload_4sides.png')} />
+   </p>
     
 3. Start the server
     ```js

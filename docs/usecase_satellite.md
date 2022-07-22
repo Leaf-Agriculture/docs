@@ -362,12 +362,7 @@ function searchField() {
           geometry: {
             type: "Polygon",
             coordinates: [
-              [
-                [geometry[0][0], geometry[0][1]],
-                [geometry[1][0], geometry[1][1]],
-                [geometry[2][0], geometry[2][1]],
-                [geometry[3][0], geometry[3][1]],
-              ],
+              geometry
             ],
           },
         };

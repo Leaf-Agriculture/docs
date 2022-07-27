@@ -297,26 +297,26 @@ In this part of the documentation, it will be show some functions that are used 
 This function is called by our button that is responsible for doing the login. It will get the data from the form, and do a `POST` request with AXIOS to our backend. That will return `'Congrats! Login done!'` if the credentials are right, and another message depending on what happened wrong.
 ```js
 function loginClick() {
-            let email = $("#email").val();
-            let password = $("#password").val();
-            $.ajax({
-                type: "POST",
-                url: '/create_token',
-                data: {
-                    password: password,
-                    email: email
-                },
-                success: function (response) {
-                    if (response === 'Congrats! Login done!') {
-                      //Here you need to disable this element and
-                      //show the next one, in the case, the div responsible
-                      //for creating the webhook.
-                    } else {
-                       //Show some message saying that the login failed.
-                    }
-                }
-            });
+    let email = $("#email").val();
+    let password = $("#password").val();
+    $.ajax({
+        type: "POST",
+        url: '/create_token',
+        data: {
+            password: password,
+            email: email
+        },
+        success: function(response) {
+            if (response === 'Congrats! Login done!') {
+                //Here you need to disable this element and
+                //show the next one, in the case, the div responsible
+                //for creating the webhook.
+            } else {
+                //Show some message saying that the login failed.
+            }
         }
+    });
+}
 ```
 
 ### Load satellite monitored fields
@@ -410,52 +410,52 @@ function searchField() {
 With this function, we will receive an url from the parameter when the user clicks in the image he wants to see, and then we will display that image.
 ```js
 function showImage(url) {
+    // Clear all the images from the imagens group layer, so only one
+    // image will be display.
+    imagens.clearLayers();
 
-            // Clear all the images from the imagens group layer, so only one
-            // image will be display.
-            imagens.clearLayers();
-
-            // If you remember, in the allImages array, we saved all the
-            // images url, and the bounds of the fields. So when we receive
-            // one url in the parameter, we will search the url in the array
-            // and if it is a valid url, we will retrieve the bounds and then
-            // display the image in the map.
-            allImages.forEach((e) => {
-                if (e.imageUrl === url) {
-                    L.imageOverlay(e.imageUrl, e.bounds).addTo(imagens);
-                }
-            })
-        };
+    // If you remember, in the allImages array, we saved all the
+    // images url, and the bounds of the fields. So when we receive
+    // one url in the parameter, we will search the url in the array
+    // and if it is a valid url, we will retrieve the bounds and then
+    // display the image in the map.
+    allImages.forEach((e) => {
+        if (e.imageUrl === url) {
+            L.imageOverlay(e.imageUrl, e.bounds).addTo(imagens);
+        }
+    })
+};
 ```
 
 ### Extra
 In this case, we are using the LeafletJS library, so we need to create or map, and add the base layers we want. We will add a layer for the [OpenStreetMap](https://www.openstreetmap.org/) basemap, and one for the [Mapbox](https://www.mapbox.com/) basemap. To use the MapBox basemap without creating an map variable to it, we need to setup our MapBox token in one variable and then reach the mapbox url passing our token.
+
 ```js
 // OpenStreetMap Layer.
 var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: 'Map data &copy; OpenStreetMap contributors'
-        });
+    maxZoom: 18,
+    attribution: 'Map data &copy; OpenStreetMap contributors'
+});
 
 var token = 'YOUR MAPBOX TOKEN';
 
 // MapBox Layer.
 var mapBox = L.tileLayer(
-        'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?' + 
-        'access_token=' + token, {
-            maxZoom: 21,
-            tileSize: 512,
-            zoomOffset: -1,
-            attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © ' + 
+    'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?' +
+    'access_token=' + token, {
+        maxZoom: 21,
+        tileSize: 512,
+        zoomOffset: -1,
+        attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © ' +
             '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        });
+    });
 
 // Create the Map variable.
 var map = L.map('map', {
-            center: [0,0],
-            zoom: 3,
-            layers: [osm, mapBox]
-        });
+    center: [0, 0],
+    zoom: 3,
+    layers: [osm, mapBox]
+});
 
 //Group layers for the images and the bounds.
 var imagens = L.layerGroup().addTo(map);

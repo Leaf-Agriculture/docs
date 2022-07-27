@@ -18,7 +18,7 @@ To register with Leaf:
 ## Backend
 ### Create server
 
-After registered, you will need to setup a server, in this case we will use the Express Framework to create the server, the Ngrok library to be able to open our localhost port to the open internet and the Axios library to do POST/GET requests in our server:
+After registered, you will need to setup a server, in this case we will use the Express Framework to create the server, the Ngrok library to be able to open our localhost port to the open internet and the Axios library to do `POST/GET` requests in our server:
 
 ```js
 const express = require("express")
@@ -51,32 +51,32 @@ it in the future. In this example, we just get 2 types of response from the Leaf
  - uploadedFileProcessingFinished
 ```js
   app.post("/webhook", (req, res) => {
-    if (req.body.message === "confirmation of webhook upon registration") {
-    console.log("Just checking if webhook url is alive");
-    }
-    if (req.body.type === "uploadedFileProcessingFailed") {
-    console.log("Processing failed to the file: " + req.body.fileId);
-    } else if (req.body.type === "uploadedFileProcessingFinished") {
-      console.log("Processing ok to the file: " + req.body.fileId);
-      let content = req.body.fileId + "\n";
-        fs.appendFile("./files/all.txt", content, (erro) => {
-          if (erro) {
-            console.error(erro);
-          }
-        });
+      if (req.body.message === "confirmation of webhook upon registration") {
+          console.log("Just checking if webhook url is alive");
       }
-    res.status(200).send("Ok");
+      if (req.body.type === "uploadedFileProcessingFailed") {
+          console.log("Processing failed to the file: " + req.body.fileId);
+      } else if (req.body.type === "uploadedFileProcessingFinished") {
+          console.log("Processing ok to the file: " + req.body.fileId);
+          let content = req.body.fileId + "\n";
+          fs.appendFile("./files/all.txt", content, (error) => {
+              if (error) {
+                  console.error(error);
+              }
+          });
+      }
+      res.status(200).send("Ok");
   }); 
 ```
 [Here](https://leaf-agriculture.github.io/docs/docs/alerts_overview) you can see the Alerts Documentation.
 
 #### Route '/create_token'
 In this route, we will create the user token to use in the next steps. In the data object,
-we need the attributes 'username, password' that comes from a form in the front-end,
-and the attribute 'rememberMe' is optional.
-We make a POST request with AXIOS to the Leaf API endpoint that is responsible to create our token,
-if everything is ok, it will return an status code 200, and the token will be saved in the 'token'
-variable, if anything is wrong, it will be catched by the '.catch()' function.
+we need the attributes `username` and `password` that comes from a form in the front-end,
+and the attribute `rememberMe` is optional.
+We make a `POST` request with AXIOS to the Leaf API endpoint that is responsible to create our token,
+if everything is ok, it will return an status code `200`, and the token will be saved in the `token`
+variable, if anything is wrong, it will be catched by the `.catch()` function.
 ```js
 app.post("/create_token", (req, res) => {
   let email = req.body.email.trim();
@@ -104,14 +104,14 @@ app.post("/create_token", (req, res) => {
       });
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/authentication) you can see Authentication Documentation.
+[Here](/docs/docs/authentication) you can see the Authentication Documentation.
 
 #### Route '/create_webhook'
 In this route, we will receive data from a form in the front-end, put them in a object named data and
 then make a post request with AXIOS to the Leaf API endpoint that is responsible for creating
 webhooks. The attributes name and events comes from the form, the attribute secret you will need
 to generate, and the parameter url is created when the server start using the
-function startTunnel(); and we add the '/webhook' that is the route we defined early.
+function `startTunnel();` and we add the '/webhook' that is the route we defined early.
 ```js
 app.post("/create_webhook", (req, res) => {
   let name = req.body.nome;
@@ -137,12 +137,13 @@ app.post("/create_webhook", (req, res) => {
     });
 });
 ```
+[Here](/docs/docs/alerts_endpoints#create-a-webhook) you can see the Webhook Documentation.
 
 #### Route '/list_webhook'
-In this route, we will use our token to list all our created webhooks. We need to do a GET request
+In this route, we will use our token to list all our created webhooks. We need to do a `GET` request
 with AXIOS to the Leaf API endpoint responsible to give us all our webhooks. And all will be
 done just if our token is not undefined, in other case, it will give us the error
-'Invalid token btw, generate one first!'.
+`'Invalid token btw, generate one first!'`.
 ```js
 app.get("/list_webhook", (req, res) => {
   if (token != undefined) {
@@ -159,11 +160,13 @@ app.get("/list_webhook", (req, res) => {
       }
 });
 ```
+[Here](/docs/docs/alerts_endpoints#get-all-webhooks) you can see the Webhook Documentation.
+
 #### Route '/delete_webhook/:id'
 In this route, we will be able to delete a webhook that we created. The id comes from the
-parameter id in the url, and we will use this parameter in the DELETE request that we make
+parameter id in the url, and we will use this parameter in the `DELETE` request that we make
 with AXIOS, we also need to set our token in the header, and if everything is ok,
-we will receive an status code 204
+we will receive an status code `204`
 ```js
 app.get("/delete_webhook/:id", (req, res) => {
     let webhook_id = req.params.id;
@@ -179,19 +182,19 @@ app.get("/delete_webhook/:id", (req, res) => {
   res.redirect("/");
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/alerts_endpoints#create-a-webhook) you can see the Webhook Documentation.
+[Here](/docs/docs/alerts_endpoints#delete-a-webhook) you can see the Webhook Documentation.
 
 #### Route '/save_file'
 In this route, we will receive a file that was uploaded from the front-end, we will save it,
 upload to Leaf API and then delete it. If the user token is already generated, it will follow the process, if it is undefined, it will send
-back the message 'Not a valid token, create one first'.
+back the message `'Not a valid token, create one first'`.
 ```js
 app.post("/save_file", (req, res) => {
     if (token === undefined) {
       res.json('Not a valid token, create one first');
     } else {
       //Here we save the provider and the file that is comming from the front end,
-      // we also savethe file name and create a path in the server to the file.
+      // we also save the file name and create a path in the server to the file.
 
       let provider = req.body.provider;
       let files = req.files;
@@ -259,10 +262,10 @@ app.post("/save_file", (req, res) => {
       }
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/files_endpoints) you can see the Files Documentation.
+[Here](/docs/docs/files_endpoints) you can see the Files Documentation.
 
 #### Route '/verify_files'
-In this route, we can verify if any files that we uploaded were processed succefully. If the token is already generated it will proceed to verifying the all.txt file, where the files id are saved when we receive an alert in the '/webhook' route. If are any files id in the file, the route will return the files id in the JSON options.
+In this route, we can verify if any files that we uploaded were processed succefully. If the token is already generated it will proceed to verifying the `all.txt` file, where the files id are saved when we receive an alert in the `'/webhook'` route. If are any files id in the file, the route will return the files id in the JSON options.
 ```js
 app.get("/verify_files", (req, res) => {
     if (token === undefined) {
@@ -293,7 +296,7 @@ app.get("/verify_files", (req, res) => {
 });
 ```
 #### Route '/detail_file/:id'
-In this route, we will receive and id in the url, and we will use this id to make a GET request with
+In this route, we will receive and id in the url, and we will use this id to make a `GET` request with
 AXIOS in the Leaf API endpoint that is responsible to give us the content of uploaded files.
 The API endpoint will give us an JSON with the information, and we will send it back to the
 front-end.
@@ -312,11 +315,11 @@ app.get("/detail_file/:id", (req, res) => {
     .catch(console.error);
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/files_endpoints/) you can see the Files Documentation.
+[Here](/docs/docs/files_endpoints/) you can see the Files Documentation.
 
 #### Route '/file_images/:id'
 In this route, we will be able to get the images from the Leaf API endpoint. The file id is received
-from the form, in the parameter 'id' and we put it in the endpoint url. When we make a GET request
+from the form, in the parameter `id` and we put it in the endpoint url. When we make a `GET` request
 with AXIOS, the endpoint will return an JSON with the images url and informations related to
 that file id that we send in the url.
 ```js
@@ -336,7 +339,7 @@ app.get("/file_images/:id", (req, res) => {
     .catch(console.error);
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/files_endpoints/#get-a-files-images) is the File Images Documentation.
+[Here](/docs/docs/files_endpoints/#get-a-files-images) is the File Images Documentation.
 
 #### Route '/image_coordinates'
 In this route, we will receive a list of images url, and we will work with it.
@@ -459,10 +462,10 @@ app.listen(3000, async () => {
 
 ## Frontend
 In the frontend, we will need to use just one page! We define the page in the path: `/views/ejs/map.ejs`.  
-In this part of the documentation, it will be show some functions that are used in the map.ejs file, all this functions will be called via onClick() method from form buttons. It's important to say that we will use the [Mapbox](https://www.mapbox.com/) tool to display the map and images on it.
+In this part of the documentation, it will be show some functions that are used in the `map.ejs` file, all this functions will be called via `onClick()` method from form buttons. It's important to say that we will use the [Mapbox API](https://docs.mapbox.com/mapbox-gl-js/api/) to display the map and images on it.
 
 ### Login
-This function is called by our button that is responsible for doing the login. It will get the data from the form, and do a POST request with AXIOS to our backend. That will return 'Congrats! Login done!' if the credentials are right, and another message depending on what happened wrong.
+This function is called by our button that is responsible for doing the login. It will get the data from the form, and do a `POST` request with AXIOS to our backend. That will return `'Congrats! Login done!'` if the credentials are right, and another message depending on what happened wrong.
 ```js
 function loginClick() {
             let email = $("#email").val();
@@ -488,7 +491,7 @@ function loginClick() {
 ```
 
 ### Create Webhook
-With this function, we will get the parameters from the form about the webhook, and do a POST request with AXIOS to our backend resonsible for creating the webhook in the Leaf API.
+With this function, we will get the parameters from the form about the webhook, and do a `POST` request with AXIOS to our backend resonsible for creating the webhook in the Leaf API.
 ```js
 function webhookCreateClick() {
             if ($('YOUR FORM INPUT ID').val() != false) {
@@ -548,7 +551,7 @@ function listWebhooks() {
 ```
 
 ### Upload a file
-In this function, we will handle the upload file process. We need to intercept the form submit action and then make a POST with AXIOS to our backend.
+In this function, we will handle the upload file process. We need to intercept the form submit action and then make a `POST` with AXIOS to our backend.
 ```js
 function uploadFile() {
             // Intercept the submit form action
@@ -747,7 +750,7 @@ function showImage(id) {
 ```
 
 ### Extra
-Don't forget to create an Map and a div for it, if you don't do it, the map will not work!
+Don't forget to create an Map, a div for it and replace the `YOUR MAPBOX TOKEN`, otherwise, the map will not work!
 ```js
 mapboxgl.accessToken = 'YOUR MAPBOX TOKEN';
         const map = new mapboxgl.Map({
@@ -762,9 +765,11 @@ mapboxgl.accessToken = 'YOUR MAPBOX TOKEN';
         map.on('load', () => {
         });
 ```
-[See](https://docs.mapbox.com/) here more informations about Mapbox!
+[See here](https://docs.mapbox.com/) more informations about Mapbox!
 
 :::tip
 Here you can run a live use case demo!
-:::
+
 [![Edit webhook-leaf-api](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/webhook-leaf-api-o72lv8?fontsize=14&hidenavigation=1&theme=dark)
+:::
+

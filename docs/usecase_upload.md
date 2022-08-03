@@ -18,7 +18,7 @@ To register with Leaf:
 ## Backend
 ### Create server
 
-After registered, you will need to setup a server, in this case we will use the Express Framework to create the server, the Ngrok library to be able to open our localhost port to the open internet and the Axios library to do POST/GET requests in our server:
+After registered, you will need to setup a server, in this case we will use the Express Framework to create the server, the Ngrok library to be able to open our localhost port to the open internet and the Axios library to do `POST/GET` requests in our server:
 
 ```js
 const express = require("express")
@@ -51,32 +51,32 @@ it in the future. In this example, we just get 2 types of response from the Leaf
  - uploadedFileProcessingFinished
 ```js
   app.post("/webhook", (req, res) => {
-    if (req.body.message === "confirmation of webhook upon registration") {
-    console.log("Just checking if webhook url is alive");
-    }
-    if (req.body.type === "uploadedFileProcessingFailed") {
-    console.log("Processing failed to the file: " + req.body.fileId);
-    } else if (req.body.type === "uploadedFileProcessingFinished") {
-      console.log("Processing ok to the file: " + req.body.fileId);
-      let content = req.body.fileId + "\n";
-        fs.appendFile("./files/all.txt", content, (erro) => {
-          if (erro) {
-            console.error(erro);
-          }
-        });
+      if (req.body.message === "confirmation of webhook upon registration") {
+          console.log("Just checking if webhook url is alive");
       }
-    res.status(200).send("Ok");
+      if (req.body.type === "uploadedFileProcessingFailed") {
+          console.log("Processing failed to the file: " + req.body.fileId);
+      } else if (req.body.type === "uploadedFileProcessingFinished") {
+          console.log("Processing ok to the file: " + req.body.fileId);
+          let content = req.body.fileId + "\n";
+          fs.appendFile("./files/all.txt", content, (error) => {
+              if (error) {
+                  console.error(error);
+              }
+          });
+      }
+      res.status(200).send("Ok");
   }); 
 ```
 [Here](https://leaf-agriculture.github.io/docs/docs/alerts_overview) you can see the Alerts Documentation.
 
 #### Route '/create_token'
 In this route, we will create the user token to use in the next steps. In the data object,
-we need the attributes 'username, password' that comes from a form in the front-end,
-and the attribute 'rememberMe' is optional.
-We make a POST request with AXIOS to the Leaf API endpoint that is responsible to create our token,
-if everything is ok, it will return an status code 200, and the token will be saved in the 'token'
-variable, if anything is wrong, it will be catched by the '.catch()' function.
+we need the attributes `username` and `password` that comes from a form in the front-end,
+and the attribute `rememberMe` is optional.
+We make a `POST` request with AXIOS to the Leaf API endpoint that is responsible to create our token,
+if everything is ok, it will return an status code `200`, and the token will be saved in the `token`
+variable, if anything is wrong, it will be catched by the `.catch()` function.
 ```js
 app.post("/create_token", (req, res) => {
   let email = req.body.email.trim();
@@ -104,14 +104,14 @@ app.post("/create_token", (req, res) => {
       });
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/authentication) you can see Authentication Documentation.
+[Here](/docs/docs/authentication) you can see the Authentication Documentation.
 
 #### Route '/create_webhook'
 In this route, we will receive data from a form in the front-end, put them in a object named data and
 then make a post request with AXIOS to the Leaf API endpoint that is responsible for creating
 webhooks. The attributes name and events comes from the form, the attribute secret you will need
 to generate, and the parameter url is created when the server start using the
-function startTunnel(); and we add the '/webhook' that is the route we defined early.
+function `startTunnel();` and we add the '/webhook' that is the route we defined early.
 ```js
 app.post("/create_webhook", (req, res) => {
   let name = req.body.nome;
@@ -137,12 +137,13 @@ app.post("/create_webhook", (req, res) => {
     });
 });
 ```
+[Here](/docs/docs/alerts_endpoints#create-a-webhook) you can see the Webhook Documentation.
 
 #### Route '/list_webhook'
-In this route, we will use our token to list all our created webhooks. We need to do a GET request
+In this route, we will use our token to list all our created webhooks. We need to do a `GET` request
 with AXIOS to the Leaf API endpoint responsible to give us all our webhooks. And all will be
 done just if our token is not undefined, in other case, it will give us the error
-'Invalid token btw, generate one first!'.
+`'Invalid token btw, generate one first!'`.
 ```js
 app.get("/list_webhook", (req, res) => {
   if (token != undefined) {
@@ -159,11 +160,13 @@ app.get("/list_webhook", (req, res) => {
       }
 });
 ```
+[Here](/docs/docs/alerts_endpoints#get-all-webhooks) you can see the Webhook Documentation.
+
 #### Route '/delete_webhook/:id'
 In this route, we will be able to delete a webhook that we created. The id comes from the
-parameter id in the url, and we will use this parameter in the DELETE request that we make
+parameter id in the url, and we will use this parameter in the `DELETE` request that we make
 with AXIOS, we also need to set our token in the header, and if everything is ok,
-we will receive an status code 204
+we will receive an status code `204`
 ```js
 app.get("/delete_webhook/:id", (req, res) => {
     let webhook_id = req.params.id;
@@ -179,19 +182,19 @@ app.get("/delete_webhook/:id", (req, res) => {
   res.redirect("/");
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/alerts_endpoints#create-a-webhook) you can see the Webhook Documentation.
+[Here](/docs/docs/alerts_endpoints#delete-a-webhook) you can see the Webhook Documentation.
 
 #### Route '/save_file'
 In this route, we will receive a file that was uploaded from the front-end, we will save it,
 upload to Leaf API and then delete it. If the user token is already generated, it will follow the process, if it is undefined, it will send
-back the message 'Not a valid token, create one first'.
+back the message `'Not a valid token, create one first'`.
 ```js
 app.post("/save_file", (req, res) => {
     if (token === undefined) {
       res.json('Not a valid token, create one first');
     } else {
       //Here we save the provider and the file that is comming from the front end,
-      // we also savethe file name and create a path in the server to the file.
+      // we also save the file name and create a path in the server to the file.
 
       let provider = req.body.provider;
       let files = req.files;
@@ -259,10 +262,10 @@ app.post("/save_file", (req, res) => {
       }
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/files_endpoints) you can see the Files Documentation.
+[Here](/docs/docs/files_endpoints) you can see the Files Documentation.
 
 #### Route '/verify_files'
-In this route, we can verify if any files that we uploaded were processed succefully. If the token is already generated it will proceed to verifying the all.txt file, where the files id are saved when we receive an alert in the '/webhook' route. If are any files id in the file, the route will return the files id in the JSON options.
+In this route, we can verify if any files that we uploaded were processed succefully. If the token is already generated it will proceed to verifying the `all.txt` file, where the files id are saved when we receive an alert in the `'/webhook'` route. If are any files id in the file, the route will return the files id in the JSON options.
 ```js
 app.get("/verify_files", (req, res) => {
     if (token === undefined) {
@@ -293,7 +296,7 @@ app.get("/verify_files", (req, res) => {
 });
 ```
 #### Route '/detail_file/:id'
-In this route, we will receive and id in the url, and we will use this id to make a GET request with
+In this route, we will receive and id in the url, and we will use this id to make a `GET` request with
 AXIOS in the Leaf API endpoint that is responsible to give us the content of uploaded files.
 The API endpoint will give us an JSON with the information, and we will send it back to the
 front-end.
@@ -312,11 +315,11 @@ app.get("/detail_file/:id", (req, res) => {
     .catch(console.error);
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/files_endpoints/) you can see the Files Documentation.
+[Here](/docs/docs/files_endpoints/) you can see the Files Documentation.
 
 #### Route '/file_images/:id'
 In this route, we will be able to get the images from the Leaf API endpoint. The file id is received
-from the form, in the parameter 'id' and we put it in the endpoint url. When we make a GET request
+from the form, in the parameter `id` and we put it in the endpoint url. When we make a `GET` request
 with AXIOS, the endpoint will return an JSON with the images url and informations related to
 that file id that we send in the url.
 ```js
@@ -336,7 +339,7 @@ app.get("/file_images/:id", (req, res) => {
     .catch(console.error);
 });
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/files_endpoints/#get-a-files-images) is the File Images Documentation.
+[Here](/docs/docs/files_endpoints/#get-a-files-images) is the File Images Documentation.
 
 #### Route '/image_coordinates'
 In this route, we will receive a list of images url, and we will work with it.
@@ -438,6 +441,13 @@ app.post("/image_coordinates", async (req, res) => {
 });
 ```
 
+<p align="center">
+  <img alt="Image1" width="256px" src={useBaseUrl('img/usecase_upload_twosides.png')} />
+  <img alt="Image2" width="256px" src={useBaseUrl('img/usecase_upload_x_y.png')} />
+  <img alt="Image3" width="256px" src={useBaseUrl('img/usecase_upload_4sides.png')} />
+  <span>Image 1  - Image 2 - Image 3</span>
+</p>
+
 ### Start the server
 For the last part, we need to start our server, and make the front-end!
 ```js
@@ -451,168 +461,162 @@ app.listen(3000, async () => {
 });
 ```
 
-<p align="center">
-  <img alt="Image1" src={useBaseUrl('img/usecase_upload_twosides.png')} />
-  <img alt="Image2" src={useBaseUrl('img/usecase_upload_x_y.png')} />
-  <img alt="Image3" src={useBaseUrl('img/usecase_upload_4sides.png')} />
-</p>
-
 ## Frontend
 In the frontend, we will need to use just one page! We define the page in the path: `/views/ejs/map.ejs`.  
-In this part of the documentation, it will be show some functions that are used in the map.ejs file, all this functions will be called via onClick() method from form buttons. It's important to say that we will use the [Mapbox](https://www.mapbox.com/) tool to display the map and images on it.
+In this part of the documentation, it will be show some functions that are used in the `map.ejs` file, all this functions will be called via `onClick()` method from form buttons. It's important to say that we will use the [Mapbox API](https://docs.mapbox.com/mapbox-gl-js/api/) to display the map and images on it.
 
 ### Login
-This function is called by our button that is responsible for doing the login. It will get the data from the form, and do a POST request with AXIOS to our backend. That will return 'Congrats! Login done!' if the credentials are right, and another message depending on what happened wrong.
+This function is called by our button that is responsible for doing the login. It will get the data from the form, and do a `POST` request with AXIOS to our backend. That will return `'Congrats! Login done!'` if the credentials are right, and another message depending on what happened wrong.
 ```js
 function loginClick() {
-            let email = $("#email").val();
-            let password = $("#password").val();
-            $.ajax({
-                type: "POST",
-                url: '/create_token',
-                data: {
-                    password: password,
-                    email: email
-                },
-                success: function (response) {
-                    if (response === 'Congrats! Login done!') {
-                      //Here you need to disable this element and
-                      //show the next one, in the case, the div responsible
-                      //for creating the webhook.
-                    } else {
-                       //Show some message saying that the login failed.
-                    }
-                }
-            });
+    let email = $("#email").val();
+    let password = $("#password").val();
+    $.ajax({
+        type: "POST",
+        url: '/create_token',
+        data: {
+            password: password,
+            email: email
+        },
+        success: function(response) {
+            if (response === 'Congrats! Login done!') {
+                //Here you need to disable this element and
+                //show the next one, in the case, the div responsible
+                //for creating the webhook.
+            } else {
+                //Show some message saying that the login failed.
+            }
         }
+    });
+}
 ```
 
 ### Create Webhook
-With this function, we will get the parameters from the form about the webhook, and do a POST request with AXIOS to our backend resonsible for creating the webhook in the Leaf API.
+With this function, we will get the parameters from the form about the webhook, and do a `POST` request with AXIOS to our backend resonsible for creating the webhook in the Leaf API.
 ```js
 function webhookCreateClick() {
-            if ($('YOUR FORM INPUT ID').val() != false) {
-                let name = $("YOUR FORM INPUT ID").val();
-                let type = $("YOUR SELECT INPUT SELECTED").val();
-                $('#webhook_response').text('');
-                $.ajax({
-                    type: "POST",
-                    url: '/create_webhook',
-                    data: {
-                        name: name,
-                        type: type
-                    },
-                    success: function (response) {
-                        if (response === 'Webhook successfully created') {
-                            //Here you need to disable this element and
-                            //show the next one, in the case, the div responsible
-                            //for list the webhook.
-                            listWebhooks();
-                        } else {
-                           //Show some message saying that the webhook creation failed.
-                        }
-                    }
-                });
+    if ($('YOUR FORM INPUT ID').val() != false) {
+        let name = $("YOUR FORM INPUT ID").val();
+        let type = $("YOUR SELECT INPUT SELECTED").val();
+        $('#webhook_response').text('');
+        $.ajax({
+            type: "POST",
+            url: '/create_webhook',
+            data: {
+                name: name,
+                type: type
+            },
+            success: function(response) {
+                if (response === 'Webhook successfully created') {
+                    //Here you need to disable this element and
+                    //show the next one, in the case, the div responsible
+                    //for list the webhook.
+                    listWebhooks();
+                } else {
+                    //Show some message saying that the webhook creation failed.
+                }
             }
-        }
+        });
+    }
+}
 ```
 
 ### List webhooks
 In this function, we will be able to list all the webhooks that our Leaf Account have. We will list them to the user just to see if the webhook that he needs is created or not.
 ```js
 function listWebhooks() {
-            let start = '<p>'
-            let end = '</p>'
-            $.ajax({
-                type: "GET",
-                url: '/list_webhook',
-                success: function (response) {
-                  // Here, we get the response from our backend and build a div with 
-                  // <p></p> inside of it containing the type of the webhooks.
-                  // Then, we call the next element, the uploadFile();
-                    response = JSON.parse(response);
-                    if (response.length > 0) {
-                        response.forEach((e) => {
-                            e.events.forEach((p) => {
-                                $('YOUR DIV ID').append(start + p + end);
-                            })
-                        })
-                    }
-                    uploadFile();
-                },
-                error: function (response) {
-                    console.log(response);
-                }
-            });
-        };
+    let start = '<p>'
+    let end = '</p>'
+    $.ajax({
+        type: "GET",
+        url: '/list_webhook',
+        success: function(response) {
+            // Here, we get the response from our backend and build a div with 
+            // <p></p> inside of it containing the type of the webhooks.
+            // Then, we call the next element, the uploadFile();
+            response = JSON.parse(response);
+            if (response.length > 0) {
+                response.forEach((e) => {
+                    e.events.forEach((p) => {
+                        $('YOUR DIV ID').append(start + p + end);
+                    })
+                })
+            }
+            uploadFile();
+        },
+        error: function(response) {
+            console.log(response);
+        }
+    });
+};
 ```
 
 ### Upload a file
-In this function, we will handle the upload file process. We need to intercept the form submit action and then make a POST with AXIOS to our backend.
+In this function, we will handle the upload file process. We need to intercept the form submit action and then make a `POST` with AXIOS to our backend.
 ```js
 function uploadFile() {
-            // Intercept the submit form action
-            $("YOUR FORM ID").submit(function () {
-                // Create a new formData, passing the real formData file to it.
-                var formData = new FormData(this);
-                $.ajax({
-                    url: '/save_file',
-                    type: 'POST',
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: formData,
-                    success: function (response) {
-                        if (response === 'File uploaded, wait for it to be processed!') {
-                           // Here you will make what you want to happen when the file 
-                           // was received in the backend and everything was ok with it.
-                        } else {
-                          // Here you need to display some message to the user if the file 
-                          // that he uploaded was not in the correct format or size.
-                        }
-                    },
-                    error: function (response) {
-                        console.log(response);
-                    },
-                });
-            });
-        };
+    // Intercept the submit form action
+    $("YOUR FORM ID").submit(function() {
+        // Create a new formData, passing the real formData file to it.
+        var formData = new FormData(this);
+        $.ajax({
+            url: '/save_file',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: formData,
+            success: function(response) {
+                if (response === 'File uploaded, wait for it to be processed!') {
+                    // Here you will make what you want to happen when the file 
+                    // was received in the backend and everything was ok with it.
+                } else {
+                    // Here you need to display some message to the user if the file 
+                    // that he uploaded was not in the correct format or size.
+                }
+            },
+            error: function(response) {
+                console.log(response);
+            },
+        });
+    });
+};
 ```
 
 ### Check uploaded files
 With this function, we will be able to check if the Leaf API already processed any files that we uploaded to our backend. We will build a div with links inside of it, linking to another function: `get_json()`, that will retrieve all the data we need.
 ```js
 function checkFiles() {
-            // Define the string we will build
-            let start = `<a onclick="get_json(`;
-            let middle = `)>`;
-            let end = `</a>"`
-            $.ajax({
-                type: "GET",
-                url: '/verify_files',
-                success: function (response) {
-                    if (response == 'No file processed yet!') {
-                       // Display a message to your user saying that no files
-                       // were processed yet
-                    } else if (response == 'Invalid token btw, generate one first!') {
-                       // Display a message to your user saying that he needs 
-                       // to generate a token first
-                    } else {
-                        // See the response from the backend and build an div
-                        // containing the links to check files content.
-                        response = JSON.parse(response);
-                        response.forEach((e) => {
-                            $('YOUR DIV ID').append(`<a onClick="get_json('` + e + `');"
+    // Define the string we will build
+    let start = `<a onclick="get_json(`;
+    let middle = `)>`;
+    let end = `</a>"`
+    $.ajax({
+        type: "GET",
+        url: '/verify_files',
+        success: function(response) {
+            if (response == 'No file processed yet!') {
+                // Display a message to your user saying that no files
+                // were processed yet
+            } else if (response == 'Invalid token btw, generate one first!') {
+                // Display a message to your user saying that he needs 
+                // to generate a token first
+            } else {
+                // See the response from the backend and build an div
+                // containing the links to check files content.
+                response = JSON.parse(response);
+                response.forEach((e) => {
+                    $('YOUR DIV ID').append(`<a onClick="get_json('` + e + `');"
                             style="cursor: pointer; cursor: hand;"><p>` + e + `</a>`);
-                        });
-                    }
-                },
-                error: function (response) {
-                    // Display any error that cant occur during the response from backend.
-                    console.log(response);
-                }
-            });
-        };
+                });
+            }
+        },
+        error: function(response) {
+            // Display any error that cant occur during the response from backend.
+            console.log(response);
+        }
+    });
+};
 ```
 
 ### Get JSON data from files
@@ -622,149 +626,152 @@ With this function, we will receive an id from parameter, and we will send it to
 - Images coordinates
 ```js
 function get_json(id) {
-            let file_id = id;
-            var allImages = new Array();
-            // With this GET request, we will send to the backend one file_id,
-            // and it will return the images linked to it.
-            $.ajax({
-                url: "/file_images/" + file_id,
-                type: 'GET',
-                async: false,
-                dataType: 'json',
-                success: function (res) {
-                    // In this response, we will get all the images that
-                    // are linked to the file_id, and we will save
-                    // this images url in the allImages array.
-                    res.dados.forEach((e) => {
-                        allImages.push({ 'url': e.url, 'type': e.property });
-                    });
-                }
+    let file_id = id;
+    var allImages = new Array();
+    // With this GET request, we will send to the backend one file_id,
+    // and it will return the images linked to it.
+    $.ajax({
+        url: "/file_images/" + file_id,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        success: function(res) {
+            // In this response, we will get all the images that
+            // are linked to the file_id, and we will save
+            // this images url in the allImages array.
+            res.dados.forEach((e) => {
+                allImages.push({
+                    'url': e.url,
+                    'type': e.property
+                });
             });
+        }
+    });
 
-            // With this POST request, we will send to our backend all images url,
-            // the operation type of that images, and with the response we will
-            // build map layers.
-            $.ajax({
-                url: "/image_coordinates",
-                type: 'POST',
-                async: false,
-                dataType: 'json',
-                data: {
-                    dados: JSON.stringify(allImages)
-                },
-                success: function (res) {
-                    points = JSON.parse(res);
-                    // Clear the actual options of layers
-                    if(optionsShow.length > 0){
-                        optionsShow.forEach((e) => {
-                            map.removeLayer(`'` + e + `'`);
-                            map.removeSource(`'` + e + `'`);
-                        })
-                    }
-                    optionsShow = [];
-                    // Creating a list of avaible images so the user can click it and
-                    // display the image on the map.
-                    points.forEach((e) => {
-                        $('YOUR DIV TO LIST THE IMAGES TYPE').append
-                        (`<a onClick="showImage('` + e[6] + `');" style="cursor: pointer;
+    // With this POST request, we will send to our backend all images url,
+    // the operation type of that images, and with the response we will
+    // build map layers.
+    $.ajax({
+        url: "/image_coordinates",
+        type: 'POST',
+        async: false,
+        dataType: 'json',
+        data: {
+            dados: JSON.stringify(allImages)
+        },
+        success: function(res) {
+            points = JSON.parse(res);
+            // Clear the actual options of layers
+            if (optionsShow.length > 0) {
+                optionsShow.forEach((e) => {
+                    map.removeLayer(`'` + e + `'`);
+                    map.removeSource(`'` + e + `'`);
+                })
+            }
+            optionsShow = [];
+            // Creating a list of avaible images so the user can click it and
+            // display the image on the map.
+            points.forEach((e) => {
+                $('YOUR DIV TO LIST THE IMAGES TYPE').append(`<a onClick="showImage('` + e[6] + `');" style="cursor: pointer;
                          cursor: hand;"><p>` + e[6] + `</a>`)
-                        // Save the type of the image so the user can choose what to see
-                        optionsShow.push(e[6]);
-                        // Create the 4 points (x,y) real coordinates
-                        // of the image, getting the points
-                        // from the server response
-                        let a = parseFloat(e[1].split(',')[0]);
-                        let a1 = parseFloat(e[1].split(',')[1]);
-                        let b = parseFloat(e[2].split(',')[0]);
-                        let b1 = parseFloat(e[2].split(',')[1]);
-                        let c = parseFloat(e[3].split(',')[0]);
-                        let c1 = parseFloat(e[3].split(',')[1]);
-                        let d = parseFloat(e[4].split(',')[0]);
-                        let d1 = parseFloat(e[4].split(',')[1]);
-                        // Make the map fly to the right coordinate of the images
-                        map.flyTo({
-                            center: [a, a1],
-                            zoom: 17
-                        });
-                        // Add a source to the map, so we can add a layer to it
-                        // e[6] has the type of the image
-                        map.addSource(`'` + e[6] + `'`, {
-                            'type': 'image',
-                            // e[5] has the url of the image
-                            'url': e[5],
-                            'coordinates': [
-                                [a, a1],
-                                [b, b1],
-                                [c, c1],
-                                [d, d1]
-                            ]
-                        });
-                        // Add a layer to the map, so we can show and hide it in the future.
-                        // e[6] has the type of the image
-                        map.addLayer({
-                            'id': `'` + e[6] + `'`,
-                            'type': 'raster',
-                            'source': `'` + e[6] + `'`,
-                            'paint': {
-                                'raster-fade-duration': 0
-                            }
-                        });
-                        // set the layer visibility to none
-                        map.setLayoutProperty(`'` + e[6] + `'`, 'visibility', 'none');
-                    });
-                },
-                error: function (res) {
-                    console.log(res);
-                }
+                // Save the type of the image so the user can choose what to see
+                optionsShow.push(e[6]);
+                // Create the 4 points (x,y) real coordinates
+                // of the image, getting the points
+                // from the server response
+                let a = parseFloat(e[1].split(',')[0]);
+                let a1 = parseFloat(e[1].split(',')[1]);
+                let b = parseFloat(e[2].split(',')[0]);
+                let b1 = parseFloat(e[2].split(',')[1]);
+                let c = parseFloat(e[3].split(',')[0]);
+                let c1 = parseFloat(e[3].split(',')[1]);
+                let d = parseFloat(e[4].split(',')[0]);
+                let d1 = parseFloat(e[4].split(',')[1]);
+                // Make the map fly to the right coordinate of the images
+                map.flyTo({
+                    center: [a, a1],
+                    zoom: 17
+                });
+                // Add a source to the map, so we can add a layer to it
+                // e[6] has the type of the image
+                map.addSource(`'` + e[6] + `'`, {
+                    'type': 'image',
+                    // e[5] has the url of the image
+                    'url': e[5],
+                    'coordinates': [
+                        [a, a1],
+                        [b, b1],
+                        [c, c1],
+                        [d, d1]
+                    ]
+                });
+                // Add a layer to the map, so we can show and hide it in the future.
+                // e[6] has the type of the image
+                map.addLayer({
+                    'id': `'` + e[6] + `'`,
+                    'type': 'raster',
+                    'source': `'` + e[6] + `'`,
+                    'paint': {
+                        'raster-fade-duration': 0
+                    }
+                });
+                // set the layer visibility to none
+                map.setLayoutProperty(`'` + e[6] + `'`, 'visibility', 'none');
             });
+        },
+        error: function(res) {
+            console.log(res);
+        }
+    });
 
-            // With this GET request, we will send an file id to the backend,
-            // and it will return the data about that file. e.g summary information
-            $.ajax({
-                url: "/file_details/" + file_id,
-                type: 'GET',
-                async: false,
-                dataType: 'json',
-                success: function (res) {
-                    // Here you can define one function to show this data
-                    // in some div of your page.
-                }
-            })
-        };
+    // With this GET request, we will send an file id to the backend,
+    // and it will return the data about that file. e.g summary information
+    $.ajax({
+        url: "/file_details/" + file_id,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        success: function(res) {
+            // Here you can define one function to show this data
+            // in some div of your page.
+        }
+    })
+};
 ```
 
 ### Show and hide map layers
 With this function, we will receive an id from the parameter, and display that image if it's hidden, and hide it if it's show.
 ```js
 function showImage(id) {
-            let visiviel = map.getLayoutProperty(`'` + id + `'`, 'visibility');
-            if (visiviel === 'visible') {
-                map.setLayoutProperty(`'` + id + `'`, 'visibility', 'none');
-            } else {
-                map.setLayoutProperty(`'` + id + `'`, 'visibility', 'visible');
-            }
-        }
+    let visiviel = map.getLayoutProperty(`'` + id + `'`, 'visibility');
+    if (visiviel === 'visible') {
+        map.setLayoutProperty(`'` + id + `'`, 'visibility', 'none');
+    } else {
+        map.setLayoutProperty(`'` + id + `'`, 'visibility', 'visible');
+    }
+}
 ```
 
 ### Extra
-Don't forget to create an Map and a div for it, if you don't do it, the map will not work!
+Don't forget to create an Map, a div for it and replace the `YOUR MAPBOX TOKEN`, otherwise, the map will not work!
 ```js
 mapboxgl.accessToken = 'YOUR MAPBOX TOKEN';
-        const map = new mapboxgl.Map({
-            container: 'map',
-            maxZoom: 20,
-            minZoom: 1,
-            zoom: 0,
-            center: [0, 0],
-            style: 'mapbox://styles/mapbox/satellite-v9'
-        });
+const map = new mapboxgl.Map({
+    container: 'map',
+    maxZoom: 20,
+    minZoom: 1,
+    zoom: 0,
+    center: [0, 0],
+    style: 'mapbox://styles/mapbox/satellite-v9'
+});
 
-        map.on('load', () => {
-        });
+map.on('load', () => {});
 ```
-[See](https://docs.mapbox.com/) here more informations about Mapbox!
+[See here](https://docs.mapbox.com/) more informations about Mapbox!
 
 :::tip
 Here you can run a live use case demo!
-:::
+
 [![Edit webhook-leaf-api](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/webhook-leaf-api-o72lv8?fontsize=14&hidenavigation=1&theme=dark)
+:::
+

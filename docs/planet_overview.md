@@ -26,18 +26,18 @@ The following table shows all the images with its resolutions and types:
 | NDRE.tif       | 3              | tif raw NDRE values| EPSG:4326   |
 | NDRE_color.tif | 3              | tif colored NDRE   | EPSG:4326   |
 | RGB.tif        | 3              | tif RGB            | EPSG:4326   |
-| B01.tif        | 3              | single band        | EPSG:4326   |
-| B02.tif        | 3              | single band        | EPSG:4326   |
-| B03.tif        | 3              | single band        | EPSG:4326   |
-| B04.tif        | 3              | single band        | EPSG:4326   |
-| B05.tif *      | 3              | single band        | EPSG:4326   |
+| blue.tif       | 3              | single band        | EPSG:4326   |
+| green.tif      | 3              | single band        | EPSG:4326   |
+| red.tif        | 3              | single band        | EPSG:4326   |
+| nir.tif        | 3              | single band        | EPSG:4326   |
+| rededge.tif *  | 3              | single band        | EPSG:4326   |
 | NDVI_relative.png | NULL       | png relative NDVI   | EPSG:3857   |
 | NDVI_absolute.png | NULL       | png absolute NDVI   | EPSG:3857   |
 | NDRE_relative.png | NULL       | png relative NDRE   | EPSG:3857   |
 | NDRE_absolute.png | NULL       | png absolute NDRE   | EPSG:3857   |
 
-_* A fifth band will be available by using the `assetType`: `analitic_5b` (red edge band) where the default value is 
-`analitic_sr` which are images with atmospheric reflectance correction. Be aware, in this case the red-edge band is the B04._
+_* The red edge image will be available by using the `assetType`: `analitic_5b` (red edge band) where the default value is 
+`analitic_sr` which are images with atmospheric reflectance correction._
 
 See the [Satellite API Reference][satellite_endpoints] for more information.
 
@@ -52,10 +52,10 @@ Atmospherically corrected surface reflectance GeoTiff product.
 
 | File           | Band name      |
 |:---------------|:---------------|
-| B01.tif        | Blue           |
-| B02.tif        | Green          |
-| B03.tif        | Red            |
-| B04.tif        | Near-infrared  |
+| blue.tif       | Blue           |
+| green.tif      | Green          |
+| red.tif        | Red            |
+| nir.tif        | Near-infrared  |
 
 
 #### analytic_5b
@@ -63,11 +63,11 @@ Radiometrically calibrated GeoTiff product suitable for analytic applications. H
 
 | File           | Band name      |
 |:---------------|:---------------|
-| B01.tif        | Blue           |
-| B02.tif        | Green          |
-| B03.tif        | Red            |
-| B04.tif        | Red-Edge       |
-| B05.tif        | Near-infrared  |
+| blue.tif       | Blue           |
+| green.tif      | Green          |
+| red.tif        | Red            |
+| rededge.tif    | Red-Edge       |
+| nir.tif        | Near-infrared  |
 
 #### udm2
 Usable Data Mask 2.0.

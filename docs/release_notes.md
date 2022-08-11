@@ -15,6 +15,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [8]:  /docs/docs/beta_machines_endpoints
 [9]:  /docs/docs/alerts_events/#field-boundary-events
 [10]: /docs/docs/planet_overview#udm2
+[11]: /docs/docs/credentials_john_deere#on-click-authentication
+
+### 2.97.0
+*2022-08-11*
+
+**Credentials**
+- John Deere
+New simplified authentication method with John Deere  More info [here][11].
 
 ### 2.92.0
 *2022-07-05*

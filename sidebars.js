@@ -52,7 +52,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Machine Operation Data',
-          items: ['files_overview', 'files_endpoints', 'files_sample_output', 'files_density_table']
+          items: ['files_overview', 'files_endpoints', 'files_sample_output', 'files_crops_table']
         },
         {
           type: 'category',

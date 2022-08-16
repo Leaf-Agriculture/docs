@@ -325,6 +325,38 @@ This is an example of a summary for a "harvested" operation
                 "value": 1946.75565739101,
                 "unit": "bu"
             },
+            "dryMass": {
+                "avg": 0.04798510370695135,
+                "min": 5.321358838842975E-11,
+                "max": 0.348360994170295,
+                "unit": "bu"
+            },
+            "dryMassPerArea": {
+                "avg": 77.48316026098765,
+                "min": 1.595E-7,
+                "max": 1666.6666666666667,
+                "unit": "bu/ac"
+            },
+            "totalDryMass": {
+                "value": 116805.33944346363,
+                "unit": "lb"
+            },
+            "dryVolume": {
+                "avg": 0.04798510370695135,
+                "min": 5.321358838842975E-11,
+                "max": 0.348360994170295,
+                "unit": "bu"
+            },
+            "dryVolumePerArea": {
+                "avg": 77.48316026098765,
+                "min": 1.595E-7,
+                "max": 1666.6666666666667,
+                "unit": "bu/ac"
+            },
+            "totalDryVolume": {
+                "value": 116805.33944346363,
+                "unit": "lb"
+            },
             "varieties": [
                 {
                     "harvestMoisture": {
@@ -561,8 +593,10 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | crop                 | *  | string |
   | dryMass              | ** | dict |
   | dryMassPerArea       | ** | dict |
+  | totalDryMass         | ** | dict |
   | dryVolume            | ** | dict |
   | dryVolumePerArea     | ** | dict |
+  | totalDryVolume         | ** | dict |
   | speed                | ** | dict |
   | variety              | ** | string |
   | machinery            | ** | list of machineInfo objects |
@@ -1063,6 +1097,62 @@ Also, Leaf displays all the numerical properties across all operation types via 
     },
     {
         "property": "heading",
+        "ramp": {
+            "0%": [200, 0, 0],
+            "35%": [255, 40, 0],
+            "45%": [255, 150, 0],
+            "55%": [255, 240, 0],
+            "65%": [0, 230, 0],
+            "75%": [0, 190, 0],
+            "100%": [0, 130, 0],
+            "nv": [0, 0, 0, 0 ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "dryMass",
+        "ramp": {
+            "0%": [200, 0, 0],
+            "35%": [255, 40, 0],
+            "45%": [255, 150, 0],
+            "55%": [255, 240, 0],
+            "65%": [0, 230, 0],
+            "75%": [0, 190, 0],
+            "100%": [0, 130, 0],
+            "nv": [0, 0, 0, 0 ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "dryMassPerArea",
+        "ramp": {
+            "0%": [200, 0, 0],
+            "35%": [255, 40, 0],
+            "45%": [255, 150, 0],
+            "55%": [255, 240, 0],
+            "65%": [0, 230, 0],
+            "75%": [0, 190, 0],
+            "100%": [0, 130, 0],
+            "nv": [0, 0, 0, 0 ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "dryVolume",
+        "ramp": {
+            "0%": [200, 0, 0],
+            "35%": [255, 40, 0],
+            "45%": [255, 150, 0],
+            "55%": [255, 240, 0],
+            "65%": [0, 230, 0],
+            "75%": [0, 190, 0],
+            "100%": [0, 130, 0],
+            "nv": [0, 0, 0, 0 ]
+        },
+        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    },
+    {
+        "property": "dryVolumePerArea",
         "ramp": {
             "0%": [200, 0, 0],
             "35%": [255, 40, 0],

@@ -79,7 +79,7 @@ below.
 | `minArea` | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 
 Also, for `operationType`: `harvested` we can process the yield properties related to the operation using the 
-crop density using this [table](files_density_table.md).   
+crop density and standard moisture available in this [table](files_crops_table.md).   
 
 You can also pass some parameters used exclusively for paging through results.
 They are:

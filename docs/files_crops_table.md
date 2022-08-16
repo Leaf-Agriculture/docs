@@ -32,7 +32,7 @@ The standard moisture value is used to calculate the dry crop values.
 If the crop does not have a value defined in this table, then the API will not calculate the dry value and will repeat the wet values.
 
 | Crops                    | Density (lb/bu) | Dry Moisture (%) |
-|--------------------------|----------------:|-------------|
+|--------------------------|----------------:|-------------:|
 | alfalfa                  | 100             | 13           |
 | annual ryegrass          | 56              |              |
 | apples                   | 48              | n/a          |
@@ -118,7 +118,7 @@ If the crop does not have a value defined in this table, then the API will not c
 | millet, pearl            | 48              |              |
 | miscanthus               | 100             |              |
 | mung bean                | 60.01           |              |
-| mustard                  | 55              | 9.5          |
+| mustard                  | 55              | 9.50         |
 | mustard gisilba          | 60.01           |              |
 | navy beans               | 61.99           |              |
 | oats                     | 32              | 12           |
@@ -138,7 +138,7 @@ If the crop does not have a value defined in this table, then the API will not c
 | potatoes for retail      | 60.01           |              |
 | potatoes for starch      | 60.01           |              |
 | rape seed                | 60              |              |
-| rapeseed                 | 52.01           | 12.5         |
+| rapeseed                 | 52.01           | 12.50        |
 | rapeseed e ind           | 52.01           |              |
 | rapeseed e oil           | 52.01           |              |
 | raspberry                | 1               |              |
@@ -180,7 +180,7 @@ If the crop does not have a value defined in this table, then the API will not c
 | upland cotton            | 32              |              |
 | walnut                   | 1               |              |
 | watermelon               | 1               |              |
-| wheat                    | 60              | 13.5         |
+| wheat                    | 60              | 13.50        |
 | wheat (hrd rd spr)       | 60              |              |
 | wheat (hrd rd wtr)       | 60              |              |
 | wheat, hard red spring   | 60.01           |              |
@@ -188,7 +188,7 @@ If the crop does not have a value defined in this table, then the API will not c
 | wheat, hard white spring | 60.01           |              |
 | wheat, hard white winter | 60.01           |              |
 | wheat, soft red spring   | 60.01           |              |
-| wheat, soft red winter   | 60.01           | 13.5         |
+| wheat, soft red winter   | 60.01           | 13.50        |
 | wheat, soft white spring | 60.01           |              |
 | wheat, soft white winter | 60.01           |              |
 | white clover             | 60              |              |

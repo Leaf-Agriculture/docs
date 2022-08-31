@@ -16,6 +16,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [9]:  /docs/docs/alerts_events/#field-boundary-events
 [10]: /docs/docs/planet_overview#udm2
 [11]: /docs/docs/credentials_john_deere#one-click-authentication
+[12]: /docs/docs/beta_layers_endpoints#
+
+### 2.100.0
+*2022-08-31*
+
+**Beta**
+- Layers upload  
+There is now an option to upload layer files directly to Climate FieldView via Leaf API. Currently, only RGB GeoTIFF files are supported. More info [here][12].
 
 ### 2.98.0
 *2022-08-16*

@@ -8,6 +8,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+[2]: #get-all-the-layers-for-a-leaf-user
+[3]: #upload-a-layer-to-climate-fieldview
 ## About
 All HTTP methods should be prepended by this service's endpoint:
 
@@ -16,6 +18,11 @@ https://api.withleaf.io/services/beta/api
 ```
 
 See below the REST resources and their endpoints available in this service.
+
+| Description                                | Endpoints                                                                |
+| ------------------------------------------ | ------------------------------------------------------------------------ |
+| [Get all the layers for a Leaf User][2]    | <span class="badge badge--success">GET</span> `/users/{leafUserId}/layers`                 |
+| [Upload a layer to Climate FieldView][3]         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/layers/climateFieldView`    |
 
 ## Layers (BETA)
 
@@ -132,5 +139,101 @@ A json array of layers available.
   }
 ]
 ```
+
+
+
+### Upload a layer to Climate FieldView
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/layers/climateFieldView`
+
+Send a layer file to Climate FieldView.
+
+|   Parameter  | Values |
+|       -      |    -   |
+| `uploadType` |  `RGB` |
+
+
+Currently, only true color image (RGB) files are supported and must meet the following criteria required by Climate:
+- The image needs to be a multi band GeoTIFF with 24-bit composite values (must contain 3 bands in the order Red, Green, Blue)
+- The Coordinate Reference System (CRS) must be UTM with WGS84 datum
+- The following metadata entries are required to be embedded in the GeoTIFF:
+  * acquisitionStartDate - ISO8601 date
+  * acquisitionEndDate - ISO8601 date
+  * isCalibrated - boolean
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers/climateFieldView'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const params = {
+    uploadType: 'RGB'
+  }
+
+  const form = new FormData()
+  form.append('file', 'rgb.tif')
+
+  axios.post(endpoint, form, { headers, params })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers/climateFieldView'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('rgb.tif', 'rb')}
+  params = {
+    'uploadType': 'RGB'
+  }
+
+  response = requests.post(endpoint, headers=headers, files=files, params=params)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=rgb.tif' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers/climateFieldView?' \
+      'uploadType=RGB'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+:::info
+Uploaded layers are not stored on Leaf side and are only available for use directly in Climate FieldView
+:::
+
 
 [contact]: mailto:help@withleaf.io

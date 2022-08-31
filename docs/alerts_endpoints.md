@@ -84,8 +84,7 @@ Example in JSON:
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
+    { label: 'JavaScript', value: 'js', }
   ]}
 >
   <TabItem value="js">
@@ -132,10 +131,11 @@ Example in JSON:
       -d 'Your paylaod as specified above'
       'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
   ```
-
   </TabItem>
+</Tabs>
 
-  <TabItem value="json">
+#### Response
+It returns a JSON containing information about the webhook created.
 
   ```json
   {
@@ -148,10 +148,6 @@ Example in JSON:
     "url": "https://agtech.com/leaf/satellite"
   }
   ```
-
-  </TabItem>
-</Tabs>
-
 ---
 
 ### Get a webhook
@@ -167,8 +163,7 @@ Retrieve a specific webhook resource by its id.
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
+    { label: 'JavaScript', value: 'js', }
   ]
 }>
   <TabItem value="js">
@@ -213,9 +208,9 @@ Retrieve a specific webhook resource by its id.
   ```
 
   </TabItem>
+</Tabs>
 
-  <TabItem value="json">
-
+#### Response
   ```json
   {
     "id": "UUID",
@@ -227,9 +222,6 @@ Retrieve a specific webhook resource by its id.
     "url": "https://agtech.com/leaf/satellite"
   }
   ```
-
-  </TabItem>
-</Tabs>
 
 ### Get all webhooks
 
@@ -244,8 +236,7 @@ Retrieve all Webhooks.
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
+    { label: 'JavaScript', value: 'js', }
   ]
 }>
   <TabItem value="js">
@@ -288,9 +279,10 @@ Retrieve all Webhooks.
   ```
 
   </TabItem>
+</Tabs>
 
-  <TabItem value="json">
-
+#### Response
+It returns a list of JSON objects.
   ```json
   [{
     "id": "UUID",
@@ -302,9 +294,6 @@ Retrieve all Webhooks.
     "url": "https://agtech.com/leaf/satellite"
   }]
   ```
-
-  </TabItem>
-</Tabs>
 
 
 ### Delete a webhook

@@ -7,6 +7,7 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
+
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [2]: #get-api-owner-config
 [3]: #get-leaf-user-config
@@ -16,6 +17,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [7]: #delete-leaf-user-config
 
 ## About
+
 Here we list all the available endpoints from Configuration API. For easily
 calling them, we recommend using [Leaf's Postman collection][1].
 
@@ -27,14 +29,14 @@ https://api.withleaf.io/services/config/api
 
 This service has the following endpoints available:
 
-Description | Endpoints
---- | ---
-[Get Api Owner's Configuration][2] | <span class="badge badge--success">GET</span> `/configs`
-[Get Leaf User's Configuration][3] | <span class="badge badge--success">GET</span> `/configs/{leafUserId}`
-[Create Leaf User's Configuration][4] | <span class="badge badge--warning">POST</span> `/configs/{leafUserId}`
-[Update Api Owner's Configuration][5] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
-[Update Leaf User's Configuration][6] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
-[Delete Leaf User's Configuration][7] | <span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}`
+| Description                           | Endpoints                                                                |
+| ------------------------------------- | ------------------------------------------------------------------------ |
+| [Get Api Owner's Configuration][2]    | <span class="badge badge--success">GET</span> `/configs`                 |
+| [Get Leaf User's Configuration][3]    | <span class="badge badge--success">GET</span> `/configs/{leafUserId}`    |
+| [Create Leaf User's Configuration][4] | <span class="badge badge--warning">POST</span> `/configs/{leafUserId}`   |
+| [Update Api Owner's Configuration][5] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`  |
+| [Update Leaf User's Configuration][6] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`  |
+| [Delete Leaf User's Configuration][7] | <span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}` |
 
 ## Endpoints
 
@@ -44,88 +46,85 @@ Description | Endpoints
 
 Gets the configuration of the Api Owner.
 
-#### Response
-A JSON containing the configuration of the Api Owner.
-
 <Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
-  ]
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
 }>
-  <TabItem value="js">
+<TabItem value="js">
 
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
+```js
+const axios = require("axios");
+const TOKEN = "YOUR_TOKEN";
 
-  const endpoint ='https://api.withleaf.io/services/config/api/configs'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+const endpoint = "https://api.withleaf.io/services/config/api/configs";
+const headers = { Authorization: `Bearer ${TOKEN}` };
 
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
+axios
+  .get(endpoint, { headers })
+  .then((res) => console.log(res.data))
+  .catch(console.error);
+```
 
   </TabItem>
   <TabItem value="py">
 
-  ```py
-  import requests
+```py
+import requests
 
-  TOKEN = 'YOUR_TOKEN'
+TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/config/api/configs'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
+endpoint = 'https://api.withleaf.io/services/config/api/configs'
+headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
+response = requests.get(endpoint, headers=headers)
+print(response.json())
+```
 
   </TabItem>
   <TabItem value="sh">
 
-  ```shell
-  TOKEN=YOUR_TOKEN
+```shell
+TOKEN=YOUR_TOKEN
 
-  curl -X GET \
-      -H "Authorization: Bearer ${TOKEN}" \
-      "https://api.withleaf.io/services/config/api/configs"
-  ```
-
-  </TabItem>
-  <TabItem value="res">
-
-  ```json
-  {
-    "apiOwnerUsername": "api-owner",
-    "leafUserId": "",
-    "operationsImageCreation": true,
-    "geoimagesResolution": 0.00001,
-    "geoimagesShape": "SQUARE",
-    "geoimagesProjection": "EPSG:3857",
-    "geoimagesColorRamp": {
-      "0%"  : [200,   0, 0],
-      "35%" : [255,  40, 0],
-      "45%" : [255, 150, 0],
-      "55%" : [255, 240, 0],
-      "65%" : [  0, 230, 0],
-      "75%" : [  0, 190, 0],
-      "100%": [  0, 130, 0],
-      "nv"  : [  0,   0, 0, 0]
-    },
-    "fieldsAutoSync": true,
-    "fieldsMergeIntersection": 0.01,
-    "fieldsAttachIntersection": 0.01
-  }
-  ```
+curl -X GET \
+    -H "Authorization: Bearer ${TOKEN}" \
+    "https://api.withleaf.io/services/config/api/configs"
+```
 
   </TabItem>
 </Tabs>
 
+#### Response
+
+A JSON containing the configuration of the Api Owner.
+
+```json
+{
+  "apiOwnerUsername": "api-owner",
+  "leafUserId": "",
+  "operationsImageCreation": true,
+  "geoimagesResolution": 0.00001,
+  "geoimagesShape": "SQUARE",
+  "geoimagesProjection": "EPSG:3857",
+  "geoimagesColorRamp": {
+    "0%": [200, 0, 0],
+    "35%": [255, 40, 0],
+    "45%": [255, 150, 0],
+    "55%": [255, 240, 0],
+    "65%": [0, 230, 0],
+    "75%": [0, 190, 0],
+    "100%": [0, 130, 0],
+    "nv": [0, 0, 0, 0]
+  },
+  "fieldsAutoSync": true,
+  "fieldsMergeIntersection": 0.01,
+  "fieldsAttachIntersection": 0.01
+}
+```
 
 ### Get Leaf User's Configuration
 
@@ -133,91 +132,89 @@ A JSON containing the configuration of the Api Owner.
 
 Gets the configuration of a Leaf User.
 
-#### Response
-A JSON containing the configuration of the Leaf User.
-
 <Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
-  ]
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', }
+]
 }>
-  <TabItem value="js">
+<TabItem value="js">
 
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-  const LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
+```js
+const axios = require("axios");
+const TOKEN = "YOUR_TOKEN";
+const LEAF_USER_ID = "00000000-0000-0000-0000-000000000000";
 
-  const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`;
+const headers = { Authorization: `Bearer ${TOKEN}` };
 
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
+axios
+  .get(endpoint, { headers })
+  .then((res) => console.log(res.data))
+  .catch(console.error);
+```
 
   </TabItem>
   <TabItem value="py">
 
-  ```py
-  import requests
+```py
+import requests
 
-  TOKEN = 'YOUR_TOKEN'
-  LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
+TOKEN = 'YOUR_TOKEN'
+LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
 
-  endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
+endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
+headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
+response = requests.get(endpoint, headers=headers)
+print(response.json())
+```
 
   </TabItem>
   <TabItem value="sh">
 
-  ```shell
-  TOKEN=YOUR_TOKEN
-  LEAF_USER_ID=00000000-0000-0000-0000-000000000000
-  
-  curl -X GET \
-      -H "Authorization: Bearer ${TOKEN}" \
-      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
-  ```
+```shell
+TOKEN=YOUR_TOKEN
+LEAF_USER_ID=00000000-0000-0000-0000-000000000000
 
-  </TabItem>
-  <TabItem value="res">
-
-  ```json
-  {
-    "apiOwnerUsername": "api-owner",
-    "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "operationsImageCreation": true,
-    "geoimagesResolution": 0.00001,
-    "geoimagesShape": "SQUARE",
-    "geoimagesProjection": "EPSG:3857",
-    "geoimagesColorRamp": {
-      "0%"  : [200,   0, 0],
-      "35%" : [255,  40, 0],
-      "45%" : [255, 150, 0],
-      "55%" : [255, 240, 0],
-      "65%" : [  0, 230, 0],
-      "75%" : [  0, 190, 0],
-      "100%": [  0, 130, 0],
-      "nv"  : [  0,   0, 0, 0]
-    },
-    "fieldsAutoSync": true,
-    "fieldsMergeIntersection": 0.01,
-    "fieldsAttachIntersection": 0.01,
-    "fieldsAutoMerge": true
-  }
-  ```
+curl -X GET \
+    -H "Authorization: Bearer ${TOKEN}" \
+    "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
+```
 
   </TabItem>
 </Tabs>
+
+#### Response
+
+A JSON containing the configuration of the Leaf User.
+
+```json
+{
+  "apiOwnerUsername": "api-owner",
+  "leafUserId": "00000000-0000-0000-0000-000000000000",
+  "operationsImageCreation": true,
+  "geoimagesResolution": 0.00001,
+  "geoimagesShape": "SQUARE",
+  "geoimagesProjection": "EPSG:3857",
+  "geoimagesColorRamp": {
+    "0%": [200, 0, 0],
+    "35%": [255, 40, 0],
+    "45%": [255, 150, 0],
+    "55%": [255, 240, 0],
+    "65%": [0, 230, 0],
+    "75%": [0, 190, 0],
+    "100%": [0, 130, 0],
+    "nv": [0, 0, 0, 0]
+  },
+  "fieldsAutoSync": true,
+  "fieldsMergeIntersection": 0.01,
+  "fieldsAttachIntersection": 0.01,
+  "fieldsAutoMerge": true
+}
+```
 
 ### Create Leaf User's Configuration
 
@@ -235,104 +232,101 @@ Request body example:
 }
 ```
 
-
-#### Response
-A JSON containing the configuration of the Leaf User.
-
 <Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
-  ]
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', }
+]
 }>
-  <TabItem value="js">
+<TabItem value="js">
 
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-  const LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
+```js
+const axios = require("axios");
+const TOKEN = "YOUR_TOKEN";
+const LEAF_USER_ID = "00000000-0000-0000-0000-000000000000";
 
-  const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`;
+const headers = { Authorization: `Bearer ${TOKEN}` };
 
-  const data = {
-    "operationsImageCreation": true,
-    "fieldsAutoSync": true
-  }
+const data = {
+  operationsImageCreation: true,
+  fieldsAutoSync: true,
+};
 
-  axios.post(endpoint, data, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
+axios
+  .post(endpoint, data, { headers })
+  .then((res) => console.log(res.data))
+  .catch(console.error);
+```
 
   </TabItem>
   <TabItem value="py">
 
-  ```py
-  import requests
+```py
+import requests
 
-  TOKEN = 'YOUR_TOKEN'
-  LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
+TOKEN = 'YOUR_TOKEN'
+LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
 
-  endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
+endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
+headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  data = {
-    'operationsImageCreation': True,
-    'fieldsAutoSync': True
-  }
+data = {
+  'operationsImageCreation': True,
+  'fieldsAutoSync': True
+}
 
-  response = requests.post(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
+response = requests.post(endpoint, headers=headers, json=data)
+print(response.json())
+```
 
   </TabItem>
   <TabItem value="sh">
 
-  ```shell
-  TOKEN=YOUR_TOKEN
-  LEAF_USER_ID=00000000-0000-0000-0000-000000000000
-  
-  curl -X POST \
-      -H "Authorization: Bearer ${TOKEN}" \
-      -H "Content-Type: application/json" \
-      -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
-      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
-  ```
+```shell
+TOKEN=YOUR_TOKEN
+LEAF_USER_ID=00000000-0000-0000-0000-000000000000
 
-  </TabItem>
-  <TabItem value="res">
-
-  ```json
-  {
-    "apiOwnerUsername": "api-owner",
-    "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "operationsImageCreation": true,
-    "geoimagesResolution": 0.00001,
-    "geoimagesShape": "SQUARE",
-    "geoimagesProjection": "EPSG:3857",
-    "geoimagesColorRamp": {
-      "0%"  : [200,   0, 0],
-      "35%" : [255,  40, 0],
-      "45%" : [255, 150, 0],
-      "55%" : [255, 240, 0],
-      "65%" : [  0, 230, 0],
-      "75%" : [  0, 190, 0],
-      "100%": [  0, 130, 0],
-      "nv"  : [  0,   0, 0, 0]
-    },
-    "fieldsAutoSync": true,
-    "fieldsMergeIntersection": 0.01,
-    "fieldsAttachIntersection": 0.01,
-    "fieldsAutoMerge": true
-  }
-  ```
+curl -X POST \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
+    "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
+```
 
   </TabItem>
 </Tabs>
+
+#### Response
+
+A JSON containing the configuration of the Leaf User.
+
+```json
+{
+  "apiOwnerUsername": "api-owner",
+  "leafUserId": "00000000-0000-0000-0000-000000000000",
+  "operationsImageCreation": true,
+  "geoimagesResolution": 0.00001,
+  "geoimagesShape": "SQUARE",
+  "geoimagesProjection": "EPSG:3857",
+  "geoimagesColorRamp": {
+    "0%": [200, 0, 0],
+    "35%": [255, 40, 0],
+    "45%": [255, 150, 0],
+    "55%": [255, 240, 0],
+    "65%": [0, 230, 0],
+    "75%": [0, 190, 0],
+    "100%": [0, 130, 0],
+    "nv": [0, 0, 0, 0]
+  },
+  "fieldsAutoSync": true,
+  "fieldsMergeIntersection": 0.01,
+  "fieldsAttachIntersection": 0.01,
+  "fieldsAutoMerge": true
+}
+```
 
 ### Update Api Owner's Configuration
 
@@ -350,101 +344,98 @@ Request body example:
 }
 ```
 
-#### Response
-A JSON containing the configuration of the Api Owner.
-
 <Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
-  ]
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', }
+]
 }>
-  <TabItem value="js">
+<TabItem value="js">
 
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
+```js
+const axios = require("axios");
+const TOKEN = "YOUR_TOKEN";
 
-  const endpoint ='https://api.withleaf.io/services/config/api/configs'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+const endpoint = "https://api.withleaf.io/services/config/api/configs";
+const headers = { Authorization: `Bearer ${TOKEN}` };
 
-  const data = {
-    "operationsImageCreation": true,
-    "fieldsAutoSync": true
-  }
+const data = {
+  operationsImageCreation: true,
+  fieldsAutoSync: true,
+};
 
-  axios.patch(endpoint, data, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
+axios
+  .patch(endpoint, data, { headers })
+  .then((res) => console.log(res.data))
+  .catch(console.error);
+```
 
   </TabItem>
   <TabItem value="py">
 
-  ```py
-  import requests
+```py
+import requests
 
-  TOKEN = 'YOUR_TOKEN'
+TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/config/api/configs'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
+endpoint = 'https://api.withleaf.io/services/config/api/configs'
+headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  data = {
-    'operationsImageCreation': True,
-    'fieldsAutoSync': True
-  }
+data = {
+  'operationsImageCreation': True,
+  'fieldsAutoSync': True
+}
 
-  response = requests.patch(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
+response = requests.patch(endpoint, headers=headers, json=data)
+print(response.json())
+```
 
   </TabItem>
   <TabItem value="sh">
 
-  ```shell
-  TOKEN = 'YOUR_TOKEN'
+```shell
+TOKEN = 'YOUR_TOKEN'
 
-  curl -X PATCH \
-      -H "Authorization: Bearer ${TOKEN}" \
-      -H "Content-Type: application/json" \
-      -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
-      'https://api.withleaf.io/services/config/api/configs'
-  ```
-
-  </TabItem>
-  <TabItem value="res">
-
-  ```json
-  {
-    "apiOwnerUsername": "api-owner",
-    "leafUserId": "",
-    "operationsImageCreation": true,
-    "geoimagesResolution": 0.00001,
-    "geoimagesShape": "SQUARE",
-    "geoimagesProjection": "EPSG:3857",
-    "geoimagesColorRamp": {
-      "0%"  : [200,   0, 0],
-      "35%" : [255,  40, 0],
-      "45%" : [255, 150, 0],
-      "55%" : [255, 240, 0],
-      "65%" : [  0, 230, 0],
-      "75%" : [  0, 190, 0],
-      "100%": [  0, 130, 0],
-      "nv"  : [  0,   0, 0, 0]
-    },
-    "fieldsAutoSync": true,
-    "fieldsMergeIntersection": 0.01,
-    "fieldsAttachIntersection": 0.01,
-    "fieldsAutoMerge": true
-  }
-  ```
+curl -X PATCH \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
+    'https://api.withleaf.io/services/config/api/configs'
+```
 
   </TabItem>
 </Tabs>
 
+#### Response
+
+A JSON containing the configuration of the Api Owner.
+
+```json
+{
+  "apiOwnerUsername": "api-owner",
+  "leafUserId": "",
+  "operationsImageCreation": true,
+  "geoimagesResolution": 0.00001,
+  "geoimagesShape": "SQUARE",
+  "geoimagesProjection": "EPSG:3857",
+  "geoimagesColorRamp": {
+    "0%": [200, 0, 0],
+    "35%": [255, 40, 0],
+    "45%": [255, 150, 0],
+    "55%": [255, 240, 0],
+    "65%": [0, 230, 0],
+    "75%": [0, 190, 0],
+    "100%": [0, 130, 0],
+    "nv": [0, 0, 0, 0]
+  },
+  "fieldsAutoSync": true,
+  "fieldsMergeIntersection": 0.01,
+  "fieldsAttachIntersection": 0.01,
+  "fieldsAutoMerge": true
+}
+```
 
 ### Update Leaf User's Configuration
 
@@ -461,104 +452,101 @@ Request body example:
 }
 ```
 
-#### Response
-A JSON containing the configuration of the Leaf User.
-
 <Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
-    { label: 'cURL', value: 'sh', },
-    { label: 'JSON Response', value: 'res', },
-  ]
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', }
+]
 }>
-  <TabItem value="js">
+<TabItem value="js">
 
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-  const LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
+```js
+const axios = require("axios");
+const TOKEN = "YOUR_TOKEN";
+const LEAF_USER_ID = "00000000-0000-0000-0000-000000000000";
 
-  const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`;
+const headers = { Authorization: `Bearer ${TOKEN}` };
 
-  const data = {
-    "operationsImageCreation": true,
-    "fieldsAutoSync": true
-  }
+const data = {
+  operationsImageCreation: true,
+  fieldsAutoSync: true,
+};
 
-  axios.patch(endpoint, data, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
+axios
+  .patch(endpoint, data, { headers })
+  .then((res) => console.log(res.data))
+  .catch(console.error);
+```
 
   </TabItem>
   <TabItem value="py">
 
-  ```py
-  import requests
+```py
+import requests
 
-  TOKEN = 'YOUR_TOKEN'
-  LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
+TOKEN = 'YOUR_TOKEN'
+LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
 
-  endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
+endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
+headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  data = {
-    'operationsImageCreation': True,
-    'fieldsAutoSync': True
-  }
+data = {
+  'operationsImageCreation': True,
+  'fieldsAutoSync': True
+}
 
-  response = requests.patch(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
+response = requests.patch(endpoint, headers=headers, json=data)
+print(response.json())
+```
 
   </TabItem>
   <TabItem value="sh">
 
-  ```shell
-  TOKEN=YOUR_TOKEN
-  LEAF_USER_ID=00000000-0000-0000-0000-000000000000
+```shell
+TOKEN=YOUR_TOKEN
+LEAF_USER_ID=00000000-0000-0000-0000-000000000000
 
-  curl -X PATCH \
-      -H "Authorization: Bearer ${TOKEN}" \
-      -H "Content-Type: application/json" \
-      -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
-      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
-  ```
-
-  </TabItem>
-  <TabItem value="res">
-
-  ```json
-  {
-    "apiOwnerUsername": "api-owner",
-    "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "operationsImageCreation": true,
-    "geoimagesResolution": 0.00001,
-    "geoimagesShape": "SQUARE",
-    "geoimagesProjection": "EPSG:3857",
-    "geoimagesColorRamp": {
-      "0%"  : [200,   0, 0],
-      "35%" : [255,  40, 0],
-      "45%" : [255, 150, 0],
-      "55%" : [255, 240, 0],
-      "65%" : [  0, 230, 0],
-      "75%" : [  0, 190, 0],
-      "100%": [  0, 130, 0],
-      "nv"  : [  0,   0, 0, 0]
-    },
-    "fieldsAutoSync": true,
-    "fieldsMergeIntersection": 0.01,
-    "fieldsAttachIntersection": 0.01,
-    "fieldsAutoMerge": true
-  }
-  ```
+curl -X PATCH \
+    -H "Authorization: Bearer ${TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d '{ "operationsImageCreation": true, "fieldsAutoSync": true }' \
+    "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
+```
 
   </TabItem>
 </Tabs>
 
+#### Response
+
+A JSON containing the configuration of the Leaf User.
+
+```json
+{
+  "apiOwnerUsername": "api-owner",
+  "leafUserId": "00000000-0000-0000-0000-000000000000",
+  "operationsImageCreation": true,
+  "geoimagesResolution": 0.00001,
+  "geoimagesShape": "SQUARE",
+  "geoimagesProjection": "EPSG:3857",
+  "geoimagesColorRamp": {
+    "0%": [200, 0, 0],
+    "35%": [255, 40, 0],
+    "45%": [255, 150, 0],
+    "55%": [255, 240, 0],
+    "65%": [0, 230, 0],
+    "75%": [0, 190, 0],
+    "100%": [0, 130, 0],
+    "nv": [0, 0, 0, 0]
+  },
+  "fieldsAutoSync": true,
+  "fieldsMergeIntersection": 0.01,
+  "fieldsAttachIntersection": 0.01,
+  "fieldsAutoMerge": true
+}
+```
 
 ### Delete Leaf User's Configuraiton
 
@@ -567,56 +555,56 @@ A JSON containing the configuration of the Leaf User.
 Deletes the Configuration from the Leaf User `leafUserId`. Until a new Configuration is created, the Leaf User will inherit all configurations from the Api Owner.
 
 <Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
 }>
-  <TabItem value="js">
+<TabItem value="js">
 
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-  const LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
+```js
+const axios = require("axios");
+const TOKEN = "YOUR_TOKEN";
+const LEAF_USER_ID = "00000000-0000-0000-0000-000000000000";
 
-  const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+const endpoint = `https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}`;
+const headers = { Authorization: `Bearer ${TOKEN}` };
 
-  axios.delete(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
+axios
+  .delete(endpoint, { headers })
+  .then((res) => console.log(res.data))
+  .catch(console.error);
+```
 
   </TabItem>
   <TabItem value="py">
 
+```py
+import requests
 
-  ```py
-  import requests
+TOKEN = 'YOUR_TOKEN'
+LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
 
-  TOKEN = 'YOUR_TOKEN'
-  LEAF_USER_ID = '00000000-0000-0000-0000-000000000000'
+endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
+headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  endpoint = f'https://api.withleaf.io/services/config/api/configs/{LEAF_USER_ID}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.delete(endpoint, headers=headers)
-  print(response.status_code)
-  ```
+response = requests.delete(endpoint, headers=headers)
+print(response.status_code)
+```
 
   </TabItem>
   <TabItem value="sh">
 
-  ```shell
-  TOKEN=YOUR_TOKEN
-  LEAF_USER_ID=00000000-0000-0000-0000-000000000000
+```shell
+TOKEN=YOUR_TOKEN
+LEAF_USER_ID=00000000-0000-0000-0000-000000000000
 
-  curl -X DELETE \
-      -H "Authorization: Bearer ${TOKEN}" \
-      "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
-  ```
+curl -X DELETE \
+    -H "Authorization: Bearer ${TOKEN}" \
+    "https://api.withleaf.io/services/config/api/configs/${LEAF_USER_ID}"
+```
 
   </TabItem>
 </Tabs>

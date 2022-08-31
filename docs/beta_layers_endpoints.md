@@ -156,11 +156,14 @@ Send a layer file to Climate FieldView.
 Currently, only true color image (RGB) files are supported and must meet the following criteria required by Climate:
 - The image needs to be a multi band GeoTIFF with 24-bit composite values (must contain 3 bands in the order Red, Green, Blue)
 - The Coordinate Reference System (CRS) must be UTM with WGS84 datum
-- The following metadata entries are required to be embedded in the GeoTIFF:
+- The following metadata [(GDAL_METADATA tag)](https://www.awaresystems.be/imaging/tiff/tifftags/geo_metadata.html) entries are required to be embedded in the GeoTIFF:
   * acquisitionStartDate - ISO8601 date
   * acquisitionEndDate - ISO8601 date
   * isCalibrated - boolean
 
+Although Climate FieldView supports files up to 500MB, at this time, we only accept files up to 5MB.
+
+#### Request
 
 <Tabs
   defaultValue="sh"

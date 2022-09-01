@@ -123,46 +123,28 @@ A JSON array containing Fields.
   ```json
   [
     {
-      "id": "3031c20d-4331-4a24-bac0-c27087fc901f",
-      "name": "str",
-      "leafUserId": "5db46916-54a0-4b38-a9b1-d8e00673db63",
-      "providerName": "JohnDeere",
-      "providerFieldName": "Right side by the lake",
-      "providerId": 2,
-      "providerFieldId": "48926e0d-9bb7-4618-9214-3c2bf50d9ac2",
-      "providerBoundaryId": "5bfab976-df1b-44c7-ab83-ee5befdd45af",
-      "organizationId": "469039",
-      "type": "ORIGINAL",
-      "farmId": 1530952,
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
-          [
-            [
-              [
-                  -48.62195051987687,
-                  -27.35030179570155
-              ],
-              [
-                  -48.62099028904954,
-                  -27.351783623790567
-              ],
-              [
-                  -48.61883379300156,
-                  -27.349906320545184
-              ],
-              [
-                  -48.619777930574806,
-                  -27.34842446734229
-              ],
-              [
-                  -48.62195051987687,
-                  -27.35030179570155
-              ]
-            ]
-          ]
-        ]
-      }
+        "id": "1a952614-3673-4d1e-b677-1f7224339ec6",
+        "leafUserId": "58800d61-91ac-4922-8e2a-f0216b9f052a",
+        "area": {
+            "value": 785229.21674535141,
+            "unit": "ha"
+        },
+        "boundaries": [
+            "279b52d5-ec6d-4459-a06a-4f47ffab0659"
+        ],
+        "providerName": "JohnDeere",
+        "providerId": 2,
+        "providerFieldId": "b96ed268-728f-489e-b928-9d3e70082be4",
+        "providerBoundaryId": "125fc49f-7e75-43fe-89f2-af976addb392",
+        "providerFieldName": "The_Field_field",
+        "organizationId": "428214",
+        "type": "ORIGINAL",
+        "createdTime": "2021-10-20T21:21:24.732030Z",
+        "updatedTime": "2021-11-03T01:34:15.154051Z",
+        "farmId": 3746117,
+        "mergedFieldId": "f97c5bbc-2dbf-4400-8d59-39eba37f8847",
+        "sources": [],
+        "legacy": true
     }
   ]
   ```

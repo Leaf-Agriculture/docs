@@ -181,16 +181,16 @@ If the crop does not have a value defined in this table, then the API will not c
 | walnut                   | 1               |              |
 | watermelon               | 1               |              |
 | wheat                    | 60              | 13.50        |
-| wheat (hrd rd spr)       | 60              |              |
-| wheat (hrd rd wtr)       | 60              |              |
-| wheat, hard red spring   | 60.01           |              |
-| wheat, hard red winter   | 60.01           |              |
-| wheat, hard white spring | 60.01           |              |
-| wheat, hard white winter | 60.01           |              |
-| wheat, soft red spring   | 60.01           |              |
+| wheat (hrd rd spr)       | 60              | 13.50        |
+| wheat (hrd rd wtr)       | 60              | 13.50        |
+| wheat, hard red spring   | 60.01           | 13.50        |
+| wheat, hard red winter   | 60.01           | 13.50        |
+| wheat, hard white spring | 60.01           | 13.50        |
+| wheat, hard white winter | 60.01           | 13.50        |
+| wheat, soft red spring   | 60.01           | 13.50        |
 | wheat, soft red winter   | 60.01           | 13.50        |
-| wheat, soft white spring | 60.01           |              |
-| wheat, soft white winter | 60.01           |              |
+| wheat, soft white spring | 60.01           | 13.50        |
+| wheat, soft white winter | 60.01           | 13.50        |
 | white clover             | 60              |              |
 | white popcorn            | 60.01           |              |
 | white wheat              | 60.01           |              |

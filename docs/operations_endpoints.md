@@ -528,7 +528,7 @@ This endpoint can be used to remove points from the operation standardGeojson th
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "id": "operationId"}' \
-      'https://api.withleaf.io/services/operations/api/operations/{id}/operations/cropOperationByField'
+      'https://api.withleaf.io/services/operations/api/operations/cropOperationByField'
   ```
 
   </TabItem>

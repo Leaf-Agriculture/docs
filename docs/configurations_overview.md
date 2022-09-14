@@ -2,6 +2,9 @@
 title: Overview
 ---
 
+[1]: /docs/docs/files_overview
+[2]: /docs/docs/operations_overview
+
 Leaf's system can be customized to present different behaviours across services. This is done using Configurations.
 
 All Api Owners start with a default configuration set. These configurations can be changed, but they can not be deleted or set to `null`.
@@ -61,3 +64,11 @@ If set to `true`, it will return non-standarlized original data from the file, s
     "originalOperationType": "SowingAndPlanting"
 }
 ```
+
+#### generateProviderImages
+If set to `true`, Leaf will generate property images for [files][1] fetched from providers. Uploaded files are not affected by this change. The default value is `false`.  
+Not to be confused with [operationsImageCreation](#operationsImageCreation), which is specifically for [Field Operations][2]. 
+
+
+#### operationsProcessingRange
+Defines the retroactive time period (in months) to fetch file operations from providers, that is, if the value is `6`, only operations that occurred 6 months ago will be processed by Leaf. The default value is `12`.

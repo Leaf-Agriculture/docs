@@ -2378,6 +2378,7 @@ Each boundary has a `status` and `providerStatus`.
   "farmIds": [4534]
 }
 ```
+*If there is a name available for the grower so the `name` property will be returned as well.*
 
 | Description | Endpoints
 | - | - |

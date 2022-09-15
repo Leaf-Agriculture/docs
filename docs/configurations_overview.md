@@ -54,7 +54,8 @@ If set to `true`, Leaf will automatically remove [invalid points](files_sample_o
 #### splitOperationsByField
 If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`.
 #### originalOperationData
-If set to `true`, it will return non-standarlized original data from the file, such as the field name and the type of the operation, as described by the provider. The default value is `false`.
+If set to `true`, it will add to the File summary some non-standard properties, such as the field name and the type of the operation, as described originally by the provider. It is not applicable to the standard GeoJSON file or the Field Operation summary.  
+The default value is `false`.
 
 ```
 "originalOperationData": {
@@ -71,4 +72,4 @@ Not to be confused with [operationsImageCreation](#operationsImageCreation), whi
 
 
 #### operationsProcessingRange
-Defines the retroactive time period (in months) to fetch file operations from providers, that is, if the value is `6`, only operations that occurred 6 months ago will be processed by Leaf. The default value is `12`.
+The retroactive time period (in months) to fetch file operations from providers. The default is `12` so only operations that occurred 12 months ago to present will be processed by Leaf.

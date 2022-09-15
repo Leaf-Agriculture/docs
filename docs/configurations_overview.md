@@ -71,4 +71,4 @@ Not to be confused with [operationsImageCreation](#operationsImageCreation), whi
 
 
 #### operationsProcessingRange
-Defines the retroactive time period (in months) to fetch file operations from providers, that is, if the value is `6`, only operations that occurred 6 months ago will be processed by Leaf. The default value is `12`.
+The retroactive time period (in months) to fetch file operations from providers. The default is `12` so only operations that occurred 12 months ago to present will be processed by Leaf.

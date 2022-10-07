@@ -4,6 +4,11 @@ title: Sample responses
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import useBaseUrl from '@docusaurus/useBaseUrl';
 
+[1]: #field-operations-filtered-geojson
+[2]: /docs/docs/operations_endpoints#get-an-operations-images-v2
+[3]: /docs/docs/configurations_overview#operationsremoveoutliers
+[4]: /docs/docs/configurations_overview#operationsoutlierslimit
+
 ## Overview
 
 This page shows and describes sample responses from Leaf API, along with a list of what properties you can expect for
@@ -46,7 +51,7 @@ Here's an example of a Field Operation
 Field operations have many features that can be accessed via `/featureName` added to the base url, ranging from the
 standardized data to the operation units. Here's a sample response of each of these features.
 
-### Field Operations Standard Geojson
+### Field Operations Standard GeoJSON
 
 Here's an example of a standard geojson from a Field Operation
 
@@ -56,11 +61,37 @@ Here's an example of a standard geojson from a Field Operation
 }
 ```
 
+### Field Operations Filtered GeoJSON
+
+Here's an example of a filtered geojson from a Field Operation
+
+```json
+{
+  "filteredGeojson": "URL"
+}
+```
+
+The filtered GeoJSON is the file that went through the data cleaning process, removing the points with the following criteria:
+
+- Speed less than `0.5 m/s` (for all operation types)
+
+#### Outliers
+This is a criterion available for cleaning the filteredGeoJSON: a removal based on outliers of harvest values (only for harvested operations). This option can be enabled in the [operationsRemoveOutliers][3] configuration. The parameter value for the outlier can be set in the [operationsOutliersLimit][4] configuration and it works like this:
+
+<img alt="Outliers" src={useBaseUrl('img/outliers_removal.png')} />
+
+All points with the harvested volume value ​​far [`x`][4] standard deviation from the mean will be excluded.
+
+
+:::tip
+For now, this functionality is only available on demand. Consult our support to activate it.
+:::
+
 ### Field Operations Summary
 
 
 Here's an example of a summary from a Field Operation. It's important to mention that the output displayed in the Field
-Operation Summary is heavily impacted by the `opeartionType` property.
+Operation Summary is heavily impacted by the `operationType` property.
 
 You can move through the four tabs below to see a sample of how Leaf returns
 each of the operation types.
@@ -521,11 +552,79 @@ Here is an example of Images from Field Operations.
 				"75%" : [ 0, 190, 0 ],
 				"100%" : [ 0, 130, 0 ],
 				"nv" : [ 0, 0, 0, 0 ]
-			}
+			},
         "url": "URL"
       }
 ]
 ```
+
+
+
+#### Field Operations Images V2
+[This new endpoint][2] version produces images based on the [filteredGeoJSON][1], therefore it will be active whenever the data filter option is active.
+
+The new images have considerable improvements over the previous one. They are generated with a standard fixed color ramp and the data is automatically distributed into 7 classes using **quatile** classification.
+
+Note that the return is different from the previous version, with the option of extent and legend available.
+
+```json
+
+[
+    {
+        "property": "string",
+        "legend": {
+            "ranges": [
+                {
+                    "colorCode": "#C80000",
+                    "max": 20,
+                    "min": 0
+                },
+                {
+                    "colorCode": "#FF2800",
+                    "max": 50,
+                    "min": 20
+                },
+                {
+                    "colorCode": "#FF9600",
+                    "max": 100,
+                    "min": 50
+                },
+                {
+                    "colorCode": "#FFF000",
+                    "max": 250,
+                    "min": 100
+                },
+                {
+                    "colorCode": "#00E600",
+                    "max": 340,
+                    "min": 250
+                },
+                {
+                    "colorCode": "#00BE00",
+                    "max": 480,
+                    "min": 340
+                },
+                {
+                    "colorCode": "#008200",
+                    "max": 570,
+                    "min": 480
+                }
+            ]
+        },
+        "extent": {
+            "xmin": 0.0,
+            "xmax": 0.0,
+            "ymin": 0.0,
+            "ymax": 0.0
+        },
+        "url": "URL"
+      }
+]
+```
+
+:::tip
+Important: once active, the images will be available for access only via the [`/imagesV2`][2] endpoint.
+:::
 
 ### Field Operations Units 
 

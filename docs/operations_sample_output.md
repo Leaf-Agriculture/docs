@@ -87,10 +87,9 @@ This is a option for cleaning the filteredGeoJSON based on standard deviation to
 
 <img alt="Outliers" src={useBaseUrl('img/outliers_removal.png')} />
 
-All points with the harvested volume value ​​far `3` standard deviation from the mean will be excluded. This is the default value and can be changed in the [`operationsOutliersLimit`][4]  configuration. 
+All points with the harvested volume value far `3` standard deviation from the mean will be excluded. This is the default value and can be changed in the [`operationsOutliersLimit`][4]  configuration. 
 
 To disable the removal of outliers just use the [`operationsRemoveOutliers`][3] configuration.
-
 
 ### Field Operations Summary
 

@@ -8,6 +8,7 @@ import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import use
 [2]: /docs/docs/operations_endpoints#get-an-operations-images-v2
 [3]: /docs/docs/configurations_overview#operationsremoveoutliers
 [4]: /docs/docs/configurations_overview#operationsoutlierslimit
+[5]: #field-operations-images-v2
 
 ## Overview
 
@@ -63,7 +64,11 @@ Here's an example of a standard geojson from a Field Operation
 
 ### Field Operations Filtered GeoJSON
 
-Here's an example of a filtered geojson from a Field Operation
+:::tip
+Currently, this configuration is only available upon request. Please contact support to enable.
+:::
+
+Here's an example of a filtered geojson from a Field Operation that can be access from the `/operations/{id}/filteredGeojson`endpoint.
 
 ```json
 {
@@ -73,19 +78,19 @@ Here's an example of a filtered geojson from a Field Operation
 
 The filtered GeoJSON is the file that went through the data cleaning process, removing the points with the following criteria:
 
-- Speed less than `0.5 m/s` (for all operation types)
+- `speed` less than `0.5 m/s` (for all operation types)
+
+The generated files will be used as a basis for generating [new operations images][5].
 
 #### Outliers
-This is a criterion available for cleaning the filteredGeoJSON: a removal based on outliers of harvest values (only for harvested operations). This option can be enabled in the [operationsRemoveOutliers][3] configuration. The parameter value for the outlier can be set in the [operationsOutliersLimit][4] configuration and it works like this:
+This is a option for cleaning the filteredGeoJSON based on standard deviation to remove outliers on harvest data.
 
 <img alt="Outliers" src={useBaseUrl('img/outliers_removal.png')} />
 
-All points with the harvested volume value ​​far [`x`][4] standard deviation from the mean will be excluded.
+All points with the harvested volume value ​​far `3` standard deviation from the mean will be excluded. This is the default value and can be changed in the [`operationsOutliersLimit`][4]  configuration. 
 
+To disable the removal of outliers just use the [`operationsRemoveOutliers`][3] configuration.
 
-:::tip
-For now, this functionality is only available on demand. Consult our support to activate it.
-:::
 
 ### Field Operations Summary
 

@@ -7,6 +7,9 @@ title: Overview
 [3]: #operationsremoveoutliers
 [4]: #operationsoutlierslimit
 [5]: /docs/docs/operations_sample_output#outliers
+[6]: #operationsfilteredgeojson
+[7]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
+[8]: /docs/docs/operations_sample_output#field-operations-images-v2
 
 Leaf's system can be customized to present different behaviours across services. This is done using Configurations.
 
@@ -77,16 +80,27 @@ Not to be confused with [operationsImageCreation](#operationsImageCreation), whi
 #### operationsProcessingRange
 The retroactive time period (in months) to fetch file operations from providers. The default is `12` so only operations that occurred 12 months ago to present will be processed by Leaf.
 
+
 #### operationsRemoveOutliers
 If enabled, it will remove points in the [filteredGeojson][3] based on harvest values so it is only applied to harvest type operations. The outliers will be defined based on the [operationsOutliersLimit][4] configuration. The default value is `true`.
 
 More info [here][5].
 
 :::tip
-To be enabled, this functionality needs to be requested on demand. Contact our support for more information.
+To use this option, [operationsFilteredGeojson][6] must be enabled.
 :::
 
 #### operationsOutliersLimit
 Sets the threshold for removing outliers when the [operationsRemoveOutliers][3] configuration is enabled. The defined value will be considered to measure how many standard deviations will be considered as outliers. The default value is `3` which means that all points with harvested volume values ​​that are more than 3 standard deviations away from the mean will be removed.
 
 More info [here][5].
+
+
+#### operationsFilteredGeojson
+Enables the option to clear [Field Operations][2] data based on [some filter options][7]. Also enables the use of [operations images V2][8].
+The default is `false`.
+
+
+#### fieldOperationCreation
+Enables the creation of [Field Operations][2]. The default is `true`.
+

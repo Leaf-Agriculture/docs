@@ -1,5 +1,6 @@
 ---
 title: Raven Slingshot Credentials
+description: Credentials - Raven Slingshot
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -1,5 +1,6 @@
 ---
 title: Endpoints
+description: Beta - Layers Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

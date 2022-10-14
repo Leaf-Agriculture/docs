@@ -1,5 +1,6 @@
 ---
 title: Endpoints
+description: Beta - Input Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

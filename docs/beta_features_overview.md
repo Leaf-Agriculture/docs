@@ -1,5 +1,6 @@
 ---
 title: Overview
+description: Beta Features - Overview
 ---
 <!-- the following links are referenced throughout this document -->
 

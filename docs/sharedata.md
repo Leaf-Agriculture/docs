@@ -1,5 +1,6 @@
 ---
 title: Sharing
+description: Sharing
 ---
 
 import Tabs from '@theme/Tabs';

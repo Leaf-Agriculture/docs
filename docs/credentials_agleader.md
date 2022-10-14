@@ -1,5 +1,6 @@
 ---
 title: AgLeader Credentials
+description: Credentials - AgLeader
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

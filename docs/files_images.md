@@ -1,5 +1,6 @@
 ---
 title: Geo Images
+description: Geo Images
 ---
 
 import Tabs from '@theme/Tabs';

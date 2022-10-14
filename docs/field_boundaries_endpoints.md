@@ -1,5 +1,6 @@
 ---
 title: Endpoints
+description: Field Boundaries - Endpoints
 ---
 
 import Tabs from '@theme/Tabs';
@@ -50,6 +51,7 @@ This service has the following endpoints available:
 
 ## Endpoints
 
+## Fields
 ### Get all fields
 
 &nbsp<span class="badge badge--success">GET</span> `/fields`
@@ -66,17 +68,12 @@ some query parameters.
 
 These last two parameters are used exclusively for paging through results.
 
-
-#### Response
-A JSON array containing Fields.
-
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
   ]
 }>
   <TabItem value="js">
@@ -118,9 +115,11 @@ A JSON array containing Fields.
   ```
 
   </TabItem>
-  <TabItem value="res">
+</Tabs>
 
-  ```json
+#### Response
+A JSON array containing Fields.
+```json
   [
     {
         "id": "1a952614-3673-4d1e-b677-1f7224339ec6",
@@ -149,18 +148,11 @@ A JSON array containing Fields.
   ]
   ```
 
-  </TabItem>
-</Tabs>
-
-
 ### Get a field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`
 
 Gets a single Field by its id.
-
-#### Response
-A single [Field](#field-resource) as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -211,6 +203,9 @@ A single [Field](#field-resource) as a JSON object.
   </TabItem>
 </Tabs>
 
+#### Response
+A single [Field](#field-resource) as a JSON object.
+
 ### Create a field
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields`
@@ -245,31 +240,6 @@ Request body example:
 }
 ```
 
-
-#### Response
-
-You can expect a response with a JSON Object containing the following properties.
-
-```json
-{
-    "id": "string",
-    "leafUserId": "string",
-    "area": {
-        "value": float,
-        "unit": "ha"
-    },
-    "boundaries": [
-        "UUID"
-    ],
-    "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [...]
-    },
-    "type": "string",
-    "createdTime": "timestamp",
-    "updatedTime": "timestamp"
-}
-```
 You can try some requests on the create fields API using the examples below.
 
 <Tabs
@@ -336,6 +306,31 @@ You can try some requests on the create fields API using the examples below.
   </TabItem>
 </Tabs>
 
+#### Response
+
+You can expect a response with a JSON Object containing the following properties.
+
+```json
+{
+    "id": "string",
+    "leafUserId": "string",
+    "area": {
+        "value": float,
+        "unit": "ha"
+    },
+    "boundaries": [
+        "UUID"
+    ],
+    "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [...]
+    },
+    "type": "string",
+    "createdTime": "timestamp",
+    "updatedTime": "timestamp"
+}
+```
+
 ### Update a Field
 
 &nbsp<span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/fields/{id}`
@@ -364,10 +359,6 @@ Request body example:
   }
 }
 ```
-
-
-#### Response
-A [Field](#field-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -447,6 +438,9 @@ values={[
   </TabItem>
 </Tabs>
 
+#### Response
+A [Field](#field-resource) as a JSON object.
+
 ### Get all operation files of a field (deprecated)
 
 Use [this endpoint](#get-all-operation-files-of-a-field) instead
@@ -525,7 +519,7 @@ They are:
   </TabItem>
 </Tabs>
 
-### Response
+#### Response
 
 ```json
 [
@@ -625,7 +619,7 @@ values={[
   </TabItem>
 </Tabs>
 
-### Response
+#### Response
 
 ```json
 [
@@ -707,7 +701,7 @@ Gets a single Operation File of a field by its id.
   </TabItem>
 </Tabs>
 
-### Response
+#### Response
 
 ```json
 [
@@ -735,9 +729,6 @@ Gets a single Operation File of a field by its id.
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}`
 
 Gets a single Operation File of a field by its id.
-
-#### Response
-A single Operation File.
 
 <Tabs
 defaultValue="sh"
@@ -789,6 +780,7 @@ values={[
 </Tabs>
 
 #### Response
+A single Operation File.
 
 ```json
 {
@@ -818,16 +810,12 @@ Use [this endpoint](#get-fields-by-geometry) instead.
 Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
 the request body.
 
-#### Response
-A JSON list of Fields.
-
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON sample response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -885,10 +873,11 @@ A JSON list of Fields.
   ```
 
   </TabItem>
+</Tabs>
 
-  <TabItem value="json">
-
-  ```shell
+#### Response
+A JSON list of Fields.
+```json
   [
     {
       "id": "id",
@@ -913,8 +902,6 @@ A JSON list of Fields.
   ]
   ```
 
-  </TabItem>
-</Tabs>
 
 ### Get Fields by geometry 
 
@@ -948,17 +935,12 @@ So, in this case, if the `intersectionThreshold` were 3, then the condition woul
 | 75 | ❌ |
 | 100 | ❌ |
 
-
-#### Response
-A JSON list of Fields.
-
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON sample response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -1018,10 +1000,11 @@ A JSON list of Fields.
   ```
 
   </TabItem>
+</Tabs>
 
-  <TabItem value="json">
-
-  ```shell
+#### Response
+A JSON list of Fields.
+```json
   [
     {
       "id": "id",
@@ -1046,9 +1029,6 @@ A JSON list of Fields.
   ]
   ```
 
-  </TabItem>
-</Tabs>
-
 ### Get intersection of fields
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
@@ -1057,17 +1037,12 @@ Gets a GeoJSON MultiPolygon corresponding to the intersection of the Fields
 specified by the given id's. Such Field id's goes in a list, in the request
 body.
 
-#### Response
-A JSON in the format of a GeoJSON geometry.
-
-
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON sample response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -1125,9 +1100,10 @@ A JSON in the format of a GeoJSON geometry.
   ```
 
   </TabItem>
+</Tabs>
 
-  <TabItem value="json">
-
+#### Response
+A JSON in the format of a GeoJSON geometry.
   ```json
   {
       "type": "MultiPolygon",
@@ -1145,8 +1121,7 @@ A JSON in the format of a GeoJSON geometry.
   }
   ```
 
-  </TabItem>
-</Tabs>
+
 
 
 <!-- ### POST /users/{id}/fields/same` --
@@ -1255,14 +1230,12 @@ A JSON in the followin format.
 
 Deletes the field with the given id.
 
+## Boundaries
 ### Get all boundaries from field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundaries`
 
 Gets a list of boundaries from a field.
-
-#### Response
-A list of [Boundary](#boundary-resource) as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -1357,14 +1330,14 @@ A list of [Boundary](#boundary-resource) as a JSON object.
   </TabItem>
 </Tabs>
 
+#### Response
+A list of [Boundary](#boundary-resource) as a JSON object.
+
 ### Get a boundary from field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`
 
 Gets a single Boundary from a field by its id.
-
-#### Response
-A single [Boundary](#boundary-resource) as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -1415,14 +1388,14 @@ A single [Boundary](#boundary-resource) as a JSON object.
   </TabItem>
 </Tabs>
 
+#### Response
+A single [Boundary](#boundary-resource) as a JSON object.
+
 ### Get active boundary from field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundary`
 
 Gets the active Boundary from a field.
-
-#### Response
-A single [Boundary](#boundary-resource) as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -1473,6 +1446,9 @@ A single [Boundary](#boundary-resource) as a JSON object.
   </TabItem>
 </Tabs>
 
+#### Response
+A single [Boundary](#boundary-resource) as a JSON object.
+
 ### Update active boundary from field
 
 &nbsp<span class="badge badge--warning">PUT</span> `/users/{leafUserId}/fields/{fieldId}/boundary`
@@ -1498,10 +1474,6 @@ Request body example:
   }
 }
 ```
-
-
-#### Response
-A Field as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -1567,6 +1539,10 @@ A Field as a JSON object.
   </TabItem>
 </Tabs>
 
+#### Response
+A [Field](#field-resource) as a JSON object.
+
+## Farms
 ### Get all farms
 
 &nbsp<span class="badge badge--success">GET</span> `/farms`
@@ -1581,16 +1557,12 @@ Gets a paged list of all farms. It is possible to pass some query parameters.
 
 The parameters are used exclusively for paging through results.
 
-#### Response
-A JSON array containing farms.
-
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
   ]
 }>
   <TabItem value="js">
@@ -1632,9 +1604,11 @@ A JSON array containing farms.
   ```
 
   </TabItem>
-  <TabItem value="res">
+</Tabs>
 
-  ```json
+#### Response
+A JSON array containing farms.
+```json
   [
     {
       "id": 1538766,
@@ -1649,17 +1623,11 @@ A JSON array containing farms.
   ]
   ```
 
-  </TabItem>
-</Tabs>
-
 ### Get a farm
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/farms/{id}`
 
 Gets a single farm by its `id` from the user `leafUserId`.
-
-#### Response
-A single [Farm](#farm-resource) as a JSON object.
 
 <Tabs
   defaultValue="sh"
@@ -1667,7 +1635,6 @@ A single [Farm](#farm-resource) as a JSON object.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
   ]
 }>
   <TabItem value="js">
@@ -1709,9 +1676,11 @@ A single [Farm](#farm-resource) as a JSON object.
   ```
 
   </TabItem>
-  <TabItem value="res">
+</Tabs>
 
-  ```json
+#### Response
+A single [Farm](#farm-resource) as a JSON object.
+```json
   {
     "id": 1551010,
     "name": "name",
@@ -1722,9 +1691,6 @@ A single [Farm](#farm-resource) as a JSON object.
     "growerId": 123
   }
   ```
-
-  </TabItem>
-</Tabs>
 
 ### Create a farm
 
@@ -1740,9 +1706,6 @@ Request body example:
   "growerId": 123
 }
 ```
-
-#### Response
-A single [Farm](#farm-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -1802,6 +1765,9 @@ values={[
   </TabItem>
 </Tabs>
 
+#### Response
+A single [Farm](#farm-resource) as a JSON object.
+
 ### Update a farm
 
 &nbsp<span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`
@@ -1816,9 +1782,6 @@ Request body example:
   "growerId": 123
 }
 ```
-
-#### Response
-A single [Farm](#farm-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -1878,7 +1841,10 @@ values={[
   </TabItem>
 </Tabs>
 
+#### Response
+A single [Farm](#farm-resource) as a JSON object.
 
+## Grower
 ### Get all growers
 
 &nbsp<span class="badge badge--success">GET</span> `/growers`
@@ -1891,16 +1857,12 @@ through results.
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page (defaults to 20)
 
-#### Response
-A JSON array containing growers.
-
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
   ]
 }>
   <TabItem value="js">
@@ -1942,9 +1904,11 @@ A JSON array containing growers.
   ```
 
   </TabItem>
-  <TabItem value="res">
+</Tabs>
 
-  ```json
+#### Response
+A JSON array containing growers.
+```json
   [
     {
       "id": 2345,
@@ -1959,19 +1923,11 @@ A JSON array containing growers.
   ]
   ```
 
-  </TabItem>
-</Tabs>
-
-
 ### Get a grower
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`
 
 Gets a single grower by its `id` from the user `leafUserId`.
-
-#### Response
-A single [Grower](#grower-resource) as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
-attribute `name` comes directly from the Client's name for growers with John Deere as provider.
 
 <Tabs
   defaultValue="sh"
@@ -1979,7 +1935,6 @@ attribute `name` comes directly from the Client's name for growers with John Dee
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'res', },
   ]
 }>
   <TabItem value="js">
@@ -2021,9 +1976,12 @@ attribute `name` comes directly from the Client's name for growers with John Dee
   ```
 
   </TabItem>
-  <TabItem value="res">
+</Tabs>
 
-  ```json
+#### Response
+A single [Grower](#grower-resource) as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
+attribute `name` comes directly from the Client's name for growers with John Deere as provider.
+```json
   {
     "id": 2345,
     "name": "str",
@@ -2037,9 +1995,6 @@ attribute `name` comes directly from the Client's name for growers with John Dee
   }
   ```
 
-  </TabItem>
-</Tabs>
-
 ### Create a grower
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
@@ -2052,9 +2007,6 @@ Request body example:
   "name": "Example Grower Name"
 }
 ```
-
-#### Response
-A single [Grower](#grower-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -2114,6 +2066,9 @@ values={[
   </TabItem>
 </Tabs>
 
+#### Response
+A single [Grower](#grower-resource) as a JSON object.
+
 ### Update a grower
 
 &nbsp<span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
@@ -2126,9 +2081,6 @@ Request body example:
   "name": "Updated Grower Name"
 }
 ```
-
-#### Response
-A single [Grower](#grower-resource) as a JSON object.
 
 <Tabs
 defaultValue="sh"
@@ -2187,6 +2139,9 @@ values={[
 
   </TabItem>
 </Tabs>
+
+#### Response
+A single [Grower](#grower-resource) as a JSON object.
 
 
 ## REST Resources

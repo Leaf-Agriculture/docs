@@ -1,5 +1,6 @@
 ---
 title: Release notes
+description: Release Notes
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

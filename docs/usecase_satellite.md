@@ -1,5 +1,6 @@
 ---
 title: How to get satellite field images
+description: How to get satellite field images
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

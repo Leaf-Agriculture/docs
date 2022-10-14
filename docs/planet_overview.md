@@ -1,5 +1,6 @@
 ---
 title: Planet Overview
+description: Planet Overview
 ---
 
 import Tabs from '@theme/Tabs';

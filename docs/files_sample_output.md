@@ -1,5 +1,6 @@
 ---
 title: Sample responses
+description: Files - Sample Responses
 ---
 
 import Tabs from '@theme/Tabs';

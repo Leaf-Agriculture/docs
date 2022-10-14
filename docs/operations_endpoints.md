@@ -1,5 +1,6 @@
 ---
 title: Endpoints
+description: Operations - Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

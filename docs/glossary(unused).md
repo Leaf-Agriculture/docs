@@ -1,5 +1,6 @@
 ---
 title: Glossary
+description: Glossary
 ---
 
 Glossary:

@@ -1,5 +1,6 @@
 ---
 title: How to upload a file and get images
+description: How to upload a file and get images
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

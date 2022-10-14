@@ -9,6 +9,7 @@ import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import use
 [3]: /docs/docs/configurations_overview#operationsremoveoutliers
 [4]: /docs/docs/configurations_overview#operationsoutlierslimit
 [5]: #field-operations-images-v2
+[6]: /docs/docs/configurations_overview#operationsfilteredgeojson
 
 ## Overview
 
@@ -65,7 +66,7 @@ Here's an example of a standard geojson from a Field Operation
 ### Field Operations Filtered GeoJSON
 
 :::tip
-Currently, this configuration is only available upon request. Please contact support to enable.
+To use this option, the [operationsFilteredGeojson][6] configuration must be enabled.
 :::
 
 Here's an example of a filtered geojson from a Field Operation that can be access from the `/operations/{id}/filteredGeojson`endpoint.

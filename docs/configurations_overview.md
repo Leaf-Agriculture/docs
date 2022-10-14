@@ -73,7 +73,7 @@ More info [here][5].
 #### operationsProcessingRange
 The retroactive time period (in months) to fetch file operations from providers. The default is `12` so only operations that occurred 12 months ago to present will be processed by Leaf.
 #### operationsRemoveOutliers
-If enabled, it will remove points in the [filteredGeojson][3] based on harvest values so it is only applied to harvest type operations. The outliers will be defined based on the [operationsOutliersLimit][4] configuration. The default value is `true`.
+If enabled, it will remove points in the [filteredGeojson][7] based on harvest values so it is only applied to harvest type operations. The outliers will be defined based on the [operationsOutliersLimit][4] configuration. The default value is `true`.
 
 More info [here][5].
 
@@ -85,18 +85,18 @@ If set to `true`, Leaf will split your Field Operations based on the intersectio
 
 ### Machine Operation Files
 #### cleanupStandardGeojson
-[See this section for more information](configurations_overview#cleanupstandardgeojson)
+[See this section for more information](#cleanupstandardgeojson)
 #### generateProviderImages
 If set to `true`, Leaf will generate property images for [files][1] fetched from providers. Uploaded files are not affected by this change. The default value is `false`.  
-Not to be confused with [operationsImageCreation](#operationsImageCreation), which is specifically for [Field Operations][2].
+Not to be confused with [operationsImageCreation](#operationsimagecreation), which is specifically for [Field Operations][2].
 #### geoimagesColorRamp
-[See this section for more information](configurations_overview#geoimagescolorramp)
+[See this section for more information](#geoimagescolorramp)
 #### geoimagesProjection
-[See this section for more information](configurations_overview#geoimagesprojection)
+[See this section for more information](#geoimagesprojection)
 #### geoimagesResolution
-[See this section for more information](configurations_overview#geoimagesresolution)
+[See this section for more information](#geoimagesresolution)
 #### geoimagesShape
-[See this section for more information](configurations_overview#geoimagesshape)
+[See this section for more information](#geoimagesshape)
 #### originalOperationData
 If set to `true`, it will add to the File summary some non-standard properties, such as the field name and the type of the operation, as described originally by the provider. It is not applicable to the standard GeoJSON file or the Field Operation summary.  
 The default value is `false`.

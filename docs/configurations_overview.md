@@ -5,6 +5,12 @@ description: Configurations - Overview
 
 [1]: /docs/docs/files_overview
 [2]: /docs/docs/operations_overview
+[3]: #operationsremoveoutliers
+[4]: #operationsoutlierslimit
+[5]: /docs/docs/operations_sample_output#outliers
+[6]: #operationsfilteredgeojson
+[7]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
+[8]: /docs/docs/operations_sample_output#field-operations-images-v2
 
 Leaf's system can be customized to present different behaviours across services. This is done using Configurations.
 
@@ -27,6 +33,8 @@ Minimum intersection between two fields to merge them. A new field of type MERGE
 ### Field Operations
 #### cleanupStandardGeojson
 If set to `true`, Leaf will automatically remove [invalid points](files_sample_output.md#valid-points) from the standardGeoJSON file for operations. The default value is `true`.
+#### fieldOperationCreation
+Enables the creation of [Field Operations][2]. The default is `true`.
 #### geoimagesColorRamp
 The color ramp to be used when generating images of operations. It's a map from a percentage value to a list containing a color in RGB or RGBA. The last entry in the map must contain a value for the `nv` key, mapping to the color for null values. The default value is
 ```
@@ -49,14 +57,29 @@ Resolution of the generated images of operations. The default value is `0.00001`
 Shape of points to be used when generating images of operations. It can assume the values `ROUND` and `SQUARE`. The default value is `SQUARE`.
 #### operationsAutoSync
 If set to `true`, Leaf will automatically synchronize provider's operations. The default value is `true`.
+#### operationsFilteredGeojson
+Enables the option to clear [Field Operations][2] data based on [some filter options][7]. Also enables the use of [operations images V2][8].
+The default is `false`.
 #### operationsImageCreation
 If set to `true`, Leaf will generate images of operations when processing them. If set to `false`, Leaf won't create the images. The default value is `false`.
 #### operationsMergeRange
 Range used to consider if files are in the same operation. Default value is `5` days.
 #### operationsMergeRangeHarvested
 Range used to consider if harvest files are in the same operation. Default value is `21` days.
+#### operationsOutliersLimit
+Sets the threshold for removing outliers when the [operationsRemoveOutliers][3] configuration is enabled. The defined value will be considered to measure how many standard deviations will be considered as outliers. The default value is `3` which means that all points with harvested volume values ​​that are more than 3 standard deviations away from the mean will be removed.
+
+More info [here][5].
 #### operationsProcessingRange
 The retroactive time period (in months) to fetch file operations from providers. The default is `12` so only operations that occurred 12 months ago to present will be processed by Leaf.
+#### operationsRemoveOutliers
+If enabled, it will remove points in the [filteredGeojson][3] based on harvest values so it is only applied to harvest type operations. The outliers will be defined based on the [operationsOutliersLimit][4] configuration. The default value is `true`.
+
+More info [here][5].
+
+:::tip
+To use this option, [operationsFilteredGeojson][6] must be enabled.
+:::
 #### splitOperationsByField
 If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`.
 
@@ -86,3 +109,6 @@ The default value is `false`.
     "originalOperationType": "SowingAndPlanting"
 }
 ```
+
+
+

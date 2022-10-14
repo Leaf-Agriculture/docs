@@ -15,6 +15,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: #get-an-operations-units
 [6]: /docs/docs/alerts_overview
 [7]: /docs/docs/alerts_events#operation-events
+[8]: #get-an-operations-images-v2
+[9]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
+[10]: /docs/docs/operations_sample_output#field-operations-images-v2
 [sample_summary]: files_sample_output
 
 
@@ -34,6 +37,7 @@ Description | Endpoints
 [Get an operation][2] | <span class="badge badge--success">GET</span> `/operations/{id}`
 [Get an operation summary][3] | <span class="badge badge--success">GET</span> `/operations/{id}/summary`
 [Get an operation's images][4] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
+[Get an operation's images V2][8] | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`
 [Get an operation's units][5] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
@@ -386,6 +390,133 @@ Gets a list of PNG images generated from the operation's properties.
 
   We also generate an auxiliary `xml` with geographic information to handle this
   image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+### Get an operation's images V2
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/imagesV2`
+
+Gets a list of PNG images generated from the operation's properties with improvements in the generation process. These images are based on the [filteredGeojson][9].
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/imagesV2'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/imagesV2'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/imagesV2'
+  ```
+
+  </TabItem>
+  <TabItem value="json">
+
+  Returns a JSON list of the following format:
+
+  ```json
+[
+    {
+        "property": "string",
+        "legend": {
+            "ranges": [
+                {
+                    "colorCode": "#C80000",
+                    "max": 20,
+                    "min": 0
+                },
+                {
+                    "colorCode": "#FF2800",
+                    "max": 50,
+                    "min": 20
+                },
+                {
+                    "colorCode": "#FF9600",
+                    "max": 100,
+                    "min": 50
+                },
+                {
+                    "colorCode": "#FFF000",
+                    "max": 250,
+                    "min": 100
+                },
+                {
+                    "colorCode": "#00E600",
+                    "max": 340,
+                    "min": 250
+                },
+                {
+                    "colorCode": "#00BE00",
+                    "max": 480,
+                    "min": 340
+                },
+                {
+                    "colorCode": "#008200",
+                    "max": 570,
+                    "min": 480
+                }
+            ]
+        },
+        "extent": {
+            "xmin": 0.0,
+            "xmax": 0.0,
+            "ymin": 0.0,
+            "ymax": 0.0
+        },
+        "url": "URL"
+      }
+]
+  ```
+
+  The `property` refers to the property extracted from operations' data to generate the
+  image.
+
+  The `legend` represents the values ​​distributed in 7 classes, classified by the quantile and symbolized by the standard color ramp.
+
+  The `extent` is the coordinates of the image, mainly used for plotting images in map applications.
+
+  More information [here][10].
 
   </TabItem>
 </Tabs>

@@ -18,6 +18,24 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: /docs/docs/planet_overview#udm2
 [11]: /docs/docs/credentials_john_deere#one-click-authentication
 [12]: /docs/docs/beta_layers_endpoints#
+[13]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
+[14]: /docs/docs/operations_sample_output#field-operations-images-v2
+[15]: /docs/docs/configurations_overview#operationsfilteredgeojson
+
+### 2.106.0
+*2022-10-13*
+
+**Yield cleaning**
+- There is now a [configuration][15] to enable the use of [new cleanup step][13].
+
+
+### 2.105.0
+*2022-10-05*
+
+**Yield cleaning**
+- Harvest data can now go through a new cleanup step based on the removal of outliers. More info [here][13].
+- We also improved the operations images. More info [here][14].
+
 
 ### 2.100.0
 *2022-08-31*

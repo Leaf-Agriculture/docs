@@ -1,5 +1,6 @@
 ---
 title: Climate FieldView Credentials
+description: Credentials - Climate Field View
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

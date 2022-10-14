@@ -1,5 +1,6 @@
 ---
 title: Overview
+description: Satellite - Overview
 ---
 
 import Tabs from '@theme/Tabs';
@@ -24,7 +25,7 @@ field. But you can increase that to as far back in time as you want.
 
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />
 
-This API accepts field boundary polygons and returns processed, cropped, and
+This API accepts field boundary polygons and returns processed, clipped, and
 color-corrected RGB, NDVI, and NDRE images every time there is a new image available.
 We also provide information like percent cloud coverage of the field, the data
 coverage percentage, and the tile source for each image as well.

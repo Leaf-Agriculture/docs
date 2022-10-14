@@ -1,5 +1,6 @@
 ---
 title: Endpoints
+description: Alerts - Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

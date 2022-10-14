@@ -1,5 +1,6 @@
 ---
 title: CNHI Credentials
+description: Credentials - CNHI
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

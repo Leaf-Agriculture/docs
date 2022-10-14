@@ -1,5 +1,6 @@
 ---
 title: John Deere Credentials
+description: Credentials - John Deere
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

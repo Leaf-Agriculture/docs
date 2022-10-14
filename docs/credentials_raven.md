@@ -1,5 +1,6 @@
 ---
 title: Raven Credentials
+description: Credentials - Raven
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

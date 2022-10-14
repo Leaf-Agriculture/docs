@@ -1,5 +1,6 @@
 ---
 title: How to get the list of products from a John Deere operation?
+description: How to get the list of products from a John Deere operation?
 ---
 
 This use case describes how to get the list of products from a John Deere operation.

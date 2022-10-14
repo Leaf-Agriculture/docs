@@ -1,5 +1,6 @@
 ---
 title: Endpoints
+description: Files - Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

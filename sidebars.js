@@ -41,6 +41,11 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Alerts',
+          items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
+        },
+        {
+          type: 'category',
           label: 'Field Boundaries',
           items: ['field_boundaries_overview', 'field_boundaries_endpoints']
         },
@@ -63,11 +68,6 @@ module.exports = {
           type: 'category',
           label: 'File Converters',
           items: ['converters_overview', 'converters_endpoints']
-        },
-        {
-          type: 'category',
-          label: 'Alerts',
-          items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
         },
         {
           type: 'category',

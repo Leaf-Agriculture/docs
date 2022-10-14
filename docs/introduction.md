@@ -1,5 +1,6 @@
 ---
 title: Introduction
+description: Introduction
 ---
 
 **Welcome to Leaf's Documentation!**

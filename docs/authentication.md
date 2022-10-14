@@ -1,5 +1,6 @@
 ---
 title: Authentication
+description: Authentication
 ---
 
 import Tabs from '@theme/Tabs';

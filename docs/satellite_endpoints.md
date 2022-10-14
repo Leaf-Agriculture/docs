@@ -1,5 +1,6 @@
 ---
 title: Endpoints
+description: Satellite - Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

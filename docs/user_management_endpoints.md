@@ -1,5 +1,6 @@
 ---
 title: Endpoints
+description: Usermanagement - Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

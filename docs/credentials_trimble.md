@@ -1,5 +1,6 @@
 ---
 title: Trimble Credentials
+description: Credentials - Trimblee
 ---
 
 import Tabs from '@theme/Tabs';

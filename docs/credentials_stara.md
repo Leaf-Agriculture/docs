@@ -1,5 +1,6 @@
 ---
 title: Stara Credentials
+description: Credentials - Stara
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

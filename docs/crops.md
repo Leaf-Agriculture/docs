@@ -1,5 +1,6 @@
 ---
 title: Crops
+description: Crops List
 ---
 
 Here is a list of all the crops we currently support. The most common are "corn"

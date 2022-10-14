@@ -1,5 +1,6 @@
 ---
 title: Sentera Credentials
+description: Credentials - Sentera
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

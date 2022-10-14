@@ -1,5 +1,6 @@
 ---
 title: Quickstart
+description: Quickstart
 ---
 
 import Tabs from '@theme/Tabs';

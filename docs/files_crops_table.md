@@ -1,5 +1,6 @@
 ---
 title: Crops Table
+description: Crops Table
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,5 +1,6 @@
 ---
 title: List of Events
+description: Alerts - Events
 ---
 
 ## About

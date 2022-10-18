@@ -47,9 +47,6 @@ There is now an option to upload layer files directly to Climate FieldView via L
 ### 2.98.0
 *2022-08-16*
 
-**Credentials**
-- John Deere: new simplified authentication method with John Deere. More info [here][11]
-
 **Machine operation data**
 - New properties `dryMass` `dryMassPerArea` `dryVolume` and `dryVolumePerArea` for dry Yield are available in the operation [summary][5] and in the [standard][7] GeoJSON. 
 

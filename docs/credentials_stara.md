@@ -9,6 +9,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [1]: #get-the-stara-credentials
 [2]: #create-a-stara-credentials
 [3]: #delete-stara-credentials
+[4]: /docs/docs/field_boundaries_overview
+[5]: /docs/docs/beta_machines_endpoints
+
+:::tip Services availability
+For now, only [Fields][4] and [Machines (beta)][5] services are available for Stara integration.
+:::
 
 Form of a Stara Credentials resource:
 

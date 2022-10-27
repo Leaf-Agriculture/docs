@@ -18,6 +18,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [8]: #get-an-operations-images-v2
 [9]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
 [10]: /docs/docs/operations_sample_output#field-operations-images-v2
+[11]: #reprocess-an-operation
+[12]: /docs/docs/operations_sample_output#field-operations-standard-geojson
+[13]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
+[14]: /docs/docs/operations_sample_output#field-operations-summary
+[15]: /docs/docs/operations_sample_output#field-operations-images
 [sample_summary]: files_sample_output
 
 
@@ -39,6 +44,8 @@ Description | Endpoints
 [Get an operation's images][4] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
 [Get an operation's images V2][8] | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`
 [Get an operation's units][5] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
+[Reprocess an operation][11] | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`
+
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
 
@@ -680,6 +687,64 @@ Returns a single JSON object:
 ```
 
 You could monitor the processing status using the `leafFileId` by our [Alerts Service][6].
+
+### Reprocess an operation
+
+&nbsp<span class="badge badge--warning">POST</span>  `/operations/{id}/reprocess`
+
+Allows reprocessing an operation already created, starting from the merge step. The [standardGeoJSON][12], [filteredGeoJSON][13], [summary][14] and [images][15] will be updated.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/reprocess'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.post(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/reprocess'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.post(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/reprocess'
+  ```
+
+  </TabItem>
+</Tabs>
+
+You could monitor the processing status by our [Alerts Service][6].
 
 ---
 

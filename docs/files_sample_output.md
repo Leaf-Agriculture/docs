@@ -592,12 +592,12 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | totalWetVolume       | *  | float |
   | totalWetMass         | *  | float |
   | crop                 | *  | string |
-  | dryMass              | ** | dict |
-  | dryMassPerArea       | ** | dict |
-  | totalDryMass         | ** | dict |
-  | dryVolume            | ** | dict |
-  | dryVolumePerArea     | ** | dict |
-  | totalDryVolume         | ** | dict |
+  | dryMass              | * | dict |
+  | dryMassPerArea       | * | dict |
+  | totalDryMass         | * | dict |
+  | dryVolume            | * | dict |
+  | dryVolumePerArea     | * | dict |
+  | totalDryVolume       | * | dict |
   | speed                | ** | dict |
   | variety              | ** | string |
   | machinery            | ** | list of machineInfo objects |
@@ -889,10 +889,10 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
   | heading           | ** | float       | degrees        | Heading of machine at point |
   | machinery         | ** | list of machineInfo objects        | -              | name of machine & implement |
-  | dryMass           | ** | float       | lb or kg       | dry mass harvested in that point |
-  | dryMassPerArea    | ** | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
-  | dryVolume         | **$ | float       | bu or L        | dry volume harvested in that point |
-  | dryVolumePerArea  | **$ | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
+  | dryMass           | * | float       | lb or kg       | dry mass harvested in that point |
+  | dryMassPerArea    | * | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
+  | dryVolume         | *$ | float       | bu or L        | dry volume harvested in that point |
+  | dryVolumePerArea  | *$ | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
   | sectionId         | ** | int         | int            | ID of implement sensor section |
   | cropFlow          | ** | float           | tonne/h    | Massic flow of the harvested crop |
   | proteinPercentage    | ** | float        | %                  | Amount of protein content for the harvested product |

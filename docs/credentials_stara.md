@@ -12,8 +12,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: /docs/docs/field_boundaries_overview
 [5]: /docs/docs/beta_machines_endpoints
 
-:::tip Services availability
-For now, only [Fields][4] and [Machines (beta)][5] services are available for Stara integration.
+:::caution Services availability
+This integration is under construction. For now, no data is being integrated yet.
 :::
 
 Form of a Stara Credentials resource:

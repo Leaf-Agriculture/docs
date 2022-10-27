@@ -567,7 +567,7 @@ Here is an example of Images from Field Operations.
 
 
 #### Field Operations Images V2
-[This new endpoint][2] version produces images based on the [filteredGeoJSON][1], therefore it will be active whenever the data filter option is active.
+[This endpoint][2] version produces images based on the [filteredGeoJSON][1], therefore it will be active whenever the data filter option is active.
 
 The new images have considerable improvements over the previous one. They are generated with a standard fixed color ramp and the data is automatically distributed into 7 classes using **quatile** classification.
 
@@ -628,8 +628,10 @@ Note that the return is different from the previous version, with the option of 
 ]
 ```
 
+If the `filteredGeoJSON` fails to process, images will continue to be generated from the `standardGeoJSON`.
+
 :::tip
-Important: once active, the images will be available for access only via the [`/imagesV2`][2] endpoint.
+Important: once active, the images will be available for access only via the [`/imagesV2`][2] endpoint.  
 :::
 
 ### Field Operations Units 

@@ -14,7 +14,7 @@ This use case describes how to get the satellite field images and display them o
 To register with Leaf:
 
 - Go to [registration link](https://withleaf.io/registration/) and create your account.
-- Save your credentials to use in the nexts steps.
+- Save your credentials to use in the next steps.
 
 ## Backend
 

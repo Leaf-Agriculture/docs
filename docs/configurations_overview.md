@@ -22,7 +22,7 @@ Currently, available configurations are:
 
 ### Field Boundaries
 #### fieldsAttachIntersection
-Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 1. The default value is `0.01`.
+Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100. The default value is `0.01`.
 #### fieldsAutoMerge
 Feature automatically merges fields that passes through the intersection parameter. Default value is `true`.
 #### fieldsAutoSync

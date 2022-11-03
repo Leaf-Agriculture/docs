@@ -21,6 +21,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [11]: #get-all-batches
 [12]: #merge-files
 [13]: #get-a-files-units
+[14]: #retry-a-batch
 [sample_summary]: files_sample_output
 
 ## About
@@ -44,6 +45,7 @@ Description | Endpoints
 [Get a batch][8] | <span class="badge badge--success">GET</span> `/batch/{id}`
 [Get all batches][11] | <span class="badge badge--success">GET</span> `/batch`
 [Merge files][12] | <span class="badge badge--warning">POST</span> `/files/merge`
+[Retry a batch][14] | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
 
@@ -823,6 +825,83 @@ When you query a batch upload ID, you will receive a JSON with list of batches:
 
 
 ---
+
+### Retry a batch
+
+&nbsp<span class="badge badge--warning">PUT</span> `/batch/{id}/retry`
+
+If a batch uploaded processing does not complete as expected, this endpoint allows you to try processing again, at least one more time, just sending the batch `id`.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/batch/{id}/retry'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.put(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/batch/{id}/retry'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.put(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/batch/{id}/retry'
+  ```
+
+  </TabItem>
+</Tabs>
+
+##### Response
+
+Returns a single JSON object, similar to the upload endpoint response:
+
+```json
+{
+    "id": "uuid",
+    "leafUserId": "uuid",
+    "fileName": "filename.zip",
+    "size": 8652951,
+    "provider": "Other",
+    "status": "RECEIVED",
+    "uploadTimestamp": "2021-03-12T19:50:55.567755Z"
+}
+```
+
+
+---
+
+
+
 
 
 ### Merge files

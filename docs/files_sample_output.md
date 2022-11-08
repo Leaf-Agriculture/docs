@@ -537,7 +537,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | originalOperationType        | **  | string |
   | totalArea            | *  | float |
   | elevation            | *  | dict |
-  | variety              | ** | string |
+  | varieties              | ** | dict |
   | seedRateTarget       | ** | dict |
   | seedDepth            | ** | dict |
   | machinery            | ** | list of machineInfo objects |
@@ -599,7 +599,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | dryVolumePerArea     | * | dict |
   | totalDryVolume       | * | dict |
   | speed                | ** | dict |
-  | variety              | ** | string |
+  | varieties              | ** | dict |
   | machinery            | ** | list of machineInfo objects |
   | operationDescription | ** | string |
 

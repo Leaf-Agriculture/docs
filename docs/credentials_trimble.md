@@ -20,7 +20,8 @@ Form of a Trimble Credentials resource:
   "userName": "str",
   "password": "str",
   "applicationName": "str",
-  "serviceIdentityId": "str"
+  "serviceIdentityId": "str",
+  "scopes": ["str"]
 }
 ```
 

@@ -18,7 +18,8 @@ Form of a Raven Credentials resource:
   "refreshToken": "str",
   "clientId": "str",
   "clientSecret": "str",
-  "status": "str" 
+  "status": "str",
+  "scopes": ["str"]
 }
 ```
 

@@ -20,7 +20,8 @@ Form of a John Deere Credentials resource:
   "tokenId": "str",
   "tokenSecretKey": "str",
   "accessToken": "str",
-  "refreshToken": "str"
+  "refreshToken": "str",
+  "scopes": ["str"]
 }
 ```
 
@@ -101,7 +102,8 @@ Get the John Deere credentials of the Leaf User based on its id and returns a JS
     "accessToken": "str",
     "refreshToken": "str",
     "status": "str",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "scopes": ["str"]
 }
 ```
 

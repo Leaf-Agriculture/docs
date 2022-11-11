@@ -20,7 +20,8 @@ Form of a Climate FieldView Credentials resource:
   "clientSecret": "str",
   "apiKey": "str",
   "accessToken": "str",
-  "refreshToken": "str"
+  "refreshToken": "str",
+  "scopes": ["str"]
 }
 ```
 
@@ -97,7 +98,8 @@ Get a Climate FieldView credentials object by its `id`. If during background pro
   "clientSecret": "str",
   "apiKey": "str",
   "refreshToken": "str",
-  "status": "str"
+  "status": "str",
+  "scopes": ["str"]
 }
 ```
 

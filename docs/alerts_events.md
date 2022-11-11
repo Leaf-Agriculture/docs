@@ -20,6 +20,42 @@ When a new webhook is registered you will receive a one time success message in 
 }
 ```
 
+## Credentials Alerts
+
+### Credentials Missing Permission
+Event for when the provided credentials don't have enough permissions to do the actions you are trying to.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "credential": "the client identification",
+  "provider": "the provider from the credential",
+  "credentialId": "the credential id",
+  "message": "message from the alert",
+  "status": "the new status of the credential",
+  "type": "credentialsLimitedPermission",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+}
+```
+
+### Credentials Unauthenticated
+Event for when the credentials are no longer valid.
+
+Alerts for this event are in the following format:
+
+```json
+{
+  "credential": "the client identification",
+  "provider": "the provider from the credential",
+  "credentialId": "the credential id",
+  "message": "message from the alert",
+  "status": "the new status of the credential",
+  "type": "credentialsUnauthenticated",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+}
+```
+
 ## Operation Events
 
 ### Uploaded File Processing Finished

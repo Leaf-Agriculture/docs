@@ -508,7 +508,10 @@ present in the .zip file and process them accordingly.
 Leaf will detect files present in the uploaded .zip and 
 create/return one file id for each file that is detected. These individual files 
 can then be accessed individually by their ID, or via their associated field 
-boundary.
+boundary. 
+
+The "expected structure" documented below is the default format of the files and what we expect to find when detecting and processing files. Very often these default file structures are edited by users. Leaf does attempt to automatically repair the file structure and find all necessary files within any uploaded .zip. 
+
 
 The following file formats from each provider are supported:
 
@@ -522,17 +525,67 @@ The following file formats from each provider are supported:
 | Gen4        | Gen 4 - 4600/4630                | `/JD-Data/log/user defined name/*.jdl`          |
 | Shapefile   | Exported from MyJohnDeere        | Shapefile with extra metadata in a `.json` file |
 
+Expected file structure:
+
+GreenStar 4 (4600+)\
+**`jd-data`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`log`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.jdl`
+
+GreenStar 3 (2630)\
+**`GS3_2630`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627; `...`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdd`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdl`
+
+
+Green Star 2 (2600)\
+`...`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`RCD`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdd`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdl`
+
+GreenStar 2 (1800)\
+**`GS2_1800`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`...`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdData`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdShape`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.SpatialCatalog`
+
+GreenStar 2 Command Center\
+**`Command_Center`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.*`
+
 #### Climate FieldView
 
 | File Format | Monitor Model                    | Details                                         |
 |-------------|----------------------------------|-------------------------------------------------|
 | dat         | All files from Climate FieldView | A zip with `.dat` files                         |
 
+Expected file structure:
+
+20/20 SeedSense Generation 1 and Generation 2 \
+`...`\
+	&nbsp;&nbsp;&#8627;`harvest_*.dat` – Harvest data\
+	&nbsp;&nbsp;&#8627;`field_map_*.dat` – Planting data\
+	&nbsp;&nbsp;&#8627;`liquid_map_*.dat` - AsApplied spraying data
+
+
+20/20 SeedSense Generation 3\
+`...`\
+	&nbsp;&nbsp;&#8627; `*.2020`
+
 #### CNHI
 
 | File Format | Monitor Model                    | Details                                         |
 |-------------|----------------------------------|-------------------------------------------------|
 | CN1         | CaseIH monitors or exported from CNH Connects | `/file.cn1/index.vy1`                           |
+
+Expected file structure:\
+Voyager 2\
+**`.cn1`**\
+&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`...`\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.*`
 
 #### AgLeader
 
@@ -542,6 +595,11 @@ The following file formats from each provider are supported:
 | ilf         | INTEGRA / Insight / Edge                | A zip with `.ilf` files                |
 | agdata      | INTEGRA / VERSA / COMPASS               | A zip with `.agdata` files             |
 
+Expected file structure:\
+`...`\
+&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agdata`\
+&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agsetup`
+
 #### Trimble
 
 | File Format | Monitor Model                    | Details                                         |
@@ -550,11 +608,54 @@ The following file formats from each provider are supported:
 
 <!--| AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |-->
 
+Expected file structure:\
+GFX-750, TMX-2050\
+**`AgData`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Fields`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agf`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`implements`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agi`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`materials`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agm`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`prescriptions`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agp`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Tasks`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agt`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Users`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agu`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`vehicles`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agv`
+
+CFX-750, FMX\
+**`AgGPS`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Data`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`"Grower"`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Farm`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`field`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`"Task"`**\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.cpg`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.dbf`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.shp`\
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.shx`
+
 #### Precision Planting (beta)
 
 | File Format | Monitor Model                           | Details                                |
 |-------------|-----------------------------------------|----------------------------------------|
 | PP2020      | 20\|20                                  | A zip with `.2020` files.              |
+
+Expected file structure:
+
+20/20 SeedSense Generation 1 and Generation 2 \
+`...`\
+	&nbsp;&nbsp;&#8627;`harvest_*.dat` – Harvest data\
+	&nbsp;&nbsp;&#8627;`field_map_*.dat` – Planting data\
+	&nbsp;&nbsp;&#8627;`liquid_map_*.dat` - AsApplied spraying data
+
+
+20/20 SeedSense Generation 3\
+`...`\
+	&nbsp;&nbsp;&#8627; `*.2020`
 
 #### Farmobile
 

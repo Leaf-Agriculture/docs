@@ -505,12 +505,9 @@ PrecisionPlanting
 If provider is set to "Other", Leaf will detect which files are 
 present in the .zip file and process them accordingly.
 
-Leaf will detect files present in the uploaded .zip and 
-create/return one file id for each file that is detected. These individual files 
-can then be accessed individually by their ID, or via their associated field 
-boundary. 
+Leaf will detect files present in the uploaded .zip and create file ids for the files that are detected in the uploaded .zip. These  files can then be accessed individually by their file ID, batch ID, or their associated field boundary.
 
-The "expected structure" documented below is the default format of the files and what we expect to find when detecting and processing files. Very often these default file structures are edited by users. Leaf does attempt to automatically repair the file structure and find all necessary files within any uploaded .zip. 
+Expected file structures from each provider are listed below. Very often these default file structures are edited by users. In these cases Leaf attempts to automatically repair the file structure and find all necessary files within any uploaded .zip.
 
 
 The following file formats from each provider are supported:

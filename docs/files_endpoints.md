@@ -515,7 +515,6 @@ The "expected structure" documented below is the default format of the files and
 
 The following file formats from each provider are supported:
 
-
 #### JohnDeere
 
 | File Format | Monitor Model | Details                                         |
@@ -525,36 +524,48 @@ The following file formats from each provider are supported:
 | Gen4        | Gen 4 - 4600/4630                | `/JD-Data/log/user defined name/*.jdl`          |
 | Shapefile   | Exported from MyJohnDeere        | Shapefile with extra metadata in a `.json` file |
 
-Expected file structure:
+##### Expected file structure
 
-GreenStar 4 (4600+)\
-**`jd-data`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`log`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.jdl`
+GreenStar 4 (4600+) 
+```bash
+jd-data
+└── log
+   └── *.jdl
+```
 
-GreenStar 3 (2630)\
-**`GS3_2630`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627; `...`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdd`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdl`
+GreenStar 3 (2630) 
+```bash
+GS3_2630
+└── RCD
+   └── EIC
+      └── global.ver
+        └── documentation
+              └── ...
+                 ├── *.fdd
+                 └── *.fdl
+```
 
+Green Star 2 (2600)  
+```bash
+...
+└── RCD
+   ├── *.fdd
+   └── *.fdl
+```
 
-Green Star 2 (2600)\
-`...`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`RCD`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdd`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdl`
+GreenStar 2 (1800) 
+```bash
+...
+├── *.fdData
+├── *.fdShape
+└── *.SpatialCatalog
+```
 
-GreenStar 2 (1800)\
-**`GS2_1800`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`...`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdData`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.fdShape`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.SpatialCatalog`
-
-GreenStar 2 Command Center\
-**`Command_Center`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.*`
+GreenStar 2 Command Center 
+```bash
+Command_Center
+└── *.*
+```
 
 #### Climate FieldView
 
@@ -562,18 +573,21 @@ GreenStar 2 Command Center\
 |-------------|----------------------------------|-------------------------------------------------|
 | dat         | All files from Climate FieldView | A zip with `.dat` files                         |
 
-Expected file structure:
+##### Expected file structure
 
-20/20 SeedSense Generation 1 and Generation 2 \
-`...`\
-	&nbsp;&nbsp;&#8627;`harvest_*.dat` – Harvest data\
-	&nbsp;&nbsp;&#8627;`field_map_*.dat` – Planting data\
-	&nbsp;&nbsp;&#8627;`liquid_map_*.dat` - AsApplied spraying data
+20|20 SeedSense Generation 1 and Generation 2
+```bash
+...
+├── harvest_*.dat – Harvest data
+├── field_map_*.dat – Planting data
+└── liquid_map_*.dat - AsApplied spraying data
+```
 
-
-20/20 SeedSense Generation 3\
-`...`\
-	&nbsp;&nbsp;&#8627; `*.2020`
+20|20 SeedSense Generation 3
+```bash
+...
+└── *.2020
+```
 
 #### CNHI
 
@@ -581,11 +595,14 @@ Expected file structure:
 |-------------|----------------------------------|-------------------------------------------------|
 | CN1         | CaseIH monitors or exported from CNH Connects | `/file.cn1/index.vy1`                           |
 
-Expected file structure:\
-Voyager 2\
-**`.cn1`**\
-&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`...`\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.*`
+##### Expected file structure
+
+Voyager 2
+```bash
+*.cn1
+└── ...
+   └── *.vy1
+```
 
 #### AgLeader
 
@@ -595,10 +612,25 @@ Voyager 2\
 | ilf         | INTEGRA / Insight / Edge                | A zip with `.ilf` files                |
 | agdata      | INTEGRA / VERSA / COMPASS               | A zip with `.agdata` files             |
 
-Expected file structure:\
-`...`\
-&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agdata`\
-&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agsetup`
+##### Expected file structure
+AgLeader Integra (versions 3.5+), Versa
+```bash
+...
+├── *.agdata
+└── *.agsetup
+```
+
+AgLeader Edge, Insight, and Integra (version 3.4)
+```bash
+...
+└── *.ilf
+```
+
+AgLeader PF Advantage, PF 3000, PF 3000 Pro, YM2000 
+```bash
+...
+└── *.yld
+```
 
 #### Trimble
 
@@ -608,35 +640,38 @@ Expected file structure:\
 
 <!--| AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |-->
 
-Expected file structure:\
-GFX-750, TMX-2050\
-**`AgData`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Fields`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agf`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`implements`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agi`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`materials`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agm`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`prescriptions`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agp`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Tasks`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agt`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Users`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agu`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`vehicles`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.agv`
+##### Expected file structure
+GFX-750, TMX-2050 
+```bash
+Agdata
+├── Fields
+   └── *.agf
+├── implements
+   └── *.agi
+├── prescriptions
+   └── *.agm
+├── Tasks
+   └── *.agt
+├── Users
+   └── *.agu
+└── vehicles
+   └── *.agv
+```
 
-CFX-750, FMX\
-**`AgGPS`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Data`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`"Grower"`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`Farm`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`field`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;**`"Task"`**\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.cpg`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.dbf`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.shp`\
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8627;`*.shx`
+
+CFX-750, FMX  
+```bash
+AgGPS
+└── Data
+   └── "Grower"
+      └── Farm
+        └── field
+          └── "Task"
+            ├── *.cpg
+            ├── *.dbf
+            ├── *.shp
+            └── *.shx
+```
 
 #### Precision Planting (beta)
 
@@ -644,18 +679,77 @@ CFX-750, FMX\
 |-------------|-----------------------------------------|----------------------------------------|
 | PP2020      | 20\|20                                  | A zip with `.2020` files.              |
 
-Expected file structure:
+##### Expected file structure
 
-20/20 SeedSense Generation 1 and Generation 2 \
-`...`\
-	&nbsp;&nbsp;&#8627;`harvest_*.dat` – Harvest data\
-	&nbsp;&nbsp;&#8627;`field_map_*.dat` – Planting data\
-	&nbsp;&nbsp;&#8627;`liquid_map_*.dat` - AsApplied spraying data
+20|20 SeedSense Generation 1 and Generation 2
+```bash
+...
+├── harvest_*.dat – Harvest data
+├── field_map_*.dat – Planting data
+└── liquid_map_*.dat - AsApplied spraying data
+```
 
+20|20 SeedSense Generation 3
+```bash
+...
+└── *.2020
+```
 
-20/20 SeedSense Generation 3\
-`...`\
-	&nbsp;&nbsp;&#8627; `*.2020`
+#### ISOXML
+##### Expected file structure
+```bash
+TASKDATA
+├── *.XML
+└── *.bin
+```
+
+#### CLAAS
+##### Expected file structure
+```bash
+TASKDATA
+├── *.XML
+└── *.bin
+```
+
+#### Kuhn
+##### Expected file structure
+```bash
+TASKDATA
+├── *.XML
+└── *.bin
+```
+
+#### Kverneland Group
+##### Expected file structure
+```bash
+TASKDATA
+├── *.XML
+└── *.bin
+```
+
+#### Müller-Elektronik
+##### Expected file structure
+```bash
+TASKDATA
+├── *.XML
+└── *.bin
+```
+
+#### Teknomika
+##### Expected file structure
+```bash
+TASKDATA
+├── *.XML
+└── *.bin
+```
+
+#### Topcon Precision Agriculture
+##### Expected file structure
+```bash
+TASKDATA
+├── *.XML
+└── *.bin
+```
 
 #### Farmobile
 
@@ -663,12 +757,13 @@ Expected file structure:
 |-------------|-------------------------------------------------|
 | GeoJSON     | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used.|
 
+
+
 #### Other
 
 | File Format | Details                                         |
 |-------------|-------------------------------------------------|
 | Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used.|
-
 
 <Tabs
   defaultValue="sh"

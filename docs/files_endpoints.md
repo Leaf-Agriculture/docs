@@ -516,7 +516,6 @@ The following file formats from each provider are supported:
 
 | File Format | Monitor Model | Details                                         |
 |------------ | -------------------------------- | ------------------------------------------------|
-| GS2         | GreenStar 2 – 1800/2600          | `/RCD/global.ver`                               |
 | GS3         | GreenStar 3 – 2630               | `/GS3_2630/profile/RCD/EIC/global.ver`          |
 | Gen4        | Gen 4 - 4600/4630                | `/JD-Data/log/user defined name/*.jdl`          |
 | Shapefile   | Exported from MyJohnDeere        | Shapefile with extra metadata in a `.json` file |
@@ -548,20 +547,6 @@ Green Star 2 (2600)
 └── RCD
    ├── *.fdd
    └── *.fdl
-```
-
-GreenStar 2 (1800) 
-```bash
-...
-├── *.fdData
-├── *.fdShape
-└── *.SpatialCatalog
-```
-
-GreenStar 2 Command Center 
-```bash
-Command_Center
-└── *.*
 ```
 
 #### Climate FieldView

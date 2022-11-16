@@ -619,8 +619,7 @@ AgLeader PF Advantage, PF 3000, PF 3000 Pro, YM2000
 | File Format | Monitor Model                    | Details                                         |
 |-------------|----------------------------------|-------------------------------------------------|
 | AgData      | FMX and CFX monitors             | `/AgData/`                                      |
-
-<!--| AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |-->
+| AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |
 
 ##### Expected file structure
 GFX-750, TMX-2050 

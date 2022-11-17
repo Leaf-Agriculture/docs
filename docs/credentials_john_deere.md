@@ -266,7 +266,7 @@ Delete Leaf User's John Deere credentials.
 </Tabs>
 
 ## Troubleshooting
-With this endpoints, you can do some troubleshooting to see your credentials health.
+With this endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Status
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/john-deere-credentials/status`

@@ -236,7 +236,7 @@ Delete Leaf User's AgLeader credentials.
 </Tabs>
 
 ## Troubleshooting
-With this endpoints, you can do some troubleshooting to see your credential's health.
+With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Status
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/ag-leader-credentials/status`

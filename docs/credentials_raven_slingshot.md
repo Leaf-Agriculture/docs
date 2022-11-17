@@ -232,7 +232,7 @@ Delete Leaf User's Raven Slingshot credentials.
 </Tabs>
 
 ## Troubleshooting
-With this endpoints, you can do some troubleshooting to see your credential's health.
+With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Status
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/raven-slingshot-credentials/status`

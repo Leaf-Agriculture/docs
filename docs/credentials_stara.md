@@ -241,3 +241,147 @@ values={[
 
   </TabItem>
 </Tabs>
+
+## Troubleshooting
+With these endpoints, you can do some troubleshooting to see your credential's health.
+
+### Status
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/stara-credentials/status`
+
+Get the Stara credentials status of the Leaf User based on its id and returns a JSON containing the status.
+
+#### Request examples
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials/status'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials/status'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}
+      /stara-credentials/status'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+If the request went well and the credentials exists on our side, it will return one of this four status:
+
+| MESSAGE                    | MEANING                                          |
+|----------------------------|:-------------------------------------------------|
+| OK                         | EVERYTHING IS OK                                 |
+| UNAUTHENTICATED            | THE CREDENTIAL IS NO LONGER VALID                |
+| MISSING_PERMISSION         | THE CREDENTIAL DON'T HAVE ENOUGH PERMISSIONS     |
+| TEMPORARILY_UNAVAILABLE    | THIS IS RELATED TO THE PROVIDER API              |
+
+### Events
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/stara-credentials/events`
+
+Get the logs of the provider credential based on the LeafUserId sent.
+
+#### Request examples
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials/events'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/stara-credentials/events'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}
+      /stara-credentials/events'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "body": "string",
+    "createdDate": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+    "headers": "string",
+    "id": "string",
+    "statusCode": "int"
+  }
+]
+```
+
+:::warning
+The logs are available only for 30 days and once the credential is deleted or disassociated with the Leaf User, the logs are no longer available.

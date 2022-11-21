@@ -211,13 +211,8 @@ This is an example of a summary for an "applied" operation
                     "unit": "gal"
                 },
                 "rate": {
-                    "min": 13.32,
-                    "max": 15.11,
-                    "avg": 14.10,
-                    "minTarget": 13.5,
-                    "maxTarget": 15.5,
-                    "avgTarget": 14.3,                
-                    "unit": "gal/m2"
+                    "value": 1.5,                
+                    "unit": "qt/ac"
                 },
                 "area": {
                     "value": 511224,
@@ -232,13 +227,8 @@ This is an example of a summary for an "applied" operation
                     "unit": "lb"
                 },    
                 "rate": {
-                    "min": 1.1, 
-                    "max": 1.3,
-                    "avg": 1.23,   
-                    "minTarget": 0.9,
-                    "maxTarget": 1.5,
-                    "avgTarget": 1.3,                             
-                    "unit": "lb/m2"
+                    "value": 1.2,                
+                    "unit": "qt/ac"
                 },
                 "area": {
                     "value": 520714,

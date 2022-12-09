@@ -1230,6 +1230,11 @@ A JSON in the followin format.
 
 Deletes the field with the given id.
 
+:::tip
+Fields created by a provider cannot be deleted on Leaf side.
+:::
+
+
 ## Boundaries
 ### Get all boundaries from field
 

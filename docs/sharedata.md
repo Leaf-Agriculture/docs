@@ -47,14 +47,14 @@ This relationship status can be [changed][4] in the future by both sides, but on
 
 In this step, permissions are granted on the resources of each Leaf user. More info [here][6].  
 
-Note that at this time only the `READ` permission type and the `FIELDS` resource are available.
+Note that at this time only the `READ` permission type and `FIELDS` and `OPERATIONS` resources are available.
 
 :::tip Organizations
 Organization-level sharing is not supported yet, but the permission can be granted or revoked at the same time the Leaf user is added or removed from the organization.
 :::
 
 #### 3 - Access   
-At the end of these steps, the Api Owner B will be able to visualize the fields from the shared Leaf user, using the already existing field endpoints, like [this][9].
+At the end of these steps, the Api Owner B will be able to visualize the fields and/or operations from the shared Leaf user, using the already existing field/operations endpoints, like [this][9].
 <img alt="Sharing result" width="50%" src={useBaseUrl('img/sharing_result.png')} />
 
 
@@ -69,7 +69,7 @@ Description | Endpoints
 [Create an ApiOwner sharing relation][3] | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver`
 [Update an ApiOwner sharing relation status][4] | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}`
 [Get LeafUser permissions][5] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`
-[Create a LeafUser permissions][6] | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions`
+[Create a LeafUser permissions][6] | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}`
 [Update LeafUser permissions][7] | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/{RESOURCE}`
 [Delete LeafUser sharing permissions][8] | <span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{ReceiverApiOwner}/users-permissions/{LeafUserId}`
 
@@ -419,7 +419,7 @@ Get all permissions granted to a receiver Api Owner for a Leaf user.
 ```
 
 ### Create a LeafUser permissions
-&nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions`
+&nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}`
 
 Grants permission to a receiver for a given Leaf user resource.
 
@@ -440,14 +440,25 @@ Grants permission to a receiver for a given Leaf user resource.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions'
+  const endpoint ='https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
-    leafUserId: "{LeafUserId}",
-    permissions: {
-        FIELDS: ["READ"]
+      "permissions": {
+        "FIELDS": {
+          "actions": [
+            "READ"
+          ]
+        },
+        "OPERATIONS": {
+          "actions": [
+            "READ"
+          ],
+          "types": [
+            "PLANTED"
+          ]
         }
+      }
     }
 
   axios.post(endpoint, { headers, data })
@@ -463,14 +474,25 @@ Grants permission to a receiver for a given Leaf user resource.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    'leafUserId': "{LeafUserId}",
-    'permissions': {
-        'FIELDS': ["READ"]
+      "permissions": {
+        "FIELDS": {
+          "actions": [
+            "READ"
+          ]
+        },
+        "OPERATIONS": {
+          "actions": [
+            "READ"
+          ],
+          "types": [
+            "PLANTED"
+          ]
         }
+      }
     }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -483,8 +505,8 @@ Grants permission to a receiver for a given Leaf user resource.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "leafUserId": "{LeafUserId}", "permissions": { "FIELDS": ["READ"] } }'
-      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions'
+      -d '{"permissions":{"FIELDS":{"actions":["READ"]},"OPERATIONS":{"actions":["READ"],"types":["PLANTED"]}}}'
+      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}'
   ```
 
   </TabItem>
@@ -496,12 +518,29 @@ Grants permission to a receiver for a given Leaf user resource.
 {
   "leafUserId": "{LeafUserId}",
   "permissions": {
-    "FIELDS": [
-      "READ"
-    ]
+    "FIELDS": {
+      "actions": [
+        "READ"
+      ]
+    },
+    "OPERATIONS": {
+      "actions": [
+        "READ"
+      ],
+      "types": [
+        "PLANTED"
+      ]
+    }
   }
 }
 ```
+
+#### Availability
+
+| Resource     | Actions   | Types                             |
+|--------------|-----------|-----------------------------------|
+| `FIELD`      | `READ`    | -                                 |
+| `OPERATIONS` | `READ`    | `APPLIED`, `HARVESTED`, `PLANTED` |
 
 ### Update LeafUser permissions
 &nbsp<span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/{RESOURCE}`
@@ -524,10 +563,19 @@ Update the permissions granted to the receiver Api Owner.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/status'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/OPERATIONS'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-  axios.get(endpoint, { headers })
+  const data = {
+    "actions": [
+      "READ"
+    ],
+    "types": [
+      "PLANTED", "HARVESTED"
+    ]
+  }
+
+  axios.patch(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -540,10 +588,19 @@ Update the permissions granted to the receiver Api Owner.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/status'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/OPERATIONS'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.get(endpoint, headers=headers)
+  data = {
+    "actions": [
+      "READ"
+    ],
+    "types": [
+      "PLANTED", "HARVESTED"
+    ]
+  }
+
+  response = requests.patch(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -551,9 +608,10 @@ Update the permissions granted to the receiver Api Owner.
   <TabItem value="sh">
 
   ```shell
-  curl -X GET \
+  curl -X PATCH \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/status'
+      -d '{"actions":["READ"],"types":["PLANTED", "HARVESTED"]}' \
+      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/OPERATIONS'
   ```
 
   </TabItem>
@@ -565,12 +623,30 @@ Update the permissions granted to the receiver Api Owner.
 {
   "leafUserId": "{LeafUserId}",
   "permissions": {
-    "FIELDS": [
-      "READ"
-    ]
+    "FIELDS": {
+      "actions": [
+        "READ"
+      ]
+    },
+    "OPERATIONS": {
+      "actions": [
+        "READ"
+      ],
+      "types": [
+        "PLANTED", "HARVESTED"
+      ]
+    }
   }
 }
 ```
+
+#### Availability
+
+| Resource     | Actions   | Types                             |
+|--------------|-----------|-----------------------------------|
+| `FIELD`      | `READ`    | -                                 |
+| `OPERATIONS` | `READ`    | `APPLIED`, `HARVESTED`, `PLANTED` |
+
 
 ### Delete LeafUser sharing permissions
 &nbsp<span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`

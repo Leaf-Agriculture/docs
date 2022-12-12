@@ -411,9 +411,11 @@ Get all permissions granted to a receiver Api Owner for a Leaf user.
 ```json
 {
     "permissions": {
-        "FIELDS": [
+        "FIELDS": {
+          "actions": [
             "READ"
-        ]
+          ]
+        }
     }
 }
 ```

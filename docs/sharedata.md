@@ -8,24 +8,26 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
-[1]: #get-apiowner-sharing-relation
-[2]: #get-apiowner-sharing-relation-status
-[3]: #create-an-apiowner-sharing-relation
-[4]: #update-an-apiowner-sharing-relation-status
+[1]: #get-api-owner-sharing-relation
+[2]: #get-api-owner-sharing-relation-status
+[3]: #create-an-api-owner-sharing-relation
+[4]: #update-an-api-owner-sharing-relation-status
 [5]: #get-leafuser-permissions
 [6]: #create-a-leafuser-permissions
 [7]: #update-leafuser-permissions
 [8]: #delete-leafuser-sharing-permissions
 [9]: /docs/docs/field_boundaries_endpoints#get-all-fields
+[10]: /docs/docs/field_boundaries_overview
+[11]: /docs/docs/operations_overview
 
 
 ## About
-The Leaf API allows the Api owner to grant permission to access some resources for other Api owners. The access is controled at the Leaf user level and always starts from the Api owner who owns the data.
+The Leaf API allows an API Owner to grant permission to access [Fields][10] and [Operations][11] to other API Owners. The access is controlled at the Leaf user level by the API account that owns the data
 
 ### How it works
 
 #### Scenario
-The Api Owner A wants to grant permission to Api Owner B to read their fields.
+API Owner A wants to grant permission to API Owner B to read their fields.
 
 <p align="left">
   <img alt="How it works" width="75%" src={useBaseUrl('img/sharing_scenario.png')} />
@@ -34,9 +36,9 @@ The Api Owner A wants to grant permission to Api Owner B to read their fields.
 #### 1 - Sharing Relation  
 <img alt="Sharing Relation" width="50%" src={useBaseUrl('img/sharing_relation.png')} />  
 
-The first step is to create a relation between the Api Owners, from who owns the data - the sender (Api Owner A) to the receiver (Api Owner B). Check the endpoint [Create an ApiOwner sharing relation][3].  
+The first step is to create a relation between the API Owners, from who owns the data - the sender (API Owner A) to the receiver (API Owner B). Check the endpoint [Create an API Owner sharing relation][3].  
 
-The receiver Api owner (Api Owner B) must confirm the relationship [changing the relation status][4] to `ALLOWED`.
+The receiver API Owner (API Owner B) must confirm the relationship [changing the relation status][4] to `ALLOWED`.
 
 This relationship status can be [changed][4] in the future by both sides, but once the sender blocks the relationship, the receiver will not be able to access the data, nor to reactivate the sharing relation status.
 
@@ -54,7 +56,7 @@ Organization-level sharing is not supported yet, but the permission can be grant
 :::
 
 #### 3 - Access   
-At the end of these steps, the Api Owner B will be able to visualize the fields and/or operations from the shared Leaf user, using the already existing field/operations endpoints, like [this][9].
+At the end of these steps, the API Owner B will be able to visualize the fields and/or operations from the shared Leaf user, using the already existing field/operations endpoints, like [this one][9].
 <img alt="Sharing result" width="50%" src={useBaseUrl('img/sharing_result.png')} />
 
 
@@ -64,21 +66,21 @@ This service has the following endpoints available:
 
 Description | Endpoints
 --- | ---
-[Get ApiOwner sharing relation][1] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}`
-[Get ApiOwner sharing relation status][2] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}/status`
-[Create an ApiOwner sharing relation][3] | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver`
-[Update an ApiOwner sharing relation status][4] | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}`
+[Get API Owner sharing relation][1] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}`
+[Get API Owner sharing relation status][2] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}/status`
+[Create an API Owner sharing relation][3] | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver`
+[Update an API Owner sharing relation status][4] | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}`
 [Get LeafUser permissions][5] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`
 [Create a LeafUser permissions][6] | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}`
 [Update LeafUser permissions][7] | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/{RESOURCE}`
 [Delete LeafUser sharing permissions][8] | <span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{ReceiverApiOwner}/users-permissions/{LeafUserId}`
 
 
-### Get ApiOwner sharing relation
+### Get API Owner sharing relation
 
 &nbsp<span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}`
 
-Get all Api owners relation based on the relation role: `SENDER` or `RECEIVER`.
+Get all API Owners relation based on the relation role: `SENDER` or `RECEIVER`.
 
 #### Request examples
 
@@ -143,7 +145,7 @@ A list of all sharing relations.
 ]
 ```  
 
-### Get ApiOwner sharing relation status
+### Get API Owner sharing relation status
 &nbsp<span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}/status`
 
 Get the relation status based in the relation role (`SENDER` or `RECEIVER`).
@@ -206,10 +208,10 @@ A string with one of the following values: `PENDING`, `ALLOWED` or `BLOCKED`.
 "PENDING"
 ```
 
-### Create an ApiOwner sharing relation
+### Create an API Owner sharing relation
 &nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver`
 
-Create a sharing relation between the Api owners.
+Create a sharing relation between the API Owners.
 
 #### Request examples
 
@@ -281,13 +283,13 @@ Create a sharing relation between the Api owners.
 }
 ```
 
-### Update an ApiOwner sharing relation status
+### Update an API Owner sharing relation status
 &nbsp<span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}`
 
 Update the sharing relation status. The values available are `ALLOWED` or `BLOCKED`.
 
 After the sender creates a relationship, the recevier must approve it by changing the status from `PENDING` to `ALLOWED`.
-Both Api Owners can block the relation, but once locked by the sender, there is no way for the receiver to change it again.
+Both API Owners can block the relation, but once locked by the sender, there is no way for the receiver to change it again.
 
 #### Request examples
 
@@ -353,7 +355,7 @@ Both Api Owners can block the relation, but once locked by the sender, there is 
 ### Get LeafUser permissions
 &nbsp<span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`
 
-Get all permissions granted to a receiver Api Owner for a Leaf user.
+Get all permissions granted to a receiver API Owner for a Leaf user.
 
 #### Request examples
 
@@ -425,7 +427,7 @@ Get all permissions granted to a receiver Api Owner for a Leaf user.
 
 Grants permission to a receiver for a given Leaf user resource.
 
-*Note: shared Leaf users (from other Api Owner) are not available for grant permissions*
+*Note: shared Leaf users (from other API Owner) are not available for grant permissions*
 
 #### Request examples
 <Tabs
@@ -547,7 +549,7 @@ Grants permission to a receiver for a given Leaf user resource.
 ### Update LeafUser permissions
 &nbsp<span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/{RESOURCE}`
 
-Update the permissions granted to the receiver Api Owner.
+Update the permissions granted to the receiver API Owner.
 
 #### Request examples
 

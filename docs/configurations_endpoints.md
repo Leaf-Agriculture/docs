@@ -32,20 +32,20 @@ This service has the following endpoints available:
 
 | Description                           | Endpoints                                                                |
 | ------------------------------------- | ------------------------------------------------------------------------ |
-| [Get Api Owner's Configuration][2]    | <span class="badge badge--success">GET</span> `/configs`                 |
+| [Get API Owner's Configuration][2]    | <span class="badge badge--success">GET</span> `/configs`                 |
 | [Get Leaf User's Configuration][3]    | <span class="badge badge--success">GET</span> `/configs/{leafUserId}`    |
 | [Create Leaf User's Configuration][4] | <span class="badge badge--warning">POST</span> `/configs/{leafUserId}`   |
-| [Update Api Owner's Configuration][5] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`  |
+| [Update API Owner's Configuration][5] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`  |
 | [Update Leaf User's Configuration][6] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`  |
 | [Delete Leaf User's Configuration][7] | <span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}` |
 
 ## Endpoints
 
-### Get Api Owner's Configuration
+### Get API Owner's Configuration
 
 &nbsp<span class="badge badge--success">GET</span> `/configs`
 
-Gets the configuration of the Api Owner.
+Gets the configuration of the API Owner.
 
 <Tabs
 defaultValue="sh"
@@ -101,7 +101,7 @@ curl -X GET \
 
 #### Response
 
-A JSON containing the configuration of the Api Owner.
+A JSON containing the configuration of the API Owner.
 
 ```json
 {
@@ -222,7 +222,7 @@ A JSON containing the configuration of the Leaf User.
 &nbsp<span class="badge badge--warning">POST</span> `/configs/{leafUserId}`
 
 Creates the Configuration for the Leaf User `leafUserId`. A request body must be provided
-containing the configurations to be set. All entries are optional, any missing configuration will be inherited from the Api Owner's Configuration.
+containing the configurations to be set. All entries are optional, any missing configuration will be inherited from the API Owner's Configuration.
 
 Request body example:
 
@@ -329,11 +329,11 @@ A JSON containing the configuration of the Leaf User.
 }
 ```
 
-### Update Api Owner's Configuration
+### Update API Owner's Configuration
 
 &nbsp<span class="badge badge--success">PATCH</span> `/configs`
 
-Updates the specified fields of Configuration for the Api Owner. A resquest body must be provided
+Updates the specified fields of Configuration for the API Owner. A resquest body must be provided
 containing the configurations to be set. All entries are optional.
 
 Request body example:
@@ -411,7 +411,7 @@ curl -X PATCH \
 
 #### Response
 
-A JSON containing the configuration of the Api Owner.
+A JSON containing the configuration of the API Owner.
 
 ```json
 {
@@ -553,7 +553,7 @@ A JSON containing the configuration of the Leaf User.
 
 &nbsp<span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}`
 
-Deletes the Configuration from the Leaf User `leafUserId`. Until a new Configuration is created, the Leaf User will inherit all configurations from the Api Owner.
+Deletes the Configuration from the Leaf User `leafUserId`. Until a new Configuration is created, the Leaf User will inherit all configurations from the API Owner.
 
 <Tabs
 defaultValue="sh"

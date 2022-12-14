@@ -36,7 +36,7 @@ API Owner A wants to grant permission to API Owner B to read their fields.
 #### 1 - Sharing Relation  
 <img alt="Sharing Relation" width="50%" src={useBaseUrl('img/sharing_relation.png')} />  
 
-The first step is to create a relation between the API Owners, from who owns the data - the sender (API Owner A) to the receiver (API Owner B). Check the endpoint [Create an API Owner sharing relation][3].  
+The first step is to create a relationship between the API Owners, from who owns the data - the sender (API Owner A) to the receiver (API Owner B). Check the endpoint [Create an API Owner sharing relation][3].  
 
 The receiver API Owner (API Owner B) must confirm the relationship [changing the relation status][4] to `ALLOWED`.
 
@@ -47,17 +47,18 @@ This relationship status can be [changed][4] in the future by both sides, but on
 #### 2 - Permissions   
 <img alt="Sharing permission" width="50%" src={useBaseUrl('img/sharing_permission.png')} />
 
-In this step, permissions are granted on the resources of each Leaf user. More info [here][6].  
+In this step, permissions are granted for the resources of each Leaf user. More info [here][6].  
 
-Note that at this time only the `READ` permission type and `FIELDS` and `OPERATIONS` resources are available.
+**Note**: This permission is `READ` only and `FIELDS` and `OPERATIONS` resources are available.
 
-:::tip Organizations
-Organization-level sharing is not supported yet, but the permission can be granted or revoked at the same time the Leaf user is added or removed from the organization.
+:::tip Company
+Company-level sharing is not supported, but the permission can be granted or revoked at the same time the Leaf user is added or removed from the company.
 :::
 
 #### 3 - Access   
-At the end of these steps, the API Owner B will be able to visualize the fields and/or operations from the shared Leaf user, using the already existing field/operations endpoints, like [this one][9].
+At the end of these steps, API Owner B will be able to visualize the fields and/or operations from the shared Leaf user, using the existing field/operations endpoints, like [this one][9].
 <img alt="Sharing result" width="50%" src={useBaseUrl('img/sharing_result.png')} />
+
 
 
 ## Endpoints

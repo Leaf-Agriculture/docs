@@ -867,10 +867,9 @@ The following status can be present on *statusDetails*:
 
 Status | Description
 --- | ---
-Failed to open Zip file | It means that the file uploaded is not a valid zip
-No operation found | We could not identify any **valid** machinery file inside the zip uploaded 
-No operation discovered | When we can't find any machinery file inside the batch
-Error extracting files from batch | When an error internal to our API happened
+No valid files found | Unable to find a valid file based on supported extensions and expected file structure
+Leaf internal error. Please contact Support | Internal error that need to be reported
+Files found but unable to read. Please check file format before re-trying or contact Support | A valid file was found but could not be converted
 
 ---
 

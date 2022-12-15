@@ -29,6 +29,7 @@ The Leaf API allows an API Owner to grant permission to access [Fields][10] and 
 #### Scenario
 API Owner A wants to grant permission to API Owner B to read their fields.
 
+
 #### 1 - Sharing Relation  
 The first step is to create a relationship between the API Owners, from who owns the data - the sender (API Owner A) to the receiver (API Owner B). Check the endpoint [Create an API Owner sharing relation][3].  
 

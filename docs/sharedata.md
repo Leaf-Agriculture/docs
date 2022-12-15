@@ -29,13 +29,8 @@ The Leaf API allows an API Owner to grant permission to access [Fields][10] and 
 #### Scenario
 API Owner A wants to grant permission to API Owner B to read their fields.
 
-<p align="left">
-  <img alt="How it works" width="75%" src={useBaseUrl('img/sharing_scenario.png')} />
-</p>
 
 #### 1 - Sharing Relation  
-<img alt="Sharing Relation" width="50%" src={useBaseUrl('img/sharing_relation.png')} />  
-
 The first step is to create a relationship between the API Owners, from who owns the data - the sender (API Owner A) to the receiver (API Owner B). Check the endpoint [Create an API Owner sharing relation][3].  
 
 The receiver API Owner (API Owner B) must confirm the relationship [changing the relation status][4] to `ALLOWED`.
@@ -45,8 +40,6 @@ This relationship status can be [changed][4] in the future by both sides, but on
 *This step is only necessary once, that is, it is not necessary to repeat this step for new integrations with the same receiver.*  
 
 #### 2 - Permissions   
-<img alt="Sharing permission" width="50%" src={useBaseUrl('img/sharing_permission.png')} />
-
 In this step, permissions are granted for the resources of each Leaf user. More info [here][6].  
 
 **Note**: This permission is `READ` only and `FIELDS` and `OPERATIONS` resources are available.
@@ -57,8 +50,6 @@ Company-level sharing is not supported, but the permission can be granted or rev
 
 #### 3 - Access   
 At the end of these steps, API Owner B will be able to visualize the fields and/or operations from the shared Leaf user, using the existing field/operations endpoints, like [this one][9].
-<img alt="Sharing result" width="50%" src={useBaseUrl('img/sharing_result.png')} />
-
 
 
 ## Endpoints

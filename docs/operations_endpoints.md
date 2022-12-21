@@ -64,7 +64,7 @@ below.
 | `startTime` | ISO 8601 date. Returns operations from the startTime onward |
 | `updatedTime` | ISO 8601 date. Returns operations from the updatedTime onward |
 | `endTime` | ISO 8601 date. Returns operations until the endTime |
-| `operationType` | `applied`, `planted` or `harvested` |
+| `operationType` | `applied`, `planted`, `harvested` or `tillage` |
 | `fieldId` | the field where the operation happened |
 
 You can also pass some parameters used exclusively for paging through results.

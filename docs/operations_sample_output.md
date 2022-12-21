@@ -409,6 +409,18 @@ values={[
             "max": 40372.63888888889,
             "unit": "seeds/ac"
         },
+        "singulation": {
+            "avg": 1195.02,
+            "min": 1194.8,
+            "max": 1195.24,
+            "unit": "prcnt"
+        },
+        "downForce": {
+            "avg": 743.875,
+            "min": 687.75,
+            "max": 800.0,
+            "unit": "lbf"
+        },
         "totalPlanted": {
             "value": 349713,
             "unit": "seeds"

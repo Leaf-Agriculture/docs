@@ -22,6 +22,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [14]: /docs/docs/operations_sample_output#field-operations-images-v2
 [15]: /docs/docs/configurations_overview#operationsfilteredgeojson
 
+
+### 2.110.0
+*2022-12-08*
+
+**Additional planting properties**
+- There are new properties available for planted operations.
+The `downForce` and `singulation` properties, when available, will be present in the standardGeojson, summary and images of operations.
+
 ### 2.106.0
 *2022-10-13*
 

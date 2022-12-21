@@ -116,6 +116,18 @@ This is an example of a summary for a "planted" operation
                 "max": 256056.74641452,
                 "unit": "seeds/ac"
             },
+            "singulation": {
+                "avg": 1195.18,
+                "min": 1195.04,
+                "max": 1195.3200000000002,
+                "unit": "prcnt"
+            },
+            "downForce": {
+                "avg": 663.599999,
+                "min": 661.199999,
+                "max": 666.0,
+                "unit": "lbf"
+            },
             "crop": [
                 "crop1"
             ],
@@ -519,22 +531,24 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   <TabItem value="planted">
 
-  | key             | presence       | type | 
-  | -                    | -              | - |
-  | crop                 | *  | string | 
-  | seedRate             | *  | dict |
-  | operationType        | *  | string "planted" |
-  | originalOperationType        | **  | string |
-  | totalArea            | *  | float |
-  | elevation            | *  | dict |
+  | key                    | presence       | type | 
+  | -                      | -              | - |
+  | crop                   | *  | string | 
+  | seedRate               | *  | dict |
+  | operationType          | *  | string "planted" |
+  | originalOperationType  | ** | string |
+  | totalArea              | *  | float |
+  | elevation              | *  | dict |
   | varieties              | ** | dict |
-  | seedRateTarget       | ** | dict |
-  | seedDepth            | ** | dict |
-  | machinery            | ** | list of machineInfo objects |
-  | speed                | ** | dict |
-  | totalPlanted         | ** | int (number of seeds) |
-  | operationDescription | ** | string |
-  
+  | seedRateTarget         | ** | dict |
+  | seedDepth              | ** | dict |
+  | machinery              | ** | list of machineInfo objects |
+  | speed                  | ** | dict |
+  | totalPlanted           | ** | int (number of seeds) |
+  | operationDescription   | ** | string |
+  | downForce              | ** | dict |
+  | singulation            | ** | dict |
+
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
 
@@ -672,6 +686,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "seedRate": "int",
         "seedRateTarget": "int",
         "seedDepth": "float",
+        "downForce": "float",
+        "singulation": "float"
     }
   }
   ```
@@ -828,6 +844,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
   | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
   | productIndex    | ** | int             | -                    | Index of the applied product |
+  | downForce       | ** | float           | lbf                  | The weight detected by the down force sensor on each row that has one |
+  | singulation     | ** | float           | %                    | The performance of each meter on the planter |
   | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
   | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 

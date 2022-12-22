@@ -27,7 +27,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 *2022-12-08*
 
 **Additional planting properties**
-- There are new properties available for planted operations.
+- New properties available for planted operations.
 The `downForce` and `singulation` properties, when available, will be present in the standardGeojson, summary and images of operations.
 
 ### 2.106.0

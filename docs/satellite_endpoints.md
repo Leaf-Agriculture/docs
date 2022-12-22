@@ -25,6 +25,7 @@ Description | Endpoints
 [Create a satellite field][7] | <span class="badge badge--warning">POST</span> `/fields`
 [Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
 [Get subscription for Planet][12] | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
+[Reprocess satelite images][13] | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess`
 
 [1]: /img/fieldovertime.png
 [2]: /img/ndviexample.png
@@ -38,6 +39,7 @@ Description | Endpoints
 [10]: #get-an-image-of-satellite-field
 [11]: /docs/docs/satellite_overview#providers
 [12]: #get-subscription-for-planet
+[13]: #reprocess-satellite-images
 
 ---
 
@@ -688,6 +690,61 @@ curl -X GET \
     "startDate": "2022-04-01T00:00:00Z"
 }
 ```
+
+### Reprocess satellite images
+&nbsp<span class="badge badge--warning">POST</span>  `/fields/{id}/process/{id}/reprocess`
+
+Allows reprocessing the satellite images based on a `processId`.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/fields/{id}/process/{id}/reprocess'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.post(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/fields/{id}/process/{id}/reprocess'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.post(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/fields/{id}/process/{id}/reprocess'
+  ```
+
+  </TabItem>
+</Tabs>
 
 ## Alerts
 

@@ -428,7 +428,7 @@ A Leaf User with the `id` assigned to it and it's credentials.
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/users/{id}`
 
-Deletes an existing Leaf User by `id`.
+Deletes an existing Leaf User by `id`. Also, deleting your Leaf User will asynchronously delete its associated resources.
 
 #### Request examples
 <Tabs

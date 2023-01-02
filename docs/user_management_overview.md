@@ -23,6 +23,15 @@ application wants to use Leaf to access the grower data in a standardized way.
 Your application, the grower and Leaf will go through the provider authentication
 flow so the grower can grant rights to access their data.
 
+We can emphasize right away that the Leaf User is more than an aggregator of credentials
+for data providers, including multiple abstractions of how it can be interpreted within a 
+hierarchy in an agricultural management system, in addition to the example cited by a Grower 
+can do a parallel as shown in the diagrams below. To summarize your Leaf Users will be the entity that will manage 
+all your Farm Data, where it's important to understand how to manage and use it to filter the endpoints response
+by Leaf User and its providers.
+
+<img alt="Leaf User ERD" src={useBaseUrl('img/leaf_user_diagram.png')} />
+
 This authentication flow has to be done only once, since Leaf will manage the
 tokens and refresh them when needed.
 
@@ -32,7 +41,7 @@ So, choose the provider's you want to connect your users to and let's see how
 each these providers authentication flow is.
 
 After that, you can create a Leaf User, attach the tokens and start querying for
-standardized data in a simple JSON response.
+standardized data in a simple JSON response for each one of our services.
 
 
 ## Integrate with John Deere

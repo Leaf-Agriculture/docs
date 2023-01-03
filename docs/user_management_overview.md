@@ -3,6 +3,10 @@ title: Overview
 description: Usermanagement - Overview
 ---
 
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+
 For Leaf to be able to access, standardize, process and return files, you just
 have to create a Leaf User and connect them to a data provider.
 

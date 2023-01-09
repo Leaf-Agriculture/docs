@@ -1007,7 +1007,7 @@ When you query a batch upload ID, you will receive a JSON with list of batches:
 
 &nbsp<span class="badge badge--warning">PUT</span> `/batch/{id}/retry`
 
-If a batch uploaded processing does not complete as expected, this endpoint allows you to try processing again, at least one more time, just sending the batch `id`.
+If a batch upload does not complete as expected, this endpoint allows you to try again. This action will reprocess the fragments of uploaded data that didn't succeed processing before, keeping existing converted files unaffected.
 
 <Tabs
   defaultValue="sh"

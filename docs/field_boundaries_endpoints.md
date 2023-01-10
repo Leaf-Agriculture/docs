@@ -63,10 +63,20 @@ some query parameters.
 - `farmId`, only matches fields from this farmId (integer).
 - `provider`, only matches fields from this provider (string).
 - `leafUserId`, only matches fields from this user (string).
+- `afterCreatedTime`, only matches fields created after the specified time (string in ISO 8601 datetime format)
+- `beforeCreatedTime`, only matches fields created before the specified time (string in ISO 8601 datetime format)
+- `afterUpdatedTime`, only matches fields updated after the specified time (string in ISO 8601 datetime format)
+- `beforeUpdatedTime`, only matches fields updated before the specified time (string in ISO 8601 datetime format)
+- `mergedFieldId`, only matches fields with this merged field id (string)
+- `organizationId`, only matches fields with this organization id (string)
+- `providerFieldId`, only matches fields with this provider field id (string)
 - `page`, an integer specifying the page being fetched.
 - `size`, an integer specifying the size of the page (defaults to 20).
 
 These last two parameters are used exclusively for paging through results.
+
+There is also a `sort` parameter, used to sort the results by the following options: "`id`", "`leafUserId`", "`providerId`",
+"`providerFieldId`", "`providerBoundaryId`", "`providerFieldName`", "`organizationId`", "`type`", "`name`", "`createdTime`", "`updatedTime`", "`farmId`", "`merged`". There is the option to sort by ascending or descending, for example: `id,desc`.
 
 <Tabs
   defaultValue="sh"

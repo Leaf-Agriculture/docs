@@ -73,24 +73,24 @@ module.exports = {
         //   position: 'left',
         // },
         {
-          to: 'https://withleaf.io/careers/',
+          to: 'https://withleaf.io/company/careers/',
           activeBasePath: './',
           label: 'Work with us',
           position: 'left',
         },
         {
-          to: 'https://blog.withleaf.io/en',
+          to: 'https://withleaf.io/blog',
           label: 'Blog',
           position: 'left'
         },
         {
-          to: 'https://withleaf.io/register/',
+          to: 'https://withleaf.io/account/quickstart',
           activeBasePath: './',
           label: 'Register',
           position: 'left',
         },
         {
-          href: 'https://github.com/leaf-agriculture',
+          href: 'https://github.com/Leaf-Agriculture/docs',
           label: 'GitHub',
           position: 'right',
         },

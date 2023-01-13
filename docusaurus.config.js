@@ -55,7 +55,7 @@ module.exports = {
         // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // end workaround to center navigation items
         // {
-        //   to: 'https://withleaf.io/register/',
+        //   to: 'https://withleaf.io/account/quickstart/',
         //   activeBasePath: './',
         //   label: 'Products',
         //   position: 'left',
@@ -73,18 +73,18 @@ module.exports = {
         //   position: 'left',
         // },
         {
-          to: 'https://withleaf.io/careers/',
+          to: 'https://withleaf.io/company/careers',
           activeBasePath: './',
           label: 'Work with us',
           position: 'left',
         },
         {
-          to: 'https://blog.withleaf.io/en',
+          to: 'https://withleaf.io/en/blog',
           label: 'Blog',
           position: 'left'
         },
         {
-          to: 'https://withleaf.io/register/',
+          to: 'https://withleaf.io/account/quickstart/',
           activeBasePath: './',
           label: 'Register',
           position: 'left',

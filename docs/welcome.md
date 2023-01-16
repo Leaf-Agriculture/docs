@@ -21,5 +21,5 @@ Leaf's API abstracts and standardizes across agricultural data sources so you ca
 There are just a few concepts that you need to get started and we provide sample data within new Leaf accounts to help you learn quickly.
 
 <a href="https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection">
-<img class="postman-image" alt="Postman Collection" width="40%" src={useBaseUrl('static/img/postman_collection_green.png')} />
+<img class="postman-image" alt="Postman Collection" width="40%" src={useBaseUrl('img/postman_collection_green.png')} />
 </a>

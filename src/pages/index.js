@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 const features = [
   {
     title: <>Machine Data</>,
-    imageUrl: 'static/img/machine_data.png',
+    imageUrl: 'img/machine_data.png',
     description: (
       <>
         Instantly access aggregated & standardized machine data from any brand
@@ -19,7 +19,7 @@ const features = [
   },
   {
     title: <>Field Boundaries</>,
-    imageUrl: 'static/img/field_boundaries.png',
+    imageUrl: 'img/field_boundaries.png',
     description: (
       <>
         Import, export, and sync field boundaries across 120+ AgTech platforms
@@ -28,7 +28,7 @@ const features = [
   },
   {
     title: <>Imagery</>,
-    imageUrl: 'static/img/imagery.png',
+    imageUrl: 'img/imagery.png',
     description: (
       <>
         Receive imagery from all of your preferred satellite, airplane, and drone providers

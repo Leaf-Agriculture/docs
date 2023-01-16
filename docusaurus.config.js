@@ -1,10 +1,10 @@
 const path = require('path');
 
-const leaf_logo = 'static/img/logo4light_mode.png'
-const leaf_favicon_light = 'static/img/icon4dark_mode.png'
+const leaf_logo = 'img/logo4light_mode.png'
+const leaf_favicon_light = 'img/icon4dark_mode.png'
 
-const leaf_logo_dark = 'static/img/logo4dark_mode.png'
-const leaf_favicon_dark = 'static/img/icon4light_mode.png'
+const leaf_logo_dark = 'img/logo4dark_mode.png'
+const leaf_favicon_dark = 'img/icon4light_mode.png'
 
 
 module.exports = {

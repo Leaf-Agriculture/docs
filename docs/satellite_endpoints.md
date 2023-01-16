@@ -27,8 +27,8 @@ Description | Endpoints
 [Get subscription for Planet][12] | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
 [Reprocess satelite images][13] | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess`
 
-[1]: /static/img/fieldovertime.png
-[2]: /static/img/ndviexample.png
+[1]: /img/fieldovertime.png
+[2]: /img/ndviexample.png
 [3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
 [4]: #get-all-satellite-fields
 [5]: #get-a-satellite-field

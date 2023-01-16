@@ -773,6 +773,6 @@ map.on('load', () => {});
 :::tip
 Here you can run a live use case demo!
 
-[![Edit webhook-leaf-api](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/webhook-leaf-api-o72lv8?fontsize=14&hidenavigation=1&theme=dark)
+[![Edit webhook-leaf-api](https://codesandbox.io/img/play-codesandbox.svg)](https://codesandbox.io/s/webhook-leaf-api-o72lv8?fontsize=14&hidenavigation=1&theme=dark)
 :::
 

@@ -14,7 +14,7 @@ module.exports = {
   organizationName: 'leaf-agriculture',
   projectName: 'docs',
 
-  baseUrl: '/docs/',
+  baseUrl: '/',
   url: 'https://leaf-agriculture.github.io',
   favicon: leaf_favicon_light,
 
@@ -36,8 +36,8 @@ module.exports = {
         alt: 'logo',
         src: leaf_logo,
         srcDark: leaf_logo_dark,
-        href: '/docs/docs'
-        // href: 'https://withleaf.io'
+        // href: '/docs/docs'
+        href: 'https://docs.withleaf.io'
       },
 
       items: [
@@ -54,12 +54,12 @@ module.exports = {
         // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // end workaround to center navigation items
-        // {
-        //   to: 'https://withleaf.io/account/quickstart/',
-        //   activeBasePath: './',
-        //   label: 'Products',
-        //   position: 'left',
-        // },
+        {
+          to: 'https://withleaf.io/account/quickstart/',
+          activeBasePath: './',
+          label: 'Products',
+          position: 'left',
+        },
         {
           to: 'https://withleaf.io',
           activeBasePath: './',

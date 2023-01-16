@@ -14,7 +14,7 @@ module.exports = {
   organizationName: 'leaf-agriculture',
   projectName: 'docs',
 
-  baseUrl: '/',
+  baseUrl: '/docs/',
   url: 'https://leaf-agriculture.github.io',
   favicon: leaf_favicon_light,
 

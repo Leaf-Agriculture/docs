@@ -77,7 +77,7 @@ app.post("/create_token", (req, res) => {
 });
 ```
 
-[Here](/docs/docs/authentication) you can see the Authentication documentation.
+[Here](//authentication) you can see the Authentication documentation.
 
 #### Route '/monitored_fields'
 
@@ -214,7 +214,7 @@ app.post("/field_images", (req, res) => {
 });
 ```
 
-[Here](/docs/docs/satellite_endpoints#get-images-of-satellite-field) you can see the Satellite documentation.
+[Here](//satellite_endpoints#get-images-of-satellite-field) you can see the Satellite documentation.
 
 #### Route '/create_field'
 
@@ -280,7 +280,7 @@ app.post("/create_field", (req, res) => {
 });
 ```
 
-[Here](/docs/docs/satellite_endpoints#create-a-satellite-field) you can see the Satellite documentation.
+[Here](//satellite_endpoints#create-a-satellite-field) you can see the Satellite documentation.
 
 ### Start the server
 

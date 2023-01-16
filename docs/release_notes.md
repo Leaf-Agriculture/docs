@@ -6,21 +6,21 @@ description: Release Notes
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
-[1]:  /docs/docs/satellite_endpoints#create-a-satellite-field
-[2]:  /docs/docs/files_sample_output#valid-points
-[3]:  /docs/docs/configurations_overview
-[4]:  /docs/docs/files_endpoints#get-a-file
-[5]:  /docs/docs/files_sample_output#operation-summary
-[6]:  /docs/docs/beta_machines_endpoints#create-a-machine
-[7]:  /docs/docs/files_sample_output#standard-geojson
-[8]:  /docs/docs/beta_machines_endpoints
-[9]:  /docs/docs/alerts_events/#field-boundary-events
-[10]: /docs/docs/planet_overview#udm2
-[11]: /docs/docs/credentials_john_deere#one-click-authentication
-[12]: /docs/docs/beta_layers_endpoints#
-[13]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
-[14]: /docs/docs/operations_sample_output#field-operations-images-v2
-[15]: /docs/docs/configurations_overview#operationsfilteredgeojson
+[1]:  /satellite_endpoints#create-a-satellite-field
+[2]:  /files_sample_output#valid-points
+[3]:  /configurations_overview
+[4]:  /files_endpoints#get-a-file
+[5]:  /files_sample_output#operation-summary
+[6]:  /beta_machines_endpoints#create-a-machine
+[7]:  /files_sample_output#standard-geojson
+[8]:  /beta_machines_endpoints
+[9]:  /alerts_events/#field-boundary-events
+[10]: /planet_overview#udm2
+[11]: /credentials_john_deere#one-click-authentication
+[12]: /beta_layers_endpoints#
+[13]: /operations_sample_output#field-operations-filtered-geojson
+[14]: /operations_sample_output#field-operations-images-v2
+[15]: /configurations_overview#operationsfilteredgeojson
 
 
 ### 2.110.0

@@ -27,17 +27,17 @@ Description | Endpoints
 [Get subscription for Planet][12] | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
 [Reprocess satelite images][13] | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess`
 
-[1]: /img/fieldovertime.png
-[2]: /img/ndviexample.png
+[1]: /static/img/fieldovertime.png
+[2]: /static/img/ndviexample.png
 [3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
 [4]: #get-all-satellite-fields
 [5]: #get-a-satellite-field
 [6]: #get-images-of-satellite-field
 [7]: #create-a-satellite-field
 [8]: #delete-a-satellite-field
-[9]: /docs/docs/alerts_events#satellite-events
+[9]: /alerts_events#satellite-events
 [10]: #get-an-image-of-satellite-field
-[11]: /docs/docs/satellite_overview#providers
+[11]: /satellite_overview#providers
 [12]: #get-subscription-for-planet
 [13]: #reprocess-satellite-images
 
@@ -444,7 +444,7 @@ Creates a new field
 It will be continuously monitored forever, and new images will arrive based on the [provider selected][11], 
 because each one of them has a different temporal resolution (time it takes for the satellite to go over the same field when orbiting
 the Earth). If you don't need the field anymore, you can
-[delete the field.](/docs/docs/satellite_endpoints#delete-fieldsid)
+[delete the field.](//satellite_endpoints#delete-fieldsid)
 
 :::success  Note
 

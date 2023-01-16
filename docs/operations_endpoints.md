@@ -13,16 +13,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [3]: #get-an-operation-summary
 [4]: #get-an-operations-images
 [5]: #get-an-operations-units
-[6]: /docs/docs/alerts_overview
-[7]: /docs/docs/alerts_events#operation-events
+[6]: /alerts_overview
+[7]: /alerts_events#operation-events
 [8]: #get-an-operations-images-v2
-[9]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
-[10]: /docs/docs/operations_sample_output#field-operations-images-v2
+[9]: /operations_sample_output#field-operations-filtered-geojson
+[10]: /operations_sample_output#field-operations-images-v2
 [11]: #reprocess-an-operation
-[12]: /docs/docs/operations_sample_output#field-operations-standard-geojson
-[13]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
-[14]: /docs/docs/operations_sample_output#field-operations-summary
-[15]: /docs/docs/operations_sample_output#field-operations-images
+[12]: /operations_sample_output#field-operations-standard-geojson
+[13]: /operations_sample_output#field-operations-filtered-geojson
+[14]: /operations_sample_output#field-operations-summary
+[15]: /operations_sample_output#field-operations-images
 [sample_summary]: files_sample_output
 
 

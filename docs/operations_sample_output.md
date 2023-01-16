@@ -6,11 +6,11 @@ description: Sample responses
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [1]: #field-operations-filtered-geojson
-[2]: /docs/docs/operations_endpoints#get-an-operations-images-v2
-[3]: /docs/docs/configurations_overview#operationsremoveoutliers
-[4]: /docs/docs/configurations_overview#operationsoutlierslimit
+[2]: /operations_endpoints#get-an-operations-images-v2
+[3]: /configurations_overview#operationsremoveoutliers
+[4]: /configurations_overview#operationsoutlierslimit
 [5]: #field-operations-images-v2
-[6]: /docs/docs/configurations_overview#operationsfilteredgeojson
+[6]: /configurations_overview#operationsfilteredgeojson
 
 ## Overview
 

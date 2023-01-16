@@ -3,14 +3,14 @@ title: Overview
 description: Configurations - Overview
 ---
 
-[1]: /docs/docs/files_overview
-[2]: /docs/docs/operations_overview
+[1]: /files_overview
+[2]: /operations_overview
 [3]: #operationsremoveoutliers
 [4]: #operationsoutlierslimit
-[5]: /docs/docs/operations_sample_output#outliers
+[5]: /operations_sample_output#outliers
 [6]: #operationsfilteredgeojson
-[7]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
-[8]: /docs/docs/operations_sample_output#field-operations-images-v2
+[7]: /operations_sample_output#field-operations-filtered-geojson
+[8]: /operations_sample_output#field-operations-images-v2
 
 Leaf's system can be customized to present different behaviours across services. This is done using Configurations.
 

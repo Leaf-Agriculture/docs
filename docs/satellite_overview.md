@@ -8,8 +8,8 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
-[1]: /docs/docs/sentinel_overview
-[2]: /docs/docs/planet_overview
+[1]: /sentinel_overview
+[2]: /planet_overview
 
 ## About
 
@@ -20,7 +20,7 @@ imagery application and compare the field health evolution over time.
 
 By default, Leaf retrieves images from 30 days prior to the creation of your
 field. But you can increase that to as far back in time as you want.
-[Here's how](/docs/docs/satellite_endpoints#post-fields)
+[Here's how](/satellite_endpoints#post-fields)
 :::
 
 <img alt="Field example" src={useBaseUrl('img/fieldovertime.png')} />

@@ -23,7 +23,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [13]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
 [14]: /docs/docs/operations_sample_output#field-operations-summary
 [15]: /docs/docs/operations_sample_output#field-operations-images
-[sample_summary]: files_sample_output
+[sample_summary]: machine_file_conversion_sample_output
 
 
 ## About

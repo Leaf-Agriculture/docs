@@ -3,7 +3,7 @@ title: Overview
 description: Configurations - Overview
 ---
 
-[1]: /docs/docs/files_overview
+[1]: /docs/docs/machine_file_conversion_overview
 [2]: /docs/docs/operations_overview
 [3]: #operationsremoveoutliers
 [4]: #operationsoutlierslimit
@@ -20,7 +20,7 @@ Leaf Users do not start with Configuration, but they inherit the configurations 
 
 Currently, available configurations are:
 
-### Field Boundaries
+### Field Boundary Management
 #### fieldsAttachIntersection
 Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100. The default value is `0.01`.
 #### fieldsAutoMerge
@@ -32,7 +32,7 @@ Minimum intersection between two fields to merge them. A new field of type MERGE
 
 ### Field Operations
 #### cleanupStandardGeojson
-If set to `true`, Leaf will automatically remove [invalid points](files_sample_output.md#valid-points) from the standardGeoJSON file for operations. The default value is `true`.
+If set to `true`, Leaf will automatically remove [invalid points](machine_file_conversion_sample_output.md#valid-points) from the standardGeoJSON file for operations. The default value is `true`.
 #### fieldOperationCreation
 Enables the creation of [Field Operations][2]. The default is `true`.
 #### geoimagesColorRamp
@@ -83,7 +83,7 @@ To use this option, [operationsFilteredGeojson][6] must be enabled.
 #### splitOperationsByField
 If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`.
 
-### Machine Operation Files
+### Machine File Conversion
 #### cleanupStandardGeojson
 [See this section for more information](#cleanupstandardgeojson)
 #### generateProviderImages

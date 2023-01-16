@@ -46,8 +46,8 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Field Boundaries',
-          items: ['field_boundaries_overview', 'field_boundaries_endpoints']
+          label: 'Field Boundary Management',
+          items: ['field_boundary_management_overview', 'field_boundary_management_endpoints']
         },
         {
           type: 'category',
@@ -56,13 +56,13 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Machine Operation Data',
-          items: ['files_overview', 'files_endpoints', 'files_sample_output', 'files_crops_table']
+          label: 'Machine File Conversion',
+          items: ['machine_file_conversion_overview', 'machine_file_conversion_endpoints', 'machine_file_conversion_sample_output', 'machine_file_conversion_crops_table']
         },
         {
           type: 'category',
-          label: 'Satellite',
-          items: ['satellite_overview', 'sentinel_overview',  'planet_overview',  'satellite_endpoints']
+          label: 'Crop Monitoring',
+          items: ['crop_monitoring_overview', 'crop_monitoring_sentinel_overview',  'crop_monitoring_planet_overview',  'crop_monitoring_endpoints']
         },
         {
           type: 'category',

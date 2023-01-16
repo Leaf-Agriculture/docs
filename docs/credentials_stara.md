@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [1]: #get-the-stara-credentials
 [2]: #create-a-stara-credentials
 [3]: #delete-stara-credentials
-[4]: /docs/docs/field_boundaries_overview
+[4]: /docs/docs/field_boundary_management_overview
 [5]: /docs/docs/beta_machines_endpoints
 
 :::caution Services availability

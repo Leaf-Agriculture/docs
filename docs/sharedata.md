@@ -16,9 +16,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: #create-a-leafuser-permissions
 [7]: #update-leafuser-permissions
 [8]: #delete-leafuser-sharing-permissions
-[9]: /field_boundaries_endpoints#get-all-fields
-[10]: /field_boundaries_overview
-[11]: /operations_overview
+[9]: /docs/field_boundaries_endpoints#get-all-fields
+[10]: /docs/field_boundaries_overview
+[11]: /docs/operations_overview
 
 
 ## About

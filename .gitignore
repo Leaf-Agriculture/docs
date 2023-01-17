@@ -324,3 +324,6 @@ dmypy.json
 
 .idea
 .idea/*
+
+**/.terraform
+**/.terraform.lock.hcl

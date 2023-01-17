@@ -14,9 +14,10 @@ module.exports = {
   organizationName: 'leaf-agriculture',
   projectName: 'docs',
 
-  baseUrl: '/docs/',
-  url: 'https://leaf-agriculture.github.io',
+  baseUrl: '/',
+  url: 'https://docs.withleaf.io',
   favicon: leaf_favicon_light,
+
 
   plugins: [
     require.resolve('docusaurus-lunr-search')
@@ -36,8 +37,8 @@ module.exports = {
         alt: 'logo',
         src: leaf_logo,
         srcDark: leaf_logo_dark,
-        href: '/docs/docs'
-        // href: 'https://withleaf.io'
+        // href: '/docs/docs'
+        href: '/'
       },
 
       items: [
@@ -54,12 +55,12 @@ module.exports = {
         // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // end workaround to center navigation items
-        // {
-        //   to: 'https://withleaf.io/register/',
-        //   activeBasePath: './',
-        //   label: 'Products',
-        //   position: 'left',
-        // },
+        {
+          to: 'https://withleaf.io/account/quickstart/',
+          activeBasePath: './',
+          label: 'Products',
+          position: 'left',
+        },
         {
           to: 'https://withleaf.io',
           activeBasePath: './',
@@ -73,24 +74,25 @@ module.exports = {
         //   position: 'left',
         // },
         {
-          to: 'https://withleaf.io/careers/',
+
+          to: 'https://withleaf.io/company/careers',
           activeBasePath: './',
           label: 'Work with us',
           position: 'left',
         },
         {
-          to: 'https://blog.withleaf.io/en',
+          to: 'https://withleaf.io/blog',
           label: 'Blog',
           position: 'left'
         },
         {
-          to: 'https://withleaf.io/register/',
+          to: 'https://withleaf.io/account/quickstart',
           activeBasePath: './',
           label: 'Register',
           position: 'left',
         },
         {
-          href: 'https://github.com/leaf-agriculture',
+          href: 'https://github.com/Leaf-Agriculture/docs',
           label: 'GitHub',
           position: 'right',
         },

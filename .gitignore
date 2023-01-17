@@ -239,7 +239,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+/_build/
 
 # PyBuilder
 target/
@@ -324,3 +324,6 @@ dmypy.json
 
 .idea
 .idea/*
+
+**/.terraform
+**/.terraform.lock.hcl

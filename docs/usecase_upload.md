@@ -105,7 +105,7 @@ app.post("/create_token", (req, res) => {
       });
 });
 ```
-[Here](/docs/docs/authentication) you can see the Authentication Documentation.
+[Here](//authentication) you can see the Authentication Documentation.
 
 #### Route '/create_webhook'
 In this route, we will receive data from a form in the front-end, put them in a object named data and
@@ -138,7 +138,7 @@ app.post("/create_webhook", (req, res) => {
     });
 });
 ```
-[Here](/docs/docs/alerts_endpoints#create-a-webhook) you can see the Webhook Documentation.
+[Here](//alerts_endpoints#create-a-webhook) you can see the Webhook Documentation.
 
 #### Route '/list_webhook'
 In this route, we will use our token to list all our created webhooks. We need to do a `GET` request
@@ -161,7 +161,7 @@ app.get("/list_webhook", (req, res) => {
       }
 });
 ```
-[Here](/docs/docs/alerts_endpoints#get-all-webhooks) you can see the Webhook Documentation.
+[Here](//alerts_endpoints#get-all-webhooks) you can see the Webhook Documentation.
 
 #### Route '/delete_webhook/:id'
 In this route, we will be able to delete a webhook that we created. The id comes from the
@@ -183,7 +183,7 @@ app.get("/delete_webhook/:id", (req, res) => {
   res.redirect("/");
 });
 ```
-[Here](/docs/docs/alerts_endpoints#delete-a-webhook) you can see the Webhook Documentation.
+[Here](//alerts_endpoints#delete-a-webhook) you can see the Webhook Documentation.
 
 #### Route '/save_file'
 In this route, we will receive a file that was uploaded from the front-end, we will save it,
@@ -263,6 +263,7 @@ app.post("/save_file", (req, res) => {
       }
 });
 ```
+
 [Here](/docs/docs/machine_file_conversion_endpoints) you can see the Files Documentation.
 
 #### Route '/verify_files'
@@ -340,6 +341,7 @@ app.get("/file_images/:id", (req, res) => {
     .catch(console.error);
 });
 ```
+
 [Here](/docs/docs/machine_file_conversion_endpoints/#get-a-files-images) is the File Images Documentation.
 
 #### Route '/image_coordinates'
@@ -773,6 +775,6 @@ map.on('load', () => {});
 :::tip
 Here you can run a live use case demo!
 
-[![Edit webhook-leaf-api](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/webhook-leaf-api-o72lv8?fontsize=14&hidenavigation=1&theme=dark)
+[![Edit webhook-leaf-api](https://codesandbox.io/img/play-codesandbox.svg)](https://codesandbox.io/s/webhook-leaf-api-o72lv8?fontsize=14&hidenavigation=1&theme=dark)
 :::
 

@@ -77,7 +77,7 @@ app.post("/create_token", (req, res) => {
 });
 ```
 
-[Here](/docs/docs/authentication) you can see the Authentication documentation.
+[Here](//authentication) you can see the Authentication documentation.
 
 #### Route '/monitored_fields'
 

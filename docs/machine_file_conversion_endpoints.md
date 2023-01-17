@@ -16,12 +16,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: #get-a-files-images
 [7]: #upload-a-file
 [8]: #get-batch-upload
-[9]: #get-a-files-images
-[10]: alerts_events#operation-events
-[11]: #get-all-batches
-[12]: #merge-files
-[13]: #get-a-files-units
-[14]: #retry-a-batch
+[9]: alerts_events#operation-events
+[10]: #get-all-batches
+[11]: #merge-files
+[12]: #get-a-files-units
+[13]: #retry-a-batch
 [sample_summary]: machine_file_conversion_sample_output
 
 ## About

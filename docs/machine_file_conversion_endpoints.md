@@ -16,12 +16,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: #get-a-files-images
 [7]: #upload-a-file
 [8]: #get-batch-upload
-[9]: alerts_events#operation-events
+[9]: /docs/alerts_events#operation-events
 [10]: #get-all-batches
 [11]: #merge-files
 [12]: #get-a-files-units
 [13]: #retry-a-batch
-[sample_summary]: machine_file_conversion_sample_output
 
 ## About
 
@@ -39,12 +38,12 @@ Description | Endpoints
 [Get a file][4] | <span class="badge badge--success">GET</span> `/files/{id}`
 [Get a file summary][5] | <span class="badge badge--success">GET</span> `/files/{id}/summary`
 [Get a file's images][6] | <span class="badge badge--success">GET</span> `/files/{id}/images`
-[Get a file's units][13] | <span class="badge badge--success">GET</span> `/files/{id}/units`
+[Get a file's units][12] | <span class="badge badge--success">GET</span> `/files/{id}/units`
 [Upload a file][7] | <span class="badge badge--warning">POST</span> `/batch`
 [Get a batch][8] | <span class="badge badge--success">GET</span> `/batch/{id}`
-[Get all batches][11] | <span class="badge badge--success">GET</span> `/batch`
-[Merge files][12] | <span class="badge badge--warning">POST</span> `/files/merge`
-[Retry a batch][14] | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`
+[Get all batches][10] | <span class="badge badge--success">GET</span> `/batch`
+[Merge files][11] | <span class="badge badge--warning">POST</span> `/files/merge`
+[Retry a batch][13] | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
 

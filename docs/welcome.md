@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Developers use Leaf's API to access clean, standardized,
 and aggregated Farm data from all major food & agriculture brands.
 
-Please see the [Quickstart](/docs/docs/quickstart) section to get started with sample farm data & popular use cases.
+Please see the [Quickstart](/docs/quickstart) section to get started with sample farm data & popular use cases.
 
 We have implementation examples in cURL, NodeJS and Python!
 

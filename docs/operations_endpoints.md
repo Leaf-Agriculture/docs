@@ -19,10 +19,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [9]: /docs/operations_sample_output#field-operations-filtered-geojson
 [10]: /docs/operations_sample_output#field-operations-images-v2
 [11]: #reprocess-an-operation
-[12]: /docs/docs/operations_sample_output#field-operations-standard-geojson
-[13]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
-[14]: /docs/docs/operations_sample_output#field-operations-summary
-[15]: /docs/docs/operations_sample_output#field-operations-images
+[12]: /docs/operations_sample_output#field-operations-standard-geojson
+[13]: /docs/operations_sample_output#field-operations-filtered-geojson
+[14]: /docs/operations_sample_output#field-operations-summary
+[15]: /docs/operations_sample_output#field-operations-images
 [sample_summary]: machine_file_conversion_sample_output
 
 

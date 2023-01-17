@@ -6,21 +6,21 @@ description: Release Notes
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
-[1]:  /docs/docs/crop_monitoring_endpoints#create-a-satellite-field
-[2]:  /docs/docs/machine_file_conversion_sample_output#valid-points
-[3]:  /docs/docs/configurations_overview
-[4]:  /docs/docs/machine_file_conversion_endpoints#get-a-file
-[5]:  /docs/docs/machine_file_conversion_sample_output#operation-summary
-[6]:  /docs/docs/beta_machines_endpoints#create-a-machine
-[7]:  /docs/docs/machine_file_conversion_sample_output#standard-geojson
-[8]:  /docs/docs/beta_machines_endpoints
-[9]:  /docs/docs/alerts_events/#field-boundary-events
-[10]: /docs/docs/planet_overview#udm2
-[11]: /docs/docs/credentials_john_deere#one-click-authentication
-[12]: /docs/docs/beta_layers_endpoints#
-[13]: /docs/docs/operations_sample_output#field-operations-filtered-geojson
-[14]: /docs/docs/operations_sample_output#field-operations-images-v2
-[15]: /docs/docs/configurations_overview#operationsfilteredgeojson
+[1]:  /docs/crop_monitoring_endpoints#create-a-satellite-field
+[2]:  /docs/machine_file_conversion_sample_output#valid-points
+[3]:  /docs/configurations_overview
+[4]:  /docs/machine_file_conversion_endpoints#get-a-file
+[5]:  /docs/machine_file_conversion_sample_output#operation-summary
+[6]:  /docs/beta_machines_endpoints#create-a-machine
+[7]:  /docs/machine_file_conversion_sample_output#standard-geojson
+[8]:  /docs/beta_machines_endpoints
+[9]:  /docs/alerts_events/#field-boundary-events
+[10]: /docs/planet_overview#udm2
+[11]: /docs/credentials_john_deere#one-click-authentication
+[12]: /docs/beta_layers_endpoints#
+[13]: /docs/operations_sample_output#field-operations-filtered-geojson
+[14]: /docs/operations_sample_output#field-operations-images-v2
+[15]: /docs/configurations_overview#operationsfilteredgeojson
 
 
 ### 2.110.0

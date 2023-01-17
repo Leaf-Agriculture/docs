@@ -214,7 +214,7 @@ app.post("/field_images", (req, res) => {
 });
 ```
 
-[Here](/docs/docs/crop_monitoring_endpoints#get-images-of-satellite-field) you can see the Satellite documentation.
+[Here](/docs/crop_monitoring_endpoints#get-images-of-satellite-field) you can see the Satellite documentation.
 
 #### Route '/create_field'
 
@@ -280,7 +280,7 @@ app.post("/create_field", (req, res) => {
 });
 ```
 
-[Here](/docs/docs/crop_monitoring_endpoints#create-a-satellite-field) you can see the Satellite documentation.
+[Here](/docs/crop_monitoring_endpoints#create-a-satellite-field) you can see the Satellite documentation.
 
 ### Start the server
 

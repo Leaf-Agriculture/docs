@@ -3,8 +3,8 @@ title: Overview
 description: Configurations - Overview
 ---
 
-[1]: /docs/docs/machine_file_conversion_overview
-[2]: /docs/docs/operations_overview
+[1]: /docs/machine_file_conversion_overview
+[2]: /docs/operations_overview
 [3]: #operationsremoveoutliers
 [4]: #operationsoutlierslimit
 [5]: /docs/operations_sample_output#outliers

@@ -3,7 +3,7 @@ title: Overview
 description: Crop Monitoring - Overview
 ---
 
-[1]: crop_monitoring_overview
+[1]: /docs/docs/crop_monitoring_overview
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: /docs/beta_machines_endpoints
 
 :::caution Services availability
-This integration is under construction. For now, no data is being integrated yet.
+This integration is under construction. For now, Field boundary integration is not available.
 :::
 
 Form of a Stara Credentials resource:

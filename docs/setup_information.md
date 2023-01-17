@@ -23,14 +23,14 @@ Be default, our API archive the files to a slower storage after 180 days without
 
 ## File size
 
-Currently, our API have a 3 gigabytes limit for file uploads. This is applied in the file upload [endpoint](files_endpoints.md/#upload-a-file) 
+Currently, our API have a 3 gigabytes limit for file uploads. This is applied in the file upload [endpoint](machine_file_conversion_endpoints.md/#upload-a-file) 
 
 
 ## Error codes
 
 Service | Endpoint | Message | HTTP Status | Reason
 --- | --- | --- | --- | --- 
-Field Operations | [Upload a file](files_endpoints.md/#upload-a-file) | Bad Request | 400 | The uploaded file is bigger than 3 GB <!-- not standartized -->
+Field Operations | [Upload a file](machine_file_conversion_endpoints.md/#upload-a-file) | Bad Request | 400 | The uploaded file is bigger than 3 GB <!-- not standartized -->
 
 
 

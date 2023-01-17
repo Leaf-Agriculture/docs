@@ -69,7 +69,7 @@ it in the future. In this example, we just get 2 types of response from the Leaf
       res.status(200).send("Ok");
   }); 
 ```
-[Here](https://leaf-agriculture.github.io//alerts_overview) you can see the Alerts Documentation.
+[Here](/docs/alerts_overview) you can see the Alerts Documentation.
 
 #### Route '/create_token'
 In this route, we will create the user token to use in the next steps. In the data object,
@@ -263,7 +263,8 @@ app.post("/save_file", (req, res) => {
       }
 });
 ```
-[Here](//files_endpoints) you can see the Files Documentation.
+
+[Here](/docs/machine_file_conversion_endpoints) you can see the Files Documentation.
 
 #### Route '/verify_files'
 In this route, we can verify if any files that we uploaded were processed succefully. If the token is already generated it will proceed to verifying the `all.txt` file, where the files id are saved when we receive an alert in the `'/webhook'` route. If are any files id in the file, the route will return the files id in the JSON options.
@@ -316,7 +317,7 @@ app.get("/detail_file/:id", (req, res) => {
     .catch(console.error);
 });
 ```
-[Here](//files_endpoints/) you can see the Files Documentation.
+[Here](/docs/machine_file_conversion_endpoints/) you can see the Files Documentation.
 
 #### Route '/file_images/:id'
 In this route, we will be able to get the images from the Leaf API endpoint. The file id is received
@@ -340,7 +341,8 @@ app.get("/file_images/:id", (req, res) => {
     .catch(console.error);
 });
 ```
-[Here](//files_endpoints/#get-a-files-images) is the File Images Documentation.
+
+[Here](/docs/machine_file_conversion_endpoints/#get-a-files-images) is the File Images Documentation.
 
 #### Route '/image_coordinates'
 In this route, we will receive a list of images url, and we will work with it.

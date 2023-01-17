@@ -6,13 +6,13 @@ description: Release Notes
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
-[1]:  /docs/satellite_endpoints#create-a-satellite-field
-[2]:  /docs/files_sample_output#valid-points
+[1]:  /docs/crop_monitoring_endpoints#create-a-satellite-field
+[2]:  /docs/machine_file_conversion_sample_output#valid-points
 [3]:  /docs/configurations_overview
-[4]:  /docs/files_endpoints#get-a-file
-[5]:  /docs/files_sample_output#operation-summary
+[4]:  /docs/machine_file_conversion_endpoints#get-a-file
+[5]:  /docs/machine_file_conversion_sample_output#operation-summary
 [6]:  /docs/beta_machines_endpoints#create-a-machine
-[7]:  /docs/files_sample_output#standard-geojson
+[7]:  /docs/machine_file_conversion_sample_output#standard-geojson
 [8]:  /docs/beta_machines_endpoints
 [9]:  /docs/alerts_events/#field-boundary-events
 [10]: /docs/planet_overview#udm2
@@ -55,13 +55,13 @@ There is now an option to upload layer files directly to Climate FieldView via L
 ### 2.98.0
 *2022-08-16*
 
-**Machine operation data**
+**Machine file conversion**
 - New properties `dryMass` `dryMassPerArea` `dryVolume` and `dryVolumePerArea` for dry Yield are available in the operation [summary][5] and in the [standard][7] GeoJSON. 
 
 ### 2.92.0
 *2022-07-05*
 
-**Satellite**
+**Crop Monitoring**
 - Usable Data Mask 2.0 (UDM2) is now available for Planet  
 The mask images are available through the Planet `udm2` asset type.  More info [here][10].
 
@@ -69,17 +69,17 @@ The mask images are available through the Planet `udm2` asset type.  More info [
 ### 2.91.0
 *2022-06-29*
 
-**Satellite**
+**Crop Monitoring**
 - NDRE images 
 Normalized difference red edge (NDRE) index is now available for Sentinel and Planet.  
 
-**Machine operation data**
+**Machine file conversion**
 - Added support for Avoirdupois ounce unit of measure.     
 
 ### 2.89.0
 *2022-06-14*
 
-**Machine operation data**
+**Machine file conversion**
 - **[beta]** Added support for 20|20 files from Precision Planting      
 
 **Fields**
@@ -101,13 +101,13 @@ There was an issue interpreting updates from a provider. More information about 
 ### 2.87.0
 *2022-05-24*
 
-**Machine operation data**
+**Machine file conversion**
 - Added support for ISOXML files
 
 ### 2.86.0
 *2022-05-24*
 
-**Machine operation data**
+**Machine file conversion**
 - New properties on the Standard GeoJSON  
 Optional properties: `cropFlow`, `productIndex`, `proteinPercentage`, `samplingInterval`, `xOffset` and `yOffset`.  
 More information [here][7].
@@ -115,7 +115,7 @@ More information [here][7].
 ### 2.85.0
 *2022-05-17*
 
-**Machine operation data**
+**Machine file conversion**
 - Machine list available in the operation files  
 The new property `machine` list all machine ids under the files entity (not to be confused with `machinery` property available in the summary).
 More information [here][5].
@@ -128,7 +128,7 @@ The properties `vin`, `model`, `make`, `category` and `modelYear` are now also a
 ### 2.84.0
 *2022-05-11*
 
-**Machine operation data**
+**Machine file conversion**
 - New config available: `splitOperationsByField`    
 If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`. 
 Check all the configurations available [here][3].
@@ -145,7 +145,7 @@ The `vin` property can be used to query.
 ### 2.82.0
 *2022-04-26*
 
-**Machine operation data**
+**Machine file conversion**
 - Sugar cane  
 Leaf API now also support sugar cane files. Be aware that volume measurements will not be available for this crop type.
 
@@ -157,7 +157,7 @@ Check all the configurations available [here][3].
 ### 2.81.0
 *2022-04-20*
 
-**Machine operation data**
+**Machine file conversion**
 - New config available: `cleanupStandardGeojson`   
 If set to `true` (default), Leaf will automatically remove [invalid points][2] from the standardGeoJSON file for operations.  
 Check all the configurations available [here][3].
@@ -165,7 +165,7 @@ Check all the configurations available [here][3].
 - `(0,0)` point removed  
 All `(0,0)` points are now automatically removed in our converters.
   
-**Satellite**  
+**Crop monitoring**  
 - Planet: new asset type available    
 Leaf API now also supports PlanetScope's `analytics_5b` asset type which has 5 bands: Red, Green, Blue, Red-Edge and Near infrared.  
 You can check our [documentation][1]  for how to filter images by different asset types.

@@ -18,7 +18,7 @@ const features = [
     ),
   },
   {
-    title: <>Field Boundaries</>,
+    title: <>Field Boundary Management</>,
     imageUrl: 'img/field_boundaries.png',
     description: (
       <>

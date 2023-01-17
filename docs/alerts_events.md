@@ -296,7 +296,7 @@ Alerts for this event are in the following format:
 }
 ```
 
-## Satellite Events
+## Crop Monitoring Events
 
 ### New Satellite Image
 

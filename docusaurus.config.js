@@ -15,7 +15,7 @@ module.exports = {
   projectName: 'docs',
 
   baseUrl: '/',
-  url: 'https://leaf-agriculture.github.io',
+  url: 'https://docs.withleaf.io',
   favicon: leaf_favicon_light,
 
 

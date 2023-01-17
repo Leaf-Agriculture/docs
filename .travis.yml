@@ -5,25 +5,27 @@ language: node_js
 node_js:
   - 16.15.0
 
+services:
+  - docker
+
 cache:
   npm: true
 
+before_install:
+  - bash ./.travis/awscli.sh
+  - docker login --username $DOCKER_USER --password $DOCKER_PASS
+
 install:
-  - npm install
   - npm install node@16.10.0
   - npm install -g npm@7.24.0
-  - npx browserslist@latest --update-db
+  - npm install
 
 script:
-  - npm run swizzle docusaurus-lunr-search SearchBar
-  - npm run build
+  - docker build -t docs .
 
 deploy:
-  provider: pages
-  strategy: git
-  edge: false
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: ./build
-  on:
-    branch: master
+  - provider: script
+    script: bash ./.travis/deploy.sh
+    edge: true
+    on:
+      branch: master

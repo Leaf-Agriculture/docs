@@ -69,7 +69,7 @@ it in the future. In this example, we just get 2 types of response from the Leaf
       res.status(200).send("Ok");
   }); 
 ```
-[Here](https://leaf-agriculture.github.io/docs/docs/alerts_overview) you can see the Alerts Documentation.
+[Here](/docs/docs/alerts_overview) you can see the Alerts Documentation.
 
 #### Route '/create_token'
 In this route, we will create the user token to use in the next steps. In the data object,

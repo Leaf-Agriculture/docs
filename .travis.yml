@@ -20,14 +20,24 @@ install:
   - npm install node@16.10.0
   - npm install -g npm@7.24.0
   - npm install
+  - npx browserslist@latest --update-db
 
 script:
   - bash ./.travis/validate_terraform.sh
-  - docker build -t docs .
+  - npm run swizzle docusaurus-lunr-search SearchBar
+  - npm run build
 
 deploy:
   - provider: script
     script: bash ./.travis/deploy.sh
     edge: true
+    on:
+      branch: master
+  - provider: pages
+    strategy: git
+    edge: false
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: ./build
     on:
       branch: master

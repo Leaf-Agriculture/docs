@@ -13,6 +13,7 @@ cache:
 
 before_install:
   - bash ./.travis/awscli.sh
+  - bash ./.travis/install_terraform.sh
   - docker login --username $DOCKER_USER --password $DOCKER_PASS
 
 install:
@@ -21,6 +22,7 @@ install:
   - npm install
 
 script:
+  - bash ./.travis/validate_terraform.sh
   - docker build -t docs .
 
 deploy:

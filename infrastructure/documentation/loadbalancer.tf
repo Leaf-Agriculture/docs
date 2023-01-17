@@ -6,8 +6,8 @@ resource "aws_lb_target_group" "main" {
 
   target_type = "ip"
   health_check {
-    path    = "/docs"
-    matcher = "200-299"
+    path    = "/"
+    matcher = "200-301"
     interval = 300
     timeout = 120
   }

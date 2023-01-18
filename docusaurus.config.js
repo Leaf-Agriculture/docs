@@ -55,7 +55,7 @@ module.exports = {
         // { to: 'docs/', activeBasePath: './', label: '             ', position: 'left'},
         // end workaround to center navigation items
         {
-          to: 'https://withleaf.io/account/quickstart/',
+          to: 'https://withleaf.io/products/',
           activeBasePath: './',
           label: 'Products',
           position: 'left',

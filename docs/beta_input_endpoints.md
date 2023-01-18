@@ -1,6 +1,7 @@
 ---
-title: Endpoints
+title: Beta > Input Endpoints
 description: Beta - Input Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

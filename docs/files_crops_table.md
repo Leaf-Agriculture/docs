@@ -3,7 +3,7 @@ title: Crops Table
 description: Crops Table
 ---
 
-[1]: machine_file_conversion_crops_table
+[1]: /docs/machine_file_conversion_crops_table
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';

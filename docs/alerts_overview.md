@@ -1,6 +1,7 @@
 ---
-title: Overview
+title: Alerts Overview
 description: Alerts - Overview
+sidebar_label: Overview
 ---
 
 import Tabs from '@theme/Tabs';

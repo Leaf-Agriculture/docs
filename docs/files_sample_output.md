@@ -3,7 +3,7 @@ title: Sample responses
 description: Files - Sample Responses
 ---
 
-[1]: machine_file_conversion_sample_output
+[1]: /docs/machine_file_conversion_sample_output
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

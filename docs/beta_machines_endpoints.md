@@ -1,6 +1,7 @@
 ---
-title: Endpoints
+title: Beta > Machines Endpoints
 description: Beta - Machines Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

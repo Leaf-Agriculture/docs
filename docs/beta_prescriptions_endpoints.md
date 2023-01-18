@@ -1,6 +1,7 @@
 ---
-title: Endpoints
+title: Beta > Prescriptions Endpoints
 description: Beta - Prescriptions Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

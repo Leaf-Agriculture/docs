@@ -1,6 +1,7 @@
 ---
-title: Overview
+title: Beta Features Overview
 description: Beta Features - Overview
+sidebar_label: Overview
 ---
 <!-- the following links are referenced throughout this document -->
 

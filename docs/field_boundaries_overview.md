@@ -1,9 +1,10 @@
 ---
-title: Overview
+title: Field Boundary Management Overview
 description: Field Boundary Management - Overview
+sidebar_label: Overview
 ---
 
-[1]: field_boundary_management_overview
+[1]: /docs/field_boundary_management_overview
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

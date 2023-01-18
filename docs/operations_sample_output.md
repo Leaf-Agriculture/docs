@@ -1,6 +1,7 @@
 ---
-title: Sample responses
-description: Sample responses
+title: Field Operations sample responses
+description: Field Operations - Sample responses
+sidebar_label: Sample responses
 ---
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import useBaseUrl from '@docusaurus/useBaseUrl';

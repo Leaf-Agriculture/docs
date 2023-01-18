@@ -1,6 +1,7 @@
 ---
-title: Endpoints
+title: Crop Monitoring Endpoints
 description: Crop Monitoring - Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

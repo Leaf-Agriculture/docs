@@ -1,6 +1,7 @@
 ---
-title: Endpoints
-description: Usermanagement - Endpoints
+title: Leaf User Endpoints
+description: Leaf User - Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

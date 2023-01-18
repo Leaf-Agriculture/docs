@@ -582,7 +582,7 @@ Here is an example of Images from Field Operations.
 #### Field Operations Images V2
 [This endpoint][2] version produces images based on the [filteredGeoJSON][1], therefore it will be active whenever the data filter option is active.
 
-The new images have considerable improvements over the previous one. They are generated with a standard fixed color ramp and the data is automatically distributed into 7 classes using **quatile** classification.
+The new images have considerable improvements over the previous one. They are generated with a standard fixed color ramp and the data is automatically distributed into 7 classes using **quantile** classification.
 
 Note that the return is different from the previous version, with the option of extent and legend available.
 

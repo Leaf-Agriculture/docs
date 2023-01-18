@@ -1,6 +1,7 @@
 ---
-title: Authentication
+title: Authentication Alerts
 description: Alerts - Authentication
+sidebar_label: Authentication
 ---
 
 

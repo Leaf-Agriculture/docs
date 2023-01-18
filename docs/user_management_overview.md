@@ -1,6 +1,7 @@
 ---
-title: Overview
-description: Usermanagement - Overview
+title: Leaf User Overview
+description: Leaf User - Overview
+sidebar_label: Overview
 ---
 
 For Leaf to be able to access, standardize, process and return files, you just

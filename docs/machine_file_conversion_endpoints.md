@@ -1,6 +1,7 @@
 ---
-title: Endpoints
-description: Files - Endpoints
+title: Machine File Conversion Endpoints
+description: Machine File Conversion - Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,7 @@
 ---
-title: Sample responses
-description: Files - Sample Responses
+title: Machine File Conversion Sample Responses
+description: Machine File Conversion - Sample Responses
+sidebar_label: Sample Responses
 ---
 
 import Tabs from '@theme/Tabs';

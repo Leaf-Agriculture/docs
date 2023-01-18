@@ -1,6 +1,7 @@
 ---
-title: Overview
+title: Field Boundary Management Overview
 description: Field Boundary Management - Overview
+sidebar_label: Overview
 ---
 
 [1]: /docs/docs/field_boundary_management_overview

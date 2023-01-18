@@ -1,6 +1,7 @@
 ---
-title: Endpoints
-description: Alerts - Endpoints
+title: Alerts Endpoints
+description: Alerts Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

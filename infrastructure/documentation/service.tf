@@ -87,7 +87,7 @@ resource "aws_ecs_service" "service" {
   # It redirects everything it receives to this service.
   load_balancer {
     container_name   = "docs-page"
-    container_port   = 3000
+    container_port   = 5000
     target_group_arn = aws_lb_target_group.main.arn
   }
 

@@ -13,8 +13,8 @@ module "container_service" {
     # Default JHipster API Gateway port
     port_mappings = [
       {
-        containerPort = 3000
-        hostPort      = 3000
+        containerPort = 5000
+        hostPort      = 5000
         protocol      = "TCP"
       }
     ]

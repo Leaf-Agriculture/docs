@@ -1,6 +1,6 @@
 resource "aws_lb_target_group" "main" {
   name     = "docs-target-group"
-  port     = 3000
+  port     = 5000
   protocol = "HTTP"
   vpc_id   = var.vpc.id
 

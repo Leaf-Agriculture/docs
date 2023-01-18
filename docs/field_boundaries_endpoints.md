@@ -1,9 +1,10 @@
 ---
-title: Endpoints
+title: Field Boundary Management Endpoints
 description: Field Boundary Management - Endpoints
+sidebar_label: Endpoints
 ---
 
-[1]: /docs/docs/field_boundary_management_endpoints
+[1]: /docs/field_boundary_management_endpoints
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

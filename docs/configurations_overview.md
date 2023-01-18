@@ -1,6 +1,7 @@
 ---
-title: Overview
+title: Configurations Overview
 description: Configurations - Overview
+sidebar_label: Overview
 ---
 
 [1]: /docs/machine_file_conversion_overview

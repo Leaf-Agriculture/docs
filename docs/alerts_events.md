@@ -1,6 +1,7 @@
 ---
 title: List of Events
 description: Alerts - Events
+sidebar_label: List of Events
 ---
 
 ## About

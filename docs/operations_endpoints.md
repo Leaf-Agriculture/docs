@@ -1,6 +1,7 @@
 ---
-title: Endpoints
-description: Operations - Endpoints
+title: Field Operations Endpoints
+description: Field Operations - Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,7 @@
 ---
-title: Overview
+title: Crop Monitoring Overview
 description: Crop Monitoring - Overview
+sidebar_label: Overview
 ---
 
 import Tabs from '@theme/Tabs';

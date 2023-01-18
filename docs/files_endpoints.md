@@ -3,7 +3,7 @@ title: Endpoints
 description: Files - Endpoints
 ---
 
-[1]: /docs/docs/machine_file_conversion_endpoints
+[1]: /docs/machine_file_conversion_endpoints
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

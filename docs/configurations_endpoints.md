@@ -1,6 +1,7 @@
 ---
-title: Endpoints
+title: Configurations Endpoints
 description: Configurations - Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

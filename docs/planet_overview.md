@@ -3,7 +3,7 @@ title: Planet Overview
 description: Planet Overview
 ---
 
-[1]: crop_monitoring_planet_overview
+[1]: /docs/crop_monitoring_planet_overview
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

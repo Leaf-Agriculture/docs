@@ -1,6 +1,7 @@
 ---
-title: Endpoints
+title: Field Boundary Management Endpoints
 description: Field Boundary Management - Endpoints
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';

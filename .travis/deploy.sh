@@ -4,6 +4,7 @@ set -ev
 REGION=us-west-2
 ECR=558258168256.dkr.ecr.${REGION}.amazonaws.com/docs:latest
 
+npx browserslist@latest --update-db
 npm run swizzle docusaurus-lunr-search SearchBar
 npm run build
 
@@ -20,3 +21,9 @@ cd ./infrastructure
 terraform init -upgrade
 terraform validate
 terraform apply -auto-approve
+
+
+aws ecs update-service \
+    --force-new-deployment \
+    --cluster jh-cluster-prd \
+    --service docs-page --region us-west-2

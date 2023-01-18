@@ -10,7 +10,6 @@ const leaf_favicon_dark = 'img/icon4light_mode.png'
 module.exports = {
   title: 'Leaf',
   tagline: 'The easiest way to connect agriculture data across platforms',
-
   organizationName: 'leaf-agriculture',
   projectName: 'docs',
 

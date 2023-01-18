@@ -1,6 +1,6 @@
 ---
 title: Field Operations sample responses
-description: Field Operations sample responses
+description: Field Operations - Sample responses
 sidebar_label: Sample responses
 ---
 

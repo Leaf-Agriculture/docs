@@ -1,6 +1,6 @@
 ---
 title: Alerts Overview
-description: Alerts Overview
+description: Alerts - Overview
 sidebar_label: Overview
 ---
 

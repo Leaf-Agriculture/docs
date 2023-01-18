@@ -3,7 +3,7 @@ title: Endpoints
 description: Crop Monitoring - Endpoints
 ---
 
-[1]: /docs/docs/crop_monitoring_endpoints
+[1]: /docs/crop_monitoring_endpoints
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

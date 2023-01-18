@@ -1,6 +1,6 @@
 ---
 title: Alerts Endpoints
-description: Alerts Endpoints
+description: Alerts - Endpoints
 sidebar_label: Endpoints
 ---
 

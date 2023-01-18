@@ -3,7 +3,7 @@ title: Overview
 description: Files - Overview
 ---
 
-[1]: /docs/docs/machine_file_conversion_overview
+[1]: /docs/machine_file_conversion_overview
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -1,0 +1,97 @@
+
+<p>Leaf’s system can be customized to present different behaviours across services. This is done using Configurations.</p>
+
+<p>All API Owners start with a default configuration set. These configurations can be changed, but they can not be deleted or set to <code class="language-plaintext highlighter-rouge">null</code>.</p>
+
+<p>Leaf Users do not start with Configuration, but they inherit the configurations from the API Owner. A custom configuration can be set for a Leaf User. Configurations set for a Leaf User won’t be changed if the API Owner’s configuration changes. On the other hand, configurations not set for the Leaf User will reflect changes from the API Owner’s configurations. Leaf User’s Configurations can be deleted or have values set to <code class="language-plaintext highlighter-rouge">null</code>, in which case the values are inherited from the API Owner.</p>
+
+<p>Currently, available configurations are:</p>
+
+<h3 id="field-boundary-management">Field Boundary Management</h3>
+<h4 id="fieldsattachintersection">fieldsAttachIntersection</h4>
+<p>Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100. The default value is <code class="language-plaintext highlighter-rouge">0.01</code>.</p>
+<h4 id="fieldsautomerge">fieldsAutoMerge</h4>
+<p>Feature automatically merges fields that passes through the intersection parameter. Default value is <code class="language-plaintext highlighter-rouge">true</code>.</p>
+<h4 id="fieldsautosync">fieldsAutoSync</h4>
+<p>If set to <code class="language-plaintext highlighter-rouge">true</code>, Leaf will automatically synchronize provider’s fields. If set to <code class="language-plaintext highlighter-rouge">false</code>, synchronizations must be manually requested via endpoint. The default value is <code class="language-plaintext highlighter-rouge">true</code>.</p>
+<h4 id="fieldsmergeintersection">fieldsMergeIntersection</h4>
+<p>Minimum intersection between two fields to merge them. A new field of type MERGED will be created based in the intersection of the fields, while the original fields will be kept. This property supports a floating point between 0 and 100. The default value is <code class="language-plaintext highlighter-rouge">0.01</code>.</p>
+
+<h3 id="field-operations">Field Operations</h3>
+<h4 id="cleanupstandardgeojson">cleanupStandardGeojson</h4>
+<p>If set to <code class="language-plaintext highlighter-rouge">true</code>, Leaf will automatically remove <a href="machine_file_conversion_sample_output.md#valid-points">invalid points</a> from the standardGeoJSON file for operations. The default value is <code class="language-plaintext highlighter-rouge">true</code>.</p>
+<h4 id="fieldoperationcreation">fieldOperationCreation</h4>
+<p>Enables the creation of <a href="/docs/operations_overview">Field Operations</a>. The default is <code class="language-plaintext highlighter-rouge">true</code>.</p>
+<h4 id="geoimagescolorramp">geoimagesColorRamp</h4>
+<p>The color ramp to be used when generating images of operations. It’s a map from a percentage value to a list containing a color in RGB or RGBA. The last entry in the map must contain a value for the <code class="language-plaintext highlighter-rouge">nv</code> key, mapping to the color for null values. The default value is</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "0%"  : [200,   0, 0],
+    "35%" : [255,  40, 0],
+    "45%" : [255, 150, 0],
+    "55%" : [255, 240, 0],
+    "65%" : [  0, 230, 0],
+    "75%" : [  0, 190, 0],
+    "100%": [  0, 130, 0],
+    "nv"  : [  0,   0, 0, 0]
+}
+</code></pre></div></div>
+<h4 id="geoimagesprojection">geoimagesProjection</h4>
+<p>Projection to be used when generating images of operations. It can assume the values <code class="language-plaintext highlighter-rouge">EPSG:3857</code> and <code class="language-plaintext highlighter-rouge">EPSG:4326</code>. The default value is <code class="language-plaintext highlighter-rouge">EPSG:3857</code>.</p>
+<h4 id="geoimagesresolution">geoimagesResolution</h4>
+<p>Resolution of the generated images of operations. The default value is <code class="language-plaintext highlighter-rouge">0.00001</code>.</p>
+<h4 id="geoimagesshape">geoimagesShape</h4>
+<p>Shape of points to be used when generating images of operations. It can assume the values <code class="language-plaintext highlighter-rouge">ROUND</code> and <code class="language-plaintext highlighter-rouge">SQUARE</code>. The default value is <code class="language-plaintext highlighter-rouge">SQUARE</code>.</p>
+<h4 id="operationsautosync">operationsAutoSync</h4>
+<p>If set to <code class="language-plaintext highlighter-rouge">true</code>, Leaf will automatically synchronize provider’s operations. The default value is <code class="language-plaintext highlighter-rouge">true</code>.</p>
+<h4 id="operationsfilteredgeojson">operationsFilteredGeojson</h4>
+<p>Enables the option to clear <a href="/docs/operations_overview">Field Operations</a> data based on <a href="/docs/operations_sample_output#field-operations-filtered-geojson">some filter options</a>. Also enables the use of <a href="/docs/operations_sample_output#field-operations-images-v2">operations images V2</a>.
+The default is <code class="language-plaintext highlighter-rouge">false</code>.</p>
+<h4 id="operationsimagecreation">operationsImageCreation</h4>
+<p>If set to <code class="language-plaintext highlighter-rouge">true</code>, Leaf will generate images of operations when processing them. If set to <code class="language-plaintext highlighter-rouge">false</code>, Leaf won’t create the images. The default value is <code class="language-plaintext highlighter-rouge">false</code>.</p>
+<h4 id="operationsmergerange">operationsMergeRange</h4>
+<p>Range used to consider if files are in the same operation. Default value is <code class="language-plaintext highlighter-rouge">5</code> days.</p>
+<h4 id="operationsmergerangeharvested">operationsMergeRangeHarvested</h4>
+<p>Range used to consider if harvest files are in the same operation. Default value is <code class="language-plaintext highlighter-rouge">21</code> days.</p>
+<h4 id="operationsoutlierslimit">operationsOutliersLimit</h4>
+<p>Sets the threshold for removing outliers when the <a href="#operationsremoveoutliers">operationsRemoveOutliers</a> configuration is enabled. The defined value will be considered to measure how many standard deviations will be considered as outliers. The default value is <code class="language-plaintext highlighter-rouge">3</code> which means that all points with harvested volume values ​​that are more than 3 standard deviations away from the mean will be removed.</p>
+
+<p>More info <a href="/docs/operations_sample_output#outliers">here</a>.</p>
+<h4 id="operationsprocessingrange">operationsProcessingRange</h4>
+<p>The retroactive time period (in months) to fetch file operations from providers. The default is <code class="language-plaintext highlighter-rouge">12</code> so only operations that occurred 12 months ago to present will be processed by Leaf.</p>
+<h4 id="operationsremoveoutliers">operationsRemoveOutliers</h4>
+<p>If enabled, it will remove points in the <a href="/docs/operations_sample_output#field-operations-filtered-geojson">filteredGeojson</a> based on harvest values so it is only applied to harvest type operations. The outliers will be defined based on the <a href="#operationsoutlierslimit">operationsOutliersLimit</a> configuration. The default value is <code class="language-plaintext highlighter-rouge">true</code>.</p>
+
+<p>More info <a href="/docs/operations_sample_output#outliers">here</a>.</p>
+
+<p>:::tip
+To use this option, <a href="#operationsfilteredgeojson">operationsFilteredGeojson</a> must be enabled.
+:::</p>
+<h4 id="splitoperationsbyfield">splitOperationsByField</h4>
+<p>If set to <code class="language-plaintext highlighter-rouge">true</code>, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is <code class="language-plaintext highlighter-rouge">false</code>.</p>
+
+<h3 id="machine-file-conversion">Machine File Conversion</h3>
+<h4 id="cleanupstandardgeojson-1">cleanupStandardGeojson</h4>
+<p><a href="#cleanupstandardgeojson">See this section for more information</a></p>
+<h4 id="generateproviderimages">generateProviderImages</h4>
+<p>If set to <code class="language-plaintext highlighter-rouge">true</code>, Leaf will generate property images for <a href="/docs/machine_file_conversion_overview">files</a> fetched from providers. Uploaded files are not affected by this change. The default value is <code class="language-plaintext highlighter-rouge">false</code>.<br />
+Not to be confused with <a href="#operationsimagecreation">operationsImageCreation</a>, which is specifically for <a href="/docs/operations_overview">Field Operations</a>.</p>
+<h4 id="geoimagescolorramp-1">geoimagesColorRamp</h4>
+<p><a href="#geoimagescolorramp">See this section for more information</a></p>
+<h4 id="geoimagesprojection-1">geoimagesProjection</h4>
+<p><a href="#geoimagesprojection">See this section for more information</a></p>
+<h4 id="geoimagesresolution-1">geoimagesResolution</h4>
+<p><a href="#geoimagesresolution">See this section for more information</a></p>
+<h4 id="geoimagesshape-1">geoimagesShape</h4>
+<p><a href="#geoimagesshape">See this section for more information</a></p>
+<h4 id="originaloperationdata">originalOperationData</h4>
+<p>If set to <code class="language-plaintext highlighter-rouge">true</code>, it will add to the File summary some non-standard properties, such as the field name and the type of the operation, as described originally by the provider. It is not applicable to the standard GeoJSON file or the Field Operation summary.<br />
+The default value is <code class="language-plaintext highlighter-rouge">false</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"originalOperationData": {
+    "originalOperationFarm": "Farm Green",
+    "originalOperationField": "Field A",
+    "originalOperationGrower": "Grower",
+    "originalOperationType": "SowingAndPlanting"
+}
+</code></pre></div></div>
+

@@ -1,0 +1,191 @@
+<p>import Tabs from ‘@theme/Tabs’;
+import TabItem from ‘@theme/TabItem’;
+import useBaseUrl from ‘@docusaurus/useBaseUrl’;</p>
+
+<p>Leaf’s
+service uses Sentinel-2 data which has the highest resolution publicly available
+and revisits each field every 3 to 5 days.</p>
+
+<p>We generate a total of 24 images for each intersected field: A GeoTiff for each
+band from Sentinel and processed RGB, NDVI and NDRE images.</p>
+
+<p>The following table shows all the images with its resolutions and types:
+(TIFs are EPSG:4326, PNGs are EPSG:3857).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Resolution</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Projection</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">NDVI.png</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">png NDVI</td>
+      <td style="text-align: left">EPSG:3857</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDRE.png</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">png NDRE</td>
+      <td style="text-align: left">EPSG:3857</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">RGB.png</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">png RGB</td>
+      <td style="text-align: left">EPSG:3857</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDVI.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">tif raw NDVI values</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDVI_color.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">tif colored NDVI</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDRE.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">tif raw NDRE values</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDRE_color.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">tif colored NDRE</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">RGB.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">tif RGB</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B01.tif</td>
+      <td style="text-align: left">60 meters</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B02.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B03.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B04.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B05.tif</td>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B06.tif</td>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B07.tif</td>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B08.tif</td>
+      <td style="text-align: left">10</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B8A.tif</td>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B09.tif</td>
+      <td style="text-align: left">60</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B11.tif</td>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">B12.tif</td>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">single band</td>
+      <td style="text-align: left">EPSG:4326</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDVI_relative.png</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">png relative NDVI</td>
+      <td style="text-align: left">EPSG:3857</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDVI_absolute.png</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">png absolute NDVI</td>
+      <td style="text-align: left">EPSG:3857</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDRE_relative.png</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">png relative NDRE</td>
+      <td style="text-align: left">EPSG:3857</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">NDRE_absolute.png</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">png absolute NDRE</td>
+      <td style="text-align: left">EPSG:3857</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>PNG files do not have resolution because they are scaled up by 800%.</p>
+
+<p>We generate a colorized <code class="language-plaintext highlighter-rouge">NDVI_color.tif</code> and <code class="language-plaintext highlighter-rouge">NDRE_color.tif</code> using a custom-built color ramp. See
+the image below. If you prefer to use your own ramp, we recommend using <code class="language-plaintext highlighter-rouge">NDVI.tif</code> or <code class="language-plaintext highlighter-rouge">NDRE.tif</code>,
+which is a pre calculated index file. You can import it into any GIS software,
+like <a href="https://www.qgis.org/en/site/">QGis</a>, and use it as you please.</p>
+
+<p>In addition, you will get the NDVI (i.e., we call them at Leaf as <code class="language-plaintext highlighter-rouge">NDVI_relative.png</code>, <code class="language-plaintext highlighter-rouge">NDVI_absolute.png</code> and <code class="language-plaintext highlighter-rouge">NDVI.png</code>)  cut for your area of interest. The NDVI relative uses the minimum and maximum of the image of that date and, therefore, you would have a color scale to better visualize the differences of your harvest for that specific moment, whereas, the NDVI absolute and NDVI, whose range goes from <code class="language-plaintext highlighter-rouge">-1 </code>to <code class="language-plaintext highlighter-rouge">1</code>, you can make comparisons on different dates, the difference between these files are the color ramp applied (i.e., in the NDVI all the values below <code class="language-plaintext highlighter-rouge">0</code> are bright red while in the NDVI absolute the color ramp begins at <code class="language-plaintext highlighter-rouge">-1</code> as the bright red and the value <code class="language-plaintext highlighter-rouge">1</code> as the bright green inteporlated in between). Same for NDRE.</p>
+
+<p>&lt;img alt=”NDVI example: Left - NDVI relative, Center - NDVI absolute, Right - NDVI” src={useBaseUrl(‘img/ndvi_files.png’)} /&gt;</p>
+
+<p>Left - NDVI relative. Center - NDVI absolute. Right - NDVI.<br />
+We recommend using the Right one (just ndvi.png)</p>
+
+<h2 id="clouds">Clouds</h2>
+
+<p>We use the cloud mask provided by Sentinel-2 to calculate the clouds coverage percentage.</p>
+
+<p>See the <a href="crop_monitoring_endpoints.md">Crop Monitoring API Reference</a> for more information.</p>
+

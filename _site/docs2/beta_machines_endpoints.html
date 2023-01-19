@@ -1,0 +1,663 @@
+<p>import Tabs from ‘@theme/Tabs’;
+import TabItem from ‘@theme/TabItem’;
+import useBaseUrl from ‘@docusaurus/useBaseUrl’;</p>
+
+<!-- the following links are referenced throughout this document -->
+<h2 id="about">About</h2>
+<p>All HTTP methods should be prepended by this service’s endpoint:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.withleaf.io/services/beta/api
+</code></pre></div></div>
+
+<p>See below the REST resources and their endpoints available in this service.</p>
+
+<h2 id="machines-beta">Machines (BETA)</h2>
+
+<h3 id="machine-resources">Machine Resources</h3>
+
+<p>This feature has the following endpoints available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-machines">Get all machines</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/machines</code></td>
+    </tr>
+    <tr>
+      <td><a href="#create-a-machine">Create a machine</a></td>
+      <td><span class="badge badge--success">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/machines</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-machine">Get a machine</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/machines/{machineId}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-machine-files">Get machine files</a></td>
+      <td><span class="badge badge--success">PATCH</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/machines/{machineId}/files</code></td>
+    </tr>
+    <tr>
+      <td><a href="#delete-a-machine">Delete a machine</a></td>
+      <td><span class="badge badge--success">DELETE</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/machines/{machineId}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#update-a-machine">Update a machine</a></td>
+      <td><span class="badge badge--success">PATCH</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/machines/{machineId}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="get-all-machines">Get all machines</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span>  <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/machines</code></p>
+
+<p>Get the list of machines that are related to a given LeafUserId. Some fields can be sent as query parameters to filter the machines, such as:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter (to filter by)</th>
+      <th>Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">provider</code></td>
+      <td>text (JohnDeere, CaseIH, Stara, etc)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">providerOrganizationId</code></td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">serialNumber</code></td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">originType</code></td>
+      <td>specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">createdTime</code></td>
+      <td>must match exactly the time of the record creation, ISO 8601 without timezone</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">beforeCreatedTime</code></td>
+      <td>filters for records created before the datetime, ISO 8601 without timezone</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">afterCreatedTime</code></td>
+      <td>filters for records created after the datetime, ISO 8601 without timezone</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">vin</code></td>
+      <td>filters machines by Vehicle Identification Number</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can also pass some parameters used exclusively for paging through results.
+They are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched (default is 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (max is 100)</li>
+  <li><code class="language-plaintext highlighter-rouge">sort</code>, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as <code class="language-plaintext highlighter-rouge">asc</code> or <code class="language-plaintext highlighter-rouge">desc</code> with <code class="language-plaintext highlighter-rouge">asc</code> being the default. Example: id,desc
+    <ul>
+      <li>Valid values for sorting are: id, leafUserId, name, provider, providerOrganizationId, providerMachineId, serialNumber, vin, model, make, category</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For more request examples see <a href="https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection">Leaf Postman collection</a></p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response">Response</h4>
+
+<p>The response is a JSON array containing machine records.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerMachineId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROVIDER_POOLED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-22T20:06:25.411Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890ABC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ModelName"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MakerOfMachine"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sprayer"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"modelYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerMachineId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"originType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FILE_POOLED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-22T20:06:25.411Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890ABC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ModelName"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MakerOfMachine"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harvester"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"modelYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2020</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="create-a-machine">Create a machine</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">POST</span>  <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/machines</code></p>
+
+<p>Creates a machine for a specific LeafUser.</p>
+
+<h4 id="request-body">Request body</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    name: "str"
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str"
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str"}' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-1">Response</h4>
+<p>A new machine is assigned to the given LeafUserId.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerMachineId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-a-machine">Get a machine</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span>  <code class="language-plaintext highlighter-rouge">/api/users/{leafUserId}/machines/{machineId}</code></p>
+
+<p>Get the details of a given machine by its id.</p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  ```
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-2">Response</h4>
+<p>A machine record with more details.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerMachineId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROVIDER_POOLED"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-22T20:06:25.411Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890ABC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ModelName"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MakerOfMachine"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sprayer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"modelYear"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-machine-files">Get machine files</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span>  <code class="language-plaintext highlighter-rouge">/api/users/{leafUserId}/machines/{machineId}/files</code></p>
+
+<p>Get the details of machine operations files given a machine id. Some fields can be sent as query parameters to filter the machine files, such as:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter (to filter by)</th>
+      <th>Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">leafFileId</code></td>
+      <td>UUID</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">originType</code></td>
+      <td>specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">createdTime</code></td>
+      <td>an ISO 8601 without timezone specifying the operation exact created time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">beforeCreatedTime</code></td>
+      <td>filters for records created before the datetime, ISO 8601 without timezone</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">afterCreatedTime</code></td>
+      <td>filters for records created after the datetime, ISO 8601 without timezone</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">startTime</code></td>
+      <td>must match exactly the time of the start of the operation, ISO 8601 without timezone</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">endTime</code></td>
+      <td>must match exactly the time of the end of the operation, ISO 8601 without timezone</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">beforeStartTime</code></td>
+      <td>an ISO 8601 without timezone, returns all operations that started before the specified time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">afterStartTime</code></td>
+      <td>an ISO 8601 without timezone, returns all operations that started after the specified time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">beforeEndTime</code></td>
+      <td>an ISO 8601 without timezone, returns all operations that ended before the specified time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">afterEndTime</code></td>
+      <td>an ISO 8601 without timezone, returns all operations that ended after the specified time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">distanceValue</code></td>
+      <td>a double value for the distance</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">greaterThanDistanceValue</code></td>
+      <td>a double value for the distance, returns all operations that have a distance value greater than the specified distance</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lessThanDistanceValue</code></td>
+      <td>a double value for the distance, returns all operations that have a distance value lesser than the specified distance</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">distanceUnit</code></td>
+      <td>must be “Mile”, “mile”, “Feet” or “ft”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can also pass some parameters used exclusively for paging through results.
+They are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched (default is 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (max is 100)</li>
+  <li><code class="language-plaintext highlighter-rouge">sort</code>, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as <code class="language-plaintext highlighter-rouge">asc</code> or <code class="language-plaintext highlighter-rouge">desc</code> with <code class="language-plaintext highlighter-rouge">asc</code> being the default. Example: id,desc
+    <ul>
+      <li>Valid values for sorting are: id, leafUserId, machineId, startTime, endTime, createdTime, leafFileId</li>
+    </ul>
+  </li>
+</ul>
+
+<p>For more request examples see <a href="https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection">Leaf Postman collection</a></p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}/files'
+  ```
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-3">Response</h4>
+<p>A json array containing the machine operations files details.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafFileId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"machineId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YYYY-mm-ddThh:mm:ssZ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YYYY-mm-ddThh:mm:ssZ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="err">float</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ft"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"fuelConsumption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="err">float</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US gal"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafFileId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"machineId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YYYY-mm-ddThh:mm:ssZ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YYYY-mm-ddThh:mm:ssZ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="err">float</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ft"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"fuelConsumption"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="err">float</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US gal"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="delete-a-machine">Delete a machine</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">DELETE</span>  <code class="language-plaintext highlighter-rouge">/api/users/{leafUserId}/machines/{machineId}</code></p>
+
+<p>Delete a machine data</p>
+
+<p>:::info Only machines created by the user can be Deleted
+Machine data obtained from providers cannot be deleted
+:::</p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  ```
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h3 id="update-a-machine">Update a machine</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">PATCH</span>  <code class="language-plaintext highlighter-rouge">/api/users/{leafUserId}/machines/{machineId}</code></p>
+
+<p>Update a machine for a specific LeafUser.</p>
+
+<p>:::info Only machines created by the user can be updated
+Machine data obtained from providers cannot be updated
+:::</p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    name: "str"
+  }
+
+  axios.patch(endpoint, data, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'str"
+  }
+
+  response = requests.patch(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X PATCH \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "str"}' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/machines/{machineId}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+

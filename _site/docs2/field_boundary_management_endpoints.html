@@ -1,0 +1,2602 @@
+<p>import Tabs from ‘@theme/Tabs’;
+import TabItem from ‘@theme/TabItem’;
+import useBaseUrl from ‘@docusaurus/useBaseUrl’;</p>
+
+<h2 id="about">About</h2>
+<p>Here we list all the available endpoints from Fields API. For easily
+calling them, we recommend using <a href="https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection">Leaf’s Postman collection</a>.</p>
+
+<p>All HTTP methods should be prepended by this service’s endpoint:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.withleaf.io/services/fields/api
+</code></pre></div></div>
+
+<p>There is a <a href="#rest-resources">REST resources</a> section if you want to check it out.</p>
+
+<p>This service has the following endpoints available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-fields">Get all fields</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/fields</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-field">Get a field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#create-a-field">Create a field</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields</code></td>
+    </tr>
+    <tr>
+      <td><a href="#update-a-field">Update a field</a></td>
+      <td><span class="badge badge--warning">PATCH</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-all-operation-files-of-a-field-deprecated">Get all operation files of a field (deprecated)</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-all-operation-files-of-a-field">Get all operation files of a field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/files</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-an-operation-file-of-a-field-deprecated">Get an operation file of a field (deprecated)</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/{fileId}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-an-operation-file-of-a-field">Get an operation file of a field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-fields-by-geometry-deprecated">Get fields by geometry (deprecated)</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/fields/query/intersects</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-fields-by-geometry">Get fields by geometry</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/intersects</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-intersection-of-fields">Get intersection of fields</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/intersect</code></td>
+    </tr>
+    <tr>
+      <td><a href="#delete-a-field">Delete a field</a></td>
+      <td><span class="badge badge--danger">DELETE</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-all-boundaries-from-field">Get all boundaries from field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">users/{leafUserId}/fields/{fieldId}/boundaries</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-boundary-from-field">Get a boundary from field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-active-boundary-from-field">Get active boundary from field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">users/{leafUserId}/fields/{fieldId}/boundary</code></td>
+    </tr>
+    <tr>
+      <td><a href="#update-active-boundary-from-field">Update active boundary from field</a></td>
+      <td><span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">users/{leafUserId}/fields/{fieldId}/boundary</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-all-farms">Get all farms</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/farms</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-farm">Get a farm</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{id}/farms/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#create-a-farm">Create a farm</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/farms</code></td>
+    </tr>
+    <tr>
+      <td><a href="#update-a-farm">Update a farm</a></td>
+      <td><span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/farms/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-all-growers">Get all growers</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/growers</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-grower">Get a grower</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/growers/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#create-a-grower">Create a grower</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/growers</code></td>
+    </tr>
+    <tr>
+      <td><a href="#update-a-grower">Update a grower</a></td>
+      <td><span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/growers/{id}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="endpoints">Endpoints</h2>
+
+<h2 id="fields">Fields</h2>
+<h3 id="get-all-fields">Get all fields</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/fields</code></p>
+
+<p>Gets a paged list of Fields. It is possible to filter the results by passing
+some query parameters.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">type</code>, only matches fields with this type (string).</li>
+  <li><code class="language-plaintext highlighter-rouge">farmId</code>, only matches fields from this farmId (integer).</li>
+  <li><code class="language-plaintext highlighter-rouge">provider</code>, only matches fields from this provider (string).</li>
+  <li><code class="language-plaintext highlighter-rouge">leafUserId</code>, only matches fields from this user (string).</li>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched.</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (defaults to 20).</li>
+</ul>
+
+<p>These last two parameters are used exclusively for paging through results.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/fields'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/fields'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/fields'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response">Response</h4>
+<p>A JSON array containing Fields.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1a952614-3673-4d1e-b677-1f7224339ec6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"58800d61-91ac-4922-8e2a-f0216b9f052a"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">785229.21674535141</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ha"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"boundaries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"279b52d5-ec6d-4459-a06a-4f47ffab0659"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDeere"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerFieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b96ed268-728f-489e-b928-9d3e70082be4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerBoundaryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"125fc49f-7e75-43fe-89f2-af976addb392"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"providerFieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The_Field_field"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"428214"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORIGINAL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-20T21:21:24.732030Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-03T01:34:15.154051Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"farmId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3746117</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mergedFieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f97c5bbc-2dbf-4400-8d59-39eba37f8847"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"legacy"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-a-field">Get a field</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/{id}</code></p>
+
+<p>Gets a single Field by its id.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-1">Response</h4>
+<p>A single <a href="#field-resource">Field</a> as a JSON object.</p>
+
+<h3 id="create-a-field">Create a field</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields</code></p>
+
+<p>Creates a Field for the user <code class="language-plaintext highlighter-rouge">leafUserId</code>. A request body must be provided
+containing the entry <code class="language-plaintext highlighter-rouge">"geometry"</code> object which need to have the properties <code class="language-plaintext highlighter-rouge">"type"</code> and <code class="language-plaintext highlighter-rouge">"coordinates"</code>. 
+The geometry represents the boundaries of the Field being created as a GeoJSON geometry 
+(<code class="language-plaintext highlighter-rouge">"type"</code> property must be a <code class="language-plaintext highlighter-rouge">"MultiPolygon"</code>).</p>
+
+<p>Consider that you can also set the <code class="language-plaintext highlighter-rouge">id</code> and <code class="language-plaintext highlighter-rouge">name</code> properties (both of them optional) in the request body. If no <code class="language-plaintext highlighter-rouge">id</code> is provided
+an UUID will be generated and this property <strong>can not</strong> be updated.</p>
+
+<p>Request body example:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">optional</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">optional</span><span class="w">
+  </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327980518</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77137549568163</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48817333680519</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77143534378164</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327390516</span><span class="p">,</span><span class="w"> </span><span class="mf">41.76068857977987</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327980518</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77137549568163</span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can try some requests on the create fields API using the examples below.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [...]
+    }
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [...]
+    }
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-2">Response</h4>
+
+<p>You can expect a response with a JSON Object containing the following properties.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="err">float</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ha"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"boundaries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"UUID"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"timestamp"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"timestamp"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="update-a-field">Update a Field</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">PATCH</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{id}</code></p>
+
+<p>Update the Field by <code class="language-plaintext highlighter-rouge">"id"</code> for the user <code class="language-plaintext highlighter-rouge">"leafUserId"</code>. The request body accepts updatable field properties like <code class="language-plaintext highlighter-rouge">"name"</code> to update the field name, <code class="language-plaintext highlighter-rouge">"farmId"</code> to update the related Farm of the Field and <code class="language-plaintext highlighter-rouge">"geometry"</code>, which represents the boundaries of the
+Field as a GeoJSON geometry (it must be a <code class="language-plaintext highlighter-rouge">"MultiPolygon"</code>).</p>
+
+<p>Request body example:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updatedName"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"farmId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327980518</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77137549568163</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48817333680519</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77143534378164</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327390516</span><span class="p">,</span><span class="w"> </span><span class="mf">41.76068857977987</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327980518</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77137549568163</span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    name: "updatedName",
+    farmId: 1,
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [
+        [-93.48821327980518, 41.77137549568163],
+        [-93.48817333680519, 41.77143534378164],
+        [-93.48821327390516, 41.76068857977987],
+        [-93.48821327980518, 41.77137549568163]
+      ]
+    }
+  }
+
+  axios.patch(endpoint, { headers, data })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'updatedName',
+    'farmId': 1,
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [
+        [-93.48821327980518, 41.77137549568163],
+        [-93.48817333680519, 41.77143534378164],
+        [-93.48821327390516, 41.76068857977987],
+        [-93.48821327980518, 41.77137549568163]
+      ]
+    }
+  }
+
+  response = requests.patch(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X PATCH \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "updatedName", "farmId": 1, "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
+      'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-3">Response</h4>
+<p>A <a href="#field-resource">Field</a> as a JSON object.</p>
+
+<h3 id="get-all-operation-files-of-a-field-deprecated">Get all operation files of a field (deprecated)</h3>
+
+<p>Use <a href="#get-all-operation-files-of-a-field">this endpoint</a> instead</p>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations</code></p>
+
+<p>Gets a paged list of all operation files of the Field and Leaf User specified in
+the URL.</p>
+
+<p>It is possible to filter the results by passing some query
+parameters. They are listed below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter (to filter by)</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>operationType</td>
+      <td>String “harvested”, “planted”, “applied” or “other”</td>
+      <td>retrieve operations of given type</td>
+    </tr>
+    <tr>
+      <td>provider</td>
+      <td>String “CNHI”, “JohnDeere”, “Trimble” or “ClimateFieldView”</td>
+      <td>retrieve operations of given provider</td>
+    </tr>
+    <tr>
+      <td>origin</td>
+      <td>String “provider”, “automerged”, “merged” or “uploaded”</td>
+      <td>retrieve operations of given origin</td>
+    </tr>
+    <tr>
+      <td>crop</td>
+      <td>String name of the crop, like “corn” or “soybeans”. Entire crop list available <a href="crops.md">here</a></td>
+      <td>retrieve operations with this crop.</td>
+    </tr>
+    <tr>
+      <td>startTime</td>
+      <td>ISO 8601 datetime format</td>
+      <td>retrieve operations that started after this date</td>
+    </tr>
+    <tr>
+      <td>endTime</td>
+      <td>ISO 8601 datetime format</td>
+      <td>retrieve operations that ended before this date</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can also pass some parameters used exclusively for paging through results.
+They are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched (default is 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (default is 20, max is 100)</li>
+</ul>
+
+<h4 id="request">Request</h4>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-4">Response</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"crops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-11T13:11:57.994Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"operationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"automerged"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerFileId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-11T13:11:57.994Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"varieties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-all-operation-files-of-a-field">Get all operation files of a field</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/files</code></p>
+
+<p>Gets a paged list of all operation files of the Field and Leaf User specified in
+the URL.</p>
+
+<p>It is possible to filter the results by passing some query
+parameters. They are listed below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter (to filter by)</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>operationType</td>
+      <td>String “harvested”, “planted”, “applied” or “other”</td>
+      <td>retrieve operations of given type</td>
+    </tr>
+    <tr>
+      <td>provider</td>
+      <td>String “CNHI”, “JohnDeere”, “Trimble” or “ClimateFieldView”</td>
+      <td>retrieve operations of given provider</td>
+    </tr>
+    <tr>
+      <td>origin</td>
+      <td>String “provider”, “automerged”, “merged” or “uploaded”</td>
+      <td>retrieve operations of given origin</td>
+    </tr>
+    <tr>
+      <td>crop</td>
+      <td>String name of the crop, like “corn” or “soybeans”. Entire crop list available <a href="crops.md">here</a></td>
+      <td>retrieve operations with this crop.</td>
+    </tr>
+    <tr>
+      <td>startTime</td>
+      <td>ISO 8601 datetime format</td>
+      <td>retrieve operations that started after this date</td>
+    </tr>
+    <tr>
+      <td>endTime</td>
+      <td>ISO 8601 datetime format</td>
+      <td>retrieve operations that ended before this date</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can also pass some parameters used exclusively for paging through results.
+They are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched (default is 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (default is 20, max is 100)</li>
+</ul>
+
+<h4 id="request-1">Request</h4>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-5">Response</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"crops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-11T13:11:57.994Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"operationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"automerged"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerFileId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-11T13:11:57.994Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"varieties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-an-operation-file-of-a-field-deprecated">Get an operation file of a field (deprecated)</h3>
+
+<p>Use <a href="#get-an-operation-file-of-a-field">this endpoint</a> instead</p>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/{fileId}</code></p>
+
+<p>Gets a single Operation File of a field by its id.</p>
+
+<h4 id="request-2">Request</h4>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘JavaScript’, value: ‘js’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘cURL’, value: ‘sh’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-6">Response</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"crops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-11T13:11:57.994Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"operationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"automerged"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerFileId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-11T13:11:57.994Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"varieties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-an-operation-file-of-a-field">Get an operation file of a field</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}</code></p>
+
+<p>Gets a single Operation File of a field by its id.</p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘JavaScript’, value: ‘js’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘cURL’, value: ‘sh’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/files/{id}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-7">Response</h4>
+<p>A single Operation File.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"crops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-11T13:13:01.548Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"operationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"other"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"automerged"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerFileId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-11T13:13:01.548Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"varieties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-fields-by-geometry-deprecated">Get Fields by geometry (deprecated)</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/fields/query/intersects</code></p>
+
+<p>Use <a href="#get-fields-by-geometry">this endpoint</a> instead.</p>
+
+<p>Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
+the request body.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/fields/query/intersects'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [...]
+    }
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/query/intersects'
+  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
+
+  data = {
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [...]
+    }
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
+      'https://api.withleaf.io/services/fields/api/fields/query/intersects'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-8">Response</h4>
+<p>A JSON list of Fields.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.84388470649719</span><span class="p">,</span><span class="mf">39.71943436012731</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.84392762184143</span><span class="p">,</span><span class="mf">39.72439389620628</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.83936786651611</span><span class="p">,</span><span class="mf">39.725392361998416</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.83928203582764</span><span class="p">,</span><span class="mf">39.71951688444436</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.84388470649719</span><span class="p">,</span><span class="mf">39.71943436012731</span><span class="p">]</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MERGED"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-fields-by-geometry">Get Fields by geometry</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/intersects</code></p>
+
+<p>Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
+the request body. The minimum intersection percentage is given by 
+<code class="language-plaintext highlighter-rouge">intersectionThreshold</code> and can range from 0.01% to 100%, its default value is <code class="language-plaintext highlighter-rouge">0.01</code>.</p>
+
+<p align="center">
+  &lt;img alt="How it works" width="75%" src={useBaseUrl('img/field_by_geometry.png')} /&gt;
+</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">intersectionThreshold</code> can be compared with the “intersection by field” ratio or the “intersection by geometry” ratio. Whichever is satisfied first.</p>
+
+<p>Here we have a sample for a field with 100 area unit and a geometry with 10 area unit:</p>
+
+<p align="center">
+  &lt;img alt="How it works" width="35%" src={useBaseUrl('img/field_by_geometry_intersectionThreshold.png')} /&gt;
+</p>
+
+<p>So, in this case, if the <code class="language-plaintext highlighter-rouge">intersectionThreshold</code> were 3, then the condition would be satisfied and the field would be returned, but if the value was greater than 50, then it would not satisfy the condition, as 50% is the highest intersection value:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>intersectionThreshold (%)</th>
+      <th>satisfied</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>❌</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>❌</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/intersects'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [...]
+    },
+    'intersectionThreshold': 25.7
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/intersects'
+  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
+
+  data = {
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [...]
+    },
+    'intersectionThreshold': 25.7
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] }, "intersectionThreshold": 25.7 }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/intersects'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-9">Response</h4>
+<p>A JSON list of Fields.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.84388470649719</span><span class="p">,</span><span class="mf">39.71943436012731</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.84392762184143</span><span class="p">,</span><span class="mf">39.72439389620628</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.83936786651611</span><span class="p">,</span><span class="mf">39.725392361998416</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.83928203582764</span><span class="p">,</span><span class="mf">39.71951688444436</span><span class="p">],</span><span class="w">
+              </span><span class="p">[</span><span class="mf">-89.84388470649719</span><span class="p">,</span><span class="mf">39.71943436012731</span><span class="p">]</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MERGED"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-intersection-of-fields">Get intersection of fields</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/intersect</code></p>
+
+<p>Gets a GeoJSON MultiPolygon corresponding to the intersection of the Fields
+specified by the given id’s. Such Field id’s goes in a list, in the request
+body.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  var axios = require('axios');
+  var data = JSON.stringify(["id1","id2"]);
+
+  var config = {
+    method: 'post',
+    url: 'https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect',
+    headers: {
+      'Authorization': 'Bearer YOUR_LEAF_TOKEN',
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+
+  ```py
+  import requests
+
+  url = "https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect"
+
+  payload = "[\"id1\", \"id2\"]"
+  headers = {
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN',
+    'Content-Type': 'application/json'
+  }
+
+  response = requests.request("POST", url, headers=headers, data = payload)
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl --location --request \
+  POST 'https://api.withleaf.io/services/fields/api/users/{id}/fields/intersect' \
+  --header 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data-raw '["id1", "id2"]'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-10">Response</h4>
+<p>A JSON in the format of a GeoJSON geometry.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+              </span><span class="p">[</span><span class="w">
+                  </span><span class="p">[</span><span class="mf">-89.84388470649719</span><span class="p">,</span><span class="mf">39.71943436012731</span><span class="p">],</span><span class="w">
+                  </span><span class="p">[</span><span class="mf">-89.84392762184143</span><span class="p">,</span><span class="mf">39.72439389620628</span><span class="p">],</span><span class="w">
+                  </span><span class="p">[</span><span class="mf">-89.83936786651611</span><span class="p">,</span><span class="mf">39.725392361998416</span><span class="p">],</span><span class="w">
+                  </span><span class="p">[</span><span class="mf">-89.83928203582764</span><span class="p">,</span><span class="mf">39.71951688444436</span><span class="p">],</span><span class="w">
+                  </span><span class="p">[</span><span class="mf">-89.84388470649719</span><span class="p">,</span><span class="mf">39.71943436012731</span><span class="p">]</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<!-- ### POST /users/{id}/fields/same` --
+<!-- response needs to be a json, not documenting for now -->
+<!-- Gets a boolean value answering if the Fields specified by a list of Field
+id's sent in the request body have the same values for their vertices, in
+exactly the same order. -->
+
+<!-- ### POST /users/{id}/fields/disjoint` --
+<!-- response needs to be a json, not documenting for now -->
+<!-- Gets a boolean value answering if the fields specified by a list of field
+id's in the request body are disjoint.
+
+#### Response
+true or false
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  var axios = require('axios');
+  var data = JSON.stringify(["id1","id2"]);
+
+  var config = {
+    method: 'post',
+    url: 'https://api.withleaf.io/services/fields/api/users/{id}/fields/disjoint',
+    headers: {
+      'Authorization': 'Bearer YOUR_LEAF_TOKEN',
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+
+  ```py
+  import requests
+
+  url = "https://api.withleaf.io/services/fields/api/users/{id}/fields/disjoint"
+
+  payload = "[\"id1\", \"id2\"]\n"
+  headers = {
+    'Authorization': 'Bearer YOUR_LEAF_TOKEN',
+    'Content-Type': 'application/json'
+  }
+
+  response = requests.request("POST", url, headers=headers, data = payload)
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl --location --request \
+  POST 'https://api.withleaf.io/services/fields/api/users/{id}/fields/disjoint' \
+  --header 'Authorization: Bearer YOUR_LEAF_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data-raw '["id1", "id2"]'
+  ```
+
+  </TabItem>
+</Tabs> -->
+
+<!-- ### POST /users/{id}/fields/integration
+Uploads fields to providers. Currently we only support Climate FieldView.
+New integrations will come soon.
+
+Request body format:
+
+```json
+{
+  "fields": ["UUID"],
+  "providers": ["ClimateFieldView"]
+}
+```
+
+#### Response
+A JSON in the followin format.
+
+```json
+{
+  "UUID": {
+    "ClimateFieldView": {
+      "id": "0cb726c8-aff0-415a-9de3-a04b627008dd"
+    },
+  },
+}
+``` -->
+
+<h3 id="delete-a-field">Delete a field</h3>
+
+<p>&amp;nbsp<span class="badge badge--danger">DELETE</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/{id}</code></p>
+
+<p>Deletes the field with the given id.</p>
+
+<p>:::tip
+Fields created by a provider cannot be deleted on Leaf side.
+:::</p>
+
+<h2 id="boundaries">Boundaries</h2>
+<h3 id="get-all-boundaries-from-field">Get all boundaries from field</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/boundaries</code></p>
+
+<p>Gets a list of boundaries from a field.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/boundaries'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/boundaries'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/boundaries'
+  ```
+
+  </TabItem>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;TabItem value="res"&gt;
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90060545-d448-493a-965f-625a17916067"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">[</span><span class="w">
+                      </span><span class="p">[</span><span class="w">
+                          </span><span class="p">[</span><span class="w">
+                              </span><span class="mf">-89.84392762184143</span><span class="p">,</span><span class="w">
+                              </span><span class="mf">39.72439389620628</span><span class="w">
+                          </span><span class="p">],</span><span class="w">
+                          </span><span class="p">[</span><span class="w">
+                              </span><span class="mf">-89.84388470649719</span><span class="p">,</span><span class="w">
+                              </span><span class="mf">39.71943436012731</span><span class="w">
+                          </span><span class="p">],</span><span class="w">
+                          </span><span class="p">[</span><span class="w">
+                              </span><span class="mf">-89.83928203582764</span><span class="p">,</span><span class="w">
+                              </span><span class="mf">39.71951688444436</span><span class="w">
+                          </span><span class="p">],</span><span class="w">
+                          </span><span class="p">[</span><span class="w">
+                              </span><span class="mf">-89.83936786651611</span><span class="p">,</span><span class="w">
+                              </span><span class="mf">39.725392361998416</span><span class="w">
+                          </span><span class="p">],</span><span class="w">
+                          </span><span class="p">[</span><span class="w">
+                              </span><span class="mf">-89.84392762184143</span><span class="p">,</span><span class="w">
+                              </span><span class="mf">39.72439389620628</span><span class="w">
+                          </span><span class="p">]</span><span class="w">
+                      </span><span class="p">]</span><span class="w">
+                  </span><span class="p">]</span><span class="w">
+              </span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.659422807502747</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ha"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+<p>&lt;/TabItem&gt;
+&lt;/Tabs&gt;</p>
+
+<h4 id="response-11">Response</h4>
+<p>A list of <a href="#boundary-resource">Boundary</a> as a JSON object.</p>
+
+<h3 id="get-a-boundary-from-field">Get a boundary from field</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}</code></p>
+
+<p>Gets a single Boundary from a field by its id.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-12">Response</h4>
+<p>A single <a href="#boundary-resource">Boundary</a> as a JSON object.</p>
+
+<h3 id="get-active-boundary-from-field">Get active boundary from field</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/boundary</code></p>
+
+<p>Gets the active Boundary from a field.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-13">Response</h4>
+<p>A single <a href="#boundary-resource">Boundary</a> as a JSON object.</p>
+
+<h3 id="update-active-boundary-from-field">Update active boundary from field</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/boundary</code></p>
+
+<p>Updates the active boundary of field <code class="language-plaintext highlighter-rouge">fieldId</code>. The previous active boundary is not deleted, but set as inactive.</p>
+
+<p>Request body example:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327980518</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77137549568163</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48817333680519</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77143534378164</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327390516</span><span class="p">,</span><span class="w"> </span><span class="mf">41.76068857977987</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327980518</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77137549568163</span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    geometry: {
+      type: "MultiPolygon",
+      coordinates: [...]
+    }
+  }
+
+  axios.put(endpoint, data, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'geometry': {
+      'type': "MultiPolygon",
+      'coordinates': [...]
+    }
+  }
+
+  response = requests.put(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/boundary'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-14">Response</h4>
+<p>A <a href="#field-resource">Field</a> as a JSON object.</p>
+
+<h2 id="farms">Farms</h2>
+<h3 id="get-all-farms">Get all farms</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/farms</code></p>
+
+<p>Gets a paged list of all farms. It is possible to pass some query parameters.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">growerId</code>, only matches Farms from this growerId (integer)</li>
+  <li><code class="language-plaintext highlighter-rouge">provider</code>, only matches Farms from this provider (string)</li>
+  <li><code class="language-plaintext highlighter-rouge">leafUserId</code>, only matches Farms from this Leaf User (UUID)</li>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (defaults to 20)</li>
+</ul>
+
+<p>The parameters are used exclusively for paging through results.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/farms'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/farms'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/farms'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-15">Response</h4>
+<p>A JSON array containing farms.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1538766</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDeere"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"providerFarmId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fieldIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"growerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-a-farm">Get a farm</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/farms/{id}</code></p>
+
+<p>Gets a single farm by its <code class="language-plaintext highlighter-rouge">id</code> from the user <code class="language-plaintext highlighter-rouge">leafUserId</code>.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-16">Response</h4>
+<p>A single <a href="#farm-resource">Farm</a> as a JSON object.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1551010</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDeere"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerFarmId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fieldIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"00000000-0000-0000-0000-000000000000"</span><span class="p">],</span><span class="w">
+    </span><span class="nl">"growerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="create-a-farm">Create a farm</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/farms</code></p>
+
+<p>Creates a farm for the user <code class="language-plaintext highlighter-rouge">leafUserId</code>. It’s possible to pass both the <code class="language-plaintext highlighter-rouge">farmName</code> and the <code class="language-plaintext highlighter-rouge">growerId</code> on the body of 
+the request.</p>
+
+<p>Request body example:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Farm 01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"growerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, }
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    name: 'farmName',
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'farmName',
+  }
+
+  response = requests.post(endpoint, json=data, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "farmName" }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-17">Response</h4>
+<p>A single <a href="#farm-resource">Farm</a> as a JSON object.</p>
+
+<h3 id="update-a-farm">Update a farm</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/farms/{id}</code></p>
+
+<p>Updates the farm with id <code class="language-plaintext highlighter-rouge">id</code> for the user <code class="language-plaintext highlighter-rouge">leafUserId</code>. It’s possible to pass both the <code class="language-plaintext highlighter-rouge">farmName</code> and the <code class="language-plaintext highlighter-rouge">growerId</code>
+on the body of the request.</p>
+
+<p>Request body example:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Farm Name"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"growerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, }
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    name: 'newFarmName'
+  }
+
+  axios.put(endpoint, data, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'newFarmName'
+  }
+
+  response = requests.put(endpoint, json=data, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "newFarmName", "growerId": "newGrowerId }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/farms/{id}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-18">Response</h4>
+<p>A single <a href="#farm-resource">Farm</a> as a JSON object.</p>
+
+<h2 id="grower">Grower</h2>
+<h3 id="get-all-growers">Get all growers</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/growers</code></p>
+
+<p>Gets a paged list of all growers. Use the following parameters for paging
+through results.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">provider</code>, only matches Growers from this provider (string)</li>
+  <li><code class="language-plaintext highlighter-rouge">leafUserId</code>, only matches Growers from this Leaf User (UUID)</li>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (defaults to 20)</li>
+</ul>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/growers'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/growers'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/growers'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-19">Response</h4>
+<p>A JSON array containing growers.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"providerOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"providerCompanyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"providerUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"providerGrowerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"farmIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">4534</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-a-grower">Get a grower</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/growers/{id}</code></p>
+
+<p>Gets a single grower by its <code class="language-plaintext highlighter-rouge">id</code> from the user <code class="language-plaintext highlighter-rouge">leafUserId</code>.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserID}/growers/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserID}/growers/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-20">Response</h4>
+<p>A single <a href="#grower-resource">Grower</a> as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
+attribute <code class="language-plaintext highlighter-rouge">name</code> comes directly from the Client’s name for growers with John Deere as provider.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerCompanyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerGrowerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"farmIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">4534</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="create-a-grower">Create a grower</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/growers</code></p>
+
+<p>Creates a grower for the user <code class="language-plaintext highlighter-rouge">leafUserId</code>. It’s possible to pass <code class="language-plaintext highlighter-rouge">name</code> on the body of the request.</p>
+
+<p>Request body example:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Grower Name"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, }
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    name: 'growerName'
+  }
+
+  axios.post(endpoint, data, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'growerName'
+  }
+
+  response = requests.post(endpoint, json=data, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "growerName" }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-21">Response</h4>
+<p>A single <a href="#grower-resource">Grower</a> as a JSON object.</p>
+
+<h3 id="update-a-grower">Update a grower</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/growers/{id}</code></p>
+
+<p>Updates the grower with id <code class="language-plaintext highlighter-rouge">id</code> for the user <code class="language-plaintext highlighter-rouge">leafUserId</code>. It’s possible to pass only the <code class="language-plaintext highlighter-rouge">name</code> on the body of the request.</p>
+
+<p>Request body example:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Grower Name"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, }
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    name: 'newGrowerName'
+  }
+
+  axios.put(endpoint, data, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'name': 'newGrowerName'
+  }
+
+  response = requests.put(endpoint, json=data, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "newGrowerName"}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/growers/{id}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-22">Response</h4>
+<p>A single <a href="#grower-resource">Grower</a> as a JSON object.</p>
+
+<h2 id="rest-resources">REST Resources</h2>
+
+<p>See below the REST resources and their endpoints.</p>
+
+<h3 id="field-resource">Field Resource</h3>
+
+<p>A field might have one or neither of the following keys:</p>
+<ul>
+  <li>a “mergedFieldId” key or</li>
+  <li>a “sources” key</li>
+</ul>
+
+<p>A Field will only have one of the previous keys if it is either a field that 
+has been merged with other one(s) or if it is a result of a merge. Leaf merges
+fields that have any sort of overlap. This makes it easier for you to query 
+operations from a field by querying by the merged field. Because a field might 
+exist in multiple providers, Leaf detects that and creates a single field that 
+you can query for - and you can still query by the individual fields too.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">geometry</code> and <code class="language-plaintext highlighter-rouge">area</code> are deprecated keys</strong> that contains the geometry of the active boundary and its area, respectively.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerFieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerFieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerFieldName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerBoundaryId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORIGINAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mergedFieldId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"UUID"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"UUID"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"boundaries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"UUID"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327980518</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77137549568163</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48817333680519</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77143534378164</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327390516</span><span class="p">,</span><span class="w"> </span><span class="mf">41.76068857977987</span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="mf">-93.48821327980518</span><span class="p">,</span><span class="w"> </span><span class="mf">41.77137549568163</span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="err">double</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ha"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-fields">Get all fields</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/fields</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-field">Get a field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#create-a-field">Create a field</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-fields-by-geometry">Get fields by geometry</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/fields/query/intersects</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-intersection-of-fields">Get intersection of fields</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/intersect</code></td>
+    </tr>
+    <tr>
+      <td><a href="#delete-a-field">Delete a field</a></td>
+      <td><span class="badge badge--danger">DELETE</span> <code class="language-plaintext highlighter-rouge">/users/{id}/fields/{id}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="boundary-resource">Boundary Resource</h3>
+
+<p>Every Field at Leaf can have 0 or many boundaries. Fields created via Leaf’s endpoints must have at least one boundary. Only one boundary may be active, the others are inactive boundaries. Boundaries cannot be deleted or have its geometry updated. Every update generates a new Boundary, and Leaf keeps a history of all seen Boundaries.</p>
+
+<p>Each boundary has a <code class="language-plaintext highlighter-rouge">status</code> and <code class="language-plaintext highlighter-rouge">providerStatus</code>.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">status</code> - Represents the current status of the boundary:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ACTIVE</code> - If the boundary was created at Leaf, it is the active boundary. If it is from a provider,
+ this boundary exists at the provider and is the active boundary there.</li>
+      <li><code class="language-plaintext highlighter-rouge">INACTIVE</code> - If the boundary was created at Leaf, it is an inactive boundary. If it is from a provider, this boundary exists at the provider and is inactive there.</li>
+      <li><code class="language-plaintext highlighter-rouge">OUTDATED_ON_PROVIDER</code> - The boundary is from a provider. The boundary once existed on the provider exactly as it is in that boundary, but it was edited (e.g. has a new geometry but the same provider boundary id).</li>
+      <li><code class="language-plaintext highlighter-rouge">DELETED_ON_PROVIDER</code> - The boundary is from a provider. The boundary once existed on the provider, but it was deleted. The user won’t find that boundary in the provider.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">providerStatus</code> - Is the status of the boundary on the provider.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ACTIVE</code> - The boundary is the active boundary in the provider.</li>
+      <li><code class="language-plaintext highlighter-rouge">INACTIVE</code> - The boundary is inactive in the provider.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">providerStatus</code>, just like the geometry, is a static attribute. In case this attribute is changed at the provider, the boundary’s <code class="language-plaintext highlighter-rouge">status</code> is updated and a new boundary is created with the updated <code class="language-plaintext highlighter-rouge">providerStatus</code> in order to maintain history.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"geometry"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MultiPolygon"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="mf">-89.84392762184143</span><span class="p">,</span><span class="w">
+            </span><span class="mf">39.72439389620628</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="mf">-89.84388470649719</span><span class="p">,</span><span class="w">
+            </span><span class="mf">39.71943436012731</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="mf">-89.83928203582764</span><span class="p">,</span><span class="w">
+            </span><span class="mf">39.71951688444436</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="mf">-89.83936786651611</span><span class="p">,</span><span class="w">
+            </span><span class="mf">39.725392361998416</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="p">[</span><span class="w">
+            </span><span class="mf">-89.84392762184143</span><span class="p">,</span><span class="w">
+            </span><span class="mf">39.72439389620628</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="err">double</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ha"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-boundaries-from-field">Get all boundaries from field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">users/{leafUserId}/fields/{fieldId}/boundaries</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-boundary-from-field">Get a boundary from field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-active-boundary-from-field">Get active boundary from field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">users/{leafUserId}/fields/{fieldId}/boundary</code></td>
+    </tr>
+    <tr>
+      <td><a href="#update-active-boundary-from-field">Update active boundary from field</a></td>
+      <td><span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">users/{leafUserId}/fields/{fieldId}/boundary</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="operation-resource">Operation Resource</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"operationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"harvested|planted|applied"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISO date-time"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISO date-time"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"crops"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"str"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"varieties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"str"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"providerFileId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trimble"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provider|merged|automerged|uploaded"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-operation-files-of-a-field-deprecated">Get all operations of a field (deprecated)</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-all-operation-files-of-a-field">Get all operations of a field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/files</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-an-operation-of-a-field-deprecated">Get an operation of a field (deprecated)</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/{fileId}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-an-operation-of-a-field">Get an operation of a field</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="farm-resource">Farm Resource</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerFarmName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerFarmId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"growerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fieldIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"UUID"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-farms">Get all farms</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/farms</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-farm">Get a farm</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{id}/farms/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#create-a-farm">Create a farm</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/farms</code></td>
+    </tr>
+    <tr>
+      <td><a href="#update-a-farm">Update a farm</a></td>
+      <td><span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/farms/{id}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="grower-resource">Grower Resource</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerOrganizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerCompanyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"providerGrowerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"farmIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">4534</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p><em>If there is a name available for the grower so the <code class="language-plaintext highlighter-rouge">name</code> property will be returned as well.</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-growers">Get all growers</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/growers</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-grower">Get a grower</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/growers/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#create-a-grower">Create a grower</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/growers</code></td>
+    </tr>
+    <tr>
+      <td><a href="#update-a-grower">Update a grower</a></td>
+      <td><span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/growers/{id}</code></td>
+    </tr>
+  </tbody>
+</table>
+

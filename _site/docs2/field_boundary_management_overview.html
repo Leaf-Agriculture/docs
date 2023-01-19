@@ -1,0 +1,41 @@
+<p>With Leaf, you can import, export, create, and manage Field Boundaries from all
+major agriculture brands.</p>
+
+<p>We provide a <a href="https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection">quickstart Postman
+collection</a>
+to help you get started.</p>
+
+<p>To make calls to Leaf’s API, you will need a Leaf account. If you don’t have
+one yet, please create your Leaf account and get your token.</p>
+
+<p>You can integrate with many different companies, and you only have to do it once
+per user. To connect, you just choose the company you wish to connect to
+and follow these 3 steps:</p>
+
+<ol>
+  <li>Get the authentication URL of company you want to connect.</li>
+  <li>Get your token and your user’s token.</li>
+  <li>Add credentials to Leaf.</li>
+</ol>
+
+<p>Now you can opt to connect more companies or Create a Leaf User and attach
+these credentials so Leaf can represent your user internally and allow you to
+query for them and their permissioned-data.</p>
+
+<p><strong>All set!</strong></p>
+
+<p>Leaf automatically detects existing fields in each company’s platform. This
+works together with Leaf’s Operations Data. Operations performed in the
+fields will automatically be bound to the fields you create with Field Boundaries.</p>
+
+<p>Leaf uses a Grower/Farm/Field hierarchy to store data. Below please find a
+breakdown of these concepts and how they relate to one another:</p>
+
+<ul>
+  <li>Fields are the central concept of this section. Every Field may have boundaries, which
+are the geometries that defines its borders. A Field can have only one active boundary, that defines its current border.</li>
+  <li>Most Fields are part of a Farm and every Farm can have one or more Fields.</li>
+  <li>Farms can be grouped together under a Grower.</li>
+  <li>A grower (also known as Leaf User) is the data owner entity to which credentials are attached.</li>
+  <li>Files or Operations are the results of operations in a given Field.</li>
+</ul>

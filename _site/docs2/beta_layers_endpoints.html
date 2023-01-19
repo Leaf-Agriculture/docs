@@ -1,0 +1,269 @@
+<p>import Tabs from ‘@theme/Tabs’;
+import TabItem from ‘@theme/TabItem’;
+import useBaseUrl from ‘@docusaurus/useBaseUrl’;</p>
+
+<!-- the following links are referenced throughout this document -->
+<h2 id="about">About</h2>
+<p>All HTTP methods should be prepended by this service’s endpoint:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.withleaf.io/services/beta/api
+</code></pre></div></div>
+
+<p>See below the REST resources and their endpoints available in this service.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-the-layers-for-a-leaf-user">Get all the layers for a Leaf User</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/layers</code></td>
+    </tr>
+    <tr>
+      <td><a href="#upload-a-layer-to-climate-fieldview">Upload a layer to Climate FieldView</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/layers/climateFieldView</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="layers-beta">Layers (BETA)</h2>
+
+<h3 id="get-all-the-layers-for-a-leaf-user">Get all the layers for a Leaf User</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/layers</code></p>
+
+<p>Gets a paged list of layers that belong for a Leaf User. This endpoint point can be filtered by the following layer types. Note that these types are related to Sentera integration, please check the details <a href="https://withleaf.io/en/blog/senteraintegrationwithleaf">here</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter (to filter by)</th>
+      <th>Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type</code></td>
+      <td><code class="language-plaintext highlighter-rouge">TASSEL_COUNT</code>, <code class="language-plaintext highlighter-rouge">STAND_COUNT</code>, <code class="language-plaintext highlighter-rouge">NVDI</code>, and <code class="language-plaintext highlighter-rouge">RGB</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can also pass some parameters used exclusively for paging through results.
+They are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched (default is 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (max is 100)</li>
+</ul>
+
+<p>:::info the default value for page size is 20
+If the parameters page and size are not set, the endpoint will return 20 results.
+:::</p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response">Response</h4>
+<p>A json array of layers available.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96a098e0-f1d0-47e8-968d-9d55d54da114"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"055c4d61-b1e2-4fa9-873c-23433a11c271"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apiOwnerUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fabyan"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RGB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROVIDER_POOLED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sentera"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerLayerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vnoyi6a_FI_edovSouthernM_CV_prod_82f9b3d6_211018_151052"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerFieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ycof8zg_AS_edovSouthernM_CV_prod_a025df2d_211015_200456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QuickTile RGB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">159135298</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7ff746c6f5f06fc25b46420328402bed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contentS3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://layers-leaf-dev.s3.us-east-1.amazonaws.com/96a098e0-f1d0-47e8-968d-9d55d54da114.tif"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-16T21:40:20.257Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafFieldIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"f43ca7cc-c73a-43b9-8685-070b03876475"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"edcf7b8b-913e-4e53-a0b5-91aa16699dfc"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4d9b0139-f528-43ab-8bc9-a31043fa87d2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"055c4d61-b1e2-4fa9-873c-23433a11c271"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apiOwnerUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fabyan"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RGB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROVIDER_POOLED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sentera"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerLayerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;UUID defined by the provider&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"providerFieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;UUID defined by the provider&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QuickTile RGB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">121910506</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"759d1f68962e30ea78f40025c8b64972"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contentS3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://layers-leaf-dev.s3.us-east-1.amazonaws.com/4d9b0139-f528-43ab-8bc9-a31043fa87d2.tif"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-16T21:40:35.341Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafFieldIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"f43ca7cc-c73a-43b9-8685-070b03876475"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"edcf7b8b-913e-4e53-a0b5-91aa16699dfc"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="upload-a-layer-to-climate-fieldview">Upload a layer to Climate FieldView</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/layers/climateFieldView</code></p>
+
+<p>Send a layer file to Climate FieldView.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">uploadType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">RGB</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Currently, only true color image (RGB) files are supported and must meet the following criteria required by Climate:</p>
+<ul>
+  <li>The image needs to be a multi band GeoTIFF with 24-bit composite values (must contain 3 bands in the order Red, Green, Blue)</li>
+  <li>The Coordinate Reference System (CRS) must be UTM with WGS84 datum</li>
+  <li>The following metadata <a href="https://www.awaresystems.be/imaging/tiff/tifftags/geo_metadata.html">(GDAL_METADATA tag)</a> entries are required to be embedded in the GeoTIFF:
+    <ul>
+      <li>acquisitionStartDate - ISO8601 date</li>
+      <li>acquisitionEndDate - ISO8601 date</li>
+      <li>isCalibrated - boolean</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Although Climate FieldView supports files up to 500MB, at this time, we only accept files up to 5MB.</p>
+
+<h4 id="request">Request</h4>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers/climateFieldView'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const params = {
+    uploadType: 'RGB'
+  }
+
+  const form = new FormData()
+  form.append('file', 'rgb.tif')
+
+  axios.post(endpoint, form, { headers, params })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers/climateFieldView'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('rgb.tif', 'rb')}
+  params = {
+    'uploadType': 'RGB'
+  }
+
+  response = requests.post(endpoint, headers=headers, files=files, params=params)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=rgb.tif' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/layers/climateFieldView?' \
+      'uploadType=RGB'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<p>:::info
+Uploaded layers are not stored on Leaf side and are only available for use directly in Climate FieldView
+:::</p>
+

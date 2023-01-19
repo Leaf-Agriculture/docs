@@ -1,0 +1,393 @@
+<p>import Tabs from ‘@theme/Tabs’;
+import TabItem from ‘@theme/TabItem’;
+import useBaseUrl from ‘@docusaurus/useBaseUrl’;</p>
+
+<!-- The following links are referenced throughout this document -->
+
+<p>All HTTP methods should be prepended by this service’s endpoint:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.withleaf.io/services/alerts/api/alerts
+</code></pre></div></div>
+
+<p>This service has the following endpoints available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#create-a-webhook">Create a webhook</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/webhooks</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-webhook">Get a webhook</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/webhooks/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-all-webhooks">Get all webhooks</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/webhooks</code></td>
+    </tr>
+    <tr>
+      <td><a href="#delete-a-webhook">Delete a webhook</a></td>
+      <td><span class="badge badge--danger">DELETE</span> <code class="language-plaintext highlighter-rouge">/webhooks/{id}</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Note that currently it’s not possible to update a Webhook with a single
+request. If you want to update an existing Webhook resource, you have to delete
+it first and then recreate it. In doing so, be aware that if the update changes
+the Webhook URL, it’s recommented that you keep the previous URL up and running
+until you get the response from the recreation request (POST).</p>
+
+<p>For easy testing of these endpoints, we recommend using our Postman <a href="https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection">collection</a>.</p>
+
+<p>To understand how to verify if an incoming request comes from Leaf, see the <a href="alerts_authentication.md">Authentication section</a>.</p>
+
+<hr />
+
+<h3 id="create-a-webhook">Create a webhook</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/webhooks</code></p>
+
+<p>Creates a webhook resource, specifying which events you want to be notified about and
+where (server URL). The webhook will begin receiving
+events immediately after it is created.</p>
+
+<p>It’s not possible to create different webhooks that listen to the same events. For example,
+if you have already registered a webhook listening for <code class="language-plaintext highlighter-rouge">newSatelliteImages</code>
+and try to register another one, you’ll get a 400 response with error <code class="language-plaintext highlighter-rouge">eventRegisteredTwice</code>.</p>
+
+<h4 id="request-body">Request body</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>events</td>
+      <td>enum name of the event type</td>
+      <td>They are defined in the “Events” section of the services chapters (e.g. <code class="language-plaintext highlighter-rouge">newSatelliteImage</code>)</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>string</td>
+      <td>The name of your webhook</td>
+    </tr>
+    <tr>
+      <td>secret</td>
+      <td>string</td>
+      <td>The secret used for HMAC authentication. We sign payload with this secret. See more <a href="alerts_authentication.md">here</a></td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td>a valid HTTP URL string</td>
+      <td>The address of your webhook server</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example in JSON:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"newSatelliteImage"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satellite images listener"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mRyT257XpFWX"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yourwebhook.com/leaf/satellite"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="sample-code">Sample code</h4>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, }
+  ]}</p>
+<blockquote>
+
+</blockquote>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const TOKEN = 'YOUR_TOKEN'
+  const headers = {'Authorization': `Bearer ${TOKEN}`}
+  const endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+
+  const data = { /* Your payload as specified above  */ }
+
+  axios.post(endpoint, {headers, data})
+      .then(response =&gt; console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+  endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+
+  payload = {...}  # Your payload as specified above
+
+  response = requests.post(endpoint, headers=headers, json=payload)
+  print(response.json())
+  ```
+
+  </TabItem>
+
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Content-Type: application/json' \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d 'Your paylaod as specified above'
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+  ```
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response">Response</h4>
+<p>It returns a JSON containing information about the webhook created.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"newSatelliteImage"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satellite images listener"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mRyT257XpFWX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://agtech.com/leaf/satellite"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<hr />
+
+<h3 id="get-a-webhook">Get a webhook</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/webhooks/{id}</code></p>
+
+<p>Retrieve a specific webhook resource by its id.</p>
+
+<h4 id="sample-code-1">Sample code</h4>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, }
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const TOKEN = 'YOUR_TOKEN'
+  const headers = {'Authorization': `Bearer ${TOKEN}`}
+  const id = 'webhook uuid'
+  const endpoint = `https://api.withleaf.io/services/alerts/api/alerts/webhooks/${id}`
+
+  axios.get(endpoint, {headers})
+      .then(response =&gt; console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+  id = 'webhook uuid'
+  endpoint = f'https://api.withleaf.io/services/alerts/api/alerts/webhooks/{id}'
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks/WEBHOOK_UUID'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-1">Response</h4>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"newSatelliteImage"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mRyT257XpFWX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satellite images listener"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://agtech.com/leaf/satellite"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="get-all-webhooks">Get all webhooks</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/webhooks</code></p>
+
+<p>Retrieve all Webhooks.</p>
+
+<h4 id="sample-code-2">Sample code</h4>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, }
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const TOKEN = 'YOUR_TOKEN'
+  const headers = {'Authorization': `Bearer ${TOKEN}`}
+  const endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+
+  axios.get(endpoint, {headers})
+      .then(response =&gt; console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+  endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-2">Response</h4>
+<p>It returns a list of JSON objects.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UUID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"newSatelliteImage"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mRyT257XpFWX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satellite images listener"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://agtech.com/leaf/satellite"</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="delete-a-webhook">Delete a webhook</h3>
+
+<p>&amp;nbsp<span class="badge badge--danger">DELETE</span> <code class="language-plaintext highlighter-rouge">/webhooks/{id}</code></p>
+
+<p>Delete a specific Webhook resource by its id. Returns 204 status code if the
+delete succeeded.</p>
+
+<p>:::info Warning
+If you delete a Webhook resource, we no longer will send you the events the
+webhook listens to.
+:::</p>
+
+<h4 id="sample-code-3">Sample code</h4>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const TOKEN = 'YOUR_TOKEN'
+  const headers = {'Authorization': `Bearer ${TOKEN}`}
+  const id = 'webhook uuid'
+  const endpoint = `https://api.withleaf.io/services/alerts/api/alerts/webhooks/${id}`
+
+  axios.delete(endpoint, {headers})
+      .then(response =&gt; console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+  id = 'webhook uuid'
+  endpoint = f'https://api.withleaf.io/services/alerts/api/alerts/webhooks/{id}'
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+
+<TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks/WEBHOOK_ID'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+

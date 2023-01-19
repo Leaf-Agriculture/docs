@@ -1,0 +1,762 @@
+<p>import useBaseUrl from ‘@docusaurus/useBaseUrl’;</p>
+
+<h2 id="about">About</h2>
+
+<p>This use case describes how to get the information and images from uploaded files. Follow this documentation.</p>
+
+<h3 id="register">Register</h3>
+
+<p>To register with Leaf:</p>
+
+<ul>
+  <li>Go to <a href="https://withleaf.io/registration/">registration link</a> and create your account.</li>
+  <li>Save your credentials to use in the next step.</li>
+</ul>
+
+<h2 id="backend">Backend</h2>
+<h3 id="create-server">Create server</h3>
+
+<p>After registered, you will need to setup a server, in this case we will use the Express Framework to create the server, the Ngrok library to be able to open our localhost port to the open internet and the Axios library to do <code class="language-plaintext highlighter-rouge">POST/GET</code> requests in our server:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">ngrok</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">ngrok</span><span class="dl">"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">axios</span><span class="dl">"</span><span class="p">)</span>
+  <span class="kd">var</span> <span class="nx">startTunnel</span> <span class="o">=</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">ngrok</span><span class="p">.</span><span class="nx">authtoken</span><span class="p">(</span><span class="dl">"</span><span class="s2">YOUR NGROK AUTHTOKEN</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ngrok</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">THE</span> <span class="nx">LOCALHOST</span> <span class="nx">PORT</span> <span class="nx">YOU</span> <span class="nx">WANT</span> <span class="nx">TO</span> <span class="nx">DISPOSE</span> <span class="nx">TO</span> <span class="nx">THE</span> <span class="nx">OPEN</span> <span class="nx">INTERNET</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">url</span><span class="p">;</span>
+  <span class="p">};</span>
+</code></pre></div></div>
+
+<p>Now you will need to define some routes that your server will use, in this example, we define the follow routes:</p>
+<h3 id="routes">Routes</h3>
+
+<h4 id="route-main">Route ‘/main’</h4>
+
+<p>This route will be responsible to render our main page, in the route: ‘/main’.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/main</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/views/ejs/map.ejs</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<h4 id="route-webhook">Route ‘/webhook’</h4>
+<p>This route will be the route that we will use in the process of creating our webhook in the Leaf API,
+with this route we will receive the alerts from the Leaf API, and save the files id to use
+it in the future. In this example, we just get 2 types of response from the Leaf API, the types:</p>
+<ul>
+  <li>uploadedFileProcessingFailed</li>
+  <li>uploadedFileProcessingFinished
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/webhook</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">message</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">confirmation of webhook upon registration</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Just checking if webhook url is alive</span><span class="dl">"</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">uploadedFileProcessingFailed</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Processing failed to the file: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">fileId</span><span class="p">);</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">uploadedFileProcessingFinished</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Processing ok to the file: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">fileId</span><span class="p">);</span>
+       <span class="kd">let</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">fileId</span> <span class="o">+</span> <span class="dl">"</span><span class="se">\n</span><span class="dl">"</span><span class="p">;</span>
+       <span class="nx">fs</span><span class="p">.</span><span class="nx">appendFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./files/all.txt</span><span class="dl">"</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+               <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+           <span class="p">}</span>
+       <span class="p">});</span>
+   <span class="p">}</span>
+   <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="dl">"</span><span class="s2">Ok</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">});</span> 
+</code></pre></div>    </div>
+    <p><a href="/docs/alerts_overview">Here</a> you can see the Alerts Documentation.</p>
+  </li>
+</ul>
+
+<h4 id="route-create_token">Route ‘/create_token’</h4>
+<p>In this route, we will create the user token to use in the next steps. In the data object,
+we need the attributes <code class="language-plaintext highlighter-rouge">username</code> and <code class="language-plaintext highlighter-rouge">password</code> that comes from a form in the front-end,
+and the attribute <code class="language-plaintext highlighter-rouge">rememberMe</code> is optional.
+We make a <code class="language-plaintext highlighter-rouge">POST</code> request with AXIOS to the Leaf API endpoint that is responsible to create our token,
+if everything is ok, it will return an status code <code class="language-plaintext highlighter-rouge">200</code>, and the token will be saved in the <code class="language-plaintext highlighter-rouge">token</code>
+variable, if anything is wrong, it will be catched by the <code class="language-plaintext highlighter-rouge">.catch()</code> function.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/create_token</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">email</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">email</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+  <span class="kd">let</span> <span class="nx">passwd</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+  <span class="kd">let</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.withleaf.io/api/authenticate</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">username</span><span class="p">:</span> <span class="nx">email</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="nx">passwd</span><span class="p">,</span>
+    <span class="na">rememberMe</span><span class="p">:</span> <span class="dl">"</span><span class="s2">true</span><span class="dl">"</span>
+  <span class="p">};</span>
+
+  <span class="nx">axios</span>
+    <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">token</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="dl">"</span><span class="s2">id_token</span><span class="dl">"</span><span class="p">];</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">"</span><span class="s2">Congrats! Login done!</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">400</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">"</span><span class="s2">Oops! Login failed!</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">401</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">"</span><span class="s2">Oops! Invalid credentials!</span><span class="dl">"</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p><a href="//authentication">Here</a> you can see the Authentication Documentation.</p>
+
+<h4 id="route-create_webhook">Route ‘/create_webhook’</h4>
+<p>In this route, we will receive data from a form in the front-end, put them in a object named data and
+then make a post request with AXIOS to the Leaf API endpoint that is responsible for creating
+webhooks. The attributes name and events comes from the form, the attribute secret you will need
+to generate, and the parameter url is created when the server start using the
+function <code class="language-plaintext highlighter-rouge">startTunnel();</code> and we add the ‘/webhook’ that is the route we defined early.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/create_webhook</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">nome</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">events</span><span class="p">:</span> <span class="p">[</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">type</span><span class="p">.</span><span class="nx">trim</span><span class="p">()],</span>
+    <span class="na">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span>
+    <span class="na">secret</span><span class="p">:</span> <span class="dl">"</span><span class="s2">YOUR SECRET</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">:</span> <span class="nx">url</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/webhook</span><span class="dl">"</span>
+  <span class="p">};</span>
+
+  <span class="kd">let</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer `</span> <span class="o">+</span> <span class="nx">token</span> <span class="p">};</span>
+  <span class="kd">let</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.withleaf.io/services/alerts/api/alerts/webhooks</span><span class="dl">"</span><span class="p">;</span>
+
+  <span class="nx">axios</span>
+  <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">'</span><span class="s1">Webhook successfully created</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">400</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">"</span><span class="s2">This event is already created at some webhook url.</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p><a href="//alerts_endpoints#create-a-webhook">Here</a> you can see the Webhook Documentation.</p>
+
+<h4 id="route-list_webhook">Route ‘/list_webhook’</h4>
+<p>In this route, we will use our token to list all our created webhooks. We need to do a <code class="language-plaintext highlighter-rouge">GET</code> request
+with AXIOS to the Leaf API endpoint responsible to give us all our webhooks. And all will be
+done just if our token is not undefined, in other case, it will give us the error
+<code class="language-plaintext highlighter-rouge">'Invalid token btw, generate one first!'</code>.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/list_webhook</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer `</span> <span class="o">+</span> <span class="nx">token</span> <span class="p">};</span>
+    <span class="kd">let</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.withleaf.io/services/alerts/api/alerts/webhooks</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">axios</span>
+    <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span> <span class="p">})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">"</span><span class="s2">Invalid token btw, generate one first!</span><span class="dl">"</span><span class="p">);</span>
+      <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p><a href="//alerts_endpoints#get-all-webhooks">Here</a> you can see the Webhook Documentation.</p>
+
+<h4 id="route-delete_webhookid">Route ‘/delete_webhook/:id’</h4>
+<p>In this route, we will be able to delete a webhook that we created. The id comes from the
+parameter id in the url, and we will use this parameter in the <code class="language-plaintext highlighter-rouge">DELETE</code> request that we make
+with AXIOS, we also need to set our token in the header, and if everything is ok,
+we will receive an status code <code class="language-plaintext highlighter-rouge">204</code></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/delete_webhook/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">webhook_id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer `</span> <span class="o">+</span> <span class="nx">token</span> <span class="p">};</span>
+    <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">webhook_id</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://api.withleaf.io/services/alerts/api/alerts/webhooks/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">id</span><span class="p">;</span>
+
+    <span class="nx">axios</span>
+      <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span> <span class="p">})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">))</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p><a href="//alerts_endpoints#delete-a-webhook">Here</a> you can see the Webhook Documentation.</p>
+
+<h4 id="route-save_file">Route ‘/save_file’</h4>
+<p>In this route, we will receive a file that was uploaded from the front-end, we will save it,
+upload to Leaf API and then delete it. If the user token is already generated, it will follow the process, if it is undefined, it will send
+back the message <code class="language-plaintext highlighter-rouge">'Not a valid token, create one first'</code>.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/save_file</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">'</span><span class="s1">Not a valid token, create one first</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">//Here we save the provider and the file that is comming from the front end,</span>
+      <span class="c1">// we also save the file name and create a path in the server to the file.</span>
+
+      <span class="kd">let</span> <span class="nx">provider</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">provider</span><span class="p">;</span>
+      <span class="kd">let</span> <span class="nx">files</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">;</span>
+      <span class="kd">let</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">files</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+      <span class="kd">let</span> <span class="nx">file_path</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">`./</span><span class="p">${</span><span class="nx">files</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+      <span class="c1">// Here we save the file in the path that we created, if something went wrong,</span>
+      <span class="c1">// it will send back the error.</span>
+
+      <span class="nx">files</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">mv</span><span class="p">(</span><span class="nx">file_path</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Here we make a get request with axios to retrieve our Leaf User Id, that is</span>
+      <span class="c1">// necessary for the next step.</span>
+
+      <span class="kd">let</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.withleaf.io/services/usermanagement/api/users/</span><span class="dl">"</span><span class="p">;</span>
+      <span class="kd">let</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer `</span> <span class="o">+</span> <span class="nx">token</span> <span class="p">};</span>
+
+      <span class="nx">axios</span>
+        <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span> <span class="p">})</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">leaf_user_id</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">];</span>
+          <span class="nx">endpoint</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.withleaf.io/services/operations/api/batch</span><span class="dl">"</span><span class="p">;</span>
+
+          <span class="kd">let</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer `</span> <span class="o">+</span> <span class="nx">token</span><span class="p">,</span>
+            <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">multipart/form-data</span><span class="dl">"</span>
+          <span class="p">};</span>
+
+          <span class="c1">// Once the Leaf User Id is set, we add it to the param object, that</span>
+          <span class="c1">// we will use to post the file to Leaf API endpoint.</span>
+
+          <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">provider</span><span class="p">:</span> <span class="nx">provider</span><span class="p">,</span>
+            <span class="na">leafUserId</span><span class="p">:</span> <span class="nx">leaf_user_id</span>
+          <span class="p">};</span>
+
+          <span class="c1">// Create a form so we can put the file received from the front-end</span>
+          <span class="c1">// in the request to the Leaf API endpoint.</span>
+
+          <span class="kd">let</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
+          <span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">file</span><span class="dl">"</span><span class="p">,</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="nx">file_path</span><span class="p">));</span>
+
+          <span class="nx">axios</span>
+            <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="nx">form</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">params</span> <span class="p">})</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+              <span class="c1">// Delete the file received</span>
+              <span class="nx">fs</span><span class="p">.</span><span class="nx">unlink</span><span class="p">(</span><span class="nx">file_path</span><span class="p">,</span> <span class="p">(</span><span class="nx">erro</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">erro</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">erro</span><span class="p">);</span>
+              <span class="p">});</span>
+              <span class="c1">// Send a json to the front-end that the file</span>
+              <span class="c1">// was uploaded to Leaf API endpoint.</span>
+              <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">"</span><span class="s2">File uploaded, wait for it to be processed!</span><span class="dl">"</span><span class="p">);</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="c1">// If an error ocurred, send the error to the front-end.</span>
+              <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error ocurred during file upload, try again with a valid file</span><span class="dl">'</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="p">);</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="dl">'</span><span class="s1">Couldnt retrieve your token, generate one first.</span><span class="dl">'</span><span class="p">)</span>
+          <span class="p">});</span>
+      <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><a href="/docs/machine_file_conversion_endpoints">Here</a> you can see the Files Documentation.</p>
+
+<h4 id="route-verify_files">Route ‘/verify_files’</h4>
+<p>In this route, we can verify if any files that we uploaded were processed succefully. If the token is already generated it will proceed to verifying the <code class="language-plaintext highlighter-rouge">all.txt</code> file, where the files id are saved when we receive an alert in the <code class="language-plaintext highlighter-rouge">'/webhook'</code> route. If are any files id in the file, the route will return the files id in the JSON options.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/verify_files</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">token</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="s2">`Invalid token btw, generate one first!`</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./files/all.txt</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+          <span class="p">}</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">[];</span>
+            <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./files/all.txt</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="nx">data</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\r?\n</span><span class="sr">/</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">line</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                  <span class="nx">options</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">line</span><span class="p">);</span>
+                <span class="p">});</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">options</span><span class="p">));</span>
+              <span class="p">});</span>
+          <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span>
+              <span class="dl">'</span><span class="s1">No file processed yet!</span><span class="dl">'</span>
+            <span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<h4 id="route-detail_fileid">Route ‘/detail_file/:id’</h4>
+<p>In this route, we will receive and id in the url, and we will use this id to make a <code class="language-plaintext highlighter-rouge">GET</code> request with
+AXIOS in the Leaf API endpoint that is responsible to give us the content of uploaded files.
+The API endpoint will give us an JSON with the information, and we will send it back to the
+front-end.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/detail_file/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">file_id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.withleaf.io/services/operations/api/files/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">file_id</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer `</span> <span class="o">+</span> <span class="nx">token</span> <span class="p">};</span>
+
+    <span class="nx">axios</span>
+    <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="nx">data</span> <span class="p">});</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p><a href="/docs/machine_file_conversion_endpoints/">Here</a> you can see the Files Documentation.</p>
+
+<h4 id="route-file_imagesid">Route ‘/file_images/:id’</h4>
+<p>In this route, we will be able to get the images from the Leaf API endpoint. The file id is received
+from the form, in the parameter <code class="language-plaintext highlighter-rouge">id</code> and we put it in the endpoint url. When we make a <code class="language-plaintext highlighter-rouge">GET</code> request
+with AXIOS, the endpoint will return an JSON with the images url and informations related to
+that file id that we send in the url.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/file_images/:id</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">file_id</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://api.withleaf.io/services/operations/api/files/</span><span class="dl">"</span> <span class="o">+</span>
+        <span class="nx">file_id</span> <span class="o">+</span>
+        <span class="dl">"</span><span class="s2">/images</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">`Bearer `</span> <span class="o">+</span> <span class="nx">token</span> <span class="p">};</span>
+
+    <span class="nx">axios</span>
+    <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="nx">data</span> <span class="p">});</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><a href="/docs/machine_file_conversion_endpoints/#get-a-files-images">Here</a> is the File Images Documentation.</p>
+
+<h4 id="route-image_coordinates">Route ‘/image_coordinates’</h4>
+<p>In this route, we will receive a list of images url, and we will work with it.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/image_coordinates</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">received</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="nx">received</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">received</span><span class="p">.</span><span class="nx">dados</span><span class="p">);</span>
+
+  <span class="c1">//For each link received, we will use the Probe library to get the size of an image </span>
+  <span class="c1">//from a url, and we will save it because we need to use it in the future to</span>
+  <span class="c1">//get the real coordinates.</span>
+
+  <span class="k">for</span> <span class="k">await</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">link</span> <span class="k">of</span> <span class="nx">received</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">probe</span><span class="p">(</span><span class="nx">link</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">width</span><span class="p">;</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">//Here we define a function getCoordintes() that will receive an array, filled with </span>
+  <span class="c1">//the images and its sizes, and an callback function that will be called when all </span>
+  <span class="c1">//the Promises are resolved.</span>
+
+  <span class="kd">function</span> <span class="nx">getCoordinates</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">results</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">var</span> <span class="nx">expecting</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+    <span class="c1">//For each link in the array, we will get an extra .xml file from the Leaf API</span>
+    <span class="c1">//that contains the information that we need to calculate the real world coordinates.</span>
+
+    <span class="nx">arr</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// Get the .xml file using the https library.</span>
+      <span class="kd">let</span> <span class="nx">req2</span> <span class="o">=</span> <span class="nx">https</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">.aux.xml</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+        <span class="nx">res2</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">stream</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">data</span> <span class="o">+=</span> <span class="nx">stream</span><span class="p">;</span>
+        <span class="p">});</span>
+        <span class="nx">res2</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">end</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="c1">// Parse the information from xml to json using the library xml2js</span>
+          <span class="c1">// parser is from xml2js = new xml2js.Parser({ attrkey: "ATTR" });</span>
+          <span class="nx">parser</span><span class="p">.</span><span class="nx">parseString</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+              <span class="c1">// Get the necessary information from inside the JSON</span>
+              <span class="kd">let</span> <span class="nx">resultado</span> <span class="o">=</span>
+                <span class="nx">result</span><span class="p">[</span><span class="dl">"</span><span class="s2">PAMDataset</span><span class="dl">"</span><span class="p">][</span><span class="dl">"</span><span class="s2">GeoTransform</span><span class="dl">"</span><span class="p">][</span><span class="mi">0</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">);</span>
+              <span class="c1">// This is the top left point of the image:</span>
+              <span class="kd">let</span> <span class="nx">TLX</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">resultado</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">trim</span><span class="p">());</span>
+              <span class="kd">let</span> <span class="nx">TLY</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">resultado</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">trim</span><span class="p">());</span>
+              <span class="c1">//This is the bottom right point of the image:</span>
+              <span class="kd">let</span> <span class="nx">BRX</span> <span class="o">=</span>
+                <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">resultado</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">trim</span><span class="p">())</span> <span class="o">+</span>
+                <span class="nb">parseInt</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">width</span><span class="p">)</span> <span class="o">*</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">resultado</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">trim</span><span class="p">())</span> <span class="o">+</span>
+                <span class="nb">parseInt</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">height</span><span class="p">)</span> <span class="o">*</span> <span class="nx">resultado</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+              <span class="kd">let</span> <span class="nx">BRY</span> <span class="o">=</span>
+                <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">resultado</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">trim</span><span class="p">())</span> <span class="o">+</span>
+                <span class="nb">parseInt</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">width</span><span class="p">)</span> <span class="o">*</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">resultado</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nx">trim</span><span class="p">())</span> <span class="o">+</span>
+                <span class="nb">parseInt</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">height</span><span class="p">)</span> <span class="o">*</span> <span class="nx">resultado</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+              <span class="cm">/*See image1.*/</span>
+              <span class="kd">let</span> <span class="nx">x0</span> <span class="o">=</span> <span class="p">(</span><span class="nx">TLX</span> <span class="o">*</span> <span class="p">(</span><span class="mi">180</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">))</span> <span class="o">/</span> <span class="mf">6378137.0</span><span class="p">;</span>
+              <span class="kd">let</span> <span class="nx">y0</span> <span class="o">=</span>
+                <span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">atan</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">exp</span><span class="p">(</span><span class="o">-</span><span class="nx">TLY</span> <span class="o">/</span> <span class="mf">6378137.0</span><span class="p">)))</span> <span class="o">*</span>
+                  <span class="mi">180</span><span class="p">)</span> <span class="o">/</span>
+                <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
+              <span class="kd">let</span> <span class="nx">x1</span> <span class="o">=</span> <span class="p">(</span><span class="nx">BRX</span> <span class="o">*</span> <span class="p">(</span><span class="mi">180</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">))</span> <span class="o">/</span> <span class="mf">6378137.0</span><span class="p">;</span>
+              <span class="kd">let</span> <span class="nx">y1</span> <span class="o">=</span>
+                <span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">atan</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">exp</span><span class="p">(</span><span class="o">-</span><span class="nx">BRY</span> <span class="o">/</span> <span class="mf">6378137.0</span><span class="p">)))</span> <span class="o">*</span>
+                  <span class="mi">180</span><span class="p">)</span> <span class="o">/</span>
+                <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
+              <span class="cm">/*See image2.*/</span>
+              <span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="mi">1</span><span class="p">:</span> <span class="nx">x0</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">y0</span><span class="p">,</span>
+                <span class="mi">2</span><span class="p">:</span> <span class="nx">x1</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">y0</span><span class="p">,</span>
+                <span class="mi">3</span><span class="p">:</span> <span class="nx">x1</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">y1</span><span class="p">,</span>
+                <span class="mi">4</span><span class="p">:</span> <span class="nx">x0</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">y1</span><span class="p">,</span>
+                <span class="mi">5</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span>
+                <span class="mi">6</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span>
+              <span class="p">};</span>
+              <span class="cm">/*See image3.*/</span>
+              <span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+              <span class="c1">//This part does 'expeting - 1' every forEach, and when it hits 0</span>
+              <span class="c1">//(all the array processed) it calls the callback function.</span>
+              <span class="k">if</span> <span class="p">(</span><span class="o">--</span><span class="nx">expecting</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">callback</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+              <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="c1">//Here we call the function, sending the array that we created with the image links</span>
+  <span class="c1">//and sizes, and we define the function that will be called when everything is finishid,</span>
+  <span class="c1">//in this case,the function just respond the request with an JSON containing all the data</span>
+  <span class="c1">//needed to plot the images in the front end.</span>
+  <span class="nx">getCoordinates</span><span class="p">(</span><span class="nx">received</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">results</span><span class="p">));</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p align="center">
+  &lt;img alt="Image1" width="256px" src={useBaseUrl('img/usecase_upload_twosides.png')} /&gt;
+  &lt;img alt="Image2" width="256px" src={useBaseUrl('img/usecase_upload_x_y.png')} /&gt;
+  &lt;img alt="Image3" width="256px" src={useBaseUrl('img/usecase_upload_4sides.png')} /&gt;
+  <span>Image 1  - Image 2 - Image 3</span>
+</p>
+
+<h3 id="start-the-server">Start the server</h3>
+<p>For the last part, we need to start our server, and make the front-end!</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//Clear the all.txt file</span>
+      <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">./files/all.txt</span><span class="dl">'</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>
+    <span class="c1">// Get the ngrok url to the open internet</span>
+      <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">startTunnel</span><span class="p">();</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Server started!</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="frontend">Frontend</h2>
+<p>In the frontend, we will need to use just one page! We define the page in the path: <code class="language-plaintext highlighter-rouge">/views/ejs/map.ejs</code>.<br />
+In this part of the documentation, it will be show some functions that are used in the <code class="language-plaintext highlighter-rouge">map.ejs</code> file, all this functions will be called via <code class="language-plaintext highlighter-rouge">onClick()</code> method from form buttons. It’s important to say that we will use the <a href="https://docs.mapbox.com/mapbox-gl-js/api/">Mapbox API</a> to display the map and images on it.</p>
+
+<h3 id="login">Login</h3>
+<p>This function is called by our button that is responsible for doing the login. It will get the data from the form, and do a <code class="language-plaintext highlighter-rouge">POST</code> request with AXIOS to our backend. That will return <code class="language-plaintext highlighter-rouge">'Congrats! Login done!'</code> if the credentials are right, and another message depending on what happened wrong.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">loginClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">email</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#email</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+    <span class="kd">let</span> <span class="nx">password</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#password</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/create_token</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">password</span><span class="p">:</span> <span class="nx">password</span><span class="p">,</span>
+            <span class="na">email</span><span class="p">:</span> <span class="nx">email</span>
+        <span class="p">},</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Congrats! Login done!</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//Here you need to disable this element and</span>
+                <span class="c1">//show the next one, in the case, the div responsible</span>
+                <span class="c1">//for creating the webhook.</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">//Show some message saying that the login failed.</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="create-webhook">Create Webhook</h3>
+<p>With this function, we will get the parameters from the form about the webhook, and do a <code class="language-plaintext highlighter-rouge">POST</code> request with AXIOS to our backend resonsible for creating the webhook in the Leaf API.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">webhookCreateClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">YOUR FORM INPUT ID</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">YOUR FORM INPUT ID</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">YOUR SELECT INPUT SELECTED</span><span class="dl">"</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#webhook_response</span><span class="dl">'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/create_webhook</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span>
+                <span class="na">type</span><span class="p">:</span> <span class="nx">type</span>
+            <span class="p">},</span>
+            <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Webhook successfully created</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">//Here you need to disable this element and</span>
+                    <span class="c1">//show the next one, in the case, the div responsible</span>
+                    <span class="c1">//for list the webhook.</span>
+                    <span class="nx">listWebhooks</span><span class="p">();</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="c1">//Show some message saying that the webhook creation failed.</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="list-webhooks">List webhooks</h3>
+<p>In this function, we will be able to list all the webhooks that our Leaf Account have. We will list them to the user just to see if the webhook that he needs is created or not.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">listWebhooks</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">start</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;p&gt;</span><span class="dl">'</span>
+    <span class="kd">let</span> <span class="nx">end</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;/p&gt;</span><span class="dl">'</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/list_webhook</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Here, we get the response from our backend and build a div with </span>
+            <span class="c1">// &lt;p&gt;&lt;/p&gt; inside of it containing the type of the webhooks.</span>
+            <span class="c1">// Then, we call the next element, the uploadFile();</span>
+            <span class="nx">response</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">response</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">e</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">YOUR DIV ID</span><span class="dl">'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">start</span> <span class="o">+</span> <span class="nx">p</span> <span class="o">+</span> <span class="nx">end</span><span class="p">);</span>
+                    <span class="p">})</span>
+                <span class="p">})</span>
+            <span class="p">}</span>
+            <span class="nx">uploadFile</span><span class="p">();</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="upload-a-file">Upload a file</h3>
+<p>In this function, we will handle the upload file process. We need to intercept the form submit action and then make a <code class="language-plaintext highlighter-rouge">POST</code> with AXIOS to our backend.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">uploadFile</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Intercept the submit form action</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">YOUR FORM ID</span><span class="dl">"</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Create a new formData, passing the real formData file to it.</span>
+        <span class="kd">var</span> <span class="nx">formData</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/save_file</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">processData</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">contentType</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">cache</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">data</span><span class="p">:</span> <span class="nx">formData</span><span class="p">,</span>
+            <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">File uploaded, wait for it to be processed!</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// Here you will make what you want to happen when the file </span>
+                    <span class="c1">// was received in the backend and everything was ok with it.</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="c1">// Here you need to display some message to the user if the file </span>
+                    <span class="c1">// that he uploaded was not in the correct format or size.</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+            <span class="p">},</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="check-uploaded-files">Check uploaded files</h3>
+<p>With this function, we will be able to check if the Leaf API already processed any files that we uploaded to our backend. We will build a div with links inside of it, linking to another function: <code class="language-plaintext highlighter-rouge">get_json()</code>, that will retrieve all the data we need.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">checkFiles</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Define the string we will build</span>
+    <span class="kd">let</span> <span class="nx">start</span> <span class="o">=</span> <span class="s2">`&lt;a onclick="get_json(`</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">middle</span> <span class="o">=</span> <span class="s2">`)&gt;`</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">end</span> <span class="o">=</span> <span class="s2">`&lt;/a&gt;"`</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/verify_files</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">No file processed yet!</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Display a message to your user saying that no files</span>
+                <span class="c1">// were processed yet</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">Invalid token btw, generate one first!</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Display a message to your user saying that he needs </span>
+                <span class="c1">// to generate a token first</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// See the response from the backend and build an div</span>
+                <span class="c1">// containing the links to check files content.</span>
+                <span class="nx">response</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+                <span class="nx">response</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">YOUR DIV ID</span><span class="dl">'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">`&lt;a onClick="get_json('`</span> <span class="o">+</span> <span class="nx">e</span> <span class="o">+</span> <span class="s2">`');"
+                            style="cursor: pointer; cursor: hand;"&gt;&lt;p&gt;`</span> <span class="o">+</span> <span class="nx">e</span> <span class="o">+</span> <span class="s2">`&lt;/a&gt;`</span><span class="p">);</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Display any error that cant occur during the response from backend.</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="get-json-data-from-files">Get JSON data from files</h3>
+<p>With this function, we will receive an id from parameter, and we will send it to our backend, so the backend will send us the follow informations:</p>
+<ul>
+  <li>File details</li>
+  <li>File images</li>
+  <li>Images coordinates
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">get_json</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">file_id</span> <span class="o">=</span> <span class="nx">id</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">allImages</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+  <span class="c1">// With this GET request, we will send to the backend one file_id,</span>
+  <span class="c1">// and it will return the images linked to it.</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/file_images/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">file_id</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// In this response, we will get all the images that</span>
+          <span class="c1">// are linked to the file_id, and we will save</span>
+          <span class="c1">// this images url in the allImages array.</span>
+          <span class="nx">res</span><span class="p">.</span><span class="nx">dados</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="nx">allImages</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+                  <span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span>
+                  <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">property</span>
+              <span class="p">});</span>
+          <span class="p">});</span>
+      <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="c1">// With this POST request, we will send to our backend all images url,</span>
+  <span class="c1">// the operation type of that images, and with the response we will</span>
+  <span class="c1">// build map layers.</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/image_coordinates</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">dados</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">allImages</span><span class="p">)</span>
+      <span class="p">},</span>
+      <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">points</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+          <span class="c1">// Clear the actual options of layers</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">optionsShow</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">optionsShow</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                  <span class="nx">map</span><span class="p">.</span><span class="nx">removeLayer</span><span class="p">(</span><span class="s2">`'`</span> <span class="o">+</span> <span class="nx">e</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">);</span>
+                  <span class="nx">map</span><span class="p">.</span><span class="nx">removeSource</span><span class="p">(</span><span class="s2">`'`</span> <span class="o">+</span> <span class="nx">e</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">);</span>
+              <span class="p">})</span>
+          <span class="p">}</span>
+          <span class="nx">optionsShow</span> <span class="o">=</span> <span class="p">[];</span>
+          <span class="c1">// Creating a list of avaible images so the user can click it and</span>
+          <span class="c1">// display the image on the map.</span>
+          <span class="nx">points</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">YOUR DIV TO LIST THE IMAGES TYPE</span><span class="dl">'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">`&lt;a onClick="showImage('`</span> <span class="o">+</span> <span class="nx">e</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s2">`');" style="cursor: pointer;
+                       cursor: hand;"&gt;&lt;p&gt;`</span> <span class="o">+</span> <span class="nx">e</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s2">`&lt;/a&gt;`</span><span class="p">)</span>
+              <span class="c1">// Save the type of the image so the user can choose what to see</span>
+              <span class="nx">optionsShow</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">6</span><span class="p">]);</span>
+              <span class="c1">// Create the 4 points (x,y) real coordinates</span>
+              <span class="c1">// of the image, getting the points</span>
+              <span class="c1">// from the server response</span>
+              <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+              <span class="kd">let</span> <span class="nx">a1</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]);</span>
+              <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+              <span class="kd">let</span> <span class="nx">b1</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]);</span>
+              <span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+              <span class="kd">let</span> <span class="nx">c1</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]);</span>
+              <span class="kd">let</span> <span class="nx">d</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
+              <span class="kd">let</span> <span class="nx">d1</span> <span class="o">=</span> <span class="nb">parseFloat</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1">,</span><span class="dl">'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]);</span>
+              <span class="c1">// Make the map fly to the right coordinate of the images</span>
+              <span class="nx">map</span><span class="p">.</span><span class="nx">flyTo</span><span class="p">({</span>
+                  <span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">a1</span><span class="p">],</span>
+                  <span class="na">zoom</span><span class="p">:</span> <span class="mi">17</span>
+              <span class="p">});</span>
+              <span class="c1">// Add a source to the map, so we can add a layer to it</span>
+              <span class="c1">// e[6] has the type of the image</span>
+              <span class="nx">map</span><span class="p">.</span><span class="nx">addSource</span><span class="p">(</span><span class="s2">`'`</span> <span class="o">+</span> <span class="nx">e</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">,</span> <span class="p">{</span>
+                  <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">image</span><span class="dl">'</span><span class="p">,</span>
+                  <span class="c1">// e[5] has the url of the image</span>
+                  <span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">:</span> <span class="nx">e</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+                  <span class="dl">'</span><span class="s1">coordinates</span><span class="dl">'</span><span class="p">:</span> <span class="p">[</span>
+                      <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">a1</span><span class="p">],</span>
+                      <span class="p">[</span><span class="nx">b</span><span class="p">,</span> <span class="nx">b1</span><span class="p">],</span>
+                      <span class="p">[</span><span class="nx">c</span><span class="p">,</span> <span class="nx">c1</span><span class="p">],</span>
+                      <span class="p">[</span><span class="nx">d</span><span class="p">,</span> <span class="nx">d1</span><span class="p">]</span>
+                  <span class="p">]</span>
+              <span class="p">});</span>
+              <span class="c1">// Add a layer to the map, so we can show and hide it in the future.</span>
+              <span class="c1">// e[6] has the type of the image</span>
+              <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">({</span>
+                  <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`'`</span> <span class="o">+</span> <span class="nx">e</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">,</span>
+                  <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">raster</span><span class="dl">'</span><span class="p">,</span>
+                  <span class="dl">'</span><span class="s1">source</span><span class="dl">'</span><span class="p">:</span> <span class="s2">`'`</span> <span class="o">+</span> <span class="nx">e</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">,</span>
+                  <span class="dl">'</span><span class="s1">paint</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="dl">'</span><span class="s1">raster-fade-duration</span><span class="dl">'</span><span class="p">:</span> <span class="mi">0</span>
+                  <span class="p">}</span>
+              <span class="p">});</span>
+              <span class="c1">// set the layer visibility to none</span>
+              <span class="nx">map</span><span class="p">.</span><span class="nx">setLayoutProperty</span><span class="p">(</span><span class="s2">`'`</span> <span class="o">+</span> <span class="nx">e</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">,</span> <span class="dl">'</span><span class="s1">visibility</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">);</span>
+          <span class="p">});</span>
+      <span class="p">},</span>
+      <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+      <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="c1">// With this GET request, we will send an file id to the backend,</span>
+  <span class="c1">// and it will return the data about that file. e.g summary information</span>
+  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">/file_details/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">file_id</span><span class="p">,</span>
+      <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">async</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">dataType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">json</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// Here you can define one function to show this data</span>
+          <span class="c1">// in some div of your page.</span>
+      <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">};</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="show-and-hide-map-layers">Show and hide map layers</h3>
+<p>With this function, we will receive an id from the parameter, and display that image if it’s hidden, and hide it if it’s show.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">showImage</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">visiviel</span> <span class="o">=</span> <span class="nx">map</span><span class="p">.</span><span class="nx">getLayoutProperty</span><span class="p">(</span><span class="s2">`'`</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">,</span> <span class="dl">'</span><span class="s1">visibility</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">visiviel</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">visible</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">map</span><span class="p">.</span><span class="nx">setLayoutProperty</span><span class="p">(</span><span class="s2">`'`</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">,</span> <span class="dl">'</span><span class="s1">visibility</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">map</span><span class="p">.</span><span class="nx">setLayoutProperty</span><span class="p">(</span><span class="s2">`'`</span> <span class="o">+</span> <span class="nx">id</span> <span class="o">+</span> <span class="s2">`'`</span><span class="p">,</span> <span class="dl">'</span><span class="s1">visibility</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">visible</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="extra">Extra</h3>
+<p>Don’t forget to create an Map, a div for it and replace the <code class="language-plaintext highlighter-rouge">YOUR MAPBOX TOKEN</code>, otherwise, the map will not work!</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">mapboxgl</span><span class="p">.</span><span class="nx">accessToken</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">YOUR MAPBOX TOKEN</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mapboxgl</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span>
+    <span class="na">container</span><span class="p">:</span> <span class="dl">'</span><span class="s1">map</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">maxZoom</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="na">minZoom</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">zoom</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">center</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="na">style</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mapbox://styles/mapbox/satellite-v9</span><span class="dl">'</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{});</span>
+</code></pre></div></div>
+<p><a href="https://docs.mapbox.com/">See here</a> more informations about Mapbox!</p>
+
+<p>:::tip
+Here you can run a live use case demo!</p>
+
+<p><a href="https://codesandbox.io/s/webhook-leaf-api-o72lv8?fontsize=14&amp;hidenavigation=1&amp;theme=dark"><img src="https://codesandbox.io/img/play-codesandbox.svg" alt="Edit webhook-leaf-api" /></a>
+:::</p>
+

@@ -1,0 +1,456 @@
+<p>import Tabs from ‘@theme/Tabs’;
+import TabItem from ‘@theme/TabItem’;
+import useBaseUrl from ‘@docusaurus/useBaseUrl’;</p>
+
+<!-- the following links are referenced throughout this document -->
+
+<h2 id="about">About</h2>
+<p>All HTTP methods should be prepended by this service’s endpoint:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.withleaf.io/services/beta/prescriptions/api
+</code></pre></div></div>
+
+<p>See below the REST resources and their endpoints available in this service.</p>
+
+<h2 id="prescription-beta">Prescription (BETA)</h2>
+
+<h3 id="prescription-resources">Prescription Resources</h3>
+
+<p>This feature has the following endpoints available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#upload-prescription-to-raven-slingshot">Upload prescription to Raven Slingshot</a></td>
+      <td><span class="badge badge--success">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/ravenSlingshot</code></td>
+    </tr>
+    <tr>
+      <td><a href="#list-prescriptions-from-raven-slingshot">List prescriptions from Raven Slingshot</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/ravenSlingshot</code></td>
+    </tr>
+    <tr>
+      <td><a href="#upload-prescription-to-climate-fieldview">Upload prescription to Climate FieldView</a></td>
+      <td><span class="badge badge--success">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/climateFieldView</code></td>
+    </tr>
+    <tr>
+      <td><a href="#list-prescriptions-from-john-deere">Lists prescriptions from John Deere</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/johnDeere</code></td>
+    </tr>
+    <tr>
+      <td><a href="#upload-prescription-to-john-deere">Upload prescription to John Deere</a></td>
+      <td><span class="badge badge--success">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/johnDeere</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="upload-prescription-to-raven-slingshot">Upload prescription to Raven Slingshot</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/ravenSlingshot</code></p>
+
+<p>Upload a prescription using the Raven Slingshot credentials of the LeafUserId.</p>
+
+<p>The file to be uploaded needs to be .zip and contain one of each of the following file extension: shp, dbf, shx; and all files must have the same name. The zip file cannot contain subfolders.</p>
+
+<h4 id="example">Example:</h4>
+
+<p>A zip file named “prescription_rx_map”, containing the following files:</p>
+<ul>
+  <li>prescription_rx_map.shp</li>
+  <li>prescription_rx_map.dbf</li>
+  <li>prescription_rx_map.shx</li>
+</ul>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const form = new FormData()
+  form.append('file', 'prescription_rx_map.zip')
+
+  axios.post(endpoint, form, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('prescription_rx_map.zip')}
+
+  response = requests.post(endpoint, headers=headers, files=files)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=prescription_rx_map.zip' \
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response">Response</h4>
+
+<p>The response is json with the id of the file uploaded to the provider .</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="list-prescriptions-from-raven-slingshot">List prescriptions from Raven Slingshot</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/ravenSlingshot</code></p>
+
+<p>List the existing prescriptions available in the provider.</p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-1">Response</h4>
+<p>A json array of prescriptions available in this provider</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="upload-prescription-to-climate-fieldview">Upload prescription to Climate FieldView</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/climateFieldView</code></p>
+
+<p>Upload a prescription using the Climate FieldView credentials of the LeafUserId.</p>
+
+<p>The file to be uploaded needs to be .zip and contain one of each of the following file extension: shp, dbf, shx; and all files must have the same name. The zip file cannot contain subfolders.</p>
+
+<h4 id="example-1">Example:</h4>
+
+<p>A zip file named “prescription_rx_map”, containing the following files:</p>
+<ul>
+  <li>prescription_rx_map.shp</li>
+  <li>prescription_rx_map.dbf</li>
+  <li>prescription_rx_map.shx</li>
+</ul>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/climateFieldView'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const form = new FormData()
+  form.append('file', 'prescription_rx_map.zip')
+
+  axios.post(endpoint, form, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/climateFieldView'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('prescription_rx_map.zip')}
+
+  response = requests.post(endpoint, headers=headers, files=files)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=prescription_rx_map.zip' \
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/climateFieldView'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-2">Response</h4>
+
+<p>The response is json with the id of the file uploaded to the provider.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="list-prescriptions-from-john-deere">List prescriptions from John Deere</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/johnDeere</code></p>
+
+<p>List the existing prescriptions available in the provider.</p>
+
+<p>There is a required request param called organizationId for this endpoint to work.
+This property should be the id of the organization at JohnDeere.</p>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-3">Response</h4>
+<p>A json array of prescriptions available in this provider.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+<h3 id="upload-prescription-to-john-deere">Upload prescription to John Deere</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">POST</span> <code class="language-plaintext highlighter-rouge">/users/{leafUserId}/johnDeere</code></p>
+
+<p>Upload a prescription using the John Deere credentials of the LeafUserId.</p>
+
+<p>There is a required request param called organizationId for this endpoint to work.
+This property should be the id of the organization at JohnDeere.</p>
+
+<p>The file to be uploaded needs to be .zip and have a folder called “Rx” containing one of each of the following file extension: shp, dbf, shx; and all files must have the same name. The zip file cannot contain subfolders.</p>
+
+<h4 id="example-2">Example:</h4>
+
+<p>A .zip file named “prescription_rx_map”, having a parent folder called “Rx”, containing the following files:</p>
+<ul>
+  <li>Rx/
+    <ul>
+      <li>prescription_rx_map.shp</li>
+      <li>prescription_rx_map.dbf</li>
+      <li>prescription_rx_map.shx</li>
+    </ul>
+  </li>
+</ul>
+
+<p>&lt;Tabs
+defaultValue=”sh”
+values={[
+{ label: ‘cURL’, value: ‘sh’, },
+{ label: ‘Python’, value: ‘py’, },
+{ label: ‘JavaScript’, value: ‘js’, },
+]
+}&gt;</p>
+
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const form = new FormData()
+  form.append('file', 'prescription_rx_map.zip')
+
+  axios.post(endpoint, form, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('prescription_rx_map.zip')}
+
+  response = requests.post(endpoint, headers=headers, files=files)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=prescription_rx_map.zip' \
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-4">Response</h4>
+
+<p>The response is json with the id of the file uploaded to the provider.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>

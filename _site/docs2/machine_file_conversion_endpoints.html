@@ -1,0 +1,1348 @@
+<p>import Tabs from ‘@theme/Tabs’;
+import TabItem from ‘@theme/TabItem’;
+import useBaseUrl from ‘@docusaurus/useBaseUrl’;</p>
+
+<!-- the following links are referenced throughout this document -->
+
+<h2 id="about">About</h2>
+
+<p>All HTTP methods should be prepended by this service’s endpoint:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.withleaf.io/services/operations/api
+</code></pre></div></div>
+
+<p>This service has the following endpoints available:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="#get-all-files">Get all files</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/files</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-file">Get a file</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/files/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-file-summary">Get a file summary</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/files/{id}/summary</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-files-images">Get a file’s images</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/files/{id}/images</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-a-files-units">Get a file’s units</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/files/{id}/units</code></td>
+    </tr>
+    <tr>
+      <td><a href="#upload-a-file">Upload a file</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/batch</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-batch-upload">Get a batch</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/batch/{id}</code></td>
+    </tr>
+    <tr>
+      <td><a href="#get-all-batches">Get all batches</a></td>
+      <td><span class="badge badge--success">GET</span> <code class="language-plaintext highlighter-rouge">/batch</code></td>
+    </tr>
+    <tr>
+      <td><a href="#merge-files">Merge files</a></td>
+      <td><span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/files/merge</code></td>
+    </tr>
+    <tr>
+      <td><a href="#retry-a-batch">Retry a batch</a></td>
+      <td><span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/batch/{id}/retry</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For easily testing these endpoints, we recommend using our Postman <a href="https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection">collection</a>.</p>
+
+<p>:::info requires Leaf User with credentials
+To have access to operation files, you will need a Leaf User with valid credentials
+from the provider you want to access data. If you don’t have a Leaf User or you
+have not connected it with any provider yet, see <strong><a href="">how to create a Leaf User</a></strong>
+or <strong><a href="">how to add credentials to a Leaf User</a></strong>.
+:::</p>
+
+<hr />
+
+<h3 id="get-all-files">Get all files</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span>  <code class="language-plaintext highlighter-rouge">/files</code></p>
+
+<p>Gets a paged list of files that belong to the current logged in user. It is
+possible to filter the results by passing some query parameters. They are listed
+below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter (to filter by)</th>
+      <th>Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">leafUserId</code></td>
+      <td>uuid of one of your users</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">provider</code></td>
+      <td><code class="language-plaintext highlighter-rouge">CNHI</code>, <code class="language-plaintext highlighter-rouge">JohnDeere</code>, <code class="language-plaintext highlighter-rouge">Trimble</code>, <code class="language-plaintext highlighter-rouge">ClimateFieldView</code>, <code class="language-plaintext highlighter-rouge">AgLeader</code> or <code class="language-plaintext highlighter-rouge">Leaf</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">status</code></td>
+      <td><code class="language-plaintext highlighter-rouge">processed</code>, <code class="language-plaintext highlighter-rouge">failed</code> or <code class="language-plaintext highlighter-rouge">processing</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">origin</code></td>
+      <td><code class="language-plaintext highlighter-rouge">provider</code>, <code class="language-plaintext highlighter-rouge">automerged</code>, <code class="language-plaintext highlighter-rouge">merged</code> or <code class="language-plaintext highlighter-rouge">uploaded</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">organizationId</code></td>
+      <td>the provider organizationId (only available for John Deere)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">batchId</code></td>
+      <td>uuid of the upload response (only available for uploaded files)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">createdTime</code></td>
+      <td>ISO 8601 date. Returns operations from the createdTime onward</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">startTime</code></td>
+      <td>ISO 8601 date. Returns operations from the startTime onward</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">endTime</code></td>
+      <td>ISO 8601 date. Returns operations until the endTime</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">operationType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">applied</code>, <code class="language-plaintext highlighter-rouge">planted</code> or <code class="language-plaintext highlighter-rouge">harvested</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">minArea</code></td>
+      <td>a number (Double) representing the minimum area (square meters) of the operations to be returned</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Also, for <code class="language-plaintext highlighter-rouge">operationType</code>: <code class="language-plaintext highlighter-rouge">harvested</code> we can process the yield properties related to the operation using the 
+crop density and standard moisture available in this <a href="machine_file_conversion_crops_table.md">table</a>.</p>
+
+<p>You can also pass some parameters used exclusively for paging through results.
+They are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page</code>, an integer specifying the page being fetched (default is 0)</li>
+  <li><code class="language-plaintext highlighter-rouge">size</code>, an integer specifying the size of the page (max is 100)</li>
+</ul>
+
+<p>:::info the default value for page size is 20
+If the parameters page and size are not set, the endpoint will return 20 results.
+:::</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response">Response</h4>
+
+<p>The response is a JSON with the key “operations” referring to a list of files.
+[Here’s a link with sample responses][sample_summary] for “planted”, “applied” 
+and “harvested” operation files.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">OPERATION</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">    
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="get-a-file">Get a file</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span>  <code class="language-plaintext highlighter-rouge">/files/{id}</code></p>
+
+<p>Gets a single file by its id.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}'
+  ```
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-1">Response</h4>
+
+<p>[Here’s a link with sample responses][sample_summary] for “planted”, “applied” 
+and “harvested” operation files.</p>
+
+<hr />
+
+<h3 id="get-a-file-summary">Get a file summary</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span>  <code class="language-plaintext highlighter-rouge">/files/{id}/summary</code></p>
+
+<p>Gets the summary, if available, for the file id.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/summary'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/summary'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/summary'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h4 id="response-2">Response</h4>
+
+<p>[Here’s a link with sample responses][sample_summary] for “planted”, “applied” 
+and “harvested” operation files.</p>
+
+<hr />
+
+<h3 id="get-a-files-images">Get a file’s images</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span>  <code class="language-plaintext highlighter-rouge">/files/{id}/images</code></p>
+
+<p>Gets a list of PNG images generated from the operation’s file properties.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+    { label: ‘JSON Response’, value: ‘json’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/images'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/images'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/images'
+  ```
+
+  </TabItem>
+<TabItem value="json">
+
+  Returns a JSON list of the following format:
+
+  ```json
+  [
+    {
+      "property": "elevation",
+      "ramp": {
+        "0%":   [200,   0, 0],
+        "35%":  [255,  40, 0],
+        "45%":  [255, 150, 0],
+        "55%":  [255, 240, 0],
+        "65%":  [  0, 230, 0],
+        "75%":  [  0, 190, 0],
+        "100%": [  0, 130, 0],
+        "nv":   [  0,   0, 0, 0]
+      },
+      "url": "string"
+    },
+    ...
+  ]
+  ```
+
+  The `property` refers to the property extracted from files' data to generate the
+  image. In the example above, the image would represent the elevation.
+
+  The `ramp` is the color ramp used to generate the image. The percentages
+  correspond to the minimum (0%) and maximum (100%) values in the image. The
+  listed values correspond to RGB values used. The `nv` refers to `no value`. It
+  is used internally to make the image transparent on places without data.
+  Currently, this ramp is the same in all images processed.
+
+  We also generate an auxiliary `xml` with geographic information to handle this
+  image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<hr />
+
+<h3 id="get-a-files-units">Get a file’s units</h3>
+
+<p>&amp;nbsp<span class="badge badge--success">GET</span>  <code class="language-plaintext highlighter-rouge">/files/{id}/units</code></p>
+
+<p>Gets the file’s properties and their units.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+    { label: ‘JSON Response’, value: ‘json’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/units'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/units'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/units'
+  ```
+
+  </TabItem>
+<TabItem value="json">
+
+  Returns a JSON like the following:
+
+  ```json
+  {
+      "distance": "ft",
+      "heading": "arcdeg",
+      "speed": "mi/hr",
+      "elevation": "ft",
+      "harvestMoisture": "prcnt",
+      "wetMass": "lb",
+      "yieldVolume": "bu",
+      "equipmentWidth": "ft"
+  }
+  ```
+
+These properties vary depending on the operationType, but you can expect the same,
+standardized keys, across different providers.
+
+Units usually don't change for the same Leaf User, since the providers units
+configuration is based on their location. But keep in mind that it's best to
+always take the units into consideration, just to be sure.
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<hr />
+
+<h3 id="upload-a-file">Upload a file</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/batch</code></p>
+
+<p>Posts/creates a new file in Leaf. The file must be sent as a zip.</p>
+
+<p>This endpoint accepts a .zip of operation files, detects which files are in the 
+.zip, and returns the ID of the process, which can in turn be used to retrieve 
+the ID’s of the files being processed.</p>
+
+<p>:::info File size limit of 3 GB</p>
+
+<p>Currently, our upload endpoints accepts files with the maximum size limited to 3 gigabytes.</p>
+
+<p>:::</p>
+
+<p>This endpoint receives two required URL parameters, a <code class="language-plaintext highlighter-rouge">leafUserId</code> and <code class="language-plaintext highlighter-rouge">provider</code></p>
+
+<p>A <code class="language-plaintext highlighter-rouge">provider</code> can be set as one of the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Other
+ClimateFieldView
+CNHI
+JohnDeere
+Trimble
+AgLeader
+Farmobile
+PrecisionPlanting
+</code></pre></div></div>
+
+<p>If provider is set to “Other”, Leaf will detect which files are 
+present in the .zip file and process them accordingly.</p>
+
+<p>Leaf will detect files present in the uploaded .zip and create file ids for the files that are detected in the uploaded .zip. These  files can then be accessed individually by their file ID, batch ID, or their associated field boundary.</p>
+
+<p>Expected file structures from each provider are listed below. Very often these default file structures are edited by users. In these cases Leaf attempts to automatically repair the file structure and find all necessary files within any uploaded .zip.</p>
+
+<p>The following file formats from each provider are supported:</p>
+
+<h4 id="johndeere">JohnDeere</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Format</th>
+      <th>Monitor Model</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GS3</td>
+      <td>GreenStar 3 – 2630</td>
+      <td><code class="language-plaintext highlighter-rouge">/GS3_2630/profile/RCD/EIC/global.ver</code></td>
+    </tr>
+    <tr>
+      <td>Gen4</td>
+      <td>Gen 4 - 4600/4630</td>
+      <td><code class="language-plaintext highlighter-rouge">/JD-Data/log/user defined name/*.jdl</code></td>
+    </tr>
+    <tr>
+      <td>Shapefile</td>
+      <td>Exported from MyJohnDeere</td>
+      <td>Shapefile with extra metadata in a <code class="language-plaintext highlighter-rouge">.json</code> file</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="expected-file-structure">Expected file structure</h5>
+
+<p>GreenStar 4 (4600+)</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jd-data
+└── log
+   └── <span class="k">*</span>.jdl
+</code></pre></div></div>
+
+<p>GreenStar 3 (2630)</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GS3_2630
+└── RCD
+   └── EIC
+      └── global.ver
+        └── documentation
+              └── ...
+                 ├── <span class="k">*</span>.fdd
+                 └── <span class="k">*</span>.fdl
+</code></pre></div></div>
+
+<p>Green Star 2 (2600)</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+└── RCD
+   ├── <span class="k">*</span>.fdd
+   └── <span class="k">*</span>.fdl
+</code></pre></div></div>
+
+<h4 id="climate-fieldview">Climate FieldView</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Format</th>
+      <th>Monitor Model</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dat</td>
+      <td>All files from Climate FieldView</td>
+      <td>A zip with <code class="language-plaintext highlighter-rouge">.dat</code> files</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="expected-file-structure-1">Expected file structure</h5>
+
+<p>20|20 SeedSense Generation 1 and Generation 2</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+├── harvest_<span class="k">*</span>.dat – Harvest data
+├── field_map_<span class="k">*</span>.dat – Planting data
+└── liquid_map_<span class="k">*</span>.dat - AsApplied spraying data
+</code></pre></div></div>
+
+<p>20|20 SeedSense Generation 3</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+└── <span class="k">*</span>.2020
+</code></pre></div></div>
+
+<h4 id="cnhi">CNHI</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Format</th>
+      <th>Monitor Model</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CN1</td>
+      <td>CaseIH monitors or exported from CNH Connects</td>
+      <td><code class="language-plaintext highlighter-rouge">/file.cn1/index.vy1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="expected-file-structure-2">Expected file structure</h5>
+
+<p>Voyager 2</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">*</span>.cn1
+└── ...
+   └── <span class="k">*</span>.vy1
+</code></pre></div></div>
+
+<h4 id="agleader">AgLeader</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Format</th>
+      <th>Monitor Model</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>yld</td>
+      <td>YM2000, PFAdvantage &amp; other OEM systems</td>
+      <td>A zip with <code class="language-plaintext highlighter-rouge">.yld</code> files</td>
+    </tr>
+    <tr>
+      <td>ilf</td>
+      <td>INTEGRA / Insight / Edge</td>
+      <td>A zip with <code class="language-plaintext highlighter-rouge">.ilf</code> files</td>
+    </tr>
+    <tr>
+      <td>agdata</td>
+      <td>INTEGRA / VERSA / COMPASS</td>
+      <td>A zip with <code class="language-plaintext highlighter-rouge">.agdata</code> files</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="expected-file-structure-3">Expected file structure</h5>
+<p>AgLeader Integra (versions 3.5+), Versa</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+├── <span class="k">*</span>.agdata
+└── <span class="k">*</span>.agsetup
+</code></pre></div></div>
+
+<p>AgLeader Edge, Insight, and Integra (version 3.4)</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+└── <span class="k">*</span>.ilf
+</code></pre></div></div>
+
+<p>AgLeader PF Advantage, PF 3000, PF 3000 Pro, YM2000</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+└── <span class="k">*</span>.yld
+</code></pre></div></div>
+
+<h4 id="trimble">Trimble</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Format</th>
+      <th>Monitor Model</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AgData</td>
+      <td>FMX and CFX monitors</td>
+      <td><code class="language-plaintext highlighter-rouge">/AgData/</code></td>
+    </tr>
+    <tr>
+      <td>AgGPS</td>
+      <td>TMX and GFX monitors</td>
+      <td><code class="language-plaintext highlighter-rouge">/AgGPS/</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="expected-file-structure-4">Expected file structure</h5>
+<p>GFX-750, TMX-2050</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Agdata
+├── Fields
+   └── <span class="k">*</span>.agf
+├── implements
+   └── <span class="k">*</span>.agi
+├── prescriptions
+   └── <span class="k">*</span>.agm
+├── Tasks
+   └── <span class="k">*</span>.agt
+├── Users
+   └── <span class="k">*</span>.agu
+└── vehicles
+   └── <span class="k">*</span>.agv
+</code></pre></div></div>
+
+<p>CFX-750, FMX</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AgGPS
+└── Data
+   └── <span class="s2">"Grower"</span>
+      └── Farm
+        └── field
+          └── <span class="s2">"Task"</span>
+            ├── <span class="k">*</span>.cpg
+            ├── <span class="k">*</span>.dbf
+            ├── <span class="k">*</span>.shp
+            └── <span class="k">*</span>.shx
+</code></pre></div></div>
+
+<h4 id="precision-planting-beta">Precision Planting (beta)</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Format</th>
+      <th>Monitor Model</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PP2020</td>
+      <td>20|20</td>
+      <td>A zip with <code class="language-plaintext highlighter-rouge">.2020</code> files.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="expected-file-structure-5">Expected file structure</h5>
+
+<p>20|20 SeedSense Generation 1 and Generation 2</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+├── harvest_<span class="k">*</span>.dat – Harvest data
+├── field_map_<span class="k">*</span>.dat – Planting data
+└── liquid_map_<span class="k">*</span>.dat - AsApplied spraying data
+</code></pre></div></div>
+
+<p>20|20 SeedSense Generation 3</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+└── <span class="k">*</span>.2020
+</code></pre></div></div>
+
+<h4 id="isoxml">ISOXML</h4>
+<h5 id="expected-file-structure-6">Expected file structure</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TASKDATA
+├── <span class="k">*</span>.XML
+└── <span class="k">*</span>.bin
+</code></pre></div></div>
+
+<h4 id="claas">CLAAS</h4>
+<h5 id="expected-file-structure-7">Expected file structure</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TASKDATA
+├── <span class="k">*</span>.XML
+└── <span class="k">*</span>.bin
+</code></pre></div></div>
+
+<h4 id="kuhn">Kuhn</h4>
+<h5 id="expected-file-structure-8">Expected file structure</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TASKDATA
+├── <span class="k">*</span>.XML
+└── <span class="k">*</span>.bin
+</code></pre></div></div>
+
+<h4 id="kverneland-group">Kverneland Group</h4>
+<h5 id="expected-file-structure-9">Expected file structure</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TASKDATA
+├── <span class="k">*</span>.XML
+└── <span class="k">*</span>.bin
+</code></pre></div></div>
+
+<h4 id="müller-elektronik">Müller-Elektronik</h4>
+<h5 id="expected-file-structure-10">Expected file structure</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TASKDATA
+├── <span class="k">*</span>.XML
+└── <span class="k">*</span>.bin
+</code></pre></div></div>
+
+<h4 id="teknomika">Teknomika</h4>
+<h5 id="expected-file-structure-11">Expected file structure</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TASKDATA
+├── <span class="k">*</span>.XML
+└── <span class="k">*</span>.bin
+</code></pre></div></div>
+
+<h4 id="topcon-precision-agriculture">Topcon Precision Agriculture</h4>
+<h5 id="expected-file-structure-12">Expected file structure</h5>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TASKDATA
+├── <span class="k">*</span>.XML
+└── <span class="k">*</span>.bin
+</code></pre></div></div>
+
+<h4 id="farmobile">Farmobile</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Format</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GeoJSON</td>
+      <td>GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="other">Other</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>File Format</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Shapefile</td>
+      <td>Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/batch'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const params = {
+    provider: 'JohnDeere',
+    leafUserId: 'id'
+  }
+
+  const form = new FormData()
+  form.append('file', 'shapefile.zip')
+
+  axios.post(endpoint, form, { headers, params })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/batch'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('shapefile.zip', 'rb')}
+  params = {
+    'provider': 'JohnDeere',
+    'leafUserId': 'id'
+  }
+
+  response = requests.post(endpoint, headers=headers, files=files, params=params)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=shapefile.zip' \
+      'https://api.withleaf.io/services/operations/api/batch?' \
+      'provider=JohnDeere&amp;leafUserId=id'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h5 id="response-3">Response</h5>
+
+<p>Returns a single JSON object, as shown below:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"996aea67-52bc-4d4b-9b77-028756dc0ee9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ede8f781-1d55-4b2d-83a1-6785ddab6e1d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Climate.zip"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">8652951</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECEIVED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uploadTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-12T19:50:55.567755Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This id can then be queried to retrieve on <a href="#get-batch-upload">Get batch</a> to get the individual file ID’s. 
+Then you can query each of the files individually with 
+<a href="#get-a-file">Get a File</a> or all of them, filtering by <code class="language-plaintext highlighter-rouge">batchId</code>, on
+<a href="#get-all-files">Get all Files</a>.</p>
+
+<h4 id="batch-status">Batch status</h4>
+
+<p>The <em>status</em> key will evolve accordingly to the following states:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RECEIVED</td>
+      <td>Is the default state for every batch created</td>
+    </tr>
+    <tr>
+      <td>PROCESSED</td>
+      <td>When all the files included in the batch were processed, and at least one file have status SUCCESS</td>
+    </tr>
+    <tr>
+      <td>FAILED</td>
+      <td>The batch did not generated any leaf files with status SUCCESS</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The messages with FAILED status have the key <em>statusDetails</em>. The statusDetails are just informative and should not be used programatically.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"996aea67-52bc-4d4b-9b77-028756dc0ee9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ede8f781-1d55-4b2d-83a1-6785ddab6e1d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Climate.zip"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">8652951</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FAILED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"statusDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No operation found. Check file format before re-trying or contact support. Check file format before re-trying or contact support"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"uploadTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-12T19:50:55.567755Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The following status can be present on <em>statusDetails</em>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>No valid files found</td>
+      <td>Unable to find a valid file based on supported extensions and expected file structure</td>
+    </tr>
+    <tr>
+      <td>Leaf internal error. Please contact Support</td>
+      <td>Internal error that need to be reported</td>
+    </tr>
+    <tr>
+      <td>Files found but unable to read. Please check file format before re-trying or contact Support</td>
+      <td>A valid file was found but could not be converted</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="get-batch-upload">Get Batch upload</h3>
+
+<p>Once you’ve uploaded files, you can then query these files individually, merge the files, or query for them 
+via <a href="#get-all-files">Get all Files</a>.
+You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.</p>
+
+<p>&lt;Tabs
+  defaultValue=”py”
+  values={[
+    { label: ‘Python’, value: ‘py’, },
+  ]
+}&gt;</p>
+
+<TabItem value="py">
+
+  ```python
+  import requests
+
+  url = "https://api.withleaf.io/services/operations/api/batch/{batch_id}/"
+
+  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
+
+  response = requests.request("GET", url, headers=headers)
+
+  print(response.text)
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h5 id="response-4">Response:</h5>
+
+<p>When you query a batch upload ID, you will receive a single JSON object:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f893c921-0f38-4f39-9f3e-be765ac61df0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdf5f624-fb9b-4294-949c-29e979f0ce5a"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESSED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"8334f4bb-48de-44e2-903b-6dedd6db6683"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"81778f58-8eed-41cc-a025-e653ea85b01e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"0f606bef-b529-4899-854c-9b698cd08762"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"84fec273-b458-4be7-8feb-44204502f126"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"92b7367b-2ffd-4a82-ba9b-5a40e8b68714"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"90e7e130-8f33-4752-b8f4-3a132246f047"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cb97857e-61b0-4fbe-a5c1-1083cfa6738f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"0cded205-7734-40fb-8906-b82d36e35845"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dc24d491-983c-4ebe-b961-8c749943529f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"67af8697-47bc-4886-935f-5880d1eba31d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"8b7d8b7b-e682-4c3e-aee2-3b7713cc81a4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"e5067ed3-8463-43b9-a8a5-3b3c1eee44bc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"b9d30d3a-0207-410f-81da-afb31a1b36cb"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eace9b90-a520-4c4c-af89-4c3fd5da68fa"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"6ea55c68-203f-448b-9e7f-dcd014c31cc3"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="get-all-batches">Get all Batches</h3>
+
+<p>Once you’ve uploaded files, you can then query these files individually, merge the files, or query for them 
+via <a href="#get-all-files">Get all Files</a>.
+You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.</p>
+
+<p>&lt;Tabs
+  defaultValue=”py”
+  values={[
+    { label: ‘Python’, value: ‘py’, },
+  ]
+}&gt;</p>
+
+<TabItem value="py">
+
+  ```python
+  import requests
+
+  url = "https://api.withleaf.io/services/operations/api/batch"
+
+  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
+
+  response = requests.request("GET", url, headers=headers)
+
+  print(response.text)
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h5 id="response-5">Response:</h5>
+
+<p>When you query a batch upload ID, you will receive a JSON with list of batches:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f893c921-0f38-4f39-9f3e-be765ac61df0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdf5f624-fb9b-4294-949c-29e979f0ce5a"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESSED"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"leafFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"8334f4bb-48de-44e2-903b-6dedd6db6683"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"81778f58-8eed-41cc-a025-e653ea85b01e"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"0f606bef-b529-4899-854c-9b698cd08762"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"84fec273-b458-4be7-8feb-44204502f126"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"92b7367b-2ffd-4a82-ba9b-5a40e8b68714"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"90e7e130-8f33-4752-b8f4-3a132246f047"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"cb97857e-61b0-4fbe-a5c1-1083cfa6738f"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"0cded205-7734-40fb-8906-b82d36e35845"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"dc24d491-983c-4ebe-b961-8c749943529f"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"67af8697-47bc-4886-935f-5880d1eba31d"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"8b7d8b7b-e682-4c3e-aee2-3b7713cc81a4"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"e5067ed3-8463-43b9-a8a5-3b3c1eee44bc"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"b9d30d3a-0207-410f-81da-afb31a1b36cb"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"eace9b90-a520-4c4c-af89-4c3fd5da68fa"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"6ea55c68-203f-448b-9e7f-dcd014c31cc3"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="retry-a-batch">Retry a batch</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">PUT</span> <code class="language-plaintext highlighter-rouge">/batch/{id}/retry</code></p>
+
+<p>If a batch upload does not complete as expected, this endpoint allows you to try again. This action will reprocess the fragments of uploaded data that didn’t succeed processing before, keeping existing converted files unaffected.</p>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+  ]
+}&gt;</p>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/batch/{id}/retry'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.put(endpoint, data, { headers })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/batch/{id}/retry'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.put(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/batch/{id}/retry'
+  ```
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h5 id="response-6">Response</h5>
+
+<p>Returns a single JSON object, similar to the upload endpoint response:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leafUserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fileName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filename.zip"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">8652951</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RECEIVED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uploadTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-12T19:50:55.567755Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<h3 id="merge-files">Merge files</h3>
+
+<p>&amp;nbsp<span class="badge badge--warning">POST</span> <code class="language-plaintext highlighter-rouge">/files/merge</code></p>
+
+<p>Posts a merge operation to our server.</p>
+
+<p>A merge operation is performed asynchronously. This call will return immediately
+with the newly created file entry, but at this point, the file is not already
+processed and available. You will need to make a new <code class="language-plaintext highlighter-rouge">GET /files</code> request for the
+new id and check the status. A status value of <code class="language-plaintext highlighter-rouge">processed</code> means the file is
+done merging.</p>
+
+<p>A merge process has some validations, the files passed must belong to
+the same <code class="language-plaintext highlighter-rouge">leafUserId</code>, be of the same operation type and have the status as <code class="language-plaintext highlighter-rouge">processed</code>.
+If any of those filters fail, the endpoint will result in HTTP 400 error.</p>
+
+<p>It receives a single JSON object with the <code class="language-plaintext highlighter-rouge">ids</code> entry. Example:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"id1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"id2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"so on"</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>&lt;Tabs
+  defaultValue=”sh”
+  values={[
+    { label: ‘cURL’, value: ‘sh’, },
+    { label: ‘Python’, value: ‘py’, },
+    { label: ‘JavaScript’, value: ‘js’, },
+    { label: ‘JSON Response’, value: ‘json’, },
+  ]
+}&gt;</p>
+
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/merge'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = { ids: [ 'id1', 'id2' ] }
+
+  axios.post(endpoint, { headers, data })
+      .then(res =&gt; console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+<TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/merge'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {'ids': ['id1', 'id2']}
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+<TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "ids": [ "id1", "id2" ] }'
+      'https://api.withleaf.io/services/operations/api/files/merge'
+  ```
+
+  </TabItem>
+<TabItem value="json">
+
+  Returns a single JSON object:
+
+  ```json
+  {
+    "id": "id",
+    "status": "SENT_TO_MERGE"
+  }
+  ```
+
+  After a few minutes, you can consult the result of Leaf processing over this file by
+  performing GET consults in this.
+
+  </TabItem>
+<p>&lt;/Tabs&gt;</p>
+
+<h2 id="alerts">Alerts</h2>
+
+<p>With Alerts you can be notified when something happens or changes instead of needing to repeatedly query for changes. 
+Leaf Alerts support events that happen within Leaf and events that happen within supported 3rd party software.</p>
+
+<h3 id="list-of-operations-events">List of Operations Events</h3>
+
+<p>Leaf Operations Service can Alert you on these events: <a href="#get-all-batches">list of Operations Events</a></p>
+
+<hr />

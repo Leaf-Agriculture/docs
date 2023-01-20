@@ -88,6 +88,13 @@ module.exports = {
               type: 'category',
               label: 'Layers',
               items: ['beta_layers_endpoints']
+            },
+            {
+              type: 'category',
+              label: 'Widgets',
+              items: [
+                'widgets_file_upload'
+              ]
             }
           ]
         },

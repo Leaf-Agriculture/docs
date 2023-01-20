@@ -12,10 +12,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: /docs/field_boundary_management_overview
 [5]: /docs/beta_machines_endpoints
 
-:::caution Services availability
-This integration is under construction. For now, Field boundary integration is not available.
-:::
-
 Form of a Stara Credentials resource:
 
 ```json

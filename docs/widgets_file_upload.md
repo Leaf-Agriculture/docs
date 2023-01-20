@@ -13,17 +13,16 @@ This is a beta feature.
 :::
 
 
-This widget allows the user to upload different file formats for conversion using the Leaf API.
+This widget allows the user to upload different machine files formats for conversion using the Leaf API.
 
 <p align="center">
     <img alt="File upload widget" width="50%" src={useBaseUrl('img/leaf-file-upload.png')} />
 </p>
 
 ## How it works
-The user can add files using the file picker from the `Browse` button or drop files in the `Drag & drop` zone. This widget only supports `zip` files.
+The user can add files using the file picker from the `Browse` button or drop files in the `Drag & drop` zone. Your files must be in a `zip` file.
  
 During the upload, the users can see the progress of the upload and they are able to cancel the upload process for the pending files. 
-
 
 
 ## Add it to your application

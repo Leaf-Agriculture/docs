@@ -1,21 +1,23 @@
 const path = require('path');
 
+
 const leaf_logo = 'img/logo4light_mode.png'
 const leaf_favicon_light = 'img/icon4dark_mode.png'
 
 const leaf_logo_dark = 'img/logo4dark_mode.png'
 const leaf_favicon_dark = 'img/icon4light_mode.png'
-
-
+require('dotenv').config();
+const url = process.env.URL || 'https://leaf-agriculture.github.io'
+const base = process.env.BASE || '/docs/'
 module.exports = {
   title: 'Leaf',
   tagline: 'The easiest way to connect agriculture data across platforms',
   organizationName: 'leaf-agriculture',
   projectName: 'docs',
-
-  baseUrl: '/',
-  url: 'https://docs.withleaf.io',
+  baseUrl: base,
+  url: url,
   favicon: leaf_favicon_light,
+  onBrokenLinks: 'ignore',
 
 
   plugins: [

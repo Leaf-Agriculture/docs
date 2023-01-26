@@ -3840,6 +3840,20 @@
     "unified" "^9.0.0"
     "unist-util-is" "^4.0.2"
 
+"docusaurus-plugin-dotenv@^1.0.1":
+  "integrity" "sha512-qKlWuBd6UoyB0d5ExH9waYGPoy1SnWgV8s8VLg12ydcfxquazXJngV0N5VAX/HuFiZmsPD3L4TYUKxdHWJTeEw=="
+  "resolved" "https://registry.npmjs.org/docusaurus-plugin-dotenv/-/docusaurus-plugin-dotenv-1.0.1.tgz"
+  "version" "1.0.1"
+  dependencies:
+    "dotenv-webpack" "7.0.2"
+
+"docusaurus2-dotenv@^1.4.0":
+  "integrity" "sha512-iWqem5fnBAyeBBtX75Fxp71uUAnwFaXzOmade8zAhN4vL3RG9m27sLSRwjJGVVgIkEo3esjGyCcTGTiCjfi+sg=="
+  "resolved" "https://registry.npmjs.org/docusaurus2-dotenv/-/docusaurus2-dotenv-1.4.0.tgz"
+  "version" "1.4.0"
+  dependencies:
+    "dotenv-webpack" "1.7.0"
+
 "dom-converter@^0.2":
   "integrity" "sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA=="
   "resolved" "https://registry.npmjs.org/dom-converter/-/dom-converter-0.2.0.tgz"
@@ -3902,6 +3916,49 @@
   "version" "5.2.0"
   dependencies:
     "is-obj" "^2.0.0"
+
+"dotenv-defaults@^1.0.2":
+  "integrity" "sha512-6fPRo9o/3MxKvmRZBD3oNFdxODdhJtIy1zcJeUSCs6HCy4tarUpd+G67UTU9tF6OWXeSPqsm4fPAB+2eY9Rt9Q=="
+  "resolved" "https://registry.npmjs.org/dotenv-defaults/-/dotenv-defaults-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "dotenv" "^6.2.0"
+
+"dotenv-defaults@^2.0.1":
+  "integrity" "sha512-iOIzovWfsUHU91L5i8bJce3NYK5JXeAwH50Jh6+ARUdLiiGlYWfGw6UkzsYqaXZH/hjE/eCd/PlfM/qqyK0AMg=="
+  "resolved" "https://registry.npmjs.org/dotenv-defaults/-/dotenv-defaults-2.0.2.tgz"
+  "version" "2.0.2"
+  dependencies:
+    "dotenv" "^8.2.0"
+
+"dotenv-webpack@1.7.0":
+  "integrity" "sha512-wwNtOBW/6gLQSkb8p43y0Wts970A3xtNiG/mpwj9MLUhtPCQG6i+/DSXXoNN7fbPCU/vQ7JjwGmgOeGZSSZnsw=="
+  "resolved" "https://registry.npmjs.org/dotenv-webpack/-/dotenv-webpack-1.7.0.tgz"
+  "version" "1.7.0"
+  dependencies:
+    "dotenv-defaults" "^1.0.2"
+
+"dotenv-webpack@7.0.2":
+  "integrity" "sha512-RY+/5uM/XY4bGtih9f9ic8hlrUDxVcZZBPWlnX/aHhaKxcVVX9SH/5VH7CSmvVo9GL6PKvQOA0X1bc552rnatQ=="
+  "resolved" "https://registry.npmjs.org/dotenv-webpack/-/dotenv-webpack-7.0.2.tgz"
+  "version" "7.0.2"
+  dependencies:
+    "dotenv-defaults" "^2.0.1"
+
+"dotenv@^16.0.3":
+  "integrity" "sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz"
+  "version" "16.0.3"
+
+"dotenv@^6.2.0":
+  "integrity" "sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-6.2.0.tgz"
+  "version" "6.2.0"
+
+"dotenv@^8.2.0":
+  "integrity" "sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-8.6.0.tgz"
+  "version" "8.6.0"
 
 "duplexer@^0.1.1":
   "integrity" "sha1-rOb/gIwc5mtX0ev5eXessCM0z8E="
@@ -10301,7 +10358,7 @@
     "source-list-map" "^2.0.0"
     "source-map" "~0.6.1"
 
-"webpack@^3.0.0 || ^4.0.0", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.3.0", "webpack@^4.4.0", "webpack@^4.41.2", "webpack@>=2", "webpack@>=4.0.0 < 6.0.0", "webpack@>=4.41.1":
+"webpack@^1 || ^2 || ^3 || ^4", "webpack@^3.0.0 || ^4.0.0", "webpack@^4 || ^5", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.3.0", "webpack@^4.4.0", "webpack@^4.41.2", "webpack@>=2", "webpack@>=4.0.0 < 6.0.0", "webpack@>=4.41.1":
   "integrity" "sha512-4UOGAohv/VGUNQJstzEywwNxqX417FnjZgZJpJQegddzPmTvph37eBIRbRTfdySXzVtJXLJfbMN3mMYhM6GdmQ=="
   "resolved" "https://registry.npmjs.org/webpack/-/webpack-4.44.1.tgz"
   "version" "4.44.1"

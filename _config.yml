@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
@@ -50,3 +51,9 @@ redirect_to: https://docs.withleaf.io/docs/
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+=======
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
+>>>>>>> Stashed changes

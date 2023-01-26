@@ -28,16 +28,17 @@ script:
   - npm run build
 
 deploy:
-  - provider: script
-    script: bash ./.travis/deploy.sh
-    edge: true
-    on:
-      branch: master
   - provider: pages
     strategy: git
     edge: false
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
     local_dir: ./build
+    on:
+      branch: master
+
+  - provider: script
+    script: bash ./.travis/deploy.sh
+    edge: true
     on:
       branch: master

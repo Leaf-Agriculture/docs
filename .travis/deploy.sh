@@ -3,6 +3,7 @@ set -ev
 
 REGION=us-west-2
 ECR=558258168256.dkr.ecr.${REGION}.amazonaws.com/docs:latest
+node ghpages.js
 
 export URL='https://docs.withleaf.io'
 export BASE='/'

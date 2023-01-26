@@ -299,10 +299,11 @@ Both API Owners can block the relation, but once locked by the sender, there is 
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/status'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  const data = { 'status': 'ALLOWED or BLOCKED}
 
-  axios.get(endpoint, { headers })
+  axios.patch(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -315,10 +316,14 @@ Both API Owners can block the relation, but once locked by the sender, there is 
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/status'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.get(endpoint, headers=headers)
+  data = {
+    'status': 'ALLOWED or BLOCKED'
+  }
+
+  response = requests.patch(endpoint, json=data, headers=headers)
   print(response.json())
   ```
 
@@ -326,9 +331,10 @@ Both API Owners can block the relation, but once locked by the sender, there is 
   <TabItem value="sh">
 
   ```shell
-  curl -X GET \
+  curl -X PATCH \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/status'
+      -d '{ "status": "ALLOWED or BLOCKED" }' 
+      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}'
   ```
 
   </TabItem>

@@ -17,14 +17,14 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [6]: #providers-credentials-endpoints
 
-[7]: credentials_john_deere
-[8]: credentials_cfv
-[9]: credentials_trimble
-[10]: credentials_cnhi
-[11]: credentials_stara
-[12]: credentials_raven
-[13]: credentials_agleader
-[14]: credentials_raven_slingshot
+[7]: /docs/credentials_john_deere
+[8]: /docs/credentials_cfv
+[9]: /docs/credentials_trimble
+[10]: /docs/credentials_cnhi
+[11]: /docs/credentials_stara
+[12]: /docs/credentials_raven
+[13]: /docs/credentials_agleader
+[14]: /docs/credentials_raven_slingshot
 
 
 ## About

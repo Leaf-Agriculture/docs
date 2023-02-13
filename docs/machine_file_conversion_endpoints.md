@@ -22,6 +22,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [11]: #merge-files
 [12]: #get-a-files-units
 [13]: #retry-a-batch
+[14]: machine_file_conversion_sample_output.md
 
 ## About
 
@@ -146,7 +147,7 @@ If the parameters page and size are not set, the endpoint will return 20 results
 #### Response
 
 The response is a JSON with the key "operations" referring to a list of files.
-[Here's a link with sample responses][sample_summary] for "planted", "applied" 
+[Here's a link with sample responses][14] for "planted", "applied" 
 and "harvested" operation files.
 
 
@@ -215,7 +216,7 @@ Gets a single file by its id.
 
 #### Response
 
-[Here's a link with sample responses][sample_summary] for "planted", "applied" 
+[Here's a link with sample responses][14] for "planted", "applied" 
 and "harvested" operation files.
 
 ---
@@ -280,7 +281,7 @@ Gets the summary, if available, for the file id.
 
 #### Response
 
-[Here's a link with sample responses][sample_summary] for "planted", "applied" 
+[Here's a link with sample responses][14] for "planted", "applied" 
 and "harvested" operation files.
 
 

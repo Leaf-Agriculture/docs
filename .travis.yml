@@ -11,11 +11,6 @@ services:
 cache:
   npm: true
 
-before_install:
-  - bash ./.travis/awscli.sh
-  - bash ./.travis/install_terraform.sh
-  - docker login --username $DOCKER_USER --password $DOCKER_PASS
-
 install:
   - npm install node@16.10.0
   - npm install -g npm@7.24.0
@@ -23,10 +18,8 @@ install:
   - npx browserslist@latest --update-db
 
 script:
-  - bash ./.travis/validate_terraform.sh
   - npm run swizzle docusaurus-lunr-search SearchBar
   - npm run build
-  -
 
 deploy:
   - provider: script

@@ -23,6 +23,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [15]: /docs/configurations_overview#operationsfilteredgeojson
 
 
+### 2.113.0
+*2023-01-19*
+
+**Stara integration**
+New integrations available for Stara. Machine Files, Field Operations, Field Boundaries and Machines are services available for this provider.
+
 ### 2.110.0
 *2022-12-08*
 

@@ -16,12 +16,14 @@ Form of a Trimble Credentials resource:
 
 ```json
 {
+  "id": "uuid",
   "status": "str",
-  "userName": "str",
-  "password": "str",
-  "applicationName": "str",
-  "serviceIdentityId": "str",
-  "scopes": ["str"]
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": { "scopes": "str" },
+  "clientId": "str",
+  "clientSecret": "str",
+  "accessToken": "str",
+  "refreshToken": "str"
 }
 ```
 
@@ -107,10 +109,9 @@ A Trimble credentials.
 
 ```json
 {
-  "userName": "str",
-  "password": "str",
-  "applicationName": "str",
-  "serviceIdentityId": "str"
+    "clientId": "str",
+    "clientSecret": "str",
+    "refreshToken": "str"
 }
 ```
 
@@ -132,10 +133,9 @@ A Trimble credentials.
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
-    "userName": "str",
-    "password": "str",
-    "applicationName": "str",
-    "serviceIdentityId": "str"
+    "clientId": "str",
+    "clientSecret": "str",
+    "refreshToken": "str"
   }
 
   axios.post(endpoint, data, { headers })
@@ -155,10 +155,9 @@ A Trimble credentials.
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    "userName": "str",
-    "password": "str",
-    "applicationName": "str",
-    "serviceIdentityId": "str"
+    "clientId": "str",
+    "clientSecret": "str",
+    "refreshToken": "str"
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -171,7 +170,7 @@ A Trimble credentials.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"userName": "str","password": "str","applicationName": "str","serviceIdentityId": "str"}'
+      -d '{"clientId": "str","clientSecret": "str","refreshToken": "str"}'
       'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/trimble-credentials'
   ```
 
@@ -302,10 +301,10 @@ Get the logs of the provider credential based on the LeafUserId sent.
 ```json
 [
   {
-    "body": "string",
+    "body": "str",
     "createdDate": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
-    "headers": "string",
-    "id": "string",
+    "headers": "str",
+    "id": "str",
     "statusCode": "int"
   }
 ]

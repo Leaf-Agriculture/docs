@@ -8,6 +8,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+[1]:  /docs/authentication
+[2]:  /docs/user_management_overview
+
 :::caution Beta
 This is a beta feature.
 :::
@@ -23,6 +26,11 @@ This widget allows the user to upload different machine files formats for conver
 The user can add files using the file picker from the `Browse` button or drop files in the `Drag & drop` zone. Your files must be in a `zip` file.
  
 During the upload, the users can see the progress of the upload and they are able to cancel the upload process for the pending files. 
+
+:::info Requirements
+In addition to being [authenticated][1], you must have at least one Leaf user created. Learn more [here][2].
+:::
+
 
 
 ## Add it to your application

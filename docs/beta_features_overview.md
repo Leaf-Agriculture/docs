@@ -40,7 +40,7 @@ Our supported providers are:
 Layers is a product that will organize the information that is related to field and can be accessed a map.
 
 Our supported providers are:
-* [Sentera](https://withleaf.io/en/blog/senteraintegrationwithleaf).
+* [Sentera](https://withleaf.io/en/blog/sentera-integration-with-leaf/).
 
 [4]: #input
 

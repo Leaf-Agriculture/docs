@@ -1,6 +1,6 @@
 ---
-title: Sharing
-description: Sharing
+title: Leaf Connect
+description: Leaf Connect
 ---
 
 import Tabs from '@theme/Tabs';
@@ -19,10 +19,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [9]: /docs/field_boundary_management_endpoints#get-all-fields
 [10]: /docs/field_boundary_management_overview
 [11]: /docs/operations_overview
+[12]: /docs/beta_machines_endpoints
 
 
 ## About
-The Leaf API allows an API Owner to grant permission to access [Fields][10] and [Operations][11] to other API Owners. The access is controlled at the Leaf user level by the API account that owns the data
+The Leaf API allows an API Owner to grant permission to access [Field Boundaries][10], [Field Operations][11] and [Machine Data Files][12] to other API Owners. The access is controlled at the Leaf user level by the API account that owns the data
 
 ### How it works
 
@@ -49,7 +50,7 @@ Company-level sharing is not supported, but the permission can be granted or rev
 :::
 
 #### 3 - Access   
-At the end of these steps, API Owner B will be able to visualize the fields and/or operations from the shared Leaf user, using the existing field/operations endpoints, like [this one][9].
+At the end of these steps, API Owner B will be able to visualize the fields, operations and/or machine data files from the shared Leaf user, using the existing field/operations/machine data files endpoints, like [this one][9].
 
 
 ## Endpoints

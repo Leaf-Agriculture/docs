@@ -98,7 +98,7 @@ module.exports = {
             }
           ]
         },
-        'sharedata',
+        'Connect',
       ],
     }
   ]

@@ -25,6 +25,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [12]: /docs/credentials_raven
 [13]: /docs/credentials_agleader
 [14]: /docs/credentials_raven_slingshot
+[15]: /docs/credentials_sentera
+[16]: /docs/credentials_agvance
 
 
 ## About
@@ -491,6 +493,8 @@ Deletes an existing Leaf User by `id`.
 - [Raven][12]
 - [AgLeader][13]
 - [Raven Slingshot][14]
+- [Sentera][15]
+- [AgVance][16]
 
 
 :::tip

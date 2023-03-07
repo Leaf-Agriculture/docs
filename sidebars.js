@@ -29,7 +29,8 @@ module.exports = {
                 'credentials_raven_slingshot',
                 'credentials_agleader',
                 'credentials_stara',
-                'credentials_sentera'
+                'credentials_sentera',
+                'credentials_agvance'
               ]
             }
           ]

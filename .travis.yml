@@ -23,7 +23,7 @@ script:
 
 deploy:
   - provider: script
-    script: bash ./.travis/deploy.sh
+    script: node ghpages.js
     edge: true
     on:
       branch: master

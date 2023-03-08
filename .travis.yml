@@ -22,8 +22,11 @@ script:
   - npm run build
 
 deploy:
-  - provider: script
-    script: node ghpages.js
-    edge: true
-    on:
-      branch: master
+  provider: pages
+  strategy: git
+  edge: false
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: ./build
+  on:
+    branch: master

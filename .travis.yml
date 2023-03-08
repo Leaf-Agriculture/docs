@@ -23,7 +23,7 @@ script:
 
 deploy:
   - provider: script
-    script: npm run deploy
+    script: node ghpages.js
     edge: true
     on:
       branch: master

@@ -16,27 +16,28 @@ Form of a Raven Slingshot Credentials resource:
 {
   "apiKey": "str",
   "accessKey": "str",
-  "sharedSecret": "str",
-  "status": "str" 
+  "sharedSecret": "str"
 }
 ```
 
 **Endpoints**
 
-Description | Endpoints
---- | ---
-[Get the Raven Slingshot credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/raven-slingshot-credentials`
-[Create a Raven Slingshot credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/raven-slingshot-credentials`
-[Delete Raven Slingshot credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/raven-slingshot-credentials`
+|                Description                |                                             Endpoints                                             |
+|:-----------------------------------------:|:-------------------------------------------------------------------------------------------------:|
+| [Get the Raven Slingshot credentials][1]  |  <span class="badge badge--success">GET</span> `/users/{leafUserId}/raven-slingshot-credentials`  |
+| [Create a Raven Slingshot credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/raven-slingshot-credentials`  |
+|  [Delete Raven Slingshot credentials][3]  | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/raven-slingshot-credentials` |
 
 ## Raven Slingshot Credentials Endpoints
 
 ### Get the Raven Slingshot credentials
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/raven-slingshot-credentials`  
 
-Get the Raven Slingshot credentials of the Leaf User based on its `id` and returns a JSON with the credentials.
+Get the Raven Slingshot credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -87,7 +88,17 @@ Get the Raven Slingshot credentials of the Leaf User based on its `id` and retur
 </Tabs>
 
 #### Response
-A Raven Slingshot credentials resources as a JSON. 
+
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "apiKey": "str",
+  "accessKey": "str",
+  "sharedSecret": "str"
+}
+```
 
 
 ### Create a Raven Slingshot credentials
@@ -95,25 +106,24 @@ A Raven Slingshot credentials resources as a JSON.
 
 Create a Raven Slingshot credentials for the Leaf User. 
 
-
-#### Request examples
-
-A Raven Slingshot credentials.
+#### Request body
 
 ```json
 {
-    "apiKey": "str",
-    "accessKey": "str",
-    "sharedSecret": "str"
+  "apiKey": "str",
+  "accessKey": "str",
+  "sharedSecret": "str"
 }
 ```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -171,10 +181,20 @@ curl -X POST \
   </TabItem>
 </Tabs>
 
-#### Response 
+#### Response
+
 A Raven Slingshot Credentials with status.
 
-
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "apiKey": "str",
+  "accessKey": "str",
+  "sharedSecret": "str"
+}
+```
 
 ### Delete Raven Slingshot credentials
 &nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/raven-slingshot-credentials`  
@@ -232,6 +252,7 @@ Delete Leaf User's Raven Slingshot credentials.
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events

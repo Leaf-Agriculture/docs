@@ -16,7 +16,6 @@ Form of a Stara Credentials resource:
 
 ```json
 {
-  "status": "str",
   "apiKey": "str",
   "accessToken": "str",
   "accessTokenClient": "str",
@@ -36,11 +35,14 @@ Description | Endpoints
 ## Stara Credentials Endpoints
 
 ### Get the Stara credentials
+
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/stara-credentials`  
 
-Get the Stara credentials of the Leaf User based on its `id` and returns a JSON with the credentials.
+Get the Stara credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
+
 <Tabs
 defaultValue="sh"
 values={[
@@ -91,15 +93,26 @@ values={[
 </Tabs>
 
 #### Response
-A Stara credentials resource as a JSON.
 
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "accessTokenClient": "str",
+  "refreshToken": "str",
+  "accessToken": "str",
+  "apiKey": "str"
+}
+```
 
 ### Create a Stara credentials 
-&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/stara-credentials`  
-Create a Stara credential for the Leaf User.
 
-#### Request examples
-A Stara credential.
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/stara-credentials`  
+
+Create a Stara credentials for the Leaf User.
+
+#### Request body
 
 ```json
 {
@@ -110,14 +123,14 @@ A Stara credential.
 }
 ```
 
+#### Request examples
+
 <Tabs
 defaultValue="sh"
 values={[
   { label: 'cURL', value: 'sh', },
   { label: 'Python', value: 'py', },
   { label: 'JavaScript', value: 'js', },
-  
-  
 ]
 }>
 <TabItem value="js">
@@ -178,23 +191,35 @@ values={[
 </Tabs>
 
 #### Response
+
 A Stara Credentials with status.
 
-
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "accessTokenClient": "str",
+  "refreshToken": "str",
+  "accessToken": "str",
+  "apiKey": "str"
+}
+```
 
 ### Delete Stara credentials
+
 &nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/stara-credentials`  
+
 Delete Leaf User's Stara credentials.
 
 #### Request examples
+
 <Tabs
 defaultValue="sh"
 values={[
   { label: 'cURL', value: 'sh', },
   { label: 'Python', value: 'py', },
   { label: 'JavaScript', value: 'js', },
-  
-  
 ]
 }>
 <TabItem value="js">
@@ -239,6 +264,7 @@ values={[
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events
@@ -248,6 +274,7 @@ With these endpoints, you can do some troubleshooting to see your credential's h
 Get the logs of the provider credential based on the LeafUserId sent.
 
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[

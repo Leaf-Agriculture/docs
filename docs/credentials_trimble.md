@@ -16,10 +16,6 @@ Form of a Trimble Credentials resource:
 
 ```json
 {
-  "id": "uuid",
-  "status": "str",
-  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
-  "tokenMetadata": { "scopes": "str" },
   "clientId": "str",
   "clientSecret": "str",
   "accessToken": "str",
@@ -41,7 +37,9 @@ Description | Endpoints
 
 ### Get the Trimble credentials
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/trimble-credentials`  
-Get the Trimble credentials of the Leaf User based on its `id`and returns a JSON with the credentials.
+
+Get the Trimble credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
 <Tabs
@@ -50,8 +48,6 @@ Get the Trimble credentials of the Leaf User based on its `id`and returns a JSON
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    
-    
   ]
 }>
   <TabItem value="js">
@@ -96,24 +92,36 @@ Get the Trimble credentials of the Leaf User based on its `id`and returns a JSON
 </Tabs>
 
 #### Response
-A Trimble credentials resource as a JSON.
-
-
-### Create a Trimble credentials
-&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/trimble-credentials`  
-
-Create a Trimble credentials for the Leaf User.
-
-#### Request examples
-A Trimble credentials.
 
 ```json
 {
-    "clientId": "str",
-    "clientSecret": "str",
-    "refreshToken": "str"
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": {"scopes": ["str"]},
+  "clientId": "str",
+  "clientSecret": "str",
+  "accessToken": "str",
+  "refreshToken": "str"
 }
 ```
+
+### Create a Trimble credentials
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/trimble-credentials`
+
+Create a Trimble credentials for the Leaf User.
+
+#### Request body
+
+```json
+{
+  "clientId": "str",
+  "clientSecret": "str",
+  "refreshToken": "str"
+}
+```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -179,12 +187,27 @@ A Trimble credentials.
 
 
 #### Response
+
 A Trimble credentials with status.
+
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": {"scopes": ["str"]},
+  "clientKey": "str",
+  "clientSecret": "str",
+  "accessToken": "str",
+  "refreshToken": "str",
+  "clientEnvironment": "STAGE or PRODUCTION"
+}
+```
 
 ### Delete Trimble credentials
 &nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/trimble-credentials`  
 
-Delete a Leaf User's Trimble credentials.
+Delete Leaf User's Trimble credentials.
 
 #### Request examples
 <Tabs
@@ -237,6 +260,7 @@ Delete a Leaf User's Trimble credentials.
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events

@@ -14,12 +14,10 @@ Form of a Raven Credentials resource:
 
 ```json
 {
-  "accessToken": "str",
-  "refreshToken": "str",
   "clientId": "str",
   "clientSecret": "str",
-  "status": "str",
-  "scopes": ["str"]
+  "refreshToken": "str",
+  "accessToken": "str"
 }
 ```
 
@@ -37,10 +35,9 @@ Description | Endpoints
 
 ### Get the Raven credentials
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/raven-credentials`  
-Get the Raven credentials of the Leaf User based on its `id` and returns a JSON with the credentials.
 
-#### Response
-A Raven credentials resource as a JSON.
+Get the Raven credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
 
@@ -93,14 +90,27 @@ A Raven credentials resource as a JSON.
   </TabItem>
 </Tabs>
 
+#### Response
+
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": {"scopes": ["str"]},
+  "clientId": "str",
+  "clientSecret": "str",
+  "refreshToken": "str",
+  "accessToken": "str"
+}
+```
 
 ### Create a Raven credentials
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/raven-credentials`  
 
 Create a Raven credentials for the Leaf User.
 
-#### Request examples
-A Raven credentials.
+#### Request body
 
 ```json
 {
@@ -109,6 +119,8 @@ A Raven credentials.
   "refreshToken": "str"
 }
 ```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -174,8 +186,21 @@ curl -X POST \
 </Tabs>
 
 #### Response
+
 A Raven Credentials with status.
 
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": {"scopes": ["str"]},
+  "clientId": "str",
+  "clientSecret": "str",
+  "refreshToken": "str",
+  "accessToken": "str"
+}
+```
 
 ### Delete Raven credentials
 &nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/raven-credentials`  
@@ -233,6 +258,7 @@ Delete Leaf User's Raven credentials.
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events

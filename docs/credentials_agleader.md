@@ -16,9 +16,8 @@ Form of an AgLeader Credentials resource:
 {
   "accessToken": "str",
   "refreshToken": "str",
-  "privateKey": "str",
   "publicKey": "str",
-  "status": "str" 
+  "privateKey": "str"
 }
 ```
 
@@ -37,7 +36,8 @@ Description | Endpoints
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/ag-leader-credentials`
 
-Get the AgLeader credentials of the Leaf User based on its `id` and returns a JSON with the credentials.
+Get the AgLeader credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 
 #### Request examples
@@ -46,8 +46,8 @@ Get the AgLeader credentials of the Leaf User based on its `id` and returns a JS
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', }
   ]
 }>
   <TabItem value="sh">
@@ -92,16 +92,26 @@ Get the AgLeader credentials of the Leaf User based on its `id` and returns a JS
 </Tabs>
 
 #### Response
-A AgLeader credentials resources as a JSON. 
+
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "accessToken": "str",
+  "refreshToken": "str",
+  "publicKey": "str",
+  "privateKey": "str"
+}
+```
 
 
 ### Create a AgLeader credentials
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/ag-leader-credentials`  
 
-Create a AgLeader credentials for the Leaf User. 
+Create a AgLeader credentials for the Leaf User.
 
-#### Request examples
-A AgLeader credentials.
+#### Request body
 
 ```json
 {
@@ -112,12 +122,14 @@ A AgLeader credentials.
 }
 ```
 
+#### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', }
   ]
 }>
   <TabItem value="js">
@@ -132,8 +144,8 @@ A AgLeader credentials.
   const data = {
     "accessToken": "str", 
     "refreshToken": "str", 
-    "privateKey": "str", 
-    "publicKey": "str"
+    "publicKey": "str", 
+    "privateKey": "str"
   }
 
   axios.post(endpoint, data, { headers })
@@ -155,8 +167,8 @@ A AgLeader credentials.
   data = {
     "accessToken": "str", 
     "refreshToken": "str", 
-    "privateKey": "str", 
-    "publicKey": "str"
+    "publicKey": "str", 
+    "privateKey": "str"
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -170,15 +182,28 @@ A AgLeader credentials.
 curl -X POST \
 -H 'Authorization: Bearer YOUR_TOKEN' \
 -H 'Content-Type: application/json' \
--d '{ "accessToken": "str","refreshToken": "str","privateKey":"str", "publicKey":"str"}' \
+-d '{ "accessToken": "str","refreshToken": "str","publicKey":"str", "privateKey":"str"}' \
 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/ag-leader-credentials'
   ```
 
   </TabItem>
 </Tabs>
 
-#### Response 
+#### Response
+
 A AgLeader Credentials with status.
+
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "accessToken": "str",
+  "refreshToken": "str",
+  "publicKey": "str",
+  "privateKey": "str"
+}
+```
 
 ### Delete AgLeader credentials
 &nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/ag-leader-credentials`
@@ -186,12 +211,13 @@ A AgLeader Credentials with status.
 Delete Leaf User's AgLeader credentials.
 
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', }
+    { label: 'Python', value: 'py', },
   ]
 }>
   <TabItem value="sh">
@@ -236,6 +262,7 @@ Delete Leaf User's AgLeader credentials.
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events

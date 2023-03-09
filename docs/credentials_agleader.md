@@ -47,7 +47,7 @@ background processing we detect that this credential is no longer valid, the val
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', }
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="sh">
@@ -129,7 +129,7 @@ Create a AgLeader credentials for the Leaf User.
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', }
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -217,7 +217,7 @@ Delete Leaf User's AgLeader credentials.
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', }
+    { label: 'Python', value: 'py', },
   ]
 }>
   <TabItem value="sh">

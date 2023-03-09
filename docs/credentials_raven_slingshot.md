@@ -123,7 +123,7 @@ Create a Raven Slingshot credentials for the Leaf User.
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', }
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">

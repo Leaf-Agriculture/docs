@@ -39,7 +39,7 @@ module.exports = {
         src: leaf_logo,
         srcDark: leaf_logo_dark,
         // href: '/docs/docs'
-        href: '/'
+        href: 'https://withleaf.io'
       },
 
       items: [

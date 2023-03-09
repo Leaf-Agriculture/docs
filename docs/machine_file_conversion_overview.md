@@ -81,6 +81,7 @@ providers and formats:
 - ISOXML
 - Precision Planting (beta)
     - .2020 
+- Stara
 
 :::info File processing
 We are always improving our processing. If you have any doubts or suggestions, 

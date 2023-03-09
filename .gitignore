@@ -327,3 +327,6 @@ dmypy.json
 
 **/.terraform
 **/.terraform.lock.hcl
+
+yarn.lock
+package-lock.json

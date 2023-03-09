@@ -35,7 +35,8 @@ Description | Endpoints
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/sentera-credentials`
 
-Get the Sentera credentials of the Leaf User based on its `id` and returns a JSON with the credentials.
+Get the Sentera credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 
 #### Request examples
@@ -44,8 +45,8 @@ Get the Sentera credentials of the Leaf User based on its `id` and returns a JSO
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', }
   ]
 }>
   <TabItem value="sh">
@@ -90,31 +91,42 @@ Get the Sentera credentials of the Leaf User based on its `id` and returns a JSO
 </Tabs>
 
 #### Response
-A Sentera credentials resources as a JSON. 
 
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "username": "str",
+  "authToken": "str",
+  "organizationId": "str",
+  "organizationName": "str"
+}
+```
 
 ### Create a Sentera credentials
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/sentera-credentials`  
 
 Create a Sentera credentials for the Leaf User. 
 
-#### Request examples
-A Sentera credentials.
+#### Request body
 
 ```json
 {
-  "username":"Username",
-  "password":"Password",
-  "organizationName":"NameOfTheOrganizationInTheFieldAgent"
+  "username": "str",
+  "password": "str",
+  "organizationName":"str"
 }
 ```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', }
   ]
 }>
   <TabItem value="js">
@@ -173,20 +185,35 @@ curl -X POST \
 </Tabs>
 
 #### Response 
+
 A Sentera Credentials with status.
 
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "username": "str",
+  "authToken": "str",
+  "organizationId": "str",
+  "organizationName": "str"
+}
+```
+
 ### Delete Sentera credentials
+
 &nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/sentera-credentials`
 
 Delete Leaf User's Sentera credentials.
 
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', }
   ]
 }>
   <TabItem value="sh">
@@ -231,6 +258,7 @@ Delete Leaf User's Sentera credentials.
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events
@@ -240,6 +268,7 @@ With these endpoints, you can do some troubleshooting to see your credential's h
 Get the logs of the provider credential based on the LeafUserId sent.
 
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[

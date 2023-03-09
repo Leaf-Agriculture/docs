@@ -15,30 +15,29 @@ Form of a Climate FieldView Credentials resource:
 
 ```json
 {
-  "status": "str",
   "clientId": "str",
   "clientSecret": "str",
   "apiKey": "str",
-  "accessToken": "str",
   "refreshToken": "str",
-  "scopes": ["str"]
+  "accessToken": "str"
 }
 ```
 
 **Endpoints**
 
-Description | Endpoints
---- | ---
-[Get the Climate Fieldview credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/climate-field-view-credentials`
-[Create a Climate Fieldview credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/climate-field-view-credentials`
-[Delete Climate Fieldview  credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/climate-field-view-credentials`
+|                 Description                 |                                              Endpoints                                               |
+|:-------------------------------------------:|:----------------------------------------------------------------------------------------------------:|
+| [Get the Climate Fieldview credentials][1]  |  <span class="badge badge--success">GET</span> `/users/{leafUserId}/climate-field-view-credentials`  |
+| [Create a Climate Fieldview credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/climate-field-view-credentials`  |
+| [Delete Climate Fieldview  credentials][3]  | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/climate-field-view-credentials` |
 
 ## Climate Field View Credentials Endpoints
 
 ### Get the Climate Fieldview credentials
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/climate-field-view-credentials`
 
-Get a Climate FieldView credentials object by its `id`. If during background processing we detect that this credential is no longer valid, the value of the status will be changed.
+Get the Climate FieldView credentials of the Leaf User based on its id and returns a JSON with the credentials. If 
+during background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
 <Tabs
@@ -94,12 +93,15 @@ Get a Climate FieldView credentials object by its `id`. If during background pro
 
 ```json
 {
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": {"scopes": ["str"]},
   "clientId": "str",
   "clientSecret": "str",
   "apiKey": "str",
   "refreshToken": "str",
-  "status": "str",
-  "scopes": ["str"]
+  "accessToken": "str"
 }
 ```
 
@@ -119,20 +121,8 @@ Create a Climate FieldView credentials for the Leaf User.
 }
 ```
 
-#### Response
-A Climate FieldView credential with status.
-
-```json
-{
-   "clientKey": "str",
-   "clientSecret": "str",
-   "tokenId": "str",
-   "tokenSecretKey": "str",
-   "status": "str"
- }
-```
-
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -197,6 +187,25 @@ A Climate FieldView credential with status.
   </TabItem>
 </Tabs>
 
+#### Response
+
+A Climate FieldView credentials with status.
+
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": {"scopes": ["str"]},
+  "clientId": "str",
+  "clientSecret": "str",
+  "apiKey": "str",
+  "refreshToken": "str",
+  "accessToken": "str"
+ }
+```
+
+
 ### Delete Climate Fieldview credentials
 &nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/climate-field-view-credentials`  
 
@@ -254,6 +263,7 @@ Delete Leaf User's Climate FieldView credentials.
 
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events

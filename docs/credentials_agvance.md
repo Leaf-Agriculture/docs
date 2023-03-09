@@ -14,12 +14,11 @@ Form of a AgVance Credentials resource:
 
 ```json
 {
+  "apiKey": "str",
   "clientEnvironment": "STAGE or PRODUCTION",
-  "username": "str",
-  "password": "str",
   "databaseId": "str",
-  "sessionId": "str",
-  "apiKey": "str"
+  "password": "str",
+  "username": "str"
 }
 ```
 
@@ -38,9 +37,11 @@ Description | Endpoints
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/agvance-credentials`
 
-Get the AgVance credentials of the Leaf User based on its id and returns a JSON with the credentials. If during background processing we detect that this credential is no longer valid, the value of the status will be changed.
+Get the AgVance credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -91,6 +92,7 @@ Get the AgVance credentials of the Leaf User based on its id and returns a JSON 
 </Tabs>
 
 #### Response
+
 ```json
 {
   "id": "str",
@@ -107,11 +109,12 @@ Get the AgVance credentials of the Leaf User based on its id and returns a JSON 
 
 
 ### Create a AgVance credentials
+
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/agvance-credentials`
 
 Create a AgVance credentials for the Leaf User.
 
-#### Request examples
+#### Request body
 
 ```json
 {
@@ -122,6 +125,8 @@ Create a AgVance credentials for the Leaf User.
   "username": "str"
 }
 ```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -190,7 +195,8 @@ Create a AgVance credentials for the Leaf User.
 </Tabs>
 
 #### Response
-A AgVance credentials with status.
+
+A AgVance Credentials with status.
 
 ```json
 {
@@ -214,6 +220,7 @@ A AgVance credentials with status.
 Delete Leaf User's AgVance credentials.
 
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -264,6 +271,7 @@ Delete Leaf User's AgVance credentials.
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events
@@ -273,6 +281,7 @@ With these endpoints, you can do some troubleshooting to see your credential's h
 Get the logs of the provider credential based on the LeafUserId sent.
 
 #### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[

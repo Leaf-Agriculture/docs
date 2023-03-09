@@ -14,14 +14,12 @@ Form of a John Deere Credentials resource:
 
 ```json
 {
-  "status": "str",
   "clientKey": "str",
   "clientSecret": "str",
   "tokenId": "str",
   "tokenSecretKey": "str",
   "accessToken": "str",
-  "refreshToken": "str",
-  "scopes": ["str"]
+  "refreshToken": "str"
 }
 ```
 
@@ -40,7 +38,8 @@ Description | Endpoints
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/john-deere-credentials`
 
-Get the John Deere credentials of the Leaf User based on its id and returns a JSON with the credentials. If during background processing we detect that this credential is no longer valid, the value of the status will be changed.
+Get the John Deere credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
 <Tabs
@@ -93,17 +92,18 @@ Get the John Deere credentials of the Leaf User based on its id and returns a JS
 </Tabs>
 
 #### Response
+
 ```json
 {
-    "clientKey": "str",
-    "clientSecret": "str",
-    "tokenId": "str",
-    "tokenSecretKey": "str",
-    "accessToken": "str",
-    "refreshToken": "str",
-    "status": "str",
-    "clientEnvironment": "STAGE or PRODUCTION",
-    "scopes": ["str"]
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": {"scopes": ["str"]},
+  "clientKey": "str",
+  "clientSecret": "str",
+  "accessToken": "str",
+  "refreshToken": "str",
+  "clientEnvironment": "STAGE or PRODUCTION"
 }
 ```
 
@@ -113,17 +113,18 @@ Get the John Deere credentials of the Leaf User based on its id and returns a JS
 
 Create a John Deere credentials for the Leaf User.
 
-#### Request examples
+#### Request body
 
 ```json
 {
   "clientKey": "str",
   "clientSecret": "str",
-  "accessToken": "str",
   "refreshToken": "str",
   "clientEnvironment": "STAGE or PRODUCTION"
 }
 ```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -145,7 +146,6 @@ Create a John Deere credentials for the Leaf User.
   const data = {
     "clientKey": "str",
     "clientSecret": "str",
-    "accessToken": "str",
     "refreshToken": "str",
     "clientEnvironment": "STAGE or PRODUCTION"
   }
@@ -169,7 +169,6 @@ Create a John Deere credentials for the Leaf User.
   data = {
     "clientKey": "str",
     "clientSecret": "str",
-    "accessToken": "str",
     "refreshToken": "str",
     "clientEnvironment": "STAGE or PRODUCTION"
   }
@@ -184,7 +183,7 @@ Create a John Deere credentials for the Leaf User.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"clientKey": "str","clientSecret": "str","accessToken": "str","refreshToken": "str","clientEnvironment": "STAGE or PRODUCTION"}' \
+      -d '{"clientKey": "str","clientSecret": "str","refreshToken": "str","clientEnvironment": "STAGE or PRODUCTION"}' \
       'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/john-deere-credentials'
   ```
 
@@ -192,26 +191,27 @@ Create a John Deere credentials for the Leaf User.
 </Tabs>
 
 #### Response
+
 A John Deere credentials with status.
 
 ```json
 {
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "tokenMetadata": {"scopes": ["str"]},
   "clientKey": "str",
   "clientSecret": "str",
-  "tokenId": "str",
-  "tokenSecretKey": "str",
   "accessToken": "str",
   "refreshToken": "str",
-  "status": "str",
   "clientEnvironment": "STAGE or PRODUCTION"
-
 }
 ```
 
 
 ### Delete John Deere credentials
 
-&nbsp<span class="badge badge--danger">POST</span> `/users/{leafUserId}/john-deere-credentials`
+&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/john-deere-credentials`
 
 Delete Leaf User's John Deere credentials.
 
@@ -266,6 +266,7 @@ Delete Leaf User's John Deere credentials.
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events

@@ -14,7 +14,6 @@ Form of a CNHI Credentials resource:
 
 ```json
 {
-  "status": "str",
   "clientId": "str",
   "clientSecret": "str",
   "subscriptionKey": "str",
@@ -36,15 +35,17 @@ Description | Endpoints
 
 ### Get the CNHI credentials
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/cnhi-credentials`  
-Get the CNHI credentials of the Leaf User based on its `id` and returns a JSON with the credentials.
+
+Get the CNHI credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
-    { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -89,15 +90,26 @@ Get the CNHI credentials of the Leaf User based on its `id` and returns a JSON w
 </Tabs>
 
 #### Response
-A CNHI credentials resource as a JSON.
 
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "clientId": "str",
+  "clientSecret": "str",
+  "refreshToken": "str",
+  "clientEnvironment": "STAGE or PRODUCTION",
+  "subscriptionKey": "str"
+}
+```
 
 ### Create a CNHI credentials
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/cnhi-credentials`  
+
 Create a CNHI credentials for the Leaf User.
 
-#### Request examples
-A CNHI credentials.
+#### Request body
 
 ```json
 {
@@ -109,12 +121,14 @@ A CNHI credentials.
 }
 ```
 
+#### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
-    { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -177,11 +191,25 @@ A CNHI credentials.
 </Tabs>
 
 #### Response
-A CNHI Credentials with status.
 
+A CNHI credentials with status.
+
+```json
+{
+  "id": "str",
+  "status": "str",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "clientId": "str",
+  "clientSecret": "str",
+  "refreshToken": "str",
+  "clientEnvironment": "STAGE or PRODUCTION",
+  "subscriptionKey": "str"
+}
+```
 
 ### Delete CNHI credentials
-&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/cnhi-credentials`  
+&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/cnhi-credentials`
+
 Delete Leaf User's CNHI credentials.
 
 #### Request examples
@@ -189,8 +217,8 @@ Delete Leaf User's CNHI credentials.
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
-    { label: 'JavaScript', value: 'js', },
     { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
   <TabItem value="js">
@@ -235,6 +263,7 @@ Delete Leaf User's CNHI credentials.
 </Tabs>
 
 ## Troubleshooting
+
 With these endpoints, you can do some troubleshooting to see your credential's health.
 
 ### Events

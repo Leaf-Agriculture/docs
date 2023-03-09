@@ -116,7 +116,7 @@ module.exports = {
           // anonymizeIP: true, // Should IPs be anonymized?
           },
         docs: {
-          homePageId: 'welcome',
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/Leaf-Agriculture/docs/tree/master',
         },

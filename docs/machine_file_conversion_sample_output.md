@@ -14,7 +14,7 @@ This page shows and describes sample responses from Leaf API, along with a list
 of what properties you can expect for each type of data.
 
 
-## Operation Summary
+## Machine File Summary
 
 Leaf returns operation file summaries in a standardized format. Summaries use 
 the point data to derive basic information about the operation and include links 
@@ -66,7 +66,7 @@ This is an example of a summary for a "planted" operation
     "machines": ["uuid"],
     "createdTime": "2020-10-13T12:30:49",
     "fields": ["uuid"],
-    "original": "abc.com",
+    "originalFile": "abc.com",
     "rawGeojson": "abc.com",
     "standardGeojson": "abc.com",
     "zippedPNGs": "abc.com",
@@ -172,7 +172,7 @@ This is an example of a summary for an "applied" operation
     "machines": ["uuid"],
     "createdTime": "2020-10-13T20:28:31",
     "fields": ["uuid"],
-    "original": "abc.com",
+    "originalFile": "abc.com",
     "rawGeojson": "abc.com",
     "standardGeojson": "abc.com",
     "zippedPNGs": "abc.com",
@@ -284,7 +284,7 @@ This is an example of a summary for a "harvested" operation
     "machines": ["uuid"],
     "createdTime": "2020-10-13T20:19:01",
     "fields": ["uuid"],
-    "original": "abc.com",
+    "originalFile": "abc.com",
     "rawGeojson": "abc.com",
     "standardGeojson": "abc.com",
     "zippedPNGs": "abc.com",
@@ -444,7 +444,7 @@ This is an example of a summary for a "tillage" operation
     "machines": ["uuid"],
     "createdTime": "2020-10-13T20:19:01",
     "fields": ["uuid"],
-    "original": "abc.com",
+    "originalFile": "abc.com",
     "rawGeojson": "abc.com",
     "standardGeojson": "abc.com",
     "zippedPNGs": "abc.com",

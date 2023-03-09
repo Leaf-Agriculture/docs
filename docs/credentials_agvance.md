@@ -1,6 +1,6 @@
 ---
-title: AgVance Credentials
-description: Credentials - AgVance
+title: Agvance Credentials
+description: Credentials - Agvance
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #create-a-agvance-credentials
 [3]: #delete-agvance-credentials
 
-Form of a AgVance Credentials resource:
+Form of a Agvance Credentials resource:
 
 ```json
 {
@@ -26,18 +26,18 @@ Form of a AgVance Credentials resource:
 
 Description | Endpoints
 --- | ---
-[Get the AgVance credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/agvance-credentials`
-[Create a AgVance credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/agvance-credentials`
-[Delete AgVance credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/agvance-credentials`
+[Get the Agvance credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/agvance-credentials`
+[Create a Agvance credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/agvance-credentials`
+[Delete Agvance credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/agvance-credentials`
 
 
-## AgVance Credentials Endpoints
+## Agvance Credentials Endpoints
 
-### Get the AgVance credentials
+### Get the Agvance credentials
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/agvance-credentials`
 
-Get the AgVance credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
+Get the Agvance credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
 background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 #### Request examples
@@ -108,11 +108,11 @@ background processing we detect that this credential is no longer valid, the val
 ```
 
 
-### Create a AgVance credentials
+### Create a Agvance credentials
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/agvance-credentials`
 
-Create a AgVance credentials for the Leaf User.
+Create a Agvance credentials for the Leaf User.
 
 #### Request body
 
@@ -196,7 +196,7 @@ Create a AgVance credentials for the Leaf User.
 
 #### Response
 
-A AgVance Credentials with status.
+A Agvance Credentials with status.
 
 ```json
 {
@@ -213,11 +213,11 @@ A AgVance Credentials with status.
 ```
 
 
-### Delete AgVance credentials
+### Delete Agvance credentials
 
 &nbsp<span class="badge badge--danger">POST</span> `/users/{leafUserId}/agvance-credentials`
 
-Delete Leaf User's AgVance credentials.
+Delete Leaf User's Agvance credentials.
 
 #### Request examples
 

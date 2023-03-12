@@ -8,9 +8,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-If you wish to test our Planet Imagery service, you will be <b>required</b> to use <a href="blog/planet-geometry.json">THIS GEOMETRY</a> for your testing purposes. If you need to use a different geometry for testing purposes, <b>you will be billed for this usage</b>. Please contact our team on sales@withleaf.io to discuss your options should you require different testing geometry.
-
-
 
 All HTTP methods should be prepended by this service's endpoint:
 

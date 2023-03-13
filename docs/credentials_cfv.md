@@ -11,6 +11,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #create-a-climate-fieldview-credentials
 [3]: #delete-climate-fieldview-credentials
 
+
+
 Form of a Climate FieldView Credentials resource:
 
 ```json
@@ -36,8 +38,12 @@ Form of a Climate FieldView Credentials resource:
 ### Get the Climate Fieldview credentials
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/climate-field-view-credentials`
 
+<p align='justify'>
+
 Get the Climate FieldView credentials of the Leaf User based on its id and returns a JSON with the credentials. If 
 during background processing we detect that this credential is no longer valid, the value of the status will be changed.
+
+</p>
 
 #### Request examples
 <Tabs

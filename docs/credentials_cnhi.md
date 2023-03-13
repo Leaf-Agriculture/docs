@@ -36,8 +36,12 @@ Description | Endpoints
 ### Get the CNHI credentials
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/cnhi-credentials`  
 
+<p align='justify'>
+
 Get the CNHI credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
 background processing we detect that this credential is no longer valid, the value of the status will be changed.
+
+</p>
 
 #### Request examples
 <Tabs

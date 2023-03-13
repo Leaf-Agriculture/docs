@@ -10,6 +10,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #create-a-john-deere-credentials
 [3]: #delete-john-deere-credentials
 
+
+
 Form of a John Deere Credentials resource:
 
 ```json
@@ -38,8 +40,12 @@ Description | Endpoints
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/john-deere-credentials`
 
+<p align='justify'>
+
 Get the John Deere credentials of the Leaf User based on its id and returns a JSON with the credentials. If during 
 background processing we detect that this credential is no longer valid, the value of the status will be changed.
+
+</p>
 
 #### Request examples
 <Tabs

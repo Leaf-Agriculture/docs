@@ -13,12 +13,12 @@ cache:
 
 install:
   - npm install -g npm@7.24.0
-  - yarn install
+  - npm install
   - npx browserslist@latest --update-db
 
 script:
-  - yarn run swizzle docusaurus-lunr-search SearchBar
-  - yarn run build
+  - npm run swizzle docusaurus-lunr-search SearchBar
+  - npm run build
 
 deploy:
   provider: pages

@@ -92,9 +92,10 @@ module.exports = {
             },
             {
               type: 'category',
-              label: 'Widgets',
+              label: 'Leaf Link',
               items: [
-                'widgets_file_upload'
+                'Link_provider_connection',
+                'Link_file_upload'
               ]
             }
           ]

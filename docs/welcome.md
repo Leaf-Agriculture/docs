@@ -1,7 +1,6 @@
 ---
 title: Welcome
 description: Welcome
-slug: /
 ---
 
 import Tabs from '@theme/Tabs';

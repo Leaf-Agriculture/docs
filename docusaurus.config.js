@@ -116,7 +116,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          routeBasePath: '/',
+          homePageId: 'welcome',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/Leaf-Agriculture/docs/tree/master',
         },

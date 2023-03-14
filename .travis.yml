@@ -3,7 +3,7 @@ dist: bionic
 
 language: node_js
 node_js:
-  - 16.14.0
+  - 17.9.0
 
 services:
   - docker
@@ -12,7 +12,7 @@ cache:
   npm: true
 
 install:
-  - npm install -g npm@7.24.0
+  - npm install -g npm@8.5.5
   - npm install
   - npx browserslist@latest --update-db
 

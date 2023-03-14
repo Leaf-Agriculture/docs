@@ -41,7 +41,7 @@ This service has the following endpoints available:
 | [Get a boundary from field](#get-a-boundary-from-field)                                           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`    |
 | [Get active boundary from field](#get-active-boundary-from-field)                                 | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
 | [Update active boundary from field](#update-active-boundary-from-field)                           | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
-| [Get Weather data from a Field](#get-weather-data-from-a-field)                                   | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/fields/{fieldId}}/weather`                  |
+| [Get Weather data from a Field](#get-weather-data-from-a-field)                                   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}}/weather`                  |
 | [Get all farms](#get-all-farms)                                                                   | <span class="badge badge--success">GET</span> `/farms`                                                         |
 | [Get a farm](#get-a-farm)                                                                         | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                         |
 | [Create a farm](#create-a-farm)                                                                   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                     |
@@ -1551,7 +1551,7 @@ A [Field](#field-resource) as a JSON object.
 
 ### Get Weather data from a Field
 
-&nbsp<span class="badge badge--warning">PUT</span> `/users/{leafUserId}/fields/{fieldId}}/weather`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}}/weather`
 
 Retrieves weather data for a given `fieldId`
 

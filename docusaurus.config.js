@@ -25,6 +25,11 @@ module.exports = {
   ],
 
   themeConfig: {
+    googleAnalytics: {
+      trackingID: 'UA-151987025-2',
+      // Optional fields.
+      // anonymizeIP: true, // Should IPs be anonymized?
+      },
     // prism: {
     //   theme: require('prism-react-renderer/themes/leaf'),
     // },
@@ -110,11 +115,6 @@ module.exports = {
     [
       '@docusaurus/preset-classic',
       {
-        googleAnalytics: {
-          trackingID: 'UA-151987025-2',
-          // Optional fields.
-          // anonymizeIP: true, // Should IPs be anonymized?
-          },
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),

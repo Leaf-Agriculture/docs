@@ -32,7 +32,7 @@ The following table shows all the images with its resolutions and types:
 |     NDVI.png      |      NULL      |      png NDVI       | EPSG:3857  |
 |     NDRE.png      |      NULL      |      png NDRE       | EPSG:3857  |
 |      RGB.png      |      NULL      |       png RGB       | EPSG:3857  |
-|   mult_band.tif   |       3        |     multi  band     | EPSG:4326  |
+|   multi_band.tif   |       3        |     multi  band     | EPSG:4326  |
 |     NDVI.tif      |       3        | tif raw NDVI values | EPSG:4326  |
 |  NDVI_color.tif   |       3        |  tif colored NDVI   | EPSG:4326  |
 |     NDRE.tif      |       3        | tif raw NDRE values | EPSG:4326  |

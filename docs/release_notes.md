@@ -21,7 +21,27 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [13]: /docs/operations_sample_output#field-operations-filtered-geojson
 [14]: /docs/operations_sample_output#field-operations-images-v2
 [15]: /docs/configurations_overview#operationsfilteredgeojson
+[16]: /docs/Link_file_upload
+[17]: /docs/Link_provider_connection
 
+
+### 2.116.0
+*2023-03-09*
+
+**Leaf Link**
+Now you can save time implementing Leaf using the [File Upload][16] and [Provider connection][17] widgets from Leaf Link.
+
+### 2.115.0
+*2023-02-16*
+
+**Agvance integration**
+New integration available. Agvance Grower, Farm, Field, and boundaries will be available in our Field Boundary Management service.
+
+**Crop monitoring**
+- The satellite image bands are now grouped into a single tif file `multiband.tif`, available for all providers.
+
+**Field operations**
+- Fixed the unit of measure for cotton operation files (John Deere), now calculated based on bales.
 
 ### 2.113.0
 *2023-01-19*

@@ -1551,7 +1551,7 @@ A [Field](#field-resource) as a JSON object.
 
 ### Get Weather data from a Field
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}}/weather`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/weather`
 
 Retrieves weather data for a given `fieldId`
 

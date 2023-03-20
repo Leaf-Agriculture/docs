@@ -79,14 +79,14 @@ Example in JSON:
 }
 ```
 
-#### Sample code
+#### Request examples
 
 <Tabs
   defaultValue="sh"
   values={[
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', }
+    { label: 'JavaScript', value: 'js', },
   ]}
 >
   <TabItem value="js">
@@ -150,13 +150,73 @@ It returns a JSON containing information about the webhook created.
     "url": "https://agtech.com/leaf/satellite"
   }
   ```
----
+
+### Confirm a webhook
+
+Confirm the functioning of an already created webhook
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]}
+>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const headers = {'Content-Type': 'application/json', 'accept': '*/*'}
+  const endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+
+  const data = {"message" : "confirmation of webhook upon registration"}
+
+  axios.post(endpoint, {headers, data})
+      .then(response => console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  headers = {'Content-Type': 'application/json', 'accept': '*/*'}
+  endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+
+  payload = {"message" : "confirmation of webhook upon registration"}
+
+  response = requests.post(endpoint, headers=headers, json=payload)
+  print(response.json())
+  ```
+
+  </TabItem>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Content-Type: application/json' \
+      -H 'accept: */*' \
+      -d '{"message" : "confirmation of webhook upon registration"}'
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks'
+  ```
+  </TabItem>
+</Tabs>
 
 ### Get a webhook
 
 &nbsp<span class="badge badge--success">GET</span> `/webhooks/{id}`
 
 Retrieve a specific webhook resource by its id.
+
+
 
 #### Sample code
 

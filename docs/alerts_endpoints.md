@@ -378,8 +378,8 @@ This endpoint is not a Leaf resource, but it can be used to confirm the status o
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-  ]}
->
+  ]
+}>
   <TabItem value="js">
 
   ```js
@@ -396,7 +396,6 @@ This endpoint is not a Leaf resource, but it can be used to confirm the status o
   ```
 
   </TabItem>
-
   <TabItem value="py">
 
   ```py
@@ -412,7 +411,6 @@ This endpoint is not a Leaf resource, but it can be used to confirm the status o
   ```
 
   </TabItem>
-
   <TabItem value="sh">
 
   ```shell
@@ -422,5 +420,6 @@ This endpoint is not a Leaf resource, but it can be used to confirm the status o
       -d '{"message" : "confirmation of webhook upon registration"}'
       'web-hook-url'
   ```
+
   </TabItem>
 </Tabs>

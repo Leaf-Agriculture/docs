@@ -151,6 +151,64 @@ It returns a JSON containing information about the webhook created.
   }
   ```
 
+If you need to test your endpoint, here is a request example so you can simulate the validation Leaf will do.
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const headers = {'Content-Type': 'application/json', 'accept': '*/*'}
+  const endpoint = 'your-webhook-url'
+
+  const data = {"message" : "confirmation of webhook upon registration"}
+
+  axios.post(endpoint, {headers, data})
+      .then(response => console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  headers = {'Content-Type': 'application/json', 'accept': '*/*'}
+  endpoint = 'your-webhook-url'
+
+  payload = {"message" : "confirmation of webhook upon registration"}
+
+  response = requests.post(endpoint, headers=headers, json=payload)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Content-Type: application/json' \
+      -H 'accept: */*' \
+      -d '{"message" : "confirmation of webhook upon registration"}'
+      'your-webhook-url'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+
+
+
 ### Get a webhook
 
 &nbsp<span class="badge badge--success">GET</span> `/webhooks/{id}`
@@ -360,65 +418,6 @@ webhook listens to.
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/alerts/api/alerts/webhooks/WEBHOOK_ID'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-### Confirm a created webhook
-
-This endpoint is not a Leaf resource, but it can be used to confirm the status of a created webhook.
-
-#### Request examples
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-
-  const headers = {'Content-Type': 'application/json', 'accept': '*/*'}
-  const endpoint = 'web-hook-url'
-
-  const data = {"message" : "confirmation of webhook upon registration"}
-
-  axios.post(endpoint, {headers, data})
-      .then(response => console.log(response.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  headers = {'Content-Type': 'application/json', 'accept': '*/*'}
-  endpoint = 'web-hook-url'
-
-  payload = {"message" : "confirmation of webhook upon registration"}
-
-  response = requests.post(endpoint, headers=headers, json=payload)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X POST \
-      -H 'Content-Type: application/json' \
-      -H 'accept: */*' \
-      -d '{"message" : "confirmation of webhook upon registration"}'
-      'web-hook-url'
   ```
 
   </TabItem>

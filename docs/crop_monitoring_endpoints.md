@@ -21,7 +21,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [11]: /docs/crop_monitoring_overview#providers
 [12]: #get-subscription-for-planet
 [13]: #reprocess-satellite-images
-[14]: /files/planet-geometry.json
+[14]: #sample-geometry
 
 :::success PLANET
 
@@ -555,6 +555,27 @@ curl -X POST \
 - the field cannot be larger than 50k hectares (123k acres) and
 - cannot have a perimeter bigger than 300km (180 miles).
 :::
+
+#### Sample geometry
+If you are looking for a geometry for testing purposes you can use this one.
+
+```py
+{
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [[[ -48.95275447, -22.49608],
+          [ -48.95379286, -22.49675703],
+          [ -48.9591836, -22.50310243],
+          [ -48.96225525, -22.5067235],
+          [ -48.94852019, -22.50648371],
+          [ -48.94780839, -22.49693998],
+          [ -48.95275447, -22.49608]
+        ]]]
+  }
+}
+```
+
 
 ---
 

@@ -8,11 +8,24 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-[1]: /docs/files/planet-geometry.geojson
+[1]: /img/fieldovertime.png
+[2]: /img/ndviexample.png
+[3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
+[4]: #get-all-satellite-fields
+[5]: #get-a-satellite-field
+[6]: #get-images-of-satellite-field
+[7]: #create-a-satellite-field
+[8]: #delete-a-satellite-field
+[9]: /docs/alerts_events#satellite-events
+[10]: #get-an-image-of-satellite-field
+[11]: /docs/crop_monitoring_overview#providers
+[12]: #get-subscription-for-planet
+[13]: #reprocess-satellite-images
+[14]: /files/planet-geometry.json
 
-:::success 
+:::success PLANET
 
-If you wish to test our Planet Imagery service, you will be **required** to use [THIS GEOMETRY][1] for your testing purposes. If you need to use a different geometry for testing purposes, **you will be billed for this usage**. Please contact our team on sales@withleaf.io to discuss your options should you require different testing geometry.
+If you wish to test our Planet Imagery service, you will be **required** to use [THIS GEOMETRY][14] for your testing purposes. If you need to use a different geometry for testing purposes, **you will be billed for this usage**. Please contact our team on sales@withleaf.io to discuss your options should you require different testing geometry.
 :::
 
 
@@ -35,20 +48,6 @@ Description | Endpoints
 [Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
 [Get subscription for Planet][12] | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
 [Reprocess satelite images][13] | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess`
-
-[1]: /img/fieldovertime.png
-[2]: /img/ndviexample.png
-[3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
-[4]: #get-all-satellite-fields
-[5]: #get-a-satellite-field
-[6]: #get-images-of-satellite-field
-[7]: #create-a-satellite-field
-[8]: #delete-a-satellite-field
-[9]: /docs/alerts_events#satellite-events
-[10]: #get-an-image-of-satellite-field
-[11]: /docs/crop_monitoring_overview#providers
-[12]: #get-subscription-for-planet
-[13]: #reprocess-satellite-images
 
 ---
 

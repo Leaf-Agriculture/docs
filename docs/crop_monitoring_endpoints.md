@@ -8,6 +8,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+[1]: /docs/files/planet-geometry.geojson
+
+:::success 
+
+If you wish to test our Planet Imagery service, you will be **required** to use [THIS GEOMETRY][1] for your testing purposes. If you need to use a different geometry for testing purposes, **you will be billed for this usage**. Please contact our team on sales@withleaf.io to discuss your options should you require different testing geometry.
+:::
+
+
 
 All HTTP methods should be prepended by this service's endpoint:
 

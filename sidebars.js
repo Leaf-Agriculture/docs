@@ -99,7 +99,15 @@ module.exports = {
             }
           ]
         },
-        'Connect',
+        {
+          type: 'category',
+          label: 'Weather',
+          items: [
+            'weather_overview',
+            'weather_endpoints',
+          ]
+        },
+        'Connect'
       ],
     }
   ]

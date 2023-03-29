@@ -100,7 +100,7 @@ module.exports = {
             }
           ]
         },
-        'Connect',
+        'Connect'
       ],
     }
   ]

@@ -21,7 +21,6 @@ The Forecast service provides access to forecast weather data for up to `10` day
 - Snowfall
 - Precipitation
 - Evapotranspiration
-- Processed Time
 - Rain
 - Wind Speed
 - Wind Gusts
@@ -54,15 +53,14 @@ The Historical service provides access to historical weather data for up to `10`
 - Snowfall
 - Precipitation
 - Evapotranspiration
-- Processed Time
 - Rain
 - Wind Speed
 - Wind Gusts
 - Wind Direction
-- Dew-point
+- [Dew-point
 - Short Wave Radiation
 - Cloud cover
-- Relative Humidity
+- Relative Humidity]()
 
 ### Data sources
 | Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update frequency        |

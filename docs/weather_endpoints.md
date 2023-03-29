@@ -31,8 +31,8 @@ This service has the following endpoints available:
 |----------------------------|---------------------------------------------------------------------------------------------------------------|
 | [Get Daily Forecast][2]    | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/daily`    |
 | [Get Hourly Forecast][3]   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/hourly`   |
-| [Get Daily Historical][4]  | <span class="badge badge--warning">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`  |
-| [Get Hourly Historical][5] | <span class="badge badge--warning">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly` |
+| [Get Daily Historical][4]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`  |
+| [Get Hourly Historical][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly` |
 
 ## Endpoints
 

@@ -27,12 +27,12 @@ https://api.withleaf.io/services/weather/api
 
 This service has the following endpoints available:
 
-| Description              | Endpoints                                                                                                    |
-|--------------------------|--------------------------------------------------------------------------------------------------------------|
-| [Get Daily Forecast][2]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/daily`   |
-| [Get Hourly Forecast][3] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/hourly`  |
-| [Get Daily Historical][4]   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`   |
-| [Get Hourly Historical][5]  | <span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly` |
+| Description                | Endpoints                                                                                                     |
+|----------------------------|---------------------------------------------------------------------------------------------------------------|
+| [Get Daily Forecast][2]    | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/daily`    |
+| [Get Hourly Forecast][3]   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/hourly`   |
+| [Get Daily Historical][4]  | <span class="badge badge--warning">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`  |
+| [Get Hourly Historical][5] | <span class="badge badge--warning">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly` |
 
 ## Endpoints
 
@@ -40,7 +40,12 @@ This service has the following endpoints available:
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/daily`
 
-Get daily forecast by leaf user and field
+Get daily forecast by leaf user and field.
+
+| Parameter (to filter by)     | values                                                      |
+|------------------------------|-------------------------------------------------------------|
+| endTime                      | ISO 8601 date. Returns operations until the endTime         |
+| startTime                    | ISO 8601 date. Returns operations from the startTime onward |
 
 #### Request examples
 
@@ -104,74 +109,86 @@ Get daily forecast by leaf user and field
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "ºC"
     },
     "sunrise": {
       "values": [
         "time": "str",
         "value": "str"
-      ]
+      ],
+      "unit": "iso8601"
     },
     "snowfallSum": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "cm"
     },
     "precipitationSum": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "maxWindspeed": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "km/h"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "processedTime": "str",
     "rainSum": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "maxWindgusts": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "km/h"
     },
     "meanTemperature": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "°C"
     },
     "minTemperature": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "°C"
     },
     "sunset": {
       "values": [
         "time": "str",
         "value": "str"
-      ]
+      ],
+      "unit": "iso8601"
     },
     "windDirection": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "°"
     }
   },
   "geometry": {
@@ -186,7 +203,14 @@ Get daily forecast by leaf user and field
 
 ### Get Hourly Forecast
 
-Get hourly forecast by leaf user and field
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/hourly`
+
+Get hourly forecast by leaf user and field.
+
+| Parameter (to filter by)     | values                                                      |
+|------------------------------|-------------------------------------------------------------|
+| endTime                      | ISO 8601 date. Returns operations until the endTime         |
+| startTime                    | ISO 8601 date. Returns operations from the startTime onward |
 
 #### Request examples
 
@@ -250,62 +274,86 @@ Get hourly forecast by leaf user and field
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "dewpoint": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "°C"
     },
     "windgusts": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "km/h"
     },
     "snowfall": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "cm"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "shortwaveRadiation": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "W/m²"
     },
     "processedTime": "str",
     "cloudcover": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "%"
     },
     "precipitation": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "relativeHumidity": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "%"
     },
     "temperature": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "°C"
+    },
+    "windspeed": {
+      "values": [
+        "time": "str",
+        "value": int
+      ],
+      "unit": "km/h"
+    },
+    "windDirection": {
+      "values": [
+        "time": "str",
+        "value": int
+      ],
+      "unit": "km/h"
     }
   },
   "geometry": {
@@ -320,7 +368,14 @@ Get hourly forecast by leaf user and field
 
 ### Get Daily Historical
 
-Get daily historical by leaf user and field
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`
+
+Get daily historical by leaf user and field.
+
+| Parameter (to filter by)     | values                                                      |
+|------------------------------|-------------------------------------------------------------|
+| endTime                      | ISO 8601 date. Returns operations until the endTime         |
+| startTime                    | ISO 8601 date. Returns operations from the startTime onward |
 
 #### Request examples
 
@@ -384,74 +439,86 @@ Get daily historical by leaf user and field
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "ºC"
     },
     "sunrise": {
       "values": [
         "time": "str",
         "value": "str"
-      ]
+      ],
+      "unit": "iso8601"
     },
     "snowfallSum": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "cm"
     },
     "precipitationSum": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "maxWindspeed": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "km/h"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "processedTime": "str",
     "rainSum": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "maxWindgusts": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "km/h"
     },
     "meanTemperature": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "°C"
     },
     "minTemperature": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "°C"
     },
     "sunset": {
       "values": [
         "time": "str",
         "value": "str"
-      ]
+      ],
+      "unit": "iso8601"
     },
     "windDirection": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "°"
     }
   },
   "geometry": {
@@ -467,7 +534,14 @@ Get daily historical by leaf user and field
 
 ### Get Hourly Historical
 
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly`
+
 Get hourly historical by leaf user and field
+
+| Parameter (to filter by)     | values                                                      |
+|------------------------------|-------------------------------------------------------------|
+| endTime                      | ISO 8601 date. Returns operations until the endTime         |
+| startTime                    | ISO 8601 date. Returns operations from the startTime onward |
 
 #### Request examples
 
@@ -527,72 +601,90 @@ Get hourly historical by leaf user and field
 {
   "type": "Feature",
   "properties": {
-    "precipitation": {
-      "values": [
-        "time": "str",
-        "value": int
-      ]
-    },
     "rain": {
       "values": [
         "time": "str",
         "value": int
-      ]
-    },
-    "windgusts": {
-      "values": [
-        "time": "str",
-        "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "dewpoint": {
       "values": [
         "time": "str",
         "value": int
-      ]
-    }
+      ],
+      "unit": "°C"
+    },
+    "windgusts": {
+      "values": [
+        "time": "str",
+        "value": int
+      ],
+      "unit": "km/h"
+    },
     "snowfall": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "cm"
     },
-    "processedTime": "str",
-    "relativeHumidity": {
+    "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
-      ]
-    },
-    "temperature": {
-      "values": [
-        "time": "str",
-        "value": int
-      ]
-    },
-    "windspeed": {
-      "values": [
-        "time": "str",
-        "value": int
-      ]
-    },
-    "windDirection": {
-      "values": [
-        "time": "str",
-        "value": int
-      ]
+      ],
+      "unit": "mm"
     },
     "shortwaveRadiation": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "W/m²"
     },
+    "processedTime": "str",
     "cloudcover": {
       "values": [
         "time": "str",
         "value": int
-      ]
+      ],
+      "unit": "%"
+    },
+    "precipitation": {
+      "values": [
+        "time": "str",
+        "value": int
+      ],
+      "unit": "mm"
+    },
+    "relativeHumidity": {
+      "values": [
+        "time": "str",
+        "value": int
+      ],
+      "unit": "%"
+    },
+    "temperature": {
+      "values": [
+        "time": "str",
+        "value": int
+      ],
+      "unit": "°C"
+    },
+    "windspeed": {
+      "values": [
+        "time": "str",
+        "value": int
+      ],
+      "unit": "km/h"
+    },
+    "windDirection": {
+      "values": [
+        "time": "str",
+        "value": int
+      ],
+      "unit": "km/h"
     }
   },
   "geometry": {

@@ -10,9 +10,26 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 ## Forecast
+
 The Forecast service provides access to forecast weather data for up to `10` days. The data can be fetched daily or hourly.
 
 ### Properties
+
+- Temperature
+- Sunrise
+- Sunset
+- Snowfall
+- Precipitation
+- Evapotranspiration
+- Processed Time
+- Rain
+- Wind Speed
+- Wind Gusts
+- Wind Direction
+- Dew-point
+- Short Wave Radiation
+- Cloud cover
+- Relative Humidity
 
 
 ### Data sources
@@ -31,6 +48,21 @@ The Historical service provides access to historical weather data for up to `10`
 
 ### Properties
 
+- Temperature
+- Sunrise
+- Sunset
+- Snowfall
+- Precipitation
+- Evapotranspiration
+- Processed Time
+- Rain
+- Wind Speed
+- Wind Gusts
+- Wind Direction
+- Dew-point
+- Short Wave Radiation
+- Cloud cover
+- Relative Humidity
 
 ### Data sources
 | Reanalysis Model  |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update frequency        |

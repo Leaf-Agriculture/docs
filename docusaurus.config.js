@@ -26,10 +26,10 @@ module.exports = {
 
   themeConfig: {
     googleAnalytics: {
-     trackingID: 'UA-151987025-2',
-     // Optional fields.
-     // anonymizeIP: true, // Should IPs be anonymized?
-     },
+      trackingID: 'UA-151987025-2',
+      // Optional fields.
+      // anonymizeIP: true, // Should IPs be anonymized?
+      },
     // prism: {
     //   theme: require('prism-react-renderer/themes/leaf'),
     // },

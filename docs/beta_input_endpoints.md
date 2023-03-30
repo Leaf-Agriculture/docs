@@ -300,7 +300,7 @@ values={[
 
 &nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products/matching/operations/{id}`
 
-Get the standard products that best match the products from a Field Operation. Information such as registration number and product components can be obtained from [this endpoint][7] using the `id`.
+Get the standard products that best match the products from a Field Operation. Information such as registration number and labels can be obtained from [this endpoint][7] using the `id`.
 
 <Tabs
 defaultValue="sh"

@@ -191,33 +191,27 @@ values={[
 
 #### Response
 
-The response is a JSON array the products that match query.
+The response is a JSON array with the products that match the query.
 
 ```json
 [
   {
-    "id": "fb9f237d-456d-4c6e-b5f6-ed7be5e536a8",
-    "name": "Roundhouse 1 EC",
-    "registration": "34704-1129",
-    "distributor": null,
-    "registrant": "Loveland Products, Inc.",
-    "productType": null,
-    "formulationType": null,
+    "id": "7d85c556-0ac5-4f0b-b7cc-b35ac559af8f",
+    "name": "Badge X2 Fungicide/Bactericide",
+    "registration": "80289-12-10163",
+    "distributor": "gowan",
+    "registrant": "Gowan Company, LLC",
+    "productType": "Dry",
+    "formulationType": "Dry Flowable",
     "labelProvider": "AGRIAN",
-    "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=47856",
-    "labels": []
-  },
-  {
-    "id": "4b3d011f-dedb-4b5e-8209-a2b3badaf383",
-    "name": "Roundup PowerMAX Herbicide",
-    "registration": "524-549",
-    "distributor": null,
-    "registrant": "Bayer CropScience",
-    "productType": null,
-    "formulationType": null,
-    "labelProvider": "AGRIAN",
-    "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=85214",
-    "labels": []
+    "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=16790",
+    "labels": [
+      {
+        "name": " Label - 03-R0718 ",
+        "url": "https://www.agrian.com/pdfs/current/Badge_X2_FungicideBactericide_Label1p.pdf"
+      },
+      ....
+    ]
   },
   ....
 ]

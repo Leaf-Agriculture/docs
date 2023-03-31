@@ -220,7 +220,7 @@ The response is a JSON array with the products that match the query.
 
 &nbsp<span class="badge badge--success">GET</span>  `/beta/products/{id}`
 
-Get a product by its id.
+Get a product by its id. The data is obtained from different product databases.
 
 <Tabs
 defaultValue="sh"
@@ -289,12 +289,11 @@ values={[
 }
 ```
 
-### Get a operation matching products
+### Get matching products from an operation
 
 &nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products/matching/operations/{id}`
 
-Get an operation that matches products.
-
+Get the standard products that best match the products from a Field Operation. Information such as registration number and labels can be obtained from [this endpoint][7] using the `id`.
 
 <Tabs
 defaultValue="sh"

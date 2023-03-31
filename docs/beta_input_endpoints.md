@@ -199,7 +199,6 @@ The response is a JSON array with the products that match the query.
     "id": "7d85c556-0ac5-4f0b-b7cc-b35ac559af8f",
     "name": "Badge X2 Fungicide/Bactericide",
     "registration": "80289-12-10163",
-    "distributor": "gowan",
     "registrant": "Gowan Company, LLC",
     "productType": "Dry",
     "formulationType": "Dry Flowable",

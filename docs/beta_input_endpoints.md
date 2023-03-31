@@ -50,12 +50,12 @@ This feature has the following endpoints available:
 
 List the existing products used by a leaf user.
 
-| Parameter (to filter by)    | Values                                                                                                                                                                                    |
-|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                      | part of the product name                                                                                                                                                                  |
-| `page`                      | an integer specifying the page being fetched (default is 0)                                                                                                                               |
-| `size`                      | an integer specifying the size of the page (max is 100)                                                                                                                                   |
-| `sort`                      | the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc |
+| Parameter (to filter by)    | Values                                                                                                                                                                                                                                          |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                      | part of the product name                                                                                                                                                                                                                        |
+| `page`                      | an integer specifying the page being fetched (default is 0)                                                                                                                                                                                     |
+| `size`                      | an integer specifying the size of the page (max is 100)                                                                                                                                                                                         |
+| `sort`                      | the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
 
 
 <Tabs
@@ -212,6 +212,17 @@ The response is a JSON array with the products that match the query.
       ....
     ]
   },
+  {
+    "id": "81ffe756-1fd0-4d97-b2ec-e33b5232f507",
+    "name": "GameOn",
+    "registration": "62719-724",
+    "registrant": "Corteva Agriscience",
+    "productType": "Dry",
+    "formulationType": "Dry Flowable",
+    "labelProvider": "AGRIAN",
+    "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=21666",
+    "labels": []
+  },
   ....
 ]
 ```
@@ -276,16 +287,21 @@ values={[
 
 ```json
 {
-    "id": "4b3d011f-dedb-4b5e-8209-a2b3badaf383",
-    "name": "Roundup PowerMAX Herbicide",
-    "registration": "524-549",
-    "distributor": null,
-    "registrant": "Bayer CropScience",
-    "productType": null,
-    "formulationType": null,
-    "labelProvider": "AGRIAN",
-    "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=85214",
-    "labels": []
+  "id": "81ffe756-1fd0-4d97-b2ec-e33b5232f507",
+  "name": "GameOn",
+  "registration": "62719-724",
+  "registrant": "Corteva Agriscience",
+  "productType": "Dry",
+  "formulationType": "Dry Flowable",
+  "labelProvider": "AGRIAN",
+  "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=21666",
+  "labels": [
+      {
+        "name": " Label - 03-R0718 ",
+        "url": "https://www.agrian.com/pdfs/current/Badge_X2_FungicideBactericide_Label1p.pdf"
+      },
+      ....
+    ]
 }
 ```
 
@@ -389,17 +405,14 @@ Description | Endpoints
 Get all varieties from a leaf user.
 
 
-| Parameter (to filter by) | Values
-| - | - |
-| `name` | text |
-| `crops` | text |
+| Parameter (to filter by) | Values                                                                                                                                                                                                                                          |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                   | part of the product name                                                                                                                                                                                                                        |
+| `crops`                  | desired crop name                                                                                                                                                                                                                               |
+| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                                     |
+| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                                         |
+| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
 
-You can also pass some parameters used exclusively for paging through results.
-They are:
-
-- `page`, an integer specifying the page being fetched (default is 0)
-- `size`, an integer specifying the size of the page (max is 100)
-- `sort`, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc
 
 
 <Tabs

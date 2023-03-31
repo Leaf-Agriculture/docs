@@ -5,8 +5,8 @@ description: General Setup Information
 
 ## Customer Sandbox
 
-All new accounts created in Leaf will be linked to the Sandbox environment, this is basically a testing environment
-which contains some limitation. Currently accounts in this environment will be limited to creating only five 
+All new accounts created in Leaf will be linked to the Sandbox environment, this is basically a restricted testing 
+environment. Currently accounts in this environment will be limited to creating only five 
 [leaf users][leaf]. 
 
 :::tip Upgrade

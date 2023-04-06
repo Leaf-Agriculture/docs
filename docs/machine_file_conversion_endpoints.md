@@ -23,6 +23,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [12]: #get-a-files-units
 [13]: #retry-a-batch
 [14]: machine_file_conversion_sample_output.md
+[15]: #get-a-file-status
 
 ## About
 
@@ -34,18 +35,20 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-Description | Endpoints
---- | ---
-[Get all files][3] | <span class="badge badge--success">GET</span> `/files`
-[Get a file][4] | <span class="badge badge--success">GET</span> `/files/{id}`
-[Get a file summary][5] | <span class="badge badge--success">GET</span> `/files/{id}/summary`
-[Get a file's images][6] | <span class="badge badge--success">GET</span> `/files/{id}/images`
-[Get a file's units][12] | <span class="badge badge--success">GET</span> `/files/{id}/units`
-[Upload a file][7] | <span class="badge badge--warning">POST</span> `/batch`
-[Get a batch][8] | <span class="badge badge--success">GET</span> `/batch/{id}`
-[Get all batches][10] | <span class="badge badge--success">GET</span> `/batch`
-[Merge files][11] | <span class="badge badge--warning">POST</span> `/files/merge`
-[Retry a batch][13] | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`
+| Description              | Endpoints                                                           |
+|--------------------------|---------------------------------------------------------------------|
+| [Get all files][3]       | <span class="badge badge--success">GET</span> `/files`              |
+| [Get a file][4]          | <span class="badge badge--success">GET</span> `/files/{id}`         |
+| [Get a file summary][5]  | <span class="badge badge--success">GET</span> `/files/{id}/summary` |
+| [Get a file's images][6] | <span class="badge badge--success">GET</span> `/files/{id}/images`  |
+| [Get a file's units][12] | <span class="badge badge--success">GET</span> `/files/{id}/units`   |
+| [Upload a file][7]       | <span class="badge badge--warning">POST</span> `/batch`             |
+| [Get a batch][8]         | <span class="badge badge--success">GET</span> `/batch/{id}`         |
+| [Get all batches][10]    | <span class="badge badge--success">GET</span> `/batch`              |
+| [Retry a batch][13]      | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`   |
+| [Merge files][11]        | <span class="badge badge--warning">POST</span> `/files/merge`       |
+| [Get a file status][15]  | <span class="badge badge--success">GET</span> `/files/{id}/status`  |
+
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
 
@@ -57,7 +60,7 @@ have not connected it with any provider yet, see **[how to create a Leaf User]()
 or **[how to add credentials to a Leaf User]()**.
 :::
 
----
+
 
 ### Get all files
 
@@ -158,7 +161,7 @@ and "harvested" operation files.
 }    
 ```
 
----
+
 
 ### Get a file
 
@@ -219,7 +222,7 @@ Gets a single file by its id.
 [Here's a link with sample responses][14] for "planted", "applied" 
 and "harvested" operation files.
 
----
+
 
 ### Get a file summary
 
@@ -286,7 +289,7 @@ and "harvested" operation files.
 
 
 
----
+
 
 ### Get a file's images
 
@@ -383,7 +386,7 @@ Gets a list of PNG images generated from the operation's file properties.
 
 
 
----
+
 
 ### Get a file's units
 
@@ -467,7 +470,7 @@ always take the units into consideration, just to be sure.
 </Tabs>
 
 
----
+
 
 ### Upload a file
 
@@ -865,13 +868,12 @@ The messages with FAILED status have the key *statusDetails*. The statusDetails 
 
 The following status can be present on *statusDetails*:
 
-Status | Description
---- | ---
-No valid files found | Unable to find a valid file based on supported extensions and expected file structure
-Leaf internal error. Please contact Support | Internal error that need to be reported
-Files found but unable to read. Please check file format before re-trying or contact Support | A valid file was found but could not be converted
+| Status                                                                                       | Description                                                                           |
+|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| No valid files found                                                                         | Unable to find a valid file based on supported extensions and expected file structure |
+| Leaf internal error. Please contact Support                                                  | Internal error that need to be reported                                               |
+| Files found but unable to read. Please check file format before re-trying or contact Support | A valid file was found but could not be converted                                     |
 
----
 
 ### Get Batch upload
 
@@ -935,7 +937,6 @@ When you query a batch upload ID, you will receive a single JSON object:
 ```
 
 
----
 
 ### Get all Batches
 
@@ -1001,7 +1002,6 @@ When you query a batch upload ID, you will receive a JSON with list of batches:
 ```
 
 
----
 
 ### Retry a batch
 
@@ -1075,12 +1075,6 @@ Returns a single JSON object, similar to the upload endpoint response:
 ```
 
 
----
-
-
-
-
-
 ### Merge files
 
 &nbsp<span class="badge badge--warning">POST</span> `/files/merge`
@@ -1111,10 +1105,8 @@ It receives a single JSON object with the `ids` entry. Example:
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
-
   <TabItem value="js">
 
   ```js
@@ -1159,22 +1151,121 @@ It receives a single JSON object with the `ids` entry. Example:
   ```
 
   </TabItem>
-  <TabItem value="json">
+</Tabs>
 
-  Returns a single JSON object:
 
-  ```json
-  {
-    "id": "id",
-    "status": "SENT_TO_MERGE"
-  }
+Returns a single JSON object:
+
+```json
+{
+  "id": "id",
+  "status": "SENT_TO_MERGE"
+}
+```
+
+After a few minutes, you can consult the result of Leaf processing over this file by
+performing GET consults in this.
+
+
+
+
+### Get a file status
+
+Get status by file processing step by id.
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/status'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.put(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
   ```
 
-  After a few minutes, you can consult the result of Leaf processing over this file by
-  performing GET consults in this.
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/status'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.put(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/status'
+  ```
 
   </TabItem>
 </Tabs>
+
+#### Response
+
+```json
+{
+  "rawGeojson": {
+    "status": "processed",
+    "message": "ok"
+  },
+  "normalizedGeojson": {
+    "status": "processed",
+    "message": "ok"
+  },
+  "standardGeojson": {
+    "status": "processed",
+    "message": "ok"
+  },
+  "propertiesPNGs": {
+    "status": "processed",
+    "message": "ok"
+  },
+  "areaAndYield": {
+    "status": "processed",
+    "message": "ok"
+  },
+  "summary": {
+    "status": "processed",
+    "message": "ok"
+  },
+  "units": {
+    "status": "processed",
+    "message": "ok"
+  },
+  "originalFile": {
+    "status": "processed",
+    "message": "ok"
+  },
+  "cleanupGeojson": {
+    "status": "processed",
+    "message": "ok"
+  }
+}
+```
+
 
 ## Alerts
 
@@ -1185,5 +1276,3 @@ Leaf Alerts support events that happen within Leaf and events that happen within
 ### List of Operations Events
 
 Leaf Operations Service can Alert you on these events: [list of Operations Events][10]
-
----

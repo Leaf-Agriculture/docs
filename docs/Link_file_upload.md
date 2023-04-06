@@ -1,7 +1,7 @@
 ---
-title: Widgets > File upload
-description: Widgets - File upload
-sidebar_label: File upload
+title: Leaf Link > File upload widget
+description: Leaf Link > File upload widget
+sidebar_label: File upload widget
 ---
 
 import Tabs from '@theme/Tabs';
@@ -11,18 +11,19 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [1]:  /docs/authentication
 [2]:  /docs/user_management_overview
 
-:::caution Beta
-This is a beta feature.
-:::
 
-
+## Overview
 This widget allows the user to upload different machine files formats for conversion using the Leaf API.
 
 <p align="center">
     <img alt="File upload widget" width="50%" src={useBaseUrl('img/leaf-file-upload.png')} />
 </p>
 
-## How it works
+:::caution Beta
+This is a beta feature.
+:::
+
+### How it works
 The user can add files using the file picker from the `Browse` button or drop files in the `Drag & drop` zone. Your files must be in a `zip` file.
  
 During the upload, the users can see the progress of the upload and they are able to cancel the upload process for the pending files. 
@@ -32,8 +33,16 @@ In addition to being [authenticated][1], you must have at least one Leaf user cr
 :::
 
 
+## Get started
 
-## Add it to your application
+### 1. Sign in with a Leaf account
+You will need a Leaf account. If you don't have one yet, you can create it [here][1].
+
+### 2. Get an access token
+To use the widget you will need a Leaf token. Use our [authentication guide][2] to know how it works.
+
+
+## Tutorial
 
 This widget is only available for Angular.
 
@@ -54,7 +63,7 @@ npm i @withleaf.io/angular-ui-kit
 import { LeafFileUploadModule } from '@withleaf.io/angular-ui-kit';
 ```
 
-3. Add the component to the HTML. You need your `Leaf token` and a `Leaf user ID` to set the required properties in the HTML component. Just add it to the container div.
+3. Add the component to the HTML. You need your Leaf token (`leafToken`) and a Leaf user ID (`leafUser`) to set the required properties in the HTML component. Just add it to the container div.
 
 ```js
 <div class="container">

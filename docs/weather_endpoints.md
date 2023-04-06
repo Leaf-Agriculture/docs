@@ -31,8 +31,8 @@ This service has the following endpoints available:
 |----------------------------|---------------------------------------------------------------------------------------------------------------|
 | [Get Daily Forecast][2]    | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/daily`    |
 | [Get Hourly Forecast][3]   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/hourly`   |
-| [Get Daily Historical][4]  | <span class="badge badge--warning">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`  |
-| [Get Hourly Historical][5] | <span class="badge badge--warning">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly` |
+| [Get Daily Historical][4]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`  |
+| [Get Hourly Historical][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly` |
 
 ## Endpoints
 
@@ -536,7 +536,7 @@ Get daily historical by leaf user and field.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly`
 
-Get hourly historical by leaf user and field
+Get hourly historical by leaf user and field.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -696,5 +696,3 @@ Get hourly historical by leaf user and field
   }
 }
 ```  
-
-

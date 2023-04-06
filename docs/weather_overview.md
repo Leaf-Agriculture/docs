@@ -38,16 +38,18 @@ Leaf’s weather forecast service provides access to forecasted weather data for
 
 
 ### Data sources
-| Weather Model  | National Weather Provider    | Origin Country | Resolution | Forecast Length | Update Frequency |
+| Weather Model  | National Weather Provider    | Origin Country | Resolution | Forecast Length | Update frequency |
 |----------------|------------------------------|----------------|------------|-----------------|------------------|
 | ICON           | Deutscher Wetterdienst (DWD) | Germany        | 2 - 11 km  | 7.5 days        | Every 3 hours    |
 | GFS            | NOAA                         | United States  | 3 - 25 km  | 16 days         | Every hour       |
 | Arpege & Arome | MeteoFrance                  | France         | 1 - 40 km  | 4 days          | Every 6 hours    |
 | IFS            | ECMWF                        | European Union | 44 km      | 7 days          | Every 6 hours    |
 | MET Nordic     | MET Norway                   | Norway         | 1 km       | 2.5 days        | Every hour       |
+| GEM            | Canadian Weather Service     | Canada         | 2.5 km     | 10 days         | Every 6 hours    |
 
 
 ## Historical Data
+
 Leaf’s historical weather service provides access up to `10` years of historical data when available. The data can be fetched daily or hourly.
 
 ### Properties
@@ -70,6 +72,6 @@ Leaf’s historical weather service provides access up to `10` years of historic
 * only available for daily
 
 ### Data sources
-| Reanalysis Model  |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update Frequency        |
-|:-----------------:|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
-|         ERA5      |    Global     |   0.25° (~25 km)   |       Hourly        |  2017 to present  | Daily with 5 days delay |
+| Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update frequency        |
+|------------------|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
+|      ERA5        |    Global     |   0.25° (~25 km)   |       Hourly        |  2017 to present  | Daily with 5 days delay |

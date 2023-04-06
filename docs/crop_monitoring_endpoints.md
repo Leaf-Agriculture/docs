@@ -8,6 +8,27 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+[1]: /img/fieldovertime.png
+[2]: /img/ndviexample.png
+[3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
+[4]: #get-all-satellite-fields
+[5]: #get-a-satellite-field
+[6]: #get-images-of-satellite-field
+[7]: #create-a-satellite-field
+[8]: #delete-a-satellite-field
+[9]: /docs/alerts_events#satellite-events
+[10]: #get-an-image-of-satellite-field
+[11]: /docs/crop_monitoring_overview#providers
+[12]: #get-subscription-for-planet
+[13]: #reprocess-satellite-images
+[14]: #sample-geometry
+
+:::success PLANET
+
+If you wish to test our Planet Imagery service, you will be **required** to use [THIS GEOMETRY][14] for your testing purposes. If you need to use a different geometry for testing purposes, **you will be billed for this usage**. Please contact our team on sales@withleaf.io to discuss your options should you require different testing geometry.
+:::
+
+
 
 All HTTP methods should be prepended by this service's endpoint:
 
@@ -27,20 +48,6 @@ Description | Endpoints
 [Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
 [Get subscription for Planet][12] | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
 [Reprocess satelite images][13] | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess`
-
-[1]: /img/fieldovertime.png
-[2]: /img/ndviexample.png
-[3]: https://tools.ietf.org/html/rfc7946#section-3.1.7
-[4]: #get-all-satellite-fields
-[5]: #get-a-satellite-field
-[6]: #get-images-of-satellite-field
-[7]: #create-a-satellite-field
-[8]: #delete-a-satellite-field
-[9]: /docs/alerts_events#satellite-events
-[10]: #get-an-image-of-satellite-field
-[11]: /docs/crop_monitoring_overview#providers
-[12]: #get-subscription-for-planet
-[13]: #reprocess-satellite-images
 
 ---
 
@@ -548,6 +555,27 @@ curl -X POST \
 - the field cannot be larger than 50k hectares (123k acres) and
 - cannot have a perimeter bigger than 300km (180 miles).
 :::
+
+#### Sample geometry
+If you are looking for a geometry for testing purposes you can use this one.
+
+```py
+{
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [[[ -48.95275447, -22.49608],
+          [ -48.95379286, -22.49675703],
+          [ -48.9591836, -22.50310243],
+          [ -48.96225525, -22.5067235],
+          [ -48.94852019, -22.50648371],
+          [ -48.94780839, -22.49693998],
+          [ -48.95275447, -22.49608]
+        ]]]
+  }
+}
+```
+
 
 ---
 

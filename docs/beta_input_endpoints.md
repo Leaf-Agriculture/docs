@@ -50,12 +50,12 @@ This feature has the following endpoints available:
 
 List the existing products used by a leaf user.
 
-| Parameter (to filter by)    | Values                                                                                                                                                                                                                                          |
-|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                      | part of the product name                                                                                                                                                                                                                        |
-| `page`                      | an integer specifying the page being fetched (default is 0)                                                                                                                                                                                     |
-| `size`                      | an integer specifying the size of the page (max is 100)                                                                                                                                                                                         |
-| `sort`                      | the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+| Parameter (to filter by)    | Values                                                                                                                                                                                                                              |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                      | part of the product name                                                                                                                                                                                                            |
+| `page`                      | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
+| `size`                      | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
+| `sort`                      | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
 
 
 <Tabs
@@ -405,13 +405,13 @@ Description | Endpoints
 Get all varieties from a leaf user.
 
 
-| Parameter (to filter by) | Values                                                                                                                                                                                                                                          |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                   | part of the product name                                                                                                                                                                                                                        |
-| `crops`                  | desired crop name                                                                                                                                                                                                                               |
-| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                                     |
-| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                                         |
-| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+| Parameter (to filter by) | Values                                                                                                                                                                                                                              |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                   | part of the product name                                                                                                                                                                                                            |
+| `crops`                  | desired crop name                                                                                                                                                                                                                   |
+| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
+| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
+| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
 
 
 

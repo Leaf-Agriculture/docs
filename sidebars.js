@@ -95,7 +95,8 @@ module.exports = {
               label: 'Leaf Link',
               items: [
                 'Link_provider_connection',
-                'Link_file_upload'
+                'Link_file_upload',
+                'Link_endpoints'
               ]
             }
           ]

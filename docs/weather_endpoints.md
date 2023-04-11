@@ -40,8 +40,7 @@ This service has the following endpoints available:
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/daily`
 
-Get daily forecast by leaf user and field. If dates are not set on the endpoint, the response will return 
-forecast data for the next seven days.
+Get daily forecast by leaf user and field.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -206,8 +205,7 @@ forecast data for the next seven days.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/hourly`
 
-Get hourly forecast by leaf user and field. If dates are not set on the endpoint, the response will return 
-forecast data for the next seven days.
+Get hourly forecast by leaf user and field.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -372,8 +370,7 @@ forecast data for the next seven days.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`
 
-Get daily historical by leaf user and field. If the dates are not defined in the endpoint, the response will 
-return data from the last seven days.
+Get daily historical by leaf user and field.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -539,8 +536,7 @@ return data from the last seven days.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly`
 
-Get hourly historical by leaf user and field. If the dates are not defined in the endpoint, the response will 
-return data from the last seven days.
+Get hourly historical by leaf user and field.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|

@@ -8,27 +8,33 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+## About
+With Leaf Weather, you can access unified weather data at a field level. Below you’ll find more about what forecasted and historical weather variables are available and which data sources are supported through Leaf’s API.
+
 
 ## Forecast
 
-The Forecast service provides access to forecast weather data for up to `10` days. The data can be fetched daily or hourly.
+Leaf’s weather forecast service provides access to forecasted weather data for up to `10` days. The data can be fetched daily or hourly.
 
 ### Properties
 
-- Temperature
-- Sunrise
-- Sunset
-- Snowfall
-- Precipitation
-- Evapotranspiration
-- Rain
-- Wind Speed
-- Wind Gusts
-- Wind Direction
-- Dew-point
-- Short Wave Radiation
 - Cloud cover
-- Relative Humidity
+- Dew-point
+- Evapotranspiration
+- Precipitation
+- Rain
+- Relative humidity
+- Short wave radiation
+- Snowfall
+- Sunrise*
+- Sunset*
+- Temperature
+- Wind direction
+- Wind gusts
+- Wind speed
+
+
+* only available for daily
 
 
 ### Data sources
@@ -43,26 +49,29 @@ The Forecast service provides access to forecast weather data for up to `10` day
 
 
 ## Historical Data
-The Historical service provides access to historical weather data for up to `10` years ago. The data can be fetched daily or hourly.
+
+Leaf’s historical weather service provides access up to `10` years of historical data when available. The data can be fetched daily or hourly.
 
 ### Properties
 
-- Temperature
-- Sunrise
-- Sunset
-- Snowfall
-- Precipitation
-- Evapotranspiration
-- Rain
-- Wind Speed
-- Wind Gusts
-- Wind Direction
-- [Dew-point
-- Short Wave Radiation
 - Cloud cover
-- Relative Humidity]()
+- Dew-point
+- Evapotranspiration*
+- Precipitation
+- Rain
+- Relative humidity
+- Short wave radiation
+- Snowfall
+- Sunrise*
+- Sunset*
+- Temperature
+- Wind direction
+- Wind gusts
+- Wind speed
+
+* only available for daily
 
 ### Data sources
 | Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update frequency        |
-|:----------------:|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
-|      ERA5        |    Global     |   0.25° (~25 km)   |       Hourly        |  2020 to present  | Daily with 5 days delay |
+|------------------|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
+|      ERA5        |    Global     |   0.25° (~25 km)   |       Hourly        |  2017 to present  | Daily with 5 days delay |

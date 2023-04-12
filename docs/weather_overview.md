@@ -15,7 +15,8 @@ and historical weather variables are available and which data sources are suppor
 
 ## Forecast
 
-Leaf’s weather forecast service provides access to forecast weather data for up to `10` days. The data can be fetched daily or hourly.
+Leaf’s weather forecast service provides access to forecasted weather data for up to `10` days. The data can be fetched 
+daily or hourly.
 
 ### Properties
 
@@ -43,7 +44,6 @@ Leaf’s weather forecast service provides access to forecast weather data for u
 | Arpege & Arome | MeteoFrance                  | France         | 1 - 40 km  | 4 days          | Every 6 hours    |
 | IFS            | ECMWF                        | European Union | 44 km      | 7 days          | Every 6 hours    |
 | MET Nordic     | MET Norway                   | Norway         | 1 km       | 2.5 days        | Every hour       |
-| GEM            | Canadian Weather Service     | Canada         | 2.5 km     | 10 days         | Every 6 hours    |
 
 
 ## Historical Data
@@ -71,4 +71,4 @@ be fetched daily or hourly.
 ### Data sources
 | Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update Frequency        |
 |:----------------:|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
-|      ERA5        |    Global     |   0.25° (~25 km)   |       Hourly        |  2020 to present  | Daily with 5 days delay |
+|       ERA5       |    Global     |   0.25° (~25 km)   |       Hourly        |  2017 to present  | Daily with 5 days delay |

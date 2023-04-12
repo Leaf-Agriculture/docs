@@ -45,6 +45,9 @@ daily or hourly.
 | IFS            | ECMWF                        | European Union | 44 km      | 7 days          | Every 6 hours    |
 | MET Nordic     | MET Norway                   | Norway         | 1 km       | 2.5 days        | Every hour       |
 
+:::info Warning
+The service uses an option to provide the best forecast for any given location worldwide, based on the models available.
+:::
 
 ## Historical Data
 

@@ -667,8 +667,7 @@ Get the subscription from Planet. It returns the assetTypes, itemTypes and start
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-let endpoint = 'https://api.withleaf.io/services/satellite/api' +
-               '/fields/YOUR_ID/subscription'
+let endpoint = 'https://api.withleaf.io/services/satellite/api/fields/{id}/subscription'
 
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
@@ -685,8 +684,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = ('https://api.withleaf.io/services/satellite/api'
-            '/fields/YOUR_ID/subscription')
+endpoint = ('https://api.withleaf.io/services/satellite/api/fields/{id}/subscription')
 
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
@@ -700,7 +698,7 @@ print(response.json())
 ```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/subscription'
+    'https://api.withleaf.io/services/satellite/api/fields/{id}/subscription'
 ```
 
 </TabItem>
@@ -711,12 +709,13 @@ curl -X GET \
 ```json
 {
     "planetAssetTypes": [
-        "analytic_sr"
+        "ortho_udm2",
+        "ortho_analytic_8b_sr"
     ],
     "planetItemTypes": [
-        "PSOrthoTile"
+        "PSScene"
     ],
-    "startDate": "2022-04-01T00:00:00Z"
+    "startDate": "2023-04-09T00:00:00Z"
 }
 ```
 

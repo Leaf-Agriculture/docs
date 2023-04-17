@@ -709,8 +709,10 @@ curl -X GET \
 ```json
 {
     "planetAssetTypes": [
-        "ortho_udm2",
-        "ortho_analytic_8b_sr"
+        "ortho_analytic_8b_sr",  
+        "ortho_analytic_8b",  
+        "ortho_analytic_8b_xml",
+        "ortho_udm2"
     ],
     "planetItemTypes": [
         "PSScene"

@@ -72,12 +72,12 @@ Radiometrically-calibrated analytic image stored as 16-bit scaled radiance.
 | Band 8 | Near-infrared |
 
 
-#### ortho_analytic_8b_xml f7a93a3e-8fbb-463c-9fc0-f0589b9ad41a
+#### ortho_analytic_8b_xml
 
 Radiometrically-calibrated analytic image metadata.
 
 
-#### ortho_udm2 8a01783d-7caf-4f7f-9820-f31d156a13d7
+#### ortho_udm2
 
 Usable data mask (Cloud 2.0).
 

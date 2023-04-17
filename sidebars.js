@@ -101,6 +101,14 @@ module.exports = {
             }
           ]
         },
+        {
+          type: 'category',
+          label: 'Weather',
+          items: [
+            'weather_overview',
+            'weather_endpoints',
+          ]
+        },
         'Connect'
       ],
     }

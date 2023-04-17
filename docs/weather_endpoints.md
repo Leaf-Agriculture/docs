@@ -16,7 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-Here we list all the available endpoints from Weather API. For easily calling them, 
+Here we list all the available endpoints from Leaf's Weather API. For an easy way to call them, 
 we recommend using [Leaf's Postman collection][1].
 
 All HTTP methods should be prepended by this service's endpoint:
@@ -40,8 +40,9 @@ This service has the following endpoints available:
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/daily`
 
-Get daily forecast by leaf user and field. If dates are not set on the endpoint, the response will return 
-forecast data for the next seven days.
+Get daily forecasted weather data by leaf user and field. If dates are not set on the endpoint, 
+the response will return forecast data for the next seven days by default.
+
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -193,10 +194,10 @@ forecast data for the next seven days.
     }
   },
   "geometry": {
-    "type": "str",
+    "type": "Point",
     "coordinates": [
-      0,
-      0
+      -89.64355775454169,
+      39.802794365611476
     ]
   }
 }
@@ -206,8 +207,9 @@ forecast data for the next seven days.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/hourly`
 
-Get hourly forecast by leaf user and field. If dates are not set on the endpoint, the response will return 
-forecast data for the next seven days.
+Get hourly forecasted weather data by Leaf User and field. If dates are not set on the endpoint, the response 
+will return forecast data for the next seven days by default.
+
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -359,10 +361,10 @@ forecast data for the next seven days.
     }
   },
   "geometry": {
-    "type": "str",
+    "type": "Point",
     "coordinates": [
-      0,
-      0
+      -89.64355775454169,
+      39.802794365611476
     ]
   }
 }
@@ -372,8 +374,8 @@ forecast data for the next seven days.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`
 
-Get daily historical by leaf user and field. If the dates are not defined in the endpoint, the response will 
-return data from the last seven days.
+Get daily historical weather data by Leaf User and field. If the dates are not defined in the endpoint, the response 
+will return data from the last seven days by default.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -525,10 +527,10 @@ return data from the last seven days.
     }
   },
   "geometry": {
-    "type": "str",
+    "type": "Point",
     "coordinates": [
-      0,
-      0
+      -89.64355775454169,
+      39.802794365611476
     ]
   }
 }
@@ -539,8 +541,8 @@ return data from the last seven days.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly`
 
-Get hourly historical by leaf user and field. If the dates are not defined in the endpoint, the response will 
-return data from the last seven days.
+Get hourly historical weather data by Leaf User and field. If the dates are not defined in the endpoint, the response 
+will return data from the last seven days by default.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -692,11 +694,15 @@ return data from the last seven days.
     }
   },
   "geometry": {
-    "type": "str",
+    "type": "Point",
     "coordinates": [
-      0,
-      0
+      -89.64355775454169,
+      39.802794365611476
     ]
   }
 }
 ```  
+
+:::info Warning
+If there is no data available at that time/day, the property will be returned as _null_.
+:::

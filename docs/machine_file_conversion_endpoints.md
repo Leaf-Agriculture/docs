@@ -303,7 +303,6 @@ Gets a list of PNG images generated from the operation's file properties.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -336,56 +335,42 @@ Gets a list of PNG images generated from the operation's file properties.
   ```
 
   </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/operations/api/files/{id}/images'
-  ```
-
-  </TabItem>
-  <TabItem value="json">
-
-  Returns a JSON list of the following format:
-
-  ```json
-  [
-    {
-      "property": "elevation",
-      "ramp": {
-        "0%":   [200,   0, 0],
-        "35%":  [255,  40, 0],
-        "45%":  [255, 150, 0],
-        "55%":  [255, 240, 0],
-        "65%":  [  0, 230, 0],
-        "75%":  [  0, 190, 0],
-        "100%": [  0, 130, 0],
-        "nv":   [  0,   0, 0, 0]
-      },
-      "url": "string"
-    },
-    ...
-  ]
-  ```
-
-  The `property` refers to the property extracted from files' data to generate the
-  image. In the example above, the image would represent the elevation.
-
-  The `ramp` is the color ramp used to generate the image. The percentages
-  correspond to the minimum (0%) and maximum (100%) values in the image. The
-  listed values correspond to RGB values used. The `nv` refers to `no value`. It
-  is used internally to make the image transparent on places without data.
-  Currently, this ramp is the same in all images processed.
-
-  We also generate an auxiliary `xml` with geographic information to handle this
-  image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
-
-  </TabItem>
 </Tabs>
 
 
+Returns a JSON list of the following format:
 
+```json
+[
+  {
+    "property": "elevation",
+    "ramp": {
+      "0%":   [200,   0, 0],
+      "35%":  [255,  40, 0],
+      "45%":  [255, 150, 0],
+      "55%":  [255, 240, 0],
+      "65%":  [  0, 230, 0],
+      "75%":  [  0, 190, 0],
+      "100%": [  0, 130, 0],
+      "nv":   [  0,   0, 0, 0]
+    },
+    "url": "string"
+  },
+  ....
+]
+```
+
+The `property` refers to the property extracted from files' data to generate the
+image. In the example above, the image would represent the elevation.
+
+The `ramp` is the color ramp used to generate the image. The percentages
+correspond to the minimum (0%) and maximum (100%) values in the image. The
+listed values correspond to RGB values used. The `nv` refers to `no value`. It
+is used internally to make the image transparent on places without data.
+Currently, this ramp is the same in all images processed.
+
+We also generate an auxiliary `xml` with geographic information to handle this
+image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
 
 
 ### Get a file's units
@@ -400,7 +385,6 @@ Gets the file's properties and their units.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -433,31 +417,22 @@ Gets the file's properties and their units.
   ```
 
   </TabItem>
-  <TabItem value="sh">
+</Tabs>
 
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/operations/api/files/{id}/units'
-  ```
+Returns a JSON like the following:
 
-  </TabItem>
-  <TabItem value="json">
-
-  Returns a JSON like the following:
-
-  ```json
-  {
-      "distance": "ft",
-      "heading": "arcdeg",
-      "speed": "mi/hr",
-      "elevation": "ft",
-      "harvestMoisture": "prcnt",
-      "wetMass": "lb",
-      "yieldVolume": "bu",
-      "equipmentWidth": "ft"
-  }
-  ```
+```json
+{
+    "distance": "ft",
+    "heading": "arcdeg",
+    "speed": "mi/hr",
+    "elevation": "ft",
+    "harvestMoisture": "prcnt",
+    "wetMass": "lb",
+    "yieldVolume": "bu",
+    "equipmentWidth": "ft"
+}
+```
 
 These properties vary depending on the operationType, but you can expect the same,
 standardized keys, across different providers.
@@ -466,17 +441,11 @@ Units usually don't change for the same Leaf User, since the providers units
 configuration is based on their location. But keep in mind that it's best to
 always take the units into consideration, just to be sure.
 
-  </TabItem>
-</Tabs>
-
-
-
-
 ### Upload a file
 
 &nbsp<span class="badge badge--warning">POST</span> `/batch`
 
-Posts/creates a new file in Leaf. The file must be sent as a zip.
+Creates a new file in Leaf. The file must be sent as a zip.
 
 This endpoint accepts a .zip of operation files, detects which files are in the 
 .zip, and returns the ID of the process, which can in turn be used to retrieve 
@@ -812,7 +781,7 @@ TASKDATA
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=shapefile.zip' \
-      'https://api.withleaf.io/services/operations/api/batch?' \
+      'https://api.withleaf.io/services/operations/api/batch' \
       'provider=JohnDeere&leafUserId=id'
   ```
 
@@ -877,6 +846,8 @@ The following status can be present on *statusDetails*:
 
 ### Get Batch upload
 
+&nbsp<span class="badge badge--success">GET</span> `/batch/{batch_id}`
+
 Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
 via [Get all Files](#get-all-files).
 You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
@@ -885,22 +856,46 @@ You can also query the batch upload ID to see a list of files generated in the u
 <Tabs
   defaultValue="py"
   values={[
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
+  <TabItem value="js">
 
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/batch/{batch_id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.put(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
   <TabItem value="py">
 
-  ```python
+  ```py
   import requests
 
-  url = "https://api.withleaf.io/services/operations/api/batch/{batch_id}/"
+  TOKEN = 'YOUR_TOKEN'
 
-  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
+  endpoint = 'https://api.withleaf.io/services/operations/api/batch/{batch_id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.request("GET", url, headers=headers)
+  response = requests.put(endpoint, headers=headers)
+  print(response.json())
+  ```
+  </TabItem>
+  <TabItem value="sh">
 
-  print(response.text)
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/batch/{batch_id}'
   ```
 
   </TabItem>
@@ -940,6 +935,8 @@ When you query a batch upload ID, you will receive a single JSON object:
 
 ### Get all Batches
 
+&nbsp<span class="badge badge--success">GET</span> `/batch`
+
 Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
 via [Get all Files](#get-all-files).
 You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
@@ -948,22 +945,46 @@ You can also query the batch upload ID to see a list of files generated in the u
 <Tabs
   defaultValue="py"
   values={[
+    { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
   ]
 }>
+  <TabItem value="js">
 
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/batch'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.put(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
   <TabItem value="py">
 
-  ```python
+  ```py
   import requests
 
-  url = "https://api.withleaf.io/services/operations/api/batch"
+  TOKEN = 'YOUR_TOKEN'
 
-  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
+  endpoint = 'https://api.withleaf.io/services/operations/api/batch'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.request("GET", url, headers=headers)
+  response = requests.put(endpoint, headers=headers)
+  print(response.json())
+  ```
+  </TabItem>
+  <TabItem value="sh">
 
-  print(response.text)
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/batch'
   ```
 
   </TabItem>
@@ -1170,6 +1191,8 @@ performing GET consults in this.
 
 
 ### Get a file status
+
+&nbsp<span class="badge badge--success">GET</span> `/files/{id}/status`
 
 Get status by file processing step by id.
 

@@ -494,7 +494,7 @@ The payload of this object should be like the following:
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
 field.
 - `providers`: Specify the satellite imagery source, if none is specified, Sentinel images will be retrived by default.
-- `assetType`: If the `providers` property contains `planet` you can select which `assetType` will be retrived. Default value is `analytic_sr`.
+- `assetType`: If the `providers` property contains `planet` you can select which `assetType` will be retrived, which can be **more than one**. Default value is `analytic_sr`.
 
 <Tabs
   defaultValue="sh"

@@ -473,8 +473,15 @@ The payload of this object should be like the following:
 {
     "externalId": "your field id",
     "startDate": "2019-01-01", 
-    "providers": ["sentinel", "planet"],
-    "assetType": "analytic_sr"
+    "providers": [
+        "planet"
+    ],
+    "assetTypes": [
+        "ortho_analytic_8b_sr",  
+        "ortho_analytic_8b",  
+        "ortho_analytic_8b_xml",
+        "ortho_udm2"
+    ],
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]

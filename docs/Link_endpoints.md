@@ -54,6 +54,10 @@ https://api.withleaf.io/services/usermanagement/api
 
 See below the REST resources and their endpoints available in this service.
 
+:::tip Note
+The app information that will be highly referenced here is the application information registered by the client with the providers
+:::
+
 ## AgLeader
 
 To enable AgLeader as a provider in the widget you need to have your application already registered with AgLeader. You can find more info on how to create a developer account [here][1].
@@ -77,7 +81,7 @@ Soon we will add the necessary information to carry out this integration.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/AgLeader`
 
-Get all AgLeader app information from the api owner.
+Get all AgLeader app information from the API Owner.
 
 #### Request examples
 
@@ -153,7 +157,7 @@ Get all AgLeader app information from the api owner.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/AgLeader/{appName}`
 
-Get a AgLeader app information from the api owner.
+Get a AgLeader app information from the API Owner.
 
 #### Request examples
 
@@ -438,7 +442,7 @@ Soon we will add the necessary information to carry out this integration.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/ClimateFieldView`
 
-Get all Climate FieldView app information from the api owner.
+Get all Climate FieldView app information from the API Owner.
 
 #### Request examples
 
@@ -514,7 +518,7 @@ Get all Climate FieldView app information from the api owner.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/ClimateFieldView/{appName}`
 
-Get a Climate FieldView app information from the api owner.
+Get a Climate FieldView app information from the API Owner.
 
 #### Request examples
 
@@ -802,7 +806,7 @@ Soon we will add the necessary information to carry out this integration.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/CNHI`
 
-Get all CNHI app information from the api owner.
+Get all CNHI app information from the API Owner.
 
 #### Request examples
 
@@ -878,7 +882,7 @@ Get all CNHI app information from the api owner.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/CNHI/{appName}/{clientEnvironment}`
 
-Get a CNHI app information from the api owner.
+Get a CNHI app information from the API Owner.
 
 #### Request examples
 
@@ -1166,7 +1170,7 @@ Soon we will add the necessary information to carry out this integration.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/JohnDeere`
 
-Get all John Deere app information from the api owner.
+Get all John Deere app information from the API Owner.
 
 #### Request examples
 
@@ -1242,7 +1246,7 @@ Get all John Deere app information from the api owner.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/JohnDeere/{appName}/{clientEnvironment}`
 
-Get a John Deere app information from the api owner.
+Get a John Deere app information from the API Owner.
 
 #### Request examples
 
@@ -1527,7 +1531,7 @@ Soon we will add the necessary information to carry out this integration.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/Trimble`
 
-Get all Trimble app information from the api owner.
+Get all Trimble app information from the API Owner.
 
 #### Request examples
 
@@ -1603,7 +1607,7 @@ Get all Trimble app information from the api owner.
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/Trimble/{appName}`
 
-Get a Trimble app information from the api owner.
+Get a Trimble app information from the API Owner.
 
 #### Request examples
 

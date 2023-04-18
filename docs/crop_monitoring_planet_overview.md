@@ -14,14 +14,13 @@ Leaf provides an integration with Planet, fetching PlanetScope images from a bac
 the user. PlanetScope provides numerus categories of products from different satellite sensors 
 called `itemTypes` and for each one, we have different `assetType`.
 
-For now, we support `PSScene` with their respective assets `ortho_analytic_8b_sr` (13 images), `ortho_analytic_8b` (13 images), `ortho_udm2` 
-(multiband.tif) and `ortho_analytic_8b_xml` (metadata.xml). 
+For now, we support `PSScene` with their respective assets `ortho_analytic_8b_sr` (13 images), `ortho_analytic_8b` (13 images), `ortho_udm2` and `ortho_analytic_8b_xml`. 
 For more information on those assets check the 
 [documentation](https://developers.planet.com/docs/data/psscene/#available-asset-types).
 
 :::tip Note
-The itemType `PSOrthoTile` will be discontinued by planet from the 20th of June, so we recommend that our customers start
-the necessary adaptations on your side. This option will continue to be available in Leaf, in the same way as before. 
+Planet will continue to publish imagery to the `PSOrthoTile` item types until June 20, 2023. This way, 
+this option will remain available in Leaf until the same referenced date. 
 For more information: [PSOrthoTile deprecation](https://developers.planet.com/docs/apis/data/psorthotile-deprecation/)
 :::
 

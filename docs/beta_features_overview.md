@@ -14,11 +14,13 @@ Currently, we are working in the following features:
 
 ## Machines
 
-This product fetches and stores machine data such as serial number, fuel consumption and engine hours from providers.
+This product fetches and stores machine data such as serial number, fuel consumption and start/stop time from providers.
  
 Currently, we are obtaining data from the following providers:
-   * JohnDeere
    * CNHI
+   * JohnDeere
+   * Stara
+
 
 
 [2]: #prescriptions
@@ -31,9 +33,10 @@ Leaf helps organize the data flow for prescriptions.
 
 Our supported providers are:
 * ClimateFieldView
+* John Deere
 * Raven Slingshot
 
-Note: The prescription file is a zip file that should contain at least **three** files with the same name and specific file extensions (**shp**, **dbf** and **shx**).
+Note: The prescription should be included as a zip file and should contain a valid shapefile with least **three** file extentions (**shp**, **dbf** and **shx**) with the same naming.
 
 
 [3]: #layers

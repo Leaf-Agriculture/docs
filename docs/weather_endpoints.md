@@ -377,6 +377,9 @@ will return forecast data for the next seven days by default.
 Get daily historical weather data by Leaf User and field. If the dates are not defined in the endpoint, the response 
 will return data from the last seven days by default.
 
+Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
+
+
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
 | endTime                      | ISO 8601 date. Returns operations until the endTime         |

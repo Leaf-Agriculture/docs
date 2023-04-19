@@ -2170,7 +2170,7 @@ you can query for - and you can still query by the individual fields too.
 
 **`geometry` and `area` are deprecated keys** that contains the geometry of the active boundary and its area, respectively.
 
-Below is the return possibilities when passing different geometries:
+Below are the return possibilities when passing different geometries:
 
 |         Response          |
 |:-------------------------:|
@@ -2189,7 +2189,7 @@ Below is the return possibilities when passing different geometries:
 | NOT_ALLOWED_GEOMETRY_TYPE |
 
 :::tip Note
-Currently, we get the field boundary data as available on the provider, so for some cases there may be fields without 
+Currently, we get the field boundary data as available from the provider, so in some cases there may be fields without 
 boundaries or with invalid boundaries.
 :::
 

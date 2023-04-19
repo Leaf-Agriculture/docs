@@ -2170,6 +2170,30 @@ you can query for - and you can still query by the individual fields too.
 
 **`geometry` and `area` are deprecated keys** that contains the geometry of the active boundary and its area, respectively.
 
+Below is the return possibilities when passing different geometries:
+
+|         Response          |
+|:-------------------------:|
+|           VALID           |
+|      REPEATED_POINT       |
+|    HOLE_OUTSIDE_SHELL     |
+|       NESTED_HOLES        |
+|   DISCONNECTED_INTERIOR   |
+|     SELF_INTERSECTION     |
+|  RING_SELF_INTERSECTION   |
+|       NESTED_SHELLS       |
+|      DUPLICATE_RINGS      |
+|      TOO_FEW_POINTS       |
+|    INVALID_COORDINATE     |
+|      RING_NOT_CLOSED      |
+| NOT_ALLOWED_GEOMETRY_TYPE |
+
+:::tip Note
+Currently, we get the field boundary data as available on the provider, so for some cases there may be fields without 
+boundaries or with invalid boundaries.
+:::
+
+
 ```json
 {
   "id": "UUID",

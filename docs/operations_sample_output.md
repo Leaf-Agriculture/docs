@@ -86,7 +86,7 @@ The filtered GeoJSON is the file that went through the data cleaning process, re
 The generated files will be used as a basis for generating [new operations images][5].
 
 #### Outliers
-This is a option for cleaning the filteredGeoJSON based on standard deviation to remove outliers on harvest data.
+To remove outliers in harvest data, you can use configurations to clean the filteredGeoJSON based on standard deviation.
 
 <img alt="Outliers" src={useBaseUrl('img/outliers_removal.png')} />
 
@@ -584,7 +584,7 @@ Here is an example of Images from Field Operations.
 
 The new images have considerable improvements over the previous one. They are generated with a standard fixed color ramp and the data is automatically distributed into 7 classes using **quantile** classification.
 
-Note that the return is different from the previous version, with the option of extent and legend available.
+Note that the return is different from the previous version, with extent and legend attributes now available.
 
 ```json
 

@@ -42,7 +42,7 @@ In this glossary, you’ll find a range of definitions for terms you’ll come a
 | Organization | The organization is the top-level entity for a farm business such as a head office of a corporate farm |
 | Grower | The grower sits under the organization level and is equivalent to a farmer. A grower is often linked to farms and fields with a hierarchy of organization > grower > farm > field |
 | Farm | A Farm is a group of fields managed by a grower |
-| Field | An area of open land, especially one planted with crops or pasture bound by a fence or other landmark |
+| Field | An area of open land, especially one planted with crops or pasture bound by a fence or other landmark. Note: in Leaf, the field object has no boundary but can be pulled in from a provider (e.g. field name, field ID, area) |
 | Field Boundary | Geospatial boundary/shape/area of a field |
 | Crop | Type of plant being grown (e.g. soybeans, corn, wheat) |
 | Variety | A subtype of the crop being grown (e.g. P7326 is a variety of corn) |

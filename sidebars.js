@@ -3,6 +3,7 @@ module.exports = {
     'welcome',
     'quickstart',
     'release_notes',
+    'glossary',
     {
       type: 'category',
       label: 'API Reference',

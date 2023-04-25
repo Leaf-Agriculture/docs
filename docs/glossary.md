@@ -10,9 +10,9 @@ In this glossary, you’ll find a range of definitions for terms you’ll come a
 | Term    | Definition                                                                                                          |
 | ------------------| ------------------------- |
 | Field Boundaries    | Geospatial boundary/shape/area of a field.                                                                           |
-| Data Translation    | Receive data, translated by Leaf to a consistent, aggregated and standardized format, from all major machinery brands.|
-| Machine Data        | FieldOps data pulled from machinery providers (planting, application, harvest, tillage). Called operations in Leaf.  |
-| Machine Information | Data on machinery performance itself (serial number, hours, fuel consumption, rpm, speed and calibration).            |
+| Data Translation  \| File Conversion  | Receive data, translated by Leaf to a consistent, aggregated and standardized format, from all major machinery brands.|
+| Machine Data \| Field Operations    | FieldOps data pulled from machinery providers (planting, application, harvest, tillage). Called operations in Leaf. Note: see further down, the difference between Machine File Summary and Operation Summary |
+| Machine Information \| Assets | Data on machinery performance itself (serial number, hours, fuel consumption, rpm, speed and calibration).            |
 | Prescriptions       | Planting and fertility recommendations. Can be sent from Leaf to Providers, not to specific machines.                |
 | Crop Monitoring     | Satellite and drone images of fields based on their boundaries.                                                     |
 | Weather             | Forecasted and historical field-level weather data.                                                                  |
@@ -32,7 +32,7 @@ In this glossary, you’ll find a range of definitions for terms you’ll come a
 | Raw data                     | Data downloaded directly from a tractor monitor. (USB, Thumb Drive Data)                                                                                   |
 | File Converter               | Converts raw data formats to Leaf’s standard JSON format.                                                                                                  |
 | File Merge                   | Files of the same operation type within a specified date range (applied, planted, harvested, tillage) are combined into a single file.                   |
-| File Summary                 | Basic information of files derived from the point data, processed and cleaned by Leaf. Data outputs will vary by task (planted, applied, harvested, tillage).|
+| Machine File Summary                 | Basic information of files derived from the point data, processed and cleaned by Leaf. Data outputs will vary by task (planted, applied, harvested, tillage).|
 | Operation Summary            | The output of files merged to a field boundary that are processed and cleaned by Leaf.                                                                      |
 
 ## More agricultural terms

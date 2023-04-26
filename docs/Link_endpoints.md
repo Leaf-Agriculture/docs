@@ -169,12 +169,12 @@ It is requires few properties:
 ``` json
 {
   "leafUserId": "string",
-  "expiresIn": 0,
+  "expiresIn": int,
   "description": "string"
 }
 ```
 - `leafUserId`: leaf user Id
-- `expiresIn`: time to expiration, in seconds. The default is one year.
+- `expiresIn`: time to expiration, in seconds. The minimum allowed value is `900` (15 minutes). The default valueis one year.
 - `description`: description to identify the API Key
 
 
@@ -199,7 +199,7 @@ It is requires few properties:
 
   const data = {
     leafUserId: "string",
-    expiresIn: 0,
+    expiresIn: 900,
     description: "string"
   }
 
@@ -221,7 +221,7 @@ It is requires few properties:
 
   data = {
     leafUserId: "string",
-    expiresIn: 0,
+    expiresIn: 900,
     description: "string"
   }
 
@@ -235,7 +235,7 @@ It is requires few properties:
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "leafUserId": "string", "expiresIn": 0, "description": "string" }'
+      -d '{ "leafUserId": "string", "expiresIn": 900, "description": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/api-keys'
   ```
 

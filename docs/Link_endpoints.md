@@ -143,6 +143,15 @@ Get all API keys from a Leaf user.
         "expiresAt": "2024-04-25T18:32:25.530259",
         "description": "test",
         "valid": true
+    },
+    {
+        "id": "uuid",
+        "key": "xxxx...xxxx",
+        "leafUserId": "uuid",
+        "expiresAt": "2024-04-25T18:36:37.965906",
+        "description": "test",
+        "revokedAt": "2023-04-26T21:27:55.674731",
+        "valid": false
     }
 ]
 ```

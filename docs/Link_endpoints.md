@@ -8,28 +8,28 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-[1]: https://withleaf.io/pt/whats-new/autenticacao-da-agleader-com-a-leaf/
+[1]: https://withleaf.io/en/whats-new/agleader-authentication-with-leaf/
 [2]: #get-all-agleader-app-information
 [3]: #get-a-agleader-app-information
 [4]: #create-a-agleader-app-information
 [5]: #update-a-agleader-app-information
 [6]: #delete-a-agleader-app-information
 
-[7]: https://withleaf.io/pt/whats-new/autenticacao-climate-fieldview-com-a-leaf/
+[7]: https://withleaf.io/en/whats-new/climate-fieldview-authentication-with-leaf/
 [8]: #get-all-climate-fieldview-app-information
 [9]: #get-a-climate-fieldview-app-information
 [10]: #create-a-climate-fieldview-app-information
 [11]: #update-a-climate-fieldview-app-information
 [12]: #delete-a-climate-fieldview-app-information
 
-[13]: https://withleaf.io/pt/whats-new/autenticacao-da-john-deere-com-a-leaf/
+[13]: https://withleaf.io/en/whats-new/john-deere-authentication-with-leaf/
 [14]: #get-all-cnhi-app-information
 [15]: #get-a-cnhi-app-information
 [16]: #create-a-cnhi-app-information
 [17]: #update-a-cnhi-app-information
 [18]: #delete-a-cnhi-app-information
 
-[19]: https://withleaf.io/pt/whats-new/autenticacao-da-cnhi-com-a-leaf/
+[19]: https://withleaf.io/en/whats-new/cnhi-authentication-with-leaf/
 [20]: #get-all-john-deere-app-information
 [21]: #get-a-john-deere-app-information
 [22]: #create-a-john-deere-app-information
@@ -42,6 +42,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [28]: #create-a-trimble-app-information
 [29]: #update-a-trimble-app-information
 [30]: #delete-a-trimble-app-information
+
+[31]: #get-all-leaf-user-api-keys
+[32]: #create-a-leaf-user-api-key
+[33]: #revoke-a-leaf-user-api-key
 
 
 ## About
@@ -58,7 +62,250 @@ See below the REST resources and their endpoints available in this service.
 The app information that will be highly referenced here is the application information registered by the client with the providers
 :::
 
-## AgLeader
+## API key
+The API keys are the required authentication info for the Leaf widgets. It is created at a Leaf user level.
+
+** Endpoints **
+
+| Description                             | Endpoints                                                  |
+|-----------------------------------------|------------------------------------------------------------|
+| [Get all Leaf user API keys][31]        | <span class="badge badge--success">GET</span> `/api-keys`  |
+| [Create a Leaf user API key][32]        | <span class="badge badge--warning">POST</span> `/api-keys` |
+| [Revoke a Leaf user API key][33]        | <span class="badge badge--danger">DELETE</span> `/api-keys`|
+
+
+### Get all Leaf user API keys
+
+&nbsp<span class="badge badge--success">GET</span> `/api-keys`
+
+Get all API keys from a Leaf user.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys?leafUserId={leafUserId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys?leafUserId={leafUserId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/app-keys?leafUserId={leafUserId}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+##### Response
+
+``` json
+[
+    {
+        "id": "uuid",
+        "key": "xxxx...xxxx",
+        "leafUserId": "uuid",
+        "expiresAt": "2024-04-25T18:32:25.530259",
+        "description": "test",
+        "valid": true
+    }
+]
+```
+
+
+
+### Create a Leaf user API key
+
+&nbsp<span class="badge badge--warning">POST</span> `/api-keys`
+
+Creates a Leaf user API key.
+
+#### Request body
+It is requires few properties:
+``` json
+{
+  "leafUserId": "string",
+  "expiresIn": 0,
+  "description": "string"
+}
+```
+- `leafUserId`: leaf user Id
+- `expiresIn`: time to expiration, in seconds. The default is one year.
+- `description`: description to identify the API Key
+
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-keys'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    leafUserId: "string",
+    expiresIn: 0,
+    description: "string"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-keys'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    leafUserId: "string",
+    expiresIn: 0,
+    description: "string"
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "leafUserId": "string", "expiresIn": 0, "description": "string" }'
+      'https://api.withleaf.io/services/usermanagement/api/api-keys'
+  ```
+
+  </TabItem>
+</Tabs>
+
+##### Response
+
+``` json
+{
+    "key": "xxxxxxx",
+    "expiresAt": "2024-04-25T18:36:37.965906",
+    "valid": true
+}
+```
+
+
+### Revoke a Leaf user API key
+
+&nbsp<span class="badge badge--danger">DELETE</span> `/api-keys`
+
+Revokes a Leaf user API key.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-keys/{apiKeyId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-keys/{apiKeyId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/api-keys/{apiKeyId}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+
+
+## Providers application info
+### AgLeader
 
 To enable AgLeader as a provider in the widget you need to have your application already registered with AgLeader. You can find more info on how to create a developer account [here][1].
 
@@ -77,13 +324,13 @@ Soon we will add the necessary information to carry out this integration.
 | [Delete a AgLeader app information][6]  | <span class="badge badge--danger">DELETE</span> `/app-keys/AgLeader/{appName}` |
 
 
-### Get all AgLeader app information
+#### Get all AgLeader app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/AgLeader`
 
 Get all AgLeader app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -135,7 +382,7 @@ Get all AgLeader app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 [
@@ -153,13 +400,13 @@ Get all AgLeader app information from the API Owner.
 ```
 
 
-### Get a AgLeader app information
+#### Get a AgLeader app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/AgLeader/{appName}`
 
 Get a AgLeader app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -211,7 +458,7 @@ Get a AgLeader app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 {
@@ -226,13 +473,13 @@ Get a AgLeader app information from the API Owner.
 ```
 
 
-### Create a AgLeader app information
+#### Create a AgLeader app information
 
 &nbsp<span class="badge badge--warning">POST</span> `/app-keys/AgLeader/{appName}`
 
 Create a AgLeader app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -241,7 +488,7 @@ Create a AgLeader app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -292,13 +539,13 @@ Create a AgLeader app information.
   </TabItem>
 </Tabs>
 
-### Update a AgLeader app information
+#### Update a AgLeader app information
 
 &nbsp<span class="badge badge--warning">PUT</span> `/app-keys/AgLeader/{appName}`
 
 Update a AgLeader app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -307,7 +554,7 @@ Update a AgLeader app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -359,13 +606,13 @@ Update a AgLeader app information.
 </Tabs>
 
 
-### Delete a AgLeader app information
+#### Delete a AgLeader app information
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/app-keys/AgLeader/{appName}`
 
 Delete a AgLeader app information.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -419,7 +666,7 @@ Delete a AgLeader app information.
 
 
 
-## Climate FieldView
+### Climate FieldView
 
 To enable Climate FieldView as a provider in the widget you need to have your application already registered with Climate FieldView. You can find more info on how to create a developer account [here][7].
 
@@ -438,13 +685,13 @@ Soon we will add the necessary information to carry out this integration.
 | [Delete a Climate FieldView app information][12] | <span class="badge badge--danger">DELETE</span> `/app-keys/ClimateFieldView/{appName}` |
 
 
-### Get all Climate FieldView app information
+#### Get all Climate FieldView app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/ClimateFieldView`
 
 Get all Climate FieldView app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -496,7 +743,7 @@ Get all Climate FieldView app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 [
@@ -514,13 +761,13 @@ Get all Climate FieldView app information from the API Owner.
 ```
 
 
-### Get a Climate FieldView app information
+#### Get a Climate FieldView app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/ClimateFieldView/{appName}`
 
 Get a Climate FieldView app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -572,7 +819,7 @@ Get a Climate FieldView app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 {
@@ -588,13 +835,13 @@ Get a Climate FieldView app information from the API Owner.
 ```
 
 
-### Create a Climate FieldView app information
+#### Create a Climate FieldView app information
 
 &nbsp<span class="badge badge--warning">POST</span> `/app-keys/ClimateFieldView/{appName}`
 
 Create a Climate FieldView app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -604,7 +851,7 @@ Create a Climate FieldView app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -655,13 +902,13 @@ Create a Climate FieldView app information.
   </TabItem>
 </Tabs>
 
-### Update a Climate FieldView app information
+#### Update a Climate FieldView app information
 
 &nbsp<span class="badge badge--warning">PUT</span> `/app-keys/ClimateFieldView/{appName}`
 
 Update a Climate FieldView app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -671,7 +918,7 @@ Update a Climate FieldView app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -723,13 +970,13 @@ Update a Climate FieldView app information.
 </Tabs>
 
 
-### Delete a Climate FieldView app information
+#### Delete a Climate FieldView app information
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/app-keys/ClimateFieldView/{appName}`
 
 Delete a Climate FieldView app information.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -783,7 +1030,7 @@ Delete a Climate FieldView app information.
 
 
 
-## CNHI
+### CNHI
 
 To enable CNHI as a provider in the widget you need to have your application already registered with CNHI. You can find more info on how to create a developer account [here][13].
 
@@ -802,13 +1049,13 @@ Soon we will add the necessary information to carry out this integration.
 | [Delete a CNHI app information][18] | <span class="badge badge--danger">DELETE</span> `/app-keys/CNHI/{appName}/{clientEnvironment}`  |
 
 
-### Get all CNHI app information
+#### Get all CNHI app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/CNHI`
 
 Get all CNHI app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -860,7 +1107,7 @@ Get all CNHI app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 [
@@ -878,13 +1125,13 @@ Get all CNHI app information from the API Owner.
 ```
 
 
-### Get a CNHI app information
+#### Get a CNHI app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/CNHI/{appName}/{clientEnvironment}`
 
 Get a CNHI app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -936,7 +1183,7 @@ Get a CNHI app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 {
@@ -952,13 +1199,13 @@ Get a CNHI app information from the API Owner.
 ```
 
 
-### Create a CNHI app information
+#### Create a CNHI app information
 
 &nbsp<span class="badge badge--warning">POST</span> `/app-keys/CNHI/{appName}/{clientEnvironment}`
 
 Create a CNHI app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -968,7 +1215,7 @@ Create a CNHI app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1019,13 +1266,13 @@ Create a CNHI app information.
   </TabItem>
 </Tabs>
 
-### Update a CNHI app information
+#### Update a CNHI app information
 
 &nbsp<span class="badge badge--warning">PUT</span> `/app-keys/CNHI/{appName}/{clientEnvironment}`
 
 Update a CNHI app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -1035,7 +1282,7 @@ Update a CNHI app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1087,13 +1334,13 @@ Update a CNHI app information.
 </Tabs>
 
 
-### Delete a CNHI app information
+#### Delete a CNHI app information
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/app-keys/CNHI/{appName}/{clientEnvironment}`
 
 Delete a CNHI app information.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1147,7 +1394,7 @@ Delete a CNHI app information.
 
 
 
-## John Deere
+### John Deere
 
 To enable John Deere as a provider in the widget you need to have your application already registered with John Deere. You can find more info on how to create a developer account [here][19].
 
@@ -1166,13 +1413,13 @@ Soon we will add the necessary information to carry out this integration.
 | [Delete a John Deere app information][24] | <span class="badge badge--danger">DELETE</span> `/app-keys/JohnDeere/{appName}/{clientEnvironment}` |
 
 
-### Get all John Deere app information
+#### Get all John Deere app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/JohnDeere`
 
 Get all John Deere app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1224,7 +1471,7 @@ Get all John Deere app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 [
@@ -1242,13 +1489,13 @@ Get all John Deere app information from the API Owner.
 ```
 
 
-### Get a John Deere app information
+#### Get a John Deere app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/JohnDeere/{appName}/{clientEnvironment}`
 
 Get a John Deere app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1300,7 +1547,7 @@ Get a John Deere app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 {
@@ -1315,13 +1562,13 @@ Get a John Deere app information from the API Owner.
 ```
 
 
-### Create a John Deere app information
+#### Create a John Deere app information
 
 &nbsp<span class="badge badge--warning">POST</span> `/app-keys/JohnDeere/{appName}/{clientEnvironment}`
 
 Create a John Deere app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -1330,7 +1577,7 @@ Create a John Deere app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1381,13 +1628,13 @@ Create a John Deere app information.
   </TabItem>
 </Tabs>
 
-### Update a John Deere app information
+#### Update a John Deere app information
 
 &nbsp<span class="badge badge--warning">PUT</span> `/app-keys/JohnDeere/{appName}/{clientEnvironment}`
 
 Update a John Deere app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -1396,7 +1643,7 @@ Update a John Deere app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1448,13 +1695,13 @@ Update a John Deere app information.
 </Tabs>
 
 
-### Delete a John Deere app information
+#### Delete a John Deere app information
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/app-keys/JohnDeere/{appName}/{clientEnvironment}`
 
 Delete a John Deere app information.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1508,7 +1755,7 @@ Delete a John Deere app information.
 
 
 
-## Trimble
+### Trimble
 
 To enable Trimble as a provider in the widget you need to have your application already registered with Trimble. You can find more info on how to create a developer account [here][25].
 
@@ -1527,13 +1774,13 @@ Soon we will add the necessary information to carry out this integration.
 | [Delete a Trimble app information][30] | <span class="badge badge--danger">DELETE</span> `/app-keys/Trimble/{appName}` |
 
 
-### Get all Trimble app information
+#### Get all Trimble app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/Trimble`
 
 Get all Trimble app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1585,7 +1832,7 @@ Get all Trimble app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 [
@@ -1603,13 +1850,13 @@ Get all Trimble app information from the API Owner.
 ```
 
 
-### Get a Trimble app information
+#### Get a Trimble app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/Trimble/{appName}`
 
 Get a Trimble app information from the API Owner.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1661,7 +1908,7 @@ Get a Trimble app information from the API Owner.
 </Tabs>
 
 
-#### Response
+##### Response
 
 ``` json
 {
@@ -1677,13 +1924,13 @@ Get a Trimble app information from the API Owner.
 ```
 
 
-### Create a Trimble app information
+#### Create a Trimble app information
 
 &nbsp<span class="badge badge--warning">POST</span> `/app-keys/Trimble/{appName}`
 
 Create a Trimble app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -1693,7 +1940,7 @@ Create a Trimble app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1744,13 +1991,13 @@ Create a Trimble app information.
   </TabItem>
 </Tabs>
 
-### Update a Trimble app information
+#### Update a Trimble app information
 
 &nbsp<span class="badge badge--warning">PUT</span> `/app-keys/Trimble/{appName}`
 
 Update a Trimble app information.
 
-#### Request body
+##### Request body
 
 ``` json
 {
@@ -1760,7 +2007,7 @@ Update a Trimble app information.
 }
 ```
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1812,13 +2059,13 @@ Update a Trimble app information.
 </Tabs>
 
 
-### Delete a Trimble app information
+#### Delete a Trimble app information
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/app-keys/Trimble/{appName}`
 
 Delete a Trimble app information.
 
-#### Request examples
+##### Request examples
 
 <Tabs
   defaultValue="sh"

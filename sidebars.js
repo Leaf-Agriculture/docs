@@ -77,8 +77,8 @@ module.exports = {
             'beta_features_overview',
             {
               type: 'category',
-              label: 'Machines',
-              items: ['beta_machines_endpoints']
+              label: 'Assets',
+              items: ['beta_assets_endpoints']
             },
             {
               type: 'category',

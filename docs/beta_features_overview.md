@@ -12,7 +12,7 @@ Currently, we are working in the following features:
 
 [1]: #machines
 
-## Machines
+## Assets
 
 This product fetches and stores machine data such as serial number, fuel consumption and start/stop time from providers.
  

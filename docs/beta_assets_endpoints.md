@@ -1,6 +1,6 @@
 ---
-title: Beta > Machines Endpoints
-description: Beta - Machines Endpoints
+title: Beta > Assets Endpoints
+description: Beta - Assets Endpoints
 sidebar_label: Endpoints
 ---
 
@@ -18,6 +18,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [7]: #update-a-machine
 [8]: #get-machine-files
 ## About
+This product fetches and stores machine data such as serial number, fuel consumption and start/stop time from providers.
+
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
@@ -26,7 +28,7 @@ https://api.withleaf.io/services/beta/api
 
 See below the REST resources and their endpoints available in this service.
 
-## Machines (BETA)
+## Assets (BETA)
 
 ### Machine Resources
 

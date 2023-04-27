@@ -125,7 +125,7 @@ Get all API keys from a Leaf user.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/app-keys/app-keys?leafUserId={leafUserId}'
+      'https://api.withleaf.io/services/usermanagement/api/app-keys?leafUserId={leafUserId}'
   ```
 
   </TabItem>

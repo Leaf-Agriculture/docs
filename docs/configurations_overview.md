@@ -97,6 +97,10 @@ To use this option, [operationsFilteredGeojson][6] must be enabled.
 #### splitOperationsByField
 If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`.
 
+#### splitOperationsByProvider
+Field Operations will be created based on occurrence information in the same field, dates intervals and crop. Thus,
+if this config is set to `true`, the files will be filtered by provider and merged in different Field Operations. The default value is `false`.
+
 ### Machine File Conversion
 #### cleanupStandardGeojson
 [See this section for more information](#cleanupstandardgeojson)

@@ -482,11 +482,11 @@ npm i @withleaf.io/angular-ui-kit
 import { ProvidersModule } from '@withleaf.io/angular-ui-kit';
 ```
 
-3. Add the component to the HTML. Make sure you already created the Leaf user API key (`leafToken`), we will need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
+3. Add the component to the HTML. Make sure you already created the Leaf user API key (`apiKey`), we will need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
 You can also customize it adding your company name (`companyName`) and company logo (`companyLogoUrl`).
 ```js
 <div class="container">
-  <leaf-providers leafUser="{leafUserId}" leafToken="{yourLeafToken}"     
+  <leaf-providers leafUser="{leafUserId}" apiKey="{apiKey}"     
       companyName="{name}" companyLogoUrl="{image URL}">
   </leaf-providers>
 </div>

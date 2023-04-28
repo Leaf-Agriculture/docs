@@ -425,18 +425,18 @@ It returns a list of JSON objects.
         {
           "apiOwner": "yourApiOwner",
           "createdAt": "2023-04-21T12:16:30Z",
-          "url": "https://webhook.site/d76b5778-714c-46a2-b4bd-59b5455ec72d",
+          "url": "https://webhook.site/d76b5778-719g-46a2-b4bd-59b5455ec72d",
           "status": 502,
           "response": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-          "requestBody": "{\"leafUserId\": \"5821d148-cdb1-4b85-b0ec-c0c749593fed\", \"fileId\": \"7effadbb-7b81-42ed-9c4b-ff4a45782453\", \"type\": \"automergedFileProcessingFinished\", \"timestamp\": \"2023-04-21T12:16:27.997586Z\"}"
+          "requestBody": "{\"leafUserId\": \"5821d148-cdb1-8g85-b0ec-c0c749593fed\", \"fileId\": \"7effadbb-7b81-42ed-9c4b-ff4a45782453\", \"type\": \"automergedFileProcessingFinished\", \"timestamp\": \"2023-04-21T12:16:27.997586Z\"}"
         },
         {
           "apiOwner": "yourApiOwner",
           "createdAt": "2023-04-24T18:35:53Z",
-          "url": "https://webhook.site/d56b5778-714c-46a2-b4bd-59b5455ec84d",
+          "url": "https://webhook.site/uuid",
           "status": 502,
           "response": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
-          "requestBody": "{\"leafUserId\": \"cc5b4ced-ca3d-4a1a-ab08-b2ff8ef5e41e\", \"fileId\": \"8d4229b8-df8e-45af-be8d-2e7a71e8318e\", \"type\": \"automergedFileProcessingFinished\", \"timestamp\": \"2023-04-24T18:35:52.187785Z\"}"
+          "requestBody": "{\"leafUserId\": \"cc5b4ced-ca3d-8e1a-ab08-b2ff8ef5e41e\", \"fileId\": \"8d4229b8-df8e-90af-be8d-2e7a71e8318e\", \"type\": \"automergedFileProcessingFinished\", \"timestamp\": \"2023-04-24T18:35:52.187785Z\"}"
         }
      ]
   }

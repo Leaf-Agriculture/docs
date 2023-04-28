@@ -1,7 +1,7 @@
 ---
-title: Leaf Link > File upload widget
-description: Leaf Link > File upload widget
-sidebar_label: File upload widget
+title: Leaf File Upload Link
+description: Leaf File Upload Link
+sidebar_label: Leaf File Upload Link
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 ## Overview
-This widget allows the user to upload different machine files formats for conversion using the Leaf API.
+Leaf's File Upload Link is a widget that allows your customers to upload different machine file formats. These files will then get converted into a consistent output using the Leaf API.
 
 <p align="center">
     <img alt="File upload widget" width="50%" src={useBaseUrl('img/leaf-file-upload.png')} />

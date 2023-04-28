@@ -13,6 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #get-a-webhook
 [3]: #get-all-webhooks
 [4]: #delete-a-webhook
+[7]: #get-failed-calls-for-webhooks
 
 [5]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [6]: alerts_authentication.md
@@ -26,12 +27,13 @@ https://api.withleaf.io/services/alerts/api/alerts
 
 This service has the following endpoints available:
 
-Description | Endpoints
---- | ---
-[Create a webhook][1] | <span class="badge badge--warning">POST</span> `/webhooks`
-[Get a webhook][2] | <span class="badge badge--success">GET</span> `/webhooks/{id}`
-[Get all webhooks][3] | <span class="badge badge--success">GET</span> `/webhooks`
-[Delete a webhook][4] | <span class="badge badge--danger">DELETE</span> `/webhooks/{id}`
+| Description                        | Endpoints                                                              |
+|------------------------------------|------------------------------------------------------------------------|
+| [Create a webhook][1]              | <span class="badge badge--warning">POST</span> `/webhooks`             |
+| [Get a webhook][2]                 | <span class="badge badge--success">GET</span> `/webhooks/{id}`         |
+| [Get all webhooks][3]              | <span class="badge badge--success">GET</span> `/webhooks`              |
+| [Get failed calls for webhooks][7] | <span class="badge badge--success">GET</span> `/webhooks/failed-calls` |
+| [Delete a webhook][4]              | <span class="badge badge--danger">DELETE</span> `/webhooks/{id}`       |
 
 Note that currently it's not possible to update a Webhook with a single
 request. If you want to update an existing Webhook resource, you have to delete
@@ -356,6 +358,89 @@ It returns a list of JSON objects.
   }]
   ```
 
+
+### Get failed calls for webhooks
+
+&nbsp<span class="badge badge--success">GET</span> `/webhooks/failed-calls`
+
+Retrieve all failed calls for webhooks.
+
+#### Sample code
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', }
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const TOKEN = 'YOUR_TOKEN'
+  const headers = {'Authorization': `Bearer ${TOKEN}`}
+  const endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks/failed-calls'
+
+  axios.get(endpoint, {headers})
+      .then(response => console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+  endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks/failed-calls'
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks/failed-calls'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+It returns a list of JSON objects.
+  ```json
+  {
+    "items": [
+        {
+          "apiOwner": "yourApiOwner",
+          "createdAt": "2023-04-21T12:16:30Z",
+          "url": "https://webhook.site/webhook",
+          "status": 502,
+          "response": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+          "requestBody": "{\"leafUserId\": \"uuid\", \"fileId\": \"uuid\", \"type\": \"automergedFileProcessingFinished\", \"timestamp\": \"2023-04-21T12:16:27.997586Z\"}"
+        },
+        {
+          "apiOwner": "yourApiOwner",
+          "createdAt": "2023-04-24T18:35:53Z",
+          "url": "https://webhook.site/webhook",
+          "status": 502,
+          "response": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+          "requestBody": "{\"leafUserId\": \"uuid\", \"fileId\": \"uuid\", \"type\": \"automergedFileProcessingFinished\", \"timestamp\": \"2023-04-24T18:35:52.187785Z\"}"
+        }
+     ]
+  }
+  ```
 
 ### Delete a webhook
 

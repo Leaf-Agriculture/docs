@@ -1,7 +1,7 @@
 ---
-title: Leaf Link > Provider connection widget
-description: Leaf Link > Provider connection widget
-sidebar_label: Provider connection widget
+title: Leaf Provider Connection / Authentication Link
+description: Leaf Provider Connection / Authentication Link
+sidebar_label: Leaf Provider Connection / Authentication Link
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,6 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [3]: https://developer.deere.com/#/applications
 [4]: /docs/user_management_overview
 [5]: https://www.developer.cnhindustrial.com/dashboard/
+[6]: /docs/Link_endpoints#api-key
 
 [jd]: https://withleaf.io/en/whats-new/john-deere-authentication-with-leaf/
 [cfv]: https://withleaf.io/en/whats-new/climate-fieldview-authentication-with-leaf/
@@ -22,10 +23,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 ## Overview
-The Provider Connection widget allows the user to associate their Leaf user with existing provider accounts. It just needs a minimal setup and few lines of code.
+Leaf's Provider Connection / Authentication Link is a widget that you can install with minimal setup and a few lines of code. This widget enables your customers to connect their existing provider accounts, which associates it with their Leaf User.
 
 <p align="center">
-    <img alt="File upload widget" width="50%" src={useBaseUrl('img/leaf-provider-connection.png')} />
+    <img alt="File upload widget" width="75%" src={useBaseUrl('img/leaf-provider-connection.png')} />
 </p>
 
 :::caution Beta
@@ -46,7 +47,7 @@ All control of connected providers is done at the Leaf user level (usually it re
 Since the connection is at Leaf user level, the widget uses a different authentication method.
 We will required to create an API key for each Leaf user. This will ensure that the Leaf user only accesses its own resources.
 
-The endpoints to manage those application tokens are here.
+The endpoints to manage those application tokens are [here][6].
 
 ## Set up
 To use the widget you will need to enable the providers. Don't worry, you only need to set it up once.

@@ -19,7 +19,7 @@ All API Owners start with a default configuration set. These configurations can 
 
 Custom configurations can be set for individual Leaf Users. Configurations set for a Leaf User won't be changed if the API Owner's configurations change. However, if individual Leaf User configurations are not set, they will automatically inherit the API Owner's configurations. 
 
-*Currently, configurations are available for:*
+*Currently, configurations are available for the following services:*
 
 | Service | Available configurations | 
 | --- | --- | 

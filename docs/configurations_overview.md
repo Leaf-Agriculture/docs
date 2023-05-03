@@ -25,7 +25,7 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 | --- | --- | 
 | [Field Boundary Management](#field-boundary-management) | fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection | 
 | [Machine File Conversion ](#machine-file-conversion) | cleanupStandardGeojson, originalOperationData, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape | 
-| [Field Operations ](#field-operations) | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange,  splitOperationsByField, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape  | 
+| [Field Operations ](#field-operations) | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape  | 
 
 
 ### Field Boundary Management

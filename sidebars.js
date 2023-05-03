@@ -53,13 +53,18 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Machine File Conversion',
+          items: ['machine_file_conversion_overview', 'machine_file_conversion_endpoints', 'machine_file_conversion_sample_output', 'machine_file_conversion_crops_table']
+        },
+        {
+          type: 'category',
           label: 'Field Operations',
           items: ['operations_overview', 'operations_endpoints', 'operations_sample_output']
         },
         {
           type: 'category',
-          label: 'Machine File Conversion',
-          items: ['machine_file_conversion_overview', 'machine_file_conversion_endpoints', 'machine_file_conversion_sample_output', 'machine_file_conversion_crops_table']
+          label: 'Manual File Upload',
+          items: ['converters_overview', 'converters_endpoints']
         },
         {
           type: 'category',
@@ -68,8 +73,18 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'File Converters',
-          items: ['converters_overview', 'converters_endpoints']
+          label: 'Weather',
+          items: [
+            'weather_overview',
+            'weather_endpoints',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Leaf Connect',
+          items: [
+            'Connect',
+          ]
         },
         {
           type: 'category',
@@ -102,15 +117,6 @@ module.exports = {
             }
           ]
         },
-        {
-          type: 'category',
-          label: 'Weather',
-          items: [
-            'weather_overview',
-            'weather_endpoints',
-          ]
-        },
-        'Connect'
       ],
     }
   ]

@@ -1,5 +1,5 @@
 ---
-title: Leaf glossary
+title: Glossary
 description: Common terms you'll come across in Leaf's documentation
 ---
 

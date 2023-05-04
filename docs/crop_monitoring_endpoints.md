@@ -314,7 +314,7 @@ curl -X GET \
         "date": "2020-06-03T19:03:57.882Z",
         "clouds": 0, 
         "provider": "sentinel",
-        "bucketName": "sentinel-s2-l1c",
+        "bucketName": "sentinel-s2-l2a",
         "bucketKey": "tiles/10/S/FH/2020/6/3/0",
         "bucketRegion": "eu-central-1",
         "status": "SUCCESS",
@@ -337,7 +337,7 @@ curl -X GET \
 - `clouds`: cloud coverage percentage of the field, from 0 to 100
 - `provider`: the satellite provider (sentinel or planet) from where this process was created.
 - `bucketName`: name of satellite image bucket where the original tile is. Usually
-`sentinel-s2-l1c` or `leaf-planet-images-prd`
+`sentinel-s2-l2a` or `leaf-planet-images-prd`
 - `bucketRegion`: AWS region of original image's bucket. Usually `eu-central-1`
 - `bucketKey`: base path of original satellite image
 - `status`: status of the process. It will be either `SUCCESS` or `FAILURE`
@@ -417,7 +417,7 @@ curl -X GET \
   "date": "2020-06-03T19:03:57.882Z",
   "clouds": 0,
   "provider": "sentinel",
-  "bucketName": "sentinel-s2-l1c",
+  "bucketName": "sentinel-s2-l2a",
   "bucketKey": "tiles/10/S/FH/2020/6/3/0",
   "bucketRegion": "eu-central-1",
   "status": "SUCCESS",

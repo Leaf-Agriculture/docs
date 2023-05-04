@@ -48,7 +48,6 @@ the response will return forecast data for the next seven days by default.
 |--------------------------|---------------------------------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime                                   |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward                           |
-| model                    | Weather model data: `ICON`, `GFS`, `ArpegeArome`, `IFS`, `JMA`, `MET-Nordic` or `GEM` |
 
 #### Request examples
 
@@ -216,7 +215,6 @@ will return forecast data for the next seven days by default.
 |--------------------------|---------------------------------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime                                   |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward                           |
-| model                    | Weather model data: `ICON`, `GFS`, `ArpegeArome`, `IFS`, `JMA`, `MET-Nordic` or `GEM` |
 
 #### Request examples
 
@@ -386,7 +384,6 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
 |--------------------------|-------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime         |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward |
-| model                    | Historical model data: `ERA5` and `ERA5-Land`               |
 
 #### Request examples
 
@@ -555,7 +552,6 @@ will return data from the last seven days by default.
 |--------------------------|-------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime         |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward |
-| model                    | Historical model data: `ERA5` and `ERA5-Land`               |
 
 
 #### Request examples

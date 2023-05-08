@@ -22,7 +22,7 @@ we recommend using [Leaf's Postman collection][1].
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://api.withleaf.io/services/fields/api
+https://api.withleaf.io/services/weather/api
 ```
 
 This service has the following endpoints available:

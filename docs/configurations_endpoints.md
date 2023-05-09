@@ -11,12 +11,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <!-- the following links are referenced throughout this document -->
 
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[2]: #get-api-owner-config
-[3]: #get-leaf-user-config
-[4]: #create-leaf-user-config
-[5]: #update-api-owner
-[6]: #update-leaf-user-config
-[7]: #delete-leaf-user-config
+[2]: #get-api-owners-configuration
+[3]: #get-leaf-users-configuration
+[4]: #create-leaf-users-configuration
+[5]: #update-api-owners-configuration
+[6]: #update-leaf-users-configuration
+[7]: #delete-leaf-users-configuration
 
 ## About
 
@@ -35,9 +35,9 @@ This service has the following endpoints available:
 | [Get API Owner's Configuration][2]    | <span class="badge badge--success">GET</span> `/configs`                 |
 | [Get Leaf User's Configuration][3]    | <span class="badge badge--success">GET</span> `/configs/{leafUserId}`    |
 | [Create Leaf User's Configuration][4] | <span class="badge badge--warning">POST</span> `/configs/{leafUserId}`   |
-| [Update API Owner's Configuration][5] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`  |
+| [Update API Owner's Configuration][5] | <span class="badge badge--warning">PATCH</span> `/configs`               |
 | [Update Leaf User's Configuration][6] | <span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`  |
-| [Delete Leaf User's Configuration][7] | <span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}` |
+| [Delete Leaf User's Configuration][7] | <span class="badge badge--danger">DELETE</span> `/configs/{leafUserId}` |
 
 ## Endpoints
 
@@ -331,7 +331,7 @@ A JSON containing the configuration of the Leaf User.
 
 ### Update API Owner's Configuration
 
-&nbsp<span class="badge badge--success">PATCH</span> `/configs`
+&nbsp<span class="badge badge--warning">PATCH</span> `/configs`
 
 Updates the specified fields of Configuration for the API Owner. A resquest body must be provided
 containing the configurations to be set. All entries are optional.
@@ -440,7 +440,7 @@ A JSON containing the configuration of the API Owner.
 
 ### Update Leaf User's Configuration
 
-&nbsp<span class="badge badge--success">PATCH</span> `/configs/{leafUserId}`
+&nbsp<span class="badge badge--warning">PATCH</span> `/configs/{leafUserId}`
 
 Updates the specified fields of Configuration for the Leaf User `leafUserId`. A resquest body must be provided containing the configurations to be set. All entries are optional.
 
@@ -549,9 +549,9 @@ A JSON containing the configuration of the Leaf User.
 }
 ```
 
-### Delete Leaf User's Configuraiton
+### Delete Leaf User's Configuration
 
-&nbsp<span class="badge badge--warning">DELETE</span> `/configs/{leafUserId}`
+&nbsp<span class="badge badge--danger">DELETE</span> `/configs/{leafUserId}`
 
 Deletes the Configuration from the Leaf User `leafUserId`. Until a new Configuration is created, the Leaf User will inherit all configurations from the API Owner.
 

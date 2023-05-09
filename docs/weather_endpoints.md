@@ -48,7 +48,7 @@ the response will return forecast data for the next seven days by default.
 |--------------------------|---------------------------------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime                                   |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward                           |
-| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma` or`gem`.                              |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`               |
 
 #### Request examples
 
@@ -216,7 +216,7 @@ will return forecast data for the next seven days by default.
 |--------------------------|---------------------------------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime                                   |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward                           |
-| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma` or`gem`.                              |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`               |
 
 #### Request examples
 

@@ -194,18 +194,23 @@ The response is a JSON array with the products that match the query.
 [
   {
     "id": "7d85c556-0ac5-4f0b-b7cc-b35ac559af8f",
-    "name": "Badge X2 Fungicide/Bactericide",
-    "registration": "80289-12-10163",
-    "registrant": "Gowan Company, LLC",
+    "name": "CompostX",
+    "registration": "00000-00-00000",
+    "registrant": "Leaf Company, LLC",
     "productType": "Dry",
     "formulationType": "Dry Flowable",
-    "labelProvider": "AGRIAN",
-    "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=16790",
+    "labelProvider": "CDMS",
+    "productPageUrl": "https://www.cdms.net/ldat/",
     "labels": [
       {
-        "name": " Label - 03-R0718 ",
-        "url": "https://www.agrian.com/pdfs/current/Badge_X2_FungicideBactericide_Label1p.pdf"
+        "name": "meE2000.pdf",
+        "url": "https://www.cdms.net/ldat/meE2000.pdf"
       },
+      ....
+    ],
+    "activeIngredient": [
+      "Urea",
+      "Calcium",
       ....
     ]
   },
@@ -218,7 +223,18 @@ The response is a JSON array with the products that match the query.
     "formulationType": "Dry Flowable",
     "labelProvider": "AGRIAN",
     "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=21666",
-    "labels": []
+    "labels": [
+      {
+        "name": "Label - 03-R0718",
+        "url": "https://www.agrian.com/pdfs/current/Badge_X2_FungicideBactericide_Label1p.pdf"
+      },
+      ....
+    ],
+    "activeIngredient": [
+      "Roundup",
+      "Glyphosate",
+      ....
+    ]
   },
   ....
 ]
@@ -368,7 +384,7 @@ values={[
     "productId": "e5b91778-0714-4e1f-850c-b458d1bdc7ed",
     "matchDetails": {
       "status": "PREDICTED",
-      "rate": 14.354036
+      "score": 14.354036
     }
   },
   {
@@ -377,7 +393,7 @@ values={[
     "productId": "a85c1d0d-b673-46aa-a3a3-31cb65f57598",
     "matchDetails": {
       "status": "PREDICTED",
-      "rate": 8.6226015
+      "score": 8.6226015
     }
   },
   ....

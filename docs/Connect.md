@@ -20,6 +20,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: /docs/field_boundary_management_overview
 [11]: /docs/operations_overview
 [12]: /docs/beta_machines_endpoints
+[13]: #invalidate
 
 
 ## About
@@ -57,17 +58,17 @@ At the end of these steps, API Owner B will be able to visualize the fields, ope
 
 This service has the following endpoints available:
 
-Description | Endpoints
---- | ---
-[Get API Owner sharing relation][1] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}`
-[Get API Owner sharing relation status][2] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}/status`
-[Create an API Owner sharing relation][3] | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver`
-[Update an API Owner sharing relation status][4] | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}`
-[Get LeafUser permissions][5] | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`
-[Create a LeafUser permissions][6] | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}`
-[Update LeafUser permissions][7] | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/{RESOURCE}`
-[Delete LeafUser sharing permissions][8] | <span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{ReceiverApiOwner}/users-permissions/{LeafUserId}`
-
+| Description                                      | Endpoints                                                                                                                                                               |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Get API Owner sharing relation][1]              | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}`                                                          |
+| [Get API Owner sharing relation status][2]       | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}/status`                                  |
+| [Create an API Owner sharing relation][3]        | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver`                                                               |
+| [Update an API Owner sharing relation status][4] | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{targetApiOwner}`                                       |
+| [Get LeafUser permissions][5]                    | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`          |
+| [Create a LeafUser permissions][6]               | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}`             |
+| [Update LeafUser permissions][7]                 | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/{RESOURCE}` |
+| [Invalidate tokens before now][13]               | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`              |
+| [Delete LeafUser sharing permissions][8]         | <span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{ReceiverApiOwner}/users-permissions/{LeafUserId}`      |
 
 ### Get API Owner sharing relation
 
@@ -649,6 +650,66 @@ Update the permissions granted to the receiver API Owner.
 |--------------|-----------|-----------------------------------|
 | `FIELD`      | `READ`    | -                                 |
 | `OPERATIONS` | `READ`    | `APPLIED`, `HARVESTED`, `PLANTED` |
+
+
+
+### Invalidate tokens before now
+
+&nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`
+
+Makes access invalid for tokens connected before the current date and time.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.patch(endpoint, { headers})
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.patch(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PATCH \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow'
+  ```
+
+  </TabItem>
+</Tabs>
+
 
 
 ### Delete LeafUser sharing permissions

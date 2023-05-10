@@ -30,13 +30,13 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 
 ### Field Boundary Management
 #### fieldsAttachIntersection
-Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100. The default value is `0.01`, which is the smallest number possible of overlap between data and field to create an operation.
+Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100. The default value is `0.01`, which is the smallest number possible of overlap between the fields.
 #### fieldsAutoMerge
 Feature automatically merges fields that passes through the intersection parameter. Default value is `true`.
 #### fieldsAutoSync
 If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.
 #### fieldsMergeIntersection
-Minimum intersection between two fields to merge them. A new field of type MERGED will be created based in the intersection of the fields, while the original fields will be kept for historical purposes but remain inactive. This property supports a floating point between 0 and 100. The default value is `0.01`, which is the smallest number possible of overlap between data and field to create an operation.
+Minimum intersection between two fields to merge them. A new field of type MERGED will be created based in the intersection of the fields, while the original fields will be kept for historical purposes but remain inactive. This property supports a floating point between 0 and 100. The default value is `0.01`, which is the smallest number possible of overlap between the fields.
 
 
 ### Machine File Conversion

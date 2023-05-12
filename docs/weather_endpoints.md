@@ -22,7 +22,7 @@ we recommend using [Leaf's Postman collection][1].
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://api.withleaf.io/services/fields/api
+https://api.withleaf.io/services/weather/api
 ```
 
 This service has the following endpoints available:
@@ -48,6 +48,7 @@ the response will return forecast data for the next seven days by default.
 |--------------------------|---------------------------------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime                                   |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward                           |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`               |
 
 #### Request examples
 
@@ -215,6 +216,7 @@ will return forecast data for the next seven days by default.
 |--------------------------|---------------------------------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime                                   |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward                           |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`               |
 
 #### Request examples
 
@@ -384,6 +386,7 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
 |--------------------------|-------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime         |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward |
+| model                    | Historical model data: `era5` or `era5Land`                 |
 
 #### Request examples
 
@@ -552,6 +555,7 @@ will return data from the last seven days by default.
 |--------------------------|-------------------------------------------------------------|
 | endTime                  | ISO 8601 date. Returns operations until the endTime         |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward |
+| model                    | Historical model data: `era5` or `era5Land`                 |
 
 
 #### Request examples

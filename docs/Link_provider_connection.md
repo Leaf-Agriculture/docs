@@ -14,12 +14,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: /docs/user_management_overview
 [5]: https://www.developer.cnhindustrial.com/dashboard/
 [6]: /docs/Link_endpoints#api-key
+[7]:  #reference
 
 [jd]: https://withleaf.io/en/whats-new/john-deere-authentication-with-leaf/
 [cfv]: https://withleaf.io/en/whats-new/climate-fieldview-authentication-with-leaf/
 [cnhi]: https://withleaf.io/en/whats-new/cnhi-authentication-with-leaf/
 [agleader]: https://withleaf.io/en/whats-new/agleader-authentication-with-leaf/
 [trimble]: https://withleaf.io/en/whats-new/trimble-authentication-with-leaf/
+
+[provider-apiKey]: #apikey
+[provider-companyLogoUrl]: #companylogourl
+[provider-companyName]: #companyname
+[provider-leafUser]: #leafuser
 
 
 ## Overview
@@ -482,8 +488,8 @@ npm i @withleaf.io/angular-ui-kit
 import { ProvidersModule } from '@withleaf.io/angular-ui-kit';
 ```
 
-3. Add the component to the HTML. Make sure you already created the Leaf user API key (`apiKey`), we will need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
-You can also customize it adding your company name (`companyName`) and company logo (`companyLogoUrl`).
+3. Add the component to the HTML. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
+You can also customize it adding your company name (`companyName`) and company logo (`companyLogoUrl`). Check all the properties available on the reference [here][4].
 ```js
 <div class="container">
   <leaf-providers leafUser="{leafUserId}" apiKey="{apiKey}"     
@@ -491,3 +497,40 @@ You can also customize it adding your company name (`companyName`) and company l
   </leaf-providers>
 </div>
 ```
+
+## Reference
+### Property Overview
+
+| Name                                      | Type   | Summary                                   |
+|-------------------------------------------|--------|-------------------------------------------|
+| [apiKey][provider-apiKey]                 | String | The authentication API Key                |
+| [companyLogoUrl][provider-companyLogoUrl] | String | Customization: a link to the company logo |
+| [companyName][provider-companyName]       | String | Customization: the name of the company    |
+| [leafUser][provider-leafUser]             | String | The Leaf User ID                          |
+
+
+#### Property Details
+
+#### apiKey
+The `apiKey` is the authentication key that will allow the use of the widget.
+It can be created and managed [here][6].
+
+#### companyLogoUrl
+The URL to the company logo. It will be displayed in the landing screen. It can be a `PNG`, `JPEG` or `SVG`.
+
+#### companyName
+The company name. It will be displayed in the landing screen and in each reference about the customer.
+
+#### leafUser
+The Leaf User ID. Check [this page][4] for more info about the Leaf User.
+
+
+
+### Event Overview
+| Name           | Summary                                   |
+|----------------|-------------------------------------------|
+| complete       | The authentication API Key                |
+
+#### Event Details
+#### complete
+Fires after a user clicks in the "Done" button in the final screen. It will get access to all providers connected.

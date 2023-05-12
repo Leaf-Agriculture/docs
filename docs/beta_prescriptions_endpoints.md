@@ -17,6 +17,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: #list-prescriptions-from-john-deere
 [7]: #upload-prescription-to-john-deere
 [8]: #upload-prescription-to-climate-fieldview
+[9]: /docs/field_boundary_management_endpoints#get-all-growers
 
 
 ## About
@@ -376,21 +377,19 @@ Upload a prescription using the CNHi credentials of the LeafUserId.
 
 <p align='justify'>
 
-There is a required request parameter called companyId for this endpoint to work. This property should be the id 
-of the organization at CNHi. You can get this via CNHi API in GET [request](https://ag.api.cnhind.com/v2/myUserProfile).
-For more information about CNHi API, [acess](https://www.developer.cnhindustrial.com/agapidata).
+You can get the company Id from the [grower endpoints][9] using the property `providerOrganizationId`.
 
 </p>
 
-The file to be uploaded must be .zip and contain each of the following file extension: shp, dbf and shx. 
+The file to be uploaded must be a .zip and contain each of the following file extension: shp, dbf and shx. 
 All files must have the same name. The zip file cannot contain subfolders.
 
 #### Example:
 
-A .zip file named “prescription_rx_map” containing the following files:
-- prescription_rx_map.shp
-- prescription_rx_map.dbf
-- prescription_rx_map.shx
+A .zip file named “prescription_map” containing the following files:
+- prescription_map.shp
+- prescription_map.dbf
+- prescription_map.shx
 
 <Tabs
 defaultValue="sh"
@@ -465,7 +464,7 @@ The response is json with the id of the file uploaded to the provider.
 ```
 
 
-### List prescriptions from CNHI
+### List prescriptions from CNHi
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/cnhi`
 
@@ -473,9 +472,7 @@ List the existing prescriptions available in the provider.
 
 <p align='justify'>
 
-There is a required request parameter called companyId for this endpoint to work. This property should be the id 
-of the organization at CNHi. You can get this via CNHi API in GET [request](https://ag.api.cnhind.com/v2/myUserProfile).
-For more information about CNHi API, [acess](https://www.developer.cnhindustrial.com/agapidata).
+You can get the company Id from the [grower endpoints][9] using the property `providerOrganizationId`.
 
 </p>
 

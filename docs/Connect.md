@@ -20,7 +20,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: /docs/field_boundary_management_overview
 [11]: /docs/operations_overview
 [12]: /docs/beta_machines_endpoints
-[13]: ##invalidate-receivers-tokens
+[13]: #invalidate-tokens-before-now
 
 
 ## About
@@ -653,11 +653,11 @@ Update the permissions granted to the receiver API Owner.
 
 
 
-### Invalidate receiver's tokens
+### Invalidate tokens before now
 
 &nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`
 
-Invalidate the receiver's tokens created before the current date and time.
+Makes access invalid for tokens connected before the current date and time.
 
 #### Request examples
 

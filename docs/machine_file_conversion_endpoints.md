@@ -289,8 +289,6 @@ and "harvested" operation files.
 
 
 
-
-
 ### Get a file's images
 
 &nbsp<span class="badge badge--success">GET</span>  `/files/{id}/images`
@@ -332,6 +330,15 @@ Gets a list of PNG images generated from the operation's file properties.
 
   response = requests.get(endpoint, headers=headers)
   print(response.json())
+  ```
+  </TabItem>
+  
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/images'
   ```
 
   </TabItem>

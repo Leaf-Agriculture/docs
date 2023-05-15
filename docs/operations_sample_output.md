@@ -12,6 +12,8 @@ import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import use
 [4]: /docs/configurations_overview#operationsoutlierslimit
 [5]: #field-operations-images-v2
 [6]: /docs/configurations_overview#operationsfilteredgeojson
+[7]: /docs/operations_endpoints#get-operations-geotiff-images
+[8]: /docs/configurations_overview#operationsimageasgeotiff
 
 ## Overview
 
@@ -646,6 +648,82 @@ If the `filteredGeoJSON` fails to process, images will continue to be generated 
 :::tip
 Important: once active, the images will be available for access only via the [`/imagesV2`][2] endpoint.  
 :::
+
+#### Field Operations GeoTIFF Images
+[This endpoint][7] produces images based on the [filteredGeoJSON][1]. To access the images, besides having the data filter option active, it is required the [operationsImageAsGeoTiff][8] configuration enabled as well.
+
+In the result we displayed a list of the GeoTIFF images for each property available.
+```json
+
+[
+  {
+    "property": "distance",
+    "url": "https://s3-url-to-geotiff/geotiff-cca01ca7-75eb-4028-83ad-3a9af8a08667.tif"
+  },
+  {
+    "property": "dryMass",
+    "url": "https://s3-url-to-geotiff/geotiff-f1604ea5-ee0a-44a1-ac11-03a0c275cecb.tif"
+  },
+  {
+    "property": "elevation",
+    "url": "https://s3-url-to-geotiff/geotiff-45efa9d2-9f60-4704-ae91-d7edd72388bd.tif"
+  },
+  {
+    "property": "heading",
+    "url": "https://s3-url-to-geotiff/geotiff-08f2f811-55a6-4028-8197-3ca535f93b46.tif"
+  },
+  {
+    "property": "speed",
+    "url": "https://s3-url-to-geotiff/geotiff-e52c9f2f-399b-4e03-9d81-0abbacdc51f7.tif"
+  },
+  {
+    "property": "wetMassPerArea",
+    "url": "https://s3-url-to-geotiff/geotiff-184b7394-6f86-41c2-8742-fd27bfc82ffc.tif"
+  },
+  {
+    "property": "dryVolume",
+    "url": "https://s3-url-to-geotiff/geotiff-8248c5e2-5853-4f64-8b7a-3c7f3a16cfe0.tif"
+  },
+  {
+    "property": "wetVolumePerArea",
+    "url": "https://s3-url-to-geotiff/geotiff-27f721e8-7ba6-41ba-8acb-6d038c87d87d.tif"
+  },
+  {
+    "property": "harvestMoisture",
+    "url": "https://s3-url-to-geotiff/geotiff-b00a39b1-4ac6-4ba6-a5bf-e5798d9f8393.tif"
+  },
+  {
+    "property": "dryMassPerArea",
+    "url": "https://s3-url-to-geotiff/geotiff-5d027967-6488-4339-a4b6-1e2f8b25e05f.tif"
+  },
+  {
+    "property": "fuelRate",
+    "url": "https://s3-url-to-geotiff/geotiff-18f8f9e9-3e43-4074-a3d4-70098db365c9.tif"
+  },
+  {
+    "property": "equipmentWidth",
+    "url": "https://s3-url-to-geotiff/geotiff-d49900a3-ceaf-4c6f-8348-7f9977f2751d.tif"
+  },
+  {
+    "property": "area",
+    "url": "https://s3-url-to-geotiff/geotiff-1f81a342-eb2b-4623-b580-53d5296888aa.tif"
+  },
+  {
+    "property": "wetMass",
+    "url": "https://s3-url-to-geotiff/geotiff-3332529c-01d3-4c13-ac12-10341bcc3ade.tif"
+  },
+  {
+    "property": "dryVolumePerArea",
+    "url": "https://s3-url-to-geotiff/geotiff-aaf2f4ab-a0e0-4280-96a3-7df443779af8.tif"
+  },
+  {
+    "property": "wetVolume",
+    "url": "https://s3-url-to-geotiff/geotiff-69570599-76f1-49ab-b3cc-9926705da2c9.tif"
+  }
+]
+```
+
+
 
 ### Field Operations Units 
 

@@ -24,6 +24,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [13]: /docs/operations_sample_output#field-operations-filtered-geojson
 [14]: /docs/operations_sample_output#field-operations-summary
 [15]: /docs/operations_sample_output#field-operations-images
+[16]: #get-operations-geotiff-images
 [sample_summary]: machine_file_conversion_sample_output
 
 
@@ -42,8 +43,9 @@ Description | Endpoints
 [Get all operations][1] | <span class="badge badge--success">GET</span> `/operations`
 [Get an operation][2] | <span class="badge badge--success">GET</span> `/operations/{id}`
 [Get an operation summary][3] | <span class="badge badge--success">GET</span> `/operations/{id}/summary`
-[Get an operation's images][4] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
-[Get an operation's images V2][8] | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`
+[Get operation's images][4] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
+[Get operation's images V2][8] | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`
+[Get operation's geotiff images][16] | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`
 [Get an operation's units][5] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
 [Reprocess an operation][11] | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`
 
@@ -514,6 +516,101 @@ Gets a list of PNG images generated from the operation's properties with improve
         },
         "url": "URL"
       }
+]
+  ```
+
+  The `property` refers to the property extracted from operations' data to generate the
+  image.
+
+  The `legend` represents the values ​​distributed in 7 classes, classified by the quantile and symbolized by the standard color ramp.
+
+  The `extent` is the coordinates of the image, mainly used for plotting images in map applications.
+
+  More information [here][10].
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+
+### Get operation's geotiff images
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/geotiffImages`
+
+Gets a list of TIFF images generated from the operation's properties with improvements in the generation process. These images are based on the [filteredGeojson][9].
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+    { label: 'JSON Response', value: 'json', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/geotiffImages'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/geotiffImages'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/geotiffImages'
+  ```
+
+  </TabItem>
+  <TabItem value="json">
+
+  Returns a JSON list of the following format:
+
+  ```json
+[
+  {
+    "property": "distance",
+    "url": "https://image-url.tif"
+  },
+  {
+    "property": "wetVolumePerArea",
+    "url": "https://image-url.tif"
+  },
+  {
+    "property": "dryMassPerArea",
+    "url": "https://image-url.tif"
+  },
+  {
+    "property": "dryVolumePerArea",
+    "url": "https://image-url.tif"
+  }
 ]
   ```
 

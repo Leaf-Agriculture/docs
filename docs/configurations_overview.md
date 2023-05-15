@@ -76,7 +76,7 @@ If set to `true`, Leaf will automatically synchronize provider's operations. The
 Enables the option to clear [Field Operations][2] data based on [some filter options][7]. Also enables the use of [operations images V2][8].
 The default is `false`.
 #### operationsImageAsGeoTiff
-If set to `true`, Leaf will generate the images of operations in the GeoTIFF format too. The data can be access in this [endpoint][9]. The default value is `false`.
+If set to `true`, Leaf will generate the images of operations in the GeoTIFF format too. The data can be accessed in this [endpoint][9]. The default value is `false`.
 :::tip note
 This configuration has effect **only** in the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
 :::

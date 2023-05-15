@@ -60,15 +60,15 @@ Gets a paged list of operations that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values
-| - | - |
-| `leafUserId` | uuid of one of your users |
-| `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|
-| `startTime` | ISO 8601 date. Returns operations from the startTime onward |
-| `updatedTime` | ISO 8601 date. Returns operations from the updatedTime onward |
-| `endTime` | ISO 8601 date. Returns operations until the endTime |
-| `operationType` | `applied`, `planted`, `harvested` or `tillage` |
-| `fieldId` | the field where the operation happened |
+| Parameter (to filter by) | Values                                                                   |
+|--------------------------|--------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf` |
+| `startTime`              | ISO 8601 date. Returns operations from the startTime onward              |
+| `updatedTime`            | ISO 8601 date. Returns operations from the updatedTime onward            |
+| `endTime`                | ISO 8601 date. Returns operations until the endTime                      |
+| `operationType`          | `applied`, `planted`, `harvested` or `tillage`                           |
+| `fieldId`                | the field where the operation happened                                   |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -159,8 +159,6 @@ If the parameters page and size are not set, the endpoint will return 20 results
 ]
 ```
 
----
-
 
 ### Get an operation
 
@@ -243,7 +241,6 @@ Gets a single operation by its id.
 }
 ```
 
----
 
 ### Get an operation summary
 
@@ -308,8 +305,6 @@ Gets the summary, if available, for the operation id.
 [Here's a link with sample responses][sample_summary] for "planted", "applied" 
 and "harvested" operations.
 
----
-
 
 ### Get an operation's images
 
@@ -323,7 +318,6 @@ Gets a list of PNG images generated from the operation's properties.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -365,47 +359,42 @@ Gets a list of PNG images generated from the operation's properties.
   ```
 
   </TabItem>
-  <TabItem value="json">
-
-  Returns a JSON list of the following format:
-
-  ```json
-  [
-    {
-      "property": "elevation",
-      "ramp": {
-        "0%":   [200,   0, 0],
-        "35%":  [255,  40, 0],
-        "45%":  [255, 150, 0],
-        "55%":  [255, 240, 0],
-        "65%":  [  0, 230, 0],
-        "75%":  [  0, 190, 0],
-        "100%": [  0, 130, 0],
-        "nv":   [  0,   0, 0, 0]
-      },
-      "url": "string"
-    },
-    ...
-  ]
-  ```
-
-  The `property` refers to the property extracted from operations' data to generate the
-  image. In the example above, the image would represent the elevation.
-
-  The `ramp` is the color ramp used to generate the image. The percentages
-  correspond to the minimum (0%) and maximum (100%) values in the image. The
-  listed values correspond to RGB values used. The `nv` refers to `no value`. It
-  is used internally to make the image transparent on places without data.
-  Currently, this ramp is the same in all images processed.
-
-  We also generate an auxiliary `xml` with geographic information to handle this
-  image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
-
-  </TabItem>
 </Tabs>
 
+#### Response
 
----
+```json
+[
+  {
+    "property": "elevation",
+    "ramp": {
+      "0%":   [200,   0, 0],
+      "35%":  [255,  40, 0],
+      "45%":  [255, 150, 0],
+      "55%":  [255, 240, 0],
+      "65%":  [  0, 230, 0],
+      "75%":  [  0, 190, 0],
+      "100%": [  0, 130, 0],
+      "nv":   [  0,   0, 0, 0]
+    },
+    "url": "string"
+  },
+  ...
+]
+```
+
+The `property` refers to the property extracted from operations' data to generate the
+image. In the example above, the image would represent the elevation.
+
+The `ramp` is the color ramp used to generate the image. The percentages
+correspond to the minimum (0%) and maximum (100%) values in the image. The
+listed values correspond to RGB values used. The `nv` refers to `no value`. It
+is used internally to make the image transparent on places without data.
+Currently, this ramp is the same in all images processed.
+
+We also generate an auxiliary `xml` with geographic information to handle this
+image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
+
 
 ### Get an operation's images V2
 
@@ -419,7 +408,6 @@ Gets a list of PNG images generated from the operation's properties with improve
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -461,78 +449,74 @@ Gets a list of PNG images generated from the operation's properties with improve
   ```
 
   </TabItem>
-  <TabItem value="json">
-
-  Returns a JSON list of the following format:
-
-  ```json
-[
-    {
-        "property": "string",
-        "legend": {
-            "ranges": [
-                {
-                    "colorCode": "#C80000",
-                    "max": 20,
-                    "min": 0
-                },
-                {
-                    "colorCode": "#FF2800",
-                    "max": 50,
-                    "min": 20
-                },
-                {
-                    "colorCode": "#FF9600",
-                    "max": 100,
-                    "min": 50
-                },
-                {
-                    "colorCode": "#FFF000",
-                    "max": 250,
-                    "min": 100
-                },
-                {
-                    "colorCode": "#00E600",
-                    "max": 340,
-                    "min": 250
-                },
-                {
-                    "colorCode": "#00BE00",
-                    "max": 480,
-                    "min": 340
-                },
-                {
-                    "colorCode": "#008200",
-                    "max": 570,
-                    "min": 480
-                }
-            ]
-        },
-        "extent": {
-            "xmin": 0.0,
-            "xmax": 0.0,
-            "ymin": 0.0,
-            "ymax": 0.0
-        },
-        "url": "URL"
-      }
-]
-  ```
-
-  The `property` refers to the property extracted from operations' data to generate the
-  image.
-
-  The `legend` represents the values ​​distributed in 7 classes, classified by the quantile and symbolized by the standard color ramp.
-
-  The `extent` is the coordinates of the image, mainly used for plotting images in map applications.
-
-  More information [here][10].
-
-  </TabItem>
 </Tabs>
 
 
----
+#### Response
+
+```json
+[
+  {
+    "property": "string",
+    "legend": {
+      "ranges": [
+        {
+          "colorCode": "#C80000",
+          "max": 20,
+          "min": 0
+        },
+        {
+          "colorCode": "#FF2800",
+          "max": 50,
+          "min": 20
+        },
+        {
+          "colorCode": "#FF9600",
+          "max": 100,
+          "min": 50
+        },
+        {
+          "colorCode": "#FFF000",
+          "max": 250,
+          "min": 100
+        },
+        {
+          "colorCode": "#00E600",
+          "max": 340,
+          "min": 250
+        },
+        {
+          "colorCode": "#00BE00",
+          "max": 480,
+          "min": 340
+        },
+        {
+          "colorCode": "#008200",
+          "max": 570,
+          "min": 480
+        }
+      ]
+    },
+    "extent": {
+      "xmin": 0,
+      "xmax": 0,
+      "ymin": 0,
+      "ymax": 0
+    },
+    "url": "URL"
+  }
+]
+```
+
+The `property` refers to the property extracted from operations' data to generate the
+image.
+
+The `legend` represents the values distributed in 7 classes, classified by the quantile and symbolized by the standard color ramp.
+
+The `extent` is the coordinates of the image, mainly used for plotting images in map applications.
+
+More information [here][10].
+
 
 
 ### Get operation's geotiff images
@@ -547,7 +531,6 @@ Gets a list of TIFF images generated from the operation's properties with improv
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -589,11 +572,12 @@ Gets a list of TIFF images generated from the operation's properties with improv
   ```
 
   </TabItem>
-  <TabItem value="json">
+</Tabs>
 
-  Returns a JSON list of the following format:
 
-  ```json
+#### Response
+
+```json
 [
   {
     "property": "distance",
@@ -612,22 +596,8 @@ Gets a list of TIFF images generated from the operation's properties with improv
     "url": "https://image-url.tif"
   }
 ]
-  ```
+```
 
-  The `property` refers to the property extracted from operations' data to generate the
-  image.
-
-  The `legend` represents the values ​​distributed in 7 classes, classified by the quantile and symbolized by the standard color ramp.
-
-  The `extent` is the coordinates of the image, mainly used for plotting images in map applications.
-
-  More information [here][10].
-
-  </TabItem>
-</Tabs>
-
-
----
 
 ### Get an operation's units
 
@@ -641,7 +611,6 @@ Gets the operations's properties and their units.
     { label: 'cURL', value: 'sh', },
     { label: 'Python', value: 'py', },
     { label: 'JavaScript', value: 'js', },
-    { label: 'JSON Response', value: 'json', },
   ]
 }>
   <TabItem value="js">
@@ -683,22 +652,23 @@ Gets the operations's properties and their units.
   ```
 
   </TabItem>
-  <TabItem value="json">
+</Tabs>
 
-  Returns a JSON like the following:
 
-  ```json
-  {
-      "distance": "ft",
-      "heading": "arcdeg",
-      "speed": "mi/hr",
-      "elevation": "ft",
-      "harvestMoisture": "prcnt",
-      "wetMass": "lb",
-      "dryVolume": "bu",
-      "equipmentWidth": "ft"
-  }
-  ```
+#### Response
+
+```json
+{
+  "distance": "ft",
+  "heading": "arcdeg",
+  "speed": "mi/hr",
+  "elevation": "ft",
+  "harvestMoisture": "prcnt",
+  "wetMass": "lb",
+  "dryVolume": "bu",
+  "equipmentWidth": "ft"
+}
+```
 
 These properties vary depending on the operationType, but you can expect the same,
 standardized keys, across different providers.
@@ -707,8 +677,8 @@ Units usually don't change for the same Leaf User, since the providers units
 configuration is based on their location. But keep in mind that it's best to
 always take the units into consideration, just to be sure.
 
-  </TabItem>
-</Tabs>
+
+
 
 ### Crop operation by field
 
@@ -773,8 +743,6 @@ This endpoint can be used to remove points from the operation standardGeojson th
 
 
 #### Response
-
-Returns a single JSON object:
 
 ```json
 {
@@ -844,7 +812,6 @@ Allows reprocessing an operation already created, starting from the merge step. 
 
 You could monitor the processing status by our [Alerts Service][6].
 
----
 
 ## Alerts
 

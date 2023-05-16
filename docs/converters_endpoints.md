@@ -42,7 +42,6 @@ This service has the following endpoints available:
 | [Get a batch][8]         | <span class="badge badge--success">GET</span> `/batch/{id}`         |
 | [Get all batches][10]    | <span class="badge badge--success">GET</span> `/batch`              |
 | [Retry a batch][13]      | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`   |
-| [Merge files][11]        | <span class="badge badge--warning">POST</span> `/files/merge`       |
 | [Get a file status][15]  | <span class="badge badge--success">GET</span> `/files/{id}/status`  |
 
 
@@ -698,102 +697,6 @@ Returns a single JSON object, similar to the upload endpoint response:
     "uploadTimestamp": "2021-03-12T19:50:55.567755Z"
 }
 ```
-
-
-### Merge files
-
-&nbsp<span class="badge badge--warning">POST</span> `/files/merge`
-
-Posts a merge operation to our server. 
-
-**Please note that Leaf merges files automatically, so you will not need to use this endpoint in most cases unless you wish to do so manually.**
-
-A merge operation is performed asynchronously. This call will return immediately
-with the newly created file entry, but at this point, the file is not already
-processed and available. You will need to make a new `GET /files` request for the
-new id and check the status. A status value of `processed` means the file is
-done merging.
-
-A merge process has some validations, the files passed must belong to
-the same `leafUserId`, be of the same operation type and have the status as `processed`.
-If any of those filters fail, the endpoint will result in HTTP 400 error.
-
-It receives a single JSON object with the `ids` entry. Example:
-
-```json
-{
-  "ids": [ "id1", "id2", "so on" ]
-}
-```
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint ='https://api.withleaf.io/services/operations/api/files/merge'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  const data = { ids: [ 'id1', 'id2' ] }
-
-  axios.post(endpoint, { headers, data })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/operations/api/files/merge'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  data = {'ids': ['id1', 'id2']}
-
-  response = requests.post(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X POST \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "ids": [ "id1", "id2" ] }'
-      'https://api.withleaf.io/services/operations/api/files/merge'
-  ```
-
-  </TabItem>
-</Tabs>
-
-
-Returns a single JSON object:
-
-```json
-{
-  "id": "id",
-  "status": "SENT_TO_MERGE"
-}
-```
-
-After a few minutes, you can consult the result of Leaf processing over this file by
-performing GET consults in this.
-
-
 
 
 ### Get a file status

@@ -96,7 +96,7 @@ Get all API keys from a Leaf user.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys?leafUserId={leafUserId}'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-keys?leafUserId={leafUserId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -112,7 +112,7 @@ Get all API keys from a Leaf user.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys?leafUserId={leafUserId}'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-keys?leafUserId={leafUserId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -125,7 +125,7 @@ Get all API keys from a Leaf user.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/app-keys?leafUserId={leafUserId}'
+      'https://api.withleaf.io/services/usermanagement/api/api-keys?leafUserId={leafUserId}'
   ```
 
   </TabItem>

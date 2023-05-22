@@ -20,7 +20,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: /docs/field_boundary_management_overview
 [11]: /docs/operations_overview
 [12]: /docs/beta_machines_endpoints
-[13]: ##invalidate-receivers-tokens
+
+[//]: # ([13]: ##invalidate-receivers-tokens)
 
 
 ## About
@@ -67,8 +68,9 @@ This service has the following endpoints available:
 | [Get LeafUser permissions][5]                    | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`          |
 | [Create a LeafUser permissions][6]               | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}`             |
 | [Update LeafUser permissions][7]                 | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}/{RESOURCE}` |
-| [Invalidate tokens before now][13]               | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`              |
 | [Delete LeafUser sharing permissions][8]         | <span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{ReceiverApiOwner}/users-permissions/{LeafUserId}`      |
+
+[//]: # (| [Invalidate tokens before now][13]               | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`              |)
 
 ### Get API Owner sharing relation
 
@@ -653,117 +655,198 @@ Update the permissions granted to the receiver API Owner.
 
 
 
-### Invalidate receiver's tokens
+[//]: # (### Invalidate receiver's tokens)
 
-&nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`
+[//]: # ()
+[//]: # (&nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`)
 
-Invalidate the receiver's tokens created before the current date and time.
+[//]: # ()
+[//]: # (Invalidate the receiver's tokens created before the current date and time.)
 
-#### Request examples
+[//]: # ()
+[//]: # (#### Request examples)
 
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
+[//]: # ()
+[//]: # (<Tabs)
 
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
+[//]: # (  defaultValue="sh")
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+[//]: # (  values={[)
 
-  axios.patch(endpoint, { headers})
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
+[//]: # (    { label: 'cURL', value: 'sh', },)
 
-  </TabItem>
-  <TabItem value="py">
+[//]: # (    { label: 'Python', value: 'py', },)
 
-  ```py
-  import requests
+[//]: # (    { label: 'JavaScript', value: 'js', },)
 
-  TOKEN = 'YOUR_TOKEN'
+[//]: # (  ])
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
+[//]: # (}>)
 
-  response = requests.patch(endpoint, headers=headers)
-  print(response.json())
-  ```
+[//]: # (  <TabItem value="js">)
 
-  </TabItem>
-  <TabItem value="sh">
+[//]: # ()
+[//]: # (  ```js)
 
-  ```shell
-  curl -X PATCH \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow'
-  ```
+[//]: # (  const axios = require&#40;'axios'&#41;)
 
-  </TabItem>
-</Tabs>
+[//]: # (  const TOKEN = 'YOUR_TOKEN')
 
+[//]: # ()
+[//]: # (  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow')
 
+[//]: # (  const headers = { 'Authorization': `Bearer ${TOKEN}` })
 
-### Delete LeafUser sharing permissions
-&nbsp<span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`
+[//]: # ()
+[//]: # (  axios.patch&#40;endpoint, { headers}&#41;)
 
-Deletes a permission.
+[//]: # (      .then&#40;res => console.log&#40;res.data&#41;&#41;)
 
-#### Request examples
+[//]: # (      .catch&#40;console.error&#41;)
 
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
+[//]: # (  ```)
 
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
+[//]: # ()
+[//]: # (  </TabItem>)
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+[//]: # (  <TabItem value="py">)
 
-  axios.delete(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
+[//]: # ()
+[//]: # (  ```py)
 
-  </TabItem>
-  <TabItem value="py">
+[//]: # (  import requests)
 
-  ```py
-  import requests
+[//]: # ()
+[//]: # (  TOKEN = 'YOUR_TOKEN')
 
-  TOKEN = 'YOUR_TOKEN'
+[//]: # ()
+[//]: # (  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow')
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
+[//]: # (  headers = {'Authorization': f'Bearer {TOKEN}'})
 
-  response = requests.delete(endpoint, headers=headers)
-  print(response.json())
-  ```
+[//]: # ()
+[//]: # (  response = requests.patch&#40;endpoint, headers=headers&#41;)
 
-  </TabItem>
-  <TabItem value="sh">
+[//]: # (  print&#40;response.json&#40;&#41;&#41;)
 
-  ```shell
-  curl -X DELETE \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}'
-  ```
+[//]: # (  ```)
 
-  </TabItem>
-</Tabs>
+[//]: # ()
+[//]: # (  </TabItem>)
+
+[//]: # (  <TabItem value="sh">)
+
+[//]: # ()
+[//]: # (  ```shell)
+
+[//]: # (  curl -X PATCH \)
+
+[//]: # (      -H 'Authorization: Bearer YOUR_TOKEN' \)
+
+[//]: # (      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow')
+
+[//]: # (  ```)
+
+[//]: # ()
+[//]: # (  </TabItem>)
+
+[//]: # (</Tabs>)
+
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # (### Delete LeafUser sharing permissions)
+
+[//]: # (&nbsp<span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{LeafUserId}`)
+
+[//]: # ()
+[//]: # (Deletes a permission.)
+
+[//]: # ()
+[//]: # (#### Request examples)
+
+[//]: # ()
+[//]: # (<Tabs)
+
+[//]: # (  defaultValue="sh")
+
+[//]: # (  values={[)
+
+[//]: # (    { label: 'cURL', value: 'sh', },)
+
+[//]: # (    { label: 'Python', value: 'py', },)
+
+[//]: # (    { label: 'JavaScript', value: 'js', },)
+
+[//]: # (  ])
+
+[//]: # (}>)
+
+[//]: # (  <TabItem value="js">)
+
+[//]: # ()
+[//]: # (  ```js)
+
+[//]: # (  const axios = require&#40;'axios'&#41;)
+
+[//]: # (  const TOKEN = 'YOUR_TOKEN')
+
+[//]: # ()
+[//]: # (  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}')
+
+[//]: # (  const headers = { 'Authorization': `Bearer ${TOKEN}` })
+
+[//]: # ()
+[//]: # (  axios.delete&#40;endpoint, { headers }&#41;)
+
+[//]: # (      .then&#40;res => console.log&#40;res.data&#41;&#41;)
+
+[//]: # (      .catch&#40;console.error&#41;)
+
+[//]: # (  ```)
+
+[//]: # ()
+[//]: # (  </TabItem>)
+
+[//]: # (  <TabItem value="py">)
+
+[//]: # ()
+[//]: # (  ```py)
+
+[//]: # (  import requests)
+
+[//]: # ()
+[//]: # (  TOKEN = 'YOUR_TOKEN')
+
+[//]: # ()
+[//]: # (  endpoint = 'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}')
+
+[//]: # (  headers = {'Authorization': f'Bearer {TOKEN}'})
+
+[//]: # ()
+[//]: # (  response = requests.delete&#40;endpoint, headers=headers&#41;)
+
+[//]: # (  print&#40;response.json&#40;&#41;&#41;)
+
+[//]: # (  ```)
+
+[//]: # ()
+[//]: # (  </TabItem>)
+
+[//]: # (  <TabItem value="sh">)
+
+[//]: # ()
+[//]: # (  ```shell)
+
+[//]: # (  curl -X DELETE \)
+
+[//]: # (      -H 'Authorization: Bearer YOUR_TOKEN' \)
+
+[//]: # (      'https://api.withleaf.io/services/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{LeafUserId}')
+
+[//]: # (  ```)
+
+[//]: # ()
+[//]: # (  </TabItem>)
+
+[//]: # (</Tabs>)

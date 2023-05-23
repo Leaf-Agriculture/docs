@@ -1985,6 +1985,7 @@ Gets a single grower by its `id` from the user `leafUserId`.
   </TabItem>
 </Tabs>
 
+
 #### Response
 A single [Grower](#grower-resource) as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
 attribute `name` comes directly from the Client's name for growers with John Deere as provider.

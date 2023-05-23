@@ -22,8 +22,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [11]: #merge-files
 [12]: #get-a-files-units
 [13]: #retry-a-batch
-[14]: machine_file_conversion_sample_output.md
+[14]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output/#sample-summary-response
 [15]: #get-a-file-status
+[16]: https://docs.withleaf.io/docs/user_management_endpoints#create-a-leaf-user
+[17]: https://docs.withleaf.io/docs/user_management_endpoints#providers-credentials-endpoints
+[18]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
 
 ## About
 
@@ -56,8 +59,8 @@ For easily testing these endpoints, we recommend using our Postman [collection][
 :::info requires Leaf User with credentials
 To have access to operation files, you will need a Leaf User with valid credentials
 from the provider you want to access data. If you don't have a Leaf User or you
-have not connected it with any provider yet, see **[how to create a Leaf User]()**
-or **[how to add credentials to a Leaf User]()**.
+have not connected it with any provider yet, see **[how to create a Leaf User][16]**
+or **[how to add credentials to a Leaf User][17]** for each of the providers.
 :::
 
 
@@ -70,22 +73,22 @@ Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values
-| - | - |
-| `leafUserId` | uuid of one of your users |
-| `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|
-| `status` | `processed`, `failed` or `processing` |
-| `origin` | `provider`, `automerged`, `merged` or `uploaded` |
-| `organizationId` | the provider organizationId (only available for John Deere) |
-| `batchId` | uuid of the upload response (only available for uploaded files) |
-| `createdTime` | ISO 8601 date. Returns operations from the createdTime onward |
-| `startTime` | ISO 8601 date. Returns operations from the startTime onward |
-| `endTime` | ISO 8601 date. Returns operations until the endTime |
-| `operationType` | `applied`, `planted` or `harvested` |
-| `minArea` | a number (Double) representing the minimum area (square meters) of the operations to be returned |
+| Parameter (to filter by) | Values                                                                                           |
+|--------------------------|--------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                        |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                         |
+| `status`                 | `processed`, `failed` or `processing`                                                            |
+| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                 |
+| `organizationId`         | the provider organizationId (only available for John Deere)                                      |
+| `batchId`                | uuid of the upload response (only available for uploaded files)                                  |
+| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                    |
+| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                      |
+| `endTime`                | ISO 8601 date. Returns operations until the endTime                                              |
+| `operationType`          | `applied`, `planted` or `harvested`                                                              |
+| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 
 Also, for `operationType`: `harvested` we can process the yield properties related to the operation using the 
-crop density and standard moisture available in this [table](machine_file_conversion_crops_table.md).   
+crop density and standard moisture available in this [table][18].
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -150,14 +153,13 @@ If the parameters page and size are not set, the endpoint will return 20 results
 #### Response
 
 The response is a JSON with the key "operations" referring to a list of files.
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
+[Here's a link with sample responses][14] for "planted", "applied", "harvested" and "tillage" operation files.
 
 
 ```json
 {
     "message": "SUCCESS",
-    "operations": [OPERATION]
+    "operations": [OPERATIONS]
 }    
 ```
 
@@ -219,10 +221,7 @@ Gets a single file by its id.
 
 #### Response
 
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
-
-
+[Here's a link with sample responses][14] for "planted", "applied", "harvested" and "tillage" operation files.
 
 ### Get a file summary
 

@@ -14,9 +14,9 @@ This page shows and describes sample responses from Leaf's API, along with a lis
 of what properties you can expect for each type of data.
 
 
-## Machine File Summary
+## Machine Files
 
-Leaf returns operation file summaries in a standardized format. Summaries use 
+Leaf returns operation file in a standardized format. Summaries use 
 the point data to derive basic information about the operation and include links 
 to the original files and images of an operation. Naturally, different 
 types of operations contain different properties. For instance, an `applied` 
@@ -35,9 +35,9 @@ If the operation was created by an upload on the `/batch` endpoint, the `"batchI
 key will be added to the resource with the corresponding uuid.
 
 
-### Sample Summary response
+### Machine File Sample
 
-You can move through the three tabs below to see a sample of how Leaf returns
+You can move through the four tabs below to see a sample of how Leaf returns
 each of the operation types.
 
 <Tabs
@@ -515,7 +515,7 @@ This is an example of a summary for a "tillage" operation
  </Tabs>
 
 
-### Properties
+### Properties by Operation Type
 
 Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
@@ -532,23 +532,23 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   <TabItem value="planted">
 
-  | key                    | presence       | type | 
-  | -                      | -              | - |
-  | crop                   | *  | string | 
-  | seedRate               | *  | dict |
-  | operationType          | *  | string "planted" |
-  | originalOperationType  | ** | string |
-  | totalArea              | *  | float |
-  | elevation              | *  | dict |
-  | varieties              | ** | dict |
-  | seedRateTarget         | ** | dict |
-  | seedDepth              | ** | dict |
-  | machinery              | ** | list of machineInfo objects |
-  | speed                  | ** | dict |
-  | totalPlanted           | ** | int (number of seeds) |
-  | operationDescription   | ** | string |
-  | downForce              | ** | dict |
-  | singulation            | ** | dict |
+  | key                   | presence | type                        | 
+  |-----------------------|----------|-----------------------------|
+  | crop                  | *        | string                      | 
+  | seedRate              | *        | dict                        |
+  | operationType         | *        | string "planted"            |
+  | originalOperationType | **       | string                      |
+  | totalArea             | *        | float                       |
+  | elevation             | *        | dict                        |
+  | varieties             | **       | dict                        |
+  | seedRateTarget        | **       | dict                        |
+  | seedDepth             | **       | dict                        |
+  | machinery             | **       | list of machineInfo objects |
+  | speed                 | **       | dict                        |
+  | totalPlanted          | **       | int (number of seeds)       |
+  | operationDescription  | **       | string                      |
+  | downForce             | **       | dict                        |
+  | singulation           | **       | dict                        |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -559,19 +559,19 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   <TabItem value="applied">
 
-  | key | presence | type |
-  | - | - | - |
-  | appliedRate          | *  | dict |
-  | operationType        | *  | string "applied" |
-  | originalOperationType        | **  | string |
-  | elevation            | *  | dict |
-  | totalArea            | *  | float |
-  | products             | *  | dict  |
-  | appliedRateTarget    | ** | dict |
-  | machinery            | ** | list of machineInfo objects |
-  | speed                | ** | dict |
-  | totalApplied         | ** | float |
-  | operationDescription | ** | string |
+  | key                   | presence | type                        |
+  |-----------------------|----------|-----------------------------|
+  | appliedRate           | *        | dict                        |
+  | operationType         | *        | string "applied"            |
+  | originalOperationType | **       | string                      |
+  | elevation             | *        | dict                        |
+  | totalArea             | *        | float                       |
+  | products              | *        | dict                        |
+  | appliedRateTarget     | **       | dict                        |
+  | machinery             | **       | list of machineInfo objects |
+  | speed                 | **       | dict                        |
+  | totalApplied          | **       | float                       |
+  | operationDescription  | **       | string                      |
 
 
   \* = Always in response  
@@ -583,30 +583,30 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   <TabItem value="harvested">
 
 
-  | key | presence | type |
-  | - | - | - |
-  | elevation            | *  | dict |
-  | harvestMoisture      | *  | dict |
-  | operationType        | *  | string "harvested" |
-  | originalOperationType        | **  | string |
-  | totalArea            | *  | float |
-  | wetMass              | *  | dict | 
-  | wetMassPerArea       | *  | dict |
-  | wetVolume            | *$  | dict |
-  | wetVolumePerArea     | *$  | dict |
-  | totalWetVolume       | *  | float |
-  | totalWetMass         | *  | float |
-  | crop                 | *  | string |
-  | dryMass              | * | dict |
-  | dryMassPerArea       | * | dict |
-  | totalDryMass         | * | dict |
-  | dryVolume            | * | dict |
-  | dryVolumePerArea     | * | dict |
-  | totalDryVolume       | * | dict |
-  | speed                | ** | dict |
-  | varieties              | ** | dict |
-  | machinery            | ** | list of machineInfo objects |
-  | operationDescription | ** | string |
+  | key                   | presence | type                        |
+  |-----------------------|----------|-----------------------------|
+  | elevation             | *        | dict                        |
+  | harvestMoisture       | *        | dict                        |
+  | operationType         | *        | string "harvested"          |
+  | originalOperationType | **       | string                      |
+  | totalArea             | *        | float                       |
+  | wetMass               | *        | dict                        | 
+  | wetMassPerArea        | *        | dict                        |
+  | wetVolume             | *$       | dict                        |
+  | wetVolumePerArea      | *$       | dict                        |
+  | totalWetVolume        | *        | float                       |
+  | totalWetMass          | *        | float                       |
+  | crop                  | *        | string                      |
+  | dryMass               | *        | dict                        |
+  | dryMassPerArea        | *        | dict                        |
+  | totalDryMass          | *        | dict                        |
+  | dryVolume             | *        | dict                        |
+  | dryVolumePerArea      | *        | dict                        |
+  | totalDryVolume        | *        | dict                        |
+  | speed                 | **       | dict                        |
+  | varieties             | **       | dict                        |
+  | machinery             | **       | list of machineInfo objects |
+  | operationDescription  | **       | string                      |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests  
@@ -617,17 +617,17 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   <TabItem value="tillage">
 
 
-  | key | presence | type |
-  | - | - | - |
-  | elevation            | *  | dict |
-  | operationType        | *  | string "tillage" |
-  | originalOperationType        | **  | string |
-  | totalArea            | *  | float |
-  | tillageDepthTarget   | *  | float |
-  | tillageDepthActual   | ** | float |
-  | speed                | ** | dict |
-  | machinery            | ** | list of machineInfo objects |
-  | operationDescription | ** | string |
+  | key                   | presence | type                        |
+  |-----------------------|----------|-----------------------------|
+  | elevation             | *        | dict                        |
+  | operationType         | *        | string "tillage"            |
+  | originalOperationType | **       | string                      |
+  | totalArea             | *        | float                       |
+  | tillageDepthTarget    | *        | float                       |
+  | tillageDepthActual    | **       | float                       |
+  | speed                 | **       | dict                        |
+  | machinery             | **       | list of machineInfo objects |
+  | operationDescription  | **       | string                      |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -645,7 +645,7 @@ to create the standardGeojson.
 Below we list all the properties in the standardGeojson.
 
 
-### Sample Response
+### Sample Summary Response
 
 Each operation file returns with a "standardgeojson" URL that allows you to download a full point dataset from the operation in a standardized geojson format. Below is an example of the format of each point in these files.
 

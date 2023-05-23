@@ -4,6 +4,16 @@ description: Machine File Conversion - Overview
 sidebar_label: Overview
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<!-- the following links are referenced throughout this document -->
+[1]: https://docs.withleaf.io/docs/user_management_endpoints#create-a-leaf-user
+[2]: https://docs.withleaf.io/docs/user_management_endpoints#providers-credentials-endpoints
+[leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+[medium_url]: https://medium.com/leaf-agriculture/merge-of-files-into-operations-1e62726df64d
+
 Leaf's Operation Data API returns clean, aggregated, and standardized data
 from all major machine data brands in a simple JSON response. 
 
@@ -20,8 +30,8 @@ You will need a Leaf User to retrieve operations images, summary, and
 standardized files. You can add files by having a Leaf User with valid 
 credentials from the provider you want to access data or you can upload data 
 manually. If you don't have a Leaf User or you have not connected it with any 
-provider yet, see **[how to create a Leaf User](#)** and 
-**[how to add credentials to a Leaf User]()**.
+provider yet, see **[how to create a Leaf User][1]** and 
+**[how to add credentials to a Leaf User][2]** for each of the providers.
 :::
 
 All files will be passed through a processing chain that includes:
@@ -29,7 +39,7 @@ All files will be passed through a processing chain that includes:
 - Standardizing the `rawGeojson` to a `standardGeojson`;
 - Creating images for all the numerical attributes in the file;
 - Creating a summary of the file with summary information, such as averages,
-standard deviations, maximum and minimum values ​​for important properties, and 
+standard deviations, maximum and minimum values for important properties, and 
 more. This summary is usually used to have general information about the 
 operation without the need to download and open the standardGeojson file. For
 example, you can display the area of the operation, how much was harvested and
@@ -90,7 +100,3 @@ we will be happy to help at help@withleaf.io
 
 We also provide our [Leaf Postman collection][leaf_postman_url] so you can follow
 along easily.
-
-[leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[medium_url]: https://medium.com/leaf-agriculture/merge-of-files-into-operations-1e62726df64d
-[operations_endpoints]: machine_file_conversion_endpoints

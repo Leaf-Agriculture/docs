@@ -7,8 +7,8 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [1]: #get-the-raven-slingshot-credentials
-[2]: #create-a-aven-slingshot-credentials
-[3]: #delete-aven-slingshot-credentials
+[2]: #create-a-raven-slingshot-credentials
+[3]: #delete-raven-slingshot-credentials
 
 Form of a Raven Slingshot Credentials resource:
 

@@ -22,12 +22,11 @@ Form of an Sentera Credentials resource:
 
 **Endpoints**
 
-Description | Endpoints
---- | ---
-[Get the Sentera credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/sentera-credentials`
-[Create a Sentera credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/sentera-credentials`
-[Delete Sentera credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/sentera-credentials`
-
+| Description                       | Endpoints                                                                                 |
+|-----------------------------------|-------------------------------------------------------------------------------------------|
+| [Get the Sentera credentials][1]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/sentera-credentials`   |
+| [Create a Sentera credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/sentera-credentials`  |
+| [Delete Sentera credentials][3]   | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/sentera-credentials` |
 
 ## Sentera Credentials Endpoints
 
@@ -180,7 +179,7 @@ Create a Sentera credentials for the Leaf User.
 curl -X POST \
 -H 'Authorization: Bearer YOUR_TOKEN' \
 -H 'Content-Type: application/json' \
--d '{ "accessToken": "str","refreshToken": "str","privateKey":"str", "publicKey":"str"}' \
+-d '{ "username": "str", "password": "str", "organizationName": "str"}' \
 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/sentera-credentials'
   ```
 

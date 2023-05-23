@@ -8,6 +8,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+[1]: https://docs.withleaf.io/docs/configurations_overview#cleanupstandardgeojson
+
 ## Overview
 
 This page shows and describes sample responses from Leaf's API, along with a list 
@@ -645,7 +647,7 @@ to create the standardGeojson.
 Below we list all the properties in the standardGeojson.
 
 
-### Sample Summary Response
+### Summary Response Sample
 
 Each operation file returns with a "standardgeojson" URL that allows you to download a full point dataset from the operation in a standardized geojson format. Below is an example of the format of each point in these files.
 
@@ -946,235 +948,236 @@ Despite the example units, Leaf's API will push through every unit, if the proce
 
 The points in the standardGeoJSON are considered valid if all the following rules are true:
 
-| property  |  rule |
-|---|---|
-|  wetMass |  > 0.0 |
-|  wetMassPerArea |  > 0.0 |
-|  wetVolume |  > 0.0 |
-|  wetVolumePerArea |  > 0.0 |
-|  harvestMoisture |  > 0.0 |
-|  appliedRate |  > 0.0 |
-|  seedRate |  > 0.0 |
-|  tillageDepthActual |  > 0.0 |
-|  recordingStatus | = "On" |
+| property           | rule   |
+|--------------------|--------|
+| wetMass            | > 0.0  |
+| wetMassPerArea     | > 0.0  |
+| wetVolume          | > 0.0  |
+| wetVolumePerArea   | > 0.0  |
+| harvestMoisture    | > 0.0  |
+| appliedRate        | > 0.0  |
+| seedRate           | > 0.0  |
+| tillageDepthActual | > 0.0  |
+| recordingStatus    | = "On" |
 
-If necessary Leaf API can automatically clean these points up using the configuration [`cleanupStandardGeojson`](configurations_overview.md).
+If necessary Leaf API can automatically clean these points up using the configuration [`cleanupStandardGeojson`][1].
 
 ### Images
 
 Also, Leaf displays all the numerical properties across all operation types via a png file. Here's a sample response from a Leaf harvested file.
 
 ```json
-{
-        "property": "area",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+[
+  {
+    "property": "area",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "wetMass",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "wetMass",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "wetVolume",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "wetVolume",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "distance",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "distance",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "wetVolumePerArea",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "wetVolumePerArea",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "equipmentWidth",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "equipmentWidth",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "wetMassPerArea",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "wetMassPerArea",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "sectionId",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "sectionId",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "elevation",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "elevation",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "harvestMoisture",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "harvestMoisture",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "heading",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "heading",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "dryMass",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "dryMass",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "dryMassPerArea",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "dryMassPerArea",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "dryVolume",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "dryVolume",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "dryVolumePerArea",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
-    }
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "dryVolumePerArea",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
+    },
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  }
 ]
 ```
 

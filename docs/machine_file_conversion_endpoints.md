@@ -17,16 +17,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: #get-a-files-images
 [7]: #upload-a-file
 [8]: #get-batch-upload
-[9]: /docs/alerts_events#operation-events
+[9]: https://docs.withleaf.io/docs/alerts_events#operation-events
 [10]: #get-all-batches
 [11]: #merge-files
 [12]: #get-a-files-units
 [13]: #retry-a-batch
-[14]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output/#sample-summary-response
+[14]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-file-sample
 [15]: #get-a-file-status
 [16]: https://docs.withleaf.io/docs/user_management_endpoints#create-a-leaf-user
 [17]: https://docs.withleaf.io/docs/user_management_endpoints#providers-credentials-endpoints
 [18]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
+[19]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#summary-response-sample
 
 ## About
 
@@ -283,11 +284,7 @@ Gets the summary, if available, for the file id.
 
 #### Response
 
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
-
-
-
+[Here's a link with sample responses][19] for "planted", "applied", "harvested" and "tillage" operation files.
 
 
 ### Get a file's images
@@ -331,6 +328,15 @@ Gets a list of PNG images generated from the operation's file properties.
 
   response = requests.get(endpoint, headers=headers)
   print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/images'
   ```
 
   </TabItem>
@@ -416,6 +422,15 @@ Gets the file's properties and their units.
   ```
 
   </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/units'
+  ```
+
+  </TabItem>
 </Tabs>
 
 Returns a JSON like the following:
@@ -485,11 +500,11 @@ The following file formats from each provider are supported:
 
 #### JohnDeere
 
-| File Format | Monitor Model | Details                                         |
-|------------ | -------------------------------- | ------------------------------------------------|
-| GS3         | GreenStar 3 – 2630               | `/GS3_2630/profile/RCD/EIC/global.ver`          |
-| Gen4        | Gen 4 - 4600/4630                | `/JD-Data/log/user defined name/*.jdl`          |
-| Shapefile   | Exported from MyJohnDeere        | Shapefile with extra metadata in a `.json` file |
+| File Format | Monitor Model             | Details                                         |
+|-------------|---------------------------|-------------------------------------------------|
+| GS3         | GreenStar 3 – 2630        | `/GS3_2630/profile/RCD/EIC/global.ver`          |
+| Gen4        | Gen 4 - 4600/4630         | `/JD-Data/log/user defined name/*.jdl`          |
+| Shapefile   | Exported from MyJohnDeere | Shapefile with extra metadata in a `.json` file |
 
 ##### Expected file structure
 
@@ -705,17 +720,17 @@ TASKDATA
 
 #### Farmobile
 
-| File Format | Details                                         |
-|-------------|-------------------------------------------------|
-| GeoJSON     | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used.|
+| File Format | Details                                                                                                                                                             |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GeoJSON     | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used. |
 
 
 
 #### Other
 
-| File Format | Details                                         |
-|-------------|-------------------------------------------------|
-| Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used.|
+| File Format | Details                                                                                                                                           |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used. |
 
 <Tabs
   defaultValue="sh"
@@ -803,7 +818,7 @@ Returns a single JSON object, as shown below:
 }
 ```
 
-This id can then be queried to retrieve on [Get batch][8] to get the individual file ID's. 
+This id can then be queried to retrieve on [Get batch](#get-batch-upload) to get the individual file ID's. 
 Then you can query each of the files individually with 
 [Get a File](#get-a-file) or all of them, filtering by `batchId`, on
 [Get all Files](#get-all-files).
@@ -813,11 +828,11 @@ Then you can query each of the files individually with
 
 The *status* key will evolve accordingly to the following states:
 
-Status | Description
---- | ---
-RECEIVED | Is the default state for every batch created
-PROCESSED | When all the files included in the batch were processed, and at least one file have status SUCCESS
-FAILED | The batch did not generated any leaf files with status SUCCESS
+| Status    | Description                                                                                        |
+|-----------|----------------------------------------------------------------------------------------------------|
+| RECEIVED  | Is the default state for every batch created                                                       |
+| PROCESSED | When all the files included in the batch were processed, and at least one file have status SUCCESS |
+| FAILED    | The batch did not generated any leaf files with status SUCCESS                                     |
 
 The messages with FAILED status have the key *statusDetails*. The statusDetails are just informative and should not be used programatically.
 
@@ -1297,4 +1312,4 @@ Leaf Alerts support events that happen within Leaf and events that happen within
 
 ### List of Operations Events
 
-Leaf Operations Service can Alert you on these events: [list of Operations Events][10]
+Leaf Operations Service can Alert you on these events: [list of Operations Events][9]

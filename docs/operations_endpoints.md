@@ -26,7 +26,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [15]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images
 [16]: #get-operations-geotiff-images
 [17]: #crop-operation-by-field
-[sample_summary]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#sample-response
+[sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
 
 ## About
@@ -304,8 +304,7 @@ Gets the summary, if available, for the operation id.
 
 #### Response
 
-[Here's a link with sample responses][sample_summary] for "planted", "applied" 
-and "harvested" operations.
+[Here's a link with sample responses][sample_summary] for "planted", "applied", "harvested" and "tillage" operations.
 
 
 ### Get an operation's images

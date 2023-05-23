@@ -4,13 +4,14 @@ description: Field Boundary Management - Overview
 sidebar_label: Overview
 ---
 
+[leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+
 
 With Leaf, you can import, export, create, and manage Field Boundaries from all
 major agriculture brands.
 
-We provide a [quickstart Postman
-collection](https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection)
-to help you get started.
+We also provide our [Leaf Postman collection][leaf_postman_url] so you can follow
+along easily.
 
 To make calls to Leaf's API, you will need a Leaf account. If you don't have
 one yet, please create your Leaf account and get your token.

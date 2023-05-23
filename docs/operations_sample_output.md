@@ -6,14 +6,14 @@ sidebar_label: Sample responses
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import useBaseUrl from '@docusaurus/useBaseUrl';
 
-[1]: #field-operations-filtered-geojson
-[2]: /docs/operations_endpoints#get-an-operations-images-v2
-[3]: /docs/configurations_overview#operationsremoveoutliers
-[4]: /docs/configurations_overview#operationsoutlierslimit
-[5]: #field-operations-images-v2
-[6]: /docs/configurations_overview#operationsfilteredgeojson
-[7]: /docs/operations_endpoints#get-operations-geotiff-images
-[8]: /docs/configurations_overview#operationsimageasgeotiff
+[1]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-filtered-geojson
+[2]: https://docs.withleaf.io/docs/operations_endpoints/#get-an-operations-images-v2
+[3]: https://docs.withleaf.io/docs/configurations_overview/#operationsremoveoutliers
+[4]: https://docs.withleaf.io/docs/configurations_overview/#operationsoutlierslimit
+[5]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images-v2
+[6]: https://docs.withleaf.io/docs/configurations_overview/#operationsfilteredgeojson
+[7]: https://docs.withleaf.io/docs/operations_endpoints/#get-operations-geotiff-images
+[8]: https://docs.withleaf.io/docs/configurations_overview/#operationsimageasgeotiff
 
 ## Overview
 
@@ -560,22 +560,21 @@ values={[
 Here is an example of Images from Field Operations.
 
 ```json
-
 [
     {
         "property": "string",
         "ramp" : {
-				"0%" : [ 200, 0, 0 ],
-				"35%" : [ 255, 40, 0 ],
-				"45%" : [ 255, 150, 0 ],
-				"55%" : [ 255, 240, 0 ],
-				"65%" : [ 0, 230, 0 ],
-				"75%" : [ 0, 190, 0 ],
-				"100%" : [ 0, 130, 0 ],
-				"nv" : [ 0, 0, 0, 0 ]
-			},
+                "0%" : [ 200, 0, 0 ],
+                "35%" : [ 255, 40, 0 ],
+                "45%" : [ 255, 150, 0 ],
+                "55%" : [ 255, 240, 0 ],
+                "65%" : [ 0, 230, 0 ],
+                "75%" : [ 0, 190, 0 ],
+                "100%" : [ 0, 130, 0 ],
+                "nv" : [ 0, 0, 0, 0 ]
+            },
         "url": "URL"
-      }
+    }
 ]
 ```
 

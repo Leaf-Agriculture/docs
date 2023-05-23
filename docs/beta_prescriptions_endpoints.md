@@ -444,7 +444,7 @@ values={[
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -F 'file=prescription_rx_map.zip' \
+      -F 'file=prescription_map.zip' \
       'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/cnhi?companyId={companyId}'
   ```
 

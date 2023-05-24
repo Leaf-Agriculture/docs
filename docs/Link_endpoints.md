@@ -473,11 +473,7 @@ Get a AgLeader app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION",
-  "secrets": {
-    "privateKey": "str",
-    "publicKey": "str
-  }
+  "clientEnvironment": "PRODUCTION"
 }
 ```
 
@@ -834,12 +830,7 @@ Get a Climate FieldView app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION",
-  "secrets": {
-    "apiKey": "string",
-    "clientId": "string",
-    "clientSecret": "string"
-  }
+  "clientEnvironment": "PRODUCTION"
 }
 ```
 
@@ -1198,12 +1189,7 @@ Get a CNHI app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "STAGE or PRODUCTION",
-  "secrets": {
-    "clientId": "string",
-    "clientSecret": "string",
-    "subscriptionKey": "string"
-  }
+  "clientEnvironment": "STAGE or PRODUCTION"
 }
 ```
 
@@ -1562,11 +1548,7 @@ Get a John Deere app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "STAGE or PRODUCTION",
-  "secrets": {
-    "clientKey": "string",
-    "clientSecret": "string"
-  }
+  "clientEnvironment": "STAGE or PRODUCTION"
 }
 ```
 
@@ -1923,12 +1905,7 @@ Get a Trimble app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION",
-  "secrets": {
-    "applicationName": "string",
-    "clientId": "string",
-    "clientSecret": "string"
-  }
+  "clientEnvironment": "PRODUCTION"
 }
 ```
 

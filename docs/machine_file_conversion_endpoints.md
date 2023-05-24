@@ -17,13 +17,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: #get-a-files-images
 [7]: #upload-a-file
 [8]: #get-batch-upload
-[9]: /docs/alerts_events#operation-events
+[9]: https://docs.withleaf.io/docs/alerts_events#operation-events
 [10]: #get-all-batches
 [11]: #merge-files
 [12]: #get-a-files-units
 [13]: #retry-a-batch
-[14]: machine_file_conversion_sample_output.md
+[14]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-file-sample
 [15]: #get-a-file-status
+[16]: https://docs.withleaf.io/docs/user_management_endpoints#create-a-leaf-user
+[17]: https://docs.withleaf.io/docs/user_management_endpoints#providers-credentials-endpoints
+[18]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
+[19]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#summary-response-sample
+[20]: https://docs.withleaf.io/docs/user_management_overview/
 
 ## About
 
@@ -48,7 +53,7 @@ This service has the following endpoints available:
 To easily test these endpoints, we recommend using our Postman [collection][1].
 
 :::info requires Leaf User
-Before you begin importing data, you will need a Leaf User. You’ll be able to attach provider credentials and manually upload data to the Leaf User. If you don't have a Leaf User or you have not connected it with any provider yet, see the [Leaf user overview](/docs/user_management_overview)
+Before you begin importing data, you will need a Leaf User. You’ll be able to attach provider credentials and manually upload data to the Leaf User. If you don't have a Leaf User or you have not connected it with any provider yet, see the [Leaf user overview][20]
 :::
 
 ### Get all files
@@ -59,22 +64,22 @@ Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values
-| - | - |
-| `leafUserId` | uuid of one of your users |
-| `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|
-| `status` | `processed`, `failed` or `processing` |
-| `origin` | `provider`, `automerged`, `merged` or `uploaded` |
-| `organizationId` | the provider organizationId (only available for John Deere) |
-| `batchId` | uuid of the upload response (only available for uploaded files) |
-| `createdTime` | ISO 8601 date. Returns operations from the createdTime onward |
-| `startTime` | ISO 8601 date. Returns operations from the startTime onward |
-| `endTime` | ISO 8601 date. Returns operations until the endTime |
-| `operationType` | `applied`, `planted` or `harvested` |
-| `minArea` | a number (Double) representing the minimum area (square meters) of the operations to be returned |
+| Parameter (to filter by) | Values                                                                                           |
+|--------------------------|--------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                        |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                         |
+| `status`                 | `processed`, `failed` or `processing`                                                            |
+| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                 |
+| `organizationId`         | the provider organizationId (only available for John Deere)                                      |
+| `batchId`                | uuid of the upload response (only available for uploaded files)                                  |
+| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                    |
+| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                      |
+| `endTime`                | ISO 8601 date. Returns operations until the endTime                                              |
+| `operationType`          | `applied`, `planted`, `tillage` or `harvested`                                                   |
+| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 
 Also, for `operationType`: `harvested` we can process the yield properties related to the operation using the 
-crop density and standard moisture available in this [table](machine_file_conversion_crops_table.md).   
+crop density and standard moisture available in this [table][18].   
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -139,14 +144,13 @@ If the parameters page and size are not set, the endpoint will return 20 results
 #### Response
 
 The response is a JSON with the key "operations" referring to a list of files.
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
+[Here's a link with sample responses][14] for "planted", "applied", "tillage" and "harvested" operation files.
 
 
 ```json
 {
     "message": "SUCCESS",
-    "operations": [OPERATION]
+    "operations": [OPERATIONS]
 }    
 ```
 
@@ -208,8 +212,7 @@ Gets a single file by its id.
 
 #### Response
 
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
+[Here's a link with sample responses][14] for "planted", "applied", "tillage" and "harvested" operation files.
 
 
 
@@ -273,8 +276,7 @@ Gets the summary, if available, for the file id.
 
 #### Response
 
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
+[Here's a link with sample responses][14] for "planted", "applied", "tillage" and "harvested" operation files.
 
 
 
@@ -404,7 +406,14 @@ Gets the file's properties and their units.
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
+  </TabItem>
+  <TabItem value="sh">
 
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/units'
+  ```
   </TabItem>
 </Tabs>
 
@@ -539,4 +548,4 @@ Leaf Alerts support events that happen within Leaf and events that happen within
 
 ### List of Operations Events
 
-Leaf Operations Service can Alert you on these events: [list of Operations Events][10]
+Leaf Operations Service can Alert you on these events: [list of Operations Events][9]

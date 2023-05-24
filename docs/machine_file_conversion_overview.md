@@ -4,26 +4,36 @@ description: Machine File Conversion - Overview
 sidebar_label: Overview
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<!-- the following links are referenced throughout this document -->
+[1]: https://docs.withleaf.io/docs/user_management_overview
+[2]: https://docs.withleaf.io/docs/field_boundary_management_overview
+[3]: https://docs.withleaf.io/docs/machine_file_conversion_overview
+[4]: https://docs.withleaf.io/docs/operations_overview/
+
 :::info requires Leaf User
-Before you begin importing data, you will need a Leaf User. You’ll be able to attach provider credentials and manually upload data to the Leaf User. If you don't have a Leaf User or you have not connected it with any provider yet, see the [Leaf user overview](/docs/user_management_overview)
+Before you begin importing data, you will need a Leaf User. You’ll be able to attach provider credentials and manually upload data to the Leaf User. If you don't have a Leaf User or you have not connected it with any provider yet, see the **[Leaf user overview][1]**
 :::
 
 :::info operations require boundaries
-You first need boundaries in order for operations to be created. Please refer to [field boundary management](/docs/field_boundary_management_overview) for more information on creating boundaries. If you do not have boundaries in your account, Leaf will still translate these files into summary data, but it will not create operations.
+You first need boundaries in order for operations to be created. Please refer to **[field boundary management][2]** for more information on creating boundaries. If you do not have boundaries in your account, Leaf will still translate these machine files into summary data, but it will not create operations.
 :::
 
 ## Ways to import machine data into Leaf
 Machine files can be imported via Leaf two ways:
 1. **Connecting to a provider:** Leaf will immediately start to pool machine data from the authorized account and monitor new files to keep them updated.
 
-2. **Uploading the files manually to Leaf:** [Manual file upload](/docs/converters_overview) functionality can be useful for your customers if they’re not yet connected to a cloud account through their machinery provider. We provide a manual process or a pre-built file upload widget through Leaf Link to allow your end users to upload various machine file formats via Leaf, which we then process for you into a consistent file format.
+2. **Uploading the files manually to Leaf:** [Manual file upload][3] functionality can be useful for your customers if they’re not yet connected to a cloud account through their machinery provider. We provide a manual process or a pre-built file upload widget through Leaf Link to allow your end users to upload various machine file formats via Leaf, which we then process for you into a consistent file format.
 
 
 ## How does Leaf process machine files?
 All files move through the following process:
 - Raw proprietary format machine files are converted to a `rawGeojson`.
 - The `rawGeojson` gets standardized to become a `standardGeojson`(Leaf’s proprietary format). The `standardGeojson` is also cleaned by default.
-- `Operations` and `operation summaries` are created by merging machine files based on field boundaries and configuration settings (see [operations](/docs/operations_overview.md) for more information).
+- `Operations` and `operation summaries` are created by merging machine files based on field boundaries and configuration settings (see [operations][4] for more information).
 
 
 File processing time will vary depending on the amount of data being processed on  initial upload or sync. You should start to see data processing within a few minutes. After that, processing will happen continuously in the background every 24 hours. 

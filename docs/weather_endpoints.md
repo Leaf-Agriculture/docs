@@ -42,6 +42,10 @@ This service has the following endpoints available:
 | [Get Daily Historical for lat/long][8]  | <span class="badge badge--success">GET</span> `/weather/historical/daily/{lat},{lon}`                         |
 | [Get Hourly Historical for lat/long][9] | <span class="badge badge--success">GET</span> `/weather/historical/hourly/{lat},{lon}`                        |
 
+:::info Note
+Daily data endpoints are limited to a request of one year (366 days), so `endTime` - `startTime` <= 366. Hourly data endpoints are limited to an interval of 30 days per request, so `endTime` - `startTime` <= 30.
+:::
+
 ## Endpoints
 
 ### Get Daily Forecast

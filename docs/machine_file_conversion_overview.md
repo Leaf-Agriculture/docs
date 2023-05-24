@@ -13,6 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: https://docs.withleaf.io/docs/field_boundary_management_overview
 [3]: https://docs.withleaf.io/docs/machine_file_conversion_overview
 [4]: https://docs.withleaf.io/docs/operations_overview/
+[5]: https://docs.withleaf.io/docs/converters_overview
 
 :::info requires Leaf User
 Before you begin importing data, you will need a Leaf User. You’ll be able to attach provider credentials and manually upload data to the Leaf User. If you don't have a Leaf User or you have not connected it with any provider yet, see the **[Leaf user overview][1]**
@@ -26,7 +27,7 @@ You first need boundaries in order for operations to be created. Please refer to
 Machine files can be imported via Leaf two ways:
 1. **Connecting to a provider:** Leaf will immediately start to pool machine data from the authorized account and monitor new files to keep them updated.
 
-2. **Uploading the files manually to Leaf:** [Manual file upload][3] functionality can be useful for your customers if they’re not yet connected to a cloud account through their machinery provider. We provide a manual process or a pre-built file upload widget through Leaf Link to allow your end users to upload various machine file formats via Leaf, which we then process for you into a consistent file format.
+2. **Uploading the files manually to Leaf:** [Manual file upload][5] functionality can be useful for your customers if they’re not yet connected to a cloud account through their machinery provider. We provide a manual process or a pre-built file upload widget through Leaf Link to allow your end users to upload various machine file formats via Leaf, which we then process for you into a consistent file format.
 
 
 ## How does Leaf process machine files?

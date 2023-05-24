@@ -1,6 +1,6 @@
 ---
-title: Machine File Conversion Endpoints
-description: Machine File Conversion - Endpoints
+title: Manual File Upload Endpoints
+description: Manual File Upload - Endpoints
 sidebar_label: Endpoints
 ---
 
@@ -12,16 +12,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <!-- the following links are referenced throughout this document -->
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [2]: https://tools.ietf.org/html/rfc7946
-[3]: #get-all-files
-[4]: #get-a-file
-[5]: #get-a-file-summary
-[6]: #get-a-files-images
+[3]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-all-files
+[4]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-a-file
+[5]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-a-file-summary
+[6]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-a-files-images
 [7]: #upload-a-file
 [8]: #get-batch-upload
 [9]: https://docs.withleaf.io/docs/alerts_events#operation-events
 [10]: #get-all-batches
 [11]: #merge-files
-[12]: #get-a-files-units
+[12]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-a-files-units
 [13]: #retry-a-batch
 [14]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-file-sample
 [15]: #get-a-file-status
@@ -413,10 +413,10 @@ Returns a single JSON object, as shown below:
 }
 ```
 
-This id can then be queried to retrieve on [Get batch](#get-batch-upload) to get the individual file ID's. 
+This id can then be queried to retrieve on [Get batch](#get-batch-upload) to get the individual file IDs. 
 Then you can query each of the files individually with 
-[Get a File](#get-a-file) or all of them, filtering by `batchId`, on
-[Get all Files](#get-all-files).
+[Get a File][4] or all of them, filtering by `batchId`, on
+[Get all Files][3] in the [machine file conversion][21] process.
 
 
 #### Batch status
@@ -457,8 +457,8 @@ The following status can be present on *statusDetails*:
 
 &nbsp<span class="badge badge--success">GET</span> `/batch/{batch_id}`
 
-Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
-via [Get all Files](#get-all-files).
+Once you've uploaded files, you can then query these files individually or query for them 
+via [Get all Files][3] in the [machine file conversion][21] process.
 You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
 
 
@@ -546,8 +546,8 @@ When you query a batch upload ID, you will receive a single JSON object:
 
 &nbsp<span class="badge badge--success">GET</span> `/batch`
 
-Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
-via [Get all Files](#get-all-files).
+Once you've uploaded files, you can then query these files individually or query for them 
+via [Get all Files][3] in the [machine file conversion][21] process.
 You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
 
 

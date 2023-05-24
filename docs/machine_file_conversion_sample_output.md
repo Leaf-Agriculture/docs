@@ -826,113 +826,113 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
   <TabItem value="planted">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords          | * | Point (x,y)     | -                    | Point (x,y) |
-  | timestamp       | * | string          | -                    | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop            | * | string          | -                    | Crop type (normalized) |
-  | area            | * | float           | ft² or m²            | Area represented by point |
-  | heading         | * | float           | degrees              | Heading of machine at point |
-  | distance        | * | float           | ft or m              | Distance travelled since previous point |
-  | elevation       | * | float           | ft or m              | Distance to sea level |
-  | operationType   | * | string          | -                    | string "planted" |
-  | originalOperationType     | ** | string            | -                | string  |
-  | equipmentWidth  | * | float           | ft or m              | Width of implement |
-  | recordingStatus | * | Boolean         | -                    | Recording status of machine at point |
-  | seedRate        | * | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
-  | variety         | ** | string          | -                    | The variety of seed being planted |
-  | speed           | ** | float           | ft/s or m/s          | Speed of machine at point |
-  | sectionId       | ** | int             | -                    | ID of implement sensor section |
-  | machinery       | ** | list of machineInfo objects | -                    | name of machine & implement |
-  | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
-  | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
-  | productIndex    | ** | int             | -                    | Index of the applied product |
-  | downForce       | ** | float           | lbf                  | The weight detected by the down force sensor on each row that has one |
-  | singulation     | ** | float           | %                    | The performance of each meter on the planter |
-  | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
-  | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | key                   | presence | type                        | example units        | description                                                                  |
+  |-----------------------|----------|-----------------------------|----------------------|------------------------------------------------------------------------------|
+  | coords                | *        | Point (x,y)                 | -                    | Point (x,y)                                                                  |
+  | timestamp             | *        | string                      | -                    | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
+  | crop                  | *        | string                      | -                    | Crop type (normalized)                                                       |
+  | area                  | *        | float                       | ft² or m²            | Area represented by point                                                    |
+  | heading               | *        | float                       | degrees              | Heading of machine at point                                                  |
+  | distance              | *        | float                       | ft or m              | Distance travelled since previous point                                      |
+  | elevation             | *        | float                       | ft or m              | Distance to sea level                                                        |
+  | operationType         | *        | string                      | -                    | string "planted"                                                             |
+  | originalOperationType | **       | string                      | -                    | string                                                                       |
+  | equipmentWidth        | *        | float                       | ft or m              | Width of implement                                                           |
+  | recordingStatus       | *        | Boolean                     | -                    | Recording status of machine at point                                         |
+  | seedRate              | *        | int                         | seeds/m² or seeds/ac | The rate of seeds planted at point                                           |
+  | variety               | **       | string                      | -                    | The variety of seed being planted                                            |
+  | speed                 | **       | float                       | ft/s or m/s          | Speed of machine at point                                                    |
+  | sectionId             | **       | int                         | -                    | ID of implement sensor section                                               |
+  | machinery             | **       | list of machineInfo objects | -                    | name of machine & implement                                                  |
+  | seedRateTarget        | **       | int                         | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point                          |
+  | seedDepth             | **       | float                       | cm                   | The depth at which seeds were planted at point                               |
+  | productIndex          | **       | int                         | -                    | Index of the applied product                                                 |
+  | downForce             | **       | float                       | lbf                  | The weight detected by the down force sensor on each row that has one        |
+  | singulation           | **       | float                       | %                    | The performance of each meter on the planter                                 |
+  | xOffset               | **       | float                       | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system   |
+  | yOffset               | **       | float                       | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
   <TabItem value="applied">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords            | * | Point (x,y)       | -                | Point (x,y) |
-  | distance          | * | float             | ft or m          | Distance travelled since previous point |
-  | heading           | * | float             | -                | Heading of machine at point |
-  | elevation         | * | float             | m                | Distance to sea level |
-  | area              | * | float             | ft² or m²        | Area represented by point |
-  | appliedRate       | * | float             | fl.oz/ac or L/m² | The amount of product being applied at point |
-  | recordingStatus   | * | Boolean           | -                | Recording status of machine |
-  | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType     | * | string            | -                | string "applied" |
-  | originalOperationType     | ** | string            | -                | string  |
-  | products          | * | list of dicts     | -                | tank mix including products and ratio |
-  | equipmentWidth    | * | float             | ft or m          | Width of implement |
-  | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
-  | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
-  | machinery         | ** | list of machineInfo objects   | -                | Name of machine and implement |
-  | sectionId         | ** | int               | -                | ID of implement sensor section |
-  | xOffset           | ** | float             | m                | Vertical offset from the instrumentation sensor and the monitor GPS system |
-  | yOffset           | ** | float             | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | key                   | presence | type                        | example units    | description                                                                  |
+  |-----------------------|----------|-----------------------------|------------------|------------------------------------------------------------------------------|
+  | coords                | *        | Point (x,y)                 | -                | Point (x,y)                                                                  |
+  | distance              | *        | float                       | ft or m          | Distance travelled since previous point                                      |
+  | heading               | *        | float                       | -                | Heading of machine at point                                                  |
+  | elevation             | *        | float                       | m                | Distance to sea level                                                        |
+  | area                  | *        | float                       | ft² or m²        | Area represented by point                                                    |
+  | appliedRate           | *        | float                       | fl.oz/ac or L/m² | The amount of product being applied at point                                 |
+  | recordingStatus       | *        | Boolean                     | -                | Recording status of machine                                                  |
+  | timestamp             | *        | string                      | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
+  | operationType         | *        | string                      | -                | string "applied"                                                             |
+  | originalOperationType | **       | string                      | -                | string                                                                       |
+  | products              | *        | list of dicts               | -                | tank mix including products and ratio                                        |
+  | equipmentWidth        | *        | float                       | ft or m          | Width of implement                                                           |
+  | speed                 | **       | float                       | ft/s or m/s      | Speed of machine at point                                                    |
+  | appliedRateTarget     | **       | float                       | fl.oz/ac or L/m² | The target amount of product to be applied at the point                      |
+  | machinery             | **       | list of machineInfo objects | -                | Name of machine and implement                                                |
+  | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
+  | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
+  | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
   <TabItem value="harvested">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords            | * | Point (x,y) | -              | Point x,y |
-  | timestamp         | * | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop              | * | string      | -              | Crop type (normalized) |
-  | area              | * | float       | ft² or m²      | Area represented by point |
-  | distance          | * | float       | ft or m        | Distance travelled since previous point |
-  | elevation         | * | float       | ft or m        | Distance to sea level |
-  | operationType     | * | string      | -              | string "harvested" |
-  | originalOperationType     | ** | string            | -                | string  |
-  | equipmentWidth    | * | float       | ft or m        | Width of implement |
-  | recordingStatus   | * | Boolean     | -              | Recording status of machine |
-  | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
-  | wetMass           | * | float       | lb or kg       | wet mass harvested in that point |
-  | wetMassPerArea    | * | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
-  | wetVolume         | *$ | float       | bu or L        | wet volume harvested in that point |
-  | wetVolumePerArea  | *$ | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
-  | variety           | ** | string      | -              | The variety of seed being harvested |
-  | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
-  | heading           | ** | float       | degrees        | Heading of machine at point |
-  | machinery         | ** | list of machineInfo objects        | -              | name of machine & implement |
-  | dryMass           | * | float       | lb or kg       | dry mass harvested in that point |
-  | dryMassPerArea    | * | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
-  | dryVolume         | *$ | float       | bu or L        | dry volume harvested in that point |
-  | dryVolumePerArea  | *$ | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
-  | sectionId         | ** | int         | int            | ID of implement sensor section |
-  | cropFlow          | ** | float           | tonne/h    | Massic flow of the harvested crop |
-  | proteinPercentage    | ** | float        | %                  | Amount of protein content for the harvested product |
-  | samplingInterval| ** | float           | s                    | Delta time from the previous recorded feature |
-  | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
-  | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | key                   | presence | type                        | example units  | description                                                                  |
+  |-----------------------|----------|-----------------------------|----------------|------------------------------------------------------------------------------|
+  | coords                | *        | Point (x,y)                 | -              | Point x,y                                                                    |
+  | timestamp             | *        | string                      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
+  | crop                  | *        | string                      | -              | Crop type (normalized)                                                       |
+  | area                  | *        | float                       | ft² or m²      | Area represented by point                                                    |
+  | distance              | *        | float                       | ft or m        | Distance travelled since previous point                                      |
+  | elevation             | *        | float                       | ft or m        | Distance to sea level                                                        |
+  | operationType         | *        | string                      | -              | string "harvested"                                                           |
+  | originalOperationType | **       | string                      | -              | string                                                                       |
+  | equipmentWidth        | *        | float                       | ft or m        | Width of implement                                                           |
+  | recordingStatus       | *        | Boolean                     | -              | Recording status of machine                                                  |
+  | harvestMoisture       | *        | float                       | %              | float                                                                        | % moisture of harvested crop |
+  | wetMass               | *        | float                       | lb or kg       | wet mass harvested in that point                                             |
+  | wetMassPerArea        | *        | float                       | lb/ac or kg/ha | wet mass harvested in that point divided by area                             |
+  | wetVolume             | *$       | float                       | bu or L        | wet volume harvested in that point                                           |
+  | wetVolumePerArea      | *$       | float                       | bu/ac or L/ha  | wet volume harvested in that point divided by area                           |
+  | variety               | **       | string                      | -              | The variety of seed being harvested                                          |
+  | speed                 | **       | float                       | ft/s or m/s    | Speed of machine at point                                                    |
+  | heading               | **       | float                       | degrees        | Heading of machine at point                                                  |
+  | machinery             | **       | list of machineInfo objects | -              | name of machine & implement                                                  |
+  | dryMass               | *        | float                       | lb or kg       | dry mass harvested in that point                                             |
+  | dryMassPerArea        | *        | float                       | lb/ac or kg/ha | dry mass harvested in that point divided by area                             |
+  | dryVolume             | *$       | float                       | bu or L        | dry volume harvested in that point                                           |
+  | dryVolumePerArea      | *$       | float                       | bu/ac or L/ha  | dry volume harvested in that point divided by area                           |
+  | sectionId             | **       | int                         | int            | ID of implement sensor section                                               |
+  | cropFlow              | **       | float                       | lb/s           | Massic flow of the harvested crop                                            |
+  | proteinPercentage     | **       | float                       | %              | Amount of protein content for the harvested product                          |
+  | samplingInterval      | **       | float                       | s              | Delta time from the previous recorded feature                                |
+  | xOffset               | **       | float                       | m              | Vertical offset from the instrumentation sensor and the monitor GPS system   |
+  | yOffset               | **       | float                       | m              | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
    <TabItem value="tillage">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords             | *  | Point (x,y)       | -                | Point (x,y) |
-  | distance           | *  | float             | ft or m          | Distance travelled since previous point |
-  | heading            | *  | float             | -                | Heading of machine at point |
-  | elevation          | *  | float             | m                | Distance to sea level |
-  | area               | *  | float             | ft² or m²        | Area represented by point |
-  | recordingStatus    | *  | Boolean           | -                | Recording status of machine |
-  | timestamp          | *  | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType      | *  | string            | -                | string "tillage" |
-  | originalOperationType     | ** | string            | -                | string  |
-  | equipmentWidth     | *  | float             | ft or m          | Width of implement |
-  | tillageDepthTarget | *  | float             | fl.oz/ac or L/m² | The target depth |
-  | speed              | ** | float             | ft/s or m/s      | Speed of machine at point |
-  | tillageDepthActual | ** | float             | fl.oz/ac or L/m² | The actual depth |
-  | machinery          | ** | list of machineInfo objects   | -                | Name of machine and implement |
-  | sectionId          | ** | int               | -                | ID of implement sensor section |
-  | xOffset            | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
-  | yOffset            | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | key                   | presence | type                        | example units    | description                                                                  |
+  |-----------------------|----------|-----------------------------|------------------|------------------------------------------------------------------------------|
+  | coords                | *        | Point (x,y)                 | -                | Point (x,y)                                                                  |
+  | distance              | *        | float                       | ft or m          | Distance travelled since previous point                                      |
+  | heading               | *        | float                       | -                | Heading of machine at point                                                  |
+  | elevation             | *        | float                       | m                | Distance to sea level                                                        |
+  | area                  | *        | float                       | ft² or m²        | Area represented by point                                                    |
+  | recordingStatus       | *        | Boolean                     | -                | Recording status of machine                                                  |
+  | timestamp             | *        | string                      | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
+  | operationType         | *        | string                      | -                | string "tillage"                                                             |
+  | originalOperationType | **       | string                      | -                | string                                                                       |
+  | equipmentWidth        | *        | float                       | ft or m          | Width of implement                                                           |
+  | tillageDepthTarget    | *        | float                       | fl.oz/ac or L/m² | The target depth                                                             |
+  | speed                 | **       | float                       | ft/s or m/s      | Speed of machine at point                                                    |
+  | tillageDepthActual    | **       | float                       | fl.oz/ac or L/m² | The actual depth                                                             |
+  | machinery             | **       | list of machineInfo objects | -                | Name of machine and implement                                                |
+  | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
+  | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
+  | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
 </Tabs>

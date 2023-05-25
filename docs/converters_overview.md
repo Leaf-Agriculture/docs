@@ -17,7 +17,7 @@ There are two ways machine files can be imported via Leaf: **provider integratio
 Leaf helps with the manual file upload process by:
 1. Detecting a range of file formats being uploaded
 2. Converting proprietary formats into a standardized format 
-3. Merging and processing them into the desired output 
+3. Merging and processing files into the desired output 
 
 In this section, you will find more information on the Leaf Link pre-built file upload widget, manual file upload endpoints and supported file types. 
 

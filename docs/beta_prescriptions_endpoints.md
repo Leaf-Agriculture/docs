@@ -18,6 +18,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [7]: #upload-prescription-to-john-deere
 [8]: #upload-prescription-to-climate-fieldview
 [9]: /docs/field_boundary_management_endpoints#get-all-growers
+[10]: #download-prescription-from-john-deere
 
 
 ## About
@@ -35,19 +36,20 @@ See below the REST resources and their endpoints available in this service.
 
 This feature has the following endpoints available:
 
-| Description                                   | Endpoints                                                                             |
-|-----------------------------------------------|---------------------------------------------------------------------------------------|
-| [Upload prescription to Raven Slingshot][2]   | <span class="badge badge--success">POST</span> `/users/{leafUserId}/ravenSlingshot`   |
-| [List prescriptions from Raven Slingshot][3]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/ravenSlingshot`    |
-| [Lists prescriptions from John Deere][6]      | <span class="badge badge--success">GET</span> `/users/{leafUserId}/johnDeere`         |
-| [Upload prescription to John Deere][7]        | <span class="badge badge--success">POST</span> `/users/{leafUserId}/johnDeere`        |
-| [Upload prescription to CNHi][4]              | <span class="badge badge--success">POST</span> `/users/{leafUserId}/cnhi`             |
-| [List prescriptions from CNHi][5]             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/cnhi`              |
-| [Upload prescription to Climate FieldView][8] | <span class="badge badge--success">POST</span> `/users/{leafUserId}/climateFieldView` |
+| Description                                   | Endpoints                                                                              |
+|-----------------------------------------------|----------------------------------------------------------------------------------------|
+| [Upload prescription to Raven Slingshot][2]   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/ravenSlingshot`    |
+| [List prescriptions from Raven Slingshot][3]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/ravenSlingshot`     |
+| [Lists prescriptions from John Deere][6]      | <span class="badge badge--success">GET</span> `/users/{leafUserId}/johnDeere`          |
+| [Upload prescription to John Deere][7]        | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/johnDeere`         |
+| [Download prescription from John Deere][10]   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/johnDeere/download` |
+| [Upload prescription to CNHi][4]              | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/cnhi`              |
+| [List prescriptions from CNHi][5]             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/cnhi`               |
+| [Upload prescription to Climate FieldView][8] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/climateFieldView`  |
 
 ### Upload prescription to Raven Slingshot
 
-&nbsp<span class="badge badge--success">POST</span> `/users/{leafUserId}/ravenSlingshot`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/ravenSlingshot`
 
 Upload a prescription using the Raven Slingshot credentials of the LeafUserId.
 
@@ -205,7 +207,7 @@ A json array of prescriptions available in this provider
 
 ### Upload prescription to John Deere
 
-&nbsp<span class="badge badge--success">POST</span> `/users/{leafUserId}/johnDeere`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/johnDeere`
 
 Upload a prescription using the John Deere credentials of the LeafUserId.
 
@@ -369,9 +371,84 @@ A json array of prescriptions available in this provider.
 ```
 
 
+### Download prescription from John Deere
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/johnDeere/download`
+
+Download a prescription related to a file ID using the LeafUserId's John Deere credentials. This file ID is relative 
+to the one available from the **John Deere side**.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  axios.post(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.post(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+The response is json with url to download.
+
+```json
+{
+  "fileUrl": "url_to_download"
+}
+```
+
+
+
+
 ### Upload prescription to CNHi
 
-&nbsp<span class="badge badge--success">POST</span> `/users/{leafUserId}/cnhi`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/cnhi`
 
 Upload a prescription using the CNHi credentials of the LeafUserId.
 
@@ -542,7 +619,7 @@ A json array of prescriptions available in this provider.
 
 ### Upload prescription to Climate FieldView
 
-&nbsp<span class="badge badge--success">POST</span> `/users/{leafUserId}/climateFieldView`
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/climateFieldView`
 
 Upload a prescription using the Climate FieldView credentials of the LeafUserId.
 

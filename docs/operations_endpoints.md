@@ -14,19 +14,20 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [3]: #get-an-operation-summary
 [4]: #get-an-operations-images
 [5]: #get-an-operations-units
-[6]: /docs/alerts_overview
-[7]: /docs/alerts_events#operation-events
+[6]: https://docs.withleaf.io/docs/alerts_overview/
+[7]: https://docs.withleaf.io/docs/alerts_events/#operation-events
 [8]: #get-an-operations-images-v2
-[9]: /docs/operations_sample_output#field-operations-filtered-geojson
-[10]: /docs/operations_sample_output#field-operations-images-v2
+[9]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-filtered-geojson
+[10]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images-v2
 [11]: #reprocess-an-operation
-[12]: /docs/operations_sample_output#field-operations-standard-geojson
-[13]: /docs/operations_sample_output#field-operations-filtered-geojson
-[14]: /docs/operations_sample_output#field-operations-summary
-[15]: /docs/operations_sample_output#field-operations-images
+[12]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-standard-geojson
+[13]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-filtered-geojson
+[14]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-summary
+[15]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images
 [16]: #get-operations-geotiff-images
-[sample_summary]: machine_file_conversion_sample_output
-
+[17]: #crop-operation-by-field
+[sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
+[postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
 
 ## About
 
@@ -38,19 +39,19 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-Description | Endpoints
---- | ---
-[Get all operations][1] | <span class="badge badge--success">GET</span> `/operations`
-[Get an operation][2] | <span class="badge badge--success">GET</span> `/operations/{id}`
-[Get an operation summary][3] | <span class="badge badge--success">GET</span> `/operations/{id}/summary`
-[Get operation's images][4] | <span class="badge badge--success">GET</span> `/operations/{id}/images`
-[Get operation's images V2][8] | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`
-[Get operation's geotiff images][16] | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`
-[Get an operation's units][5] | <span class="badge badge--success">GET</span> `/operations/{id}/units`
-[Reprocess an operation][11] | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`
+| Description                          | Endpoints                                                                          |
+|--------------------------------------|------------------------------------------------------------------------------------|
+| [Get all operations][1]              | <span class="badge badge--success">GET</span> `/operations`                        |
+| [Get an operation][2]                | <span class="badge badge--success">GET</span> `/operations/{id}`                   |
+| [Get an operation summary][3]        | <span class="badge badge--success">GET</span> `/operations/{id}/summary`           |
+| [Get operation's images][4]          | <span class="badge badge--success">GET</span> `/operations/{id}/images`            |
+| [Get operation's images V2][8]       | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`          |
+| [Get operation's geotiff images][16] | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`     |
+| [Get an operation's units][5]        | <span class="badge badge--success">GET</span> `/operations/{id}/units`             |
+| [Crop operation by field][17]        | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`  |
+| [Reprocess an operation][11]         | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`        |
 
-
-For easily testing these endpoints, we recommend using our Postman [collection][1].
+For easily testing these endpoints, we recommend using our Postman [collection][postman].
 
 ### Get all operations
 
@@ -155,7 +156,8 @@ If the parameters page and size are not set, the endpoint will return 20 results
         "id": "3a90d11a-70d0-4f62-b6d4-32006b1dcb6a"
       }
     ]
-  }
+  },
+  ....
 ]
 ```
 
@@ -302,8 +304,7 @@ Gets the summary, if available, for the operation id.
 
 #### Response
 
-[Here's a link with sample responses][sample_summary] for "planted", "applied" 
-and "harvested" operations.
+[Here's a link with sample responses][sample_summary] for "planted", "applied", "harvested" and "tillage" operations.
 
 
 ### Get an operation's images

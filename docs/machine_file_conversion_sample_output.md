@@ -8,15 +8,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+[1]: https://docs.withleaf.io/docs/configurations_overview#cleanupstandardgeojson
+
 ## Overview
 
 This page shows and describes sample responses from Leaf's API, along with a list 
 of what properties you can expect for each type of data.
 
 
-## Machine File Summary
+## Machine Files
 
-Leaf returns operation file summaries in a standardized format. Summaries use 
+Leaf returns operation file in a standardized format. Summaries use 
 the point data to derive basic information about the operation and include links 
 to the original files and images of an operation. Naturally, different 
 types of operations contain different properties. For instance, an `applied` 
@@ -35,9 +37,9 @@ If the operation was created by an upload on the `/batch` endpoint, the `"batchI
 key will be added to the resource with the corresponding uuid.
 
 
-### Sample Summary response
+### Machine File Sample
 
-You can move through the three tabs below to see a sample of how Leaf returns
+You can move through the four tabs below to see a sample of how Leaf returns
 each of the operation types.
 
 <Tabs
@@ -515,7 +517,7 @@ This is an example of a summary for a "tillage" operation
  </Tabs>
 
 
-### Properties
+### Properties by Operation Type
 
 Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
@@ -532,23 +534,23 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   <TabItem value="planted">
 
-  | key                    | presence       | type | 
-  | -                      | -              | - |
-  | crop                   | *  | string | 
-  | seedRate               | *  | dict |
-  | operationType          | *  | string "planted" |
-  | originalOperationType  | ** | string |
-  | totalArea              | *  | float |
-  | elevation              | *  | dict |
-  | varieties              | ** | dict |
-  | seedRateTarget         | ** | dict |
-  | seedDepth              | ** | dict |
-  | machinery              | ** | list of machineInfo objects |
-  | speed                  | ** | dict |
-  | totalPlanted           | ** | int (number of seeds) |
-  | operationDescription   | ** | string |
-  | downForce              | ** | dict |
-  | singulation            | ** | dict |
+  | key                   | presence | type                        | 
+  |-----------------------|----------|-----------------------------|
+  | crop                  | *        | string                      | 
+  | seedRate              | *        | dict                        |
+  | operationType         | *        | string "planted"            |
+  | originalOperationType | **       | string                      |
+  | totalArea             | *        | float                       |
+  | elevation             | *        | dict                        |
+  | varieties             | **       | dict                        |
+  | seedRateTarget        | **       | dict                        |
+  | seedDepth             | **       | dict                        |
+  | machinery             | **       | list of machineInfo objects |
+  | speed                 | **       | dict                        |
+  | totalPlanted          | **       | int (number of seeds)       |
+  | operationDescription  | **       | string                      |
+  | downForce             | **       | dict                        |
+  | singulation           | **       | dict                        |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -559,19 +561,19 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
 
   <TabItem value="applied">
 
-  | key | presence | type |
-  | - | - | - |
-  | appliedRate          | *  | dict |
-  | operationType        | *  | string "applied" |
-  | originalOperationType        | **  | string |
-  | elevation            | *  | dict |
-  | totalArea            | *  | float |
-  | products             | *  | dict  |
-  | appliedRateTarget    | ** | dict |
-  | machinery            | ** | list of machineInfo objects |
-  | speed                | ** | dict |
-  | totalApplied         | ** | float |
-  | operationDescription | ** | string |
+  | key                   | presence | type                        |
+  |-----------------------|----------|-----------------------------|
+  | appliedRate           | *        | dict                        |
+  | operationType         | *        | string "applied"            |
+  | originalOperationType | **       | string                      |
+  | elevation             | *        | dict                        |
+  | totalArea             | *        | float                       |
+  | products              | *        | dict                        |
+  | appliedRateTarget     | **       | dict                        |
+  | machinery             | **       | list of machineInfo objects |
+  | speed                 | **       | dict                        |
+  | totalApplied          | **       | float                       |
+  | operationDescription  | **       | string                      |
 
 
   \* = Always in response  
@@ -583,30 +585,30 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   <TabItem value="harvested">
 
 
-  | key | presence | type |
-  | - | - | - |
-  | elevation            | *  | dict |
-  | harvestMoisture      | *  | dict |
-  | operationType        | *  | string "harvested" |
-  | originalOperationType        | **  | string |
-  | totalArea            | *  | float |
-  | wetMass              | *  | dict | 
-  | wetMassPerArea       | *  | dict |
-  | wetVolume            | *$  | dict |
-  | wetVolumePerArea     | *$  | dict |
-  | totalWetVolume       | *  | float |
-  | totalWetMass         | *  | float |
-  | crop                 | *  | string |
-  | dryMass              | * | dict |
-  | dryMassPerArea       | * | dict |
-  | totalDryMass         | * | dict |
-  | dryVolume            | * | dict |
-  | dryVolumePerArea     | * | dict |
-  | totalDryVolume       | * | dict |
-  | speed                | ** | dict |
-  | varieties              | ** | dict |
-  | machinery            | ** | list of machineInfo objects |
-  | operationDescription | ** | string |
+  | key                   | presence | type                        |
+  |-----------------------|----------|-----------------------------|
+  | elevation             | *        | dict                        |
+  | harvestMoisture       | *        | dict                        |
+  | operationType         | *        | string "harvested"          |
+  | originalOperationType | **       | string                      |
+  | totalArea             | *        | float                       |
+  | wetMass               | *        | dict                        | 
+  | wetMassPerArea        | *        | dict                        |
+  | wetVolume             | *$       | dict                        |
+  | wetVolumePerArea      | *$       | dict                        |
+  | totalWetVolume        | *        | float                       |
+  | totalWetMass          | *        | float                       |
+  | crop                  | *        | string                      |
+  | dryMass               | *        | dict                        |
+  | dryMassPerArea        | *        | dict                        |
+  | totalDryMass          | *        | dict                        |
+  | dryVolume             | *        | dict                        |
+  | dryVolumePerArea      | *        | dict                        |
+  | totalDryVolume        | *        | dict                        |
+  | speed                 | **       | dict                        |
+  | varieties             | **       | dict                        |
+  | machinery             | **       | list of machineInfo objects |
+  | operationDescription  | **       | string                      |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests  
@@ -617,17 +619,17 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   <TabItem value="tillage">
 
 
-  | key | presence | type |
-  | - | - | - |
-  | elevation            | *  | dict |
-  | operationType        | *  | string "tillage" |
-  | originalOperationType        | **  | string |
-  | totalArea            | *  | float |
-  | tillageDepthTarget   | *  | float |
-  | tillageDepthActual   | ** | float |
-  | speed                | ** | dict |
-  | machinery            | ** | list of machineInfo objects |
-  | operationDescription | ** | string |
+  | key                   | presence | type                        |
+  |-----------------------|----------|-----------------------------|
+  | elevation             | *        | dict                        |
+  | operationType         | *        | string "tillage"            |
+  | originalOperationType | **       | string                      |
+  | totalArea             | *        | float                       |
+  | tillageDepthTarget    | *        | float                       |
+  | tillageDepthActual    | **       | float                       |
+  | speed                 | **       | dict                        |
+  | machinery             | **       | list of machineInfo objects |
+  | operationDescription  | **       | string                      |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -645,7 +647,7 @@ to create the standardGeojson.
 Below we list all the properties in the standardGeojson.
 
 
-### Sample Response
+### Summary Response Sample
 
 Each operation file returns with a "standardgeojson" URL that allows you to download a full point dataset from the operation in a standardized geojson format. Below is an example of the format of each point in these files.
 
@@ -824,113 +826,113 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
 
   <TabItem value="planted">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords          | * | Point (x,y)     | -                    | Point (x,y) |
-  | timestamp       | * | string          | -                    | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop            | * | string          | -                    | Crop type (normalized) |
-  | area            | * | float           | ft² or m²            | Area represented by point |
-  | heading         | * | float           | degrees              | Heading of machine at point |
-  | distance        | * | float           | ft or m              | Distance travelled since previous point |
-  | elevation       | * | float           | ft or m              | Distance to sea level |
-  | operationType   | * | string          | -                    | string "planted" |
-  | originalOperationType     | ** | string            | -                | string  |
-  | equipmentWidth  | * | float           | ft or m              | Width of implement |
-  | recordingStatus | * | Boolean         | -                    | Recording status of machine at point |
-  | seedRate        | * | int             | seeds/m² or seeds/ac | The rate of seeds planted at point |
-  | variety         | ** | string          | -                    | The variety of seed being planted |
-  | speed           | ** | float           | ft/s or m/s          | Speed of machine at point |
-  | sectionId       | ** | int             | -                    | ID of implement sensor section |
-  | machinery       | ** | list of machineInfo objects | -                    | name of machine & implement |
-  | seedRateTarget  | ** | int             | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point |
-  | seedDepth       | ** | float           | cm                   | The depth at which seeds were planted at point |
-  | productIndex    | ** | int             | -                    | Index of the applied product |
-  | downForce       | ** | float           | lbf                  | The weight detected by the down force sensor on each row that has one |
-  | singulation     | ** | float           | %                    | The performance of each meter on the planter |
-  | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
-  | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | key                   | presence | type                        | example units        | description                                                                  |
+  |-----------------------|----------|-----------------------------|----------------------|------------------------------------------------------------------------------|
+  | coords                | *        | Point (x,y)                 | -                    | Point (x,y)                                                                  |
+  | timestamp             | *        | string                      | -                    | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
+  | crop                  | *        | string                      | -                    | Crop type (normalized)                                                       |
+  | area                  | *        | float                       | ft² or m²            | Area represented by point                                                    |
+  | heading               | *        | float                       | degrees              | Heading of machine at point                                                  |
+  | distance              | *        | float                       | ft or m              | Distance travelled since previous point                                      |
+  | elevation             | *        | float                       | ft or m              | Distance to sea level                                                        |
+  | operationType         | *        | string                      | -                    | string "planted"                                                             |
+  | originalOperationType | **       | string                      | -                    | string                                                                       |
+  | equipmentWidth        | *        | float                       | ft or m              | Width of implement                                                           |
+  | recordingStatus       | *        | Boolean                     | -                    | Recording status of machine at point                                         |
+  | seedRate              | *        | int                         | seeds/m² or seeds/ac | The rate of seeds planted at point                                           |
+  | variety               | **       | string                      | -                    | The variety of seed being planted                                            |
+  | speed                 | **       | float                       | ft/s or m/s          | Speed of machine at point                                                    |
+  | sectionId             | **       | int                         | -                    | ID of implement sensor section                                               |
+  | machinery             | **       | list of machineInfo objects | -                    | name of machine & implement                                                  |
+  | seedRateTarget        | **       | int                         | seeds/m² or seeds/ac | The target rate of seeds to be planted at the point                          |
+  | seedDepth             | **       | float                       | cm                   | The depth at which seeds were planted at point                               |
+  | productIndex          | **       | int                         | -                    | Index of the applied product                                                 |
+  | downForce             | **       | float                       | lbf                  | The weight detected by the down force sensor on each row that has one        |
+  | singulation           | **       | float                       | %                    | The performance of each meter on the planter                                 |
+  | xOffset               | **       | float                       | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system   |
+  | yOffset               | **       | float                       | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
   <TabItem value="applied">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords            | * | Point (x,y)       | -                | Point (x,y) |
-  | distance          | * | float             | ft or m          | Distance travelled since previous point |
-  | heading           | * | float             | -                | Heading of machine at point |
-  | elevation         | * | float             | m                | Distance to sea level |
-  | area              | * | float             | ft² or m²        | Area represented by point |
-  | appliedRate       | * | float             | fl.oz/ac or L/m² | The amount of product being applied at point |
-  | recordingStatus   | * | Boolean           | -                | Recording status of machine |
-  | timestamp         | * | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType     | * | string            | -                | string "applied" |
-  | originalOperationType     | ** | string            | -                | string  |
-  | products          | * | list of dicts     | -                | tank mix including products and ratio |
-  | equipmentWidth    | * | float             | ft or m          | Width of implement |
-  | speed             | ** | float             | ft/s or m/s      | Speed of machine at point |
-  | appliedRateTarget | ** | float             | fl.oz/ac or L/m² | The target amount of product to be applied at the point |
-  | machinery         | ** | list of machineInfo objects   | -                | Name of machine and implement |
-  | sectionId         | ** | int               | -                | ID of implement sensor section |
-  | xOffset           | ** | float             | m                | Vertical offset from the instrumentation sensor and the monitor GPS system |
-  | yOffset           | ** | float             | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | key                   | presence | type                        | example units    | description                                                                  |
+  |-----------------------|----------|-----------------------------|------------------|------------------------------------------------------------------------------|
+  | coords                | *        | Point (x,y)                 | -                | Point (x,y)                                                                  |
+  | distance              | *        | float                       | ft or m          | Distance travelled since previous point                                      |
+  | heading               | *        | float                       | -                | Heading of machine at point                                                  |
+  | elevation             | *        | float                       | m                | Distance to sea level                                                        |
+  | area                  | *        | float                       | ft² or m²        | Area represented by point                                                    |
+  | appliedRate           | *        | float                       | fl.oz/ac or L/m² | The amount of product being applied at point                                 |
+  | recordingStatus       | *        | Boolean                     | -                | Recording status of machine                                                  |
+  | timestamp             | *        | string                      | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
+  | operationType         | *        | string                      | -                | string "applied"                                                             |
+  | originalOperationType | **       | string                      | -                | string                                                                       |
+  | products              | *        | list of dicts               | -                | tank mix including products and ratio                                        |
+  | equipmentWidth        | *        | float                       | ft or m          | Width of implement                                                           |
+  | speed                 | **       | float                       | ft/s or m/s      | Speed of machine at point                                                    |
+  | appliedRateTarget     | **       | float                       | fl.oz/ac or L/m² | The target amount of product to be applied at the point                      |
+  | machinery             | **       | list of machineInfo objects | -                | Name of machine and implement                                                |
+  | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
+  | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
+  | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
   <TabItem value="harvested">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords            | * | Point (x,y) | -              | Point x,y |
-  | timestamp         | * | string      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | crop              | * | string      | -              | Crop type (normalized) |
-  | area              | * | float       | ft² or m²      | Area represented by point |
-  | distance          | * | float       | ft or m        | Distance travelled since previous point |
-  | elevation         | * | float       | ft or m        | Distance to sea level |
-  | operationType     | * | string      | -              | string "harvested" |
-  | originalOperationType     | ** | string            | -                | string  |
-  | equipmentWidth    | * | float       | ft or m        | Width of implement |
-  | recordingStatus   | * | Boolean     | -              | Recording status of machine |
-  | harvestMoisture   | * | float       | % | float      | % moisture of harvested crop |
-  | wetMass           | * | float       | lb or kg       | wet mass harvested in that point |
-  | wetMassPerArea    | * | float       | lb/ac or kg/ha | wet mass harvested in that point divided by area |
-  | wetVolume         | *$ | float       | bu or L        | wet volume harvested in that point |
-  | wetVolumePerArea  | *$ | float       | bu/ac or L/ha  | wet volume harvested in that point divided by area |
-  | variety           | ** | string      | -              | The variety of seed being harvested |
-  | speed             | ** | float       | ft/s or m/s    | Speed of machine at point |
-  | heading           | ** | float       | degrees        | Heading of machine at point |
-  | machinery         | ** | list of machineInfo objects        | -              | name of machine & implement |
-  | dryMass           | * | float       | lb or kg       | dry mass harvested in that point |
-  | dryMassPerArea    | * | float       | lb/ac or kg/ha | dry mass harvested in that point divided by area |
-  | dryVolume         | *$ | float       | bu or L        | dry volume harvested in that point |
-  | dryVolumePerArea  | *$ | float       | bu/ac or L/ha  | dry volume harvested in that point divided by area |
-  | sectionId         | ** | int         | int            | ID of implement sensor section |
-  | cropFlow          | ** | float           | tonne/h    | Massic flow of the harvested crop |
-  | proteinPercentage    | ** | float        | %                  | Amount of protein content for the harvested product |
-  | samplingInterval| ** | float           | s                    | Delta time from the previous recorded feature |
-  | xOffset         | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
-  | yOffset         | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | key                   | presence | type                        | example units  | description                                                                  |
+  |-----------------------|----------|-----------------------------|----------------|------------------------------------------------------------------------------|
+  | coords                | *        | Point (x,y)                 | -              | Point x,y                                                                    |
+  | timestamp             | *        | string                      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
+  | crop                  | *        | string                      | -              | Crop type (normalized)                                                       |
+  | area                  | *        | float                       | ft² or m²      | Area represented by point                                                    |
+  | distance              | *        | float                       | ft or m        | Distance travelled since previous point                                      |
+  | elevation             | *        | float                       | ft or m        | Distance to sea level                                                        |
+  | operationType         | *        | string                      | -              | string "harvested"                                                           |
+  | originalOperationType | **       | string                      | -              | string                                                                       |
+  | equipmentWidth        | *        | float                       | ft or m        | Width of implement                                                           |
+  | recordingStatus       | *        | Boolean                     | -              | Recording status of machine                                                  |
+  | harvestMoisture       | *        | float                       | %              | float                                                                        | % moisture of harvested crop |
+  | wetMass               | *        | float                       | lb or kg       | wet mass harvested in that point                                             |
+  | wetMassPerArea        | *        | float                       | lb/ac or kg/ha | wet mass harvested in that point divided by area                             |
+  | wetVolume             | *$       | float                       | bu or L        | wet volume harvested in that point                                           |
+  | wetVolumePerArea      | *$       | float                       | bu/ac or L/ha  | wet volume harvested in that point divided by area                           |
+  | variety               | **       | string                      | -              | The variety of seed being harvested                                          |
+  | speed                 | **       | float                       | ft/s or m/s    | Speed of machine at point                                                    |
+  | heading               | **       | float                       | degrees        | Heading of machine at point                                                  |
+  | machinery             | **       | list of machineInfo objects | -              | name of machine & implement                                                  |
+  | dryMass               | *        | float                       | lb or kg       | dry mass harvested in that point                                             |
+  | dryMassPerArea        | *        | float                       | lb/ac or kg/ha | dry mass harvested in that point divided by area                             |
+  | dryVolume             | *$       | float                       | bu or L        | dry volume harvested in that point                                           |
+  | dryVolumePerArea      | *$       | float                       | bu/ac or L/ha  | dry volume harvested in that point divided by area                           |
+  | sectionId             | **       | int                         | int            | ID of implement sensor section                                               |
+  | cropFlow              | **       | float                       | lb/s           | Massic flow of the harvested crop                                            |
+  | proteinPercentage     | **       | float                       | %              | Amount of protein content for the harvested product                          |
+  | samplingInterval      | **       | float                       | s              | Delta time from the previous recorded feature                                |
+  | xOffset               | **       | float                       | m              | Vertical offset from the instrumentation sensor and the monitor GPS system   |
+  | yOffset               | **       | float                       | m              | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
    <TabItem value="tillage">
 
-  | key | presence | type | example units | description |
-  | - | - | - | - | - |
-  | coords             | *  | Point (x,y)       | -                | Point (x,y) |
-  | distance           | *  | float             | ft or m          | Distance travelled since previous point |
-  | heading            | *  | float             | -                | Heading of machine at point |
-  | elevation          | *  | float             | m                | Distance to sea level |
-  | area               | *  | float             | ft² or m²        | Area represented by point |
-  | recordingStatus    | *  | Boolean           | -                | Recording status of machine |
-  | timestamp          | *  | string            | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z |
-  | operationType      | *  | string            | -                | string "tillage" |
-  | originalOperationType     | ** | string            | -                | string  |
-  | equipmentWidth     | *  | float             | ft or m          | Width of implement |
-  | tillageDepthTarget | *  | float             | fl.oz/ac or L/m² | The target depth |
-  | speed              | ** | float             | ft/s or m/s      | Speed of machine at point |
-  | tillageDepthActual | ** | float             | fl.oz/ac or L/m² | The actual depth |
-  | machinery          | ** | list of machineInfo objects   | -                | Name of machine and implement |
-  | sectionId          | ** | int               | -                | ID of implement sensor section |
-  | xOffset            | ** | float           | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system |
-  | yOffset            | ** | float           | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | key                   | presence | type                        | example units    | description                                                                  |
+  |-----------------------|----------|-----------------------------|------------------|------------------------------------------------------------------------------|
+  | coords                | *        | Point (x,y)                 | -                | Point (x,y)                                                                  |
+  | distance              | *        | float                       | ft or m          | Distance travelled since previous point                                      |
+  | heading               | *        | float                       | -                | Heading of machine at point                                                  |
+  | elevation             | *        | float                       | m                | Distance to sea level                                                        |
+  | area                  | *        | float                       | ft² or m²        | Area represented by point                                                    |
+  | recordingStatus       | *        | Boolean                     | -                | Recording status of machine                                                  |
+  | timestamp             | *        | string                      | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
+  | operationType         | *        | string                      | -                | string "tillage"                                                             |
+  | originalOperationType | **       | string                      | -                | string                                                                       |
+  | equipmentWidth        | *        | float                       | ft or m          | Width of implement                                                           |
+  | tillageDepthTarget    | *        | float                       | fl.oz/ac or L/m² | The target depth                                                             |
+  | speed                 | **       | float                       | ft/s or m/s      | Speed of machine at point                                                    |
+  | tillageDepthActual    | **       | float                       | fl.oz/ac or L/m² | The actual depth                                                             |
+  | machinery             | **       | list of machineInfo objects | -                | Name of machine and implement                                                |
+  | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
+  | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
+  | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
 
   </TabItem>
 </Tabs>
@@ -946,235 +948,236 @@ Despite the example units, Leaf's API will push through every unit, if the proce
 
 The points in the standardGeoJSON are considered valid if all the following rules are true:
 
-| property  |  rule |
-|---|---|
-|  wetMass |  > 0.0 |
-|  wetMassPerArea |  > 0.0 |
-|  wetVolume |  > 0.0 |
-|  wetVolumePerArea |  > 0.0 |
-|  harvestMoisture |  > 0.0 |
-|  appliedRate |  > 0.0 |
-|  seedRate |  > 0.0 |
-|  tillageDepthActual |  > 0.0 |
-|  recordingStatus | = "On" |
+| property           | rule   |
+|--------------------|--------|
+| wetMass            | > 0.0  |
+| wetMassPerArea     | > 0.0  |
+| wetVolume          | > 0.0  |
+| wetVolumePerArea   | > 0.0  |
+| harvestMoisture    | > 0.0  |
+| appliedRate        | > 0.0  |
+| seedRate           | > 0.0  |
+| tillageDepthActual | > 0.0  |
+| recordingStatus    | = "On" |
 
-If necessary Leaf API can automatically clean these points up using the configuration [`cleanupStandardGeojson`](configurations_overview.md).
+If necessary Leaf API can automatically clean these points up using the configuration [`cleanupStandardGeojson`][1].
 
 ### Images
 
 Also, Leaf displays all the numerical properties across all operation types via a png file. Here's a sample response from a Leaf harvested file.
 
 ```json
-{
-        "property": "area",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+[
+  {
+    "property": "area",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "wetMass",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "wetMass",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "wetVolume",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "wetVolume",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "distance",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "distance",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "wetVolumePerArea",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "wetVolumePerArea",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "equipmentWidth",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "equipmentWidth",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "wetMassPerArea",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "wetMassPerArea",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "sectionId",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "sectionId",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "elevation",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "elevation",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "harvestMoisture",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "harvestMoisture",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "heading",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "heading",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "dryMass",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "dryMass",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "dryMassPerArea",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "dryMassPerArea",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "dryVolume",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "dryVolume",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
     },
-    {
-        "property": "dryVolumePerArea",
-        "ramp": {
-            "0%": [200, 0, 0],
-            "35%": [255, 40, 0],
-            "45%": [255, 150, 0],
-            "55%": [255, 240, 0],
-            "65%": [0, 230, 0],
-            "75%": [0, 190, 0],
-            "100%": [0, 130, 0],
-            "nv": [0, 0, 0, 0 ]
-        },
-        "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
-    }
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  },
+  {
+    "property": "dryVolumePerArea",
+    "ramp": {
+        "0%": [200, 0, 0],
+        "35%": [255, 40, 0],
+        "45%": [255, 150, 0],
+        "55%": [255, 240, 0],
+        "65%": [0, 230, 0],
+        "75%": [0, 190, 0],
+        "100%": [0, 130, 0],
+        "nv": [0, 0, 0, 0 ]
+    },
+    "url": "https://png-files-bucket-dev.s3.us-east-1.amazonaws.com/uuid.png"
+  }
 ]
 ```
 

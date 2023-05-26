@@ -17,13 +17,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: #get-a-files-images
 [7]: #upload-a-file
 [8]: #get-batch-upload
-[9]: /docs/alerts_events#operation-events
+[9]: https://docs.withleaf.io/docs/alerts_events#operation-events
 [10]: #get-all-batches
 [11]: #merge-files
 [12]: #get-a-files-units
 [13]: #retry-a-batch
-[14]: machine_file_conversion_sample_output.md
+[14]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-file-sample
 [15]: #get-a-file-status
+[16]: https://docs.withleaf.io/docs/user_management_endpoints#create-a-leaf-user
+[17]: https://docs.withleaf.io/docs/user_management_endpoints#providers-credentials-endpoints
+[18]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
+[19]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#summary-response-sample
 
 ## About
 
@@ -56,8 +60,8 @@ For easily testing these endpoints, we recommend using our Postman [collection][
 :::info requires Leaf User with credentials
 To have access to operation files, you will need a Leaf User with valid credentials
 from the provider you want to access data. If you don't have a Leaf User or you
-have not connected it with any provider yet, see **[how to create a Leaf User]()**
-or **[how to add credentials to a Leaf User]()**.
+have not connected it with any provider yet, see **[how to create a Leaf User][16]**
+or **[how to add credentials to a Leaf User][17]** for each of the providers.
 :::
 
 
@@ -70,22 +74,22 @@ Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values
-| - | - |
-| `leafUserId` | uuid of one of your users |
-| `provider` | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`|
-| `status` | `processed`, `failed` or `processing` |
-| `origin` | `provider`, `automerged`, `merged` or `uploaded` |
-| `organizationId` | the provider organizationId (only available for John Deere) |
-| `batchId` | uuid of the upload response (only available for uploaded files) |
-| `createdTime` | ISO 8601 date. Returns operations from the createdTime onward |
-| `startTime` | ISO 8601 date. Returns operations from the startTime onward |
-| `endTime` | ISO 8601 date. Returns operations until the endTime |
-| `operationType` | `applied`, `planted` or `harvested` |
-| `minArea` | a number (Double) representing the minimum area (square meters) of the operations to be returned |
+| Parameter (to filter by) | Values                                                                                           |
+|--------------------------|--------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                        |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                         |
+| `status`                 | `processed`, `failed` or `processing`                                                            |
+| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                 |
+| `organizationId`         | the provider organizationId (only available for John Deere)                                      |
+| `batchId`                | uuid of the upload response (only available for uploaded files)                                  |
+| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                    |
+| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                      |
+| `endTime`                | ISO 8601 date. Returns operations until the endTime                                              |
+| `operationType`          | `applied`, `planted` or `harvested`                                                              |
+| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 
 Also, for `operationType`: `harvested` we can process the yield properties related to the operation using the 
-crop density and standard moisture available in this [table](machine_file_conversion_crops_table.md).   
+crop density and standard moisture available in this [table][18].
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -150,14 +154,13 @@ If the parameters page and size are not set, the endpoint will return 20 results
 #### Response
 
 The response is a JSON with the key "operations" referring to a list of files.
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
+[Here's a link with sample responses][14] for "planted", "applied", "harvested" and "tillage" operation files.
 
 
 ```json
 {
     "message": "SUCCESS",
-    "operations": [OPERATION]
+    "operations": [OPERATIONS]
 }    
 ```
 
@@ -219,10 +222,7 @@ Gets a single file by its id.
 
 #### Response
 
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
-
-
+[Here's a link with sample responses][14] for "planted", "applied", "harvested" and "tillage" operation files.
 
 ### Get a file summary
 
@@ -284,9 +284,7 @@ Gets the summary, if available, for the file id.
 
 #### Response
 
-[Here's a link with sample responses][14] for "planted", "applied" 
-and "harvested" operation files.
-
+[Here's a link with sample responses][19] for "planted", "applied", "harvested" and "tillage" operation files.
 
 
 ### Get a file's images
@@ -331,8 +329,8 @@ Gets a list of PNG images generated from the operation's file properties.
   response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
+
   </TabItem>
-  
   <TabItem value="sh">
 
   ```shell
@@ -424,6 +422,15 @@ Gets the file's properties and their units.
   ```
 
   </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/units'
+  ```
+
+  </TabItem>
 </Tabs>
 
 Returns a JSON like the following:
@@ -493,11 +500,11 @@ The following file formats from each provider are supported:
 
 #### JohnDeere
 
-| File Format | Monitor Model | Details                                         |
-|------------ | -------------------------------- | ------------------------------------------------|
-| GS3         | GreenStar 3 – 2630               | `/GS3_2630/profile/RCD/EIC/global.ver`          |
-| Gen4        | Gen 4 - 4600/4630                | `/JD-Data/log/user defined name/*.jdl`          |
-| Shapefile   | Exported from MyJohnDeere        | Shapefile with extra metadata in a `.json` file |
+| File Format | Monitor Model             | Details                                         |
+|-------------|---------------------------|-------------------------------------------------|
+| GS3         | GreenStar 3 – 2630        | `/GS3_2630/profile/RCD/EIC/global.ver`          |
+| Gen4        | Gen 4 - 4600/4630         | `/JD-Data/log/user defined name/*.jdl`          |
+| Shapefile   | Exported from MyJohnDeere | Shapefile with extra metadata in a `.json` file |
 
 ##### Expected file structure
 
@@ -713,17 +720,17 @@ TASKDATA
 
 #### Farmobile
 
-| File Format | Details                                         |
-|-------------|-------------------------------------------------|
-| GeoJSON     | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used.|
+| File Format | Details                                                                                                                                                             |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GeoJSON     | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used. |
 
 
 
 #### Other
 
-| File Format | Details                                         |
-|-------------|-------------------------------------------------|
-| Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used.|
+| File Format | Details                                                                                                                                           |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used. |
 
 <Tabs
   defaultValue="sh"
@@ -811,7 +818,7 @@ Returns a single JSON object, as shown below:
 }
 ```
 
-This id can then be queried to retrieve on [Get batch][8] to get the individual file ID's. 
+This id can then be queried to retrieve on [Get batch](#get-batch-upload) to get the individual file ID's. 
 Then you can query each of the files individually with 
 [Get a File](#get-a-file) or all of them, filtering by `batchId`, on
 [Get all Files](#get-all-files).
@@ -821,11 +828,11 @@ Then you can query each of the files individually with
 
 The *status* key will evolve accordingly to the following states:
 
-Status | Description
---- | ---
-RECEIVED | Is the default state for every batch created
-PROCESSED | When all the files included in the batch were processed, and at least one file have status SUCCESS
-FAILED | The batch did not generated any leaf files with status SUCCESS
+| Status    | Description                                                                                        |
+|-----------|----------------------------------------------------------------------------------------------------|
+| RECEIVED  | Is the default state for every batch created                                                       |
+| PROCESSED | When all the files included in the batch were processed, and at least one file have status SUCCESS |
+| FAILED    | The batch did not generated any leaf files with status SUCCESS                                     |
 
 The messages with FAILED status have the key *statusDetails*. The statusDetails are just informative and should not be used programatically.
 
@@ -1305,4 +1312,4 @@ Leaf Alerts support events that happen within Leaf and events that happen within
 
 ### List of Operations Events
 
-Leaf Operations Service can Alert you on these events: [list of Operations Events][10]
+Leaf Operations Service can Alert you on these events: [list of Operations Events][9]

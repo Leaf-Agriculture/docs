@@ -2397,7 +2397,7 @@ as a valid geometry.
 }
 ```
 
-In which such geometry will be generated on the John Deere side:
+This is what this invalid type of geometry looks like from the provider side:
 
 <img alt="Field example" src={useBaseUrl('img/invalid_geometry.png')} />
 

@@ -6,7 +6,7 @@ sidebar_label: Overview
 <!-- the following links are referenced throughout this document -->
 [1]: https://docs.withleaf.io/docs/converters_overview
 
-## Leaf user Overview
+## About
 For Leaf to be able to access, process and return standardized files from providers, you first need to create a ‘Leaf User’, which you’ll later connect to your customers’ preferred data provider(s). 
 
 ## What is a Leaf user?

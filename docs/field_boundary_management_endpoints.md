@@ -2190,11 +2190,6 @@ Below are the return possibilities when passing different geometries:
 |      RING_NOT_CLOSED      |
 | NOT_ALLOWED_GEOMETRY_TYPE |
 
-:::tip Note
-Currently, we get the field boundary data as available from the provider, so in some cases there may be fields without 
-boundaries or with invalid boundaries.
-:::
-
 
 ```json
 {
@@ -2375,3 +2370,38 @@ Each boundary has a `status` and `providerStatus`.
 [Create a grower](#create-a-grower) | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
 [Update a grower](#update-a-grower) | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
 
+
+## Troubleshooting
+
+Currently, we get the field boundary data as available from the provider, so in some cases there may be fields without 
+boundaries or with invalid boundaries.
+
+Below is an example of a **self-intersect** geometry that would be filtered by Leaf since we do not interpret
+as a valid geometry.
+
+```json
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          [-47.779352980393611,-21.192167369960515], 
+          [-47.775885948768021,-21.192669687635007], 
+          [-47.775917640099145,-21.194602117356858], 
+          [-47.780062866210912,-21.195033512590314], 
+          [-47.77870013897234,-21.191730056712402], 
+          [-47.779352980393611,-21.192167369960515]
+        ]
+      ]
+    ],
+    "type": "MultiPolygon"
+  }
+}
+```
+
+This is what this invalid type of geometry looks like from the provider side:
+
+<img alt="Field example" src={useBaseUrl('img/invalid_geometry.png')} />
+
+To avoid these errors, with the exception of the **VALID** answer, do not submit the types of geometries listed in the
+[table](https://docs.withleaf.io/docs/field_boundary_management_endpoints#field-resource).

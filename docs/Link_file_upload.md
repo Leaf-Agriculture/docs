@@ -56,19 +56,19 @@ To use the widget you will need a Leaf token. Use our [authentication guide][2] 
 
 ### React
 
-To add this Leaf widget in a React application, you can use the `@withleaf.io/leaf-link-react` library, which is a JavaScript library that provides all Leaf UI Widgets.
+To add this Leaf widget in a React application, you can use the `@withleaf/leaf-link-react` library, which is a JavaScript library that provides all Leaf UI Widgets.
 Here are the general steps to get started:
 
 1. Install the @withleaf.io/leaf-link-react package using `npm`:
 
 ```shell
-npm i @withleaf.io/leaf-link-react
+npm i @withleaf/leaf-link-react
 ```
 
 2. Import the component in your `*.tsx` file:
 
 ```js
-import { FileUpload } from '@withleaf.io/leaf-link-react'
+import { FileUpload } from '@withleaf/leaf-link-react'
 ```
 
 3. Add the component to the HTML in your `*.tsx` file. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.

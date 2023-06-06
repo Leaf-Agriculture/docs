@@ -61,14 +61,14 @@ This is an example of a summary for a "planted" operation
     "id": "00000000-0000-0000-0000-000000000000",
     "provider": "providerName",
     "fields": [
-      "00000000-0000-0000-0000-000000000000"
+      "00000000-0000-0000-0000-000000000001"
     ],
     "fileType": "PLANTED",
     "sizeInBytes": 676403,
     "originalFile": "url",
     "rawGeojson": "url",
     "standardGeojson": "url",
-    "leafUserId": "00000000-0000-0000-0000-000000000000",
+    "leafUserId": "00000000-0000-0000-0000-000000000002",
     "apiOwnerUsername": "test",
     "summary": {
       "type": "Feature",
@@ -189,14 +189,14 @@ This is an example of a summary for an "applied" operation
       "id": "00000000-0000-0000-0000-000000000000",
       "provider": "providerName",
       "fields": [
-        "00000000-0000-0000-0000-000000000000"
+        "00000000-0000-0000-0000-000000000001"
       ],
       "fileType": "APPLIED",
       "sizeInBytes": 187351,
       "originalFile": "url",
       "rawGeojson": "url",
       "standardGeojson": "url",
-      "leafUserId": "00000000-0000-0000-0000-000000000000",
+      "leafUserId": "00000000-0000-0000-0000-000000000002",
       "apiOwnerUsername": "test",
       "summary": {
         "type": "Feature",
@@ -314,14 +314,14 @@ This is an example of a summary for a "harvested" operation
       "id": "00000000-0000-0000-0000-000000000000",
       "provider": "providerName",
       "fields": [
-        "00000000-0000-0000-0000-000000000000"
+        "00000000-0000-0000-0000-000000000001"
       ],
       "fileType": "HARVESTED",
       "sizeInBytes": 1244007,
       "originalFile": "url",
       "rawGeojson": "url",
       "standardGeojson": "url",
-      "leafUserId": "00000000-0000-0000-0000-000000000000",
+      "leafUserId": "00000000-0000-0000-0000-000000000002",
       "apiOwnerUsername": "test",
       "summary": {
         "type": "Feature",
@@ -506,13 +506,13 @@ This is an example of a summary for a "tillage" operation
     "id": "00000000-0000-0000-0000-000000000000",
     "provider": "providerName",
     "fields": [
-      "00000000-0000-0000-0000-000000000000"
+      "00000000-0000-0000-0000-000000000001"
     ],
     "fileFormat": "SHAPEFILE",
     "originalFile": "url",
     "rawGeojson": "url",
     "standardGeojson": "url",
-    "leafUserId": "00000000-0000-0000-0000-000000000000",
+    "leafUserId": "00000000-0000-0000-0000-000000000002",
     "apiOwnerUsername": "test",
     "summary": {
       "type": "Feature",

@@ -819,8 +819,8 @@ The messages with FAILED status have the key *statusDetails*. The statusDetails 
 
 ```json
 {
-    "id": "996aea67-52bc-4d4b-9b77-028756dc0ee9",
-    "leafUserId": "ede8f781-1d55-4b2d-83a1-6785ddab6e1d",
+    "id": "00000000-0000-0000-0000-000000000000",
+    "leafUserId": "00000000-0000-0000-0000-000000000001",
     "fileName": "Climate.zip",
     "size": 8652951,
     "provider": "Other",
@@ -900,26 +900,13 @@ You can also query the batch upload ID to see a list of files generated in the u
 
 ```json 
 {
-    "id": "f893c921-0f38-4f39-9f3e-be765ac61df0",
-    "leafUserId": "bdf5f624-fb9b-4294-949c-29e979f0ce5a",
+    "id": "00000000-0000-0000-0000-000000000000",
+    "leafUserId": "00000000-0000-0000-0000-000000000001",
     "provider": "Other",
     "status": "PROCESSED",
     "leafFiles": [
-        "8334f4bb-48de-44e2-903b-6dedd6db6683",
-        "81778f58-8eed-41cc-a025-e653ea85b01e",
-        "0f606bef-b529-4899-854c-9b698cd08762",
-        "84fec273-b458-4be7-8feb-44204502f126",
-        "92b7367b-2ffd-4a82-ba9b-5a40e8b68714",
-        "90e7e130-8f33-4752-b8f4-3a132246f047",
-        "cb97857e-61b0-4fbe-a5c1-1083cfa6738f",
-        "0cded205-7734-40fb-8906-b82d36e35845",
-        "dc24d491-983c-4ebe-b961-8c749943529f",
-        "67af8697-47bc-4886-935f-5880d1eba31d",
-        "8b7d8b7b-e682-4c3e-aee2-3b7713cc81a4",
-        "e5067ed3-8463-43b9-a8a5-3b3c1eee44bc",
-        "b9d30d3a-0207-410f-81da-afb31a1b36cb",
-        "eace9b90-a520-4c4c-af89-4c3fd5da68fa",
-        "6ea55c68-203f-448b-9e7f-dcd014c31cc3"
+        "00000000-0000-0000-0000-000000000002",
+        "00000000-0000-0000-0000-000000000003"
     ]
 }
 ```
@@ -988,26 +975,13 @@ You can also query the batch upload ID to see a list of files generated in the u
 ```json 
 [
   {
-      "id": "f893c921-0f38-4f39-9f3e-be765ac61df0",
-      "leafUserId": "bdf5f624-fb9b-4294-949c-29e979f0ce5a",
+      "id": "00000000-0000-0000-0000-000000000000",
+      "leafUserId": "00000000-0000-0000-0000-000000000001",
       "provider": "Other",
       "status": "PROCESSED",
       "leafFiles": [
-          "8334f4bb-48de-44e2-903b-6dedd6db6683",
-          "81778f58-8eed-41cc-a025-e653ea85b01e",
-          "0f606bef-b529-4899-854c-9b698cd08762",
-          "84fec273-b458-4be7-8feb-44204502f126",
-          "92b7367b-2ffd-4a82-ba9b-5a40e8b68714",
-          "90e7e130-8f33-4752-b8f4-3a132246f047",
-          "cb97857e-61b0-4fbe-a5c1-1083cfa6738f",
-          "0cded205-7734-40fb-8906-b82d36e35845",
-          "dc24d491-983c-4ebe-b961-8c749943529f",
-          "67af8697-47bc-4886-935f-5880d1eba31d",
-          "8b7d8b7b-e682-4c3e-aee2-3b7713cc81a4",
-          "e5067ed3-8463-43b9-a8a5-3b3c1eee44bc",
-          "b9d30d3a-0207-410f-81da-afb31a1b36cb",
-          "eace9b90-a520-4c4c-af89-4c3fd5da68fa",
-          "6ea55c68-203f-448b-9e7f-dcd014c31cc3"
+          "00000000-0000-0000-0000-000000000002",
+          "00000000-0000-0000-0000-000000000003"
       ]
   }
 ]
@@ -1074,8 +1048,8 @@ If a batch upload does not complete as expected, this endpoint allows you to try
 
 ```json
 {
-    "id": "uuid",
-    "leafUserId": "uuid",
+    "id": "00000000-0000-0000-0000-000000000000",
+    "leafUserId": "00000000-0000-0000-0000-000000000001",
     "fileName": "filename.zip",
     "size": 8652951,
     "provider": "Other",

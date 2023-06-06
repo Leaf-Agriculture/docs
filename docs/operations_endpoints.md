@@ -27,6 +27,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [16]: #get-operations-geotiff-images
 [17]: #crop-operation-by-field
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
+[sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
 
 ## About
@@ -61,15 +62,17 @@ Gets a paged list of operations that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values                                                                   |
-|--------------------------|--------------------------------------------------------------------------|
-| `leafUserId`             | uuid of one of your users                                                |
-| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf` |
-| `startTime`              | ISO 8601 date. Returns operations from the startTime onward              |
-| `updatedTime`            | ISO 8601 date. Returns operations from the updatedTime onward            |
-| `endTime`                | ISO 8601 date. Returns operations until the endTime                      |
-| `operationType`          | `applied`, `planted`, `harvested` or `tillage`                           |
-| `fieldId`                | the field where the operation happened                                   |
+| Parameter (to filter by) | Values                                                                                                                                                                                                                                                                                      |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                                                                                                                                                                                                                   |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                                                                                                                                                                                                                    |
+| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                                                                                                                                                                                                                 |
+| `updatedTime`            | ISO 8601 date. Returns operations from the updatedTime onward                                                                                                                                                                                                                               |
+| `endTime`                | ISO 8601 date. Returns operations until the endTime                                                                                                                                                                                                                                         |
+| `operationType`          | `applied`, `planted`, `harvested` or `tillage`                                                                                                                                                                                                                                              |
+| `fieldId`                | the field where the operation happened                                                                                                                                                                                                                                                      |
+| `sort`                   | Sorting order of the results. Can be multivalue, the former takes precedence over the later. Can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc. The paramerters accepeted are: `id`, `leafUserId`, `startTime`, `endTime`, `type` and `updatedTime`. |
+
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -155,6 +158,9 @@ If the parameters page and size are not set, the endpoint will return 20 results
       {
         "id": "3a90d11a-70d0-4f62-b6d4-32006b1dcb6a"
       }
+    ],
+    "providers": [
+      "JohnDeere"
     ]
   },
   ....
@@ -239,6 +245,9 @@ Gets a single operation by its id.
     {
       "id": "3a90d11a-70d0-4f62-b6d4-32006b1dcb6a"
     }
+  ],
+  "providers": [
+    "JohnDeere"
   ]
 }
 ```
@@ -658,18 +667,7 @@ Gets the operations's properties and their units.
 
 #### Response
 
-```json
-{
-  "distance": "ft",
-  "heading": "arcdeg",
-  "speed": "mi/hr",
-  "elevation": "ft",
-  "harvestMoisture": "prcnt",
-  "wetMass": "lb",
-  "dryVolume": "bu",
-  "equipmentWidth": "ft"
-}
-```
+[Here's a link with sample responses][sample_units] for "planted", "applied", "harvested" and "tillage" operations.
 
 These properties vary depending on the operationType, but you can expect the same,
 standardized keys, across different providers.

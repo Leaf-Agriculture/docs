@@ -140,27 +140,24 @@ If the parameters page and size are not set, the endpoint will return 20 results
 ```json
 [
   {
-    "id": "1aa1ce7b-8bb9-4b2d-9421-d7a662cc1bb1",
-    "apiOwnerUsername": "leaf",
-    "leafUserId": "97770d44-62c4-48c3-8187-6be80f6de3d2",
+    "id": "00000000-0000-0000-0000-000000000000",
+    "apiOwnerUsername": "test",
+    "leafUserId": "00000000-0000-0000-0000-000000000001",
     "startTime": "2015-04-18T19:31:27Z",
     "endTime": "2015-04-18T19:58:50Z",
     "updatedTime": "2021-08-24T16:00:15.062Z",
     "type": "planted",
     "files": [
-        "8334f4bb-48de-44e2-903b-6dedd6db6683",
-        "81778f58-8eed-41cc-a025-e653ea85b01e",
-        "0f606bef-b529-4899-854c-9b698cd08762",
-        "84fec273-b458-4be7-8feb-44204502f126",
-        "92b7367b-2ffd-4a82-ba9b-5a40e8b68714"
+        "00000000-0000-0000-0000-000000000002",
+        "10000000-0000-0000-0000-000000000003"
     ],
     "fields": [
       {
-        "id": "3a90d11a-70d0-4f62-b6d4-32006b1dcb6a"
+        "id": "00000000-0000-0000-0000-000000000004"
       }
     ],
     "providers": [
-      "JohnDeere"
+      "providerName"
     ]
   },
   ....
@@ -227,23 +224,20 @@ Gets a single operation by its id.
 
 ```json
 {
-  "id": "1aa1ce7b-8bb9-4b2d-9421-d7a662cc1bb1",
-  "apiOwnerUsername": "leaf",
-  "leafUserId": "97770d44-62c4-48c3-8187-6be80f6de3d2",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "apiOwnerUsername": "test",
+  "leafUserId": "00000000-0000-0000-0000-000000000001",
   "startTime": "2015-04-18T19:31:27Z",
   "endTime": "2015-04-18T19:58:50Z",
   "updatedTime": "2021-08-24T16:00:15.062Z",
   "type": "planted",
   "files": [
-      "8334f4bb-48de-44e2-903b-6dedd6db6683",
-      "81778f58-8eed-41cc-a025-e653ea85b01e",
-      "0f606bef-b529-4899-854c-9b698cd08762",
-      "84fec273-b458-4be7-8feb-44204502f126",
-      "92b7367b-2ffd-4a82-ba9b-5a40e8b68714"
+      "00000000-0000-0000-0000-0000000000002",
+      "0000000-0000-0000-0000-000000000003"
   ],
   "fields": [
     {
-      "id": "3a90d11a-70d0-4f62-b6d4-32006b1dcb6a"
+      "id": "10000000-0000-0000-0000-000000000004"
     }
   ],
   "providers": [
@@ -745,9 +739,9 @@ This endpoint can be used to remove points from the operation standardGeojson th
 
 ```json
 {
-    "id": "163982a0-d4e8-49a0-9572-9079e17f7c7d",
+    "id": "00000000-0000-0000-0000-000000000000",
     "message": "Sent operation to be processed.",
-    "leafFileId": "8924ca07-4168-4f15-83ec-37dd344888f6"
+    "leafFileId": "00000000-0000-0000-0000-0000000000001"
 }
 ```
 

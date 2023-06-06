@@ -28,6 +28,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [17]: https://docs.withleaf.io/docs/user_management_endpoints#providers-credentials-endpoints
 [18]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
 [19]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#summary-response-sample
+[sample_units]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-files-units
+[20]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-all-files
+[21]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-batch-upload
+[22]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-a-file
 
 ## About
 
@@ -155,16 +159,6 @@ If the parameters page and size are not set, the endpoint will return 20 results
 
 The response is a JSON with the key "operations" referring to a list of files.
 [Here's a link with sample responses][14] for "planted", "applied", "harvested" and "tillage" operation files.
-
-
-```json
-{
-    "message": "SUCCESS",
-    "operations": [OPERATIONS]
-}    
-```
-
-
 
 ### Get a file
 
@@ -433,20 +427,9 @@ Gets the file's properties and their units.
   </TabItem>
 </Tabs>
 
-Returns a JSON like the following:
+#### Response
 
-```json
-{
-    "distance": "ft",
-    "heading": "arcdeg",
-    "speed": "mi/hr",
-    "elevation": "ft",
-    "harvestMoisture": "prcnt",
-    "wetMass": "lb",
-    "yieldVolume": "bu",
-    "equipmentWidth": "ft"
-}
-```
+[Here's a link with sample responses][sample_units] for "planted", "applied", "harvested" and "tillage" operation files.
 
 These properties vary depending on the operationType, but you can expect the same,
 standardized keys, across different providers.
@@ -802,9 +785,7 @@ TASKDATA
   </TabItem>
 </Tabs>
 
-##### Response
-
-Returns a single JSON object, as shown below:
+#### Response
 
 ```json
 {
@@ -818,10 +799,10 @@ Returns a single JSON object, as shown below:
 }
 ```
 
-This id can then be queried to retrieve on [Get batch](#get-batch-upload) to get the individual file ID's. 
+This id can then be queried to retrieve on [Get batch][21] to get the individual file ID's. 
 Then you can query each of the files individually with 
-[Get a File](#get-a-file) or all of them, filtering by `batchId`, on
-[Get all Files](#get-all-files).
+[Get a File][22] or all of them, filtering by `batchId`, on
+[Get all Files][20].
 
 
 #### Batch status
@@ -863,7 +844,7 @@ The following status can be present on *statusDetails*:
 &nbsp<span class="badge badge--success">GET</span> `/batch/{batch_id}`
 
 Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
-via [Get all Files](#get-all-files).
+via [Get all Files][21].
 You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
 
 
@@ -915,9 +896,7 @@ You can also query the batch upload ID to see a list of files generated in the u
   </TabItem>
 </Tabs>
 
-##### Response:
-
-When you query a batch upload ID, you will receive a single JSON object:
+#### Response
 
 ```json 
 {
@@ -952,7 +931,7 @@ When you query a batch upload ID, you will receive a single JSON object:
 &nbsp<span class="badge badge--success">GET</span> `/batch`
 
 Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
-via [Get all Files](#get-all-files).
+via [Get all Files][20].
 You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
 
 
@@ -1005,8 +984,6 @@ You can also query the batch upload ID to see a list of files generated in the u
 </Tabs>
 
 ##### Response:
-
-When you query a batch upload ID, you will receive a JSON with list of batches:
 
 ```json 
 [
@@ -1093,9 +1070,7 @@ If a batch upload does not complete as expected, this endpoint allows you to try
   </TabItem>
 </Tabs>
 
-##### Response
-
-Returns a single JSON object, similar to the upload endpoint response:
+#### Response
 
 ```json
 {
@@ -1189,7 +1164,7 @@ It receives a single JSON object with the `ids` entry. Example:
 </Tabs>
 
 
-Returns a single JSON object:
+#### Response
 
 ```json
 {

@@ -70,6 +70,8 @@ some query parameters.
 
 These last two parameters are used exclusively for paging through results.
 
+#### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -120,41 +122,43 @@ These last two parameters are used exclusively for paging through results.
 </Tabs>
 
 #### Response
-A JSON array containing Fields.
+
 ```json
-  [
-    {
-        "id": "1a952614-3673-4d1e-b677-1f7224339ec6",
-        "leafUserId": "58800d61-91ac-4922-8e2a-f0216b9f052a",
-        "area": {
-            "value": 785229.21674535141,
-            "unit": "ha"
-        },
-        "boundaries": [
-            "279b52d5-ec6d-4459-a06a-4f47ffab0659"
-        ],
-        "providerName": "JohnDeere",
-        "providerId": 2,
-        "providerFieldId": "b96ed268-728f-489e-b928-9d3e70082be4",
-        "providerBoundaryId": "125fc49f-7e75-43fe-89f2-af976addb392",
-        "providerFieldName": "The_Field_field",
-        "organizationId": "428214",
-        "type": "ORIGINAL",
-        "createdTime": "2021-10-20T21:21:24.732030Z",
-        "updatedTime": "2021-11-03T01:34:15.154051Z",
-        "farmId": 3746117,
-        "mergedFieldId": "f97c5bbc-2dbf-4400-8d59-39eba37f8847",
-        "sources": [],
-        "legacy": true
-    }
-  ]
-  ```
+[
+  {
+    "id": "1a952614-3673-4d1e-b677-1f7224339ec6",
+    "leafUserId": "58800d61-91ac-4922-8e2a-f0216b9f052a",
+    "area": {
+      "value": 785229.21674535141,
+      "unit": "ha"
+    },
+    "boundaries": [
+      "279b52d5-ec6d-4459-a06a-4f47ffab0659"
+    ],
+    "providerName": "JohnDeere",
+    "providerId": 2,
+    "providerFieldId": "b96ed268-728f-489e-b928-9d3e70082be4",
+    "providerBoundaryId": "125fc49f-7e75-43fe-89f2-af976addb392",
+    "providerFieldName": "The_Field_field",
+    "organizationId": "428214",
+    "type": "ORIGINAL",
+    "createdTime": "2021-10-20T21:21:24.732030Z",
+    "updatedTime": "2021-11-03T01:34:15.154051Z",
+    "farmId": 3746117,
+    "mergedFieldId": "f97c5bbc-2dbf-4400-8d59-39eba37f8847",
+    "sources": [],
+    "legacy": true
+  }
+]
+```
 
 ### Get a field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`
 
 Gets a single Field by its id.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -206,6 +210,7 @@ Gets a single Field by its id.
 </Tabs>
 
 #### Response
+
 A single [Field](#field-resource) as a JSON object.
 
 ### Create a field
@@ -220,12 +225,12 @@ The geometry represents the boundaries of the Field being created as a GeoJSON g
 Consider that you can also set the `id` and `name` properties (both of them optional) in the request body. If no `id` is provided
 an UUID will be generated and this property **can not** be updated.
 
-Request body example:
+#### Request body
 
 ```json
 {
-  "id": "string", // optional
-  "name": "string", // optional
+  "id": "idTest", // optional
+  "name": "nameTest", // optional
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [
@@ -242,7 +247,7 @@ Request body example:
 }
 ```
 
-You can try some requests on the create fields API using the examples below.
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -310,26 +315,28 @@ You can try some requests on the create fields API using the examples below.
 
 #### Response
 
-You can expect a response with a JSON Object containing the following properties.
-
 ```json
 {
-    "id": "string",
-    "leafUserId": "string",
-    "area": {
-        "value": float,
-        "unit": "ha"
-    },
-    "boundaries": [
-        "UUID"
-    ],
-    "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [...]
-    },
-    "type": "string",
-    "createdTime": "timestamp",
-    "updatedTime": "timestamp"
+  "id": "2818c0fc-91d6-4ced-8bc6-4f53cff6afd4",
+  "leafUserId": "95eb7d79-b93d-4fc2-877a-3f2b366f8beb",
+  "area": {
+    "value": float,
+    "unit": "ha"
+  },
+  "boundaries": [
+    "d0245010-157d-4988-96a2-5f3637098475"
+  ],
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [...]
+  },
+  "type": "ORIGINAL",
+  "name": "nameTest",
+  "createdTime": "2023-06-07T19:48:51.017280Z",
+  "updatedTime": "2023-06-07T19:48:51.017280Z",
+  "files": [
+    "2762a5f2-ed53-4999-afac-f2d4b136dc1f"
+  ]
 }
 ```
 
@@ -340,7 +347,7 @@ You can expect a response with a JSON Object containing the following properties
 Update the Field by `"id"` for the user `"leafUserId"`. The request body accepts updatable field properties like `"name"` to update the field name, `"farmId"` to update the related Farm of the Field and `"geometry"`, which represents the boundaries of the
 Field as a GeoJSON geometry (it must be a `"MultiPolygon"`).
 
-Request body example:
+#### Request body
 
 ```json
 {
@@ -569,7 +576,7 @@ They are:
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (default is 20, max is 100)
 
-#### Request
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -625,21 +632,22 @@ values={[
 ```json
 [
   {
-    "crops": [
-      "string"
-    ],
-    "endTime": "2022-05-11T13:11:57.994Z",
-    "id": "string",
-    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "operationType": "other",
+    "id": "abbac24d-7f13-414a-989a-ee5dc9de624b",
+    "operationType": "harvested",
     "origin": "automerged",
-    "provider": "Other",
-    "providerFileId": "string",
-    "startTime": "2022-05-11T13:11:57.994Z",
+    "startTime": "2017-10-27T08:59:58Z",
+    "endTime": "2017-10-27T09:40:33Z",
+    "crops": [
+      "corn"
+    ],
     "varieties": [
-      "string"
-    ]
-  }
+      "Corn"
+    ],
+    "providerFileId": "cacde0d5-55b9-4bff-bf2c-05ec1def1c95",
+    "provider": "Leaf",
+    "leafUserId": "dcb6fd16-b6f4-40bc-805e-659c7f7350d6"
+  },
+  ....
 ]
 ```
 
@@ -731,6 +739,8 @@ Gets a single Operation File of a field by its id.
 
 Gets a single Operation File of a field by its id.
 
+#### Request examples
+
 <Tabs
 defaultValue="sh"
 values={[
@@ -781,24 +791,23 @@ values={[
 </Tabs>
 
 #### Response
-A single Operation File.
 
 ```json
 {
-  "crops": [
-    "string"
-  ],
-  "endTime": "2022-05-11T13:13:01.548Z",
-  "id": "string",
-  "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "operationType": "other",
+  "id": "75127023-190a-4579-b76c-ccbcfcf00d3c",
+  "operationType": "harvested",
   "origin": "automerged",
-  "provider": "Other",
-  "providerFileId": "string",
-  "startTime": "2022-05-11T13:13:01.548Z",
+  "startTime": "2017-10-27T08:59:58Z",
+  "endTime": "2017-10-27T09:40:33Z",
+  "crops": [
+    "corn"
+  ],
   "varieties": [
-    "string"
-  ]
+    "Corn"
+  ],
+  "providerFileId": "a3602817-57e4-4056-bdef-4fb687ba4c2e",
+  "provider": "Leaf",
+  "leafUserId": "01a17a22-e6fa-4d83-b343-ea23eddbd936"
 }
 ```
 
@@ -808,7 +817,7 @@ A single Operation File.
 
 Use [this endpoint](#get-fields-by-geometry) instead.
 
-Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
+Gets a list of fields that intersect with the GeoJSON geometry (`"type"` property must be a `"MultiPolygon"`) sent in
 the request body.
 
 <Tabs
@@ -908,7 +917,7 @@ A JSON list of Fields.
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`
 
-Gets a list of fields that intersect with the GeoJSON MultiPolygon sent in
+Gets a list of fields that intersect with the GeoJSON geometry (`"type"` property must be a `"MultiPolygon"`) sent in
 the request body. The minimum intersection percentage is given by 
 `intersectionThreshold` and can range from 0.01% to 100%, its default value is `0.01`.
 
@@ -928,13 +937,37 @@ Here we have a sample for a field with 100 area unit and a geometry with 10 area
 So, in this case, if the `intersectionThreshold` were 3, then the condition would be satisfied and the field would be returned, but if the value was greater than 50, then it would not satisfy the condition, as 50% is the highest intersection value:
 
 | intersectionThreshold (%) | satisfied |
-| - | - |
-| 3 | ✅ |
-| 5 | ✅ |
-| 37 | ✅ |
-| 50 | ✅ |
-| 75 | ❌ |
-| 100 | ❌ |
+|---------------------------|-----------|
+| 3                         | ✅         |
+| 5                         | ✅         |
+| 37                        | ✅         |
+| 50                        | ✅         |
+| 75                        | ❌         |
+| 100                       | ❌         |
+
+
+#### Request body
+
+```json
+{
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [-93.48821327980518, 41.77137549568163],
+          [-93.48817333680519, 41.77143534378164],
+          [-93.48821327390516, 41.76068857977987],
+          [-93.48821327980518, 41.77137549568163]
+        ]
+      ]
+    ]
+  },
+  "intersectionThreshold": 3
+}
+```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -954,12 +987,21 @@ So, in this case, if the `intersectionThreshold` were 3, then the condition woul
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
-    geometry: {
-      type: "MultiPolygon",
-      coordinates: [...]
-    },
-    'intersectionThreshold': 25.7
-  }
+                "geometry": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                  [
+                    [
+                      [-93.48821327980518, 41.77137549568163],
+                      [-93.48817333680519, 41.77143534378164],
+                      [-93.48821327390516, 41.76068857977987],
+                      [-93.48821327980518, 41.77137549568163]
+                    ]
+                  ]
+                ]
+              },
+              "intersectionThreshold": 3
+            }
 
   axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
@@ -979,12 +1021,21 @@ So, in this case, if the `intersectionThreshold` were 3, then the condition woul
   headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
 
   data = {
-    'geometry': {
-      'type': "MultiPolygon",
-      'coordinates': [...]
-    },
-    'intersectionThreshold': 25.7
-  }
+          "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [-93.48821327980518, 41.77137549568163],
+                [-93.48817333680519, 41.77143534378164],
+                [-93.48821327390516, 41.76068857977987],
+                [-93.48821327980518, 41.77137549568163]
+              ]
+            ]
+          ]
+        },
+        "intersectionThreshold": 3
+      }
 
   response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
@@ -996,7 +1047,7 @@ So, in this case, if the `intersectionThreshold` were 3, then the condition woul
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] }, "intersectionThreshold": 25.7 }'
+      -d '{ "geometry": { "type": "MultiPolygon", "coordinates": [[[[-93.48821327980518, 41.77137549568163], [-93.48817333680519, 41.77143534378164], [-93.48821327390516, 41.76068857977987], [-93.48821327980518, 41.77137549568163]]]]}, "intersectionThreshold": 3 }'
       'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/intersects'
   ```
 
@@ -1004,39 +1055,66 @@ So, in this case, if the `intersectionThreshold` were 3, then the condition woul
 </Tabs>
 
 #### Response
-A JSON list of Fields.
+
 ```json
-  [
+[
+  {
+    "id": "7740ce52-ae37-45e8-b6ed-5d55eea1dc09",
+    "leafUserId": "04526587-21eb-42a0-8de5-59964340db4d",
+    "area": {
+      "value": 16.71391976284981,
+      "unit": "ha"
+    },
+    "boundaries": [
+      "f748db67-1885-4936-bc93-a3fbaf249957"
+    ],
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [...]
+    },
+    "providerName": "ClimateFieldView",
+    "providerId": 4,
+    "providerFieldId": "62cf2326-8525-4c40-9e37-23fd1c76eeba",
+    "providerBoundaryId": "bac50a8c-a3bc-4a90-9c4b-df7ea5f5d28b",
+    "providerFieldName": "behav_test_field",
+    "type": "ORIGINAL",
+    "createdTime": "2023-06-06T09:35:07.676376Z",
+    "updatedTime": "2023-06-06T09:35:07.965139Z",
+    "sources": []
+  },
+  {
     {
-      "id": "id",
-      "leafUserId": "uuid",
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
-          [
-            [
-              [-89.84388470649719,39.71943436012731],
-              [-89.84392762184143,39.72439389620628],
-              [-89.83936786651611,39.725392361998416],
-              [-89.83928203582764,39.71951688444436],
-              [-89.84388470649719,39.71943436012731]
-            ]
-          ]
-        ]
-      },
-      "type": "MERGED",
-      "sources": []
-    }
-  ]
-  ```
+    "id": "8bfe22fa-af4a-41ad-a167-fa792c3faa5f",
+    "leafUserId": "04526587-21eb-42a0-8de5-59964340db4d",
+    "area": {
+      "value": 0.19710594050867244,
+      "unit": "ha"
+    },
+    "boundaries": [
+      "c329f54f-f979-47f1-96f6-bcf95a771be8"
+    ],
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [...]
+    },
+    "type": "ORIGINAL",
+    "name": "nameTest",
+    "createdTime": "2023-06-07T13:55:04.028129Z",
+    "updatedTime": "2023-06-07T14:08:13.101100Z",
+    "sources": []
+  },
+  ....
+]
+```
 
 ### Get intersection of fields
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
 
-Gets a GeoJSON MultiPolygon corresponding to the intersection of the Fields
-specified by the given id's. Such Field id's goes in a list, in the request
-body.
+Gets a GeoJSON geometry (`"type"` property must be a `"MultiPolygon"`) corresponding to the intersection of the Fields
+specified by the given id's. Such Field id's goes in a list, in the request body.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1104,23 +1182,23 @@ body.
 </Tabs>
 
 #### Response
-A JSON in the format of a GeoJSON geometry.
-  ```json
-  {
-      "type": "MultiPolygon",
-      "coordinates": [
-          [
-              [
-                  [-89.84388470649719,39.71943436012731],
-                  [-89.84392762184143,39.72439389620628],
-                  [-89.83936786651611,39.725392361998416],
-                  [-89.83928203582764,39.71951688444436],
-                  [-89.84388470649719,39.71943436012731]
-              ]
-          ]
+
+```json
+{
+  "type": "MultiPolygon",
+  "coordinates": [
+    [
+      [
+        [-89.84388470649719,39.71943436012731],
+        [-89.84392762184143,39.72439389620628],
+        [-89.83936786651611,39.725392361998416],
+        [-89.83928203582764,39.71951688444436],
+        [-89.84388470649719,39.71943436012731]
       ]
-  }
-  ```
+    ]
+  ]
+}
+```
 
 
 
@@ -1237,11 +1315,14 @@ Fields created by a provider cannot be deleted on Leaf side.
 
 
 ## Boundaries
+
 ### Get all boundaries from field
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/boundaries`
 
 Gets a list of boundaries from a field.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1345,6 +1426,8 @@ A list of [Boundary](#boundary-resource) as a JSON object.
 
 Gets a single Boundary from a field by its id.
 
+#### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -1396,6 +1479,8 @@ Gets a single Boundary from a field by its id.
 
 #### Response
 A single [Boundary](#boundary-resource) as a JSON object.
+
+#### Request examples
 
 ### Get active boundary from field
 
@@ -1461,7 +1546,7 @@ A single [Boundary](#boundary-resource) as a JSON object.
 
 Updates the active boundary of field `fieldId`. The previous active boundary is not deleted, but set as inactive.
 
-Request body example:
+#### Request body
 
 ```json
 {
@@ -1480,6 +1565,8 @@ Request body example:
   }
 }
 ```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1546,10 +1633,37 @@ Request body example:
 </Tabs>
 
 #### Response
-A [Field](#field-resource) as a JSON object.
+
+```json
+{
+  "id": "g7941ef8-iddf-42c1-b43c-d36b0df369e8",
+  "status": "ACTIVE",
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [-93.48821327980518, 41.77137549568163],
+          [-93.48817333680519, 41.77143534378164],
+          [-93.48821327390516, 41.76068857977987],
+          [-93.48821327980518, 41.77137549568163]
+        ]
+      ]
+    ]
+  },
+  "area": {
+    "value": 0.19710594050867244,
+    "unit": "ha"
+  },
+  "validity": "VALID",
+  "createdTime": "2023-06-07T19:48:51.017280Z",
+  "updatedTime": "2023-06-07T19:48:51.017280Z"
+}
+```
 
 
 ## Farms
+
 ### Get all farms
 
 &nbsp<span class="badge badge--success">GET</span> `/farms`
@@ -1563,6 +1677,8 @@ Gets a paged list of all farms. It is possible to pass some query parameters.
 - `size`, an integer specifying the size of the page (defaults to 20)
 
 The parameters are used exclusively for paging through results.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1614,7 +1730,8 @@ The parameters are used exclusively for paging through results.
 </Tabs>
 
 #### Response
-A JSON array containing farms.
+
+
 ```json
 [
   {
@@ -1622,11 +1739,17 @@ A JSON array containing farms.
     "name": "name",
     "providerId": 2,
     "providerName": "JohnDeere",
-    "providerFarmId": "00000000-0000-0000-0000-000000000000",
-    "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "fieldIds": ["00000000-0000-0000-0000-000000000000"],
-    "growerId": 12345
-  }
+    "providerFarmId": "2f4a03ed-ac81-4c6d-810d-1db6b47baec2",
+    "providerFarmName": "farmName",
+    "leafUserId": "ace92e9c-2e83-4d85-ab34-1f76a480abc8",
+    "fieldIds": [
+      "6595418e-11d2-4260-9e6b-e8c452fb8375"
+    ],
+    "growerId": 12345,
+    "createdTime": "2023-06-06T09:34:11.759672Z",
+    "updatedTime": "2023-06-07T09:15:42.855759Z"
+  },
+  ....
 ]
 ```
 
@@ -1635,6 +1758,8 @@ A JSON array containing farms.
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/farms/{id}`
 
 Gets a single farm by its `id` from the user `leafUserId`.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1686,18 +1811,8 @@ Gets a single farm by its `id` from the user `leafUserId`.
 </Tabs>
 
 #### Response
+
 A single [Farm](#farm-resource) as a JSON object.
-```json
-  {
-    "id": 1551010,
-    "name": "name",
-    "providerName": "JohnDeere",
-    "providerFarmId": "00000000-0000-0000-0000-000000000000",
-    "leafUserId": "00000000-0000-0000-0000-000000000000",
-    "fieldIds": ["00000000-0000-0000-0000-000000000000"],
-    "growerId": 123
-  }
-  ```
 
 ### Create a farm
 
@@ -1706,13 +1821,16 @@ A single [Farm](#farm-resource) as a JSON object.
 Creates a farm for the user `leafUserId`. It's possible to pass both the `farmName` and the `growerId` on the body of 
 the request.
 
-Request body example:
+#### Request body
+
 ```json
 {
   "name": "Farm 01",
   "growerId": 123
 }
 ```
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -1773,6 +1891,7 @@ values={[
 </Tabs>
 
 #### Response
+
 A single [Farm](#farm-resource) as a JSON object.
 
 ### Update a farm
@@ -1782,13 +1901,16 @@ A single [Farm](#farm-resource) as a JSON object.
 Updates the farm with id `id` for the user `leafUserId`. It's possible to pass both the `farmName` and the `growerId`
 on the body of the request.
 
-Request body example:
+##### Request body
+
 ```json
 {
   "name": "Updated Farm Name",
   "growerId": 123
 }
 ```
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -1852,6 +1974,7 @@ values={[
 A single [Farm](#farm-resource) as a JSON object.
 
 ## Grower
+
 ### Get all growers
 
 &nbsp<span class="badge badge--success">GET</span> `/growers`
@@ -1863,6 +1986,8 @@ through results.
 - `leafUserId`, only matches Growers from this Leaf User (UUID)
 - `page`, an integer specifying the page being fetched
 - `size`, an integer specifying the size of the page (defaults to 20)
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1914,18 +2039,19 @@ through results.
 </Tabs>
 
 #### Response
-A JSON array containing growers.
+
 ```json
 [
   {
-    "id": 2345,
-    "leafUserId": "UUID",
-    "providerName": "str",
-    "providerOrganizationId": "str",
-    "providerCompanyId": "str",
-    "providerUserId": "str",
-    "providerGrowerId": "str",
-    "farmIds": [4534]
+    "id": 873300016,
+    "name": "1Grower",
+    "leafUserId": "1d3ecb0f-bf3d-42db-aae6-8c45c045d28c",
+    "providerName": "JohnDeere",
+    "providerId": 23,
+    "providerGrowerId": "1Grower",
+    "farmIds": [],
+    "createdTime": "2023-06-06T03:31:39.966630Z",
+    "updatedTime": "2023-06-07T20:01:14.814346Z"
   },
   ....
 ]
@@ -1936,6 +2062,8 @@ A JSON array containing growers.
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`
 
 Gets a single grower by its `id` from the user `leafUserId`.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1988,21 +2116,25 @@ Gets a single grower by its `id` from the user `leafUserId`.
 
 
 #### Response
-A single [Grower](#grower-resource) as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
-attribute `name` comes directly from the Client's name for growers with John Deere as provider.
+
 ```json
 {
-  "id": 2345,
-  "name": "str",
-  "leafUserId": "UUID",
-  "providerName": "str",
-  "providerOrganizationId": "str",
-  "providerCompanyId": "str",
-  "providerUserId": "str",
-  "providerGrowerId": "str",
-  "farmIds": [4534]
+  "id": 873300016,
+  "name": "1Grower",
+  "leafUserId": "1d3ecb0f-bf3d-42db-aae6-8c45c045d28c",
+  "providerName": "JohnDeere",
+  "providerId": 23,
+  "providerGrowerId": "1Grower",
+  "farmIds": [],
+  "createdTime": "2023-06-06T03:31:39.966630Z",
+  "updatedTime": "2023-06-07T20:01:14.814346Z"
 }
 ```
+:::tip Note
+In our system, Growers are equivalent to John Deere Client. That been said, the 
+attribute `name` comes directly from the Client's name for growers with John Deere as provider.
+:::
+
 
 ### Create a grower
 
@@ -2010,12 +2142,15 @@ attribute `name` comes directly from the Client's name for growers with John Dee
 
 Creates a grower for the user `leafUserId`. It's possible to pass `name` on the body of the request.
 
-Request body example:
+#### Request body
+
 ```json
 {
   "name": "Example Grower Name"
 }
 ```
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -2076,6 +2211,7 @@ values={[
 </Tabs>
 
 #### Response
+
 A single [Grower](#grower-resource) as a JSON object.
 
 ### Update a grower
@@ -2084,12 +2220,15 @@ A single [Grower](#grower-resource) as a JSON object.
 
 Updates the grower with id `id` for the user `leafUserId`. It's possible to pass only the `name` on the body of the request.
 
-Request body example:
+#### Request body
+
 ```json
 {
   "name": "Updated Grower Name"
 }
 ```
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -2150,8 +2289,8 @@ values={[
 </Tabs>
 
 #### Response
-A single [Grower](#grower-resource) as a JSON object.
 
+A single [Grower](#grower-resource) as a JSON object.
 
 ## REST Resources
 
@@ -2194,14 +2333,14 @@ Below are the return possibilities when passing different geometries:
 ```json
 {
   "id": "UUID",
-  "providerName": "str",
-  "providerFieldName": "str",
-  "providerFieldId": "str",
-  "providerFieldName": "str",
+  "providerName": "string",
+  "providerFieldName": "string",
+  "providerFieldId": "string",
+  "providerFieldName": "string",
   "providerBoundaryId": "UUID",
   "type": "ORIGINAL",
   "leafUserId": "UUID",
-  "organizationId": "str",
+  "organizationId": "string",
   "mergedFieldId": ["UUID"],
   "files": ["UUID"],
   "boundaries": ["UUID"],
@@ -2219,9 +2358,11 @@ Below are the return possibilities when passing different geometries:
     ]
   },
   "area": {
-    "value": double,
+    "value": float,
     "unit": "ha"
-  }
+  },
+  "createdTime": "ISO date-time",
+  "updatedTime": "ISO date-time",
 }
 ```
 
@@ -2308,9 +2449,9 @@ Each boundary has a `status` and `providerStatus`.
   "operationType": "harvested|planted|applied",
   "startTime": "ISO date-time",
   "endTime": "ISO date-time",
-  "crops": ["str"],
-  "varieties": ["str"],
-  "providerFileId": "str",
+  "crops": ["string"],
+  "varieties": ["string"],
+  "providerFileId": "string",
   "provider": "Trimble",
   "origin": "provider|merged|automerged|uploaded",
   "leafUserId": "UUID"
@@ -2328,14 +2469,19 @@ Each boundary has a `status` and `providerStatus`.
 
 ```json
 {
-  "id": "long",
-  "name": "str",
-  "providerName": "str",
-  "providerFarmName": "str",
+  "id": int,
+  "name": "string",
+  "providerId": int,
+  "providerName": "string",
   "providerFarmId": "UUID",
+  "providerFarmName": "farmName",
   "leafUserId": "UUID",
-  "growerId": "long",
-  "fieldIds": ["UUID"]
+  "fieldIds": [
+    "UUID"
+  ],
+  "growerId": int,
+  "createdTime": "2023-06-06T09:34:11.759672Z",
+  "updatedTime": "2023-06-07T09:15:42.855759Z"
 }
 ```
 
@@ -2351,14 +2497,17 @@ Each boundary has a `status` and `providerStatus`.
 
 ```json
 {
-  "id": 2345,
+  "id": int,
+  "name": "string",
   "leafUserId": "UUID",
-  "providerName": "str",
-  "providerOrganizationId": "str",
-  "providerCompanyId": "str",
-  "providerUserId": "str",
-  "providerGrowerId": "str",
-  "farmIds": [4534]
+  "providerName": "string",
+  "providerId": int,
+  "providerGrowerId": "string",
+  "farmIds": [
+    "UUID"
+  ],
+  "createdTime": "ISO date-time",
+  "updatedTime": "ISO date-time"
 }
 ```
 *If there is a name available for the grower so the `name` property will be returned as well.*

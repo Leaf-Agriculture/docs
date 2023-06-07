@@ -14,10 +14,27 @@ module.exports = {
         'setup_information',
         {
           type: 'category',
+          label: 'Configurations',
+          items: ['configurations_overview', 'configurations_endpoints']
+        },
+        {
+          type: 'category',
+          label: 'Alerts',
+          items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
+        },
+        {
+          type: 'category',
           label: 'Leaf User',
           items: [
             'user_management_overview',
             'user_management_endpoints',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Provider Authentication',
+          items: [
+            'provider-authentication-overview',
             {
               type: 'category',
               label: 'Providers credentials',
@@ -35,16 +52,6 @@ module.exports = {
               ]
             }
           ]
-        },
-        {
-          type: 'category',
-          label: 'Configurations',
-          items: ['configurations_overview', 'configurations_endpoints']
-        },
-        {
-          type: 'category',
-          label: 'Alerts',
-          items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
         },
         {
           type: 'category',

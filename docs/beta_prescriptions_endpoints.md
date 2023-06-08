@@ -25,7 +25,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://api.withleaf.io/services/beta/prescriptions/api
+https://api.withleaf.io/services/beta/prescription/api
 ```
 
 See below the REST resources and their endpoints available in this service.

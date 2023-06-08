@@ -58,17 +58,17 @@ This is an example of a summary for a "planted" operation
 
   ```json
 {
-    "id": "00000000-0000-0000-0000-000000000000",
+    "id": "69811426-ce0a-4280-a2b5-f3ca145e6fcb",
     "provider": "providerName",
     "fields": [
-      "00000000-0000-0000-0000-000000000001"
+      "97f19b7c-45bd-40c5-b2c5-efd1d3764ab3"
     ],
     "fileType": "PLANTED",
     "sizeInBytes": 676403,
     "originalFile": "url",
     "rawGeojson": "url",
     "standardGeojson": "url",
-    "leafUserId": "00000000-0000-0000-0000-000000000002",
+    "leafUserId": "f7f8062d-00db-4d76-9eff-51f43b82db56",
     "apiOwnerUsername": "test",
     "summary": {
       "type": "Feature",
@@ -186,17 +186,17 @@ This is an example of a summary for an "applied" operation
 
   ```json
 {
-      "id": "00000000-0000-0000-0000-000000000000",
+      "id": "b4d1832c-c479-4dbd-bc28-1ba792b8ca33",
       "provider": "providerName",
       "fields": [
-        "00000000-0000-0000-0000-000000000001"
+        "ebdb032c-b3a9-4116-9837-602abc23d4a0"
       ],
       "fileType": "APPLIED",
       "sizeInBytes": 187351,
       "originalFile": "url",
       "rawGeojson": "url",
       "standardGeojson": "url",
-      "leafUserId": "00000000-0000-0000-0000-000000000002",
+      "leafUserId": "e0088b35-4dec-49ea-9c52-d4a2b25d2932",
       "apiOwnerUsername": "test",
       "summary": {
         "type": "Feature",
@@ -311,17 +311,17 @@ This is an example of a summary for a "harvested" operation
 
   ```json
 {
-      "id": "00000000-0000-0000-0000-000000000000",
+      "id": "7b525b72-a8e7-4d34-80bb-9ea2dde87a09",
       "provider": "providerName",
       "fields": [
-        "00000000-0000-0000-0000-000000000001"
+        "696b5df6-e401-4d13-bafe-3d2689723254"
       ],
       "fileType": "HARVESTED",
       "sizeInBytes": 1244007,
       "originalFile": "url",
       "rawGeojson": "url",
       "standardGeojson": "url",
-      "leafUserId": "00000000-0000-0000-0000-000000000002",
+      "leafUserId": "286eeb50-8e85-4e33-9f2d-1b9dcf0e56d7",
       "apiOwnerUsername": "test",
       "summary": {
         "type": "Feature",
@@ -503,16 +503,16 @@ This is an example of a summary for a "tillage" operation
 
    ```json
 {
-    "id": "00000000-0000-0000-0000-000000000000",
+    "id": "0d702772-3ff0-4031-a151-d111f2fb3b9c",
     "provider": "providerName",
     "fields": [
-      "00000000-0000-0000-0000-000000000001"
+      "d9b35409-6014-446b-a552-07274f98a9a2"
     ],
     "fileFormat": "SHAPEFILE",
     "originalFile": "url",
     "rawGeojson": "url",
     "standardGeojson": "url",
-    "leafUserId": "00000000-0000-0000-0000-000000000002",
+    "leafUserId": "577c611d-e526-4af5-bff7-263c58e6d1aa",
     "apiOwnerUsername": "test",
     "summary": {
       "type": "Feature",
@@ -885,7 +885,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | crop                  | *        | string                      | -                    | Crop type (normalized)                                                       |
   | area                  | *        | float                       | ft² or m²            | Area represented by point                                                    |
   | heading               | *        | float                       | degrees              | Heading of machine at point                                                  |
-  | distance              | *        | float                       | ft or m              | Distance travelled since previous point                                      |
+  | distance              | *        | float                       | ft or m              | Distance traveled since previous point                                       |
   | elevation             | *        | float                       | ft or m              | Distance to sea level                                                        |
   | operationType         | *        | string                      | -                    | string "planted"                                                             |
   | originalOperationType | **       | string                      | -                    | string                                                                       |
@@ -910,7 +910,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | key                   | presence | type                        | example units    | description                                                                  |
   |-----------------------|----------|-----------------------------|------------------|------------------------------------------------------------------------------|
   | coords                | *        | Point (x,y)                 | -                | Point (x,y)                                                                  |
-  | distance              | *        | float                       | ft or m          | Distance travelled since previous point                                      |
+  | distance              | *        | float                       | ft or m          | Distance traveled since previous point                                       |
   | heading               | *        | float                       | -                | Heading of machine at point                                                  |
   | elevation             | *        | float                       | m                | Distance to sea level                                                        |
   | area                  | *        | float                       | ft² or m²        | Area represented by point                                                    |
@@ -937,13 +937,13 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | timestamp             | *        | string                      | -              | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
   | crop                  | *        | string                      | -              | Crop type (normalized)                                                       |
   | area                  | *        | float                       | ft² or m²      | Area represented by point                                                    |
-  | distance              | *        | float                       | ft or m        | Distance travelled since previous point                                      |
+  | distance              | *        | float                       | ft or m        | Distance traveled since previous point                                       |
   | elevation             | *        | float                       | ft or m        | Distance to sea level                                                        |
   | operationType         | *        | string                      | -              | string "harvested"                                                           |
   | originalOperationType | **       | string                      | -              | string                                                                       |
   | equipmentWidth        | *        | float                       | ft or m        | Width of implement                                                           |
   | recordingStatus       | *        | Boolean                     | -              | Recording status of machine                                                  |
-  | harvestMoisture       | *        | float                       | %              | float                                                                        | % moisture of harvested crop |
+  | harvestMoisture       | *        | float                       | %              | float                                                                        |
   | wetMass               | *        | float                       | lb or kg       | wet mass harvested in that point                                             |
   | wetMassPerArea        | *        | float                       | lb/ac or kg/ha | wet mass harvested in that point divided by area                             |
   | wetVolume             | *$       | float                       | bu or L        | wet volume harvested in that point                                           |
@@ -969,7 +969,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | key                   | presence | type                        | example units    | description                                                                  |
   |-----------------------|----------|-----------------------------|------------------|------------------------------------------------------------------------------|
   | coords                | *        | Point (x,y)                 | -                | Point (x,y)                                                                  |
-  | distance              | *        | float                       | ft or m          | Distance travelled since previous point                                      |
+  | distance              | *        | float                       | ft or m          | Distance traveled since previous point                                       |
   | heading               | *        | float                       | -                | Heading of machine at point                                                  |
   | elevation             | *        | float                       | m                | Distance to sea level                                                        |
   | area                  | *        | float                       | ft² or m²        | Area represented by point                                                    |

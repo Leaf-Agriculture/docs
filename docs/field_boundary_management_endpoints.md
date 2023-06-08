@@ -1901,7 +1901,7 @@ A single [Farm](#farm-resource) as a JSON object.
 Updates the farm with id `id` for the user `leafUserId`. It's possible to pass both the `farmName` and the `growerId`
 on the body of the request.
 
-##### Request body
+#### Request body
 
 ```json
 {
@@ -2040,6 +2040,8 @@ through results.
 
 #### Response
 
+A list of [Grower](#grower-resource) as a JSON object.
+
 ```json
 [
   {
@@ -2116,6 +2118,8 @@ Gets a single grower by its `id` from the user `leafUserId`.
 
 
 #### Response
+
+A single [Grower](#grower-resource) as a JSON object.
 
 ```json
 {
@@ -2336,7 +2340,6 @@ Below are the return possibilities when passing different geometries:
   "providerName": "string",
   "providerFieldName": "string",
   "providerFieldId": "string",
-  "providerFieldName": "string",
   "providerBoundaryId": "UUID",
   "type": "ORIGINAL",
   "leafUserId": "UUID",
@@ -2366,14 +2369,14 @@ Below are the return possibilities when passing different geometries:
 }
 ```
 
-| Description | Endpoints
-| - | - |
-[Get all fields](#get-all-fields) | <span class="badge badge--success">GET</span> `/fields`
-[Get a field](#get-a-field) | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`
-[Create a field](#create-a-field) | <span class="badge badge--warning">POST</span> `/users/{id}/fields`
-[Get fields by geometry](#get-fields-by-geometry) | <span class="badge badge--warning">POST</span> `/fields/query/intersects`
-[Get intersection of fields](#get-intersection-of-fields) | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`
-[Delete a field](#delete-a-field) | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`
+| Description                                               | Endpoints                                                                     |
+|-----------------------------------------------------------|-------------------------------------------------------------------------------|
+| [Get all fields](#get-all-fields)                         | <span class="badge badge--success">GET</span> `/fields`                       |
+| [Get a field](#get-a-field)                               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`       |
+| [Create a field](#create-a-field)                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`           |
+| [Get fields by geometry](#get-fields-by-geometry)         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`     |
+| [Get intersection of fields](#get-intersection-of-fields) | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect` |
+| [Delete a field](#delete-a-field)                         | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`     |
 
 ### Boundary Resource
 
@@ -2434,12 +2437,12 @@ Each boundary has a `status` and `providerStatus`.
 }
 ```
 
-| Description | Endpoints
-| - | - |
-[Get all boundaries from field](#get-all-boundaries-from-field) | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`
-[Get a boundary from field](#get-a-boundary-from-field) | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`
-[Get active boundary from field](#get-active-boundary-from-field) | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`
-[Update active boundary from field](#update-active-boundary-from-field) | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`
+| Description                                                             | Endpoints                                                                                                   |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| [Get all boundaries from field](#get-all-boundaries-from-field)         | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`              |
+| [Get a boundary from field](#get-a-boundary-from-field)                 | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}` |
+| [Get active boundary from field](#get-active-boundary-from-field)       | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
+| [Update active boundary from field](#update-active-boundary-from-field) | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                |
 
 ### Operation Resource
 
@@ -2458,12 +2461,12 @@ Each boundary has a `status` and `providerStatus`.
 }
 ```
 
-| Description | Endpoints
-| - | - |
-[Get all operations of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`
-[Get all operations of a field](#get-all-operation-files-of-a-field) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`
-[Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`
-[Get an operation of a field](#get-an-operation-of-a-field) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}`
+| Description                                                                                  | Endpoints                                                                                                      |
+|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| [Get all operations of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`                |
+| [Get all operations of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`          |
+| [Get an operation of a field (deprecated)](#get-an-operation-of-a-field-deprecated)          | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`       |
+| [Get an operation of a field](#get-an-operation-of-a-field)                                  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}` |
 
 ### Farm Resource
 
@@ -2485,13 +2488,12 @@ Each boundary has a `status` and `providerStatus`.
 }
 ```
 
-| Description | Endpoints
-| - | - |
-[Get all farms](#get-all-farms) | <span class="badge badge--success">GET</span> `/farms`
-[Get a farm](#get-a-farm) | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`
-[Create a farm](#create-a-farm) | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`
-[Update a farm](#update-a-farm) | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`
-
+| Description                     | Endpoints                                                                      |
+|---------------------------------|--------------------------------------------------------------------------------|
+| [Get all farms](#get-all-farms) | <span class="badge badge--success">GET</span> `/farms`                         |
+| [Get a farm](#get-a-farm)       | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`         |
+| [Create a farm](#create-a-farm) | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`     |
+| [Update a farm](#update-a-farm) | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}` |
 
 ### Grower Resource
 
@@ -2512,13 +2514,12 @@ Each boundary has a `status` and `providerStatus`.
 ```
 *If there is a name available for the grower so the `name` property will be returned as well.*
 
-| Description | Endpoints
-| - | - |
-[Get all growers](#get-all-growers) | <span class="badge badge--success">GET</span> `/growers`
-[Get a grower](#get-a-grower) | <span class="badge badge--success">GET</span> `/growers/{id}`
-[Create a grower](#create-a-grower) | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
-[Update a grower](#update-a-grower) | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
-
+| Description                         | Endpoints                                                                        |
+|-------------------------------------|----------------------------------------------------------------------------------|
+| [Get all growers](#get-all-growers) | <span class="badge badge--success">GET</span> `/growers`                         |
+| [Get a grower](#get-a-grower)       | <span class="badge badge--success">GET</span> `/growers/{id}`                    |
+| [Create a grower](#create-a-grower) | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`     |
+| [Update a grower](#update-a-grower) | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}` |
 
 ## Troubleshooting
 

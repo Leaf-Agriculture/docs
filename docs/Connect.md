@@ -67,7 +67,7 @@ This service has the following endpoints available:
 | [Get LeafUser permissions][5]                    | <span class="badge badge--success">GET</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/users-permissions/{leafUserId}`          |
 | [Create a LeafUser permissions][6]               | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{leafUserId}`             |
 | [Update LeafUser permissions][7]                 | <span class="badge badge--warning">PATCH</span> `/usermanagement/api/api-owners/sharing-relation/receiver/{ReceiverApiOwner}/users-permissions/{leafUserId}/{RESOURCE}` |
-| [Invalidate tokens before now][13]               | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`              |
+| [Invalidate receiver's tokens][13]               | <span class="badge badge--warning">POST</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{TargetApiOwner}/invalidateTokensBeforeNow`              |
 | [Delete LeafUser sharing permissions][8]         | <span class="badge badge--danger">DELETE</span> `/usermanagement/api/api-owners/sharing-relation/{RelationRole}/{ReceiverApiOwner}/users-permissions/{leafUserId}`      |
 
 ### Get API Owner sharing relation

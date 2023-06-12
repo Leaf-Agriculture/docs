@@ -204,22 +204,25 @@ values={[
         }
       }
     ],
-    "originalOperationType": "CropProtection",
+    "originalOperationType": "CropOriginal",
     "machinery": [
       {
-        "name": "Agco Rogator RG1300",
+        "name": "MachineName",
         "type": "machine",
-        "serialNumber": "10276680",
-        "brand": "Agco"
+        "serialNumber": "10271080",
+        "brand": "Machine"
       },
       {
-        "name": "Sprayer",
+        "name": "ImplementName",
         "type": "implement",
         "brand": "unknown"
       }
     ],
     "originalOperationData": {
-      "originalOperationType": "CropProtection"
+      "originalOperationFarm": "Farm Green",
+      "originalOperationField": "Field A",
+      "originalOperationGrower": "Grower",
+      "originalOperationType": "CropOriginal"
     }
   },
   "geometry": {
@@ -396,7 +399,10 @@ values={[
       }
     ],
     "originalOperationData": {
-      "originalOperationType": "Harvesting"
+      "originalOperationFarm": "Farm Green",
+      "originalOperationField": "Field A",
+      "originalOperationGrower": "Grower",
+      "originalOperationType": "CropOriginal"
     }
   },
     "geometry": {
@@ -508,7 +514,10 @@ values={[
       }
     ],
     "originalOperationData": {
-      "originalOperationType": "SowingAndPlanting"
+      "originalOperationFarm": "Farm Green",
+      "originalOperationField": "Field A",
+      "originalOperationGrower": "Grower",
+      "originalOperationType": "CropOriginal"
     }
   },
   "geometry": {
@@ -565,10 +574,10 @@ values={[
       "unit": "in"
     },
     "originalOperationData": {
-      "originalOperationFarm": "Monticello-Tuscola",
-      "originalOperationField": "1609-Middle",
-      "originalOperationGrower": "Dowson",
-      "originalOperationType": "Tillage"
+      "originalOperationFarm": "Farm Green",
+      "originalOperationField": "Field A",
+      "originalOperationGrower": "Grower",
+      "originalOperationType": "CropOriginal"
     }
   },
   "geometry": {

@@ -78,20 +78,19 @@ Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values                                                                                                                                                                                                                                                                                                                                                   |
-|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `leafUserId`             | uuid of one of your users                                                                                                                                                                                                                                                                                                                                |
-| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                                                                                                                                                                                                                                                                                 |
-| `status`                 | `processed`, `failed` or `processing`                                                                                                                                                                                                                                                                                                                    |
-| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                                                                                                                                                                                                                                                                         |
-| `organizationId`         | the provider organizationId (only available for John Deere)                                                                                                                                                                                                                                                                                              |
-| `batchId`                | uuid of the upload response (only available for uploaded files)                                                                                                                                                                                                                                                                                          |
-| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                                                                                                                                                                                                                                                                            |
-| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                                                                                                                                                                                                                                                                              |
-| `endTime`                | ISO 8601 date. Returns operations until the endTime                                                                                                                                                                                                                                                                                                      |
-| `operationType`          | `applied`, `planted` or `harvested`                                                                                                                                                                                                                                                                                                                      |
-| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned                                                                                                                                                                                                                                                         |
-| `sort`                   | Sorting order of the results. Can be multivalue, the former takes precedence over the later. Can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc. The paramerters accepeted are: `id`, `fileName`, `createdTime`, `updatedTime`, `origin`, `leafUserId`, `sizeInBytes`, `provider`, `organizationId`, `fileFormat`. |
+| Parameter (to filter by) | Values                                                                                            |
+|--------------------------|---------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                         |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                          |
+| `status`                 | `processed`, `failed` or `processing`                                                             |
+| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                  |
+| `organizationId`         | the provider organizationId (only available for John Deere)                                       |
+| `batchId`                | uuid of the upload response (only available for uploaded files)                                   |
+| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                     |
+| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                       |
+| `endTime`                | ISO 8601 date. Returns operations until the endTime                                               |
+| `operationType`          | `applied`, `planted` or `harvested`                                                               |
+| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned  |
 
 Also, for `operationType`: `harvested` we can process the yield properties related to the operation using the 
 crop density and standard moisture available in this [table][18].
@@ -101,6 +100,9 @@ They are:
 
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
+- `sort`, the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc
+  - Valid values for sorting are: id, fileName, createdTime, updatedTime, origin, leafUserId, sizeInBytes, provider, organizationId, fileFormat.
+
 
 :::info the default value for page size is 20
 If the parameters page and size are not set, the endpoint will return 20 results.

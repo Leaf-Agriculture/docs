@@ -18,7 +18,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [8]: #delete-a-satellite-field
 [9]: /docs/alerts_events#satellite-events
 [10]: #get-an-image-of-satellite-field
-[11]: /docs/crop_monitoring_overview#providers
+[11]: https://docs.withleaf.io/docs/crop_monitoring_overview#providers
 [12]: #get-subscription-for-planet
 [13]: #reprocess-satellite-images
 [14]: #sample-geometry
@@ -38,17 +38,16 @@ https://api.withleaf.io/services/satellite/api
 
 This service has the following endpoints available:
 
- Description                           | Endpoints                                                                            
----------------------------------------|--------------------------------------------------------------------------------------
- [Get all satellite fields][4]         | <span class="badge badge--success">GET</span> `/fields`                              
- [Get a satellite field][5]            | <span class="badge badge--success">GET</span> `/fields/{id}`                         
- [Get images of satellite field][6]    | <span class="badge badge--success">GET</span> `/fields/{id}/processes`               
- [Get an image of satellite field][10] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`          
- [Create a satellite field][7]         | <span class="badge badge--warning">POST</span> `/fields`                             
- [Delete a satellite field][8]         | <span class="badge badge--danger">DELETE</span> `/fields/{id}`                       
- [Get subscription for Planet][12]     | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`            
- [Reprocess satelite images][13]       | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess` 
-
+| Description                           | Endpoints                                                                            |
+|---------------------------------------|--------------------------------------------------------------------------------------|
+| [Get all satellite fields][4]         | <span class="badge badge--success">GET</span> `/fields`                              |
+| [Get a satellite field][5]            | <span class="badge badge--success">GET</span> `/fields/{id}`                         |
+| [Get images of satellite field][6]    | <span class="badge badge--success">GET</span> `/fields/{id}/processes`               |
+| [Get an image of satellite field][10] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`          |
+| [Create a satellite field][7]         | <span class="badge badge--warning">POST</span> `/fields`                             |
+| [Delete a satellite field][8]         | <span class="badge badge--danger">DELETE</span> `/fields/{id}`                       |
+| [Get subscription for Planet][12]     | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`            |
+| [Reprocess satelite images][13]       | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess` |
 
 ## Endpoints
 
@@ -59,8 +58,11 @@ This service has the following endpoints available:
 Returns paged results for all satellite fields registered.
 
 - `externalId`: external ID used in the field's registration
-- `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
-field
+- `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the field
+- `sort`, the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc
+  - Valid values for sorting are: createdAt, providers and externalId
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -114,20 +116,21 @@ curl -X GET \
 
 #### Response
 
-It returns a list of JSON objects 
 
 ```json
 [
-    {
-        "externalId": "your field id",
-        "geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [...]
-        }
-        "providers": [
-          "sentinel", "planet"
-        ]
-    },
+  {
+    "externalId": "your field id",
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [...]
+    }
+    "providers": [
+      "sentinel", 
+      "planet"
+    ]
+  },
+  ....
 ]
 ```
 
@@ -139,8 +142,9 @@ It returns a list of JSON objects
 Fetches a field entry based on its external id.
 
 - `id`: external ID used in the field's registration
-- `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
-field
+- `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the field
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -196,19 +200,17 @@ curl -X GET \
 
 #### Response
 
-It returns a single JSON object with the following entries (like each item from
-`GET /fields` results):
-
 ```json
 {
-    "externalId": "your field id",
-    "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [...]
-    },
-    "providers": [
-      "sentinel", "planet"
-    ]
+  "externalId": "your field id",
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [...]
+  },
+  "providers": [
+    "sentinel", 
+    "planet"
+  ]
 }
 ```
 
@@ -219,7 +221,8 @@ It returns a single JSON object with the following entries (like each item from
 
 Returns images for a given field `id`.
 
-We return the following images, (tifs are EPSG:4326, pngs are EPSG:3857):
+We return the following images (tifs are EPSG:4326, pngs are EPSG:3857):
+
 - RGB as tiff and as png
 - Colorized NDVI as tiff and as png
 - Raw NDVI as tiff
@@ -247,6 +250,7 @@ Default `page` is page 0 and default `size` is 20. So, to see more images,
 you can either increase the size or the page number.
 :::
 
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -309,27 +313,27 @@ curl -X GET \
 
 ```json
 [
-    {
-        "id": 0,
-        "date": "2020-06-03T19:03:57.882Z",
-        "clouds": 0, 
-        "provider": "sentinel",
-        "bucketName": "sentinel-s2-l2a",
-        "bucketKey": "tiles/10/S/FH/2020/6/3/0",
-        "bucketRegion": "eu-central-1",
-        "status": "SUCCESS",
-        "coverage": 100,
-        "images": [
-            {
-                "url": "url.to.your.image.tif",
-                "type": "tif",
-                "resolution": 20
-            },
-            # etc...
-        ],
-        "processedTimestamp": "2020-06-03T19:03:58.881731Z"
-    },
-    # etc...
+  {
+    "id": 0,
+    "date": "2020-06-03T19:03:57.882Z",
+    "clouds": 0, 
+    "provider": "sentinel",
+    "bucketName": "sentinel-s2-l2a",
+    "bucketKey": "tiles/10/S/FH/2020/6/3/0",
+    "bucketRegion": "eu-central-1",
+    "status": "SUCCESS",
+    "coverage": 100,
+    "images": [
+      {
+          "url": "url.to.your.image.tif",
+          "type": "tif",
+          "resolution": 20
+      },
+      ....
+    ],
+    "processedTimestamp": "2020-06-03T19:03:58.881731Z"
+  },
+  ....
 ]
 ```
 
@@ -356,6 +360,7 @@ curl -X GET \
 
 Returns a single process for the field.
 
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -409,7 +414,9 @@ curl -X GET \
 </TabItem>
 </Tabs>
 
+
 #### Response
+
 
 ```json
 {
@@ -466,34 +473,34 @@ Note that they are both _optional_, but you can **not** specify both.
 
 Now let's see the Payload
 
-#### Payload
-The payload of this object should be like the following:
+#### Request body
 
-```py
+```json
 {
-    "externalId": "your field id",
-    "startDate": "2019-01-01", 
-    "providers": [
-        "planet"
-    ],
-    "assetTypes": [
-        "ortho_analytic_8b_sr",  
-        "ortho_analytic_8b",  
-        "ortho_analytic_8b_xml",
-        "ortho_udm2"
-    ],
-    "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [...]
-    }
+  "externalId": "your field id",
+  "startDate": "2019-01-01", 
+  "providers": [
+    "planet"
+  ],
+  "assetTypes": [
+    "ortho_analytic_8b_sr",  
+    "ortho_analytic_8b",  
+    "ortho_analytic_8b_xml",
+    "ortho_udm2"
+  ],
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [...]
+  }
 }
 ```
 
 - `externalId`: external ID used in the field's registration.
-- `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
-field.
+- `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the field.
 - `providers`: Specify the satellite imagery source, if none is specified, Sentinel images will be retrived by default.
 - `assetTypes`: If the `providers` property contains `planet` you can select which `assetType` will be retrived, which can be **more than one**. Default value is `analytic_sr`.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -588,6 +595,7 @@ Note that the field deletion is irreversible and all images will be lost.
 _(But you can always create a new field and get images from the past, as far
 as you want)._
 
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -648,6 +656,7 @@ curl -X DELETE \
 
 Get the subscription from Planet. It returns the assetTypes, itemTypes and startDate for a field.
 
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -705,23 +714,26 @@ curl -X GET \
 
 ```json
 {
-    "planetAssetTypes": [
-        "ortho_analytic_8b_sr",  
-        "ortho_analytic_8b",  
-        "ortho_analytic_8b_xml",
-        "ortho_udm2"
-    ],
-    "planetItemTypes": [
-        "PSScene"
-    ],
-    "startDate": "2023-04-09T00:00:00Z"
+  "planetAssetTypes": [
+    "ortho_analytic_8b_sr",  
+    "ortho_analytic_8b",  
+    "ortho_analytic_8b_xml",
+    "ortho_udm2"
+  ],
+  "planetItemTypes": [
+    "PSScene"
+  ],
+  "startDate": "2023-04-09T00:00:00Z"
 }
 ```
 
 ### Reprocess satellite images
+
 &nbsp<span class="badge badge--warning">POST</span>  `/fields/{id}/process/{id}/reprocess`
 
 Allows reprocessing the satellite images based on a `processId`.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"

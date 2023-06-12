@@ -67,24 +67,186 @@ Check the [providers credentials endpoints][6] for more details about the creden
 
 The following endpoints are available:
 
-Description | Endpoints
---- | ---
-[Create a Leaf User][3] | <span class="badge badge--warning">POST</span> `/users`
-[Update a Leaf User][4] | <span class="badge badge--warning">PUT</span> `/users`
-[Get a Leaf User][1] | <span class="badge badge--success">GET</span> `/users/{id}`
-[Get all Leaf Users][2] | <span class="badge badge--success">GET</span> `/users/`
-[Delete a Leaf User][5] | <span class="badge badge--danger">DELETE</span> `/users/{id}`
-
+| Description             | Endpoints                                                     |
+|-------------------------|---------------------------------------------------------------|
+| [Get all Leaf Users][2] | <span class="badge badge--success">GET</span> `/users/`       |
+| [Get a Leaf User][1]    | <span class="badge badge--success">GET</span> `/users/{id}`   |
+| [Create a Leaf User][3] | <span class="badge badge--warning">POST</span> `/users`       |
+| [Update a Leaf User][4] | <span class="badge badge--warning">PUT</span> `/users`        |
+| [Delete a Leaf User][5] | <span class="badge badge--danger">DELETE</span> `/users/{id}` |
 
 ## User Endpoints
 
 
+### Get all Leaf Users
+
+&nbsp<span class="badge badge--success">GET</span> `/users`
+
+Get all Leaf Users.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "UUID",
+    "name": "str",
+    "email": "help@withleaf.io",
+    "phone": "str",
+    "address": "str",
+    "trimbleCredentials":  {"Object"},
+    "cnhiCredentials":  {"Object"},
+    "johnDeereCredentials":  {"Object"},
+    "ravenCredentials":  {"Object"},
+    "climateFieldViewCredentials": {"Object"},
+    "staraCredentials": {"Object"},
+    "agLeaderCredentials": {"Object"},
+    "ravenSlingshotCredentials": {"Object"}
+  },
+  ....
+]
+``` 
+
+Check the [providers credentials endpoints][6] for more details about the credentials object.
+
+### Get a Leaf User
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{id}`
+
+Get a Leaf User by its `id`. This request looks up an individual Leaf User (such as a grower) and returns the details associated with their account, including provider credentials such as ID, created date and tokens. 
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+
+```json
+{
+  "id": "UUID",
+  "name": "str",
+  "email": "help@withleaf.io",
+  "phone": "str",
+  "address": "str",
+  "trimbleCredentials":  {"Object"},
+  "cnhiCredentials":  {"Object"},
+  "johnDeereCredentials":  {"Object"},
+  "ravenCredentials":  {"Object"},
+  "climateFieldViewCredentials": {"Object"},
+  "staraCredentials": {"Object"},
+  "agLeaderCredentials": {"Object"},
+  "ravenSlingshotCredentials": {"Object"}
+}
+```
+
+
 ### Create a Leaf User
+
 &nbsp<span class="badge badge--warning">POST</span> `/users`
 
 Creates a Leaf User. You will need to create a Leaf User when linking a provider for the first time.
 
-#### Request example
+#### Request body
+
 ```json
 {
   "name": "str",
@@ -104,6 +266,8 @@ following. Specifying the ID of the credentials object previously created will l
     "id": "UUID"
   }
 ```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -170,7 +334,6 @@ following. Specifying the ID of the credentials object previously created will l
 </Tabs>
 
 #### Response
-A Leaf User with the id assigned to it and it's credentials.
 
 ```json
 {
@@ -188,7 +351,7 @@ A Leaf User with the id assigned to it and it's credentials.
 
 Edits an existing Leaf User by submitting a new one.
 
-#### Request examples
+#### Request body
 
 ```json
 {
@@ -202,7 +365,8 @@ Edits an existing Leaf User by submitting a new one.
 
 Note that if the existing resource has credentials and you don't include them
 in the body, the new Leaf User will have no credentials. Said that, for keeping
-the credentials or updating them, include in the JSON above an entry like this:
+the credentials or updating them, include in the JSON above an entry. 
+Check the [providers credentials endpoints][6] for more details about the credentials object.
 
 ```json
   "johnDeereCredentials": {
@@ -210,7 +374,8 @@ the credentials or updating them, include in the JSON above an entry like this:
   }
 ```
 
-Check the [providers credentials endpoints][6] for more details about the credentials object.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -254,11 +419,11 @@ Check the [providers credentials endpoints][6] for more details about the creden
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    'id': "UUID",
-    'name': 'str",
+    'id': 'UUID',
+    'name': 'str',
     'email': 'help@withleaf.io',
     'phone': 'str',
-    'address': 'str',
+    'address': 'str'
   }
 
   response = requests.put(endpoint, headers=headers, json=data)
@@ -279,7 +444,6 @@ Check the [providers credentials endpoints][6] for more details about the creden
 </Tabs>
 
 #### Response
-A Leaf User with the `id` assigned to it and it's credentials.
 
 ```json
 {
@@ -290,144 +454,6 @@ A Leaf User with the `id` assigned to it and it's credentials.
   "address": "str"
 }
 ```
-
-### Get a Leaf User
-
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}`
-
-Get a Leaf User by its `id`. This request looks up an individual Leaf User (such as a grower) and returns the details associated with their account, including provider credentials such as ID, created date and tokens. 
-
-#### Request examples
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
-#### Response
-A Leaf User as a JSON object.
-```json
-{
-  "id": "UUID",
-  "name": "str",
-  "email": "help@withleaf.io",
-  "phone": "str",
-  "address": "str",
-  "trimbleCredentials":  {"Object"},
-  "cnhiCredentials":  {"Object"},
-  "johnDeereCredentials":  {"Object"},
-  "ravenCredentials":  {"Object"},
-  "climateFieldViewCredentials": {"Object"},
-  "staraCredentials": {"Object"},
-  "agLeaderCredentials": {"Object"},
-  "ravenSlingshotCredentials": {"Object"}
-}
-```  
-Check the [providers credentials endpoints][6] for more details about the credentials object.
-
-### Get all Leaf Users
-
-&nbsp<span class="badge badge--success">GET</span> `/users`
-
-Get all Leaf Users.
-
-#### Request examples
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users'
-  ```
-
-  </TabItem>
-</Tabs>
-
-#### Response
-A JSON array containing Leaf Users.
-
 
 
 ### Delete a Leaf User

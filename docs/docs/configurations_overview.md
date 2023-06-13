@@ -50,25 +50,12 @@ The color ramp to be used when generating images of operations. It's a map from 
     "nv"  : [  0,   0, 0, 0]
 }
 ```
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
-
 #### geoimagesProjection
 Projection to be used when generating images of operations. It can assume the values `EPSG:3857` and `EPSG:4326`. The default value is `EPSG:3857`.
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
 #### geoimagesResolution
-Resolution of the generated images of operations. The default value is `0.00001` degrees.
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
+Resolution of the generated images of operations. The default value is `0.00001`.
 #### geoimagesShape
 Shape of points to be used when generating images of operations. It can assume the values `ROUND` and `SQUARE`. The default value is `SQUARE`.
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
 #### operationsAutoSync
 If set to `true`, Leaf will automatically synchronize provider's operations. The default value is `true`.
 #### operationsFilteredGeojson

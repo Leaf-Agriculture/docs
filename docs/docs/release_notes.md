@@ -21,9 +21,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [13]: /docs/operations_sample_output#field-operations-filtered-geojson
 [14]: /docs/operations_sample_output#field-operations-images-v2
 [15]: /docs/configurations_overview#operationsfilteredgeojson
-[16]: https://withleaf.io/en/whats-new
+[16]: /docs/Link_file_upload
+[17]: /docs/Link_provider_connection
 
-We’re moving to monthly release notes, you’ll find them in our blog’s ‘What’s New’ section [here][16]. If you'd like to stay up to date with news from Leaf, make sure to follow us on social media!
+
+### 2.116.0
+*2023-03-09*
+
+**Leaf Link**
+Now you can save time implementing Leaf using the [File Upload][16] and [Provider connection][17] widgets from Leaf Link.
 
 ### 2.115.0
 *2023-02-16*

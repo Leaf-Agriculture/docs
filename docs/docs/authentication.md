@@ -6,16 +6,19 @@ description: Authentication
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-To access our API, you first have to register using this [link][register]. 
-
-After confirming your email, you will be able to request a token ([JWT][jwt]) through
+To access our API, you just have to register using this [link][register]. After
+confirming your email, you will be able to request a token ([JWT][jwt]) through
 this endpoint:
 
 ```
 https://api.withleaf.io/api/authenticate
 ```
 
-**Request examples**
+You will receive your Leaf Token as response.
+
+**All set!** Include this token in your API calls and you will have access to
+Leaf's API.
+
 
 <Tabs
   defaultValue="sh"
@@ -67,8 +70,6 @@ https://api.withleaf.io/api/authenticate
   </TabItem>
 </Tabs>
 
-**Response**
-
 This request will return your access token to Leaf's API:
 
 ```json
@@ -77,16 +78,10 @@ This request will return your access token to Leaf's API:
 }
 ```
 
-
-**All set!** Include this token in your API calls and you will have access to
-Leaf's API.
-
-
-**Note:** 
-- Your Leaf Token lasts for 30 days with "rememberMe": "true" in the
-json. If you want it to last only 24 hours, set "rememberMe" to "false".
-- After expiration, just make the same request to the same endpoint and you will
-get a new access token. 
+_note: Your Leaf Token lasts for 30 days with "rememberMe": "true" in the
+json. If you want it to last only 24h, feel free to set "rememberMe" to "false"._  
+_After expiration, just make the same request to the same endpoint and you will
+get a new access token. _
 
 [register]: https://withleaf.io/account/quickstart/
 [jwt]: https://tools.ietf.org/html/rfc7519

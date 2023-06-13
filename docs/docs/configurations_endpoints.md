@@ -20,7 +20,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-Here we list all the available endpoints from Leaf's Configuration API. To call them easily, we recommend using [Leaf's Postman collection][1].
+Here we list all the available endpoints from Configuration API. For easily
+calling them, we recommend using [Leaf's Postman collection][1].
 
 All HTTP methods should be prepended by this service's endpoint:
 

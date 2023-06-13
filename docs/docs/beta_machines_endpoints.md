@@ -1,6 +1,6 @@
 ---
-title: Beta > Assets Endpoints
-description: Beta - Assets Endpoints
+title: Beta > Machines Endpoints
+description: Beta - Machines Endpoints
 sidebar_label: Endpoints
 ---
 
@@ -18,8 +18,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [7]: #update-a-machine
 [8]: #get-machine-files
 ## About
-This product fetches and stores machine data such as serial number, fuel consumption and start/stop time from providers.
-
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
@@ -28,7 +26,7 @@ https://api.withleaf.io/services/beta/api
 
 See below the REST resources and their endpoints available in this service.
 
-## Assets (BETA)
+## Machines (BETA)
 
 ### Machine Resources
 
@@ -66,7 +64,7 @@ They are:
 
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
-- `sort`, the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc
+- `sort`, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc
   - Valid values for sorting are: id, leafUserId, name, provider, providerOrganizationId, providerMachineId, serialNumber, vin, model, make, category
 
 For more request examples see [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)
@@ -350,7 +348,7 @@ They are:
 
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
-- `sort`, the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc
+- `sort`, the sorting order of the results; can be multivalue, the former takes precedence over the later; can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc
   - Valid values for sorting are: id, leafUserId, machineId, startTime, endTime, createdTime, leafFileId
 
 For more request examples see [Leaf Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection)

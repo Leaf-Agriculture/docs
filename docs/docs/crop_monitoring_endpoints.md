@@ -38,17 +38,18 @@ https://api.withleaf.io/services/satellite/api
 
 This service has the following endpoints available:
 
- Description                           | Endpoints                                                                            
----------------------------------------|--------------------------------------------------------------------------------------
- [Get all satellite fields][4]         | <span class="badge badge--success">GET</span> `/fields`                              
- [Get a satellite field][5]            | <span class="badge badge--success">GET</span> `/fields/{id}`                         
- [Get images of satellite field][6]    | <span class="badge badge--success">GET</span> `/fields/{id}/processes`               
- [Get an image of satellite field][10] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`          
- [Create a satellite field][7]         | <span class="badge badge--warning">POST</span> `/fields`                             
- [Delete a satellite field][8]         | <span class="badge badge--danger">DELETE</span> `/fields/{id}`                       
- [Get subscription for Planet][12]     | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`            
- [Reprocess satelite images][13]       | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess` 
+Description | Endpoints
+--- | ---
+[Get all satellite fields][4] | <span class="badge badge--success">GET</span> `/fields`
+[Get a satellite field][5] | <span class="badge badge--success">GET</span> `/fields/{id}`
+[Get images of satellite field][6] | <span class="badge badge--success">GET</span> `/fields/{id}/processes`
+[Get an image of satellite field][10] | <span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`
+[Create a satellite field][7] | <span class="badge badge--warning">POST</span> `/fields`
+[Delete a satellite field][8] | <span class="badge badge--danger">DELETE</span> `/fields/{id}`
+[Get subscription for Planet][12] | <span class="badge badge--success">GET</span> `/fields/{id}/subscription`
+[Reprocess satelite images][13] | <span class="badge badge--warning">POST</span> `/fields/{id}/process/{id}/reprocess`
 
+---
 
 ## Endpoints
 
@@ -131,6 +132,7 @@ It returns a list of JSON objects
 ]
 ```
 
+---
 
 ### Get a satellite field
 
@@ -157,7 +159,7 @@ field
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-const endpoint ='https://api.withleaf.io/services/satellite/api/fields/{id}'
+const endpoint ='https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
 axios.get(endpoint, { headers })
@@ -174,7 +176,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = 'https://api.withleaf.io/services/satellite/api/fields/{id}'
+endpoint = 'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 response = requests.get(endpoint, headers=headers)
@@ -188,7 +190,7 @@ print(response.json())
 ```shell
 curl -X GET \
     -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/{id}'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 ```
 
 </TabItem>
@@ -212,6 +214,7 @@ It returns a single JSON object with the following entries (like each item from
 }
 ```
 
+---
 
 ### Get images of satellite field
 
@@ -229,18 +232,18 @@ _Check the [comparison page][11] to identify the resolution and bands available 
 
 It is possible to filter the results by a number of different parameters:
 
-| Parameter               | Type                                    | Description                                                             | Default                                                  |
-|-------------------------|-----------------------------------------|-------------------------------------------------------------------------|----------------------------------------------------------|
-| startDate               | ISO 8601 datetime format                | retrieve images taken after this day                                    | -                                                        |
-| endDate                 | ISO 8601 datetime format                | retrieve images taken until this day                                    | -                                                        |
-| startProcessedTimestamp | ISO 8601 datetime format                | retrieve images processed by Leaf after this day                        | -                                                        |
-| endProcessedTimestamp   | ISO 8601 datetime format                | retrieve images processed by Leaf until this day                        | -                                                        |
-| maxClouds               | double between 0.0 and 100.0            | filter processes with clouds less than or equal to this percentage      | 100                                                      |
-| minCoverage             | double between 0.0 and 100.0            | filter processes with coverage greater than or equal to this percentage | 0.0                                                      |
-| status                  | string "SUCCESS", "FAILED" or "STARTED" | retrieve images with selected status                                    | SUCCESS                                                  |
-| page                    | integer                                 | page being fetched                                                      | 0                                                        |
-| size                    | integer                                 | how many processes (sets of all images) to return per page              | 20                                                       |
-| provider                | array of string                         | sentinel or/and planet                                                  | If none is defined, it will created with *sentinel* only |
+| Parameter | Type | Description | Default |
+| - | - | - | - |
+| startDate | ISO 8601 datetime format | retrieve images taken after this day | - |
+| endDate | ISO 8601 datetime format | retrieve images taken until this day | - |
+| startProcessedTimestamp | ISO 8601 datetime format | retrieve images processed by Leaf after this day | - |
+| endProcessedTimestamp | ISO 8601 datetime format | retrieve images processed by Leaf until this day | - |
+| maxClouds | double between 0.0 and 100.0 | filter processes with clouds less than or equal to this percentage | 100 |
+| minCoverage | double between 0.0 and 100.0 | filter processes with coverage greater than or equal to this percentage | 0.0 |
+| status | string "SUCCESS", "FAILED" or "STARTED" | retrieve images with selected status | SUCCESS |
+| page | integer | page being fetched | 0 |
+| size | integer | how many processes (sets of all images) to return per page | 20 |
+| providers | array of string | sentinel or/and planet | If none is defined, it will created with *sentinel* only |
 
 :::info Important
 Default `page` is page 0 and default `size` is 20. So, to see more images,
@@ -264,7 +267,7 @@ const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
 let endpoint = 'https://api.withleaf.io/services/satellite/api' +
-               '/fields/{id}/processes'
+               '/fields/YOUR_ID/processes'
 
 const params = { startDate: '2020-06-03', endDate: '2020-06-10' }
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
@@ -283,7 +286,7 @@ import requests
 TOKEN = 'YOUR_TOKEN'
 
 endpoint = ('https://api.withleaf.io/services/satellite/api'
-            '/fields/{id}/processes')
+            '/fields/YOUR_ID/processes')
 
 params = {'startDate': '2020-06-03', 'endDate': '2020-06-10'}
 headers = {'Authorization': f'Bearer {TOKEN}'}
@@ -298,7 +301,7 @@ print(response.json())
 ```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/{id}/processes?startDate=2020-06-03&endDate=2020-06-10'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/processes?startDate=2020-06-03&endDate=2020-06-10'
 ```
 
 </TabItem>
@@ -350,9 +353,11 @@ curl -X GET \
 - `processedTimestamp`: the timestamp of when the process was processed
 
 
-### Get an image of satellite field
+---
 
 &nbsp<span class="badge badge--success">GET</span> `/fields/{id}/processes/{id}`
+
+### Get an image of satellite field
 
 Returns a single process for the field.
 
@@ -372,7 +377,8 @@ Returns a single process for the field.
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-let endpoint = 'https://api.withleaf.io/services/satellite/api/fields/{id}/processes/{id}'
+let endpoint = 'https://api.withleaf.io/services/satellite/api' +
+               '/fields/YOUR_ID/processes/{id}'
 
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
@@ -389,7 +395,8 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = ('https://api.withleaf.io/services/satellite/api/fields/{id}/processes/{id}')
+endpoint = ('https://api.withleaf.io/services/satellite/api'
+            '/fields/YOUR_ID/processes/{id}')
 
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
@@ -403,7 +410,7 @@ print(response.json())
 ```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/{id}/processes/{id}'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/processes/{id}'
 ```
 
 </TabItem>
@@ -434,12 +441,13 @@ curl -X GET \
 }
 ```
 
+---
 
 ### Create a satellite field
 
 &nbsp<span class="badge badge--warning">POST</span> `/fields`
 
-Creates a new field.
+Creates a new field
 
 It will be continuously monitored forever, and new images will arrive based on the [provider selected][11], 
 because each one of them has a different temporal resolution (time it takes for the satellite to go over the same field when orbiting
@@ -473,15 +481,8 @@ The payload of this object should be like the following:
 {
     "externalId": "your field id",
     "startDate": "2019-01-01", 
-    "providers": [
-        "planet"
-    ],
-    "assetTypes": [
-        "ortho_analytic_8b_sr",  
-        "ortho_analytic_8b",  
-        "ortho_analytic_8b_xml",
-        "ortho_udm2"
-    ],
+    "providers": ["sentinel", "planet"],
+    "assetType": "analytic_sr"
     "geometry": {
         "type": "MultiPolygon",
         "coordinates": [...]
@@ -493,7 +494,7 @@ The payload of this object should be like the following:
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the
 field.
 - `providers`: Specify the satellite imagery source, if none is specified, Sentinel images will be retrived by default.
-- `assetTypes`: If the `providers` property contains `planet` you can select which `assetType` will be retrived, which can be **more than one**. Default value is `analytic_sr`.
+- `assetType`: If the `providers` property contains `planet` you can select which `assetType` will be retrived. Default value is `analytic_sr`.
 
 <Tabs
   defaultValue="sh"
@@ -576,6 +577,8 @@ If you are looking for a geometry for testing purposes you can use this one.
 ```
 
 
+---
+
 ### Delete a satellite field
 
 &nbsp<span class="badge badge--danger">DELETE</span>  `/fields/{id}`
@@ -609,7 +612,7 @@ const client = axios.create({
   headers: {'Authorization': `Bearer ${TOKEN}`}
 })
 
-client.delete('/fields/{id}')
+client.delete('/fields/YOUR_ID')
   .then(res => console.log(res.statusCode))
   .catch(console.error)
 ```
@@ -622,7 +625,7 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = 'https://api.withleaf.io/services/satellite/api/fields/{id}'
+endpoint = 'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
 response = requests.delete(endpoint, headers=headers)
@@ -635,7 +638,7 @@ print(response)
 ```shell
 curl -X DELETE \
     -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/{id}'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID'
 ```
 
 </TabItem>
@@ -664,7 +667,8 @@ Get the subscription from Planet. It returns the assetTypes, itemTypes and start
 const axios = require('axios')
 const TOKEN = 'YOUR_TOKEN'
 
-let endpoint = 'https://api.withleaf.io/services/satellite/api/fields/{id}/subscription'
+let endpoint = 'https://api.withleaf.io/services/satellite/api' +
+               '/fields/YOUR_ID/subscription'
 
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
@@ -681,7 +685,8 @@ import requests
 
 TOKEN = 'YOUR_TOKEN'
 
-endpoint = ('https://api.withleaf.io/services/satellite/api/fields/{id}/subscription')
+endpoint = ('https://api.withleaf.io/services/satellite/api'
+            '/fields/YOUR_ID/subscription')
 
 headers = {'Authorization': f'Bearer {TOKEN}'}
 
@@ -695,7 +700,7 @@ print(response.json())
 ```shell
 curl -X GET \
     --header 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/satellite/api/fields/{id}/subscription'
+    'https://api.withleaf.io/services/satellite/api/fields/YOUR_ID/subscription'
 ```
 
 </TabItem>
@@ -706,15 +711,12 @@ curl -X GET \
 ```json
 {
     "planetAssetTypes": [
-        "ortho_analytic_8b_sr",  
-        "ortho_analytic_8b",  
-        "ortho_analytic_8b_xml",
-        "ortho_udm2"
+        "analytic_sr"
     ],
     "planetItemTypes": [
-        "PSScene"
+        "PSOrthoTile"
     ],
-    "startDate": "2023-04-09T00:00:00Z"
+    "startDate": "2022-04-01T00:00:00Z"
 }
 ```
 

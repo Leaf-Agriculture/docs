@@ -41,6 +41,7 @@ This service has the following endpoints available:
 | [Get a boundary from field](#get-a-boundary-from-field)                                           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`    |
 | [Get active boundary from field](#get-active-boundary-from-field)                                 | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
 | [Update active boundary from field](#update-active-boundary-from-field)                           | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
+| [Get Weather data from a Field](#get-weather-data-from-a-field)                                   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}}/weather`                  |
 | [Get all farms](#get-all-farms)                                                                   | <span class="badge badge--success">GET</span> `/farms`                                                         |
 | [Get a farm](#get-a-farm)                                                                         | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                         |
 | [Create a farm](#create-a-farm)                                                                   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                     |
@@ -1548,6 +1549,170 @@ Request body example:
 #### Response
 A [Field](#field-resource) as a JSON object.
 
+### Get Weather data from a Field
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/weather`
+
+Retrieves weather data for a given `fieldId`
+
+| Parameter (to filter by) | Values
+| - | - |
+| `startTime` | ISO 8601 date. Delimits the lower bound of the returned data |
+| `endTime` | ISO 8601 date. Delimits the upper bound of the returned data|
+
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/weather'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {}
+
+  axios.get(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/weather'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {}
+
+  response = requests.get(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/weather'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+A JSON array containing farms.
+
+```json
+{
+  "type": "Feature",
+  "properties": {
+    "rainSum": {
+      "values": [
+        {
+          "time": "2023-01-01T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-01-02T00:00:00",
+          "value": 1.2
+        }
+      ],
+      "unit": "mm"
+    },
+    "maxTemperature": {
+      "values": [
+        {
+          "time": "2023-01-01T00:00:00",
+          "value": 27.7
+        },
+        {
+          "time": "2023-01-02T00:00:00",
+          "value": 27.4
+        }
+      ],
+      "unit": "°C"
+    },
+    "meanTemperature": {
+      "values": [
+        {
+          "time": "2023-01-01T00:00:00",
+          "value": 27.1
+        },
+        {
+          "time": "2023-01-02T00:00:00",
+          "value": 26.9
+        }
+      ],
+      "unit": "°C"
+    },
+    "minTemperature": {
+      "values": [
+        {
+          "time": "2023-01-01T00:00:00",
+          "value": 26.3
+        },
+        {
+          "time": "2023-01-02T00:00:00",
+          "value": 26.2
+        }
+      ],
+      "unit": "°C"
+    },
+    "snowfallSum": {
+      "values": [
+        {
+          "time": "2023-01-01T00:00:00",
+          "value": 0
+        },
+        {
+          "time": "2023-01-02T00:00:00",
+          "value": 0
+        }
+      ],
+      "unit": "cm"
+    },
+    "shortwaveRadiationSum": {
+      "values": [
+        {
+          "time": "2023-01-01T00:00:00",
+          "value": 22.13
+        },
+        {
+          "time": "2023-01-02T00:00:00",
+          "value": 19.25
+        }
+      ],
+      "unit": "MJ/m²"
+    },
+    "processedTime": "2023-03-14T16:57:55.922139"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      0,
+      0
+    ]
+  }
+}
+ ```
+
+The geometry point for the response above represents the centroid for the specific `fieldId`.
 
 ## Farms
 ### Get all farms
@@ -2169,30 +2334,6 @@ exist in multiple providers, Leaf detects that and creates a single field that
 you can query for - and you can still query by the individual fields too.
 
 **`geometry` and `area` are deprecated keys** that contains the geometry of the active boundary and its area, respectively.
-
-Below are the return possibilities when passing different geometries:
-
-|         Response          |
-|:-------------------------:|
-|           VALID           |
-|      REPEATED_POINT       |
-|    HOLE_OUTSIDE_SHELL     |
-|       NESTED_HOLES        |
-|   DISCONNECTED_INTERIOR   |
-|     SELF_INTERSECTION     |
-|  RING_SELF_INTERSECTION   |
-|       NESTED_SHELLS       |
-|      DUPLICATE_RINGS      |
-|      TOO_FEW_POINTS       |
-|    INVALID_COORDINATE     |
-|      RING_NOT_CLOSED      |
-| NOT_ALLOWED_GEOMETRY_TYPE |
-
-:::tip Note
-Currently, we get the field boundary data as available from the provider, so in some cases there may be fields without 
-boundaries or with invalid boundaries.
-:::
-
 
 ```json
 {

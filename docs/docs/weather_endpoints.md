@@ -16,13 +16,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-Here we list all the available endpoints from Leaf's Weather API. For an easy way to call them, 
+Here we list all the available endpoints from Weather API. For easily calling them, 
 we recommend using [Leaf's Postman collection][1].
 
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
-https://api.withleaf.io/services/fields/api
+https://api.withleaf.io/services/weather/api
 ```
 
 This service has the following endpoints available:
@@ -40,9 +40,8 @@ This service has the following endpoints available:
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/daily`
 
-Get daily forecasted weather data by leaf user and field. If dates are not set on the endpoint, 
-the response will return forecast data for the next seven days by default.
-
+Get daily forecast by leaf user and field. If dates are not set on the endpoint, the response will return 
+forecast data for the next seven days.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -194,10 +193,10 @@ the response will return forecast data for the next seven days by default.
     }
   },
   "geometry": {
-    "type": "Point",
+    "type": "str",
     "coordinates": [
-      -89.64355775454169,
-      39.802794365611476
+      0,
+      0
     ]
   }
 }
@@ -207,9 +206,8 @@ the response will return forecast data for the next seven days by default.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/forecast/field/{fieldId}/hourly`
 
-Get hourly forecasted weather data by Leaf User and field. If dates are not set on the endpoint, the response 
-will return forecast data for the next seven days by default.
-
+Get hourly forecast by leaf user and field. If dates are not set on the endpoint, the response will return 
+forecast data for the next seven days.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -361,10 +359,10 @@ will return forecast data for the next seven days by default.
     }
   },
   "geometry": {
-    "type": "Point",
+    "type": "str",
     "coordinates": [
-      -89.64355775454169,
-      39.802794365611476
+      0,
+      0
     ]
   }
 }
@@ -374,11 +372,8 @@ will return forecast data for the next seven days by default.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/daily`
 
-Get daily historical weather data by Leaf User and field. If the dates are not defined in the endpoint, the response 
-will return data from the last seven days by default.
-
-Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
-
+Get daily historical by leaf user and field. If the dates are not defined in the endpoint, the response will 
+return data from the last seven days.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -530,10 +525,10 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
     }
   },
   "geometry": {
-    "type": "Point",
+    "type": "str",
     "coordinates": [
-      -89.64355775454169,
-      39.802794365611476
+      0,
+      0
     ]
   }
 }
@@ -544,8 +539,8 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/weather/historical/field/{fieldId}/hourly`
 
-Get hourly historical weather data by Leaf User and field. If the dates are not defined in the endpoint, the response 
-will return data from the last seven days by default.
+Get hourly historical by leaf user and field. If the dates are not defined in the endpoint, the response will 
+return data from the last seven days.
 
 | Parameter (to filter by)     | values                                                      |
 |------------------------------|-------------------------------------------------------------|
@@ -697,15 +692,11 @@ will return data from the last seven days by default.
     }
   },
   "geometry": {
-    "type": "Point",
+    "type": "str",
     "coordinates": [
-      -89.64355775454169,
-      39.802794365611476
+      0,
+      0
     ]
   }
 }
 ```  
-
-:::info Warning
-If there is no data available at that time/day, the property will be returned as _null_.
-:::

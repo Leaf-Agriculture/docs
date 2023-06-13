@@ -120,7 +120,7 @@ values={[
 
 #### Response
 
-The response is json with the id of the file uploaded to the provider.
+The response is json with the id of the file uploaded to the provider .
 
 ```json
 {
@@ -292,7 +292,7 @@ The response is json with the id of the file uploaded to the provider.
 
 List the existing prescriptions available in the provider.
 
-There is a required request parameter called organizationId for this endpoint to work.
+There is a required request param called organizationId for this endpoint to work.
 This property should be the id of the organization at JohnDeere.
 
 <Tabs
@@ -364,7 +364,7 @@ A json array of prescriptions available in this provider.
 
 Upload a prescription using the John Deere credentials of the LeafUserId.
 
-There is a required request parameter called organizationId for this endpoint to work.
+There is a required request param called organizationId for this endpoint to work.
 This property should be the id of the organization at JohnDeere.
 
 The file to be uploaded needs to be .zip and have a folder called "Rx" containing one of each of the following file extension: shp, dbf, shx; and all files must have the same name. The zip file cannot contain subfolders.

@@ -13,8 +13,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #get-all-the-layers-for-a-leaf-user
 [3]: #upload-a-layer-to-climate-fieldview
 ## About
-You can now get layers (tassel count, stand count, NVDI, and RGB) through the Sentera integration. Please make sure to follow the [Sentera integratation steps](https://withleaf.io/en/whats-new/sentera-integration-with-leaf/) before getting layers.
-
 All HTTP methods should be prepended by this service's endpoint:
 
 ```

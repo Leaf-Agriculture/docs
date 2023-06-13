@@ -36,7 +36,7 @@ Description | Endpoints
 Note that currently it's not possible to update a Webhook with a single
 request. If you want to update an existing Webhook resource, you have to delete
 it first and then recreate it. In doing so, be aware that if the update changes
-the Webhook URL, it's recommended that you keep the previous URL up and running
+the Webhook URL, it's recommented that you keep the previous URL up and running
 until you get the response from the recreation request (POST).
 
 For easy testing of these endpoints, we recommend using our Postman [collection][5].

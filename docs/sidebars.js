@@ -77,8 +77,8 @@ module.exports = {
             'beta_features_overview',
             {
               type: 'category',
-              label: 'Assets',
-              items: ['beta_assets_endpoints']
+              label: 'Machines',
+              items: ['beta_machines_endpoints']
             },
             {
               type: 'category',
@@ -95,18 +95,9 @@ module.exports = {
               label: 'Leaf Link',
               items: [
                 'Link_provider_connection',
-                'Link_file_upload',
-                'Link_endpoints'
+                'Link_file_upload'
               ]
             }
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Weather',
-          items: [
-            'weather_overview',
-            'weather_endpoints',
           ]
         },
         'Connect'

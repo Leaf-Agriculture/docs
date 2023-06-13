@@ -5,56 +5,45 @@ sidebar_label: Overview
 ---
 <!-- the following links are referenced throughout this document -->
 
-The beta features contain experimental features that we are working on but can be used by Leaf customers.
-The services available in this section may be updated as we release improvements.
+The beta features contains experimental features that we are working in progress but can be used by our users.
+The services available in this section can be updated as we improve 
 
 Currently, we are working in the following features:
 
 [1]: #machines
 
-## Assets
+## Machines
 
-This product fetches and stores machine data such as serial number, fuel consumption and start/stop time from providers.
+This product fetchs machine data from the providers (like JohnDeere, ClimateFieldView, CNHI) and store this data.
  
-Currently, we are obtaining data from the following providers:
-   * CNHI
+Currently, we are obtaining data from providers:
    * JohnDeere
-   * Stara
-
-
+   * CNHI
 
 [2]: #prescriptions
 
 ## Prescriptions
 
-What are prescriptions in agriculture? Prescriptions usually used to apply inputs at variable rates across a field, applying only the amount needed for each area. For example, a prescription could be based on soil sample results or crop monitoring data, and instructs a machine where to best distribute lime, potassium or other products that can improve soil quality or crop health.
+This product organizes the data flow for prescriptions. For instance, the variable rate application can be done through prescription maps, which can be verified by the non-homogeneity of soil properties made in laboratory analysis. It is useful when applying lime, potassium and other products that can improve soil quality, applying only the amount needed for each area.
 
-Leaf helps organize the data flow for prescriptions. 
+The prescription file is a zip file that should contain at least **three** files with the same name and specific extensions (**shp**, **dbf** and **shx**)
 
 Our supported providers are:
-* ClimateFieldView
-* John Deere
 * Raven Slingshot
-
-Note: The prescription should be included as a zip file and should contain a valid shapefile with least **three** file extentions (**shp**, **dbf** and **shx**) with the same naming.
+* ClimateFieldView
 
 
 [3]: #layers
 
 ## Layers
 
-You can now get layers (e.g. tassel count, stand count, NVDI, and RGB) via Leaf’s Senterra integration. Layers are used to display crop monitoring information geospatially on a farm map so that any variance in a crop can be visualized, usually at a field level. 
+Layers is a product that will organize the information that is related to field and can be accessed a map.
 
 Our supported providers are:
 * [Sentera](https://withleaf.io/en/blog/sentera-integration-with-leaf/).
-
-Note: Please make sure to follow the [integratation steps for Sentera](https://withleaf.io/en/whats-new/sentera-integration-with-leaf/) before getting layers.
 
 [4]: #input
 
 ## Input
 
 This feature will fetch, from operation files, varieties of crops harvested/planted and products applied and store this data.
-
-
-

@@ -8,70 +8,61 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-## About
-
-With Leaf Weather, you can access unified weather data at a field level. Below you’ll find more about what forecasted 
-and historical weather variables are available and which data sources are supported through Leaf’s API.
 
 ## Forecast
 
-Leaf’s weather forecast service provides access to forecasted weather data for the past `5` days -  up to `10` days in the future. The data can be fetched 
-daily or hourly.
+The Forecast service provides access to forecast weather data for up to `10` days. The data can be fetched daily or hourly.
 
 ### Properties
 
-- Cloud cover
-- Dew-point
-- Evapotranspiration
-- Precipitation
-- Rain
-- Relative Humidity
-- Short Wave Radiation
-- Snowfall
+- Temperature
 - Sunrise
 - Sunset
-- Temperature
-- Wind Direction
-- Wind Gusts
+- Snowfall
+- Precipitation
+- Evapotranspiration
+- Rain
 - Wind Speed
+- Wind Gusts
+- Wind Direction
+- Dew-point
+- Short Wave Radiation
+- Cloud cover
+- Relative Humidity
 
 
 ### Data sources
-| Weather Model  | National Weather Provider    | Origin Country | Resolution | Forecast Length | Update Frequency |
+| Weather Model  | National Weather Provider    | Origin Country | Resolution | Forecast Length | Update frequency |
 |----------------|------------------------------|----------------|------------|-----------------|------------------|
 | ICON           | Deutscher Wetterdienst (DWD) | Germany        | 2 - 11 km  | 7.5 days        | Every 3 hours    |
 | GFS            | NOAA                         | United States  | 3 - 25 km  | 16 days         | Every hour       |
 | Arpege & Arome | MeteoFrance                  | France         | 1 - 40 km  | 4 days          | Every 6 hours    |
 | IFS            | ECMWF                        | European Union | 44 km      | 7 days          | Every 6 hours    |
 | MET Nordic     | MET Norway                   | Norway         | 1 km       | 2.5 days        | Every hour       |
+| GEM            | Canadian Weather Service     | Canada         | 2.5 km     | 10 days         | Every 6 hours    |
 
-:::info Warning
-The service uses an option to provide the best forecast for any given location worldwide, based on the models available.
-:::
 
 ## Historical Data
-
-Leaf’s historical weather service provides access to up to `5` years of historical data when available. The data can 
-be fetched daily or hourly. Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
+The Historical service provides access to historical weather data for up to `10` years ago. The data can be fetched daily or hourly.
 
 ### Properties
 
-- Cloud cover
-- Dew-point
-- Evapotranspiration
-- Precipitation
-- Rain
-- Relative Humidity
-- Short Wave Radiation
-- Snowfall
+- Temperature
 - Sunrise
 - Sunset
-- Temperature
-- Wind Direction
-- Wind Gusts
+- Snowfall
+- Precipitation
+- Evapotranspiration
+- Rain
 - Wind Speed
+- Wind Gusts
+- Wind Direction
+- [Dew-point
+- Short Wave Radiation
+- Cloud cover
+- Relative Humidity]()
 
 ### Data sources
-| Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update Frequency        |
+| Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update frequency        |
 |:----------------:|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
-|       ERA5       |    Global     |   0.25° (~25 km)   |       Hourly        |  2017 to present  | Daily with 5 days delay |
+|      ERA5        |    Global     |   0.25° (~25 km)   |       Hourly        |  2020 to present  | Daily with 5 days delay |

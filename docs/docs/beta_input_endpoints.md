@@ -11,10 +11,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <!-- the following links are referenced throughout this document -->
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [2]: #get-all-products
+[3]: #get-all-products-normalized
 [4]: #search-for-products
 [5]: #get-all-varieties
+[6]: #get-all-varieties-normalized
 [7]: #get-a-product
-[8]: #get-a-operation-matching-products
+[8]: #get-operation-matching-products
 
 
 ## About
@@ -36,6 +38,7 @@ This feature has the following endpoints available:
 | Description                            | Endpoints                                                                                                   |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------|
 | [Get all products][2]                  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products`                                |
+| [Get all products normalized][3]       | <span class="badge badge--success">GET</span> `/users/products`                                             |
 | [Search for products][4]               | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/search`                         |
 | [Get a product][7]                     | <span class="badge badge--success">GET</span> `/users/products/{id}`                                        |
 | [Get a operation matching products][8] | <span class="badge badge--success">GET</span> `/users/users/{leafUserId}/products/matching/operations/{id}` |
@@ -47,12 +50,12 @@ This feature has the following endpoints available:
 
 List the existing products used by a leaf user.
 
-| Parameter (to filter by)    | Values                                                                                                                                                                                                                              |
-|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                      | part of the product name                                                                                                                                                                                                            |
-| `page`                      | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
-| `size`                      | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
-| `sort`                      | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+| Parameter (to filter by)    | Values                                                                                                                                                                                                                                          |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                      | part of the product name                                                                                                                                                                                                                        |
+| `page`                      | an integer specifying the page being fetched (default is 0)                                                                                                                                                                                     |
+| `size`                      | an integer specifying the size of the page (max is 100)                                                                                                                                                                                         |
+| `sort`                      | the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
 
 
 <Tabs
@@ -302,7 +305,7 @@ values={[
 }
 ```
 
-### Get a operation matching products
+### Get matching products from an operation
 
 &nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products/matching/operations/{id}`
 
@@ -390,9 +393,10 @@ values={[
 
 This feature has the following endpoints available:
 
-| Description            | Endpoints                                                                     |
-|------------------------|-------------------------------------------------------------------------------|
-| [Get all varieties][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties` |
+Description | Endpoints
+--- | ---
+[Get all varieties][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties`
+[Get all varieties normalized][6] | <span class="badge badge--success">GET</span> `/users/varieties`
 
 ### Get All Varieties
 
@@ -401,13 +405,13 @@ This feature has the following endpoints available:
 Get all varieties from a leaf user.
 
 
-| Parameter (to filter by) | Values                                                                                                                                                                                                                              |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                   | part of the product name                                                                                                                                                                                                            |
-| `crops`                  | desired crop name                                                                                                                                                                                                                   |
-| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
-| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
-| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+| Parameter (to filter by) | Values                                                                                                                                                                                                                                          |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                   | part of the product name                                                                                                                                                                                                                        |
+| `crops`                  | desired crop name                                                                                                                                                                                                                               |
+| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                                     |
+| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                                         |
+| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
 
 
 
@@ -480,6 +484,85 @@ The response is a json list with all the varieties
     "leafFilesCount": 1,
     "crops": [
       "corn"
+    ]
+  }
+]
+```
+
+
+### Get all varieties normalized
+
+&nbsp<span class="badge badge--success">GET</span>  `/users/varieties`
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/varieties'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/varieties'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/varieties'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+The response is a JSON array showing the existing varieties and how many related files exists.
+
+```json
+[
+  {
+    "id": "b3b6f0b8-b546-4eaa-b0f9-a82593699e84",
+    "normalizedName": "corn",
+    "leafFilesCount": 28,
+    "crops": [
+      "corn"
+    ]
+  },
+  {
+    "id": "9dc82cdc-8364-4bbd-8a0b-16d96322e71c",
+    "normalizedName": "soybean variety 3",
+    "leafFilesCount": 84,
+    "crops": [
+      "soybeans"
     ]
   }
 ]

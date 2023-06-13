@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Overview
 
-This page shows and describes sample responses from Leaf's API, along with a list 
+This page shows and describes sample responses from Leaf API, along with a list 
 of what properties you can expect for each type of data.
 
 

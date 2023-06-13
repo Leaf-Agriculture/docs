@@ -13,9 +13,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #get-a-webhook
 [3]: #get-all-webhooks
 [4]: #delete-a-webhook
+[7]: #get-failed-calls-for-webhooks
 
 [5]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[6]: alerts_authentication.md
+[6]: https://docs.withleaf.io/docs/alerts_authentication
 
 
 All HTTP methods should be prepended by this service's endpoint:
@@ -26,12 +27,13 @@ https://api.withleaf.io/services/alerts/api/alerts
 
 This service has the following endpoints available:
 
-Description | Endpoints
---- | ---
-[Create a webhook][1] | <span class="badge badge--warning">POST</span> `/webhooks`
-[Get a webhook][2] | <span class="badge badge--success">GET</span> `/webhooks/{id}`
-[Get all webhooks][3] | <span class="badge badge--success">GET</span> `/webhooks`
-[Delete a webhook][4] | <span class="badge badge--danger">DELETE</span> `/webhooks/{id}`
+| Description                        | Endpoints                                                              |
+|------------------------------------|------------------------------------------------------------------------|
+| [Create a webhook][1]              | <span class="badge badge--warning">POST</span> `/webhooks`             |
+| [Get a webhook][2]                 | <span class="badge badge--success">GET</span> `/webhooks/{id}`         |
+| [Get all webhooks][3]              | <span class="badge badge--success">GET</span> `/webhooks`              |
+| [Get failed calls for webhooks][7] | <span class="badge badge--success">GET</span> `/webhooks/failed-calls` |
+| [Delete a webhook][4]              | <span class="badge badge--danger">DELETE</span> `/webhooks/{id}`       |
 
 Note that currently it's not possible to update a Webhook with a single
 request. If you want to update an existing Webhook resource, you have to delete
@@ -59,12 +61,12 @@ and try to register another one, you'll get a 400 response with error `eventRegi
 
 #### Request body
 
-| Parameter | Type | Description
-| - | - | - |
-| events | enum name of the event type | They are defined in the "Events" section of the services chapters (e.g. `newSatelliteImage`) |
-| name | string | The name of your webhook |
-| secret | string | The secret used for HMAC authentication. We sign payload with this secret. See more [here][6] |
-| url | a valid HTTP URL string | The address of your webhook server |
+| Parameter | Type                        | Description                                                                                   |
+|-----------|-----------------------------|-----------------------------------------------------------------------------------------------|
+| events    | enum name of the event type | They are defined in the "Events" section of the services chapters (e.g. `newSatelliteImage`)  |
+| name      | string                      | The name of your webhook                                                                      |
+| secret    | string                      | The secret used for HMAC authentication. We sign payload with this secret. See more [here][6] |
+| url       | a valid HTTP URL string     | The address of your webhook server                                                            |
 
 Example in JSON:
 
@@ -79,7 +81,7 @@ Example in JSON:
 }
 ```
 
-#### Request examples
+#### Request example
 
 <Tabs
   defaultValue="sh"
@@ -217,7 +219,7 @@ Retrieve a specific webhook resource by its id.
 
 
 
-#### Sample code
+#### Request example
 
 <Tabs
   defaultValue="sh"
@@ -265,7 +267,7 @@ Retrieve a specific webhook resource by its id.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/alerts/api/alerts/webhooks/WEBHOOK_UUID'
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks/{id}'
   ```
 
   </TabItem>
@@ -290,7 +292,7 @@ Retrieve a specific webhook resource by its id.
 
 Retrieve all Webhooks.
 
-#### Sample code
+#### Request example
 
 <Tabs
   defaultValue="sh"
@@ -357,6 +359,96 @@ It returns a list of JSON objects.
   ```
 
 
+### Get failed calls for webhooks
+
+&nbsp<span class="badge badge--success">GET</span> `/webhooks/failed-calls`
+
+Retrieve all failed calls for webhooks.
+
+#### Request example
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', }
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const TOKEN = 'YOUR_TOKEN'
+  const headers = {'Authorization': `Bearer ${TOKEN}`}
+  const endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks/failed-calls'
+
+  axios.get(endpoint, {headers})
+      .then(response => console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+  endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/webhooks/failed-calls'
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks/failed-calls'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+It returns a list of JSON objects.
+  ```json
+  {
+    "items": [
+        {
+          "apiOwner": "yourApiOwner",
+          "createdAt": "2023-04-21T12:16:30Z",
+          "url": "https://webhook.site/{{uuid}}",
+          "status": 502,
+          "response": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+          "requestBody": "{\"leafUserId\": \"uuid\", \"fileId\": \"uuid\", \"type\": \"automergedFileProcessingFinished\", \"timestamp\": \"2023-04-21T12:16:27.997586Z\"}"
+        },
+        {
+          "apiOwner": "yourApiOwner",
+          "createdAt": "2023-04-24T18:35:53Z",
+          "url": "https://webhook.site/{{uuid}}",
+          "status": 502,
+          "response": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+          "requestBody": "{\"leafUserId\": \"uuid\", \"fileId\": \"uuid\", \"type\": \"automergedFileProcessingFinished\", \"timestamp\": \"2023-04-24T18:35:52.187785Z\"}"
+        },
+        {
+          "apiOwner": "yourApiOwner",
+          "createdAt": "2023-04-24T18:35:53Z",
+          "url": "https://flamboyant-flower-64651.pktriot.net/",
+          "requestBody": "{\"source\": \"SYNC\", \"leafUserId\": \"ff044168-45aa-00d8-8b7e-8632d5c23616\", \"fieldId\": \"ed080ca3-69fe-365c-972f-a0d000fe7c0e\", \"type\": \"fieldCreated\", \"timestamp\": \"2023-04-24T18:35:53Z\"}",
+          "connectionError": "ConnectionError: HTTPSConnectionPool(host='flamboyant-flower-64651.pktriot.net', port=443): Max retries exceeded with url: / (Caused by ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+        }
+     ]
+  }
+  ```
+
 ### Delete a webhook
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/webhooks/{id}`
@@ -369,7 +461,7 @@ If you delete a Webhook resource, we no longer will send you the events the
 webhook listens to.
 :::
 
-#### Sample code
+#### Request example
 
 <Tabs
   defaultValue="sh"
@@ -417,7 +509,7 @@ webhook listens to.
   ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/alerts/api/alerts/webhooks/WEBHOOK_ID'
+      'https://api.withleaf.io/services/alerts/api/alerts/webhooks/{id}'
   ```
 
   </TabItem>

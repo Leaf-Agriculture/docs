@@ -4,63 +4,26 @@ description: Leaf User - Overview
 sidebar_label: Overview
 ---
 
-For Leaf to be able to access, standardize, process and return files, you just
-have to create a Leaf User and connect them to a data provider.
+<!-- the following links are referenced throughout this document -->
+[1]: https://docs.withleaf.io/docs/converters_overview
 
-Connecting a Leaf User to a data provider means that you will be attaching the user
-token to the Leaf User so that Leaf can access their data on a given provider.
-To get said token, we will need to go through the data provider's authentication
-flow, which varies by data provider.
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-To make things easy, we have created a section for the data providers
-authentication flow. After the end this section, the goal
-is to have the user's token, so you can attach to the Leaf User and Leaf can
-return clean, aggregated, and standardized data in a simple JSON response.
+## About
+For Leaf to be able to access, process and return standardized files from providers, you first need to create a ‘Leaf User’, which you’ll later connect to your customers’ preferred data provider(s). 
 
-The same Leaf User can be attached to as many providers as they have accounts in.
+## What is a Leaf user?
+- A Leaf User provides a way to keep your customers' data organized under your API owner. You'll attach 3rd party credentials to these entities.
+- A Leaf User is equivalent to a customer/grower account. 
+- The same Leaf User/grower can integrate with multiple providers via a user-authentication process for each provider. 
 
-A simple use-case: typically, a Leaf User is a grower. So let's say your
-application wants to use Leaf to access the grower data in a standardized way.
-Your application, the grower and Leaf will go through the provider authentication
-flow so the grower can grant rights to access their data.
+<img alt="Leaf user" src={useBaseUrl('img/leafuser.png')} />
 
-This authentication flow has to be done only once, since Leaf will manage the
-tokens and refresh them when needed.
+## Where to next?
+### If integrating a provider via Leaf’s API
+Once you’ve created a Leaf User (after setting up configurations and alerts), proceed to provider authentication. There we will show you how to integrate a provider and attach the provider credentials to your Leaf User so you can start receiving standardized data via Leaf. 
 
-<!-- Another use-case would be an agronomist that has access to more than one grower's -->
+### If implementing manual file upload
+If you’re looking to implement manual file upload functionality for thumb drive data, click [here][1] next.
 
-So, choose the provider's you want to connect your users to and let's see how
-each these providers authentication flow is.
-
-After that, you can create a Leaf User, attach the tokens and start querying for
-standardized data in a simple JSON response.
-
-
-## Integrate with John Deere
-
-We made this very easy on one of our blog posts.
-
-Check our blog post on [John Deere authentication with Leaf][jd]
-[jd]: https://withleaf.io/en/blog/john-deere-authentication-with-leaf
-
-
-## Integrate with Climate Field View
-
-We made this very easy on one of our blog posts.
-
-Check our blog Post on [Climate Field View authentication with Leaf][cfv]
-[cfv]: https://withleaf.io/en/blog/climate-fieldview-authentication-with-leaf
-
-## Integrate with AgLeader 
-
-We made this very easy on one of our blog posts.
-
-Check our blog Post on [AgLeader Authentication with Leaf][agleader]
-[agleader]: https://withleaf.io/en/blog/agleader-authentication-with-leaf
-
-## Integrate with CNHi
-
-We made this very easy on one of our blog posts.
-
-Check our blog Post on [CNHi authentication with Leaf][cnhi]
-[cnhi]: https://withleaf.io/en/blog/cnhi-authentication-with-leaf
+Need more guidance? Contact us at help@withleaf.io.

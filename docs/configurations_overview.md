@@ -12,6 +12,7 @@ sidebar_label: Overview
 [6]: #operationsfilteredgeojson
 [7]: /docs/operations_sample_output#field-operations-filtered-geojson
 [8]: /docs/operations_sample_output#field-operations-images-v2
+[9]: /docs/operations_endpoints#get-operations-geotiff-images
 
 Leaf's system can be customized to present different behaviours across services. This is done using Configurations.
 
@@ -74,6 +75,11 @@ If set to `true`, Leaf will automatically synchronize provider's operations. The
 #### operationsFilteredGeojson
 Enables the option to clear [Field Operations][2] data based on [some filter options][7]. Also enables the use of [operations images V2][8].
 The default is `false`.
+#### operationsImageAsGeoTiff
+If set to `true`, Leaf will generate the images of operations in the GeoTIFF format too. The data can be accessed in this [endpoint][9]. The default value is `false`.
+:::tip note
+This configuration has effect **only** in the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
+:::
 #### operationsImageCreation
 If set to `true`, Leaf will generate images of operations when processing them. If set to `false`, Leaf won't create the images. The default value is `false`.
 #### operationsMergeRange
@@ -96,6 +102,10 @@ To use this option, [operationsFilteredGeojson][6] must be enabled.
 :::
 #### splitOperationsByField
 If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`.
+
+#### splitOperationsByProvider
+If set to `true`, files will be filtered by provider in addition to the field, operation type, crop and date interval 
+to create operations. If set to `false`, operations will be created regardless of the source provider. The default value is `false`.
 
 ### Machine File Conversion
 #### cleanupStandardGeojson

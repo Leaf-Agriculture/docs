@@ -1,7 +1,7 @@
 ---
-title: Leaf Link > File upload widget
-description: Leaf Link > File upload widget
-sidebar_label: File upload widget
+title: Leaf File Upload Link
+description: Leaf File Upload Link
+sidebar_label: Leaf File Upload Link
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,10 +10,20 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [1]:  /docs/authentication
 [2]:  /docs/user_management_overview
+[3]:  /docs/Link_endpoints#api-key
+[4]:  #reference
+
+[fileupload-apiKey]: #apikey
+[fileupload-companyLogoUrl]: #companylogourl
+[fileupload-companyName]: #companyname
+[fileupload-leafUser]: #leafuser
+[fileupload-filestimerange]: #filestimerange
+[fileupload-isdarkmode]: #isdarkmode
+[fileupload-title]: #title
 
 
 ## Overview
-This widget allows the user to upload different machine files formats for conversion using the Leaf API.
+Leaf's File Upload Link is a widget that allows your customers to upload different machine file formats. These files will then get converted into a consistent output using the Leaf API.
 
 <p align="center">
     <img alt="File upload widget" width="50%" src={useBaseUrl('img/leaf-file-upload.png')} />
@@ -44,9 +54,54 @@ To use the widget you will need a Leaf token. Use our [authentication guide][2] 
 
 ## Tutorial
 
-This widget is only available for Angular.
+### React
+
+To add this Leaf widget in a React application, you can use the `@withleaf/leaf-link-react` library, which is a JavaScript library that provides all Leaf UI Widgets.
+Here are the general steps to get started:
+
+1. Install the @withleaf.io/leaf-link-react package using `npm`:
+
+```shell
+npm i @withleaf/leaf-link-react
+```
+
+2. Import the component in your `*.tsx` file:
+
+```js
+import { FileUpload } from '@withleaf/leaf-link-react'
+```
+
+3. Add the component to the HTML in your `*.tsx` file. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
+You can also customize it adding your company name (`companyName`) and company logo (`companyLogoUrl`). Check all the properties available on the reference [here][4].
+
+```js
+function App() {
+  return (
+    <div class="container">
+        <FileUpload
+            isDarkMode={true}
+            title={'my custom widget'}
+            filesTimeRange={30}
+            companyName={'Company Name'}
+            companyLogo={ 'url' }
+            apiKey={ 'apikey' }
+            leafUser={'leafuserid'}
+        />
+    </div>
+   );
+}   
+```
 
 ### Angular
+
+:::caution ANGULAR VERSION
+This is an early release for Angular with some limitations.
+The full version will be released soon. Stay tuned!
+:::
+
+<p align="center">
+    <img alt="File upload widget for Angular" width="50%" src={useBaseUrl('img/leaf-file-upload_old.png')} />
+</p>
 
 To add this Leaf widget in an Angular application, you can use the `@withleaf.io/angular-ui-kit` library, which is a JavaScript library that provides all Leaf UI Widgets.
 Here are the general steps to get started:
@@ -63,11 +118,11 @@ npm i @withleaf.io/angular-ui-kit
 import { LeafFileUploadModule } from '@withleaf.io/angular-ui-kit';
 ```
 
-3. Add the component to the HTML. You need your Leaf token (`leafToken`) and a Leaf user ID (`leafUser`) to set the required properties in the HTML component. Just add it to the container div.
+3. Add the component to the HTML. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
 
 ```js
 <div class="container">
-  <leaf-file-upload leafToken="{yourLeafToken}" leafUser="{yourLeafUserId}">       
+  <leaf-file-upload apiKey="{apiKey}" leafUser="{yourLeafUserId}">       
   </leaf-file-upload>
 </div>
 ```
@@ -75,3 +130,50 @@ import { LeafFileUploadModule } from '@withleaf.io/angular-ui-kit';
 :::tip
 [Here](https://stackblitz.com/edit/leaf-widgets-angular-upload?file=README.md) you can run a live use case demo!
 :::
+
+
+## Reference
+It is valid only for the React version.
+
+### Property Overview
+
+| Name                                          | Type    | Summary                                      |
+|-----------------------------------------------|---------|----------------------------------------------|
+| [apiKey][fileupload-apiKey]                   | String  | The authentication API Key                   |
+| [companyLogoUrl][fileupload-companyLogoUrl]   | String  | Customization: a link to the company logo    |
+| [companyName][fileupload-companyName]         | String  | Customization: the name of the company       |
+| [filesTimeRange][fileupload-filestimerange]   | Number  | Time to get the historical of uploaded files |
+| [isDarkMode][fileupload-isdarkmode]           | Boolean | Enables/disables the dark mode               |
+| [leafUser][fileupload-leafUser]                 | String  | The Leaf User ID                             |
+| [title][fileupload-title]                     | String  | Customization: a link to the company logo    |
+
+
+
+### Property Details
+#### apiKey
+The `apiKey` is the authentication key that will allow the use of the widget.
+It can be created and managed [here][3].
+
+#### companyLogoUrl
+The URL to the company logo. It will be displayed in the landing screen. It can be a `PNG`, `JPEG` or `SVG`.
+
+#### companyName
+The company name. It will be displayed in the landing screen and in each reference about the customer.
+
+#### filesTimeRange
+It sets the interval in days to display files already processed in the past. For example, if set to `30`, it will display the list of files sent and processed in the last 30 days.
+
+#### isDarkMode
+If set to `true`, it will enable the widget dark mode.
+
+<p align="center">
+    <img alt="Dark mode" width="30%" src={useBaseUrl('img/leaf-file-upload-dark-mode.png')} />
+</p>
+
+
+#### leafUser
+The Leaf User ID. Check [this page][2] for more info about the Leaf User.
+
+#### title
+The text to display on the top of the widget.
+

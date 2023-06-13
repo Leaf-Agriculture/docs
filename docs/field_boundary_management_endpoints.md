@@ -8,6 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+[crops_table]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
 
 ## About
 Here we list all the available endpoints from Fields API. For easily
@@ -50,9 +51,9 @@ This service has the following endpoints available:
 | [Create a grower](#create-a-grower)                                                               | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                   |
 | [Update a grower](#update-a-grower)                                                               | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                               |
 
-## Endpoints
 
 ## Fields
+
 ### Get all fields
 
 &nbsp<span class="badge badge--success">GET</span> `/fields`
@@ -454,14 +455,14 @@ the URL.
 It is possible to filter the results by passing some query
 parameters. They are listed below.
 
-| Parameter (to filter by) | Type | Description
-| - | - | - |
-| operationType | String "harvested", "planted", "applied" or "other" | retrieve operations of given type
-| provider | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView" | retrieve operations of given provider
-| origin | String "provider", "automerged", "merged" or "uploaded" | retrieve operations of given origin
-| crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here](crops.md) | retrieve operations with this crop.
-| startTime | ISO 8601 datetime format | retrieve operations that started after this date
-| endTime | ISO 8601 datetime format | retrieve operations that ended before this date
+| Parameter (to filter by) | Type                                                                                               | Description                                      |
+|--------------------------|----------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| operationType            | String "harvested", "planted", "applied" or "other"                                                | retrieve operations of given type                |
+| provider                 | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView"                                        | retrieve operations of given provider            |
+| origin                   | String "provider", "automerged", "merged" or "uploaded"                                            | retrieve operations of given origin              |
+| crop                     | String name of the crop, like "corn" or "soybeans". Entire crop list available [here][crops_table] | retrieve operations with this crop.              |
+| startTime                | ISO 8601 datetime format                                                                           | retrieve operations that started after this date |
+| endTime                  | ISO 8601 datetime format                                                                           | retrieve operations that ended before this date  |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -553,15 +554,14 @@ the URL.
 It is possible to filter the results by passing some query
 parameters. They are listed below.
 
-| Parameter (to filter by) | Type | Description
-| - | - | - |
-| operationType | String "harvested", "planted", "applied" or "other" | retrieve operations of given type
-| provider | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView" | retrieve operations of given provider
-| origin | String "provider", "automerged", "merged" or "uploaded" | retrieve operations of given origin
-| crop | String name of the crop, like "corn" or "soybeans". Entire crop list available [here](crops.md) | retrieve operations with this crop.
-| startTime | ISO 8601 datetime format | retrieve operations that started after this date
-| endTime | ISO 8601 datetime format | retrieve operations that ended before this date
-
+| Parameter (to filter by) | Type                                                                                               | Description                                      |
+|--------------------------|----------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| operationType            | String "harvested", "planted", "applied" or "other"                                                | retrieve operations of given type                |
+| provider                 | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView"                                        | retrieve operations of given provider            |
+| origin                   | String "provider", "automerged", "merged" or "uploaded"                                            | retrieve operations of given origin              |
+| crop                     | String name of the crop, like "corn" or "soybeans". Entire crop list available [here][crops_table] | retrieve operations with this crop.              |
+| startTime                | ISO 8601 datetime format                                                                           | retrieve operations that started after this date |
+| endTime                  | ISO 8601 datetime format                                                                           | retrieve operations that ended before this date  |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -656,9 +656,9 @@ Gets a single Operation File of a field by its id.
 <Tabs
   defaultValue="sh"
   values={[
-    { label: 'JavaScript', value: 'js', },
-    { label: 'Python', value: 'py', },
     { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', }
   ]
 }>
   <TabItem value="js">
@@ -734,9 +734,9 @@ Gets a single Operation File of a field by its id.
 <Tabs
 defaultValue="sh"
 values={[
-{ label: 'JavaScript', value: 'js', },
-{ label: 'Python', value: 'py', },
-{ label: 'cURL', value: 'sh', },
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', }
 ]
 }>
 <TabItem value="js">
@@ -879,29 +879,29 @@ the request body.
 #### Response
 A JSON list of Fields.
 ```json
-  [
-    {
-      "id": "id",
-      "leafUserId": "uuid",
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+[
+  {
+    "id": "id",
+    "leafUserId": "uuid",
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
           [
-            [
-              [-89.84388470649719,39.71943436012731],
-              [-89.84392762184143,39.72439389620628],
-              [-89.83936786651611,39.725392361998416],
-              [-89.83928203582764,39.71951688444436],
-              [-89.84388470649719,39.71943436012731]
-            ]
+            [-89.84388470649719,39.71943436012731],
+            [-89.84392762184143,39.72439389620628],
+            [-89.83936786651611,39.725392361998416],
+            [-89.83928203582764,39.71951688444436],
+            [-89.84388470649719,39.71943436012731]
           ]
         ]
-      },
-      "type": "MERGED",
-      "sources": []
-    }
-  ]
-  ```
+      ]
+    },
+    "type": "MERGED",
+    "sources": []
+  }
+]
+```
 
 
 ### Get Fields by geometry 
@@ -1616,19 +1616,19 @@ The parameters are used exclusively for paging through results.
 #### Response
 A JSON array containing farms.
 ```json
-  [
-    {
-      "id": 1538766,
-      "name": "name",
-      "providerId": 2,
-      "providerName": "JohnDeere",
-      "providerFarmId": "00000000-0000-0000-0000-000000000000",
-      "leafUserId": "00000000-0000-0000-0000-000000000000",
-      "fieldIds": ["00000000-0000-0000-0000-000000000000"],
-      "growerId": 12345
-    }
-  ]
-  ```
+[
+  {
+    "id": 1538766,
+    "name": "name",
+    "providerId": 2,
+    "providerName": "JohnDeere",
+    "providerFarmId": "00000000-0000-0000-0000-000000000000",
+    "leafUserId": "00000000-0000-0000-0000-000000000000",
+    "fieldIds": ["00000000-0000-0000-0000-000000000000"],
+    "growerId": 12345
+  }
+]
+```
 
 ### Get a farm
 
@@ -1916,19 +1916,20 @@ through results.
 #### Response
 A JSON array containing growers.
 ```json
-  [
-    {
-      "id": 2345,
-      "leafUserId": "UUID",
-      "providerName": "str",
-      "providerOrganizationId": "str",
-      "providerCompanyId": "str",
-      "providerUserId": "str",
-      "providerGrowerId": "str",
-      "farmIds": [4534]
-    }
-  ]
-  ```
+[
+  {
+    "id": 2345,
+    "leafUserId": "UUID",
+    "providerName": "str",
+    "providerOrganizationId": "str",
+    "providerCompanyId": "str",
+    "providerUserId": "str",
+    "providerGrowerId": "str",
+    "farmIds": [4534]
+  },
+  ....
+]
+```
 
 ### Get a grower
 
@@ -1985,22 +1986,23 @@ Gets a single grower by its `id` from the user `leafUserId`.
   </TabItem>
 </Tabs>
 
+
 #### Response
 A single [Grower](#grower-resource) as a JSON object. In our system Growers are equivalent to John Deere Client. That been said, the 
 attribute `name` comes directly from the Client's name for growers with John Deere as provider.
 ```json
-  {
-    "id": 2345,
-    "name": "str",
-    "leafUserId": "UUID",
-    "providerName": "str",
-    "providerOrganizationId": "str",
-    "providerCompanyId": "str",
-    "providerUserId": "str",
-    "providerGrowerId": "str",
-    "farmIds": [4534]
-  }
-  ```
+{
+  "id": 2345,
+  "name": "str",
+  "leafUserId": "UUID",
+  "providerName": "str",
+  "providerOrganizationId": "str",
+  "providerCompanyId": "str",
+  "providerUserId": "str",
+  "providerGrowerId": "str",
+  "farmIds": [4534]
+}
+```
 
 ### Create a grower
 
@@ -2188,11 +2190,6 @@ Below are the return possibilities when passing different geometries:
 |      RING_NOT_CLOSED      |
 | NOT_ALLOWED_GEOMETRY_TYPE |
 
-:::tip Note
-Currently, we get the field boundary data as available from the provider, so in some cases there may be fields without 
-boundaries or with invalid boundaries.
-:::
-
 
 ```json
 {
@@ -2373,3 +2370,38 @@ Each boundary has a `status` and `providerStatus`.
 [Create a grower](#create-a-grower) | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`
 [Update a grower](#update-a-grower) | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`
 
+
+## Troubleshooting
+
+Currently, we get the field boundary data as available from the provider, so in some cases there may be fields without 
+boundaries or with invalid boundaries.
+
+Below is an example of a **self-intersect** geometry that would be filtered by Leaf since we do not interpret
+as a valid geometry.
+
+```json
+{
+  "geometry": {
+    "coordinates": [
+      [
+        [
+          [-47.779352980393611,-21.192167369960515], 
+          [-47.775885948768021,-21.192669687635007], 
+          [-47.775917640099145,-21.194602117356858], 
+          [-47.780062866210912,-21.195033512590314], 
+          [-47.77870013897234,-21.191730056712402], 
+          [-47.779352980393611,-21.192167369960515]
+        ]
+      ]
+    ],
+    "type": "MultiPolygon"
+  }
+}
+```
+
+This is what this invalid type of geometry looks like from the provider side:
+
+<img alt="Field example" src={useBaseUrl('img/invalid_geometry.png')} />
+
+To avoid these errors, with the exception of the **VALID** answer, do not submit the types of geometries listed in the
+[table](https://docs.withleaf.io/docs/field_boundary_management_endpoints#field-resource).

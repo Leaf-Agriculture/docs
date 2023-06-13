@@ -3,6 +3,7 @@ module.exports = {
     'welcome',
     'quickstart',
     'release_notes',
+    'glossary',
     {
       type: 'category',
       label: 'API Reference',
@@ -13,10 +14,27 @@ module.exports = {
         'setup_information',
         {
           type: 'category',
+          label: 'Configurations',
+          items: ['configurations_overview', 'configurations_endpoints']
+        },
+        {
+          type: 'category',
+          label: 'Alerts',
+          items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
+        },
+        {
+          type: 'category',
           label: 'Leaf User',
           items: [
             'user_management_overview',
             'user_management_endpoints',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Provider Authentication',
+          items: [
+            'provider-authentication-overview',
             {
               type: 'category',
               label: 'Providers credentials',
@@ -37,23 +55,8 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Configurations',
-          items: ['configurations_overview', 'configurations_endpoints']
-        },
-        {
-          type: 'category',
-          label: 'Alerts',
-          items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
-        },
-        {
-          type: 'category',
           label: 'Field Boundary Management',
           items: ['field_boundary_management_overview', 'field_boundary_management_endpoints']
-        },
-        {
-          type: 'category',
-          label: 'Field Operations',
-          items: ['operations_overview', 'operations_endpoints', 'operations_sample_output']
         },
         {
           type: 'category',
@@ -62,13 +65,33 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Field Operations',
+          items: ['operations_overview', 'operations_endpoints', 'operations_sample_output']
+        },
+        {
+          type: 'category',
+          label: 'Manual File Upload',
+          items: ['converters_overview', 'converters_endpoints']
+        },
+        {
+          type: 'category',
           label: 'Crop Monitoring',
           items: ['crop_monitoring_overview', 'crop_monitoring_sentinel_overview',  'crop_monitoring_planet_overview',  'crop_monitoring_endpoints']
         },
         {
           type: 'category',
-          label: 'File Converters',
-          items: ['converters_overview', 'converters_endpoints']
+          label: 'Weather',
+          items: [
+            'weather_overview',
+            'weather_endpoints',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Leaf Connect',
+          items: [
+            'Connect',
+          ]
         },
         {
           type: 'category',
@@ -101,15 +124,6 @@ module.exports = {
             }
           ]
         },
-        {
-          type: 'category',
-          label: 'Weather',
-          items: [
-            'weather_overview',
-            'weather_endpoints',
-          ]
-        },
-        'Connect'
       ],
     }
   ]

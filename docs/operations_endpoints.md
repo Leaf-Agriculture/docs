@@ -62,27 +62,29 @@ Gets a paged list of operations that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values                                                                                                                                                                                                                                                                                      |
-|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `leafUserId`             | uuid of one of your users                                                                                                                                                                                                                                                                   |
-| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader`, `Stara` or `Leaf`                                                                                                                                                                                                           |
-| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                                                                                                                                                                                                                 |
-| `updatedTime`            | ISO 8601 date. Returns operations from the updatedTime onward                                                                                                                                                                                                                               |
-| `endTime`                | ISO 8601 date. Returns operations until the endTime                                                                                                                                                                                                                                         |
-| `operationType`          | `applied`, `planted`, `harvested` or `tillage`                                                                                                                                                                                                                                              |
-| `fieldId`                | the field where the operation happened                                                                                                                                                                                                                                                      |
-| `sort`                   | Sorting order of the results. Can be multivalue, the former takes precedence over the later. Can also specify order as `asc` or `desc` with `asc` being the default. Example: id,desc. The paramerters accepeted are: `id`, `leafUserId`, `startTime`, `endTime`, `type` and `updatedTime`. |
-
+| Parameter (to filter by)  | Values                                                                            |
+|---------------------------|-----------------------------------------------------------------------------------|
+| `leafUserId`              | uuid of one of your users                                                         |
+| `provider`                | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader`, `Stara` or `Leaf` |
+| `startTime`               | ISO 8601 date. Returns operations from the startTime onward                       |
+| `updatedTime`             | ISO 8601 date. Returns operations from the updatedTime onward                     |
+| `endTime`                 | ISO 8601 date. Returns operations until the endTime                               |
+| `operationType`           | `applied`, `planted`, `harvested` or `tillage`                                    |
+| `fieldId`                 | the field where the operation happened                                            |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
 
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
+- `sort`, the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc
+  - Valid values for sorting are: id, leafUserId, startTime, endTime, type and updatedTime.
 
 :::info the default value for page size is 20
 If the parameters page and size are not set, the endpoint will return 20 results.
 :::
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -140,20 +142,20 @@ If the parameters page and size are not set, the endpoint will return 20 results
 ```json
 [
   {
-    "id": "00000000-0000-0000-0000-000000000000",
+    "id": "5c8fdb34-4dc4-4b96-bfd5-53e6206ce971",
     "apiOwnerUsername": "test",
-    "leafUserId": "00000000-0000-0000-0000-000000000001",
+    "leafUserId": "7494c90e-28b8-4bb2-9ede-95c1cc894349",
     "startTime": "2015-04-18T19:31:27Z",
     "endTime": "2015-04-18T19:58:50Z",
     "updatedTime": "2021-08-24T16:00:15.062Z",
     "type": "planted",
     "files": [
-        "00000000-0000-0000-0000-000000000002",
-        "10000000-0000-0000-0000-000000000003"
+        "a10b85c2-ac2e-4b0f-8e65-74edbd2ca53e",
+        "759e1b62-dc69-4332-b618-6449a37470fa"
     ],
     "fields": [
       {
-        "id": "00000000-0000-0000-0000-000000000004"
+        "id": "0071484f-4a75-4190-9fd0-f5995d241c2c"
       }
     ],
     "providers": [
@@ -170,6 +172,8 @@ If the parameters page and size are not set, the endpoint will return 20 results
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}`
 
 Gets a single operation by its id.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -224,24 +228,24 @@ Gets a single operation by its id.
 
 ```json
 {
-  "id": "00000000-0000-0000-0000-000000000000",
+  "id": "5c8fdb34-4dc4-4b96-bfd5-53e6206ce971",
   "apiOwnerUsername": "test",
-  "leafUserId": "00000000-0000-0000-0000-000000000001",
+  "leafUserId": "7494c90e-28b8-4bb2-9ede-95c1cc894349",
   "startTime": "2015-04-18T19:31:27Z",
   "endTime": "2015-04-18T19:58:50Z",
   "updatedTime": "2021-08-24T16:00:15.062Z",
   "type": "planted",
   "files": [
-      "00000000-0000-0000-0000-0000000000002",
-      "0000000-0000-0000-0000-000000000003"
+      "a10b85c2-ac2e-4b0f-8e65-74edbd2ca53e",
+      "759e1b62-dc69-4332-b618-6449a37470fa"
   ],
   "fields": [
     {
-      "id": "10000000-0000-0000-0000-000000000004"
+      "id": "0071484f-4a75-4190-9fd0-f5995d241c2c"
     }
   ],
   "providers": [
-    "JohnDeere"
+    "providerName"
   ]
 }
 ```
@@ -253,6 +257,7 @@ Gets a single operation by its id.
 
 Gets the summary, if available, for the operation id.
 
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -315,6 +320,8 @@ Gets the summary, if available, for the operation id.
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/images`
 
 Gets a list of PNG images generated from the operation's properties.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -383,7 +390,7 @@ Gets a list of PNG images generated from the operation's properties.
     },
     "url": "string"
   },
-  ...
+  ....
 ]
 ```
 
@@ -405,6 +412,8 @@ image on GIS environments. You just need to append the `".aux.xml"` string to th
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/imagesV2`
 
 Gets a list of PNG images generated from the operation's properties with improvements in the generation process. These images are based on the [filteredGeojson][9].
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -529,6 +538,8 @@ More information [here][10].
 
 Gets a list of TIFF images generated from the operation's properties with improvements in the generation process. These images are based on the [filteredGeojson][9].
 
+#### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -609,6 +620,8 @@ Gets a list of TIFF images generated from the operation's properties with improv
 
 Gets the operations's properties and their units.
 
+#### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -679,6 +692,7 @@ always take the units into consideration, just to be sure.
 
 This endpoint can be used to remove points from the operation standardGeojson that are outside of the field geometry.
 
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -739,9 +753,9 @@ This endpoint can be used to remove points from the operation standardGeojson th
 
 ```json
 {
-    "id": "00000000-0000-0000-0000-000000000000",
+    "id": "1162a1c6-9872-4d7f-9833-5d48add8eed4",
     "message": "Sent operation to be processed.",
-    "leafFileId": "00000000-0000-0000-0000-0000000000001"
+    "leafFileId": "33020f03-5889-4c0f-b465-7a7e2c03a91d"
 }
 ```
 
@@ -752,6 +766,8 @@ You could monitor the processing status using the `leafFileId` by our [Alerts Se
 &nbsp<span class="badge badge--warning">POST</span>  `/operations/{id}/reprocess`
 
 Allows reprocessing an operation already created, starting from the merge step. The [standardGeoJSON][12], [filteredGeoJSON][13], [summary][14] and [images][15] will be updated.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"

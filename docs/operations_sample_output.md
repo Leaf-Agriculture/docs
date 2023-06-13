@@ -119,117 +119,126 @@ values={[
 
 ```json
 {
-    "type": "Feature",
-    "properties": {
-        "totalDistance": {
-            "value": 39998.476721850704,
-            "unit": "ft"
-        },
-        "speed": {
-            "avg": 5.670968743270067,
-            "min": 0.22369356453418732,
-            "max": 7.471364498138428,
-            "unit": "mi/hr"
-        },
-        "startTime": "2019-07-01T23:26:29.275+00:00",
-        "endTime": "2019-07-02T00:57:15.775+00:00",
-        "totalArea": {
-            "value": 361905.1377764531,
-            "unit": "m2"
-        },
-        "elevation": {
-            "avg": 3577.9913495529217,
-            "min": 3577.1,
-            "max": 3579.4,
-            "unit": "ft"
-        },
-        "products": [
-            {
-                "name": "Carrier",
-                "rate": {
-                    "unit": "gal/ac",
-                    "value": 6.0
-                },
-                "totalApplied": {
-                    "value": 536.5700964642404,
-                    "unit": "gal"
-                },
-                "area": {
-                    "value": 361905.1377764531,
-                    "unit": "m2"
-                }
-            },
-            {
-                "name": "Agrotain Plus",
-                "rate": {
-                    "unit": "lb/ac",
-                    "value": 1.2
-                },
-                "totalApplied": {
-                    "value": 107.31401929284804,
-                    "unit": "lb"
-                },
-                "area": {
-                    "value": 361905.1377764531,
-                    "unit": "m2"
-                }
-            },
-            {
-                "name": "28-0-0 UAN",
-                "rate": {
-                    "unit": "gal/ac",
-                    "value": 15.0
-                },
-                "totalApplied": {
-                    "value": 1341.4252411606008,
-                    "unit": "gal"
-                },
-                "area": {
-                    "value": 361905.1377764531,
-                    "unit": "m2"
-                }
-            }
-        ],
-        "crop": [],
-        "operationType": "applied",
-        "appliedRate": {
-            "avg": 15.815142468307542,
-            "min": 0.010000000330896932,
-            "max": 442.09001203078185,
-            "unit": "gal/ac"
+  "type": "Feature",
+  "properties": {
+    "totalDistance": {
+      "value": 30745.25137347639,
+      "unit": "ft"
+    },
+    "speed": {
+      "avg": 11.100700864408136,
+      "min": 0.9171435236930847,
+      "max": 11.855757713317871,
+      "unit": "mi/hr"
+    },
+    "startTime": "2019-06-03T23:45:53.200+00:00",
+    "endTime": "2019-06-04T00:40:13.485+00:00",
+    "totalArea": {
+      "value": 319095.75951633806,
+      "unit": "m2"
+    },
+    "elevation": {
+      "avg": 3577.3137203166225,
+      "min": 3576.1,
+      "max": 3578.9,
+      "unit": "ft"
+    },
+    "crop": [
+      "corn"
+    ],
+    "operationType": "applied",
+    "appliedRate": {
+      "avg": 10.169851062412837,
+      "min": 8.100000076314965,
+      "max": 297.89999569339926,
+      "unit": "gal/ac"
+    },
+    "totalApplied": {
+      "value": 801.8923899434283,
+      "unit": "gal"
+    },
+    "products": [
+      {
+        "name": "Harvest Max",
+        "rate": {
+          "unit": "gal/ac",
+          "value": 0
         },
         "totalApplied": {
-            "value": 1414,
-            "unit": "gal"
+          "value": 0,
+          "unit": "gal"
         },
-        "machinery": [
-            {
-                "name": "Agco Rogator RG1300",
-                "type": "machine",
-                "serialNumber": "10276680",
-                "brand": "Agco"
-            },
-            {
-                "name": "Sprayer",
-                "type": "implement",
-                "brand": "unknown"
-            }
-        ]
-    },
-    "geometry": {
-              "type": "MultiPolygon",
-              "coordinates": [[[
-                  [-89.80434894561768,40.47791686563837],
-                  [-89.80756759643555,40.4757623387113],
-                  [-89.80746030807495,40.47302011353734],
-                  [-89.80475664138794,40.47070219301965],
-                  [-89.80080842971802,40.47068586935202],
-                  [-89.79797601699828,40.472709973879255],
-                  [-89.7978687286377,40.47569704893722],
-                  [-89.80117321014404,40.47808008455794],
-                  [-89.80434894561768,40.47791686563837]
-              ]]]
-          }
+        "area": {
+          "value": 319095.75951633806,
+          "unit": "m2"
+        }
+      },
+      {
+        "name": "Acuron",
+        "rate": {
+          "unit": "gal/ac",
+          "value": 0
+        },
+        "totalApplied": {
+          "value": 0,
+          "unit": "gal"
+        },
+        "area": {
+          "value": 319095.75951633806,
+          "unit": "m2"
+        }
+      },
+      {
+        "name": "Carrier",
+        "rate": {
+          "unit": "gal/ac",
+          "value": 10
+        },
+        "totalApplied": {
+          "value": 788.4996397903748,
+          "unit": "gal"
+        },
+        "area": {
+          "value": 319095.75951633806,
+          "unit": "m2"
+        }
+      }
+    ],
+    "originalOperationType": "CropOriginal",
+    "machinery": [
+      {
+        "name": "MachineName",
+        "type": "machine",
+        "serialNumber": "10271080",
+        "brand": "Machine"
+      },
+      {
+        "name": "ImplementName",
+        "type": "implement",
+        "brand": "unknown"
+      }
+    ],
+    "originalOperationData": {
+      "originalOperationFarm": "Farm Green",
+      "originalOperationField": "Field A",
+      "originalOperationGrower": "Grower",
+      "originalOperationType": "CropOriginal"
+    }
+  },
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [[[
+      [-89.80434894561768,40.47791686563837],
+      [-89.80756759643555,40.4757623387113],
+      [-89.80746030807495,40.47302011353734],
+      [-89.80475664138794,40.47070219301965],
+      [-89.80080842971802,40.47068586935202],
+      [-89.79797601699828,40.472709973879255],
+      [-89.7978687286377,40.47569704893722],
+      [-89.80117321014404,40.47808008455794],
+      [-89.80434894561768,40.47791686563837]
+    ]]]
+  }
 }
 ```
 
@@ -238,138 +247,178 @@ values={[
 
 ```json
 {
-    "type": "Feature",
-    "properties": {
-        "totalDistance": {
-            "value": 33277.419952513315,
-            "unit": "ft"
+  "type": "Feature",
+  "properties": {
+    "totalDistance": {
+      "value": 21062.354662275786,
+      "unit": "ft"
+    },
+    "speed": {
+      "avg": 3.441336296949484,
+      "min": 0.006131406407803297,
+      "max": 6.3555588722229,
+      "unit": "mi/hr"
+    },
+    "startTime": "2016-09-19T18:30:51.640+00:00",
+    "endTime": "2016-09-21T21:48:25.000+00:00",
+    "totalArea": {
+      "value": 61820.13638528271,
+      "unit": "m2"
+    },
+    "elevation": {
+      "avg": 59.13738317757009,
+      "min": 58.9,
+      "max": 59.6,
+      "unit": "ft"
+    },
+    "crop": [
+      "soybeans"
+    ],
+    "operationType": "harvested",
+    "wetMass": {
+      "avg": 17.492758207524563,
+      "min": 0.01,
+      "max": 29.59,
+      "unit": "lb"
+    },
+    "totalWetMass": {
+      "value": 72997.28000000014,
+      "unit": "lb"
+    },
+    "dryMass": {
+      "avg": 17.112920091943007,
+      "min": 0.01,
+      "max": 29.59,
+      "unit": "lb"
+    },
+    "totalDryMass": {
+      "value": 71412.21554367829,
+      "unit": "lb"
+    },
+    "wetMassPerArea": {
+      "avg": 4778.532184798924,
+      "min": 3.2892456102410352,
+      "max": 235466.19310582182,
+      "unit": "lb/ac"
+    },
+    "dryMassPerArea": {
+      "avg": 4674.771037540907,
+      "min": 3.2892456102410352,
+      "max": 232434.9041830802,
+      "unit": "lb/ac"
+    },
+    "wetVolume": {
+      "avg": 0.2915459701254094,
+      "min": 0.00016666666666666666,
+      "max": 0.49316666666666664,
+      "unit": "bu"
+    },
+    "totalWetVolume": {
+      "value": 1216.6213333333362,
+      "unit": "bu"
+    },
+    "dryVolume": {
+      "avg": 0.28521533486571676,
+      "min": 0.00016666666666666666,
+      "max": 0.49316666666666664,
+      "unit": "bu"
+    },
+    "totalDryVolume": {
+      "value": 1190.2035923946364,
+      "unit": "bu"
+    },
+    "wetVolumePerArea": {
+      "avg": 79.64220307998207,
+      "min": 0.05482076017068392,
+      "max": 3924.4365517636966,
+      "unit": "bu/ac"
+    },
+    "dryVolumePerArea": {
+      "avg": 77.91285062568178,
+      "min": 0.05482076017068392,
+      "max": 3873.915069718003,
+      "unit": "bu/ac"
+    },
+    "harvestMoisture": {
+      "avg": 14.221756530074288,
+      "min": 1.36,
+      "max": 21.05,
+      "unit": "percentage"
+    },
+    "varieties": [
+      {
+        "harvestMoisture": {
+          "avg": 14.221756530074288,
+          "min": 1.36,
+          "max": 21.05,
+          "unit": "percentage"
         },
-        "speed": {
-            "avg": 4.297550131597641,
-            "min": 0.0,
-            "max": 7.842694282531738,
-            "unit": "mi/hr"
-        },
-        "startTime": "2015-10-06T23:51:23.040+00:00",
-        "endTime": "2015-10-07T17:09:26.040+00:00",
-        "totalArea": {
-            "value": 58926.234671233884,
-            "unit": "m2"
-        },
-        "elevation": {
-            "avg": 165.5691147167663,
-            "min": 58.6,
-            "max": 195.3,
-            "unit": "ft"
-        },
-        "crop": [
-            "corn"
-        ],
-        "operationType": "harvested",
         "wetMass": {
-            "avg": 11.810479659859125,
-            "min": 0.031766114277891125,
-            "max": 58.95,
-            "unit": "lb"
-        },
-        "totalWetMass": {
-            "value": 165960.86018034007,
-            "unit": "lb"
+          "value": 72997.28000000014,
+          "unit": "lb"
         },
         "wetMassPerArea": {
-            "avg": 11397.635987349213,
-            "min": 189.17227229135673,
-            "max": 646492.91259439,
-            "unit": "lb/ac"
+          "value": 1.1808010183778619,
+          "unit": "lb/ac"
         },
         "wetVolume": {
-            "avg": 0.21090142249748436,
-            "min": 5.672520406766272E-4,
-            "max": 1.0526785714285716,
-            "unit": "bu"
+          "value": 1216.6213333333362,
+          "unit": "bu"
         },
-        "totalWetVolume": {
-            "value": 2963.5867889346546,
-            "unit": "bu"
+        "area": {
+          "value": 61820.13638528271,
+          "unit": "m2"
         },
-        "wetVolumePerArea": {
-            "avg": 203.5292140598074,
-            "min": 3.3780762909170847,
-            "max": 11544.516296328393,
-            "unit": "bu/ac"
+        "dryVolume": {
+          "value": 1190.2035923946364,
+          "unit": "bu"
         },
-        "harvestMoisture": {
-            "avg": 15.38852974665528,
-            "min": 6.05,
-            "max": 18.16,
-            "unit": "percentage"
+        "dryMassPerArea": {
+          "value": 1.1551610805031989,
+          "unit": "lb/ac"
         },
-        "varieties": [
-            {
-                "harvestMoisture": {
-                    "avg": 15.38852974665528,
-                    "min": 6.05,
-                    "max": 18.16,
-                    "unit": "percentage"
-                },
-                "wetMass": {
-                    "value": 165960.86018034007,
-                    "unit": "lb"
-                },
-                "wetMassPerArea": {
-                    "value": 2.816417188477808,
-                    "unit": "lb/ac"
-                },
-                "wetVolume": {
-                    "value": 2963.5867889346546,
-                    "unit": "bu"
-                },
-                "area": {
-                    "value": 58926.234671233884,
-                    "unit": "m2"
-                },
-                "name": "Corn"
-            }
-        ],
-        "machinery": [
-            {
-                "name": "Case IH Corn Head 20.000010800000002ft 8row",
-                "type": "implement",
-                "brand": "Case IH"
-            },
-            {
-                "name": "Case IH  8120",
-                "type": "machine",
-                "serialNumber": "8000001",
-                "brand": "Case IH"
-            },
-            {
-                "name": "Case IH Corn Head 20ft 12row",
-                "type": "implement",
-                "brand": "Case IH"
-            },
-            {
-                "name": "Case IH X120 Series 8120",
-                "type": "machine",
-                "serialNumber": "8220490",
-                "brand": "Case IH"
-            }
-        ]
-    },
+        "dryMass": {
+          "value": 71412.21554367829,
+          "unit": "lb"
+        },
+        "name": "Soybeans"
+      }
+    ],
+    "originalOperationType": "Harvesting",
+    "machinery": [
+      {
+        "name": "Case IH Soybeans Head 35.000018900000015ft 8row",
+        "type": "implement",
+        "brand": "Case IH"
+      },
+      {
+        "name": "Case IH  8120",
+        "type": "machine",
+        "serialNumber": "8000001",
+        "brand": "Case IH"
+      }
+    ],
+    "originalOperationData": {
+      "originalOperationFarm": "Farm Green",
+      "originalOperationField": "Field A",
+      "originalOperationGrower": "Grower",
+      "originalOperationType": "CropOriginal"
+    }
+  },
     "geometry": {
-              "type": "MultiPolygon",
-              "coordinates": [[[
-                  [-89.80434894561768,40.47791686563837],
-                  [-89.80756759643555,40.4757623387113],
-                  [-89.80746030807495,40.47302011353734],
-                  [-89.80475664138794,40.47070219301965],
-                  [-89.80080842971802,40.47068586935202],
-                  [-89.79797601699828,40.472709973879255],
-                  [-89.7978687286377,40.47569704893722],
-                  [-89.80117321014404,40.47808008455794],
-                  [-89.80434894561768,40.47791686563837]
-              ]]]
-          }
+      "type": "MultiPolygon", 
+      "coordinates": [[[
+        [-89.80434894561768,40.47791686563837],
+        [-89.80756759643555,40.4757623387113],
+        [-89.80746030807495,40.47302011353734],
+        [-89.80475664138794,40.47070219301965],
+        [-89.80080842971802,40.47068586935202],
+        [-89.79797601699828,40.472709973879255],
+        [-89.7978687286377,40.47569704893722],
+        [-89.80117321014404,40.47808008455794],
+        [-89.80434894561768,40.47791686563837]
+        ]]]
+    }
 }
 ```
 
@@ -378,106 +427,113 @@ values={[
 
 ```json
 {
-    "type": "Feature",
-    "properties": {
-        "totalDistance": {
-            "value": 6955.050663505276,
-            "unit": "ft"
+  "type": "Feature",
+  "properties": {
+    "totalDistance": {
+      "value": 36273.23038351213,
+      "unit": "ft"
+    },
+    "speed": {
+      "avg": 4.632636925960638,
+      "min": 0.002,
+      "max": 6.537,
+      "unit": "mi/hr"
+    },
+    "startTime": "2018-04-23T15:12:11.000+00:00",
+    "endTime": "2018-04-25T17:18:04.000+00:00",
+    "totalArea": {
+      "value": 134795.80322644877,
+      "unit": "m2"
+    },
+    "elevation": {
+      "avg": 197.8268603561387,
+      "min": 196.4,
+      "max": 200,
+      "unit": "ft"
+    },
+    "crop": [
+      "corn"
+    ],
+    "operationType": "planted",
+    "singulation": {
+      "avg": 99.31269745250064,
+      "min": 98.1,
+      "max": 100,
+      "unit": "prcnt"
+    },
+    "downForce": {
+      "avg": 137.00726517903476,
+      "min": 0,
+      "max": 251,
+      "unit": "lb"
+    },
+    "seedRate": {
+      "avg": 36590.32694115429,
+      "min": 17049.590909090908,
+      "max": 39031.46153846154,
+      "unit": "seeds/ac"
+    },
+    "totalPlanted": {
+      "value": 1218773,
+      "unit": "seeds"
+    },
+    "varieties": [
+      {
+        "name": "P1309WAM",
+        "rate": {
+          "avg": 36590.32694115429,
+          "min": 17049.590909090908,
+          "max": 39031.46153846154,
+          "unit": "seeds/ac",
+          "minTarget": 37000,
+          "maxTarget": 37000,
+          "avgTarget": 37000
         },
-        "speed": {
-            "avg": 5.35279209039548,
-            "min": 0.007,
-            "max": 6.087,
-            "unit": "mi/hr"
-        },
-        "startTime": "2019-05-20T18:57:17.000+00:00",
-        "endTime": "2019-05-20T20:20:57.800+00:00",
-        "totalArea": {
-            "value": 38768.74107320113,
-            "unit": "m2"
-        },
-        "elevation": {
-            "avg": 194.6993220338983,
-            "min": 193.9,
-            "max": 196.4,
-            "unit": "ft"
-        },
-        "crop": [
-            "corn"
-        ],
-        "operationType": "planted",
-        "seedRate": {
-            "avg": 36504.86707336483,
-            "min": 35265.833333333336,
-            "max": 40372.63888888889,
-            "unit": "seeds/ac"
-        },
-        "singulation": {
-            "avg": 1195.02,
-            "min": 1194.8,
-            "max": 1195.24,
-            "unit": "prcnt"
-        },
-        "downForce": {
-            "avg": 743.875,
-            "min": 687.75,
-            "max": 800.0,
-            "unit": "lbf"
+        "area": {
+          "value": 134795.80322644877,
+          "unit": "m2"
         },
         "totalPlanted": {
-            "value": 349713,
-            "unit": "seeds"
-        },
-        "varieties": [
-            {
-                "name": "P1309WAM",
-                "rate": {
-                    "avg": 36496.60675550211,
-                    "min": 35265.833333333336,
-                    "max": 40372.63888888889,
-                    "unit": "seeds/ac",
-                    "minTarget": 36000.0,
-                    "maxTarget": 36500.0,
-                    "avgTarget": 36499.98903434779
-                },
-                "area": {
-                    "value": 38768.74107320113,
-                    "unit": "m2"
-                },
-                "totalPlanted": {
-                    "value": 349634,
-                    "unit": "seeds"
-                }
-            }
-        ],
-        "machinery": [
-            {
-                "name": "Case IH 60.0' 36 Row Planter",
-                "type": "implement",
-                "brand": "Case IH"
-            },
-            {
-                "name": "Tractor",
-                "type": "machine",
-                "serialNumber": "8000001",
-                "brand": "unknown"
-            }
-        ]
-    },
-    "geometry": {
-              "type": "MultiPolygon",
-              "coordinates": [[[
-                  [-89.80434894561768,40.47791686563837],
-                  [-89.80756759643555,40.4757623387113],
-                  [-89.80746030807495,40.47302011353734],
-                  [-89.80475664138794,40.47070219301965],
-                  [-89.80080842971802,40.47068586935202],
-                  [-89.79797601699828,40.472709973879255],
-                  [-89.7978687286377,40.47569704893722],
-                  [-89.80117321014404,40.47808008455794],
-                  [-89.80434894561768,40.47791686563837]
-              ]]]
-          }
+          "value": 1218773,
+          "unit": "seeds"
+        }
+      }
+    ],
+    "originalOperationType": "SowingAndPlanting",
+    "machinery": [
+      {
+        "name": "Tractor",
+        "type": "machine",
+        "serialNumber": "8000001",
+        "brand": "unknown"
+      },
+      {
+        "name": "Case IH 40.0' 22 Row Planter",
+        "type": "implement",
+        "brand": "Case IH"
+      }
+    ],
+    "originalOperationData": {
+      "originalOperationFarm": "Farm Green",
+      "originalOperationField": "Field A",
+      "originalOperationGrower": "Grower",
+      "originalOperationType": "CropOriginal"
+    }
+  },
+  "geometry": {
+    "type": "MultiPolygon",
+      "coordinates": [[[
+        [-89.80434894561768,40.47791686563837],
+        [-89.80756759643555,40.4757623387113],
+        [-89.80746030807495,40.47302011353734],
+        [-89.80475664138794,40.47070219301965],
+        [-89.80080842971802,40.47068586935202],
+        [-89.79797601699828,40.472709973879255],
+        [-89.7978687286377,40.47569704893722],
+        [-89.80117321014404,40.47808008455794],
+        [-89.80434894561768,40.47791686563837]
+      ]]]
+  }
 }
 ```
 
@@ -486,66 +542,61 @@ values={[
 
 ```json
 {
-    "type": "Feature",
-    "properties": {
-        "totalDistance": {
-            "value": 103.77677982560607,
-            "unit": "ft"
-        },
-        "speed": {
-            "avg": 4.0806,
-            "min": 2.8979999999999997,
-            "max": 5.788799999999999,
-            "unit": "km/hr"
-        },
-        "startTime": "2015-10-06T23:51:23.040+00:00",
-        "endTime": "2015-10-07T17:09:26.040+00:00"
-        "totalArea": {
-            "value": 192.82356654418942,
-            "unit": "m2"
-        },
-        "elevation": {
-            "avg": 227.78039022623696,
-            "min": 227.61552355957028,
-            "max": 227.91652355957032,
-            "unit": "m"
-        },
-        "crop": [ ],
-        "operationType": "tillage",
-        "tillageDepthTarget": {
-            "avg": 14.999999999999998,
-            "min": 14.999999999999998,
-            "max": 14.999999999999998,
-            "unit": "in"
-        },
-        "machinery": [
-            {
-                "name": "Tractor",
-                "type": "machine"
-            },
-            {
-                "name": "A008800104203027",
-                "type": "implement"
-            }
-        ]
+  "type": "Feature",
+  "properties": {
+    "totalDistance": {
+      "value": 185822.9781551407,
+      "unit": "ft"
     },
-    "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [
+    "startTime": "2021-12-08T17:46:13.482+00:00",
+    "endTime": "2021-12-08T22:21:16.181+00:00",
+    "totalArea": {
+      "value": 517905.5871739836,
+      "unit": "m2"
+    },
+    "elevation": {
+      "avg": 690.4474652714705,
+      "min": 681.56708538,
+      "max": 702.30096826,
+      "unit": "ft"
+    },
+    "operationType": "tillage",
+    "tillageDepthActual": {
+      "avg": 0,
+      "min": 0,
+      "max": 0,
+      "unit": "in"
+    },
+    "tillageDepthTarget": {
+      "avg": 4,
+      "min": 4,
+      "max": 4,
+      "unit": "in"
+    },
+    "originalOperationData": {
+      "originalOperationFarm": "Farm Green",
+      "originalOperationField": "Field A",
+      "originalOperationGrower": "Grower",
+      "originalOperationType": "CropOriginal"
+    }
+  },
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+        [
             [
-                [
-                    [ -86.09008958619441, 39.946016818914664 ],
-                    [ -86.09012910819442, 39.946018315914664 ],
-                    [ -86.09016866119443, 39.946019965914665 ],
-                    [ -86.09019500919443, 39.94602120091467 ],
-                    [ -86.09035699819445, 39.94602920691468 ],
-                    [ -86.09035401319444, 39.94603098191469 ],
-                    [ -86.09034872219445, 39.946030863914686 ],
-                    [ -86.09033498219445, 39.946030421914685 ],
-                    [ -86.09008958619441, 39.946016818914664 ]
-                ]
+                [ -86.09008958619441, 39.946016818914664 ],
+                [ -86.09012910819442, 39.946018315914664 ],
+                [ -86.09016866119443, 39.946019965914665 ],
+                [ -86.09019500919443, 39.94602120091467 ],
+                [ -86.09035699819445, 39.94602920691468 ],
+                [ -86.09035401319444, 39.94603098191469 ],
+                [ -86.09034872219445, 39.946030863914686 ],
+                [ -86.09033498219445, 39.946030421914685 ],
+                [ -86.09008958619441, 39.946016818914664 ]
             ]
         ]
+      ]
     }
 }
 ```
@@ -729,18 +780,85 @@ In the result we displayed a list of the GeoTIFF images for each property availa
 Here is an example of Units from the numerical properties of the Field Operations.
 
 
+<Tabs defaultValue="harvested"
+values={[
+{ label: 'Planted', value: 'planted', }, 
+{ label: 'Harvested', value: 'harvested', },
+{ label: 'Applied', value: 'applied', },
+{ label: 'Tillage', value: 'tillage', },
+]
+}>
+
+  <TabItem value="applied">
+
 ```json
 {
-    "elevation": "ft",
-    "area": "m2",
-    "harvestMoisture": "percentage",
-    "equipmentWidth": "ft",
-    "distance": "ft",
-    "heading": "arcdeg",
-    "wetVolume": "bu",
-    "wetVolumePerArea": "bu/ac",
-    "wetMass": "lb",
-    "wetMassPerArea": "lb/ac",
-    "speed": "mi/hr"
+  "distance": "ft",
+  "heading": "arcdeg",
+  "speed": "mi/hr",
+  "area": "m2",
+  "appliedRate": "gal/ac",
+  "appliedRateTarget": "gal/ac",
+  "equipmentWidth": "ft",
+  "elevation": "m"
 }
 ```
+
+  </TabItem>
+  <TabItem value="harvested">
+
+```json
+{
+  "elevation": "ft",
+  "area": "m2",
+  "harvestMoisture": "percentage",
+  "dryVolumePerArea": "bu/ac",
+  "distance": "ft",
+  "heading": "arcdeg",
+  "dryVolume": "bu",
+  "wetVolume": "bu",
+  "wetVolumePerArea": "bu/ac",
+  "dryMassPerArea": "lb/ac",
+  "wetMassPerArea": "lb/ac",
+  "speed": "mi/hr",
+  "equipmentWidth": "ft",
+  "dryMass": "lb",
+  "wetMass": "lb"
+}
+```
+
+  </TabItem>
+  <TabItem value="planted">
+
+```json
+{
+  "speed": "mi/hr",
+  "distance": "ft",
+  "heading": "arcdeg",
+  "elevation": "ft",
+  "seedRateTarget": "seeds/ac",
+  "seedRate": "seeds/ac",
+  "downForce": "lb",
+  "singulation": "prcnt",
+  "equipmentWidth": "ft",
+  "area": "m2"
+}
+```
+
+  </TabItem>
+  <TabItem value="tillage">
+
+```json
+{
+  "distance": "ft",
+  "equipmentWidth": "ft",
+  "tillageDepthActual": "in",
+  "tillageDepthTarget": "in",
+  "elevation": "ft",
+  "area": "m2"
+}
+```
+
+  </TabItem>
+
+</Tabs>

@@ -28,6 +28,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [17]: https://docs.withleaf.io/docs/user_management_endpoints#providers-credentials-endpoints
 [18]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
 [19]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#summary-response-sample
+[sample_units]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-files-units
+[20]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-all-files
+[21]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-batch-upload
+[22]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-a-file
 
 ## About
 
@@ -74,19 +78,19 @@ Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values                                                                                           |
-|--------------------------|--------------------------------------------------------------------------------------------------|
-| `leafUserId`             | uuid of one of your users                                                                        |
-| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                         |
-| `status`                 | `processed`, `failed` or `processing`                                                            |
-| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                 |
-| `organizationId`         | the provider organizationId (only available for John Deere)                                      |
-| `batchId`                | uuid of the upload response (only available for uploaded files)                                  |
-| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                    |
-| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                      |
-| `endTime`                | ISO 8601 date. Returns operations until the endTime                                              |
-| `operationType`          | `applied`, `planted` or `harvested`                                                              |
-| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned |
+| Parameter (to filter by) | Values                                                                                            |
+|--------------------------|---------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                         |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                          |
+| `status`                 | `processed`, `failed` or `processing`                                                             |
+| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                  |
+| `organizationId`         | the provider organizationId (only available for John Deere)                                       |
+| `batchId`                | uuid of the upload response (only available for uploaded files)                                   |
+| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                     |
+| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                       |
+| `endTime`                | ISO 8601 date. Returns operations until the endTime                                               |
+| `operationType`          | `applied`, `planted` or `harvested`                                                               |
+| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned  |
 
 Also, for `operationType`: `harvested` we can process the yield properties related to the operation using the 
 crop density and standard moisture available in this [table][18].
@@ -96,10 +100,15 @@ They are:
 
 - `page`, an integer specifying the page being fetched (default is 0)
 - `size`, an integer specifying the size of the page (max is 100)
+- `sort`, the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc
+  - Valid values for sorting are: id, fileName, createdTime, updatedTime, origin, leafUserId, sizeInBytes, provider, organizationId, fileFormat.
+
 
 :::info the default value for page size is 20
 If the parameters page and size are not set, the endpoint will return 20 results.
 :::
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -156,21 +165,13 @@ If the parameters page and size are not set, the endpoint will return 20 results
 The response is a JSON with the key "operations" referring to a list of files.
 [Here's a link with sample responses][14] for "planted", "applied", "harvested" and "tillage" operation files.
 
-
-```json
-{
-    "message": "SUCCESS",
-    "operations": [OPERATIONS]
-}    
-```
-
-
-
 ### Get a file
 
 &nbsp<span class="badge badge--success">GET</span>  `/files/{id}`
 
 Gets a single file by its id.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -230,6 +231,7 @@ Gets a single file by its id.
 
 Gets the summary, if available, for the file id.
 
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -293,6 +295,8 @@ Gets the summary, if available, for the file id.
 
 Gets a list of PNG images generated from the operation's file properties.
 
+#### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -343,7 +347,7 @@ Gets a list of PNG images generated from the operation's file properties.
 </Tabs>
 
 
-Returns a JSON list of the following format:
+#### Response
 
 ```json
 [
@@ -383,6 +387,8 @@ image on GIS environments. You just need to append the `".aux.xml"` string to th
 &nbsp<span class="badge badge--success">GET</span>  `/files/{id}/units`
 
 Gets the file's properties and their units.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -433,20 +439,9 @@ Gets the file's properties and their units.
   </TabItem>
 </Tabs>
 
-Returns a JSON like the following:
+#### Response
 
-```json
-{
-    "distance": "ft",
-    "heading": "arcdeg",
-    "speed": "mi/hr",
-    "elevation": "ft",
-    "harvestMoisture": "prcnt",
-    "wetMass": "lb",
-    "yieldVolume": "bu",
-    "equipmentWidth": "ft"
-}
-```
+[Here's a link with sample responses][sample_units] for "planted", "applied", "harvested" and "tillage" operation files.
 
 These properties vary depending on the operationType, but you can expect the same,
 standardized keys, across different providers.
@@ -732,6 +727,8 @@ TASKDATA
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 | Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used. |
 
+#### Request examples
+
 <Tabs
   defaultValue="sh"
   values={[
@@ -802,9 +799,7 @@ TASKDATA
   </TabItem>
 </Tabs>
 
-##### Response
-
-Returns a single JSON object, as shown below:
+#### Response
 
 ```json
 {
@@ -818,10 +813,10 @@ Returns a single JSON object, as shown below:
 }
 ```
 
-This id can then be queried to retrieve on [Get batch](#get-batch-upload) to get the individual file ID's. 
+This id can then be queried to retrieve on [Get batch][21] to get the individual file ID's. 
 Then you can query each of the files individually with 
-[Get a File](#get-a-file) or all of them, filtering by `batchId`, on
-[Get all Files](#get-all-files).
+[Get a File][22] or all of them, filtering by `batchId`, on
+[Get all Files][20].
 
 
 #### Batch status
@@ -838,8 +833,8 @@ The messages with FAILED status have the key *statusDetails*. The statusDetails 
 
 ```json
 {
-    "id": "996aea67-52bc-4d4b-9b77-028756dc0ee9",
-    "leafUserId": "ede8f781-1d55-4b2d-83a1-6785ddab6e1d",
+    "id": "c21e6495-3e39-4c5f-b35c-d33fa06c25d8",
+    "leafUserId": "fc7c52ad-d228-4332-9e18-de979a293457",
     "fileName": "Climate.zip",
     "size": 8652951,
     "provider": "Other",
@@ -863,9 +858,10 @@ The following status can be present on *statusDetails*:
 &nbsp<span class="badge badge--success">GET</span> `/batch/{batch_id}`
 
 Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
-via [Get all Files](#get-all-files).
+via [Get all Files][21].
 You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
 
+#### Request examples
 
 <Tabs
   defaultValue="py"
@@ -915,33 +911,18 @@ You can also query the batch upload ID to see a list of files generated in the u
   </TabItem>
 </Tabs>
 
-##### Response:
-
-When you query a batch upload ID, you will receive a single JSON object:
+#### Response
 
 ```json 
 {
-    "id": "f893c921-0f38-4f39-9f3e-be765ac61df0",
-    "leafUserId": "bdf5f624-fb9b-4294-949c-29e979f0ce5a",
-    "provider": "Other",
-    "status": "PROCESSED",
-    "leafFiles": [
-        "8334f4bb-48de-44e2-903b-6dedd6db6683",
-        "81778f58-8eed-41cc-a025-e653ea85b01e",
-        "0f606bef-b529-4899-854c-9b698cd08762",
-        "84fec273-b458-4be7-8feb-44204502f126",
-        "92b7367b-2ffd-4a82-ba9b-5a40e8b68714",
-        "90e7e130-8f33-4752-b8f4-3a132246f047",
-        "cb97857e-61b0-4fbe-a5c1-1083cfa6738f",
-        "0cded205-7734-40fb-8906-b82d36e35845",
-        "dc24d491-983c-4ebe-b961-8c749943529f",
-        "67af8697-47bc-4886-935f-5880d1eba31d",
-        "8b7d8b7b-e682-4c3e-aee2-3b7713cc81a4",
-        "e5067ed3-8463-43b9-a8a5-3b3c1eee44bc",
-        "b9d30d3a-0207-410f-81da-afb31a1b36cb",
-        "eace9b90-a520-4c4c-af89-4c3fd5da68fa",
-        "6ea55c68-203f-448b-9e7f-dcd014c31cc3"
-    ]
+  "id": "9b561906-efac-43a3-9378-641e3698da5d",
+  "leafUserId": "1481bc9b-cdc7-45c1-9f0e-592da6306dfe",
+  "provider": "Other",
+  "status": "PROCESSED",
+  "leafFiles": [
+    "f14203df-4144-43b7-a383-2ed321f395ce",
+    "810b1475-cb49-437b-8658-d29038ce2fa4"
+  ]
 }
 ```
 
@@ -952,9 +933,10 @@ When you query a batch upload ID, you will receive a single JSON object:
 &nbsp<span class="badge badge--success">GET</span> `/batch`
 
 Once you've uploaded files, you can then query these files individually, merge the files, or query for them 
-via [Get all Files](#get-all-files).
+via [Get all Files][20].
 You can also query the batch upload ID to see a list of files generated in the upload and a status of the upload with this endpoint.
 
+#### Request examples
 
 <Tabs
   defaultValue="py"
@@ -1004,34 +986,19 @@ You can also query the batch upload ID to see a list of files generated in the u
   </TabItem>
 </Tabs>
 
-##### Response:
-
-When you query a batch upload ID, you will receive a JSON with list of batches:
+#### Response
 
 ```json 
 [
   {
-      "id": "f893c921-0f38-4f39-9f3e-be765ac61df0",
-      "leafUserId": "bdf5f624-fb9b-4294-949c-29e979f0ce5a",
-      "provider": "Other",
-      "status": "PROCESSED",
-      "leafFiles": [
-          "8334f4bb-48de-44e2-903b-6dedd6db6683",
-          "81778f58-8eed-41cc-a025-e653ea85b01e",
-          "0f606bef-b529-4899-854c-9b698cd08762",
-          "84fec273-b458-4be7-8feb-44204502f126",
-          "92b7367b-2ffd-4a82-ba9b-5a40e8b68714",
-          "90e7e130-8f33-4752-b8f4-3a132246f047",
-          "cb97857e-61b0-4fbe-a5c1-1083cfa6738f",
-          "0cded205-7734-40fb-8906-b82d36e35845",
-          "dc24d491-983c-4ebe-b961-8c749943529f",
-          "67af8697-47bc-4886-935f-5880d1eba31d",
-          "8b7d8b7b-e682-4c3e-aee2-3b7713cc81a4",
-          "e5067ed3-8463-43b9-a8a5-3b3c1eee44bc",
-          "b9d30d3a-0207-410f-81da-afb31a1b36cb",
-          "eace9b90-a520-4c4c-af89-4c3fd5da68fa",
-          "6ea55c68-203f-448b-9e7f-dcd014c31cc3"
-      ]
+    "id": "9e47ae29-6a84-4a9c-9e5f-01802f6dceea",
+    "leafUserId": "5ded9409-c99f-4379-9173-c01b1631f274",
+    "provider": "Other",
+    "status": "PROCESSED",
+    "leafFiles": [
+      "74d5aeb6-9a0e-43c6-986c-a5f17eecbddc",
+      "475fcad3-b534-409d-8c8b-cec4dabd1b8b"
+    ]
   }
 ]
 ```
@@ -1043,6 +1010,8 @@ When you query a batch upload ID, you will receive a JSON with list of batches:
 &nbsp<span class="badge badge--warning">PUT</span> `/batch/{id}/retry`
 
 If a batch upload does not complete as expected, this endpoint allows you to try again. This action will reprocess the fragments of uploaded data that didn't succeed processing before, keeping existing converted files unaffected.
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1093,14 +1062,12 @@ If a batch upload does not complete as expected, this endpoint allows you to try
   </TabItem>
 </Tabs>
 
-##### Response
-
-Returns a single JSON object, similar to the upload endpoint response:
+#### Response
 
 ```json
 {
-    "id": "uuid",
-    "leafUserId": "uuid",
+    "id": "36d8551f-409d-41f2-94b4-04c9fe16289b",
+    "leafUserId": "089bb77b-2415-43df-a246-6c0a5937c774",
     "fileName": "filename.zip",
     "size": 8652951,
     "provider": "Other",
@@ -1126,13 +1093,17 @@ A merge process has some validations, the files passed must belong to
 the same `leafUserId`, be of the same operation type and have the status as `processed`.
 If any of those filters fail, the endpoint will result in HTTP 400 error.
 
-It receives a single JSON object with the `ids` entry. Example:
+It receives a single JSON object with the `ids` entry.
+
+#### Request body
 
 ```json
 {
   "ids": [ "id1", "id2", "so on" ]
 }
 ```
+
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -1189,7 +1160,7 @@ It receives a single JSON object with the `ids` entry. Example:
 </Tabs>
 
 
-Returns a single JSON object:
+#### Response
 
 ```json
 {
@@ -1210,6 +1181,7 @@ performing GET consults in this.
 
 Get status by file processing step by id.
 
+#### Request examples
 
 <Tabs
   defaultValue="sh"

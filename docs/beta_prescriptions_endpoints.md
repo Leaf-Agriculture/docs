@@ -32,8 +32,6 @@ See below the REST resources and their endpoints available in this service.
 
 ## Prescription (BETA)
 
-### Prescription Resources
-
 This feature has the following endpoints available:
 
 | Description                                   | Endpoints                                                                              |
@@ -61,6 +59,8 @@ A zip file named “prescription_rx_map”, containing the following files:
 - prescription_rx_map.shp
 - prescription_rx_map.dbf
 - prescription_rx_map.shx
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -125,8 +125,6 @@ values={[
 
 #### Response
 
-The response is json with the id of the file uploaded to the provider.
-
 ```json
 {
   "id": "str",
@@ -139,6 +137,8 @@ The response is json with the id of the file uploaded to the provider.
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/ravenSlingshot`
 
 List the existing prescriptions available in the provider.
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -189,7 +189,6 @@ values={[
 
 
 #### Response
-A json array of prescriptions available in this provider 
 
 ```json
 [
@@ -223,6 +222,8 @@ A .zip file named “prescription_rx_map”, having a parent folder called "Rx",
   - prescription_rx_map.shp
   - prescription_rx_map.dbf
   - prescription_rx_map.shx
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -287,8 +288,6 @@ values={[
 
 #### Response
 
-The response is json with the id of the file uploaded to the provider.
-
 ```json
 {
   "id": "str",
@@ -305,6 +304,8 @@ List the existing prescriptions available in the provider.
 
 There is a required request parameter called organizationId for this endpoint to work.
 This property should be the id of the organization at JohnDeere.
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -355,7 +356,6 @@ values={[
 
 
 #### Response
-A json array of prescriptions available in this provider.
 
 ```json
 [
@@ -377,6 +377,8 @@ A json array of prescriptions available in this provider.
 
 Download a prescription related to a file ID using the LeafUserId's John Deere credentials. This file ID is relative 
 to the one available from the **John Deere side**.
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -400,7 +402,7 @@ values={[
     'Content-Type': 'multipart/form-data'
   }
 
-  axios.post(endpoint, { headers })
+  axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -416,7 +418,7 @@ values={[
   endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.post(endpoint, headers=headers)
+  response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
 
@@ -424,7 +426,7 @@ values={[
   <TabItem value="sh">
 
   ```shell
-  curl -X POST \
+  curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
   ```
@@ -434,8 +436,6 @@ values={[
 
 
 #### Response
-
-The response is json with url to download.
 
 ```json
 {
@@ -467,6 +467,8 @@ A .zip file named “prescription_map” containing the following files:
 - prescription_map.shp
 - prescription_map.dbf
 - prescription_map.shx
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -531,8 +533,6 @@ values={[
 
 #### Response
 
-The response is json with the id of the file uploaded to the provider.
-
 ```json
 {
   "id": "str",
@@ -552,6 +552,8 @@ List the existing prescriptions available in the provider.
 You can get the company Id from the [grower endpoints][9] using the property `providerOrganizationId`.
 
 </p>
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -602,7 +604,6 @@ values={[
 
 
 #### Response
-A json array of prescriptions available in this provider.
 
 ```json
 [
@@ -631,6 +632,8 @@ A zip file named “prescription_rx_map”, containing the following files:
 - prescription_rx_map.shp
 - prescription_rx_map.dbf
 - prescription_rx_map.shx
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -694,8 +697,6 @@ values={[
 
 
 #### Response
-
-The response is json with the id of the file uploaded to the provider.
 
 ```json
 {

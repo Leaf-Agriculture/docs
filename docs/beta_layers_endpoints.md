@@ -23,10 +23,10 @@ https://api.withleaf.io/services/beta/api
 
 See below the REST resources and their endpoints available in this service.
 
-| Description                                | Endpoints                                                                |
-| ------------------------------------------ | ------------------------------------------------------------------------ |
-| [Get all the layers for a Leaf User][2]    | <span class="badge badge--success">GET</span> `/users/{leafUserId}/layers`                 |
-| [Upload a layer to Climate FieldView][3]         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/layers/climateFieldView`    |
+| Description                              | Endpoints                                                                                    |
+|------------------------------------------|----------------------------------------------------------------------------------------------|
+| [Get all the layers for a Leaf User][2]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/layers`                   |
+| [Upload a layer to Climate FieldView][3] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/layers/climateFieldView` |
 
 ## Layers (BETA)
 
@@ -34,11 +34,11 @@ See below the REST resources and their endpoints available in this service.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/layers`
 
-Gets a paged list of layers that belong for a Leaf User. This endpoint point can be filtered by the following layer types. Note that these types are related to Sentera integration, please check the details [here](https://withleaf.io/en/blog/sentera-integration-with-leaf/).
+Gets a paged list of layers that belong for a Leaf User.
 
-| Parameter (to filter by) | Values
-| - | - |
-| `type` | `TASSEL_COUNT`, `STAND_COUNT`, `NVDI`, and `RGB`|
+| Parameter (to filter by) | Values                                           |
+|--------------------------|--------------------------------------------------|
+| `type`                   | `TASSEL_COUNT`, `STAND_COUNT`, `NVDI`, and `RGB` |
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -49,6 +49,8 @@ They are:
 :::info the default value for page size is 20
 If the parameters page and size are not set, the endpoint will return 20 results.
 :::
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -99,7 +101,6 @@ values={[
 
 
 #### Response
-A json array of layers available.
 
 ```json
 [
@@ -140,7 +141,8 @@ A json array of layers available.
       "f43ca7cc-c73a-43b9-8685-070b03876475",
       "edcf7b8b-913e-4e53-a0b5-91aa16699dfc"
     ]
-  }
+  },
+  ....
 ]
 ```
 
@@ -152,9 +154,9 @@ A json array of layers available.
 
 Send a layer file to Climate FieldView.
 
-|   Parameter  | Values |
-|       -      |    -   |
-| `uploadType` |  `RGB` |
+| Parameter    | Values |
+|--------------|--------|
+| `uploadType` | `RGB`  |
 
 
 Currently, only true color image (RGB) files are supported and must meet the following criteria required by Climate:
@@ -167,7 +169,7 @@ Currently, only true color image (RGB) files are supported and must meet the fol
 
 Although Climate FieldView supports files up to 500MB, at this time, we only accept files up to 5MB.
 
-#### Request
+#### Request examples
 
 <Tabs
   defaultValue="sh"
@@ -238,9 +240,17 @@ Although Climate FieldView supports files up to 500MB, at this time, we only acc
 </Tabs>
 
 
+#### Response
+
+```json
+{
+  "id": "86fb8bea-1670-48ea-a85d-fbdf6feefb35",
+  "name": "LayerName"
+}
+```
+
 :::info
 Uploaded layers are not stored on Leaf side and are only available for use directly in Climate FieldView
 :::
-
 
 [contact]: mailto:help@withleaf.io

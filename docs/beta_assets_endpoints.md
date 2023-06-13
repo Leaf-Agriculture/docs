@@ -1,6 +1,6 @@
 ---
-title: Beta > Machines Endpoints
-description: Beta - Machines Endpoints
+title: Beta > Assets Endpoints
+description: Beta - Assets Endpoints
 sidebar_label: Endpoints
 ---
 
@@ -26,7 +26,7 @@ https://api.withleaf.io/services/beta/api
 
 See below the REST resources and their endpoints available in this service.
 
-## Machines (BETA)
+## Assets (BETA)
 
 This feature has the following endpoints available:
 

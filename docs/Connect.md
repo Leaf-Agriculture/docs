@@ -19,7 +19,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [9]: /docs/field_boundary_management_endpoints#get-all-fields
 [10]: /docs/field_boundary_management_overview
 [11]: /docs/operations_overview
-[12]: /docs/beta_machines_endpoints
+[12]: /docs/beta_assets_endpoints
 [13]: #invalidate-receivers-tokens
 
 

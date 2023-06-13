@@ -11,9 +11,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [3]:  /docs/configurations_overview
 [4]:  /docs/machine_file_conversion_endpoints#get-a-file
 [5]:  /docs/machine_file_conversion_sample_output#operation-summary
-[6]:  /docs/beta_machines_endpoints#create-a-machine
+[6]:  /docs/beta_assets_endpoints#create-a-machine
 [7]:  /docs/machine_file_conversion_sample_output#standard-geojson
-[8]:  /docs/beta_machines_endpoints
+[8]:  /docs/beta_assets_endpoints
 [9]:  /docs/alerts_events/#field-boundary-events
 [10]: /docs/planet_overview#udm2
 [11]: /docs/credentials_john_deere#one-click-authentication

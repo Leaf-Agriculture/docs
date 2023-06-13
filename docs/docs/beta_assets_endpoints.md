@@ -1,5 +1,5 @@
 ---
-title: Beta > Asset Endpoints
+title: Beta > Assets Endpoints
 description: Beta - Assets Endpoints
 sidebar_label: Endpoints
 ---

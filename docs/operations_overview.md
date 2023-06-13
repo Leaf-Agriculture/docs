@@ -29,5 +29,5 @@ Leaf automatically processes operation files and merges them into field operatio
 Note: 
 - You MUST have [field boundaries][3] in order to create operations.
 - It is important to set up [configurations][4] to ensure you customize your setup to your needs.
-- Also, [alerts][5] should be set up (webhooks) to ensure you’re notified when there are updates to your data. 
+- Also, [alerts][5] should be set up (webhooks) to ensure that you are notified when there are updates to your data and that data processing is finished. 
 - The process of creating operations starts at [Machine File Conversion][1] so please make sure you read and understand the conversion process before continuing.

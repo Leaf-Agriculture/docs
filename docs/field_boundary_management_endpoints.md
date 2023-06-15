@@ -147,7 +147,23 @@ These last two parameters are used exclusively for paging through results.
     "mergedFieldId": "f97c5bbc-2dbf-4400-8d59-39eba37f8847",
     "sources": [],
     "legacy": true
-  }
+  },
+  {
+    "id": "68c354f2-eb20-4512-816f-2edea4b6fca4",
+    "leafUserId": "9ffc7b1c-617b-46cb-a8ef-927b26285b7f",
+    "area": {
+      "value": 2.9995511484116317,
+      "unit": "ha"
+    },
+    "boundaries": [
+      "39d171d7-9ec3-4201-81bf-9d57473b2a67"
+    ],
+    "type": "ORIGINAL",
+    "createdTime": "2023-06-14T18:31:01.702615Z",
+    "updatedTime": "2023-06-14T18:31:01.702615Z",
+    "sources": []
+  },
+  ....
 ]
 ```
 
@@ -316,7 +332,7 @@ an UUID will be generated and this property **can not** be updated.
 
 ```json
 {
-  "id": "2818c0fc-91d6-4ced-8bc6-4f53cff6afd4",
+  "id": "idTest",
   "leafUserId": "95eb7d79-b93d-4fc2-877a-3f2b366f8beb",
   "area": {
     "value": float,
@@ -367,6 +383,8 @@ Field as a GeoJSON geometry (it must be a `"MultiPolygon"`).
   }
 }
 ```
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -1112,6 +1130,15 @@ So, in this case, if the `intersectionThreshold` were 3, then the condition woul
 
 Gets a GeoJSON geometry (`"type"` property must be a `"MultiPolygon"`) corresponding to the intersection of the Fields
 specified by the given id's. Such Field id's goes in a list, in the request body.
+
+#### Request body
+
+```json
+[
+  "id1",
+  "id2"
+]
+```
 
 #### Request examples
 
@@ -2400,6 +2427,7 @@ Each boundary has a `status` and `providerStatus`.
 {
   "id": "UUID",
   "status": "ACTIVE",
+  "providerStatus": "ACTIVE",
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [
@@ -2432,6 +2460,10 @@ Each boundary has a `status` and `providerStatus`.
   "area": {
     "value": double,
     "unit": "ha"
+  },
+  "validity": "VALID",
+  "createdTime": "2023-06-06T03:33:51.528534Z",
+  "updatedTime": "2023-06-06T03:33:51.528534Z"
   }
 }
 ```

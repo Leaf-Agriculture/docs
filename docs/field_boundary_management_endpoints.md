@@ -11,8 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [crops_table]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
 
 ## About
-Here we list all the available endpoints from Fields API. For easily
-calling them, we recommend using [Leaf's Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection).
+Here we list all the available endpoints from Leaf's Fields API. To call them easily, we recommend using [Leaf's Postman collection](https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection).
 
 All HTTP methods should be prepended by this service's endpoint:
 

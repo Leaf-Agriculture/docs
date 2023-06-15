@@ -22,7 +22,7 @@ Currently, we are obtaining data from the following providers:
 
 ## Prescriptions
 
-What are prescriptions in agriculture? Prescriptions usually used to apply inputs at variable rates across a field, applying only the amount needed for each area. For example, a prescription could be based on soil sample results or crop monitoring data, and instructs a machine where to best distribute lime, potassium or other products that can improve soil quality or crop health.
+What are prescriptions in agriculture? Prescriptions are usually used to apply inputs at variable rates across a field, applying only the amount needed for each area. For example, a prescription could be based on soil sample results or crop monitoring data, and instructs a machine where to best distribute lime, potassium or other products that can improve soil quality or crop health.
 
 Leaf helps organize the data flow for prescriptions. 
 
@@ -32,7 +32,7 @@ Our supported providers are:
 * Raven Slingshot
 * CNHI
 
-Note: The prescription should be included as a zip file and should contain a valid shapefile with least **three** file extentions (**shp**, **dbf** and **shx**) with the same naming.
+Note: The prescription should be included as a zip file containing a valid shapefile with least **three** file extentions (**shp**, **dbf** and **shx**) with the same naming.
 
 
 ## Layers

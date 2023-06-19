@@ -58,106 +58,233 @@ This is an example of a summary for a "planted" operation
 
   ```json
 {
-    "id": "69811426-ce0a-4280-a2b5-f3ca145e6fcb",
+  "id": "69811426-ce0a-4280-a2b5-f3ca145e6fcb",
+  "provider": "providerName",
+  "fields": [
+    "97f19b7c-45bd-40c5-b2c5-efd1d3764ab3"
+  ],
+  "fileType": "PLANTED",
+  "fileName": "testFile.zip",
+  "sizeInBytes": 676403,
+  "originalFile": "url",
+  "rawGeojson": "url",
+  "standardGeojson": "url",
+  "leafUserId": "f7f8062d-00db-4d76-9eff-51f43b82db56",
+  "apiOwnerUsername": "test",
+  "summary": {
+    "type": "Feature",
+    "properties": {
+      "elevation": {
+        "avg": 142.0509225092251,
+        "min": 141.9,
+        "max": 142.2,
+        "unit": "ft"
+      },
+      "singulation": {
+        "avg": 99.62031826568266,
+        "min": 99.48125,
+        "max": 99.75625,
+        "unit": "prcnt"
+      },
+      "totalPlanted": {
+        "value": 46974,
+        "unit": "seeds"
+      },
+      "seedRate": {
+        "avg": 32889.931431458586,
+        "min": 31960,
+        "max": 46135.3125,
+        "unit": "seeds/ac"
+      },
+      "speed": {
+        "avg": 3.913169741697417,
+        "min": 0.058,
+        "max": 4.258,
+        "unit": "mi/hr"
+      },
+      "downForce": {
+        "avg": 67.79335793357933,
+        "min": 2,
+        "max": 114,
+        "unit": "lb"
+      },
+      "originalOperationType": "SowingAndPlanting",
+      "varieties": [
+        {
+          "name": "variety",
+          "rate": {
+            "avg": 32889.931431458586,
+            "min": 31960,
+            "max": 46135.3125,
+            "unit": "seeds/ac",
+            "minTarget": 32000,
+            "maxTarget": 33000,
+            "avgTarget": 32890.78912254861
+          },
+          "area": {
+            "value": 5779.886574350697,
+            "unit": "m2"
+          },
+          "totalPlanted": {
+            "value": 46974,
+            "unit": "seeds"
+          }
+        }
+      ],
+      "originalOperationData": {
+        "originalOperationType": "SowingAndPlanting"
+      },
+      "startTime": "2015-05-02T20:02:28.64Z",
+      "operationType": "planted",
+      "endTime": "2015-05-02T20:09:32.64Z",
+      "totalDistance": {
+        "value": 1555.3545326263538,
+        "unit": "ft"
+      },
+      "crop": [
+        "corn"
+      ],
+      "totalArea": {
+        "value": 5779.886574350697,
+        "unit": "m2"
+      },
+      "machinery": [
+        {
+          "name": "Challenger 745 Tractor",
+          "type": "machine",
+          "serialNumber": "8220203",
+          "brand": "Challenger"
+        },
+        {
+          "name": "Kinze 40.0' 16 Row Planter",
+          "type": "implement",
+          "brand": "Kinze"
+        }
+      ]
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [[[
+        [-89.80434894561768,40.47791686563837],
+        [-89.80756759643555,40.4757623387113],
+        [-89.80746030807495,40.47302011353734],
+        [-89.80475664138794,40.47070219301965],
+        [-89.80080842971802,40.47068586935202],
+        [-89.79797601699828,40.472709973879255],
+        [-89.7978687286377,40.47569704893722],
+        [-89.80117321014404,40.47808008455794],
+        [-89.80434894561768,40.47791686563837]
+      ]]]
+    }
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="applied">
+
+This is an example of a summary for an "applied" operation
+
+  ```json
+{
+    "id": "b4d1832c-c479-4dbd-bc28-1ba792b8ca33",
     "provider": "providerName",
     "fields": [
-      "97f19b7c-45bd-40c5-b2c5-efd1d3764ab3"
+      "ebdb032c-b3a9-4116-9837-602abc23d4a0"
     ],
-    "fileType": "PLANTED",
-    "sizeInBytes": 676403,
+    "fileType": "APPLIED",
+    "fileName": "testFile.zip",
+    "sizeInBytes": 187351,
     "originalFile": "url",
     "rawGeojson": "url",
     "standardGeojson": "url",
-    "leafUserId": "f7f8062d-00db-4d76-9eff-51f43b82db56",
+    "leafUserId": "e0088b35-4dec-49ea-9c52-d4a2b25d2932",
     "apiOwnerUsername": "test",
     "summary": {
       "type": "Feature",
       "properties": {
         "elevation": {
-          "avg": 142.0509225092251,
-          "min": 141.9,
-          "max": 142.2,
+          "avg": 254.0579030350808,
+          "min": 244.1,
+          "max": 263.5,
           "unit": "ft"
         },
-        "singulation": {
-          "avg": 99.62031826568266,
-          "min": 99.48125,
-          "max": 99.75625,
-          "unit": "prcnt"
-        },
-        "totalPlanted": {
-          "value": 46974,
-          "unit": "seeds"
-        },
-        "seedRate": {
-          "avg": 32889.931431458586,
-          "min": 31960,
-          "max": 46135.3125,
-          "unit": "seeds/ac"
-        },
+        "operationDescription": "Pre-Emerge",
         "speed": {
-          "avg": 3.913169741697417,
-          "min": 0.058,
-          "max": 4.258,
+          "avg": 10.122365727685876,
+          "min": 1.817995548248291,
+          "max": 12.682278633117676,
           "unit": "mi/hr"
         },
-        "downForce": {
-          "avg": 67.79335793357933,
-          "min": 2,
-          "max": 114,
-          "unit": "lb"
-        },
-        "originalOperationType": "SowingAndPlanting",
-        "varieties": [
+        "products": [
           {
-            "name": "variety",
+            "name": "32-0-0 UAN",
             "rate": {
-              "avg": 32889.931431458586,
-              "min": 31960,
-              "max": 46135.3125,
-              "unit": "seeds/ac",
-              "minTarget": 32000,
-              "maxTarget": 33000,
-              "avgTarget": 32890.78912254861
+              "unit": "gal/ac",
+              "value": 9
+            },
+            "totalApplied": {
+              "value": 141.92523720605558,
+              "unit": "gal"
             },
             "area": {
-              "value": 5779.886574350697,
+              "value": 63817.03945545471,
               "unit": "m2"
+            }
+          },
+          {
+            "name": "15-0-0-20S Ammonium Thiosulfate",
+            "rate": {
+              "unit": "gal/ac",
+              "value": 5
             },
-            "totalPlanted": {
-              "value": 46974,
-              "unit": "seeds"
+            "totalApplied": {
+              "value": 78.84735400336422,
+              "unit": "gal"
+            },
+            "area": {
+              "value": 63817.03945545471,
+              "unit": "m2"
             }
           }
         ],
-        "originalOperationData": {
-          "originalOperationType": "SowingAndPlanting"
+        "originalOperationType": "CropProtection",
+        "totalApplied": {
+          "value": 224.45693246637688,
+          "unit": "gal"
         },
-        "startTime": "2015-05-02T20:02:28.64Z",
-        "operationType": "planted",
-        "endTime": "2015-05-02T20:09:32.64Z",
+        "appliedRate": {
+          "avg": 14.233637596564106,
+          "min": 0.2672675063127537,
+          "max": 66.08990634889587,
+          "unit": "gal/ac"
+        },
+        "originalOperationData": {
+          "originalOperationType": "CropProtection"
+        },
+        "startTime": "2017-04-22T18:31:23.105Z",
+        "operationType": "applied",
+        "endTime": "2017-04-22T18:46:08.308Z",
         "totalDistance": {
-          "value": 1555.3545326263538,
+          "value": 7532.9296062434005,
           "unit": "ft"
         },
-        "crop": [
-          "corn"
-        ],
+        "crop": [],
         "totalArea": {
-          "value": 5779.886574350697,
+          "value": 63817.03945545471,
           "unit": "m2"
         },
         "machinery": [
           {
-            "name": "Challenger 745 Tractor",
+            "name": "John Deere R Series R4030",
             "type": "machine",
-            "serialNumber": "8220203",
-            "brand": "Challenger"
+            "serialNumber": "10071690",
+            "brand": "John Deere"
           },
           {
-            "name": "Kinze 40.0' 16 Row Planter",
+            "name": "Sprayer",
             "type": "implement",
-            "brand": "Kinze"
+            "brand": "unknown"
           }
         ]
       },
@@ -175,132 +302,7 @@ This is an example of a summary for a "planted" operation
           [-89.80434894561768,40.47791686563837]
         ]]]
       }
-    }
-}
-```
-
-  </TabItem>
-  <TabItem value="applied">
-
-This is an example of a summary for an "applied" operation
-
-  ```json
-{
-      "id": "b4d1832c-c479-4dbd-bc28-1ba792b8ca33",
-      "provider": "providerName",
-      "fields": [
-        "ebdb032c-b3a9-4116-9837-602abc23d4a0"
-      ],
-      "fileType": "APPLIED",
-      "sizeInBytes": 187351,
-      "originalFile": "url",
-      "rawGeojson": "url",
-      "standardGeojson": "url",
-      "leafUserId": "e0088b35-4dec-49ea-9c52-d4a2b25d2932",
-      "apiOwnerUsername": "test",
-      "summary": {
-        "type": "Feature",
-        "properties": {
-          "elevation": {
-            "avg": 254.0579030350808,
-            "min": 244.1,
-            "max": 263.5,
-            "unit": "ft"
-          },
-          "operationDescription": "Pre-Emerge",
-          "speed": {
-            "avg": 10.122365727685876,
-            "min": 1.817995548248291,
-            "max": 12.682278633117676,
-            "unit": "mi/hr"
-          },
-          "products": [
-            {
-              "name": "32-0-0 UAN",
-              "rate": {
-                "unit": "gal/ac",
-                "value": 9
-              },
-              "totalApplied": {
-                "value": 141.92523720605558,
-                "unit": "gal"
-              },
-              "area": {
-                "value": 63817.03945545471,
-                "unit": "m2"
-              }
-            },
-            {
-              "name": "15-0-0-20S Ammonium Thiosulfate",
-              "rate": {
-                "unit": "gal/ac",
-                "value": 5
-              },
-              "totalApplied": {
-                "value": 78.84735400336422,
-                "unit": "gal"
-              },
-              "area": {
-                "value": 63817.03945545471,
-                "unit": "m2"
-              }
-            }
-          ],
-          "originalOperationType": "CropProtection",
-          "totalApplied": {
-            "value": 224.45693246637688,
-            "unit": "gal"
-          },
-          "appliedRate": {
-            "avg": 14.233637596564106,
-            "min": 0.2672675063127537,
-            "max": 66.08990634889587,
-            "unit": "gal/ac"
-          },
-          "originalOperationData": {
-            "originalOperationType": "CropProtection"
-          },
-          "startTime": "2017-04-22T18:31:23.105Z",
-          "operationType": "applied",
-          "endTime": "2017-04-22T18:46:08.308Z",
-          "totalDistance": {
-            "value": 7532.9296062434005,
-            "unit": "ft"
-          },
-          "crop": [],
-          "totalArea": {
-            "value": 63817.03945545471,
-            "unit": "m2"
-          },
-          "machinery": [
-            {
-              "name": "John Deere R Series R4030",
-              "type": "machine",
-              "serialNumber": "10071690",
-              "brand": "John Deere"
-            },
-            {
-              "name": "Sprayer",
-              "type": "implement",
-              "brand": "unknown"
-            }
-          ]
-        },
-        "geometry": {
-          "type": "MultiPolygon",
-          "coordinates": [[[
-            [-89.80434894561768,40.47791686563837],
-            [-89.80756759643555,40.4757623387113],
-            [-89.80746030807495,40.47302011353734],
-            [-89.80475664138794,40.47070219301965],
-            [-89.80080842971802,40.47068586935202],
-            [-89.79797601699828,40.472709973879255],
-            [-89.7978687286377,40.47569704893722],
-            [-89.80117321014404,40.47808008455794],
-            [-89.80434894561768,40.47791686563837]
-          ]]]
-        }
-    }
+  }
 }
 ```
 
@@ -311,189 +313,190 @@ This is an example of a summary for a "harvested" operation
 
   ```json
 {
-      "id": "7b525b72-a8e7-4d34-80bb-9ea2dde87a09",
-      "provider": "providerName",
-      "fields": [
-        "696b5df6-e401-4d13-bafe-3d2689723254"
-      ],
-      "fileType": "HARVESTED",
-      "sizeInBytes": 1244007,
-      "originalFile": "url",
-      "rawGeojson": "url",
-      "standardGeojson": "url",
-      "leafUserId": "286eeb50-8e85-4e33-9f2d-1b9dcf0e56d7",
-      "apiOwnerUsername": "test",
-      "summary": {
-        "type": "Feature",
-        "properties": {
-          "totalDryMass": {
-            "value": 69707.74072725822,
-            "unit": "lb"
-          },
-          "dryVolume": {
-            "avg": 0.10060462979191162,
-            "min": 0.0006342037622996388,
-            "max": 0.19444628348991,
-            "unit": "bu"
-          },
-          "totalDryVolume": {
-            "value": 1244.7810844153173,
-            "unit": "bu"
-          },
-          "wetMassPerArea": {
-            "avg": 11752.315810068158,
-            "min": 87.79542055062868,
-            "max": 40340.87999553387,
-            "unit": "lb/ac"
-          },
-          "speed": {
-            "avg": 4.926574796479164,
-            "min": 2.430000066757202,
-            "max": 6.389999866485596,
-            "unit": "mi/hr"
-          },
-          "totalWetVolume": {
-            "value": 1294.538978069886,
-            "unit": "bu"
-          },
-          "originalOperationType": "Harvesting",
-          "startTime": "2015-09-23T00:00:00Z",
-          "totalDistance": {
-            "value": 17978.417202127104,
-            "unit": "ft"
-          },
-          "wetMass": {
-            "avg": 5.859062698772619,
-            "min": 0.03795335565182652,
-            "max": 11.06340317250743,
-            "unit": "lb"
-          },
-          "elevation": {
-            "avg": 155.78382768932352,
-            "min": 147.6,
-            "max": 162.4,
-            "unit": "ft"
-          },
-          "harvestMoisture": {
-            "avg": 18.224961609957166,
-            "min": 12.75,
-            "max": 21.18,
-            "unit": "percentage"
-          },
-          "dryVolumePerArea": {
-            "avg": 201.7963353621763,
-            "min": 1.467068855167438,
-            "max": 687.8289538734305,
-            "unit": "bu/ac"
-          },
-          "wetVolume": {
-            "avg": 0.10462611962093962,
-            "min": 0.0006777384937826164,
-            "max": 0.19756077093763266,
-            "unit": "bu"
-          },
-          "wetVolumePerArea": {
-            "avg": 209.86278232264567,
-            "min": 1.5677753669755121,
-            "max": 720.3728570631048,
-            "unit": "bu/ac"
-          },
-          "dryMassPerArea": {
-            "avg": 11300.594780281874,
-            "min": 82.15585588937653,
-            "max": 38518.421416912104,
-            "unit": "lb/ac"
-          },
-          "totalWetMass": {
-            "value": 72494.18277191388,
-            "unit": "lb"
-          },
-          "varieties": [
-            {
-              "harvestMoisture": {
-                "avg": 18.224961609957166,
-                "min": 12.75,
-                "max": 21.18,
-                "unit": "percentage"
-              },
-              "wetMass": {
-                "value": 72494.18277191388,
-                "unit": "lb"
-              },
-              "wetMassPerArea": {
-                "value": 2.904060481369501,
-                "unit": "lb/ac"
-              },
-              "wetVolume": {
-                "value": 1294.538978069886,
-                "unit": "bu"
-              },
-              "area": {
-                "value": 24963.041657357968,
-                "unit": "m2"
-              },
-              "dryVolume": {
-                "value": 1244.7810844153173,
-                "unit": "bu"
-              },
-              "dryMassPerArea": {
-                "value": 2.7924377839874155,
-                "unit": "lb/ac"
-              },
-              "dryMass": {
-                "value": 69707.74072725822,
-                "unit": "lb"
-              },
-              "name": "Corn"
-            }
-          ],
-          "originalOperationData": {
-            "originalOperationType": "Harvesting"
-          },
-          "operationType": "harvested",
-          "dryMass": {
-            "avg": 5.6338592683470505,
-            "min": 0.035515410688779774,
-            "max": 10.88899187543496,
-            "unit": "lb"
-          },
-          "endTime": "2015-09-24T00:36:55.8Z",
-          "crop": [
-            "corn"
-          ],
-          "totalArea": {
-            "value": 24963.041657357968,
-            "unit": "m2"
-          },
-          "machinery": [
-            {
-              "name": "Case IH X010 Series 7010",
-              "type": "machine",
-              "serialNumber": "8227260",
-              "brand": "Case IH"
-            },
-            {
-              "name": "Case IH Corn Head 15ft 6row",
-              "type": "implement",
-              "brand": "Case IH"
-            }
-          ]
+    "id": "7b525b72-a8e7-4d34-80bb-9ea2dde87a09",
+    "provider": "providerName",
+    "fields": [
+      "696b5df6-e401-4d13-bafe-3d2689723254"
+    ],
+    "fileType": "HARVESTED",
+    "fileName": "testFile.zip",
+    "sizeInBytes": 1244007,
+    "originalFile": "url",
+    "rawGeojson": "url",
+    "standardGeojson": "url",
+    "leafUserId": "286eeb50-8e85-4e33-9f2d-1b9dcf0e56d7",
+    "apiOwnerUsername": "test",
+    "summary": {
+      "type": "Feature",
+      "properties": {
+        "totalDryMass": {
+          "value": 69707.74072725822,
+          "unit": "lb"
         },
-        "geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [[[
-                [-89.80434894561768,40.47791686563837],
-                [-89.80756759643555,40.4757623387113],
-                [-89.80746030807495,40.47302011353734],
-                [-89.80475664138794,40.47070219301965],
-                [-89.80080842971802,40.47068586935202],
-                [-89.79797601699828,40.472709973879255],
-                [-89.7978687286377,40.47569704893722],
-                [-89.80117321014404,40.47808008455794],
-                [-89.80434894561768,40.47791686563837]
-            ]]]
-        }
-    }
+        "dryVolume": {
+          "avg": 0.10060462979191162,
+          "min": 0.0006342037622996388,
+          "max": 0.19444628348991,
+          "unit": "bu"
+        },
+        "totalDryVolume": {
+          "value": 1244.7810844153173,
+          "unit": "bu"
+        },
+        "wetMassPerArea": {
+          "avg": 11752.315810068158,
+          "min": 87.79542055062868,
+          "max": 40340.87999553387,
+          "unit": "lb/ac"
+        },
+        "speed": {
+          "avg": 4.926574796479164,
+          "min": 2.430000066757202,
+          "max": 6.389999866485596,
+          "unit": "mi/hr"
+        },
+        "totalWetVolume": {
+          "value": 1294.538978069886,
+          "unit": "bu"
+        },
+        "originalOperationType": "Harvesting",
+        "startTime": "2015-09-23T00:00:00Z",
+        "totalDistance": {
+          "value": 17978.417202127104,
+          "unit": "ft"
+        },
+        "wetMass": {
+          "avg": 5.859062698772619,
+          "min": 0.03795335565182652,
+          "max": 11.06340317250743,
+          "unit": "lb"
+        },
+        "elevation": {
+          "avg": 155.78382768932352,
+          "min": 147.6,
+          "max": 162.4,
+          "unit": "ft"
+        },
+        "harvestMoisture": {
+          "avg": 18.224961609957166,
+          "min": 12.75,
+          "max": 21.18,
+          "unit": "percentage"
+        },
+        "dryVolumePerArea": {
+          "avg": 201.7963353621763,
+          "min": 1.467068855167438,
+          "max": 687.8289538734305,
+          "unit": "bu/ac"
+        },
+        "wetVolume": {
+          "avg": 0.10462611962093962,
+          "min": 0.0006777384937826164,
+          "max": 0.19756077093763266,
+          "unit": "bu"
+        },
+        "wetVolumePerArea": {
+          "avg": 209.86278232264567,
+          "min": 1.5677753669755121,
+          "max": 720.3728570631048,
+          "unit": "bu/ac"
+        },
+        "dryMassPerArea": {
+          "avg": 11300.594780281874,
+          "min": 82.15585588937653,
+          "max": 38518.421416912104,
+          "unit": "lb/ac"
+        },
+        "totalWetMass": {
+          "value": 72494.18277191388,
+          "unit": "lb"
+        },
+        "varieties": [
+          {
+            "harvestMoisture": {
+              "avg": 18.224961609957166,
+              "min": 12.75,
+              "max": 21.18,
+              "unit": "percentage"
+            },
+            "wetMass": {
+              "value": 72494.18277191388,
+              "unit": "lb"
+            },
+            "wetMassPerArea": {
+              "value": 2.904060481369501,
+              "unit": "lb/ac"
+            },
+            "wetVolume": {
+              "value": 1294.538978069886,
+              "unit": "bu"
+            },
+            "area": {
+              "value": 24963.041657357968,
+              "unit": "m2"
+            },
+            "dryVolume": {
+              "value": 1244.7810844153173,
+              "unit": "bu"
+            },
+            "dryMassPerArea": {
+              "value": 2.7924377839874155,
+              "unit": "lb/ac"
+            },
+            "dryMass": {
+              "value": 69707.74072725822,
+              "unit": "lb"
+            },
+            "name": "Corn"
+          }
+        ],
+        "originalOperationData": {
+          "originalOperationType": "Harvesting"
+        },
+        "operationType": "harvested",
+        "dryMass": {
+          "avg": 5.6338592683470505,
+          "min": 0.035515410688779774,
+          "max": 10.88899187543496,
+          "unit": "lb"
+        },
+        "endTime": "2015-09-24T00:36:55.8Z",
+        "crop": [
+          "corn"
+        ],
+        "totalArea": {
+          "value": 24963.041657357968,
+          "unit": "m2"
+        },
+        "machinery": [
+          {
+            "name": "Case IH X010 Series 7010",
+            "type": "machine",
+            "serialNumber": "8227260",
+            "brand": "Case IH"
+          },
+          {
+            "name": "Case IH Corn Head 15ft 6row",
+            "type": "implement",
+            "brand": "Case IH"
+          }
+        ]
+      },
+      "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [[[
+              [-89.80434894561768,40.47791686563837],
+              [-89.80756759643555,40.4757623387113],
+              [-89.80746030807495,40.47302011353734],
+              [-89.80475664138794,40.47070219301965],
+              [-89.80080842971802,40.47068586935202],
+              [-89.79797601699828,40.472709973879255],
+              [-89.7978687286377,40.47569704893722],
+              [-89.80117321014404,40.47808008455794],
+              [-89.80434894561768,40.47791686563837]
+          ]]]
+      }
+  }
 }
 ```
   </TabItem>
@@ -503,66 +506,67 @@ This is an example of a summary for a "tillage" operation
 
    ```json
 {
-    "id": "0d702772-3ff0-4031-a151-d111f2fb3b9c",
-    "provider": "providerName",
-    "fields": [
-      "d9b35409-6014-446b-a552-07274f98a9a2"
-    ],
-    "fileFormat": "SHAPEFILE",
-    "originalFile": "url",
-    "rawGeojson": "url",
-    "standardGeojson": "url",
-    "leafUserId": "577c611d-e526-4af5-bff7-263c58e6d1aa",
-    "apiOwnerUsername": "test",
-    "summary": {
-      "type": "Feature",
-      "properties": {
-        "elevation": {
-          "avg": 994.6466719525541,
-          "min": 994.64662073,
-          "max": 994.646672,
-          "unit": "ft"
-        },
-        "tillageDepthActual": {
-          "avg": 0,
-          "min": 0,
-          "max": 0,
-          "unit": "in"
-        },
-        "originalOperationData": {},
-        "startTime": "2016-09-13T20:33:14.786Z",
-        "operationType": "tillage",
-        "endTime": "2016-09-13T22:03:10.801Z",
-        "totalDistance": {
-          "value": 54476.663422289916,
-          "unit": "ft"
-        },
-        "totalArea": {
-          "value": 202441.90563950103,
-          "unit": "m2"
-        },
-        "tillageDepthTarget": {
-          "avg": 6,
-          "min": 6,
-          "max": 6,
-          "unit": "in"
-        }
+  "id": "0d702772-3ff0-4031-a151-d111f2fb3b9c",
+  "provider": "providerName",
+  "fields": [
+    "d9b35409-6014-446b-a552-07274f98a9a2"
+  ],
+  "fileFormat": "SHAPEFILE",
+  "fileName": "testFile.zip",
+  "originalFile": "url",
+  "rawGeojson": "url",
+  "standardGeojson": "url",
+  "leafUserId": "577c611d-e526-4af5-bff7-263c58e6d1aa",
+  "apiOwnerUsername": "test",
+  "summary": {
+    "type": "Feature",
+    "properties": {
+      "elevation": {
+        "avg": 994.6466719525541,
+        "min": 994.64662073,
+        "max": 994.646672,
+        "unit": "ft"
       },
-      "geometry": {
-        "type": "MultiPolygon",
-        "coordinates": [[[
-          [-89.80434894561768,40.47791686563837],
-          [-89.80756759643555,40.4757623387113],
-          [-89.80746030807495,40.47302011353734],
-          [-89.80475664138794,40.47070219301965],
-          [-89.80080842971802,40.47068586935202],
-          [-89.79797601699828,40.472709973879255],
-          [-89.7978687286377,40.47569704893722],
-          [-89.80117321014404,40.47808008455794],
-          [-89.80434894561768,40.47791686563837]
-        ]]]
+      "tillageDepthActual": {
+        "avg": 0,
+        "min": 0,
+        "max": 0,
+        "unit": "in"
+      },
+      "originalOperationData": {},
+      "startTime": "2016-09-13T20:33:14.786Z",
+      "operationType": "tillage",
+      "endTime": "2016-09-13T22:03:10.801Z",
+      "totalDistance": {
+        "value": 54476.663422289916,
+        "unit": "ft"
+      },
+      "totalArea": {
+        "value": 202441.90563950103,
+        "unit": "m2"
+      },
+      "tillageDepthTarget": {
+        "avg": 6,
+        "min": 6,
+        "max": 6,
+        "unit": "in"
       }
+    },
+    "geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [[[
+        [-89.80434894561768,40.47791686563837],
+        [-89.80756759643555,40.4757623387113],
+        [-89.80746030807495,40.47302011353734],
+        [-89.80475664138794,40.47070219301965],
+        [-89.80080842971802,40.47068586935202],
+        [-89.79797601699828,40.472709973879255],
+        [-89.7978687286377,40.47569704893722],
+        [-89.80117321014404,40.47808008455794],
+        [-89.80434894561768,40.47791686563837]
+      ]]]
     }
+  }
 }
 ```  
   </TabItem>

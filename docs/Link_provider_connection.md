@@ -16,6 +16,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: /docs/Link_endpoints#api-key
 [7]:  #reference
 
+
 [jd]: https://withleaf.io/en/whats-new/john-deere-authentication-with-leaf/
 [cfv]: https://withleaf.io/en/whats-new/climate-fieldview-authentication-with-leaf/
 [cnhi]: https://withleaf.io/en/whats-new/cnhi-authentication-with-leaf/
@@ -26,6 +27,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [provider-companyLogoUrl]: #companylogourl
 [provider-companyName]: #companyname
 [provider-leafUser]: #leafuser
+[provider-darkmode]: #isdarkmode
 
 
 ## Overview
@@ -395,7 +397,7 @@ To enable Trimble as a provider in the widget you need your application credenti
 To allow the users to authenticate with Trimble, you will need to send your application info to this endpoint
 &nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/app-keys/Trimble/{appName}`
 
-For CNHi, it is necessary to inform the:
+For Trimble, it is necessary to inform the:
 - `applicationName`
 - `clientId`
 - `clientSecret`
@@ -488,8 +490,8 @@ npm i @withleaf.io/angular-ui-kit
 import { ProvidersModule } from '@withleaf.io/angular-ui-kit';
 ```
 
-3. Add the component to the HTML. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
-You can also customize it adding your company name (`companyName`) and company logo (`companyLogoUrl`). Check all the properties available on the reference [here][4].
+3. Add the component to the HTML. Make sure you already [created the Leaf user API key][6] (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
+You can also customize it adding your company name (`companyName`) and company logo (`companyLogoUrl`). Check all the properties available on the reference [here][7].
 ```js
 <div class="container">
   <leaf-providers leafUser="{leafUserId}" apiKey="{apiKey}"     
@@ -497,6 +499,49 @@ You can also customize it adding your company name (`companyName`) and company l
   </leaf-providers>
 </div>
 ```
+
+:::tip
+[Here](https://codesandbox.io/p/sandbox/provider-widget-leaf-link-angular-77vdwl) you can run a live use case demo!
+:::
+
+### React
+
+To add this Leaf widget in an React application, you can use the `@withleaf/leaf-link-react` library, which is a JavaScript library that provides all Leaf UI Widgets.
+Here are the general steps to get started:
+
+1. Install the @withleaf/leaf-link-react package using `npm`:
+
+```shell
+npm i @withleaf/leaf-link-react
+```
+
+2. Import the component in your `*.tsx` file:
+
+```js
+import { Providers } from '@withleaf/leaf-link-react';
+```
+
+3. Add the component to the HTML. Make sure you already [created the Leaf user API key][6] (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component.
+You can also customize it adding your company name (`companyName`) and company logo (`companyLogo`). Check all the properties available on the reference [here][7].
+```js
+function App() {
+  return (
+        <Providers
+          isDarkMode={true/false}
+          companyName={companyName}
+          companyLogo={companyLogoUrl}
+          leafUser={leafUserId}
+          apiKey={apiKey}
+        />
+   );
+}
+```
+
+:::tip
+[Here](https://codesandbox.io/s/leaf-link-react-providers-d5lm4w?file=/src/App.tsx) you can run a live use case demo!
+:::
+
+
 
 ## Reference
 ### Property Overview
@@ -506,7 +551,10 @@ You can also customize it adding your company name (`companyName`) and company l
 | [apiKey][provider-apiKey]                 | String | The authentication API Key                |
 | [companyLogoUrl][provider-companyLogoUrl] | String | Customization: a link to the company logo |
 | [companyName][provider-companyName]       | String | Customization: the name of the company    |
+| [isDarkMode*][provider-darkmode]          | Boolean| Enable/disable the dark mode              |
 | [leafUser][provider-leafUser]             | String | The Leaf User ID                          |
+
+\* Only available in the React version
 
 
 #### Property Details
@@ -524,12 +572,14 @@ The company name. It will be displayed in the landing screen and in each referen
 #### leafUser
 The Leaf User ID. Check [this page][4] for more info about the Leaf User.
 
+#### isDarkMode
+Toggles dark mode on and off. The default value is `false`. It is only available for React.
 
 
 ### Event Overview
 | Name           | Summary                                   |
 |----------------|-------------------------------------------|
-| complete       | The authentication API Key                |
+| complete       | Authentication process completed          |
 
 #### Event Details
 #### complete

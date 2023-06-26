@@ -498,7 +498,7 @@ Now let's see the Payload
 - `externalId`: external ID used in the field's registration.
 - `geometry`: a valid [MultiPolygon][3] GeoJSON object with the geometry of the field.
 - `providers`: Specify the satellite imagery source, if none is specified, Sentinel images will be retrived by default.
-- `assetTypes`: If the `providers` property contains `planet` you can select which `assetType` will be retrived, which can be **more than one**. Default value is `analytic_sr`.
+- `assetTypes`: If the `providers` property contains `planet` you can select which `assetType` will be retrived, which can be **more than one**. Default value is `ortho_analytic_8b_sr`.
 
 #### Request examples
 

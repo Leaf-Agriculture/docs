@@ -506,7 +506,7 @@ You can also customize it adding your company name (`companyName`) and company l
 
 ### React
 
-To add this Leaf widget in an React application, you can use the `@withleaf/leaf-link-react` library, which is a JavaScript library that provides all Leaf UI Widgets.
+To add this Leaf widget in a React application, you can use the `@withleaf/leaf-link-react` library, which is a JavaScript library that provides all Leaf UI Widgets.
 Here are the general steps to get started:
 
 1. Install the @withleaf/leaf-link-react package using `npm`:

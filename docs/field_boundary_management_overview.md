@@ -26,4 +26,4 @@ To make calls to Leaf's field API, you will first need to go through the previou
 
 ## FAQs
 Can I use the fields and boundaries from my app/platform instead of connecting it from a provider? 
-- Yes, you can [manually create boundaries][2] from geoJsons with a POST call for a Leaf User.
+- Yes, you can [manually create boundaries][2] from geoJSONs with a POST call for a Leaf User.

@@ -21,6 +21,7 @@ To make calls to Leaf's field API, you will first need to go through the previou
 
 ## How field data is structured
 <img alt="Field example" src={useBaseUrl('img/field_boundaries_001.png')} />
+
 - Leaf uses a Grower/Farm/Field hierarchy to organize data.
 - A grower (also known as Leaf User) is the data owner entity to which credentials are attached.
 - Farm(s) can be grouped together under a Grower and Field(s) can be grouped under a Farm

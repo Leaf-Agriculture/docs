@@ -174,7 +174,7 @@ It is requires few properties:
 }
 ```
 - `leafUserId`: leaf user Id
-- `expiresIn`: time to expiration, in seconds. The minimum allowed value is `900` (15 minutes). The default valueis one year.
+- `expiresIn`: time to expiration, in seconds. The minimum allowed value is `900` (15 minutes). The default value is one year.
 - `description`: description to identify the API Key
 
 

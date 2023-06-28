@@ -4,6 +4,10 @@ description: Field Boundary Management - Overview
 sidebar_label: Overview
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [2]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#create-a-field
 

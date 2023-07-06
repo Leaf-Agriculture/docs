@@ -128,7 +128,7 @@
     "invariant" "^2.2.4"
     "semver" "^5.5.0"
 
-"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.10.5", "@babel/core@^7.7.5", "@babel/core@^7.9.0":
+"@babel/core@^7.7.5", "@babel/core@^7.9.0":
   "integrity" "sha512-mkLq8nwaXmDtFmRkQ8ED/eA2CnVw4zr7dCztKalZXBvdK5EeNUAesrrwUqjQEzFgomJssayzB0aqlOsP1vGLqg=="
   "resolved" "https://registry.npmjs.org/@babel/core/-/core-7.11.0.tgz"
   "version" "7.11.0"
@@ -1127,7 +1127,7 @@
     "@francoischalifour/autocomplete-preset-algolia" "^1.0.0-alpha.25"
     "algoliasearch" "^4.0.0"
 
-"@docusaurus/core@^2.0.0", "@docusaurus/core@^2.0.0-alpha.60 || ^2.0.0", "@docusaurus/core@^2.0.0-alpha.61":
+"@docusaurus/core@^2.0.0-alpha.61":
   "integrity" "sha512-Ev0v5J7L/Pm3VJMdhhyR8I9tUQo8MhVRUUT+Bf0W3TMYG6jp2cIXE88yCfxOsTDducS7EMrdtUXfvePGH9CE/A=="
   "resolved" "https://registry.npmjs.org/@docusaurus/core/-/core-2.0.0-alpha.61.tgz"
   "version" "2.0.0-alpha.61"
@@ -1373,7 +1373,7 @@
   dependencies:
     "@hapi/joi" "17.1.1"
 
-"@docusaurus/utils@^2.0.0-alpha.61", "@docusaurus/utils@2.0.0-alpha.60":
+"@docusaurus/utils@^2.0.0-alpha.61":
   "integrity" "sha512-MHvR3Rq8Kk9W6skBR3x7mLsDaNrnp6Mmobyc0ZVql+eiLrjiN7SPunvrVJDE90bQ50HZFLLoAkfgfrvbX5mecg=="
   "resolved" "https://registry.npmjs.org/@docusaurus/utils/-/utils-2.0.0-alpha.61.tgz"
   "version" "2.0.0-alpha.61"
@@ -1978,7 +1978,7 @@
   "resolved" "https://registry.npmjs.org/ajv-keywords/-/ajv-keywords-3.5.2.tgz"
   "version" "3.5.2"
 
-"ajv@^6.1.0", "ajv@^6.10.2", "ajv@^6.12.2", "ajv@^6.9.1", "ajv@>=5.0.0":
+"ajv@^6.1.0", "ajv@^6.10.2", "ajv@^6.12.2":
   "integrity" "sha512-4K0cK3L1hsqk9xIb2z9vs/XU+PGJZ9PNpJRDS9YLzmNdX6jmVPfamLvTJr0aDAusnHyCHO6MjzlkAsgtqp9teA=="
   "resolved" "https://registry.npmjs.org/ajv/-/ajv-6.12.3.tgz"
   "version" "6.12.3"
@@ -1995,7 +1995,7 @@
   dependencies:
     "events" "^1.1.1"
 
-"algoliasearch@^4.0.0", "algoliasearch@>= 3.1 < 5":
+"algoliasearch@^4.0.0":
   "integrity" "sha512-q8aIYgdZZWOMzmvlIwxcbktVa8+M5cyI8hIrgd/NcSz/XKHfVTKdNYbnsmPqmYrssAmepx8C8vHnJrPuumUnYA=="
   "resolved" "https://registry.npmjs.org/algoliasearch/-/algoliasearch-4.3.1.tgz"
   "version" "4.3.1"
@@ -4431,7 +4431,7 @@
   dependencies:
     "escape-string-regexp" "^1.0.5"
 
-"file-loader@*", "file-loader@^6.0.0":
+"file-loader@^6.0.0":
   "integrity" "sha512-/aMOAYEFXDdjG0wytpTL5YQLfZnnTmLNjn+AIrJ/6HVnTfDqLsVKUUwkDf4I4kgex36BvjuXEn/TX9B/1ESyqQ=="
   "resolved" "https://registry.npmjs.org/file-loader/-/file-loader-6.0.0.tgz"
   "version" "6.0.0"
@@ -8098,7 +8098,7 @@
   "resolved" "https://registry.npmjs.org/promise-inflight/-/promise-inflight-1.0.1.tgz"
   "version" "1.0.1"
 
-"prop-types@^15.0.0", "prop-types@^15.3.0 || ^16.0.0", "prop-types@^15.5.0", "prop-types@^15.6.2", "prop-types@^15.7.2":
+"prop-types@^15.5.0", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -8289,7 +8289,7 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
-"react-dom@^15.3.0 || ^16.0.0", "react-dom@^16.8.0", "react-dom@^16.8.4":
+"react-dom@^16.8.4":
   "integrity" "sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.13.1.tgz"
   "version" "16.13.1"
@@ -8329,7 +8329,7 @@
   "resolved" "https://registry.npmjs.org/react-loadable-ssr-addon/-/react-loadable-ssr-addon-0.2.3.tgz"
   "version" "0.2.3"
 
-"react-loadable@*", "react-loadable@^5.5.0":
+"react-loadable@^5.5.0":
   "integrity" "sha512-C8Aui0ZpMd4KokxRdVAm2bQtI03k2RMRNzOB+IipV3yxFTSVICv7WoUr5L9ALB5BmKO1iHgZtWM8EvYG83otdg=="
   "resolved" "https://registry.npmjs.org/react-loadable/-/react-loadable-5.5.0.tgz"
   "version" "5.5.0"
@@ -8356,7 +8356,7 @@
     "tiny-invariant" "^1.0.2"
     "tiny-warning" "^1.0.0"
 
-"react-router@^5.1.2", "react-router@>=5", "react-router@5.2.0":
+"react-router@^5.1.2", "react-router@5.2.0":
   "integrity" "sha512-smz1DUuFHRKdcJC0jobGo8cVbhO3x50tCL4icacOlcwDOEQPq4TMqwx3sY1TP+DvtTgz4nm3thuo7A+BK2U0Dw=="
   "resolved" "https://registry.npmjs.org/react-router/-/react-router-5.2.0.tgz"
   "version" "5.2.0"
@@ -8384,7 +8384,7 @@
   dependencies:
     "classnames" "^2.2.5"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^15.3.0 || ^16.0.0", "react@^16.13.1", "react@^16.3.0", "react@^16.8.0", "react@^16.8.4", "react@^17.0.2", "react@>=0.14.9", "react@>=15", "react@>=16.3.0":
+"react@^17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -10409,7 +10409,7 @@
     "source-list-map" "^2.0.0"
     "source-map" "~0.6.1"
 
-"webpack@^1 || ^2 || ^3 || ^4", "webpack@^3.0.0 || ^4.0.0", "webpack@^4 || ^5", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.3.0", "webpack@^4.4.0", "webpack@^4.41.2", "webpack@>=2", "webpack@>=4.0.0 < 6.0.0", "webpack@>=4.41.1":
+"webpack@^4.41.2":
   "integrity" "sha512-4UOGAohv/VGUNQJstzEywwNxqX417FnjZgZJpJQegddzPmTvph37eBIRbRTfdySXzVtJXLJfbMN3mMYhM6GdmQ=="
   "resolved" "https://registry.npmjs.org/webpack/-/webpack-4.44.1.tgz"
   "version" "4.44.1"

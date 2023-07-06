@@ -541,7 +541,62 @@ function App() {
 [Here](https://codesandbox.io/s/leaf-link-react-providers-d5lm4w?file=/src/App.tsx) you can run a live use case demo!
 :::
 
+### Provider Data Hooks
 
+Leaf Link React also have hooks that can improve the developer experience when using the widgets.
+
+### Hooks
+
+| Name                    | Type                                               | Description                                                                                                            |
+|-------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| providersConnectedEvent | `Array<{ provider: string; createdTime: string }>` | Provide the array of the provider connected and also the createdTime - available after finish the connection process   |
+| providerWidgetStatus    | `{ code: number; message: string }`                | Provide the status code and the message from the current widget Status                                                 |
+
+
+### Status Codes
+
+| Code | Message |
+|------|----------|
+| -1   | Error    |
+|  0   | Started  |
+|  1   | Done     |
+
+### How to use it.
+
+```js
+import { LeafProviderData } from '@withleaf/leaf-link-react';
+```
+
+Then, wrap your component in the hook as a children
+
+```js
+<LeafProviderData>
+    <YourComponent />
+</LeafProviderData>
+```
+
+From your top-level component can pass the current data to all components below, no matter how deep.
+
+In the components, you can just get the data using:
+
+```js
+const { providerConnectedEvent, providerWidgetStatus } = useLeafProviderData();
+```
+
+This variables will be updated every time the Provider update the steps i.e move from one step to other. 
+
+### Tips
+
+The way that the developer get the updated value from the hook can be different depending the of the application, personal preferences or the way it is architected. We suggest the following with `useMemo` but it can be also implemented with `useEffect`.
+useMemo runs the function and caches its result, which will only be recomputed if any value in the dependency array changes. It helps optimize performance by avoiding unnecessary recalculations.
+
+#### Example
+
+```js
+useMemo(() => {
+  //Something you want to update, as a state from the component.
+}, [providerConnectedEvent, providerWidgetStatus])
+```
 
 ## Reference
 ### Property Overview

@@ -100,7 +100,7 @@ This configuration has no effect over the [Field Operations Images V2](https://d
 
 #### summarizeByProductEntry
 If set to `true`, Leaf will aggregate products with the same name and display only one entry per product in the summary.
-Area and rate will be averaged and totalApplied will be the sum. This config is only for applied data. The default value is `false`.
+Area and totalApplied will be sum and rate will be the averaged. This config is only for applied data. The default value is `false`.
 
 #### fieldOperationCreation
 Enables the creation of [Field Operations][2]. The default is `true`.

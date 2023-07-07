@@ -99,8 +99,8 @@ This configuration has no effect over the [Field Operations Images V2](https://d
 [See this section for more information](#cleanupstandardgeojson)
 
 #### summarizeByProductEntry
-If set to `true`, Leaf will aggregate products with the same name and display only one entry in the summary list of products, 
-for area and rate we will do the average and for totalApplied we will do the sum. This config is only available for applied type operations. The default value is `false`.
+If set to `true`, Leaf will aggregate products with the same name and display only one entry per product in the summary.
+Area and rate will be averaged and totalApplied will be the sum. This config is only for applied data. The default value is `false`.
 
 #### fieldOperationCreation
 Enables the creation of [Field Operations][2]. The default is `true`.

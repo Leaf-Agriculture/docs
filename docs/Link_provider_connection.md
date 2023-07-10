@@ -574,6 +574,9 @@ import { Leaf } from '@withleaf/leaf-link-react';
 Considering you have a custom component that need to handle or just receive the data updates from Provider Widget:
 
 ```js
+
+import { useLeaf } from '@withleaf/leaf-link-react';
+
 export const MyComponent = () => {
     // Import the states from the hook
     const { providerWidgetStatus, providersConnected } = useLeaf();
@@ -638,24 +641,19 @@ export const MyComponent = () => {
 Then, wrap your component in the hook as a children
 
 ```js
-export const LeafHook = ({
-    isDarkMode,
-    companyName,
-    companyLogo,
-    leafUser,
-    apiKey,
-    locale,
-}: ProviderListProps) => {
+import { Leaf, Providers } from '@withleaf/leaf-link-react'
+
+const Example = () => {
     return (
         <Leaf>
             <MyComponent />
             <Providers
-                isDarkMode={isDarkMode}
-                companyName={companyName}
-                companyLogo={companyLogo}
-                leafUser={leafUser}
-                apiKey={apiKey}
-                locale={locale}
+                isDarkMode={true}
+                companyName={'My Company Name'}
+                companyLogo={'url'}
+                leafUser={'myLeafUser'}
+                apiKey={'myApiKey'}
+                locale={'locale'}
             />
         </Leaf>
     );

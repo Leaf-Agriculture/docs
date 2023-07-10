@@ -229,7 +229,7 @@ Here is a request example:
 ### CNHi
 To enable CNHi as a provider in the widget you need your application credentials from CNHi. You can find more info on how to create a developer account [here][cnhi].
 
-#### Redirect URI
+#### OAuth Callback URL
 The first step is to add our widget URL in the "App OAuth Callback URL(s)" section:
 
 ```markup
@@ -395,13 +395,11 @@ To enable Trimble as a provider in the widget you need your application credenti
 
 
 #### Authentication Callback URL
-The first step is ask Trimble to add our widget URL as one of the "Authentication Callback URLs" section:
+The first step is make sure our widget URL is registered in the "Authentication Callback URLs" section. It may be necessary to contact Trimble to request the change.
 
 ```markup
 https://widget.withleaf.io
 ```
-
-
 
 #### Application info
 To allow the users to authenticate with Trimble, you will need to send your application info to this endpoint
@@ -550,6 +548,7 @@ function App() {
 :::tip
 [Here](https://codesandbox.io/s/leaf-link-react-providers-d5lm4w?file=/src/App.tsx) you can run a live use case demo!
 :::
+
 
 
 

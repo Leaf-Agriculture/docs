@@ -393,6 +393,16 @@ Here is a request example:
 ### Trimble
 To enable Trimble as a provider in the widget you need your application credentials from Trimble. You can find more info on how to create a developer account [here][trimble].
 
+
+#### Authentication Callback URL
+The first step is ask Trimble to add our widget URL as one of the "Authentication Callback URLs" section:
+
+```markup
+https://widget.withleaf.io
+```
+
+
+
 #### Application info
 To allow the users to authenticate with Trimble, you will need to send your application info to this endpoint
 &nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/app-keys/Trimble/{appName}`

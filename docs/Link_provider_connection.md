@@ -541,6 +541,8 @@ function App() {
 [Here](https://codesandbox.io/s/leaf-link-react-providers-d5lm4w?file=/src/App.tsx) you can run a live use case demo!
 :::
 
+## 1.0.3 - Improvements 
+
 ### Provider Data Hooks
 
 Leaf Link React also have hooks that can improve the developer experience when using the widgets.
@@ -549,7 +551,7 @@ Leaf Link React also have hooks that can improve the developer experience when u
 
 | Name                    | Type                                               | Description                                                                                                            |
 |-------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| providersConnectedEvent | `Array<{ provider: string; createdTime: string }>` | Provide the array of the provider connected and also the createdTime - available after finish the connection process   |
+| providersConnected      | `Array<{ provider: string; createdTime: string }>` | Provide the array of the provider connected and also the createdTime - available after finish the connection process   |
 | providerWidgetStatus    | `{ code: number; message: string }`                | Provide the status code and the message from the current widget Status                                                 |
 
 
@@ -564,24 +566,103 @@ Leaf Link React also have hooks that can improve the developer experience when u
 ### How to use it.
 
 ```js
-import { LeafProviderData } from '@withleaf/leaf-link-react';
+import { Leaf } from '@withleaf/leaf-link-react';
+```
+
+`{ Leaf }` import is the context that handle with the providers data.
+
+Considering you have a custom component that need to handle or just receive the data updates from Provider Widget:
+
+```js
+export const MyComponent = () => {
+    // Import the states from the hook
+    const { providerWidgetStatus, providersConnected } = useLeaf();
+
+    return (
+        <>
+            <div>
+                <p
+                    data-testid='hook-title'
+                    style={{
+                        fontSize: '22px',
+                    }}
+                >
+                    {' '}
+                    Hook State Example
+                </p>
+                <p data-testid='status'>
+                    <span
+                        style={{
+                            fontWeight: 'bold',
+                        }}
+                    >
+                        Status Code:
+                    </span>{' '}
+                    {providerWidgetStatus.code} |{' '}
+                    <span
+                        style={{
+                            fontWeight: 'bold',
+                        }}
+                    >
+                        Status Message:
+                    </span>{' '}
+                    {providerWidgetStatus.message}
+                </p>
+            </div>
+            <hr />
+            <div>
+                {providersConnected.length === 0 ? (
+                    <p>Providers List is empty</p>
+                ) : (
+                    <>
+                        {providersConnected.map((provider, index) => (
+                            <>
+                                <p data-testid={`${provider.provider}-testid`}>
+                                    {' '}
+                                    Provider: <span>{provider.provider}</span>
+                                </p>
+                                <p>
+                                    {' '}
+                                    Created Time: <span>{provider.createdTime}</span>
+                                </p>
+                            </>
+                        ))}
+                    </>
+                )}
+            </div>
+        </>
+    );
+};
 ```
 
 Then, wrap your component in the hook as a children
 
 ```js
-<LeafProviderData>
-    <YourComponent />
-</LeafProviderData>
+export const LeafHook = ({
+    isDarkMode,
+    companyName,
+    companyLogo,
+    leafUser,
+    apiKey,
+    locale,
+}: ProviderListProps) => {
+    return (
+        <Leaf>
+            <MyComponent />
+            <Providers
+                isDarkMode={isDarkMode}
+                companyName={companyName}
+                companyLogo={companyLogo}
+                leafUser={leafUser}
+                apiKey={apiKey}
+                locale={locale}
+            />
+        </Leaf>
+    );
+};
 ```
 
 From your top-level component can pass the current data to all components below, no matter how deep.
-
-In the components, you can just get the data using:
-
-```js
-const { providerConnectedEvent, providerWidgetStatus } = useLeafProviderData();
-```
 
 This variables will be updated every time the Provider update the steps i.e move from one step to other. 
 
@@ -595,7 +676,7 @@ useMemo runs the function and caches its result, which will only be recomputed i
 ```js
 useMemo(() => {
   //Something you want to update, as a state from the component.
-}, [providerConnectedEvent, providerWidgetStatus])
+}, [providerConnected, providerWidgetStatus])
 ```
 
 ## Reference

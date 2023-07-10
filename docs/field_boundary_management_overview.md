@@ -4,42 +4,31 @@ description: Field Boundary Management - Overview
 sidebar_label: Overview
 ---
 
-[leaf_postman_url]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+[1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
+[2]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#create-a-field
+
+With Leaf, you can sync, export, create, and manage Field Boundaries from all major agriculture brands.
+
+## Getting started
+To help you get started, we’ve created a [quickstart Postman collection][1].
+
+To make calls to Leaf's field API, you will first need to go through the previous documentation steps from Leaf registration/authentication to provider authentication. Once you’ve successfully connected a provider, you can manage the field boundary endpoints on the next page. 
 
 
-With Leaf, you can import, export, create, and manage Field Boundaries from all
-major agriculture brands.
+## How field data is structured
+<img alt="Field example" src={useBaseUrl('img/field_boundaries_001.png')} />
 
-We also provide our [Leaf Postman collection][leaf_postman_url] so you can follow
-along easily.
-
-To make calls to Leaf's API, you will need a Leaf account. If you don't have
-one yet, please create your Leaf account and get your token.
-
-You can integrate with many different companies, and you only have to do it once
-per user. To connect, you just choose the company you wish to connect to
-and follow these 3 steps:
-
-1. Get the authentication URL of company you want to connect.
-1. Get your token and your user's token.
-1. Add credentials to Leaf.
-
-Now you can opt to connect more companies or Create a Leaf User and attach
-these credentials so Leaf can represent your user internally and allow you to
-query for them and their permissioned-data.
-
-**All set!**
-
-Leaf automatically detects existing fields in each company's platform. This
-works together with Leaf's Operations Data. Operations performed in the
-fields will automatically be bound to the fields you create with Field Boundaries.
-
-Leaf uses a Grower/Farm/Field hierarchy to store data. Below please find a
-breakdown of these concepts and how they relate to one another:
-
-- Fields are the central concept of this section. Every Field may have boundaries, which
-  are the geometries that defines its borders. A Field can have only one active boundary, that defines its current border.
-- Most Fields are part of a Farm and every Farm can have one or more Fields.
-- Farms can be grouped together under a Grower.
+- Leaf uses a Grower/Farm/Field hierarchy to organize data.
 - A grower (also known as Leaf User) is the data owner entity to which credentials are attached.
-- Files or Operations are the results of operations in a given Field.
+- Farm(s) can be grouped together under a Grower and Field(s) can be grouped under a Farm
+- Each field boundary is tied to a field ID, which is the central concept for organizing boundary data. There can only be one active boundary per field.
+- Machine Files that Leaf merges into Operations are the results of operational tasks performed in a given Field.
+
+
+## FAQs
+Can I use the fields and boundaries from my app/platform instead of connecting it from a provider? 
+- Yes, you can [manually create boundaries][2] from geoJSONs with a POST call for a Leaf User.

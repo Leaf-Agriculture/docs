@@ -10,10 +10,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [1]: https://withleaf.io/en/whats-new/agleader-authentication-with-leaf/
 [2]: #get-all-agleader-app-information
-[3]: #get-a-agleader-app-information
-[4]: #create-a-agleader-app-information
-[5]: #update-a-agleader-app-information
-[6]: #delete-a-agleader-app-information
+[3]: #get-an-agleader-app-information
+[4]: #create-an-agleader-app-information
+[5]: #update-an-agleader-app-information
+[6]: #delete-an-agleader-app-information
 
 [7]: https://withleaf.io/en/whats-new/climate-fieldview-authentication-with-leaf/
 [8]: #get-all-climate-fieldview-app-information
@@ -46,6 +46,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [31]: #get-all-leaf-user-api-keys
 [32]: #create-a-leaf-user-api-key
 [33]: #revoke-a-leaf-user-api-key
+
+[34]: https://docs.withleaf.io/docs/Link_provider_connection#oauth-callback-url
+[35]: https://docs.withleaf.io/docs/Link_provider_connection#redirect-uri
+[36]: https://docs.withleaf.io/docs/Link_provider_connection#authentication-callback-url
 
 
 ## About
@@ -318,19 +322,15 @@ Revokes a Leaf user API key.
 
 To enable AgLeader as a provider in the widget you need to have your application already registered with AgLeader. You can find more info on how to create a developer account [here][1].
 
-** Required integration **
-
-Soon we will add the necessary information to carry out this integration.
-
 ** Endpoints **
 
 | Description                             | Endpoints                                                                      |
 |-----------------------------------------|--------------------------------------------------------------------------------|
 | [Get all AgLeader app information][2]   | <span class="badge badge--success">GET</span> `/app-keys/AgLeader`             |
-| [Get a AgLeader app information][3]     | <span class="badge badge--success">GET</span> `/app-keys/AgLeader/{appName}`   |
-| [Create a AgLeader app information][4]  | <span class="badge badge--warning">POST</span> `/app-keys/AgLeader/{appName}`  |
-| [Update a AgLeader app information][5]  | <span class="badge badge--warning">PUT</span> `/app-keys/AgLeader/{appName} `  |
-| [Delete a AgLeader app information][6]  | <span class="badge badge--danger">DELETE</span> `/app-keys/AgLeader/{appName}` |
+| [Get an AgLeader app information][3]     | <span class="badge badge--success">GET</span> `/app-keys/AgLeader/{appName}`   |
+| [Create an AgLeader app information][4]  | <span class="badge badge--warning">POST</span> `/app-keys/AgLeader/{appName}`  |
+| [Update an AgLeader app information][5]  | <span class="badge badge--warning">PUT</span> `/app-keys/AgLeader/{appName} `  |
+| [Delete an AgLeader app information][6]  | <span class="badge badge--danger">DELETE</span> `/app-keys/AgLeader/{appName}` |
 
 
 #### Get all AgLeader app information
@@ -409,11 +409,11 @@ Get all AgLeader app information from the API Owner.
 ```
 
 
-#### Get a AgLeader app information
+#### Get an AgLeader app information
 
 &nbsp<span class="badge badge--success">GET</span> `/app-keys/AgLeader/{appName}`
 
-Get a AgLeader app information from the API Owner.
+Get an AgLeader app information from the API Owner.
 
 ##### Request examples
 
@@ -478,11 +478,11 @@ Get a AgLeader app information from the API Owner.
 ```
 
 
-#### Create a AgLeader app information
+#### Create an AgLeader app information
 
 &nbsp<span class="badge badge--warning">POST</span> `/app-keys/AgLeader/{appName}`
 
-Create a AgLeader app information.
+Create an AgLeader app information.
 
 ##### Request body
 
@@ -544,11 +544,11 @@ Create a AgLeader app information.
   </TabItem>
 </Tabs>
 
-#### Update a AgLeader app information
+#### Update an AgLeader app information
 
 &nbsp<span class="badge badge--warning">PUT</span> `/app-keys/AgLeader/{appName}`
 
-Update a AgLeader app information.
+Update an AgLeader app information.
 
 ##### Request body
 
@@ -611,11 +611,11 @@ Update a AgLeader app information.
 </Tabs>
 
 
-#### Delete a AgLeader app information
+#### Delete an AgLeader app information
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/app-keys/AgLeader/{appName}`
 
-Delete a AgLeader app information.
+Delete an AgLeader app information.
 
 ##### Request examples
 
@@ -674,10 +674,6 @@ Delete a AgLeader app information.
 ### Climate FieldView
 
 To enable Climate FieldView as a provider in the widget you need to have your application already registered with Climate FieldView. You can find more info on how to create a developer account [here][7].
-
-** Required integration **
-
-Soon we will add the necessary information to carry out this integration.
 
 ** Endpoints **
 
@@ -1034,9 +1030,11 @@ Delete a Climate FieldView app information.
 
 To enable CNHI as a provider in the widget you need to have your application already registered with CNHI. You can find more info on how to create a developer account [here][13].
 
-** Required integration **
-
-Soon we will add the necessary information to carry out this integration.
+**Integration requirements**
+```markup
+https://widget.withleaf.io
+```
+The Leaf widget URL must be registered as a valid "App OAuth Callback URL(s)" in your CNHi application. Check [this section][34] for more information.
 
 ** Endpoints **
 
@@ -1393,9 +1391,11 @@ Delete a CNHI app information.
 
 To enable John Deere as a provider in the widget you need to have your application already registered with John Deere. You can find more info on how to create a developer account [here][19].
 
-** Required integration **
-
-Soon we will add the necessary information to carry out this integration.
+**Integration requirements**
+```markup
+https://widget.withleaf.io
+```
+The Leaf widget URL must be registered as a valid "Redirect URI" in your John Deere application. Check [this section][35] for more information.
 
 ** Endpoints **
 
@@ -1750,9 +1750,11 @@ Delete a John Deere app information.
 
 To enable Trimble as a provider in the widget you need to have your application already registered with Trimble. You can find more info on how to create a developer account [here][25].
 
-** Required integration **
-
-Soon we will add the necessary information to carry out this integration.
+**Integration requirements**
+```markup
+https://widget.withleaf.io
+```
+The Leaf widget URL must be registered as a valid "Authentication Callback URL" in your Trimble application. Check [this section][36] for more information.
 
 ** Endpoints **
 

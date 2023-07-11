@@ -56,11 +56,12 @@ Get daily forecasted weather data by leaf user and field. If dates are not set o
 the response will return forecast data for the next seven days by default.
 
 
-| Parameter (to filter by) | values                                                                                |
-|--------------------------|---------------------------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                                   |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward                           |
-| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`               |
+| Parameter (to filter by) | values                                                                  |
+|--------------------------|-------------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime                     |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward             |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
+| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
 
 #### Request examples
 
@@ -125,7 +126,7 @@ the response will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "ºC"
+      "unit": "ºF"
     },
     "sunrise": {
       "values": [
@@ -139,28 +140,28 @@ the response will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "cm"
+      "unit": "inch"
     },
     "precipitationSum": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "maxWindspeed": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "processedTime": "str",
     "rainSum": {
@@ -168,28 +169,28 @@ the response will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "maxWindgusts": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "meanTemperature": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "minTemperature": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "sunset": {
       "values": [
@@ -293,35 +294,35 @@ will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "dewpoint": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "windgusts": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "snowfall": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "cm"
+      "unit": "inch"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "shortwaveRadiation": {
       "values": [
@@ -343,7 +344,7 @@ will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "relativeHumidity": {
       "values": [
@@ -357,21 +358,21 @@ will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "windspeed": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "windDirection": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     }
   },
   "geometry": {
@@ -464,7 +465,7 @@ the response will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "ºC"
+      "unit": "ºF"
     },
     "sunrise": {
       "values": [
@@ -478,28 +479,28 @@ the response will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "cm"
+      "unit": "inch"
     },
     "precipitationSum": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "maxWindspeed": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "processedTime": "str",
     "rainSum": {
@@ -507,28 +508,28 @@ the response will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "maxWindgusts": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "meanTemperature": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "minTemperature": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "sunset": {
       "values": [
@@ -635,35 +636,35 @@ will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "dewpoint": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "windgusts": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "snowfall": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "cm"
+      "unit": "inch"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "shortwaveRadiation": {
       "values": [
@@ -685,7 +686,7 @@ will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "relativeHumidity": {
       "values": [
@@ -699,21 +700,21 @@ will return forecast data for the next seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "windspeed": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "windDirection": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     }
   },
   "geometry": {
@@ -806,7 +807,7 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
         "time": "str",
         "value": int
       ],
-      "unit": "ºC"
+      "unit": "ºF"
     },
     "sunrise": {
       "values": [
@@ -820,28 +821,28 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
         "time": "str",
         "value": int
       ],
-      "unit": "cm"
+      "unit": "inch"
     },
     "precipitationSum": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "maxWindspeed": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "processedTime": "str",
     "rainSum": {
@@ -849,28 +850,28 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "maxWindgusts": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "meanTemperature": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "minTemperature": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "sunset": {
       "values": [
@@ -976,35 +977,35 @@ will return data from the last seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "dewpoint": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "windgusts": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "snowfall": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "cm"
+      "unit": "inch"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "shortwaveRadiation": {
       "values": [
@@ -1026,7 +1027,7 @@ will return data from the last seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "relativeHumidity": {
       "values": [
@@ -1040,21 +1041,21 @@ will return data from the last seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "windspeed": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "windDirection": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     }
   },
   "geometry": {
@@ -1149,7 +1150,7 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
         "time": "str",
         "value": int
       ],
-      "unit": "ºC"
+      "unit": "ºF"
     },
     "sunrise": {
       "values": [
@@ -1163,28 +1164,28 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
         "time": "str",
         "value": int
       ],
-      "unit": "cm"
+      "unit": "inch"
     },
     "precipitationSum": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "maxWindspeed": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "processedTime": "str",
     "rainSum": {
@@ -1192,28 +1193,28 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "maxWindgusts": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "meanTemperature": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "minTemperature": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "sunset": {
       "values": [
@@ -1321,35 +1322,35 @@ will return data from the last seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "dewpoint": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "windgusts": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "snowfall": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "cm"
+      "unit": "inch"
     },
     "evapotranspiration": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "shortwaveRadiation": {
       "values": [
@@ -1371,7 +1372,7 @@ will return data from the last seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "mm"
+      "unit": "inch"
     },
     "relativeHumidity": {
       "values": [
@@ -1385,21 +1386,21 @@ will return data from the last seven days by default.
         "time": "str",
         "value": int
       ],
-      "unit": "°C"
+      "unit": "ºF"
     },
     "windspeed": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     },
     "windDirection": {
       "values": [
         "time": "str",
         "value": int
       ],
-      "unit": "km/h"
+      "unit": "mph"
     }
   },
   "geometry": {

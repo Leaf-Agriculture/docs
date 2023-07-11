@@ -225,11 +225,12 @@ Get hourly forecasted weather data by Leaf User and field. If dates are not set 
 will return forecast data for the next seven days by default.
 
 
-| Parameter (to filter by) | values                                                                                |
-|--------------------------|---------------------------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                                   |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward                           |
-| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`               |
+| Parameter (to filter by) | values                                                                  |
+|--------------------------|-------------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime                     |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward             |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
+| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
 
 #### Request examples
 
@@ -399,6 +400,7 @@ the response will return forecast data for the next seven days by default.
 | endTime                  | ISO 8601 date. Returns operations until the endTime                     |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward             |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
+| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
 | lat                      | Latitude must be in the range of -90 to 90                              |
 | lon                      | Longitude must be in the range of -180 to 180                           |
 
@@ -569,6 +571,7 @@ will return forecast data for the next seven days by default.
 | endTime                  | ISO 8601 date. Returns operations until the endTime                     |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward             |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
+| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
 | lat                      | Latitude must be in the range of -90 to 90                              |
 | lon                      | Longitude must be in the range of -180 to 180                           |
 
@@ -738,11 +741,12 @@ will return data from the last seven days by default.
 Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 
-| Parameter (to filter by) | values                                                      |
-|--------------------------|-------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime         |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward |
-| model                    | Historical model data: `era5` or `era5Land`                 |
+| Parameter (to filter by) | values                                                                  |
+|--------------------------|-------------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime                     |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward             |
+| model                    | Historical model data: `era5` or `era5Land`                             |
+| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
 
 #### Request examples
 
@@ -907,11 +911,12 @@ Get hourly historical weather data by Leaf User and field. If the dates are not 
 will return data from the last seven days by default.
 
 
-| Parameter (to filter by) | values                                                      |
-|--------------------------|-------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime         |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward |
-| model                    | Historical model data: `era5` or `era5Land`                 |
+| Parameter (to filter by) | values                                                              |
+|--------------------------|---------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime                 |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward         |
+| model                    | Historical model data: `era5` or `era5Land`                         |
+| units                    | System of units: `imperial` or `metric`. The default is `imperial`  |
 
 
 #### Request examples
@@ -1079,13 +1084,14 @@ will return data from the last seven days by default.
 Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 
-| Parameter (to filter by) | values                                                      |
-|--------------------------|-------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime         |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward |
-| model                    | Historical model data: `era5` or `era5Land`                 |
-| lat                      | Latitude must be in the range of -90 to 90                  |
-| lon                      | Longitude must be in the range of -180 to 180               |
+| Parameter (to filter by) | values                                                              |
+|--------------------------|---------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime                 |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward         |
+| model                    | Historical model data: `era5` or `era5Land`                         |
+| units                    | System of units: `imperial` or `metric`. The default is `imperial`  |
+| lat                      | Latitude must be in the range of -90 to 90                          |
+| lon                      | Longitude must be in the range of -180 to 180                       |
 
 #### Request examples
 
@@ -1250,13 +1256,14 @@ Get hourly historical weather data for lat/lon by Leaf User and field. If the da
 will return data from the last seven days by default.
 
 
-| Parameter (to filter by) | values                                                      |
-|--------------------------|-------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime         |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward |
-| model                    | Historical model data: `era5` or `era5Land`                 |
-| lat                      | Latitude must be in the range of -90 to 90                  |
-| lon                      | Longitude must be in the range of -180 to 180               |
+| Parameter (to filter by) | values                                                              |
+|--------------------------|---------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime                 |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward         |
+| model                    | Historical model data: `era5` or `era5Land`                         |
+| units                    | System of units: `imperial` or `metric`. The default is `imperial`  |
+| lat                      | Latitude must be in the range of -90 to 90                          |
+| lon                      | Longitude must be in the range of -180 to 180                       |
 
 
 #### Request examples

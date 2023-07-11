@@ -66,19 +66,20 @@ Gets a paged list of files that belong to the current logged in user. It is
 possible to filter the results by passing some query parameters. They are listed
 below.
 
-| Parameter (to filter by) | Values                                                                                            |
-|--------------------------|---------------------------------------------------------------------------------------------------|
-| `leafUserId`             | uuid of one of your users                                                                         |
-| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                          |
-| `status`                 | `processed`, `failed` or `processing`                                                             |
-| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                  |
-| `organizationId`         | the provider organizationId (only available for John Deere)                                       |
-| `batchId`                | uuid of the upload response (only available for uploaded files)                                   |
-| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                     |
-| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                       |
-| `endTime`                | ISO 8601 date. Returns operations until the endTime                                               |
-| `operationType`          | `applied`, `planted` or `harvested`                                                               |
-| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned  |
+| Parameter (to filter by) | Values                                                                                           |
+|--------------------------|--------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                        |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                         |
+| `status`                 | `processed`, `failed` or `processing`                                                            |
+| `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                 |
+| `organizationId`         | the provider organizationId (only available for John Deere)                                      |
+| `batchId`                | uuid of the upload response (only available for uploaded files)                                  |
+| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward                                    |
+| `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                      |
+| `updatedTime`            | ISO 8601 date. Returns operations from the updatedTime onward                                    |
+| `endTime`                | ISO 8601 date. Returns operations until the endTime                                              |
+| `operationType`          | `applied`, `planted` or `harvested`                                                              |
+| `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 
 Also, for `operationType`: `harvested` we can process the yield properties related to the operation using the 
 crop density and standard moisture available in this [table][13].

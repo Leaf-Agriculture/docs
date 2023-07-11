@@ -157,49 +157,37 @@ values={[
       "value": 801.8923899434283,
       "unit": "gal"
     },
+    "tankMix": true,
     "products": [
       {
-        "name": "Harvest Max",
+        "name": "Fastac EC",
+        "type": "Component",
         "rate": {
-          "unit": "gal/ac",
-          "value": 0
+          "unit": "floz/ac",
+          "value": 3.4
         },
         "totalApplied": {
-          "value": 0,
-          "unit": "gal"
+          "value": 75.40670095882788,
+          "unit": "floz"
         },
         "area": {
-          "value": 319095.75951633806,
+          "value": 89753.32726801735,
           "unit": "m2"
         }
       },
       {
-        "name": "Acuron",
+        "name": "Water",
+        "type": "Carrier",
         "rate": {
           "unit": "gal/ac",
-          "value": 0
+          "value": 15
         },
         "totalApplied": {
-          "value": 0,
+          "value": 332.67662187718184,
           "unit": "gal"
         },
         "area": {
-          "value": 319095.75951633806,
-          "unit": "m2"
-        }
-      },
-      {
-        "name": "Carrier",
-        "rate": {
-          "unit": "gal/ac",
-          "value": 10
-        },
-        "totalApplied": {
-          "value": 788.4996397903748,
-          "unit": "gal"
-        },
-        "area": {
-          "value": 319095.75951633806,
+          "value": 89753.32726801735,
           "unit": "m2"
         }
       }

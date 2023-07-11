@@ -216,34 +216,37 @@ This is an example of a summary for an "applied" operation
           "max": 12.682278633117676,
           "unit": "mi/hr"
         },
+        "tankMix": true,
         "products": [
           {
-            "name": "32-0-0 UAN",
+            "name": "Fastac EC",
+            "type": "Component",
             "rate": {
-              "unit": "gal/ac",
-              "value": 9
+              "unit": "floz/ac",
+              "value": 3.4
             },
             "totalApplied": {
-              "value": 141.92523720605558,
-              "unit": "gal"
+              "value": 75.40670095882788,
+              "unit": "floz"
             },
             "area": {
-              "value": 63817.03945545471,
+              "value": 89753.32726801735,
               "unit": "m2"
             }
           },
           {
-            "name": "15-0-0-20S Ammonium Thiosulfate",
+            "name": "Water",
+            "type": "Carrier",
             "rate": {
               "unit": "gal/ac",
-              "value": 5
+              "value": 15
             },
             "totalApplied": {
-              "value": 78.84735400336422,
+              "value": 332.67662187718184,
               "unit": "gal"
             },
             "area": {
-              "value": 63817.03945545471,
+              "value": 89753.32726801735,
               "unit": "m2"
             }
           }

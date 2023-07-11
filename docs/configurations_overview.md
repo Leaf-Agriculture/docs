@@ -60,7 +60,7 @@ If set to `true`, Leaf will generate property images for [files][1] fetched from
 Not to be confused with [operationsImageCreation](#operationsimagecreation), which is specifically for [Field Operations][2].
 
 :::tip note
-All geoimage endpoints are for V1 images only. We recommend using V2 for the best quality. 
+All geoimage configurations are for V1 images only. We recommend using V2 for the best quality. 
 :::
 
 #### geoimagesColorRamp

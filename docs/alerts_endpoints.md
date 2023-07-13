@@ -68,6 +68,12 @@ and try to register another one, you'll get a 400 response with error `eventRegi
 | secret    | string                      | The secret used for HMAC authentication. We sign payload with this secret. See more [here][6] |
 | url       | a valid HTTP URL string     | The address of your webhook server                                                            |
 
+The allowed keys to be filled in events are:
+
+- `credentialsLimitedPermission`, `credentialsUnauthenticated`, `fieldCreated`, `fieldBoundaryCreated`, `fieldBoundaryUpdated`, `uploadedFileProcessingFinished`, `uploadedFileProcessingFailed`, `providerFileProcessingFinished`, `providerFileProcessingFailed`, `mergedFileProcessingFinished`, `mergedFileProcessingFailed`, `automergedFileProcessingFinished`, `automergedFileProcessingFailed`, `operationCreated`, `operationUpdated`, `operationProcessingFinished`, `newSatelliteImage`, `machineCreated`, `machineUpdated`, `machineDeleted`
+
+To see the detailed description of each of these events, click [here](https://docs.withleaf.io/docs/alerts_events).
+
 Example in JSON:
 
 ```json

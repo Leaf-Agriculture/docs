@@ -32,14 +32,14 @@ See below the REST resources and their endpoints available in this service.
 
 This feature has the following endpoints available:
 
-| Description                                  | Endpoints                                                                                                           |
-|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| [Get all products][2]                        | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products`                                        |
-| [Search for products][4]                     | <span class="badge badge--success">GET</span> `/products/search`                                                    |
-| [Get a product][7]                           | <span class="badge badge--success">GET</span> `/products/{id}`                                                      |
-| [Get matching products from an operation][8] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/matching/operations/{id}`               |
-| [Updated product matches][9]                 | <span class="badge badge--warning">PUT</span> `beta/products/matching/operations/{id}/matches/{matchId}`            |
-| [Get product matches historical][10]         | <span class="badge badge--success">GET</span> `beta/products/matching/operations/{id}/matches/{matchId}/historical` |
+| Description                                  | Endpoints                                                                                                                |
+|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| [Get all products][2]                        | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products`                                             |
+| [Search for products][4]                     | <span class="badge badge--success">GET</span> `/products/search`                                                         |
+| [Get a product][7]                           | <span class="badge badge--success">GET</span> `/products/{id}`                                                           |
+| [Get matching products from an operation][8] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/matching/operations/{operationId}`           |
+| [Updated product matches][9]                 | <span class="badge badge--warning">PUT</span> `/products/matching/operations/{operationId}/matches/{matchId}`            |
+| [Get product matches historical][10]         | <span class="badge badge--success">GET</span> `/products/matching/operations/{operationId}/matches/{matchId}/historical` |
 
 
 ### Get all products
@@ -277,7 +277,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/users/products/{id}'
+  endpoint = 'https://api.withleaf.io/services/beta/api/products/{id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -290,7 +290,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/api/users/products/{id}'
+      'https://api.withleaf.io/services/beta/api/products/{id}'
   ```
 
   </TabItem>
@@ -321,7 +321,7 @@ values={[
 
 ### Get matching products from an operation
 
-&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products/matching/operations/{id}`
+&nbsp<span class="badge badge--success">GET</span>  `/products/matching/operations/{operationId}`
 
 Get the standard products that best match the products from a Field Operation. Information such as the registration number and labels can be obtained from [this endpoint][7] using the `id`.
 
@@ -339,7 +339,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+  const endpoint ='https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -355,7 +355,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+  endpoint = 'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -368,7 +368,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+      'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}'
   ```
 
   </TabItem>
@@ -403,7 +403,7 @@ values={[
 
 ### Updated product matches
 
-&nbsp<span class="badge badge--warning">PUT</span> `beta/products/matching/operations/{id}/matches/{matchId}` 
+&nbsp<span class="badge badge--warning">PUT</span> `/products/matching/operations/{id}/matches/{matchId}` 
 
 Updated Leaf predictions or approves them.
 
@@ -439,7 +439,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}'
+  const endpoint = 'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
@@ -459,7 +459,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}'
+  endpoint = 'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
   
   data = {
@@ -477,7 +477,7 @@ values={[
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "status": "VALIDATED" }' \
-      'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}'
+      'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}'
   ```
 
   </TabItem>
@@ -485,8 +485,6 @@ values={[
 
 
 #### Response
-
-When change the prediction:
 
 ```json
 [
@@ -510,33 +508,9 @@ When change the prediction:
 ]
 ```
 
-When approve the prediction:
-
-```json
-[
-  {
-    "id": "uidd-match-0001",
-    "name": "Ta35",
-    "productId": "uidd-prd-1001",
-    "matchDetail": {
-      "score": 91,
-      "status": "validated"
-    }
-  },
-  {
-    "id": "uidd-match-0002",
-    "name": "Talisman",
-    "productId": "uidd-prd-1003",
-    "matchDetail": {
-      "status": "validated"
-    }
-  }
-]
-```
-
 ### Get product matches historical
 
-&nbsp<span class="badge badge--success">GET</span> `beta/products/matching/operations/{id}/matches/{matchId}/historical`
+&nbsp<span class="badge badge--success">GET</span> `/products/matching/operations/{operationId}/matches/{matchId}/historical`
 
 Get a product's change history.
 
@@ -554,7 +528,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}/historical'
+  const endpoint ='https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}/historical'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -570,7 +544,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}/historical'
+  endpoint = 'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}/historical'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -583,7 +557,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}/historical'
+      'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}/historical'
   ```
 
   </TabItem>
@@ -677,7 +651,7 @@ values={[
 
 #### Response
 
-The response is a json list with all the varieties
+The response is a JSON list with all the varieties
 
 ```json
 [

@@ -633,6 +633,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | speed                 | **       | dict                        |
   | totalApplied          | **       | float                       |
   | operationDescription  | **       | string                      |
+  | tankMix               | **       | boolean                     |
 
 
   \* = Always in response  

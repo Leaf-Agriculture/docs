@@ -61,7 +61,7 @@ the response will return forecast data for the next seven days by default.
 | endTime                  | ISO 8601 date. Returns operations until the endTime                     |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward             |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
-| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`        |
 
 #### Request examples
 
@@ -123,86 +123,170 @@ the response will return forecast data for the next seven days by default.
   "properties": {
     "maxTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 28.8
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 28.1
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "sunrise": {
       "values": [
-        "time": "str",
-        "value": "str"
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": "2023-07-21T10:52"
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": "2023-07-22T10:53"
+        },
+        ....
       ],
       "unit": "iso8601"
     },
     "snowfallSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "cm"
     },
     "precipitationSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "cm"
     },
     "maxWindspeed": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 15.2
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 19.9
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "evapotranspiration": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 3.76
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 4.93
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
-    "processedTime": "str",
+    "processedTime": "2023-07-21T13:01:11.662397",
     "rainSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "maxWindgusts": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 27.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 24.1
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "meanTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 25.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 23.6
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "minTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 21.1
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 18.9
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "sunset": {
       "values": [
-        "time": "str",
-        "value": "str"
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": "2023-07-22T01:11"
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": "2023-07-23T01:10"
+        },
+        ....
       ],
       "unit": "iso8601"
     },
     "windDirection": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 350.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 332.0
+        },
+        ....
       ],
       "unit": "°"
     }
@@ -230,7 +314,7 @@ will return forecast data for the next seven days by default.
 | endTime                  | ISO 8601 date. Returns operations until the endTime                     |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward             |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
-| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`        |
 
 #### Request examples
 
@@ -292,88 +376,172 @@ will return forecast data for the next seven days by default.
   "properties": {
     "rain": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "dewpoint": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 22.6
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 22.6
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "windgusts": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 9.4
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 5.8
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "snowfall": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "evapotranspiration": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.11
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.04
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "shortwaveRadiation": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 146.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 2.0
+        },
+        ....
       ],
       "unit": "W/m²"
     },
     "processedTime": "str",
     "cloudcover": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 51.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 100.0
+        },
+        ....
       ],
       "unit": "%"
     },
     "precipitation": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "relativeHumidity": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 75.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 80.0
+        },
+        ....
       ],
       "unit": "%"
     },
     "temperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 27.4
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 26.3
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "windspeed": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 3.1
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 5.7
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "windDirection": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 234.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 72.0
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     }
   },
   "geometry": {
@@ -400,7 +568,7 @@ the response will return forecast data for the next seven days by default.
 | endTime                  | ISO 8601 date. Returns operations until the endTime                     |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward             |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
-| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`        |
 | lat                      | Latitude must be in the range of -90 to 90                              |
 | lon                      | Longitude must be in the range of -180 to 180                           |
 
@@ -464,86 +632,170 @@ the response will return forecast data for the next seven days by default.
   "properties": {
     "maxTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 28.8
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 28.1
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "sunrise": {
       "values": [
-        "time": "str",
-        "value": "str"
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": "2023-07-21T10:52"
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": "2023-07-22T10:53"
+        },
+        ....
       ],
       "unit": "iso8601"
     },
     "snowfallSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "cm"
     },
     "precipitationSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "cm"
     },
     "maxWindspeed": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 15.2
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 19.9
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "evapotranspiration": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 3.76
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 4.93
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
-    "processedTime": "str",
+    "processedTime": "2023-07-21T13:01:11.662397",
     "rainSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "maxWindgusts": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 27.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 24.1
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "meanTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 25.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 23.6
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "minTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 21.1
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 18.9
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "sunset": {
       "values": [
-        "time": "str",
-        "value": "str"
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": "2023-07-22T01:11"
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": "2023-07-23T01:10"
+        },
+        ....
       ],
       "unit": "iso8601"
     },
     "windDirection": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 350.0
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 332.0
+        },
+        ....
       ],
       "unit": "°"
     }
@@ -551,8 +803,8 @@ the response will return forecast data for the next seven days by default.
   "geometry": {
     "type": "Point",
     "coordinates": [
-      {lat},
-      {lon}
+      -89.64355775454169,
+      39.802794365611476
     ]
   }
 }
@@ -571,7 +823,7 @@ will return forecast data for the next seven days by default.
 | endTime                  | ISO 8601 date. Returns operations until the endTime                     |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward             |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
-| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`        |
 | lat                      | Latitude must be in the range of -90 to 90                              |
 | lon                      | Longitude must be in the range of -180 to 180                           |
 
@@ -636,95 +888,179 @@ will return forecast data for the next seven days by default.
   "properties": {
     "rain": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "dewpoint": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 22.6
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 22.6
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "windgusts": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 9.4
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 5.8
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "snowfall": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "evapotranspiration": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.11
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.04
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "shortwaveRadiation": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 146.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 2.0
+        },
+        ....
       ],
       "unit": "W/m²"
     },
     "processedTime": "str",
     "cloudcover": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 51.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 100.0
+        },
+        ....
       ],
       "unit": "%"
     },
     "precipitation": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "relativeHumidity": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 75.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 80.0
+        },
+        ....
       ],
       "unit": "%"
     },
     "temperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 27.4
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 26.3
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "windspeed": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 3.1
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 5.7
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "windDirection": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 234.0
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 72.0
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     }
   },
   "geometry": {
     "type": "Point",
     "coordinates": [
-      {lat},
-      {lon}
+      -89.64355775454169,
+      39.802794365611476
     ]
   }
 }
@@ -741,12 +1077,12 @@ will return data from the last seven days by default.
 Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 
-| Parameter (to filter by) | values                                                                  |
-|--------------------------|-------------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                     |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward             |
-| model                    | Historical model data: `era5` or `era5Land`                             |
-| units                    | System of units: `imperial` or `metric`. The default is `imperial`      |
+| Parameter (to filter by) | values                                                                |
+|--------------------------|-----------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime                   |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward           |
+| model                    | Historical model data: `era5` or `era5Land`                           |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`      |
 
 #### Request examples
 
@@ -808,86 +1144,170 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
   "properties": {
     "maxTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 31.9
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 32.0
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "sunrise": {
       "values": [
-        "time": "str",
-        "value": "str"
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": "2023-07-14T10:47"
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": "2023-07-15T10:48"
+        },
+        ....
       ],
       "unit": "iso8601"
     },
     "snowfallSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "cm"
     },
     "precipitationSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 0.2
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "maxWindspeed": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 14.1
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 13.5
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "evapotranspiration": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 4.51
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 3.62
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
-    "processedTime": "str",
+    "processedTime": "2023-07-21T16:50:17.965109",
     "rainSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 0.2
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "maxWindgusts": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 26.3
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 25.8
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "meanTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 28.1
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 26.8
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "minTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 26.1
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 23.2
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "sunset": {
       "values": [
-        "time": "str",
-        "value": "str"
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": "2023-07-15T01:15"
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": "2023-07-16T01:14"
+        },
+        ....
       ],
       "unit": "iso8601"
     },
     "windDirection": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 206.0
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 209.0
+        },
+        ....
       ],
       "unit": "°"
     }
@@ -900,7 +1320,7 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
     ]
   }
 }
-```  
+```
 
 
 ### Get Hourly Historical
@@ -916,7 +1336,7 @@ will return data from the last seven days by default.
 | endTime                  | ISO 8601 date. Returns operations until the endTime                 |
 | startTime                | ISO 8601 date. Returns operations from the startTime onward         |
 | model                    | Historical model data: `era5` or `era5Land`                         |
-| units                    | System of units: `imperial` or `metric`. The default is `imperial`  |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`    |
 
 
 #### Request examples
@@ -979,88 +1399,186 @@ will return data from the last seven days by default.
   "properties": {
     "rain": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "dewpoint": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 23.4
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 23.3
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "windgusts": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 17.6
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 19.1
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "snowfall": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "evapotranspiration": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.18
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.08
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "shortwaveRadiation": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 176.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 40.0
+        },
+        ....
       ],
       "unit": "W/m²"
     },
     "processedTime": "str",
     "cloudcover": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 9.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 5.0
+        },
+        ....
       ],
       "unit": "%"
     },
     "precipitation": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
+    },
+    "soilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 30.2
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 29.8
+        },
+        ....
+      ],
+      "unit": "ºC"
     },
     "relativeHumidity": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 61.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 62.0
+        },
+        ....
       ],
       "unit": "%"
     },
     "temperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 31.9
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 31.4
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "windspeed": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 7.7
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 6.4
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "windDirection": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 233.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 223.0
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     }
   },
   "geometry": {
@@ -1084,14 +1602,14 @@ will return data from the last seven days by default.
 Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 
-| Parameter (to filter by) | values                                                              |
-|--------------------------|---------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                 |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward         |
-| model                    | Historical model data: `era5` or `era5Land`                         |
-| units                    | System of units: `imperial` or `metric`. The default is `imperial`  |
-| lat                      | Latitude must be in the range of -90 to 90                          |
-| lon                      | Longitude must be in the range of -180 to 180                       |
+| Parameter (to filter by) | values                                                           |
+|--------------------------|------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime              |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward      |
+| model                    | Historical model data: `era5` or `era5Land`                      |
+| units                    | System of units: `imperial` or `metric`. The default is `metric` |
+| lat                      | Latitude must be in the range of -90 to 90                       |
+| lon                      | Longitude must be in the range of -180 to 180                    |
 
 #### Request examples
 
@@ -1153,86 +1671,170 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
   "properties": {
     "maxTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 31.9
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 32.0
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "sunrise": {
       "values": [
-        "time": "str",
-        "value": "str"
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": "2023-07-14T10:47"
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": "2023-07-15T10:48"
+        },
+        ....
       ],
       "unit": "iso8601"
     },
     "snowfallSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "cm"
     },
     "precipitationSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 0.2
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "maxWindspeed": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 14.1
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 13.5
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "evapotranspiration": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 4.51
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 3.62
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
-    "processedTime": "str",
+    "processedTime": "2023-07-21T16:50:17.965109",
     "rainSum": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 0.2
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "maxWindgusts": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 26.3
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 25.8
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "meanTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 28.1
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 26.8
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "minTemperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 26.1
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 23.2
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "sunset": {
       "values": [
-        "time": "str",
-        "value": "str"
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": "2023-07-15T01:15"
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": "2023-07-16T01:14"
+        },
+        ....
       ],
       "unit": "iso8601"
     },
     "windDirection": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 206.0
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 209.0
+        },
+        ....
       ],
       "unit": "°"
     }
@@ -1240,8 +1842,8 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
   "geometry": {
     "type": "Point",
     "coordinates": [
-      {lat},
-      {lon}
+      -89.64355775454169,
+      39.802794365611476
     ]
   }
 }
@@ -1256,14 +1858,14 @@ Get hourly historical weather data for lat/lon by Leaf User and field. If the da
 will return data from the last seven days by default.
 
 
-| Parameter (to filter by) | values                                                              |
-|--------------------------|---------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                 |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward         |
-| model                    | Historical model data: `era5` or `era5Land`                         |
-| units                    | System of units: `imperial` or `metric`. The default is `imperial`  |
-| lat                      | Latitude must be in the range of -90 to 90                          |
-| lon                      | Longitude must be in the range of -180 to 180                       |
+| Parameter (to filter by) | values                                                           |
+|--------------------------|------------------------------------------------------------------|
+| endTime                  | ISO 8601 date. Returns operations until the endTime              |
+| startTime                | ISO 8601 date. Returns operations from the startTime onward      |
+| model                    | Historical model data: `era5` or `era5Land`                      |
+| units                    | System of units: `imperial` or `metric`. The default is `metric` |
+| lat                      | Latitude must be in the range of -90 to 90                       |
+| lon                      | Longitude must be in the range of -180 to 180                    |
 
 
 #### Request examples
@@ -1326,95 +1928,193 @@ will return data from the last seven days by default.
   "properties": {
     "rain": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "dewpoint": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 23.4
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 23.3
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "windgusts": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 17.6
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 19.1
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "snowfall": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "evapotranspiration": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.18
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.08
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
     },
     "shortwaveRadiation": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 176.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 40.0
+        },
+        ....
       ],
       "unit": "W/m²"
     },
     "processedTime": "str",
     "cloudcover": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 9.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 5.0
+        },
+        ....
       ],
       "unit": "%"
     },
     "precipitation": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.0
+        },
+        ....
       ],
-      "unit": "inch"
+      "unit": "mm"
+    },
+    "soilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 30.2
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 29.8
+        },
+        ....
+      ],
+      "unit": "ºC"
     },
     "relativeHumidity": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 61.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 62.0
+        },
+        ....
       ],
       "unit": "%"
     },
     "temperature": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 31.9
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 31.4
+        },
+        ....
       ],
-      "unit": "ºF"
+      "unit": "ºC"
     },
     "windspeed": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 7.7
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 6.4
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     },
     "windDirection": {
       "values": [
-        "time": "str",
-        "value": int
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 233.0
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 223.0
+        },
+        ....
       ],
-      "unit": "mph"
+      "unit": "km/h"
     }
   },
   "geometry": {
     "type": "Point",
     "coordinates": [
-      {lat},
-      {lon}
+      -89.64355775454169,
+      39.802794365611476
     ]
   }
 }

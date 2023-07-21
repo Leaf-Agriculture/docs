@@ -15,7 +15,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: #get-all-varieties
 [7]: #get-a-product
 [8]: #get-a-operation-matching-products
-
+[9]: #updated-product-matches
+[10]: #get-product-matches-historical
 
 ## About
 
@@ -29,16 +30,16 @@ See below the REST resources and their endpoints available in this service.
 
 ## Products (Beta)
 
-### Resources
-
 This feature has the following endpoints available:
 
-| Description                            | Endpoints                                                                                                   |
-|----------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| [Get all products][2]                  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products`                                |
-| [Search for products][4]               | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/search`                         |
-| [Get a product][7]                     | <span class="badge badge--success">GET</span> `/users/products/{id}`                                        |
-| [Get a operation matching products][8] | <span class="badge badge--success">GET</span> `/users/users/{leafUserId}/products/matching/operations/{id}` |
+| Description                            | Endpoints                                                                                                           |
+|----------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| [Get all products][2]                  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products`                                        |
+| [Get a operation matching products][8] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/matching/operations/{id}`               |
+| [Search for products][4]               | <span class="badge badge--success">GET</span> `/products/search`                                                    |
+| [Get a product][7]                     | <span class="badge badge--success">GET</span> `/products/{id}`                                                      |
+| [Updated product matches][9]           | <span class="badge badge--warning">PUT</span> `beta/products/matching/operations/{id}/matches/{matchId}`            |
+| [Get product matches historical][10]   | <span class="badge badge--success">GET</span> `beta/products/matching/operations/{id}/matches/{matchId}/historical` |
 
 
 ### Get all products
@@ -124,17 +125,100 @@ The response is a JSON array containing products records.
 ```
 
 
+### Get a operation matching products
+
+&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products/matching/operations/{id}`
+
+Get the standard products that best match the products from a Field Operation. Information such as registration number and labels can be obtained from [this endpoint][7] using the `id`.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+[
+  {
+    "id": "37159c45-4c1f-48e4-aa87-90b34cc6e789",
+    "name": "ams",
+    "productId": "e5b91778-0714-4e1f-850c-b458d1bdc7ed",
+    "matchDetails": {
+      "status": "PREDICTED",
+      "score": 14.354036
+    }
+  },
+  {
+    "id": "7fb70242-498b-42c1-92c3-a7d2361d2125",
+    "name": "counter",
+    "productId": "a85c1d0d-b673-46aa-a3a3-31cb65f57598",
+    "matchDetails": {
+      "status": "PREDICTED",
+      "score": 8.6226015
+    }
+  },
+  ....
+]
+```
+
+
 ### Search for products
 
-&nbsp<span class="badge badge--success">GET</span>  `/beta/products/search`
+&nbsp<span class="badge badge--success">GET</span>  `/products/search`
 
 Search for products by name, partial values are supported.
 
 
-| Parameter (to filter by) | Values                                                          |
-|--------------------------|-----------------------------------------------------------------|
-| `name`                   | part of the product name to be searched **(required)**          |
-| `maxResults`             | the number of results that should be returned (max value is 20) |
+| Parameter (to filter by) | Values                                                                             |
+|--------------------------|------------------------------------------------------------------------------------|
+| `name`                   | part of the product name to be searched **(required)**                             |
+| `maxResults`             | the number of results that should be returned (max value is 20). The default is 10 |
 
 
 <Tabs
@@ -242,7 +326,7 @@ The response is a JSON array with the products that match the query.
 
 ### Get a product
 
-&nbsp<span class="badge badge--success">GET</span>  `/beta/products/{id}`
+&nbsp<span class="badge badge--success">GET</span>  `/products/{id}`
 
 Get a product by its id. The data is obtained from different product databases.
 
@@ -318,11 +402,29 @@ values={[
 }
 ```
 
-### Get a operation matching products
+### Updated product matches
 
-&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products/matching/operations/{id}`
+&nbsp<span class="badge badge--warning">PUT</span> `beta/products/matching/operations/{id}/matches/{matchId}` 
 
-Get the standard products that best match the products from a Field Operation. Information such as registration number and labels can be obtained from [this endpoint][7] using the `id`.
+Updated Leaf predictions or approves them.
+
+#### Request body
+
+To approve Leaf prediction:
+
+```json
+{
+  "status": "VALIDATED"
+}
+```
+
+Or, to change prediction:
+
+```json
+{
+  "productId": "expectedProductID"
+}
+```
 
 <Tabs
 defaultValue="sh"
@@ -338,7 +440,122 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+  const endpoint = 'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    status: "VALIDATED"
+  }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+  
+  data = {
+    status: "VALIDATED"
+  }
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "status": "VALIDATED" }' \
+      'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+When change the prediction:
+
+```json
+[
+  {
+    "id": "uidd-match-0001",
+    "name": "Ta35",
+    "productId": "uidd-prd-1001",
+    "matchDetail": {
+      "score": 91,
+      "status": "predicted"
+    }
+  },
+  {
+    "id": "uidd-match-0002",
+    "name": "Talisman",
+    "productId": "uidd-prd-1003",
+    "matchDetail": {
+      "status": "validated"
+    }
+  }
+]
+```
+
+When approve the prediction:
+
+```json
+[
+  {
+    "id": "uidd-match-0001",
+    "name": "Ta35",
+    "productId": "uidd-prd-1001",
+    "matchDetail": {
+      "score": 91,
+      "status": "validated"
+    }
+  },
+  {
+    "id": "uidd-match-0002",
+    "name": "Talisman",
+    "productId": "uidd-prd-1003",
+    "matchDetail": {
+      "status": "validated"
+    }
+  }
+]
+```
+
+### Get product matches historical
+
+&nbsp<span class="badge badge--success">GET</span> `beta/products/matching/operations/{id}/matches/{matchId}/historical`
+
+Get a product's change history.
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}/historical'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -354,7 +571,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+  endpoint = 'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}/historical'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -367,42 +584,25 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/matching/operations/{id}'
+      'https://api.withleaf.io/services/beta/api/beta/products/matching/operations/{id}/matches/{matchId}/historical'
   ```
 
   </TabItem>
 </Tabs>
-
 
 #### Response
 
 ```json
 [
   {
-    "id": "37159c45-4c1f-48e4-aa87-90b34cc6e789",
-    "name": "ams",
-    "productId": "e5b91778-0714-4e1f-850c-b458d1bdc7ed",
-    "matchDetails": {
-      "status": "PREDICTED",
-      "score": 14.354036
-    }
-  },
-  {
-    "id": "7fb70242-498b-42c1-92c3-a7d2361d2125",
-    "name": "counter",
-    "productId": "a85c1d0d-b673-46aa-a3a3-31cb65f57598",
-    "matchDetails": {
-      "status": "PREDICTED",
-      "score": 8.6226015
-    }
-  },
-  ....
+    "productId": "uidd-prd-1002",
+    "score": 99,
+    "historicalTime": "2010-10-10T01:01:01"
+  }
 ]
 ```
 
 ## Varieties (Beta)
-
-### Resources
 
 This feature has the following endpoints available:
 

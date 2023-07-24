@@ -1028,7 +1028,7 @@ Delete a Climate FieldView app information.
 
 ### CNHI
 
-To enable CNHI as a provider in the widget you need to have your application already registered with CNHI. You can find more info on how to create a developer account [here][13].
+To enable CNHI as a provider in the widget you need to have your application already registered with CNHI. You can find more info on how to create a developer account [here][19].
 
 **Integration requirements**
 ```markup
@@ -1389,7 +1389,7 @@ Delete a CNHI app information.
 
 ### John Deere
 
-To enable John Deere as a provider in the widget you need to have your application already registered with John Deere. You can find more info on how to create a developer account [here][19].
+To enable John Deere as a provider in the widget you need to have your application already registered with John Deere. You can find more info on how to create a developer account [here][13].
 
 **Integration requirements**
 ```markup

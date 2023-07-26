@@ -26,6 +26,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [15]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images
 [16]: #get-operations-geotiff-images
 [17]: #crop-operation-by-field
+[18]: #get-an-operations-standardgeojson
+[19]: #get-an-operations-filteredgeojson
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
@@ -40,17 +42,19 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-| Description                          | Endpoints                                                                          |
-|--------------------------------------|------------------------------------------------------------------------------------|
-| [Get all operations][1]              | <span class="badge badge--success">GET</span> `/operations`                        |
-| [Get an operation][2]                | <span class="badge badge--success">GET</span> `/operations/{id}`                   |
-| [Get an operation summary][3]        | <span class="badge badge--success">GET</span> `/operations/{id}/summary`           |
-| [Get operation's images][4]          | <span class="badge badge--success">GET</span> `/operations/{id}/images`            |
-| [Get operation's images V2][8]       | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`          |
-| [Get operation's geotiff images][16] | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`     |
-| [Get an operation's units][5]        | <span class="badge badge--success">GET</span> `/operations/{id}/units`             |
-| [Crop operation by field][17]        | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`  |
-| [Reprocess an operation][11]         | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`        |
+| Description                              | Endpoints                                                                          |
+|------------------------------------------|------------------------------------------------------------------------------------|
+| [Get all operations][1]                  | <span class="badge badge--success">GET</span> `/operations`                        |
+| [Get an operation][2]                    | <span class="badge badge--success">GET</span> `/operations/{id}`                   |
+| [Get an operation summary][3]            | <span class="badge badge--success">GET</span> `/operations/{id}/summary`           |
+| [Get an operation's standardGeojson][18] | <span class="badge badge--success">GET</span> `/operations/{id}/standardGeojson`   |
+| [Get an operation's filteredGeojson][19] | <span class="badge badge--success">GET</span> `/operations/{id}/filteredGeojson`   |
+| [Get operation's images][4]              | <span class="badge badge--success">GET</span> `/operations/{id}/images`            |
+| [Get operation's images V2][8]           | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`          |
+| [Get operation's geotiff images][16]     | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`     |
+| [Get an operation's units][5]            | <span class="badge badge--success">GET</span> `/operations/{id}/units`             |
+| [Crop operation by field][17]            | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`  |
+| [Reprocess an operation][11]             | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`        |
 
 For easily testing these endpoints, we recommend using our Postman [collection][postman].
 
@@ -313,6 +317,142 @@ Gets the summary, if available, for the operation id.
 #### Response
 
 [Here's a link with sample responses][sample_summary] for "planted", "applied", "harvested" and "tillage" operations.
+
+
+### Get an operation's standardGeojson
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/standardGeojson`
+
+Get the standardGeojson file relative to the operation.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "standardGeojson": "URL"
+}
+```
+
+
+### Get an operation's filteredGeojson
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/filteredGeojson`
+
+Get the filteredGeojson file relative to the operation.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeojson'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeojson'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeojson'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "filteredGeojson": "URL"
+}
+```
 
 
 ### Get an operation's images

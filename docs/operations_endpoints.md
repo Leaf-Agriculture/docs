@@ -11,12 +11,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <!-- the following links are referenced throughout this document -->
 [1]: #get-all-operations
 [2]: #get-an-operation
-[3]: #get-an-operation-summary
-[4]: #get-an-operations-images
-[5]: #get-an-operations-units
+[3]: #get-the-operations-summary
+[4]: #get-operations-images
+[5]: #get-the-operations-units
 [6]: https://docs.withleaf.io/docs/alerts_overview/
 [7]: https://docs.withleaf.io/docs/alerts_events/#operation-events
-[8]: #get-an-operations-images-v2
+[8]: #get-operations-images-v2
 [9]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-filtered-geojson
 [10]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images-v2
 [11]: #reprocess-an-operation
@@ -26,8 +26,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [15]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images
 [16]: #get-operations-geotiff-images
 [17]: #crop-operation-by-field
-[18]: #get-an-operations-standardgeojson
-[19]: #get-an-operations-filteredgeojson
+[18]: #get-the-operations-standardgeojson
+[19]: #get-the-operations-filteredgeojson
+[20]: https://docs.withleaf.io/docs/configurations_overview/#operationsfilteredgeojson
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
@@ -42,19 +43,19 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-| Description                              | Endpoints                                                                          |
-|------------------------------------------|------------------------------------------------------------------------------------|
-| [Get all operations][1]                  | <span class="badge badge--success">GET</span> `/operations`                        |
-| [Get an operation][2]                    | <span class="badge badge--success">GET</span> `/operations/{id}`                   |
-| [Get an operation summary][3]            | <span class="badge badge--success">GET</span> `/operations/{id}/summary`           |
-| [Get an operation's standardGeojson][18] | <span class="badge badge--success">GET</span> `/operations/{id}/standardGeojson`   |
-| [Get an operation's filteredGeojson][19] | <span class="badge badge--success">GET</span> `/operations/{id}/filteredGeojson`   |
-| [Get operation's images][4]              | <span class="badge badge--success">GET</span> `/operations/{id}/images`            |
-| [Get operation's images V2][8]           | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`          |
-| [Get operation's geotiff images][16]     | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`     |
-| [Get an operation's units][5]            | <span class="badge badge--success">GET</span> `/operations/{id}/units`             |
-| [Crop operation by field][17]            | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`  |
-| [Reprocess an operation][11]             | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`        |
+| Description                               | Endpoints                                                                          |
+|-------------------------------------------|------------------------------------------------------------------------------------|
+| [Get all operations][1]                   | <span class="badge badge--success">GET</span> `/operations`                        |
+| [Get an operation][2]                     | <span class="badge badge--success">GET</span> `/operations/{id}`                   |
+| [Get the operation's summary][3]          | <span class="badge badge--success">GET</span> `/operations/{id}/summary`           |
+| [Get the operation's standardGeojson][18] | <span class="badge badge--success">GET</span> `/operations/{id}/standardGeojson`   |
+| [Get the operation's filteredGeojson][19] | <span class="badge badge--success">GET</span> `/operations/{id}/filteredGeojson`   |
+| [Get operation's images][4]               | <span class="badge badge--success">GET</span> `/operations/{id}/images`            |
+| [Get operation's images V2][8]            | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`          |
+| [Get operation's geotiff images][16]      | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`     |
+| [Get the operation's units][5]            | <span class="badge badge--success">GET</span> `/operations/{id}/units`             |
+| [Crop operation by field][17]             | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`  |
+| [Reprocess an operation][11]              | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`        |
 
 For easily testing these endpoints, we recommend using our Postman [collection][postman].
 
@@ -255,7 +256,7 @@ Gets a single operation by its id.
 ```
 
 
-### Get an operation summary
+### Get the operation's summary
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/summary`
 
@@ -319,11 +320,11 @@ Gets the summary, if available, for the operation id.
 [Here's a link with sample responses][sample_summary] for "planted", "applied", "harvested" and "tillage" operations.
 
 
-### Get an operation's standardGeojson
+### Get the operation's standardGeojson
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/standardGeojson`
 
-Get the standardGeojson file relative to the operation.
+Get the standardGeojson file URL relative to the operation.
 
 #### Request examples
 
@@ -387,11 +388,16 @@ Get the standardGeojson file relative to the operation.
 ```
 
 
-### Get an operation's filteredGeojson
+### Get the operation's filteredGeojson
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/filteredGeojson`
 
-Get the filteredGeojson file relative to the operation.
+Get the filteredGeojson file URL relative to the operation.
+
+:::tip
+To use this option, the [operationsFilteredGeojson][20] configuration must be enabled.
+:::
+
 
 #### Request examples
 
@@ -455,7 +461,7 @@ Get the filteredGeojson file relative to the operation.
 ```
 
 
-### Get an operation's images
+### Get operation's images
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/images`
 
@@ -547,7 +553,7 @@ We also generate an auxiliary `xml` with geographic information to handle this
 image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
 
 
-### Get an operation's images V2
+### Get operation's images V2
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/imagesV2`
 
@@ -754,7 +760,7 @@ Gets a list of TIFF images generated from the operation's properties with improv
 ```
 
 
-### Get an operation's units
+### Get the operation's units
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/units`
 

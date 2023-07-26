@@ -569,8 +569,6 @@ the response will return forecast data for the next seven days by default.
 | startTime                | ISO 8601 date. Returns operations from the startTime onward             |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
 | units                    | System of units: `imperial` or `metric`. The default is `metric`        |
-| lat                      | Latitude must be in the range of -90 to 90                              |
-| lon                      | Longitude must be in the range of -180 to 180                           |
 
 #### Request examples
 
@@ -824,8 +822,6 @@ will return forecast data for the next seven days by default.
 | startTime                | ISO 8601 date. Returns operations from the startTime onward             |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
 | units                    | System of units: `imperial` or `metric`. The default is `metric`        |
-| lat                      | Latitude must be in the range of -90 to 90                              |
-| lon                      | Longitude must be in the range of -180 to 180                           |
 
 
 #### Request examples
@@ -1608,8 +1604,6 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
 | startTime                | ISO 8601 date. Returns operations from the startTime onward      |
 | model                    | Historical model data: `era5` or `era5Land`                      |
 | units                    | System of units: `imperial` or `metric`. The default is `metric` |
-| lat                      | Latitude must be in the range of -90 to 90                       |
-| lon                      | Longitude must be in the range of -180 to 180                    |
 
 #### Request examples
 
@@ -1864,8 +1858,6 @@ will return data from the last seven days by default.
 | startTime                | ISO 8601 date. Returns operations from the startTime onward      |
 | model                    | Historical model data: `era5` or `era5Land`                      |
 | units                    | System of units: `imperial` or `metric`. The default is `metric` |
-| lat                      | Latitude must be in the range of -90 to 90                       |
-| lon                      | Longitude must be in the range of -180 to 180                    |
 
 
 #### Request examples

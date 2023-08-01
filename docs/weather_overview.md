@@ -43,7 +43,8 @@ daily or hourly.
 | GFS            | NOAA                         | United States  | 3 - 25 km  | 16 days         | Every hour       |
 | Arpege & Arome | MeteoFrance                  | France         | 1 - 40 km  | 4 days          | Every 6 hours    |
 | IFS            | ECMWF                        | European Union | 44 km      | 7 days          | Every 6 hours    |
-| MET Nordic     | MET Norway                   | Norway         | 1 km       | 2.5 days        | Every hour       |
+| JMA            | JMA                          | Japan          | 5 - 55 km  | 11 days         | Every 3 hours    |
+| GEM            | Canadian Weather Service     | Canada         | 2.5 km     | 10 days         | Every 6 hours    |
 
 :::info Warning
 The service uses an option to provide the best forecast for any given location worldwide, based on the models available.

@@ -76,4 +76,5 @@ be fetched daily or hourly. Please note, historical weather data from less than 
 ### Data sources
 | Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update Frequency        |
 |:----------------:|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
-|       ERA5       |    Global     |   0.25° (~25 km)   |       Hourly        |  2017 to present  | Daily with 5 days delay |
+|       ERA5       |    Global     |   0.25° (~25 km)   |       Hourly        |  1940 to present  | Daily with 5 days delay |
+|    ERA5-Land     |    Global     |   0.1° (~11 km)    |       Hourly        |  1950 to present  | Daily with 5 days delay |

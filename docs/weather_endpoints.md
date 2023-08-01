@@ -58,8 +58,8 @@ the response will return forecast data for the next seven days by default.
 
 | Parameter (to filter by) | values                                                                  |
 |--------------------------|-------------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                     |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward             |
+| endTime                  | Local date. Returns operations until the endTime                        |
+| startTime                | Local date. Returns operations from the startTime onward                |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
 | units                    | System of units: `imperial` or `metric`. The default is `metric`        |
 
@@ -311,8 +311,8 @@ will return forecast data for the next seven days by default.
 
 | Parameter (to filter by) | values                                                                  |
 |--------------------------|-------------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                     |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward             |
+| endTime                  | Local date. Returns operations until the endTime                        |
+| startTime                | Local date. Returns operations from the startTime onward                |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
 | units                    | System of units: `imperial` or `metric`. The default is `metric`        |
 
@@ -565,8 +565,8 @@ the response will return forecast data for the next seven days by default.
 
 | Parameter (to filter by) | values                                                                  |
 |--------------------------|-------------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                     |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward             |
+| endTime                  | Local date. Returns operations until the endTime                        |
+| startTime                | Local date. Returns operations from the startTime onward                |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
 | units                    | System of units: `imperial` or `metric`. The default is `metric`        |
 
@@ -818,8 +818,8 @@ will return forecast data for the next seven days by default.
 
 | Parameter (to filter by) | values                                                                  |
 |--------------------------|-------------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                     |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward             |
+| endTime                  | Local date. Returns operations until the endTime                        |
+| startTime                | Local date. Returns operations from the startTime onward                |
 | model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
 | units                    | System of units: `imperial` or `metric`. The default is `metric`        |
 
@@ -1073,12 +1073,12 @@ will return data from the last seven days by default.
 Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 
-| Parameter (to filter by) | values                                                                |
-|--------------------------|-----------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                   |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward           |
-| model                    | Historical model data: `era5` or `era5Land`                           |
-| units                    | System of units: `imperial` or `metric`. The default is `metric`      |
+| Parameter (to filter by) | values                                                           |
+|--------------------------|------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                 |
+| startTime                | Local date. Returns operations from the startTime onward         |
+| model                    | Historical model data: `era5` or `era5Land`                      |
+| units                    | System of units: `imperial` or `metric`. The default is `metric` |
 
 #### Request examples
 
@@ -1327,12 +1327,12 @@ Get hourly historical weather data by Leaf User and field. If the dates are not 
 will return data from the last seven days by default.
 
 
-| Parameter (to filter by) | values                                                              |
-|--------------------------|---------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime                 |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward         |
-| model                    | Historical model data: `era5` or `era5Land`                         |
-| units                    | System of units: `imperial` or `metric`. The default is `metric`    |
+| Parameter (to filter by) | values                                                           |
+|--------------------------|------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                 |
+| startTime                | Local date. Returns operations from the startTime onward         |
+| model                    | Historical model data: `era5` or `era5Land`                      |
+| units                    | System of units: `imperial` or `metric`. The default is `metric` |
 
 
 #### Request examples
@@ -1600,8 +1600,8 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
 
 | Parameter (to filter by) | values                                                           |
 |--------------------------|------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime              |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward      |
+| endTime                  | Local date. Returns operations until the endTime                 |
+| startTime                | Local date. Returns operations from the startTime onward         |
 | model                    | Historical model data: `era5` or `era5Land`                      |
 | units                    | System of units: `imperial` or `metric`. The default is `metric` |
 
@@ -1854,8 +1854,8 @@ will return data from the last seven days by default.
 
 | Parameter (to filter by) | values                                                           |
 |--------------------------|------------------------------------------------------------------|
-| endTime                  | ISO 8601 date. Returns operations until the endTime              |
-| startTime                | ISO 8601 date. Returns operations from the startTime onward      |
+| endTime                  | Local date. Returns operations until the endTime                 |
+| startTime                | Local date. Returns operations from the startTime onward         |
 | model                    | Historical model data: `era5` or `era5Land`                      |
 | units                    | System of units: `imperial` or `metric`. The default is `metric` |
 

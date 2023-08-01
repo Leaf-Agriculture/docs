@@ -21,19 +21,19 @@ daily or hourly.
 ### Properties
 
 - Cloud cover
-- Dew-point
+- Dew-point (2 m)
 - Evapotranspiration
 - Precipitation
 - Rain
-- Relative Humidity
+- Relative Humidity (2 m)
 - Short Wave Radiation
 - Snowfall
 - Sunrise
 - Sunset
-- Temperature
-- Wind Direction
-- Wind Gusts
-- Wind Speed
+- Temperature (2 m)
+- Wind Direction (10 m)
+- Wind Gusts (10 m)
+- Wind Speed (10 m)
 
 
 ### Data sources
@@ -57,19 +57,20 @@ be fetched daily or hourly. Please note, historical weather data from less than 
 ### Properties
 
 - Cloud cover
-- Dew-point
+- Dew-point (2 m)
 - Evapotranspiration
 - Precipitation
 - Rain
-- Relative Humidity
+- Relative Humidity (2 m)
 - Short Wave Radiation
 - Snowfall
 - Sunrise
 - Sunset
-- Temperature
-- Wind Direction
-- Wind Gusts
-- Wind Speed
+- Temperature (2 m)
+- Soil Temperature (0 - 7 cm)
+- Wind Direction (10 m)
+- Wind Gusts (10 m)
+- Wind Speed (10 m)
 
 ### Data sources
 | Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update Frequency        |

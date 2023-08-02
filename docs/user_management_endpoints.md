@@ -310,7 +310,7 @@ following. Specifying the ID of the credentials object previously created will l
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    'name': 'str",
+    'name': 'str',
     'email': 'help@withleaf.io',
     'phone': 'str',
     'address': 'str',

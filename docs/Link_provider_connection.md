@@ -29,6 +29,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [provider-leafUser]: #leafuser
 [provider-darkmode]: #isdarkmode
 
+[provider-providersconnected]: #providersconnected
+[provider-providerwidgetstatus]: #providerwidgetstatus
+
+
 
 ## Overview
 Leaf's Provider Connection / Authentication Link is a widget that you can install with minimal setup and a few lines of code. This widget enables your customers to connect their existing provider accounts, which associates it with their Leaf User.
@@ -585,11 +589,132 @@ The Leaf User ID. Check [this page][4] for more info about the Leaf User.
 Toggles dark mode on and off. The default value is `false`. It is only available for React.
 
 
-### Event Overview
-| Name           | Summary                                   |
-|----------------|-------------------------------------------|
-| complete       | Authentication process completed          |
+### Hooks Overview
 
-#### Event Details
-#### complete
-Fires after a user clicks in the "Done" button in the final screen. It will get access to all providers connected.
+Leaf Link also have hooks that can improve the developer experience when using the widgets.
+
+| Name                    | Type                                               | Description                                                                                                            |
+|-------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| [providersConnected][provider-providersconnected]      | `Array<{ provider: string; createdTime: string }>` | Provide the array of the provider connected and also the createdTime - available after finish the connection process   |
+| [providerWidgetStatus][provider-providerwidgetstatus]    | `{ code: number; message: string }`                | Provide the status code and the message from the current widget Status                                                 |
+
+
+#### Hooks Details
+
+##### providersConnected
+Provide the array of the provider connected and also the createdTime. It will be available after finish the connection process.
+
+
+##### providerWidgetStatus
+Provide the status code and the message from the current widget Status:
+
+###### Status Codes
+
+| Code | Message |
+|------|----------|
+| -1   | Error    |
+|  0   | Started  |
+|  1   | Done     |
+
+#### How to use it
+
+##### React
+
+```js
+import { Leaf } from '@withleaf/leaf-link-react';
+```
+
+`{ Leaf }` import is the context that handle with the providers data.
+
+Considering you have a custom component that need to handle or just receive the data updates from Provider Widget:
+
+```js
+
+import { useLeaf } from '@withleaf/leaf-link-react';
+
+export const MyComponent = () => {
+    // Import the states from the hook
+    const { providerWidgetStatus, providersConnected } = useLeaf();
+
+    return (
+        <>
+            <div>
+                <p data-testid='hook-title' style={{fontSize: '22px',}}>
+                    {' '}
+                    Hook State Example
+                </p>
+                <p data-testid='status'>
+                    <span style={{fontWeight: 'bold', }} >
+                        Status Code:
+                    </span>{' '}
+                    {providerWidgetStatus.code} |{' '}
+                    <span style={{ fontWeight: 'bold', }} >
+                        Status Message:
+                    </span>{' '}
+                    {providerWidgetStatus.message}
+                </p>
+            </div>
+            <hr />
+            <div>
+                {providersConnected.length === 0 ? (
+                    <p>Providers List is empty</p>
+                ) : (
+                    <>
+                        {providersConnected.map((provider, index) => (
+                            <>
+                                <p data-testid={`${provider.provider}-testid`}>
+                                    {' '}
+                                    Provider: <span>{provider.provider}</span>
+                                </p>
+                                <p>
+                                    {' '}
+                                    Created Time: <span>{provider.createdTime}</span>
+                                </p>
+                            </>
+                        ))}
+                    </>
+                )}
+            </div>
+        </>
+    );
+};
+```
+
+Then, wrap your component in the hook as a children
+
+```js
+import { Leaf, Providers } from '@withleaf/leaf-link-react'
+
+const Example = () => {
+    return (
+        <Leaf>
+            <MyComponent />
+            <Providers
+                isDarkMode={true}
+                companyName={'My Company Name'}
+                companyLogo={'url'}
+                leafUser={'myLeafUser'}
+                apiKey={'myApiKey'}
+                locale={'locale'}
+            />
+        </Leaf>
+    );
+};
+```
+
+From your top-level component can pass the current data to all components below, no matter how deep.
+
+This variables will be updated every time the Provider update the steps i.e move from one step to other. 
+
+###### Tips
+
+The way that the developer get the updated value from the hook can be different depending the of the application, personal preferences or the way it is architected. We suggest the following with `useMemo` but it can be also implemented with `useEffect`.
+`useMemo` runs the function and caches its result, which will only be recomputed if any value in the dependency array changes. It helps optimize performance by avoiding unnecessary recalculations.
+
+**Example**
+
+```js
+useMemo(() => {
+  //Something you want to update, as a state from the component.
+}, [providerConnected, providerWidgetStatus])
+```

@@ -29,6 +29,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [provider-leafUser]: #leafuser
 [provider-darkmode]: #isdarkmode
 
+[provider-providersconnected]: #providersconnected
+[provider-providerwidgetstatus]: #providerwidgetstatus
+
 
 ## Overview
 Leaf's Provider Connection / Authentication Link is a widget that you can install with minimal setup and a few lines of code. This widget enables your customers to connect their existing provider accounts, which associates it with their Leaf User.
@@ -541,21 +544,60 @@ function App() {
 [Here](https://codesandbox.io/s/leaf-link-react-providers-d5lm4w?file=/src/App.tsx) you can run a live use case demo!
 :::
 
-## 1.0.3 - Improvements 
+## Reference
 
-### Provider Data Hooks
+### Property Overview
 
-Leaf Link React also have hooks that can improve the developer experience when using the widgets.
+| Name                                      | Type   | Summary                                   |
+|-------------------------------------------|--------|-------------------------------------------|
+| [apiKey][provider-apiKey]                 | String | The authentication API Key                |
+| [companyLogoUrl][provider-companyLogoUrl] | String | Customization: a link to the company logo |
+| [companyName][provider-companyName]       | String | Customization: the name of the company    |
+| [isDarkMode*][provider-darkmode]          | Boolean| Enable/disable the dark mode              |
+| [leafUser][provider-leafUser]             | String | The Leaf User ID                          |
 
-### Hooks
+\* Only available in the React version
+
+
+#### Property Details
+
+##### apiKey
+The `apiKey` is the authentication key that will allow the use of the widget.
+It can be created and managed [here][6].
+
+##### companyLogoUrl
+The URL to the company logo. It will be displayed in the landing screen. It can be a `PNG`, `JPEG` or `SVG`.
+
+##### companyName
+The company name. It will be displayed in the landing screen and in each reference about the customer.
+
+##### leafUser
+The Leaf User ID. Check [this page][4] for more info about the Leaf User.
+
+##### isDarkMode
+Toggles dark mode on and off. The default value is `false`. It is only available for React.
+
+
+### Hooks Overview
+
+Leaf Link also have hooks that can improve the developer experience when using the widgets.
 
 | Name                    | Type                                               | Description                                                                                                            |
 |-------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| providersConnected      | `Array<{ provider: string; createdTime: string }>` | Provide the array of the provider connected and also the createdTime - available after finish the connection process   |
-| providerWidgetStatus    | `{ code: number; message: string }`                | Provide the status code and the message from the current widget Status                                                 |
+| [providersConnected][provider-providersconnected]      | `Array<{ provider: string; createdTime: string }>` | Provide the array of the provider connected and also the createdTime - available after finish the connection process   |
+| [providerWidgetStatus][provider-providerwidgetstatus]    | `{ code: number; message: string }`                | Provide the status code and the message from the current widget Status                                                 |
 
 
-### Status Codes
+#### Hooks Details
+
+##### providersConnected
+Provide the array of the provider connected and also the createdTime. It will be available after finish the connection process.
+
+
+##### providerWidgetStatus
+Provide the status code and the message from the current widget Status:
+
+###### Status Codes
 
 | Code | Message |
 |------|----------|
@@ -563,7 +605,9 @@ Leaf Link React also have hooks that can improve the developer experience when u
 |  0   | Started  |
 |  1   | Done     |
 
-### How to use it.
+#### How to use it
+
+##### React
 
 ```js
 import { Leaf } from '@withleaf/leaf-link-react';
@@ -584,29 +628,16 @@ export const MyComponent = () => {
     return (
         <>
             <div>
-                <p
-                    data-testid='hook-title'
-                    style={{
-                        fontSize: '22px',
-                    }}
-                >
+                <p data-testid='hook-title' style={{fontSize: '22px',}}>
                     {' '}
                     Hook State Example
                 </p>
                 <p data-testid='status'>
-                    <span
-                        style={{
-                            fontWeight: 'bold',
-                        }}
-                    >
+                    <span style={{fontWeight: 'bold', }} >
                         Status Code:
                     </span>{' '}
                     {providerWidgetStatus.code} |{' '}
-                    <span
-                        style={{
-                            fontWeight: 'bold',
-                        }}
-                    >
+                    <span style={{ fontWeight: 'bold', }} >
                         Status Message:
                     </span>{' '}
                     {providerWidgetStatus.message}
@@ -664,57 +695,15 @@ From your top-level component can pass the current data to all components below,
 
 This variables will be updated every time the Provider update the steps i.e move from one step to other. 
 
-### Tips
+###### Tips
 
 The way that the developer get the updated value from the hook can be different depending the of the application, personal preferences or the way it is architected. We suggest the following with `useMemo` but it can be also implemented with `useEffect`.
-useMemo runs the function and caches its result, which will only be recomputed if any value in the dependency array changes. It helps optimize performance by avoiding unnecessary recalculations.
+`useMemo` runs the function and caches its result, which will only be recomputed if any value in the dependency array changes. It helps optimize performance by avoiding unnecessary recalculations.
 
-#### Example
+**Example**
 
 ```js
 useMemo(() => {
   //Something you want to update, as a state from the component.
 }, [providerConnected, providerWidgetStatus])
 ```
-
-## Reference
-### Property Overview
-
-| Name                                      | Type   | Summary                                   |
-|-------------------------------------------|--------|-------------------------------------------|
-| [apiKey][provider-apiKey]                 | String | The authentication API Key                |
-| [companyLogoUrl][provider-companyLogoUrl] | String | Customization: a link to the company logo |
-| [companyName][provider-companyName]       | String | Customization: the name of the company    |
-| [isDarkMode*][provider-darkmode]          | Boolean| Enable/disable the dark mode              |
-| [leafUser][provider-leafUser]             | String | The Leaf User ID                          |
-
-\* Only available in the React version
-
-
-#### Property Details
-
-#### apiKey
-The `apiKey` is the authentication key that will allow the use of the widget.
-It can be created and managed [here][6].
-
-#### companyLogoUrl
-The URL to the company logo. It will be displayed in the landing screen. It can be a `PNG`, `JPEG` or `SVG`.
-
-#### companyName
-The company name. It will be displayed in the landing screen and in each reference about the customer.
-
-#### leafUser
-The Leaf User ID. Check [this page][4] for more info about the Leaf User.
-
-#### isDarkMode
-Toggles dark mode on and off. The default value is `false`. It is only available for React.
-
-
-### Event Overview
-| Name           | Summary                                   |
-|----------------|-------------------------------------------|
-| complete       | Authentication process completed          |
-
-#### Event Details
-#### complete
-Fires after a user clicks in the "Done" button in the final screen. It will get access to all providers connected.

@@ -90,7 +90,7 @@ module.exports = {
           type: 'category',
           label: 'Leaf Connect',
           items: [
-            'Connect',
+            'connect',
           ]
         },
         {

@@ -11,8 +11,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [2]: #create-a-climate-fieldview-credentials
 [3]: #delete-climate-fieldview-credentials
 
-
-
 Form of a Climate FieldView Credentials resource:
 
 ```json
@@ -24,6 +22,14 @@ Form of a Climate FieldView Credentials resource:
   "accessToken": "str"
 }
 ```
+
+All HTTP methods should be prepended by this service's endpoint:
+
+```
+https://api.withleaf.io/services/usermanagement/api
+```
+
+See below the REST resources and their endpoints available in this service.
 
 **Endpoints**
 

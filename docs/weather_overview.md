@@ -52,7 +52,7 @@ The service uses an option to provide the best forecast for any given location w
 
 ## Historical Data
 
-Leaf’s historical weather service provides access to up to `5` years of historical data when available. The data can 
+Leaf's historical weather service provides access to data from 1940 onwards when available. The data can 
 be fetched daily or hourly. Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 ### Properties

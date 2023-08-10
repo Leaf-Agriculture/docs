@@ -61,7 +61,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Machine File Conversion',
-          items: ['machine_file_conversion_overview', 'machine_file_conversion_endpoints', 'machine_file_conversion_sample_output', 'machine_file_conversion_crops_table']
+          items: ['machine_file_conversion_overview', 'machine_file_conversion_endpoints', 'machine_file_conversion_sample_output', 'machine_file_conversion_units', 'machine_file_conversion_crops_table']
         },
         {
           type: 'category',

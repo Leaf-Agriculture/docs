@@ -475,7 +475,7 @@ You can also query the batch upload ID to see a list of files generated in the u
   const endpoint = 'https://api.withleaf.io/services/operations/api/batch/{batch_id}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-  axios.put(endpoint, data, { headers })
+  axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -491,14 +491,14 @@ You can also query the batch upload ID to see a list of files generated in the u
   endpoint = 'https://api.withleaf.io/services/operations/api/batch/{batch_id}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.put(endpoint, headers=headers)
+  response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
   </TabItem>
   <TabItem value="sh">
 
   ```shell
-  curl -X PUT \
+  curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/operations/api/batch/{batch_id}'
   ```

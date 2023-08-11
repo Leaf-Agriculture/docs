@@ -246,8 +246,7 @@ It is possible to filter the results by a number of different parameters:
 | provider                | array of string                         | sentinel or/and planet                                                  | If none is defined, it will created with *sentinel* only |
 
 :::info Important
-Default `page` is page 0 and default `size` is 20. So, to see more images,
-you can either increase the size or the page number.
+If you have just created the satellite field, it may take a few hours for the images to become available.
 :::
 
 #### Request examples
@@ -477,7 +476,7 @@ Now let's see the Payload
 
 ```json
 {
-  "externalId": "your field id",
+  "externalId": "yourSatelliteFieldId",
   "startDate": "2019-01-01", 
   "providers": [
     "planet"

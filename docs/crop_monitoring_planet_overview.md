@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <p align='justify'>
 
 Leaf provides an integration with Planet, fetching PlanetScope images from a back-fill and forward-fill specified by 
-the user. PlanetScope `daily` provides numerus categories of products from different satellite sensors 
+the user. PlanetScope provides numerus categories of products from different satellite sensors 
 called `itemTypes` and for each one, we have different `assetType`.
 
 For now, we support `PSScene` with their respective assets `ortho_analytic_8b_sr` (13 images), `ortho_analytic_8b` (13 images), `ortho_udm2` and `ortho_analytic_8b_xml`. 

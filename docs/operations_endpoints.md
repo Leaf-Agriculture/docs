@@ -11,12 +11,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <!-- the following links are referenced throughout this document -->
 [1]: #get-all-operations
 [2]: #get-an-operation
-[3]: #get-an-operation-summary
-[4]: #get-an-operations-images
-[5]: #get-an-operations-units
+[3]: #get-the-operations-summary
+[4]: #get-operations-images
+[5]: #get-the-operations-units
 [6]: https://docs.withleaf.io/docs/alerts_overview/
 [7]: https://docs.withleaf.io/docs/alerts_events/#operation-events
-[8]: #get-an-operations-images-v2
+[8]: #get-operations-images-v2
 [9]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-filtered-geojson
 [10]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images-v2
 [11]: #reprocess-an-operation
@@ -26,6 +26,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [15]: https://docs.withleaf.io/docs/operations_sample_output/#field-operations-images
 [16]: #get-operations-geotiff-images
 [17]: #crop-operation-by-field
+[18]: #get-the-operations-standardgeojson
+[19]: #get-the-operations-filteredgeojson
+[20]: https://docs.withleaf.io/docs/configurations_overview/#operationsfilteredgeojson
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
@@ -40,17 +43,19 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-| Description                          | Endpoints                                                                          |
-|--------------------------------------|------------------------------------------------------------------------------------|
-| [Get all operations][1]              | <span class="badge badge--success">GET</span> `/operations`                        |
-| [Get an operation][2]                | <span class="badge badge--success">GET</span> `/operations/{id}`                   |
-| [Get an operation summary][3]        | <span class="badge badge--success">GET</span> `/operations/{id}/summary`           |
-| [Get operation's images][4]          | <span class="badge badge--success">GET</span> `/operations/{id}/images`            |
-| [Get operation's images V2][8]       | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`          |
-| [Get operation's geotiff images][16] | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`     |
-| [Get an operation's units][5]        | <span class="badge badge--success">GET</span> `/operations/{id}/units`             |
-| [Crop operation by field][17]        | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`  |
-| [Reprocess an operation][11]         | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`        |
+| Description                               | Endpoints                                                                          |
+|-------------------------------------------|------------------------------------------------------------------------------------|
+| [Get all operations][1]                   | <span class="badge badge--success">GET</span> `/operations`                        |
+| [Get an operation][2]                     | <span class="badge badge--success">GET</span> `/operations/{id}`                   |
+| [Get the operation's summary][3]          | <span class="badge badge--success">GET</span> `/operations/{id}/summary`           |
+| [Get the operation's standardGeojson][18] | <span class="badge badge--success">GET</span> `/operations/{id}/standardGeojson`   |
+| [Get the operation's filteredGeojson][19] | <span class="badge badge--success">GET</span> `/operations/{id}/filteredGeojson`   |
+| [Get operation's images][4]               | <span class="badge badge--success">GET</span> `/operations/{id}/images`            |
+| [Get operation's images V2][8]            | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`          |
+| [Get operation's geotiff images][16]      | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`     |
+| [Get the operation's units][5]            | <span class="badge badge--success">GET</span> `/operations/{id}/units`             |
+| [Crop operation by field][17]             | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`  |
+| [Reprocess an operation][11]              | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`        |
 
 For easily testing these endpoints, we recommend using our Postman [collection][postman].
 
@@ -251,7 +256,7 @@ Gets a single operation by its id.
 ```
 
 
-### Get an operation summary
+### Get the operation's summary
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/summary`
 
@@ -315,7 +320,148 @@ Gets the summary, if available, for the operation id.
 [Here's a link with sample responses][sample_summary] for "planted", "applied", "harvested" and "tillage" operations.
 
 
-### Get an operation's images
+### Get the operation's standardGeojson
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/standardGeojson`
+
+Get the standardGeojson file URL relative to the operation.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/standardGeojson'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "standardGeojson": "URL"
+}
+```
+
+
+### Get the operation's filteredGeojson
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/filteredGeojson`
+
+Get the filteredGeojson file URL relative to the operation.
+
+:::tip
+To use this option, the [operationsFilteredGeojson][20] configuration must be enabled.
+:::
+
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeojson'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeojson'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeojson'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "filteredGeojson": "URL"
+}
+```
+
+
+### Get operation's images
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/images`
 
@@ -407,7 +553,7 @@ We also generate an auxiliary `xml` with geographic information to handle this
 image on GIS environments. You just need to append the `".aux.xml"` string to the png url.
 
 
-### Get an operation's images V2
+### Get operation's images V2
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/imagesV2`
 
@@ -614,7 +760,7 @@ Gets a list of TIFF images generated from the operation's properties with improv
 ```
 
 
-### Get an operation's units
+### Get the operation's units
 
 &nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/units`
 

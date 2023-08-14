@@ -77,7 +77,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  const endpoint ='https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/ravenSlingshot'
 
   const headers = {
     'Authorization': `Bearer ${TOKEN}`
@@ -100,7 +100,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/ravenSlingshot'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   files = {'file': open('prescription_rx_map.zip')}
@@ -116,7 +116,7 @@ values={[
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=prescription_rx_map.zip' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/ravenSlingshot'
   ```
 
   </TabItem>
@@ -153,7 +153,7 @@ values={[
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  const endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/ravenSlingshot'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -168,7 +168,7 @@ values={[
   import requests
   
   TOKEN = 'YOUR_TOKEN'
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/ravenSlingshot'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers, json=data)
@@ -181,7 +181,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/ravenSlingshot'
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/ravenSlingshot'
   ```
 
   </TabItem>
@@ -240,7 +240,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  const endpoint ='https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
 
   const headers = {
     'Authorization': `Bearer ${TOKEN}`
@@ -263,7 +263,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   files = {'file': open('prescription_rx_map.zip')}
@@ -279,7 +279,7 @@ values={[
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=prescription_rx_map.zip' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   ```
 
   </TabItem>
@@ -320,7 +320,7 @@ values={[
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  const endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -335,7 +335,7 @@ values={[
   import requests
   
   TOKEN = 'YOUR_TOKEN'
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers, json=data)
@@ -348,7 +348,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere?organizationId={organizationId}'
   ```
 
   </TabItem>
@@ -395,7 +395,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
+  const endpoint ='https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
 
   const headers = {
     'Authorization': `Bearer ${TOKEN}`
@@ -415,7 +415,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -428,7 +428,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/johnDeere/download?fileId={fileId}'
   ```
 
   </TabItem>
@@ -485,7 +485,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/cnhi?companyId={companyId}'
+  const endpoint ='https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/cnhi?companyId={companyId}'
 
   const headers = {
     'Authorization': `Bearer ${TOKEN}`
@@ -508,7 +508,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/cnhi?companyId={companyId}'
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/cnhi?companyId={companyId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   files = {'file': open('prescription_map.zip')}
@@ -524,7 +524,7 @@ values={[
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=prescription_map.zip' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/cnhi?companyId={companyId}'
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/cnhi?companyId={companyId}'
   ```
 
   </TabItem>
@@ -568,7 +568,7 @@ values={[
   ```js
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
-  const endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/cnhi?companyId={companyId}'
+  const endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/cnhi?companyId={companyId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -583,7 +583,7 @@ values={[
   import requests
   
   TOKEN = 'YOUR_TOKEN'
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/cnhi?companyId={companyId}'
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/cnhi?companyId={companyId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers, json=data)
@@ -596,7 +596,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/cnhi?companyId={companyId}'
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/cnhi?companyId={companyId}'
   ```
 
   </TabItem>
@@ -650,7 +650,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/climateFieldView'
+  const endpoint ='https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/climateFieldView'
 
   const headers = {
     'Authorization': `Bearer ${TOKEN}`
@@ -673,7 +673,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/climateFieldView'
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/climateFieldView'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   files = {'file': open('prescription_rx_map.zip')}
@@ -689,7 +689,7 @@ values={[
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=prescription_rx_map.zip' \
-      'https://api.withleaf.io/services/beta/prescriptions/api/users/{leafUserId}/climateFieldView'
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/climateFieldView'
   ```
 
   </TabItem>

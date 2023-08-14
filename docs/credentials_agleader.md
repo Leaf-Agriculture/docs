@@ -21,6 +21,14 @@ Form of an AgLeader Credentials resource:
 }
 ```
 
+All HTTP methods should be prepended by this service's endpoint:
+
+```
+https://api.withleaf.io/services/usermanagement/api
+```
+
+See below the REST resources and their endpoints available in this service.
+
 **Endpoints**
 
 Description | Endpoints

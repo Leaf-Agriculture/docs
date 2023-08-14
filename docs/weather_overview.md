@@ -43,7 +43,8 @@ daily or hourly.
 | GFS            | NOAA                         | United States  | 3 - 25 km  | 16 days         | Every hour       |
 | Arpege & Arome | MeteoFrance                  | France         | 1 - 40 km  | 4 days          | Every 6 hours    |
 | IFS            | ECMWF                        | European Union | 44 km      | 7 days          | Every 6 hours    |
-| MET Nordic     | MET Norway                   | Norway         | 1 km       | 2.5 days        | Every hour       |
+| JMA            | JMA                          | Japan          | 5 - 55 km  | 11 days         | Every 3 hours    |
+| GEM            | Canadian Weather Service     | Canada         | 2.5 km     | 10 days         | Every 6 hours    |
 
 :::info Warning
 The service uses an option to provide the best forecast for any given location worldwide, based on the models available.
@@ -51,7 +52,7 @@ The service uses an option to provide the best forecast for any given location w
 
 ## Historical Data
 
-Leaf’s historical weather service provides access to up to `5` years of historical data when available. The data can 
+Leaf's historical weather service provides access to data from 1940 onwards when available. The data can 
 be fetched daily or hourly. Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 ### Properties
@@ -75,4 +76,5 @@ be fetched daily or hourly. Please note, historical weather data from less than 
 ### Data sources
 | Reanalysis Model |    Region     | Spatial Resolution | Temporal Resolution | Data Availability | Update Frequency        |
 |:----------------:|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
-|       ERA5       |    Global     |   0.25° (~25 km)   |       Hourly        |  2017 to present  | Daily with 5 days delay |
+|       ERA5       |    Global     |   0.25° (~25 km)   |       Hourly        |  1940 to present  | Daily with 5 days delay |
+|    ERA5-Land     |    Global     |   0.1° (~11 km)    |       Hourly        |  1950 to present  | Daily with 5 days delay |

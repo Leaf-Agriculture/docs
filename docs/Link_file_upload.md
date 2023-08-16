@@ -57,7 +57,7 @@ To use the widget you will need a Leaf token. Use our [authentication guide][2] 
 ### React
 
 :::tip
-[Here](https://codesandbox.io/s/leaf-link-react-d6pk3g?file=/src/App.tsx) you can run a live use case demo!
+[Here](https://codesandbox.io/s/upload-files-react-yscy95?file=/src/App.tsx) you can run a live use case demo!
 It will only be necessary to replace your information in the App.tsx file.
 :::
 
@@ -85,13 +85,14 @@ function App() {
   const LEAF_USER: string = "Your_Leaf_User";
   const API_KEY: string = "Your_API_Key";
   const COMPANY_NAME: string = "Your_Company";
+  const COMPANY_LOGO: string = "Your_Company_Logo";
   const FILES_TIME_RANGE: number = 30;
 
   return (
     <FileUpload
       isDarkMode={IS_DARK_MODE}
       companyName={COMPANY_NAME}
-      companyLogo={YourCompanyLogo}
+      companyLogo={COMPANY_LOGO}
       filesTimeRange={FILES_TIME_RANGE}
       leafUser={LEAF_USER}
       apiKey={API_KEY}

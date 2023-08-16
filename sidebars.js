@@ -19,6 +19,11 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Integrations',
+          items: ['integrations_overview', 'integrations_endpoints']
+        },
+        {
+          type: 'category',
           label: 'Alerts',
           items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
         },

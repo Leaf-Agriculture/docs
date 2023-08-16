@@ -56,6 +56,11 @@ To use the widget you will need a Leaf token. Use our [authentication guide][2] 
 
 ### React
 
+:::tip
+[Here](https://codesandbox.io/s/leaf-link-react-d6pk3g?file=/src/App.tsx) you can run a live use case demo!
+It will only be necessary to replace your information in the App.tsx file.
+:::
+
 To add this Leaf widget in a React application, you can use the `@withleaf/leaf-link-react` library, which is a JavaScript library that provides all Leaf UI Widgets.
 Here are the general steps to get started:
 
@@ -71,66 +76,67 @@ npm i @withleaf/leaf-link-react
 import { FileUpload } from '@withleaf/leaf-link-react'
 ```
 
-3. Add the component to the HTML in your `*.tsx` file. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
-You can also customize it adding your company name (`companyName`) and company logo (`companyLogoUrl`). Check all the properties available on the reference [here][4].
+3. Add the component to the HTML in your `*.tsx` file. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the tsx component. 
+Check all the properties available on the reference [here][4].
 
 ```js
 function App() {
+  const IS_DARK_MODE: boolean = true;
+  const LEAF_USER: string = "Your_Leaf_User";
+  const API_KEY: string = "Your_API_Key";
+  const COMPANY_NAME: string = "Your_Company";
+  const FILES_TIME_RANGE: number = 30;
+
   return (
-    <div class="container">
-        <FileUpload
-            isDarkMode={true}
-            title={'my custom widget'}
-            filesTimeRange={30}
-            companyName={'Company Name'}
-            companyLogo={ 'url' }
-            apiKey={ 'apikey' }
-            leafUser={'leafuserid'}
-        />
-    </div>
-   );
-}   
+    <FileUpload
+      isDarkMode={IS_DARK_MODE}
+      companyName={COMPANY_NAME}
+      companyLogo={YourCompanyLogo}
+      filesTimeRange={FILES_TIME_RANGE}
+      leafUser={LEAF_USER}
+      apiKey={API_KEY}
+    />
+  );
+}
 ```
 
 ### Angular
 
-:::caution ANGULAR VERSION
-This is an early release for Angular with some limitations.
-The full version will be released soon. Stay tuned!
+:::tip
+[Here](https://stackblitz.com/edit/leaf-widgets-angular-upload-e18fo9?file=src%2Fapp%2Fapp.component.html) you can run a live use case demo! 
+It will only be necessary to replace your information in the .html component.
 :::
 
-<p align="center">
-    <img alt="File upload widget for Angular" width="50%" src={useBaseUrl('img/leaf-file-upload_old.png')} />
-</p>
-
-To add this Leaf widget in an Angular application, you can use the `@withleaf.io/angular-ui-kit` library, which is a JavaScript library that provides all Leaf UI Widgets.
+To add this Leaf widget in an Angular application, you can use the `@withleaf/leaf-link-angular` library, which is a JavaScript library that provides all Leaf UI Widgets.
 Here are the general steps to get started:
 
-1. Install the @withleaf.io/angular-ui-kit package using `npm`:
+1. Install the @withleaf/leaf-link-angular package using `npm`:
 
 ```shell
-npm i @withleaf.io/angular-ui-kit
+npm i @withleaf/leaf-link-angular
 ```
 
-2. Import the library in your component or module file:
+2. Import the library in your module file:
 
 ```js
-import { LeafFileUploadModule } from '@withleaf.io/angular-ui-kit';
+import { FileUploadModule } from '@withleaf/leaf-link-angular';
 ```
 
-3. Add the component to the HTML. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
+3. Add the component to the HTML. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component.
+Check all the properties available on the reference [here][4].
 
 ```js
-<div class="container">
-  <leaf-file-upload apiKey="{apiKey}" leafUser="{yourLeafUserId}">       
-  </leaf-file-upload>
+<div class="content" role="main">
+  <file-upload
+    apiKey="Your_API_Key"
+    leafUser="Your_Leaf_User"
+    title="Your_Title"
+    [filesTimeRange]="30"
+    companyName="Your_Company_Name"
+    companyLogo="assets/leafLogo.svg"
+  ></file-upload>
 </div>
 ```
-
-:::tip
-[Here](https://stackblitz.com/edit/leaf-widgets-angular-upload?file=README.md) you can run a live use case demo!
-:::
-
 
 ## Reference
 It is valid only for the React version.
@@ -144,7 +150,7 @@ It is valid only for the React version.
 | [companyName][fileupload-companyName]         | String  | Customization: the name of the company       |
 | [filesTimeRange][fileupload-filestimerange]   | Number  | Time to get the historical of uploaded files |
 | [isDarkMode][fileupload-isdarkmode]           | Boolean | Enables/disables the dark mode               |
-| [leafUser][fileupload-leafUser]                 | String  | The Leaf User ID                             |
+| [leafUser][fileupload-leafUser]               | String  | The Leaf User ID                             |
 | [title][fileupload-title]                     | String  | Customization: a link to the company logo    |
 
 

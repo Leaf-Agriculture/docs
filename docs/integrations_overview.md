@@ -19,8 +19,8 @@ processed, and give more clarity between each data provider and its integration.
 with our Alerts Events [Alerts API Reference][alerts_endpoints] where the Integrations Service will give you a scope on 
 which and how many resources are being processed, Alerts Events will give you a scope on when these resources will be available
 
-See the [Integrations API Reference][integrations_endpoints] for information on how to
-get more information on Integrations resources.
+See the [Integrations API Reference][integrations_endpoints] on how to
+get more information in the Integrations resources service.
 
 
 

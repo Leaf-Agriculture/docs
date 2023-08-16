@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [1]:  /docs/authentication
 [2]:  /docs/user_management_overview
-[3]:  /docs/Link_endpoints#api-key
+[3]:  https://docs.withleaf.io/docs/Link_endpoints#api-key
 [4]:  #reference
 
 [fileupload-apiKey]: #apikey
@@ -76,7 +76,7 @@ npm i @withleaf/leaf-link-react
 import { FileUpload } from '@withleaf/leaf-link-react'
 ```
 
-3. Add the component to the HTML in your `*.tsx` file. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the tsx component. 
+3. Add the component to the HTML in your `*.tsx` file. Make sure you already created the Leaf user [API key][3] (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the tsx component. 
 Check all the properties available on the reference [here][4].
 
 ```js
@@ -117,13 +117,13 @@ Here are the general steps to get started:
 npm i @withleaf/leaf-link-angular
 ```
 
-2. Import the library in your module file:
+2. Import the library in your component or module file:
 
 ```js
 import { FileUploadModule } from '@withleaf/leaf-link-angular';
 ```
 
-3. Add the component to the HTML. Make sure you already created the Leaf user API key (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component.
+3. Add the component to the HTML. Make sure you already created the Leaf user [API key][3] (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component.
 Check all the properties available on the reference [here][4].
 
 ```js

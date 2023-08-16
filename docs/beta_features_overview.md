@@ -19,7 +19,9 @@ Currently, we are obtaining data from the following providers:
 * JohnDeere
 * Stara
 
-
+:::info Implement Data
+    Implement Data is only available for customers with John Deere credentials 
+:::
 ## Prescriptions
 
 What are prescriptions in agriculture? Prescriptions are usually used to apply inputs at variable rates across a field, applying only the amount needed for each area. For example, a prescription could be based on soil sample results or crop monitoring data, and instructs a machine where to best distribute lime, potassium or other products that can improve soil quality or crop health.

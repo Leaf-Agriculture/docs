@@ -17,6 +17,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [6]: #delete-a-machine
 [7]: #update-a-machine
 [8]: #get-machine-files
+[9]: #get-all-implements
+
 ## About
 All HTTP methods should be prepended by this service's endpoint:
 
@@ -30,15 +32,15 @@ See below the REST resources and their endpoints available in this service.
 
 This feature has the following endpoints available:
 
-| Description            | Endpoints                                                                                      |
-|------------------------|------------------------------------------------------------------------------------------------|
-| [Get all machines][3]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines`                   |
-| [Get a machine][5]     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}`       |
+| Description          | Endpoints                                                                                      |
+|----------------------|------------------------------------------------------------------------------------------------|
+| [Get all machines][3] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines`                   |
+| [Get a machine][5]   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}`       |
 | [Get machine files][8] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}/files` |
-| [Create a machine][4]  | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/machines`                  |
-| [Update a machine][7]  | <span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/machines/{machineId}`     |
-| [Delete a machine][6]  | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/machines/{machineId}`     |
-
+| [Create a machine][4] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/machines`                  |
+| [Update a machine][7] | <span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/machines/{machineId}`     |
+| [Delete a machine][6] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/machines/{machineId}`     |
+| [Get all implements][9]  | <span class="badge badge--danger">GET</span> `/users/{leafUserId}/implements`     |
 
 ### Get all machines
 
@@ -617,5 +619,80 @@ values={[
   </TabItem>
 </Tabs>
 
+
+### Get All Implements
+
+&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/implements`
+
+Get all the implements information based on your `leafUserId`.
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/implements'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/implements'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/implements'
+  ```
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "38d313fc-e4ce-442b-9147-f469b30aedab",
+    "name": "c3po_implement",
+    "provider": "JohnDeere",
+    "providerImplementId": "110237",
+    "providerOrganizationId": "296264",
+    "leafUserId": "mbba54fb-3710-4f7d-9aaf-703107930193",
+    "originType": "PROVIDER_POOLED",
+    "serialNumber": "00000",
+    "model": "StMax150",
+    "make": "JOHN DEERE",
+    "category": "Cotton Harvester Implement"
+  },
+  ...
+]
+```
 
 [contact]: mailto:help@withleaf.io

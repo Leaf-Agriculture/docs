@@ -322,6 +322,18 @@ Here is a request example:
 ### AgLeader
 To enable AgLeader as a provider in the widget you need your application credentials from AgLeader. You can find more info on how to create a developer account [here][agleader].
 
+#### Redirection URL
+The first step is to add our widget URL in the "Redirection URL" property:
+
+```markup
+https://widget.withleaf.io
+```
+
+In the [Consumer Keys][3] page, select your application and click in the "Edit Consumer Key Profile" option to edit it add the URL here
+<p align="center">
+    <img alt="File upload widget" width="50%" src={useBaseUrl('img/leaf-provider-connection-agleader-redirection-url.png')} />
+</p>
+
 #### Application info
 To allow the users to authenticate with AgLeader, you will need to send your application info to this endpoint
 &nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/app-keys/AgLeader/{appName}`

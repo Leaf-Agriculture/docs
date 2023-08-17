@@ -511,8 +511,13 @@ Create an AgLeader app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/AgLeader/{appName}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "privateKey": "string",
+    "publicKey": "string"
+  }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -527,8 +532,13 @@ Create an AgLeader app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/AgLeader/{appName}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.post(endpoint, headers=headers)
+    
+  data = {
+    "privateKey": "string",
+    "publicKey": "string"
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -538,6 +548,7 @@ Create an AgLeader app information.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "privateKey": "string", "publicKey": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/AgLeader/{appName}'
   ```
 
@@ -577,6 +588,11 @@ Update an AgLeader app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/AgLeader/{appName}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "privateKey": "string",
+    "publicKey": "string"
+  }
 
   axios.put(endpoint, { headers })
       .then(res => console.log(res.data))
@@ -593,7 +609,12 @@ Update an AgLeader app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/AgLeader/{appName}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
+    
+  data = {
+    "privateKey": "string",
+    "publicKey": "string"
+  }
+  
   response = requests.put(endpoint, headers=headers)
   print(response.json())
   ```
@@ -604,6 +625,7 @@ Update an AgLeader app information.
   ```shell
   curl -X PUT \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "privateKey": "string", "publicKey": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/AgLeader/{appName}'
   ```
 
@@ -865,8 +887,14 @@ Create a Climate FieldView app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/ClimateFieldView/{appName}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "apiKey": "string",
+    "clientId": "string",
+    "clientSecret": "string"
+  }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -881,8 +909,14 @@ Create a Climate FieldView app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/ClimateFieldView/{appName}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.post(endpoint, headers=headers)
+    
+  data = {
+    "apiKey": "string",
+    "clientId": "string",
+    "clientSecret": "string"
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -892,6 +926,7 @@ Create a Climate FieldView app information.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "apiKey": "string", "clientId": "string", "clientSecret": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/ClimateFieldView/{appName}'
   ```
 
@@ -932,6 +967,12 @@ Update a Climate FieldView app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/ClimateFieldView/{appName}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "apiKey": "string",
+    "clientId": "string",
+    "clientSecret": "string"
+  }
 
   axios.put(endpoint, { headers })
       .then(res => console.log(res.data))
@@ -948,7 +989,13 @@ Update a Climate FieldView app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/ClimateFieldView/{appName}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
+    
+  data = {
+    "apiKey": "string",
+    "clientId": "string",
+    "clientSecret": "string"
+  }
+  
   response = requests.put(endpoint, headers=headers)
   print(response.json())
   ```
@@ -959,6 +1006,7 @@ Update a Climate FieldView app information.
   ```shell
   curl -X PUT \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "apiKey": "string", "clientId": "string", "clientSecret": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/ClimateFieldView/{appName}'
   ```
 
@@ -1226,8 +1274,14 @@ Create a CNHI app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/CNHI/{appName}/{clientEnvironment}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "clientId": "string",
+    "clientSecret": "string",
+    "subscriptionKey": "string"
+  }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1242,8 +1296,14 @@ Create a CNHI app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/CNHI/{appName}/{clientEnvironment}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.post(endpoint, headers=headers)
+    
+  data = {
+    "clientId": "string",
+    "clientSecret": "string",
+    "subscriptionKey": "string"
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -1253,6 +1313,7 @@ Create a CNHI app information.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "clientId": "string", "clientSecret": "string", "subscriptionKey": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/CNHI/{appName}/{clientEnvironment}'
   ```
 
@@ -1293,6 +1354,12 @@ Update a CNHI app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/CNHI/{appName}/{clientEnvironment}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "clientId": "string",
+    "clientSecret": "string",
+    "subscriptionKey": "string"
+  }
 
   axios.put(endpoint, { headers })
       .then(res => console.log(res.data))
@@ -1309,7 +1376,13 @@ Update a CNHI app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/CNHI/{appName}/{clientEnvironment}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
+    
+  data = {
+    "clientId": "string",
+    "clientSecret": "string",
+    "subscriptionKey": "string"
+  }
+  
   response = requests.put(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1320,6 +1393,7 @@ Update a CNHI app information.
   ```shell
   curl -X PUT \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "clientId": "string", "clientSecret": "string", "subscriptionKey": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/CNHI/{appName}/{clientEnvironment}'
   ```
 
@@ -1586,8 +1660,13 @@ Create a John Deere app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/JohnDeere/{appName}/{clientEnvironment}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "clientKey": "string",
+    "clientSecret": "string"
+  }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1602,8 +1681,13 @@ Create a John Deere app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/JohnDeere/{appName}/{clientEnvironment}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.post(endpoint, headers=headers)
+    
+  data = {
+    "clientKey": "string",
+    "clientSecret": "string"
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -1613,6 +1697,7 @@ Create a John Deere app information.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "clientKey": "string", "clientSecret": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/JohnDeere/{appName}/{clientEnvironment}'
   ```
 
@@ -1652,6 +1737,11 @@ Update a John Deere app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/JohnDeere/{appName}/{clientEnvironment}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "clientKey": "string",
+    "clientSecret": "string"
+  }
 
   axios.put(endpoint, { headers })
       .then(res => console.log(res.data))
@@ -1668,7 +1758,12 @@ Update a John Deere app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/JohnDeere/{appName}/{clientEnvironment}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
+    
+  data = {
+    "clientKey": "string",
+    "clientSecret": "string"
+  }
+  
   response = requests.put(endpoint, headers=headers)
   print(response.json())
   ```
@@ -1679,6 +1774,7 @@ Update a John Deere app information.
   ```shell
   curl -X PUT \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "clientKey": "string", "clientSecret": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/JohnDeere/{appName}/{clientEnvironment}'
   ```
 
@@ -1946,8 +2042,14 @@ Create a Trimble app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Trimble/{appName}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "applicationName": "string",
+    "clientId": "string",
+    "clientSecret": "string"
+  }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1962,8 +2064,14 @@ Create a Trimble app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Trimble/{appName}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.post(endpoint, headers=headers)
+    
+  data = {
+    "applicationName": "string",
+    "clientId": "string",
+    "clientSecret": "string"
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -1973,6 +2081,7 @@ Create a Trimble app information.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "applicationName": "string", "clientId": "string", "clientSecret": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/Trimble/{appName}'
   ```
 
@@ -2013,6 +2122,12 @@ Update a Trimble app information.
 
   const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Trimble/{appName}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "applicationName": "string",
+    "clientId": "string",
+    "clientSecret": "string"
+  }
 
   axios.put(endpoint, { headers })
       .then(res => console.log(res.data))
@@ -2029,7 +2144,13 @@ Update a Trimble app information.
 
   endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Trimble/{appName}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
-
+    
+  data = {
+    "applicationName": "string",
+    "clientId": "string",
+    "clientSecret": "string"
+  }
+  
   response = requests.put(endpoint, headers=headers)
   print(response.json())
   ```
@@ -2040,6 +2161,7 @@ Update a Trimble app information.
   ```shell
   curl -X PUT \
       -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "applicationName": "string", "clientId": "string", "clientSecret": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/Trimble/{appName}'
   ```
 

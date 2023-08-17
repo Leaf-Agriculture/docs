@@ -541,7 +541,7 @@ npm i @withleaf/leaf-link-react
 import { Providers } from '@withleaf/leaf-link-react';
 ```
 
-3. Add the component to the HTML. Make sure you already created the Leaf user [API key][6] (`apiKey`); you need to specify both the Leaf User API Key and the Leaf User ID (`leafUser`) in the required properties in the HTML component.
+3. Add the component to the `*.tsx` file. Make sure you already created the Leaf user [API key][6] (`apiKey`); you need to specify both the Leaf User API Key and the Leaf User ID (`leafUser`) in the required properties in the tsx component.
 Check all the properties available on the reference [here][7].
 ```js
 function App() {

@@ -54,6 +54,44 @@ To use the widget you will need a Leaf token. Use our [authentication guide][2] 
 
 ## Tutorial
 
+### Angular
+
+:::tip
+[Here](https://stackblitz.com/edit/leaf-widgets-angular-upload-e18fo9?file=src%2Fapp%2Fapp.component.html) you can run a live use case demo! 
+It will only be necessary to replace your information in the .html component.
+:::
+
+To add this Leaf widget in an Angular application, you can use the `@withleaf/leaf-link-angular` library, which is a JavaScript library that provides all Leaf UI Widgets.
+Here are the general steps to get started:
+
+1. Install the @withleaf/leaf-link-angular package using `npm`:
+
+```shell
+npm i @withleaf/leaf-link-angular
+```
+
+2. Import the library in your component or module file:
+
+```js
+import { FileUploadModule } from '@withleaf/leaf-link-angular';
+```
+
+3. Add the component to the HTML. Make sure you already created the Leaf user [API key][3] (`apiKey`); you need to specify both the Leaf User API Key and the Leaf User ID (`leafUser`) in the required properties in the HTML component.
+Check all the properties available on the reference [here][4].
+
+```js
+<div class="content" role="main">
+  <file-upload
+    apiKey="Your_API_Key"
+    leafUser="Your_Leaf_User"
+    title="Your_Title"
+    [filesTimeRange]="30"
+    companyName="Your_Company_Name"
+    companyLogo="assets/leafLogo.svg"
+  ></file-upload>
+</div>
+```
+
 ### React
 
 :::tip
@@ -99,44 +137,6 @@ function App() {
     />
   );
 }
-```
-
-### Angular
-
-:::tip
-[Here](https://stackblitz.com/edit/leaf-widgets-angular-upload-e18fo9?file=src%2Fapp%2Fapp.component.html) you can run a live use case demo! 
-It will only be necessary to replace your information in the .html component.
-:::
-
-To add this Leaf widget in an Angular application, you can use the `@withleaf/leaf-link-angular` library, which is a JavaScript library that provides all Leaf UI Widgets.
-Here are the general steps to get started:
-
-1. Install the @withleaf/leaf-link-angular package using `npm`:
-
-```shell
-npm i @withleaf/leaf-link-angular
-```
-
-2. Import the library in your component or module file:
-
-```js
-import { FileUploadModule } from '@withleaf/leaf-link-angular';
-```
-
-3. Add the component to the HTML. Make sure you already created the Leaf user [API key][3] (`apiKey`); you need to specify both the Leaf User API Key and the Leaf User ID (`leafUser`) in the required properties in the HTML component.
-Check all the properties available on the reference [here][4].
-
-```js
-<div class="content" role="main">
-  <file-upload
-    apiKey="Your_API_Key"
-    leafUser="Your_Leaf_User"
-    title="Your_Title"
-    [filesTimeRange]="30"
-    companyName="Your_Company_Name"
-    companyLogo="assets/leafLogo.svg"
-  ></file-upload>
-</div>
 ```
 
 ## Reference

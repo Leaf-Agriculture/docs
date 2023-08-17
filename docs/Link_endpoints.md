@@ -517,7 +517,7 @@ Create an AgLeader app information.
     "publicKey": "string"
   }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -538,7 +538,7 @@ Create an AgLeader app information.
     "publicKey": "string"
   }
   
-  response = requests.post(endpoint, headers=headers)
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -894,7 +894,7 @@ Create a Climate FieldView app information.
     "clientSecret": "string"
   }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -916,7 +916,7 @@ Create a Climate FieldView app information.
     "clientSecret": "string"
   }
   
-  response = requests.post(endpoint, headers=headers)
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -1281,7 +1281,7 @@ Create a CNHI app information.
     "subscriptionKey": "string"
   }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1303,7 +1303,7 @@ Create a CNHI app information.
     "subscriptionKey": "string"
   }
   
-  response = requests.post(endpoint, headers=headers)
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -1666,7 +1666,7 @@ Create a John Deere app information.
     "clientSecret": "string"
   }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1687,7 +1687,7 @@ Create a John Deere app information.
     "clientSecret": "string"
   }
   
-  response = requests.post(endpoint, headers=headers)
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -2049,7 +2049,7 @@ Create a Trimble app information.
     "clientSecret": "string"
   }
 
-  axios.post(endpoint, { headers })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -2071,7 +2071,7 @@ Create a Trimble app information.
     "clientSecret": "string"
   }
   
-  response = requests.post(endpoint, headers=headers)
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 

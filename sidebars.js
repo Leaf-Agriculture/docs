@@ -19,11 +19,6 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Integrations',
-          items: ['integrations_overview', 'integrations_endpoints']
-        },
-        {
-          type: 'category',
           label: 'Alerts',
           items: ['alerts_overview', 'alerts_endpoints', 'alerts_events', 'alerts_authentication']
         },
@@ -53,7 +48,8 @@ module.exports = {
                 'credentials_agleader',
                 'credentials_stara',
                 'credentials_sentera',
-                'credentials_agvance'
+                'credentials_agvance',
+                'integrations_endpoints'
               ]
             }
           ]

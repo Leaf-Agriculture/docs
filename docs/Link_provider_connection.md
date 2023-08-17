@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [3]: https://developer.deere.com/#/applications
 [4]: /docs/user_management_overview
 [5]: https://www.developer.cnhindustrial.com/dashboard/
-[6]: /docs/Link_endpoints#api-key
+[6]: https://docs.withleaf.io/docs/Link_endpoints#api-key
 [7]:  #reference
 
 
@@ -483,40 +483,48 @@ Here is a request example:
 
 ## Tutorial
 
-This widget is only available for Angular.
-
 ### Angular
 
-To add this Leaf widget in an Angular application, you can use the `@withleaf.io/angular-ui-kit` library, which is a JavaScript library that provides all Leaf UI Widgets.
+:::tip
+[Here](https://codesandbox.io/p/sandbox/providers-connection-angular-5826s8?file=/src/app/app.component.html:1,1) you can run a live use case demo!
+It will only be necessary to replace your information in the .html component.
+:::
+
+To add this Leaf widget in an Angular application, you can use the `@withleaf/leaf-link-angular` library, which is a JavaScript library that provides all Leaf UI Widgets.
 Here are the general steps to get started:
 
-1. Install the @withleaf.io/angular-ui-kit package using `npm`:
+1. Install the @withleaf/leaf-link-angular package using `npm`:
 
 ```shell
-npm i @withleaf.io/angular-ui-kit
+npm i @withleaf/leaf-link-angular
 ```
 
 2. Import the library in your component or module file:
 
 ```js
-import { ProvidersModule } from '@withleaf.io/angular-ui-kit';
+import { ProvidersModule } from '@withleaf/leaf-link-angular';
 ```
 
-3. Add the component to the HTML. Make sure you already [created the Leaf user API key][6] (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component. Just add it to the container div.
-You can also customize it adding your company name (`companyName`) and company logo (`companyLogoUrl`). Check all the properties available on the reference [here][7].
+3. Add the component to the HTML. Make sure you already created the Leaf user [API key][6] (`apiKey`); you need to specify both the Leaf User API Key and the Leaf User ID (`leafUser`) in the required properties in the HTML component.
+Check all the properties available on the reference [here][7].
 ```js
-<div class="container">
-  <leaf-providers leafUser="{leafUserId}" apiKey="{apiKey}"     
-      companyName="{name}" companyLogoUrl="{image URL}">
-  </leaf-providers>
+<div class="content" role="main">
+  <providers 
+    apiKey="Your_API_Key"
+    leafUser="Your_Leaf_User"
+    title="Your_Title"
+    companyName="Your_Company_Name"
+    companyLogo="Your_Company_Logo"
+  ></providers>
 </div>
 ```
 
-:::tip
-[Here](https://codesandbox.io/p/sandbox/provider-widget-leaf-link-angular-77vdwl) you can run a live use case demo!
-:::
-
 ### React
+
+:::tip
+[Here](https://codesandbox.io/s/providers-connection-react-7mrp3c?file=/src/App.tsx) you can run a live use case demo!
+It will only be necessary to replace your information in the App.tsx file.
+:::
 
 To add this Leaf widget in a React application, you can use the `@withleaf/leaf-link-react` library, which is a JavaScript library that provides all Leaf UI Widgets.
 Here are the general steps to get started:
@@ -533,8 +541,8 @@ npm i @withleaf/leaf-link-react
 import { Providers } from '@withleaf/leaf-link-react';
 ```
 
-3. Add the component to the HTML. Make sure you already [created the Leaf user API key][6] (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the HTML component.
-You can also customize it adding your company name (`companyName`) and company logo (`companyLogo`). Check all the properties available on the reference [here][7].
+3. Add the component to the `*.tsx` file. Make sure you already created the Leaf user [API key][6] (`apiKey`); you need to specify both the Leaf User API Key and the Leaf User ID (`leafUser`) in the required properties in the tsx component.
+Check all the properties available on the reference [here][7].
 ```js
 function App() {
   return (
@@ -548,12 +556,6 @@ function App() {
    );
 }
 ```
-
-:::tip
-[Here](https://codesandbox.io/s/leaf-link-react-providers-d5lm4w?file=/src/App.tsx) you can run a live use case demo!
-:::
-
-
 
 
 ## Reference

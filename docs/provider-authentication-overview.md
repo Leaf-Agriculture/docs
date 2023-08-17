@@ -61,6 +61,8 @@ For more details about provider credentials endpoints, see below for:
 - [Trimble][19]
 
 Also, we recommend use our Providers Integrations Resources endpoint to debrief the ingested resources from the authenticated account. 
+With the Providers Integrations Resources, you can access all the relevant information between the authentication and the processing of your 
+resources ingested into Leaf's API. The resource summary gives you more visibility on what and how many resources are being processed. 
 - [Integrations Resources][20]
 
 Need more guidance? Contact us at help@withleaf.io.

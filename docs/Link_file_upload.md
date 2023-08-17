@@ -76,7 +76,7 @@ npm i @withleaf/leaf-link-react
 import { FileUpload } from '@withleaf/leaf-link-react'
 ```
 
-3. Add the component to the `*.tsx` file. Make sure you already created the Leaf user [API key][3] (`apiKey`), you need to inform it and the Leaf user ID (`leafUser`) in the required properties in the tsx component. 
+3. Add the component to the `*.tsx` file. Make sure you already created the Leaf user [API key][3] (`apiKey`); you need to specify both the Leaf User API Key and the Leaf User ID (`leafUser`) in the required properties in the tsx component. 
 Check all the properties available on the reference [here][4].
 
 ```js

@@ -26,6 +26,7 @@ sidebar_label: Overview
 [17]: https://docs.withleaf.io/docs/credentials_john_deere/
 [18]: https://docs.withleaf.io/docs/credentials_cfv
 [19]: https://docs.withleaf.io/docs/credentials_trimble
+[20]: https://docs.withleaf.io/docs/integrations_endpoints
 
 ## About 
 By the end of this section, the objective is to successfully authenticate your application and link provider credentials to Leaf, enabling you to start integrating standardized data from major agricultural providers. Ultimately you’ll want your customers to be able to integrate their (user-permissioned) data from their providers into your application. So in order to set this up at the user level, you’ll need to attach the user token from the provider to the Leaf User. 
@@ -58,5 +59,10 @@ For more details about provider credentials endpoints, see below for:
 - [Sentera][15]
 - [Stara][11]
 - [Trimble][19]
+
+Also, we recommend use our Providers Integrations Resources endpoint to debrief the ingested resources from the authenticated account. 
+With the Providers Integrations Resources, you can access all the relevant information between the authentication and the processing of your 
+resources ingested into Leaf's API. The resource summary gives you more visibility on what and how many resources are being processed. 
+- [Integrations Resources][20]
 
 Need more guidance? Contact us at help@withleaf.io.

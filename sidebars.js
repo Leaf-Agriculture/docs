@@ -48,7 +48,8 @@ module.exports = {
                 'credentials_agleader',
                 'credentials_stara',
                 'credentials_sentera',
-                'credentials_agvance'
+                'credentials_agvance',
+                'integrations_endpoints'
               ]
             }
           ]

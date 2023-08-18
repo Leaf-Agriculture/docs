@@ -168,7 +168,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/users/products/search'
+  endpoint = 'https://api.withleaf.io/services/beta/api/products/search'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -181,7 +181,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/api/users/products/search'
+      'https://api.withleaf.io/services/beta/api/products/search'
   ```
 
   </TabItem>

@@ -40,7 +40,7 @@ This feature has the following endpoints available:
 | [Create a machine][4] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/machines`                  |
 | [Update a machine][7] | <span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/machines/{machineId}`     |
 | [Delete a machine][6] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/machines/{machineId}`     |
-| [Get all implements][9]  | <span class="badge badge--danger">GET</span> `/users/{leafUserId}/implements`     |
+| [Get all implements][9]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/implements`                 |
 
 ### Get all machines
 

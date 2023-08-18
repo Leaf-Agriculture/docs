@@ -246,7 +246,7 @@ It is possible to filter the results by a number of different parameters:
 | provider                | array of string                         | sentinel or/and planet                                                  | If none is defined, it will created with *sentinel* only |
 
 :::info Important
-If you have just created the satellite field, it may take a few hours for the images to become available.
+If you have just created the satellite field, it may take a moment time for the images to become available.
 :::
 
 #### Request examples

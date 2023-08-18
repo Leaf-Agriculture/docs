@@ -58,7 +58,7 @@ This service has the following endpoints available:
 | [Get the operation's units][5]            | <span class="badge badge--success">GET</span> `/operations/{id}/units`            |
 | [Crop operation by field][17]             | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField` |
 | [Reprocess an operation][11]              | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`       |
-| [Get files from a operation][21]          | <span class="badge badge--warning">POST</span> `/operations/{id}/files`           |
+| [Get files from an operation][21]          | <span class="badge badge--warning">POST</span> `/operations/{id}/files`           |
 
 For easily testing these endpoints, we recommend using our Postman [collection][postman].
 

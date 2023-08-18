@@ -29,7 +29,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [18]: #get-the-operations-standardgeojson
 [19]: #get-the-operations-filteredgeojson
 [20]: https://docs.withleaf.io/docs/configurations_overview/#operationsfilteredgeojson
-[21]: #get-files-from-a-operation
+[21]: #get-files-from-an-operation
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection

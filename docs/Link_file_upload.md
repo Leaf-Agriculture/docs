@@ -21,6 +21,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [fileupload-isdarkmode]: #isdarkmode
 [fileupload-title]: #title
 
+[upload-leafbatchids]: #leafbatchids
 
 ## Overview
 Leaf's File Upload Link is a widget that allows your customers to upload different machine file formats. These files will then get converted into a consistent output using the Leaf API.
@@ -156,7 +157,7 @@ It is valid only for the React version.
 
 
 
-### Property Details
+#### Property Details
 #### apiKey
 The `apiKey` is the authentication key that will allow the use of the widget.
 It can be created and managed [here][3].
@@ -184,3 +185,60 @@ The Leaf User ID. Check [this page][2] for more info about the Leaf User.
 #### title
 The text to display on the top of the widget.
 
+### Hooks Overview
+
+Leaf Link also have hooks that can improve the developer experience when using the widgets.
+
+| Name                    | Type                                               | Description                                                                                                            |
+|-------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| [leafBatchIds][upload-leafbatchids]      | `Array<{ batchId: string }>` | Provide the array with the batchId of the uploaded files   |                                      |
+
+
+#### Hooks Details
+
+##### leafBatchIds
+Provides the array with the `batchId` for each uploaded file. A new ID is added after each successful upload.
+
+#### How to use it
+
+##### Angular
+Use the `getLeafBatchData` property to reference a function in your component.
+```html
+<div>
+  <file-upload
+      [apiKey]="apiKey"
+      [leafUser]="leafUser"
+      [title]="Your_Title"
+      [filesTimeRange]="30"
+      [companyName]="companyName"
+      [companyLogo]="companyLogo"
+      (getLeafBatchData)="yourFunctionNameHere($event)">
+  </file-upload>
+</div>
+```
+
+From the component, you can get the [leafBatchIds][upload-leafbatchids] array in the referenced function.
+
+```js
+  import { Component } from '@angular/core';
+
+  @Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+  })
+  export class AppComponent {
+    apiKey: string = 'apiKey';
+    leafUser: string = 'leafUserId';
+    companyName: string = 'companyName';
+    companyLogo: string = 'companyLogo';
+
+    yourFunctionNameHere(leafBatchIds: any) {
+      console.log(leafBatchIds);
+    }
+  }
+```
+
+
+##### React
+For now, this item is not available for React.

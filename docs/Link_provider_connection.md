@@ -578,11 +578,8 @@ function App() {
 | [apiKey][provider-apiKey]                 | String | The authentication API Key                |
 | [companyLogoUrl][provider-companyLogoUrl] | String | Customization: a link to the company logo |
 | [companyName][provider-companyName]       | String | Customization: the name of the company    |
-| [isDarkMode*][provider-darkmode]          | Boolean| Enable/disable the dark mode              |
+| [isDarkMode][provider-darkmode]           | Boolean| Enable/disable the dark mode              |
 | [leafUser][provider-leafUser]             | String | The Leaf User ID                          |
-
-\* Only available in the React version
-
 
 #### Property Details
 
@@ -600,7 +597,7 @@ The company name. It will be displayed in the landing screen and in each referen
 The Leaf User ID. Check [this page][4] for more info about the Leaf User.
 
 #### isDarkMode
-Toggles dark mode on and off. The default value is `false`. It is only available for React.
+Toggles dark mode on and off. The default value is `false`.
 
 
 ### Hooks Overview
@@ -616,11 +613,11 @@ Leaf Link also have hooks that can improve the developer experience when using t
 #### Hooks Details
 
 ##### providersConnected
-Provide the array of the provider connected and also the createdTime. It will be available after finish the connection process.
+Provides the array of the providers connected with the `createdTime`. It will be available after finish the connection process.
 
 
 ##### providerWidgetStatus
-Provide the status code and the message from the current widget Status:
+Provides the status code and the message from the current widget status:
 
 ###### Status Codes
 
@@ -630,7 +627,46 @@ Provide the status code and the message from the current widget Status:
 |  0   | Started  |
 |  1   | Done     |
 
+
 #### How to use it
+
+##### Angular
+Use the `getWidgetStatus` property to reference a function in your component.
+```html
+<div>
+  <providers
+      [apiKey]="apiKey"
+      [leafUser]="leafUser"
+      [companyName]="companyName"
+      [companyLogo]="companyLogo"
+      (getWidgetStatus)="yourFunctionNameHere($event)">
+  </providers>
+</div>
+```
+
+From the component, you can get the [status][provider-providerwidgetstatus] and the [providers connected][provider-providersconnected] in the referenced function.
+
+```js
+  import { Component } from '@angular/core';
+
+  @Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+  })
+  export class AppComponent {
+    apiKey: string = 'apiKey';
+    leafUser: string = 'leafUserId';
+    companyName: string = 'companyName';
+    companyLogo: string = 'companyLogo';
+
+    yourFunctionNameHere(value: any) {
+      console.log(value.providersConnected);
+      console.log(value.providerWidgetStatus);
+    }
+  }
+```
+
 
 ##### React
 

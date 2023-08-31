@@ -4,6 +4,10 @@ description: Configurations - Overview
 sidebar_label: Overview
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 [1]: /docs/machine_file_conversion_overview
 [2]: /docs/operations_overview
 [3]: #operationsremoveoutliers
@@ -109,7 +113,7 @@ If set to `true`, Leaf will aggregate products with the same name and display on
 `area` and `totalApplied` will be aggregated by the sum and the `rate` by the average. This config is only for applied data. The default value is `false`.
 
 #### summaryGeometry
-As valores a serem setados são BUFFER e CONVEX_HULL, que se referem ao algoritmo de cálculo da geometria. Veja a imagem abaixo para compreender o modelo de cada cálculo.
+The values to be defined are `BUFFER` and `CONVEX_HULL`, which refer to the geometry calculation algorithm. See the image below to understand the model of each calculation.
 
 <p align="center">
     <img alt="Geometries algorithm" width="50%" src={useBaseUrl('img/buffer_algorithm.png')} />

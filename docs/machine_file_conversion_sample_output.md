@@ -750,7 +750,9 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "seedRateTarget": "int",
         "seedDepth": "float",
         "downForce": "float",
-        "singulation": "float"
+        "singulation": "float",
+        "skips": "float",
+        "doubles": "float"
     }
   }
   ```

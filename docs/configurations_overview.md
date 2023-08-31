@@ -22,11 +22,11 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 
 *Currently, configurations are available for the following services:*
 
-| Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                      | 
-|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| [Field Boundary Management](#field-boundary-management) | fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                            | 
-| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, originalOperationData, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape                                                                                                                                                                                                                                                                                           | 
-| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry | 
+| Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                                       | 
+|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| [Field Boundary Management](#field-boundary-management) | fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                             | 
+| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, originalOperationData, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape                                                                                                                                                                                                                                                                                                            | 
+| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry | 
 
 
 ### Field Boundary Management
@@ -107,6 +107,13 @@ These configurations can be enabled with the use of Leaf Field Operations. This 
 #### summarizeByProductEntry
 If set to `true`, Leaf will aggregate products with the same name and display only one entry per product in the summary. 
 `area` and `totalApplied` will be aggregated by the sum and the `rate` by the average. This config is only for applied data. The default value is `false`.
+
+#### summaryGeometry
+As valores a serem setados são BUFFER e CONVEX_HULL, que se referem ao algoritmo de cálculo da geometria. Veja a imagem abaixo para compreender o modelo de cada cálculo.
+
+<p align="center">
+    <img alt="Geometries algorithm" width="50%" src={useBaseUrl('img/buffer_algorithm.png')} />
+</p>
 
 #### fieldOperationCreation
 Enables the creation of [Field Operations][2]. The default is `true`.

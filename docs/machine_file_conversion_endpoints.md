@@ -352,7 +352,8 @@ Gets a list of PNG images generated from the operation's file properties.
       "100%": [  0, 130, 0],
       "nv":   [  0,   0, 0, 0]
     },
-    "url": "string"
+    "url": "URL",
+    "downloadUrl": "URL"
   },
   ....
 ]

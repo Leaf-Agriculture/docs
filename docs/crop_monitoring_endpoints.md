@@ -324,7 +324,8 @@ curl -X GET \
     "coverage": 100,
     "images": [
       {
-          "url": "url.to.your.image.tif",
+          "url": "URL",
+          "downloadUrl": "URL",
           "type": "tif",
           "resolution": 20
       },
@@ -347,6 +348,7 @@ curl -X GET \
 - `coverage`: data coverage percentage of the field, from 0 to 100
 - `images`: each image in this list will have the following data:
     - `url`: URL of the image
+    - `downloadUrl`: URL of the image
     - `type`: the type of the image. One of `tif`, `ndvi`, `png` and
     `tif_colorized`
     - `resolution`: resolution, in meters, of the image. See table below
@@ -430,7 +432,8 @@ curl -X GET \
   "coverage": 100,
   "images": [
     {
-      "url": "url.to.your.image.tif",
+      "url": "URL",
+      "downloadUrl": "URL",
       "type": "tif",
       "resolution": 20
     },

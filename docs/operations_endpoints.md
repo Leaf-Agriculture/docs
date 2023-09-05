@@ -386,7 +386,8 @@ Get the standardGeojson file URL relative to the operation.
 
 ```json
 {
-  "standardGeojson": "URL"
+  "standardGeojson": "URL",
+  "downloadStandardGeojson": "URL"
 }
 ```
 
@@ -459,7 +460,8 @@ To use this option, the [operationsFilteredGeojson][20] configuration must be en
 
 ```json
 {
-  "filteredGeojson": "URL"
+  "filteredGeojson": "URL",
+  "downloadFilteredGeojson": "URL"
 }
 ```
 
@@ -537,7 +539,8 @@ Gets a list of PNG images generated from the operation's properties.
       "100%": [  0, 130, 0],
       "nv":   [  0,   0, 0, 0]
     },
-    "url": "string"
+    "url": "URL",
+    "downloadUrl": "URL"
   },
   ....
 ]
@@ -665,7 +668,8 @@ Gets a list of PNG images generated from the operation's properties with improve
       "ymin": 0,
       "ymax": 0
     },
-    "url": "URL"
+    "url": "URL",
+    "downloadUrl": "URL"
   }
 ]
 ```
@@ -745,19 +749,23 @@ Gets a list of TIFF images generated from the operation's properties with improv
 [
   {
     "property": "distance",
-    "url": "https://image-url.tif"
+    "url": "URL",
+    "downloadUrl": "URL"
   },
   {
     "property": "wetVolumePerArea",
-    "url": "https://image-url.tif"
+    "url": "URL",
+    "downloadUrl": "URL"
   },
   {
     "property": "dryMassPerArea",
-    "url": "https://image-url.tif"
+    "url": "URL",
+    "downloadUrl": "URL"
   },
   {
     "property": "dryVolumePerArea",
-    "url": "https://image-url.tif"
+    "url": "URL",
+    "downloadUrl": "URL"
   }
 ]
 ```

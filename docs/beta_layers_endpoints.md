@@ -116,7 +116,8 @@ values={[
     "name": "QuickTile RGB",
     "size": 159135298,
     "md5": "7ff746c6f5f06fc25b46420328402bed",
-    "contentS3": "https://layers-leaf-dev.s3.us-east-1.amazonaws.com/96a098e0-f1d0-47e8-968d-9d55d54da114.tif",
+    "contentS3": "URL",
+    "downloadContentS3": "URL",
     "createdTime": "2022-02-16T21:40:20.257Z",
     "leafFieldIds": [
       "f43ca7cc-c73a-43b9-8685-070b03876475",
@@ -135,7 +136,8 @@ values={[
     "name": "QuickTile RGB",
     "size": 121910506,
     "md5": "759d1f68962e30ea78f40025c8b64972",
-    "contentS3": "https://layers-leaf-dev.s3.us-east-1.amazonaws.com/4d9b0139-f528-43ab-8bc9-a31043fa87d2.tif",
+    "contentS3": "URL",
+    "downloadContentS3": "URL",
     "createdTime": "2022-02-16T21:40:35.341Z",
     "leafFieldIds": [
       "f43ca7cc-c73a-43b9-8685-070b03876475",

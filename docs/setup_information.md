@@ -14,6 +14,13 @@ All endpoints that return a list of resources are paginated. You can select the 
 - `size` - Defines the size of the page. Defaults to 20. Max size is 100.
 - `page` - Defines which page to fetch, considering each page has `size` elements. The first page is page 0. Defaults to 0.
 
+The `X-Total-Count` header in the response indicate the total existent items, and the `Link` header can provide the link for the first, next and last pages available:
+
+```
+<api/fields?page=1&size=20>;rel="next",
+<api/fields?page=398&size=20>;rel="last",
+<api/fields?page=0&size=20>;rel="first"
+```
 
 ## Date format
 

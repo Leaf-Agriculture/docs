@@ -3,7 +3,7 @@ title: Leaf Connect
 description: Leaf Connect
 ---
 
-[1]: https://docs.withleaf.io/docs/Connect
+[1]: https://docs.withleaf.io/docs/connect
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

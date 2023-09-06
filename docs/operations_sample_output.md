@@ -465,6 +465,18 @@ values={[
       "value": 1218773,
       "unit": "seeds"
     },
+    "skips": {
+      "avg": 0.28672096317280454,
+      "min": 0.0,
+      "max": 1.9000000000000001,
+      "unit": "prcnt"
+    },
+    "doubles": {
+      "avg": 0.23668555240793204,
+      "min": 0.0,
+      "max": 1.4000000000000001,
+      "unit": "prcnt"
+    },
     "varieties": [
       {
         "name": "P1309WAM",

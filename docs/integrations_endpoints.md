@@ -104,22 +104,27 @@ These last two parameters are used exclusively for paging through results.
 #### Response
 
 ```json
-[
-  {
+{
+  "message": "SUCCESS",
+  "summaries": [
+    {
       "provider": "JohnDeere",
       "leafUserId": "UUID",
       "growers": 12,
       "farms": 12,
-      "fields": 100
-  },
-  {
+      "fields": 100,
+      "syncReferenceTime": "2023-08-30T18:39:33.230612Z"
+    },
+    {
       "provider": "ClimateFieldView",
       "leafUserId": "UUID",
       "farms": 12,
-      "fields": 100
-  },
-  ....
-]
+      "fields": 100,
+      "syncReferenceTime": "2023-08-30T18:39:33.230612Z"
+    },
+    ....
+  ]
+}
 ```
 
 :::tip FMIS Structure Warning

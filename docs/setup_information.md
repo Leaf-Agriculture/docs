@@ -3,6 +3,10 @@ title: General Setup Information
 description: General Setup Information
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 ## Pagination
 
 All endpoints that return a list of resources are paginated. You can select the size of the page and which page to get by using the query parameters `size` and `page`.
@@ -13,26 +17,79 @@ All endpoints that return a list of resources are paginated. You can select the 
 
 ## Date format
 
-All the dates follow ISO 8601 format. Specifically, all the dates should be in the format "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'".
+All the dates follow ISO 8601 format. Specifically, all the dates should be in the format "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'".
 
 
 ## File archiving 
 
-Be default, our API archive the files to a slower storage after 180 days without access. The file will be available again only upon a support request.
-
-
-## File size
-
-Currently, our API have a 3 gigabytes limit for file uploads. This is applied in the file upload [endpoint](machine_file_conversion_endpoints.md/#upload-a-file) 
+By default, our API archives files to slower storage after 180 days of no access. The file will only be available again upon a support request.
 
 
 ## Error codes
 
-Service | Endpoint | Message | HTTP Status | Reason
---- | --- | --- | --- | --- 
-Field Operations | [Upload a file](machine_file_conversion_endpoints.md/#upload-a-file) | Bad Request | 400 | The uploaded file is bigger than 3 GB <!-- not standartized -->
+| Service          | Endpoint                                                                          | Message     | HTTP Status | Reason                                                          |
+|------------------|-----------------------------------------------------------------------------------|-------------|-------------|-----------------------------------------------------------------|
+| Field Operations | [Upload a file](https://docs.withleaf.io/docs/converters_endpoints#upload-a-file) | Bad Request | 400         | The uploaded file is bigger than 3 GB <!-- not standartized --> |
 
+## Authenticating Leaf Files
 
+We are currently initiating an authentication procedure so that our customers can download leaf files,
+this feature will work for all products: Layers, Field Operations, Crop Monitoring, Data Translation and Prescriptions.
+
+In principle, the old way to download Leaf files will continue to be available, however it will soon be discontinued. Therefore, it is strongly recommended that
+updates are made to the new leaf files download model.
+
+New way to download files with authentication required:
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='downloadUrl'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'downloadUrl'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'downloadUrl'
+  ```
+
+  </TabItem>
+</Tabs>
 
 
 

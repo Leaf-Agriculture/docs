@@ -4,6 +4,10 @@ description: Configurations - Overview
 sidebar_label: Overview
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 [1]: /docs/machine_file_conversion_overview
 [2]: /docs/operations_overview
 [3]: #operationsremoveoutliers
@@ -22,11 +26,11 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 
 *Currently, configurations are available for the following services:*
 
-| Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                      | 
-|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| [Field Boundary Management](#field-boundary-management) | fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                            | 
-| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, originalOperationData, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape                                                                                                                                                                                                                                                                                           | 
-| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry | 
+| Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                                       | 
+|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| [Field Boundary Management](#field-boundary-management) | fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                             | 
+| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, originalOperationData, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape                                                                                                                                                                                                                                                                                                            | 
+| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry | 
 
 
 ### Field Boundary Management
@@ -107,6 +111,14 @@ These configurations can be enabled with the use of Leaf Field Operations. This 
 #### summarizeByProductEntry
 If set to `true`, Leaf will aggregate products with the same name and display only one entry per product in the summary. 
 `area` and `totalApplied` will be aggregated by the sum and the `rate` by the average. This config is only for applied data. The default value is `false`.
+
+#### summaryGeometry
+The values to be defined are `BUFFER` and `CONVEX_HULL`, that refer to the geometry calculation algorithm in the summary of the machine files. 
+Buffer See the image below to understand the model of each calculation.
+
+<p align="center">
+    <img alt="Geometries algorithm" width="50%" src={useBaseUrl('img/buffer_algorithm.png')} />
+</p>
 
 #### fieldOperationCreation
 Enables the creation of [Field Operations][2]. The default is `true`.

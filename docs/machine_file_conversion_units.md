@@ -50,12 +50,14 @@ This page lists the units of measurements and properties across all machine file
   <TabItem value="planted">
  
 
-| Property       | Unit of Measurement                     | Description                                                                                              |
-|----------------|-----------------------------------------|----------------------------------------------------------------------------------------------------------|
-| seedRate       | seeds/ac or seeds/ha                    | Seeds per acre or hectare. How many seeds were planted in an area?                                                                                          |
-| singulation    | %                                       | Percentage. Singulation refers to how well a meter is dropping one seed at a time.                                                                          |
-| downForce      | Lbf or Kgf                              | Pound-force or kilogram-force. Downforce refers to the amount of pressure that’s been applied to a crop row to ensure planting happens at the right depth.  |
-| totalPlanted   | seeds                                   | Number of seeds in total that have been planted.                                                                                                            |
+| Property     | Unit of Measurement  | Description                                                                                                                                                |
+|--------------|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| seedRate     | seeds/ac or seeds/ha | Seeds per acre or hectare. How many seeds were planted in an area?                                                                                         |
+| singulation  | percentage           | Percentage. Singulation refers to how well a meter is dropping one seed at a time.                                                                         |
+| downForce    | Lbf or Kgf           | Pound-force or kilogram-force. Downforce refers to the amount of pressure that’s been applied to a crop row to ensure planting happens at the right depth. |
+| totalPlanted | seeds                | Number of seeds in total that have been planted.                                                                                                           |
+| skips        | percentage           | Percentage. A skip is identified as a missing seed/plant within a row.                                                                                     |
+| doubles      | percentage           | Percentage. A double is identified as more than one seed in the same location or close enough that they can impact each other.                             |
 
 
   </TabItem>

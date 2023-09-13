@@ -58,7 +58,7 @@ To use the widget you will need a Leaf token. Use our [authentication guide][2] 
 ### Angular
 
 :::tip
-[Here](https://stackblitz.com/edit/leaf-widgets-angular-upload-e18fo9?file=src%2Fapp%2Fapp.component.html) you can run a live use case demo! 
+[Here](https://codesandbox.io/p/sandbox/angular-file-upload-44mslj?file=/src/app/app.component.ts) you can run a live use case demo! 
 It will only be necessary to replace your information in the .html component.
 :::
 
@@ -96,7 +96,7 @@ Check all the properties available on the reference [here][4].
 ### React
 
 :::tip
-[Here](https://codesandbox.io/s/upload-files-react-yscy95?file=/src/App.tsx) you can run a live use case demo!
+[Here](https://codesandbox.io/s/leaf-link-react-d6pk3g?file=/src/App.tsx) you can run a live use case demo!
 It will only be necessary to replace your information in the App.tsx file.
 :::
 
@@ -241,4 +241,44 @@ From the component, you can get the [leafBatchIds][upload-leafbatchids] array in
 
 
 ##### React
-For now, this item is not available for React.
+
+In the `index.tsx` will be necessary import the component `Leaf`.
+
+```js
+import { Leaf } from '@withleaf/leaf-link-react';
+```
+
+And this component should be organized like this:
+
+```js
+<React.StrictMode>
+    <Leaf>
+      <App />
+    </Leaf>
+  </React.StrictMode>
+```
+
+Additionally, you will need to import the useLeaf function as well:
+
+```js
+import { FileUpload, useLeaf } from "@withleaf/leaf-link-react";
+```
+
+So will be necessary adjust the function in the `App.tsx` file:
+
+```js
+function App() {
+  const IS_DARK_MODE: boolean = true;
+  const COMPANY_NAME: string = "Your_Company";
+  const LEAF_USER: string = "Your_Leaf_User_Id";
+  const API_KEY: string = "Your_API_Key";
+  const COMPANY_LOGO: string = YourCompanyLogo;
+  const FILES_TIME_RANGE: number = 30;
+  const { leafBatchIds } = useLeaf();
+
+  useMemo(() => {
+    console.log(leafBatchIds);
+  }, [leafBatchIds]);
+```
+
+In this example we use the `useMemo` but you can use another hooks.

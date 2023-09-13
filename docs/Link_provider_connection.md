@@ -534,7 +534,7 @@ Check all the properties available on the reference [here][7].
 ### React
 
 :::tip
-[Here](https://codesandbox.io/s/providers-connection-react-7mrp3c?file=/src/App.tsx) you can run a live use case demo!
+[Here](https://codesandbox.io/s/leaf-link-react-providers-d5lm4w?file=/src/App.tsx) you can run a live use case demo!
 It will only be necessary to replace your information in the App.tsx file.
 :::
 

@@ -24,7 +24,15 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 ## About
-The Leaf API allows an API Owner to grant permission to access [Field Boundaries][10], [Field Operations][11] and [Machine Data Files][12] to other API Owners. The access is controlled at the Leaf user level by the API account that owns the data
+The Leaf API allows an API Owner to grant permission to access [Field Boundaries][10], [Field Operations][11] and [Machine Data Files][12] to other API Owners. The access is controlled at the Leaf user level by the API account that owns the data.
+
+All HTTP methods should be prepended by this service's endpoint:
+
+```
+https://api.withleaf.io/services/usermanagement/api
+
+```
+
 
 ### How it works
 

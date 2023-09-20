@@ -14,6 +14,13 @@ All endpoints that return a list of resources are paginated. You can select the 
 - `size` - Defines the size of the page. Defaults to 20. Max size is 100.
 - `page` - Defines which page to fetch, considering each page has `size` elements. The first page is page 0. Defaults to 0.
 
+The `X-Total-Count` header in the response indicate the total existent items, and the `Link` header can provide the link for the first, next and last pages available:
+
+```
+<api/fields?page=1&size=20>;rel="next",
+<api/fields?page=398&size=20>;rel="last",
+<api/fields?page=0&size=20>;rel="first"
+```
 
 ## Date format
 
@@ -31,16 +38,16 @@ By default, our API archives files to slower storage after 180 days of no access
 |------------------|-----------------------------------------------------------------------------------|-------------|-------------|-----------------------------------------------------------------|
 | Field Operations | [Upload a file](https://docs.withleaf.io/docs/converters_endpoints#upload-a-file) | Bad Request | 400         | The uploaded file is bigger than 3 GB <!-- not standartized --> |
 
-## Authenticating Leaf Files
+## Downloading files from Leaf
 
-We are currently initiating an authentication procedure so that our customers can download leaf files,
-this feature will work for all products: Layers, Field Operations, Crop Monitoring, Data Translation and Prescriptions.
+To provide greater security all files provided by Leaf are now protected and must be accessed with authentication using the existing Leaf token.
 
-In principle, the old way to download Leaf files will continue to be available, however it will soon be discontinued. Therefore, it is strongly recommended that
-updates are made to the new leaf files download model.
+:::tip
+This is a recent change, so the old download links are still available, however, it will be discontinued soon. Therefore, it is strongly recommended that updates are made to access the new download links providers by Leaf (it can be identified with the prefix `download-`).
+:::
 
-New way to download files with authentication required:
 
+Authentication sample
 <Tabs
   defaultValue="sh"
   values={[

@@ -61,6 +61,11 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Manual File Upload',
+          items: ['converters_overview', 'converters_endpoints']
+        },
+        {
+          type: 'category',
           label: 'Machine File Conversion',
           items: ['machine_file_conversion_overview', 'machine_file_conversion_endpoints', 'machine_file_conversion_sample_output', 'machine_file_conversion_units', 'machine_file_conversion_crops_table']
         },
@@ -68,11 +73,6 @@ module.exports = {
           type: 'category',
           label: 'Field Operations',
           items: ['operations_overview', 'operations_endpoints', 'operations_sample_output']
-        },
-        {
-          type: 'category',
-          label: 'Manual File Upload',
-          items: ['converters_overview', 'converters_endpoints']
         },
         {
           type: 'category',

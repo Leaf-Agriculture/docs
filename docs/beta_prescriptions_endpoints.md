@@ -44,6 +44,7 @@ This feature has the following endpoints available:
 | [Upload prescription to CNHi][4]              | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/cnhi`              |
 | [List prescriptions from CNHi][5]             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/cnhi`               |
 | [Upload prescription to Climate FieldView][8] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/climateFieldView`  |
+| [Upload prescription to Trimble][9]           | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/trimble`           |
 
 ### Upload prescription to Raven Slingshot
 
@@ -705,5 +706,112 @@ values={[
 }
 ```
 
+### Upload prescription to Trimble
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/trimble`
+
+Upload a prescription using the Trimble credentials of the LeafUserId.
+
+The file to be uploaded needs to be .zip and contain one of each of the following file extension: shp, dbf, shx; and all files must have the same name. The zip file cannot contain subfolders.
+
+Also, in Raven's case the user must fill the `rateAttribute` and `rateUnit` as required parameters within the URL. An optional parameter is the `fileName`.
+
+The `rateAttribute` must contain the name of the column from the Shapefile.
+
+The `rateUnit` must contain one the values in the table below
+
+| `rateUnit`  |
+|-------------|
+| gal/ac      |
+| l/ha        |
+| lbs/ac      |
+| ton/ac      |
+| kg/ha       |
+| t/ha        |
+| kS/ac       |
+| kS/ha       |
+| lbs(N)/ac   |
+| kg(N)/ha    |
+| S/ha        |
+| S/ha        |
+
+#### Example:
+
+A zip file named “prescription_rx_map”, containing the following files:
+- prescription_rx_map.shp
+- prescription_rx_map.dbf
+- prescription_rx_map.shx
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/trimble?rateAttribute={}&rateUnit={}'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const form = new FormData()
+  form.append('file', 'prescription_rx_map.zip')
+
+  axios.post(endpoint, form, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/trimble?rateAttribute={}&rateUnit={}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('prescription_rx_map.zip')}
+
+  response = requests.post(endpoint, headers=headers, files=files)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=prescription_rx_map.zip' \
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/trimble?rateAttribute={}&rateUnit={}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "id": "str",
+  "name": "str"
+}
+```
 
 [contact]: mailto:help@withleaf.io

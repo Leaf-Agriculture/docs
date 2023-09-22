@@ -29,11 +29,8 @@ This service has the following endpoints available:
 | [Get a field](#get-a-field)                                                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                        |
 | [Create a field](#create-a-field)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                            |
 | [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                      |
-| [Get all operation files of a field (deprecated)](#get-all-operation-files-of-a-field-deprecated) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`                |
 | [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`          |
-| [Get an operation file of a field (deprecated)](#get-an-operation-file-of-a-field-deprecated)     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`       |
 | [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}` |
-| [Get fields by geometry (deprecated)](#get-fields-by-geometry-deprecated)                         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`                                      |
 | [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                         |
 | [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                                  |
 | [Delete a field](#delete-a-field)                                                                 | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                      |
@@ -169,9 +166,9 @@ These last two parameters are used exclusively for paging through results.
 
 ### Get a field
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{id}`
 
-Gets a single Field by its id.
+Gets a single Field by Leaf User.
 
 #### Request examples
 
@@ -278,7 +275,7 @@ an UUID will be generated and this property **can not** be updated.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
@@ -301,7 +298,7 @@ an UUID will be generated and this property **can not** be updated.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
@@ -322,7 +319,7 @@ an UUID will be generated and this property **can not** be updated.
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields'
   ```
 
   </TabItem>
@@ -467,106 +464,6 @@ values={[
 #### Response
 A [Field](#field-resource) as a JSON object.
 
-### Get all operation files of a field (deprecated)
-
-Use [this endpoint](#get-all-operation-files-of-a-field) instead
-
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations`
-
-Gets a paged list of all operation files of the Field and Leaf User specified in
-the URL.
-
-It is possible to filter the results by passing some query
-parameters. They are listed below.
-
-| Parameter (to filter by) | Type                                                                                               | Description                                      |
-|--------------------------|----------------------------------------------------------------------------------------------------|--------------------------------------------------|
-| operationType            | String "harvested", "planted", "applied" or "other"                                                | retrieve operations of given type                |
-| provider                 | String "CNHI", "JohnDeere", "Trimble" or "ClimateFieldView"                                        | retrieve operations of given provider            |
-| origin                   | String "provider", "automerged", "merged" or "uploaded"                                            | retrieve operations of given origin              |
-| crop                     | String name of the crop, like "corn" or "soybeans". Entire crop list available [here][crops_table] | retrieve operations with this crop.              |
-| startTime                | ISO 8601 datetime format                                                                           | retrieve operations that started after this date |
-| endTime                  | ISO 8601 datetime format                                                                           | retrieve operations that ended before this date  |
-
-You can also pass some parameters used exclusively for paging through results.
-They are:
-
-- `page`, an integer specifying the page being fetched (default is 0)
-- `size`, an integer specifying the size of the page (default is 20, max is 100)
-
-#### Request
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations'
-  ```
-
-  </TabItem>
-</Tabs>
-
-#### Response
-
-```json
-[
-  {
-    "crops": [
-      "string"
-    ],
-    "endTime": "2022-05-11T13:11:57.994Z",
-    "id": "string",
-    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "operationType": "other",
-    "origin": "automerged",
-    "provider": "Other",
-    "providerFileId": "string",
-    "startTime": "2022-05-11T13:11:57.994Z",
-    "varieties": [
-      "string"
-    ]
-  }
-]
-```
 
 ### Get all operation files of a field
 
@@ -668,87 +565,6 @@ values={[
 ]
 ```
 
-### Get an operation file of a field (deprecated)
-
-Use [this endpoint](#get-an-operation-file-of-a-field) instead
-
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/{fileId}`
-
-Gets a single Operation File of a field by its id.
-
-#### Request
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', }
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{fieldId}/operations/{id}'
-  ```
-
-  </TabItem>
-</Tabs>
-
-#### Response
-
-```json
-[
-  {
-    "crops": [
-      "string"
-    ],
-    "endTime": "2022-05-11T13:11:57.994Z",
-    "id": "string",
-    "leafUserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "operationType": "other",
-    "origin": "automerged",
-    "provider": "Other",
-    "providerFileId": "string",
-    "startTime": "2022-05-11T13:11:57.994Z",
-    "varieties": [
-      "string"
-    ]
-  }
-]
-```
 
 ### Get an operation file of a field 
 
@@ -826,107 +642,6 @@ values={[
   "provider": "Leaf",
   "leafUserId": "01a17a22-e6fa-4d83-b343-ea23eddbd936"
 }
-```
-
-### Get Fields by geometry (deprecated)
-
-&nbsp<span class="badge badge--warning">POST</span> `/fields/query/intersects`
-
-Use [this endpoint](#get-fields-by-geometry) instead.
-
-Gets a list of fields that intersect with the GeoJSON geometry (`"type"` property must be a `"MultiPolygon"`) sent in
-the request body.
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint ='https://api.withleaf.io/services/fields/api/fields/query/intersects'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  const data = {
-    geometry: {
-      type: "MultiPolygon",
-      coordinates: [...]
-    }
-  }
-
-  axios.post(endpoint, { headers, data })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/fields/api/query/intersects'
-  headers = {'Authorization': 'Bearer YOUR_LEAF_TOKEN'}
-
-  data = {
-    'geometry': {
-      'type': "MultiPolygon",
-      'coordinates': [...]
-    }
-  }
-
-  response = requests.post(endpoint, headers=headers, json=data)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X POST \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "geometry": { "type: "MultiPolygon", "geometry": [...] } }'
-      'https://api.withleaf.io/services/fields/api/fields/query/intersects'
-  ```
-
-  </TabItem>
-</Tabs>
-
-#### Response
-A JSON list of Fields.
-```json
-[
-  {
-    "id": "id",
-    "leafUserId": "uuid",
-    "geometry": {
-      "type": "MultiPolygon",
-      "coordinates": [
-        [
-          [
-            [-89.84388470649719,39.71943436012731],
-            [-89.84392762184143,39.72439389620628],
-            [-89.83936786651611,39.725392361998416],
-            [-89.83928203582764,39.71951688444436],
-            [-89.84388470649719,39.71943436012731]
-          ]
-        ]
-      ]
-    },
-    "type": "MERGED",
-    "sources": []
-  }
-]
 ```
 
 

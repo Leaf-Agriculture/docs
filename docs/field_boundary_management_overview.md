@@ -25,7 +25,7 @@ To make calls to Leaf's field API, you will first need to go through the previou
 - Leaf uses a Grower/Farm/Field hierarchy to organize data.
 - A grower (also known as Leaf User) is the data owner entity to which credentials are attached.
 - Farm(s) can be grouped together under a Grower and Field(s) can be grouped under a Farm
-- Each field boundary is tied to a field ID, which is the central concept for organizing boundary data. There can only be one active boundary per field.
+- Each field is tied to a field ID and its field boundary is tied to a boundary ID, which is the central concept for organizing boundary data. There can only be one active boundary per field.
 - Machine Files that Leaf merges into Operations are the results of operational tasks performed in a given Field.
 
 

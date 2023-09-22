@@ -19,7 +19,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [8]: #upload-prescription-to-climate-fieldview
 [9]: /docs/field_boundary_management_endpoints#get-all-growers
 [10]: #download-prescription-from-john-deere
-
+[11]: #upload-prescription-to-trimble
 
 ## About
 All HTTP methods should be prepended by this service's endpoint:
@@ -44,7 +44,7 @@ This feature has the following endpoints available:
 | [Upload prescription to CNHi][4]              | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/cnhi`              |
 | [List prescriptions from CNHi][5]             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/cnhi`               |
 | [Upload prescription to Climate FieldView][8] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/climateFieldView`  |
-| [Upload prescription to Trimble][9]           | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/trimble`           |
+| [Upload prescription to Trimble][11]          | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/trimble`           |
 
 ### Upload prescription to Raven Slingshot
 

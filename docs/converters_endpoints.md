@@ -319,9 +319,9 @@ TASKDATA
 
 #### Other
 
-| File Format | Details                                                                                                                                           |
-|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| Shapefile   | Shapefiles exported from SMS. Since Shapefiles do not contain information on the units used, we assume the default units from SMS are being used. |
+| File Format | Details                                                                                                                                                            |
+|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Shapefile   | Shapefiles exported from SMS and Raven. Since Shapefiles do not contain information on the units used, we assume the default units from the provider will be used. |
 
 #### Request examples
 

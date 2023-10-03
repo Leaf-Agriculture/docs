@@ -47,7 +47,8 @@ This is a recent change, so the old download links are still available, however,
 :::
 
 
-Authentication sample
+### Authentication sample
+
 <Tabs
   defaultValue="sh"
   values={[

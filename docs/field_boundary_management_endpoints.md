@@ -356,8 +356,12 @@ an UUID will be generated and this property **can not** be updated.
 
 &nbsp<span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/fields/{id}`
 
+:::tip 
+This is for manually created fields only. Provider created fields need to be updated via the Provider platform.
+:::
+
 Update the Field by `"id"` for the user `"leafUserId"`. The request body accepts updatable field properties like `"name"` to update the field name, `"farmId"` to update the related Farm of the Field and `"geometry"`, which represents the boundaries of the
-Field as a GeoJSON geometry (it must be a `"MultiPolygon"`). This is for manually created fields only. Provider created fields need to be updated via the Provider platform.
+Field as a GeoJSON geometry (it must be a `"MultiPolygon"`).
 
 #### Request body
 

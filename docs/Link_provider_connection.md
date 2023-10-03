@@ -498,7 +498,7 @@ Here is a request example:
 ### Angular
 
 :::tip
-[Here](https://codesandbox.io/p/sandbox/providers-connection-angular-5826s8?file=/src/app/app.component.html:1,1) you can run a live use case demo!
+[Here](https://codesandbox.io/p/sandbox/leaf-link-angular-providers-l7rcjc) you can run a live use case demo!
 It will only be necessary to replace your information in the .html component.
 :::
 
@@ -534,7 +534,7 @@ Check all the properties available on the reference [here][7].
 ### React
 
 :::tip
-[Here](https://codesandbox.io/s/leaf-link-react-providers-d5lm4w?file=/src/App.tsx) you can run a live use case demo!
+[Here](https://codesandbox.io/s/leaf-link-react-providers-dy5ntd) you can run a live use case demo!
 It will only be necessary to replace your information in the App.tsx file.
 :::
 

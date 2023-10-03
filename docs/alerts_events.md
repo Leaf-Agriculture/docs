@@ -264,6 +264,7 @@ Alerts for this event are in the following format:
 
 Event for when an operation is successfully created. 
 This event can be useful for identifying new operations when they are available.
+When sending this event, operation resources such as summary, images and units will probably not be complete.
 
 Alerts for this event are in the following format:
 

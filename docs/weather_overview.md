@@ -31,6 +31,8 @@ daily or hourly.
 - Sunrise
 - Sunset
 - Temperature (2 m)
+- Soil Temperature (0 cm)
+- Soil Moisture (0-1 cm; 1-3 cm; 3-9 cm; 9-27 cm; 27-81 cm)
 - Wind Direction (10 m)
 - Wind Gusts (10 m)
 - Wind Speed (10 m)
@@ -69,6 +71,7 @@ be fetched daily or hourly. Please note, historical weather data from less than 
 - Sunset
 - Temperature (2 m)
 - Soil Temperature (0 - 7 cm)
+- Soil Moisture (0-7 cm; 7-28 cm; 28-100 cm; 100-255 cm)
 - Wind Direction (10 m)
 - Wind Gusts (10 m)
 - Wind Speed (10 m)

@@ -56,12 +56,12 @@ Get daily forecasted weather data by leaf user and field. If dates are not set o
 the response will return forecast data for the next seven days by default.
 
 
-| Parameter (to filter by) | values                                                                  |
-|--------------------------|-------------------------------------------------------------------------|
-| endTime                  | Local date. Returns operations until the endTime                        |
-| startTime                | Local date. Returns operations from the startTime onward                |
-| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
-| units                    | System of units: `imperial` or `metric`. The default is `metric`        |
+| Parameter (to filter by) | values                                                                                        |
+|--------------------------|-----------------------------------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                                              |
+| startTime                | Local date. Returns operations from the startTime onward                                      |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`. The default is `gfs` |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`                              |
 
 #### Request examples
 
@@ -134,6 +134,48 @@ the response will return forecast data for the next seven days by default.
         ....
       ],
       "unit": "ºC"
+    },
+    "meanSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 25.3
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 25.1
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "minSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 18.7
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 17.2
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "maxSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 28.9
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 27.9
+        },
+        ....
+      ],
+      "unit": "°C"
     },
     "sunrise": {
       "values": [
@@ -309,12 +351,12 @@ Get hourly forecasted weather data by Leaf User and field. If dates are not set 
 will return forecast data for the next seven days by default.
 
 
-| Parameter (to filter by) | values                                                                  |
-|--------------------------|-------------------------------------------------------------------------|
-| endTime                  | Local date. Returns operations until the endTime                        |
-| startTime                | Local date. Returns operations from the startTime onward                |
-| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
-| units                    | System of units: `imperial` or `metric`. The default is `metric`        |
+| Parameter (to filter by) | values                                                                                        |
+|--------------------------|-----------------------------------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                                              |
+| startTime                | Local date. Returns operations from the startTime onward                                      |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`. The default is `gfs` |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`                              |
 
 #### Request examples
 
@@ -387,6 +429,104 @@ will return forecast data for the next seven days by default.
         ....
       ],
       "unit": "mm"
+    },
+    "soilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 28.2
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 27.9
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "soilMoisture 0-1": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.1
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.1
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 1-3": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.2
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.2
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 3-9": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.3
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 9-27": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.4
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.4
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 27-81": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.5
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.5
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "longwaveRadiation": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 563.8
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 642.3
+        },
+        ....
+      ],
+      "unit": "W/m²"
     },
     "dewpoint": {
       "values": [
@@ -563,12 +703,12 @@ Get daily forecasted weather data for lat/lon by leaf user and field. If dates a
 the response will return forecast data for the next seven days by default.
 
 
-| Parameter (to filter by) | values                                                                  |
-|--------------------------|-------------------------------------------------------------------------|
-| endTime                  | Local date. Returns operations until the endTime                        |
-| startTime                | Local date. Returns operations from the startTime onward                |
-| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
-| units                    | System of units: `imperial` or `metric`. The default is `metric`        |
+| Parameter (to filter by) | values                                                                                         |
+|--------------------------|------------------------------------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                                               |
+| startTime                | Local date. Returns operations from the startTime onward                                       |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`. The default is `gfs`  |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`                               |
 
 #### Request examples
 
@@ -641,6 +781,48 @@ the response will return forecast data for the next seven days by default.
         ....
       ],
       "unit": "ºC"
+    },
+    "meanSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 25.3
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 25.1
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "minSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 18.7
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 17.2
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "maxSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 28.9
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 27.9
+        },
+        ....
+      ],
+      "unit": "°C"
     },
     "sunrise": {
       "values": [
@@ -816,12 +998,12 @@ Get hourly forecasted weather data for lat/lon by Leaf User and field. If dates 
 will return forecast data for the next seven days by default.
 
 
-| Parameter (to filter by) | values                                                                  |
-|--------------------------|-------------------------------------------------------------------------|
-| endTime                  | Local date. Returns operations until the endTime                        |
-| startTime                | Local date. Returns operations from the startTime onward                |
-| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome` |
-| units                    | System of units: `imperial` or `metric`. The default is `metric`        |
+| Parameter (to filter by) | values                                                                                         |
+|--------------------------|------------------------------------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                                               |
+| startTime                | Local date. Returns operations from the startTime onward                                       |
+| model                    | Weather model data: `icon`, `gfs`, `ifs`, `jma`, `gem` or `arpegeArome`. The default is `gfs`  |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`                               |
 
 
 #### Request examples
@@ -895,6 +1077,104 @@ will return forecast data for the next seven days by default.
         ....
       ],
       "unit": "mm"
+    },
+    "soilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 28.7
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 27.9
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "soilMoisture 0-1": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.1
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.1
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 1-3": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.2
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.2
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 3-9": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.3
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 9-27": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.4
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.4
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 27-81": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 0.5
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 0.5
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "longwaveRadiation": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 563.8
+        },
+        {
+          "time": "2023-07-21T01:00:00",
+          "value": 642.3
+        },
+        ....
+      ],
+      "unit": "W/m²"
     },
     "dewpoint": {
       "values": [
@@ -1073,12 +1353,12 @@ will return data from the last seven days by default.
 Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 
-| Parameter (to filter by) | values                                                           |
-|--------------------------|------------------------------------------------------------------|
-| endTime                  | Local date. Returns operations until the endTime                 |
-| startTime                | Local date. Returns operations from the startTime onward         |
-| model                    | Historical model data: `era5` or `era5Land`                      |
-| units                    | System of units: `imperial` or `metric`. The default is `metric` |
+| Parameter (to filter by) | values                                                             |
+|--------------------------|--------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                   |
+| startTime                | Local date. Returns operations from the startTime onward           |
+| model                    | Historical model data: `era5` or `era5Land`. The default is `era5` |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`   |
 
 #### Request examples
 
@@ -1151,6 +1431,48 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
         ....
       ],
       "unit": "ºC"
+    },
+    "meanSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 25.3
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 25.1
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "minSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 18.7
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 17.2
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "maxSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-21T00:00:00",
+          "value": 28.9
+        },
+        {
+          "time": "2023-07-22T00:00:00",
+          "value": 27.9
+        },
+        ....
+      ],
+      "unit": "°C"
     },
     "sunrise": {
       "values": [
@@ -1327,12 +1649,12 @@ Get hourly historical weather data by Leaf User and field. If the dates are not 
 will return data from the last seven days by default.
 
 
-| Parameter (to filter by) | values                                                           |
-|--------------------------|------------------------------------------------------------------|
-| endTime                  | Local date. Returns operations until the endTime                 |
-| startTime                | Local date. Returns operations from the startTime onward         |
-| model                    | Historical model data: `era5` or `era5Land`                      |
-| units                    | System of units: `imperial` or `metric`. The default is `metric` |
+| Parameter (to filter by) | values                                                             |
+|--------------------------|--------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                   |
+| startTime                | Local date. Returns operations from the startTime onward           |
+| model                    | Historical model data: `era5` or `era5Land`. The default is `era5` |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`   |
 
 
 #### Request examples
@@ -1406,6 +1728,76 @@ will return data from the last seven days by default.
         ....
       ],
       "unit": "mm"
+    },
+    "soilMoisture 0-7": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.1
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.1
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 7-28": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.2
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.2
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 28-100": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.3
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 100-255": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.4
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.4
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "longwaveRadiation": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 563.8
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 642.3
+        },
+        ....
+      ],
+      "unit": "W/m²"
     },
     "dewpoint": {
       "values": [
@@ -1598,12 +1990,12 @@ will return data from the last seven days by default.
 Please note, historical weather data from less than 5 days ago is unavailable. If you’re wanting historical weather data within the last 5 days, you can use the forecast service to get this information. 
 
 
-| Parameter (to filter by) | values                                                           |
-|--------------------------|------------------------------------------------------------------|
-| endTime                  | Local date. Returns operations until the endTime                 |
-| startTime                | Local date. Returns operations from the startTime onward         |
-| model                    | Historical model data: `era5` or `era5Land`                      |
-| units                    | System of units: `imperial` or `metric`. The default is `metric` |
+| Parameter (to filter by) | values                                                              |
+|--------------------------|---------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                    |
+| startTime                | Local date. Returns operations from the startTime onward            |
+| model                    | Historical model data: `era5` or `era5Land`. The default is `era5`  |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`    |
 
 #### Request examples
 
@@ -1676,6 +2068,48 @@ Please note, historical weather data from less than 5 days ago is unavailable. I
         ....
       ],
       "unit": "ºC"
+    },
+    "meanSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 25.3
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 25.1
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "minSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 18.7
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 17.2
+        },
+        ....
+      ],
+      "unit": "°C"
+    },
+    "maxSoilTemperature": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 28.6
+        },
+        {
+          "time": "2023-07-15T00:00:00",
+          "value": 27.9
+        },
+        ....
+      ],
+      "unit": "°C"
     },
     "sunrise": {
       "values": [
@@ -1852,12 +2286,12 @@ Get hourly historical weather data for lat/lon by Leaf User and field. If the da
 will return data from the last seven days by default.
 
 
-| Parameter (to filter by) | values                                                           |
-|--------------------------|------------------------------------------------------------------|
-| endTime                  | Local date. Returns operations until the endTime                 |
-| startTime                | Local date. Returns operations from the startTime onward         |
-| model                    | Historical model data: `era5` or `era5Land`                      |
-| units                    | System of units: `imperial` or `metric`. The default is `metric` |
+| Parameter (to filter by) | values                                                              |
+|--------------------------|---------------------------------------------------------------------|
+| endTime                  | Local date. Returns operations until the endTime                    |
+| startTime                | Local date. Returns operations from the startTime onward            |
+| model                    | Historical model data: `era5` or `era5Land`. The default is `era5`  |
+| units                    | System of units: `imperial` or `metric`. The default is `metric`    |
 
 
 #### Request examples
@@ -1931,6 +2365,76 @@ will return data from the last seven days by default.
         ....
       ],
       "unit": "mm"
+    },
+    "soilMoisture 0-7": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.1
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.1
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 7-28": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.2
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.2
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 28-100": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.3
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.3
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "soilMoisture 100-255": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 0.4
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 0.4
+        },
+        ....
+      ],
+      "unit": "m³/m³"
+    },
+    "longwaveRadiation": {
+      "values": [
+        {
+          "time": "2023-07-14T00:00:00",
+          "value": 563.8
+        },
+        {
+          "time": "2023-07-14T01:00:00",
+          "value": 642.3
+        },
+        ....
+      ],
+      "unit": "W/m²"
     },
     "dewpoint": {
       "values": [

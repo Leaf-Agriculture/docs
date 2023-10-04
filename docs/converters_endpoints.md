@@ -69,6 +69,7 @@ A `provider` can be set as one of the following:
 
 ```
 Other
+Leaf
 ClimateFieldView
 CNHI
 JohnDeere

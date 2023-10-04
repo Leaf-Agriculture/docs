@@ -58,7 +58,7 @@ To use the widget you will need a Leaf token. Use our [authentication guide][2] 
 ### Angular
 
 :::tip
-[Here](https://codesandbox.io/p/sandbox/angular-file-upload-44mslj?file=/src/app/app.component.ts) you can run a live use case demo! 
+[Here](https://codesandbox.io/p/sandbox/leaf-link-angular-file-upload-dzr965) you can run a live use case demo! 
 It will only be necessary to replace your information in the .html component.
 :::
 
@@ -96,7 +96,7 @@ Check all the properties available on the reference [here][4].
 ### React
 
 :::tip
-[Here](https://codesandbox.io/s/leaf-link-react-d6pk3g?file=/src/App.tsx) you can run a live use case demo!
+[Here](https://codesandbox.io/s/leaf-link-react-file-upload-vvr2tj) you can run a live use case demo!
 It will only be necessary to replace your information in the App.tsx file.
 :::
 

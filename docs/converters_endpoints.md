@@ -425,7 +425,7 @@ The *status* key will evolve accordingly to the following states:
 | PROCESSED | When all the files included in the batch were processed, and at least one file have status SUCCESS |
 | FAILED    | The batch did not generated any leaf files with status SUCCESS                                     |
 
-The messages with FAILED status have the key *statusDetails*. The statusDetails are just informative and should not be used programatically.
+The messages with FAILED status have the key *statusDetails*. The `statusDetails`` is just informative and should not be used programatically.
 
 ```json
 {

@@ -210,7 +210,13 @@ curl -X GET \
   "providers": [
     "sentinel", 
     "planet"
-  ]
+  ],
+  "extent": {
+      "xmin": 0.0,
+      "xmax": 0.0,
+      "ymin": 0.0,
+      "ymax": 0.0
+  }
 }
 ```
 

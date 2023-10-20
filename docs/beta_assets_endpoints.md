@@ -18,6 +18,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [7]: #update-a-machine
 [8]: #get-machine-files
 [9]: #get-all-implements
+[10]: #get-an-implement
+[11]: #get-all-operators
+[12]: #get-an-operator
 
 ## About
 All HTTP methods should be prepended by this service's endpoint:
@@ -32,15 +35,18 @@ See below the REST resources and their endpoints available in this service.
 
 This feature has the following endpoints available:
 
-| Description          | Endpoints                                                                                      |
-|----------------------|------------------------------------------------------------------------------------------------|
-| [Get all machines][3] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines`                   |
-| [Get a machine][5]   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}`       |
-| [Get machine files][8] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}/files` |
-| [Create a machine][4] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/machines`                  |
-| [Update a machine][7] | <span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/machines/{machineId}`     |
-| [Delete a machine][6] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/machines/{machineId}`     |
-| [Get all implements][9]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/implements`                 |
+| Description             | Endpoints                                                                                        |
+|-------------------------|--------------------------------------------------------------------------------------------------|
+| [Get all machines][3]   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines`                     |
+| [Get a machine][5]      | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}`         |
+| [Get machine files][8]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/machines/{machineId}/files`   |
+| [Create a machine][4]   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/machines`                    |
+| [Update a machine][7]   | <span class="badge badge--warning">PATCH</span> `/users/{leafUserId}/machines/{machineId}`       |
+| [Delete a machine][6]   | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/machines/{machineId}`       |
+| [Get all implements][9] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/implements`                   |
+| [Get an implement][10]  | <span class="badge badge--success">GET</span> `/users/{leafUserId}/implements/{implementId}`     |
+| [Get all operators][11] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/operators`                    |
+| [Get an operator][12]   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/operators/{operatorId}`       |
 
 ### Get all machines
 
@@ -620,7 +626,7 @@ values={[
 </Tabs>
 
 
-### Get All Implements
+### Get all implements
 
 &nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/implements`
 
@@ -694,5 +700,233 @@ values={[
   ...
 ]
 ```
+
+### Get an implement
+
+&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/implements/{implementId}`
+
+Get the details of a given implement by its id.
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/implements/{implementId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/implements/{implementId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/implements/{implementId}'
+  ```
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+  {
+    "id": "38d313fc-e4ce-442b-9147-f469b30aedab",
+    "name": "c3po_implement",
+    "provider": "JohnDeere",
+    "providerImplementId": "110237",
+    "providerOrganizationId": "296264",
+    "leafUserId": "mbba54fb-3710-4f7d-9aaf-703107930193",
+    "originType": "PROVIDER_POOLED",
+    "serialNumber": "00000",
+    "model": "StMax150",
+    "make": "JOHN DEERE",
+    "category": "Cotton Harvester Implement"
+  }
+```
+
+
+
+
+
+
+[contact]: mailto:help@withleaf.io
+
+### Get all operators
+
+&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/operators`
+
+Get all the operators information based on your `leafUserId`.
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/operators'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/operators'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/operators'
+  ```
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "aa8c917bc-7e9b-47bc-99b8-4a0df818ab07",
+    "name": "Brian O.",
+    "provider": "JohnDeere",
+    "providerOperatorId": "bbd3a3e8-5ac3-4ab8-4619-d582da4568cc",
+    "providerOrganizationId": "9999",
+    "originType": "PROVIDER_POOLED",
+    "license": null,
+    "updatedTime": "2023-10-10T10:10:10.000Z",
+    "status": "ACTIVE"
+  },
+  ...
+]
+```
+
+
+### Get an operator
+
+&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/operators/{operatorId}`
+
+Get the details of a given operator by its id.
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/operators/{operatorId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+  
+  TOKEN = 'YOUR_TOKEN'
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/operators/{operatorId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/operators/{operatorId}'
+  ```
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+  {
+    "id": "aa8c917bc-7e9b-47bc-99b8-4a0df818ab07",
+    "name": "Brian O.",
+    "provider": "JohnDeere",
+    "providerOperatorId": "bbd3a3e8-5ac3-4ab8-4619-d582da4568cc",
+    "providerOrganizationId": "9999",
+    "originType": "PROVIDER_POOLED",
+    "license": null,
+    "updatedTime": "2023-10-10T10:10:10.000Z",
+    "status": "ACTIVE"
+  }
+```
+
+
+
+
+
 
 [contact]: mailto:help@withleaf.io

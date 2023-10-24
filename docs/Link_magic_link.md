@@ -207,7 +207,7 @@ Make sure you have set up the provider correctly before starting. You can find m
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "expiresIn": 900, "allowedProviders": ["Other"], "settings": { "backgroundColor": "#2980b9", "companyLogo": "logo-url", "headerImage": "header-url", "companyName": "Lorem ipsum" } }'
+      -d '{ "expiresIn": 900, "provider": "ClimateFieldView", "settings": { "backgroundColor": "#2980b9", "companyLogo": "logo-url", "headerImage": "header-url", "companyName": "Lorem ipsum" } }'
       'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/authentication'
   ```
 
@@ -297,7 +297,7 @@ Creates a link for operation files upload.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "expiresIn": 900, "allowedProviders": ["Other"], "settings": { "backgroundColor": "#2980b9", "companyLogo": "logo-url", "headerImage": "header-url", "companyName": "Lorem ipsum" } }'
+      -d '{ "expiresIn": 900, "settings": { "backgroundColor": "#2980b9", "companyLogo": "logo-url", "headerImage": "header-url", "companyName": "Lorem ipsum" } }'
       'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/file-upload'
   ```
 

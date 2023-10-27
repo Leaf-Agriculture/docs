@@ -2147,6 +2147,7 @@ Each boundary has a `status` and `providerStatus`.
   "id": "UUID",
   "status": "ACTIVE",
   "providerStatus": "ACTIVE",
+  "providerBoundaryId": "UUID",
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [

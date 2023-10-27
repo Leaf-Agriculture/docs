@@ -24,6 +24,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [13]: https://docs.withleaf.io/docs/machine_file_conversion_crops_table
 [14]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#summary-response-sample
 [15]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-files-units
+[16]: #get-uncovered-files
+[17]: https://docs.withleaf.io/docs/operations_overview
 
 ## About
 
@@ -35,15 +37,16 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-| Description              | Endpoints                                                           |
-|--------------------------|---------------------------------------------------------------------|
-| [Get all files][2]       | <span class="badge badge--success">GET</span> `/files`              |
-| [Get a file][3]          | <span class="badge badge--success">GET</span> `/files/{id}`         |
-| [Get a file summary][4]  | <span class="badge badge--success">GET</span> `/files/{id}/summary` |
-| [Get a file's images][5] | <span class="badge badge--success">GET</span> `/files/{id}/images`  |
-| [Get a file's units][6]  | <span class="badge badge--success">GET</span> `/files/{id}/units`   |
-| [Get a file status][7]   | <span class="badge badge--success">GET</span> `/files/{id}/status`  |
-| [Merge files][8]         | <span class="badge badge--warning">POST</span> `/files/merge`       |
+| Description               | Endpoints                                                             |
+|---------------------------|-----------------------------------------------------------------------|
+| [Get all files][2]        | <span class="badge badge--success">GET</span> `/files`                |
+| [Get a file][3]           | <span class="badge badge--success">GET</span> `/files/{id}`           |
+| [Get a file summary][4]   | <span class="badge badge--success">GET</span> `/files/{id}/summary`   |
+| [Get a file's images][5]  | <span class="badge badge--success">GET</span> `/files/{id}/images`    |
+| [Get a file's units][6]   | <span class="badge badge--success">GET</span> `/files/{id}/units`     |
+| [Get a file status][7]    | <span class="badge badge--success">GET</span> `/files/{id}/status`    |
+| [Get uncovered files][16] | <span class="badge badge--success">GET</span> `/files/uncoveredFiles` |
+| [Merge files][8]          | <span class="badge badge--warning">POST</span> `/files/merge`         |
 
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
@@ -466,7 +469,7 @@ Get status by file processing step by id.
   const endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/status'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-  axios.put(endpoint, data, { headers })
+  axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -482,7 +485,7 @@ Get status by file processing step by id.
   endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/status'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.put(endpoint, headers=headers)
+  response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
 
@@ -490,7 +493,7 @@ Get status by file processing step by id.
   <TabItem value="sh">
 
   ```shell
-  curl -X PUT \
+  curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/operations/api/files/{id}/status'
   ```
@@ -540,6 +543,81 @@ Get status by file processing step by id.
   }
 }
 ```
+
+### Get uncovered files
+&nbsp<span class="badge badge--success">GET</span> `/files/uncoveredFiles?leafUserId={leafUserId}`
+
+Get a list of files that did not generate [Field Operations][17], as they do not intersect with any field.
+The returned IDs can be consulted in the [Get a file][3] endpoint.
+
+This endpoint requires the `leafUserId` filter.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/files/uncoveredFiles?leafUserId={leafUserId}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/uncoveredFiles?leafUserId={leafUserId}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/uncoveredFiles?leafUserId={leafUserId}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+    "files": [
+        "c3ad6c7b-19b8-4cd7-580a-dfab82043465",
+        "c3ad6c7b-c472-49e9-aab2-7ad222843465",
+        "9aa68735-5a04-42ef-0983-dbdd2bcdfa16"
+    ]
+}
+```
+
+
+
+
 
 
 ### Merge files

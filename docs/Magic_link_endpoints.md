@@ -1,7 +1,7 @@
 ---
 title: Magic Link Endpoints
 description: Leaf Link > Magic Link
-sidebar_label: Endpoints (depreciated)
+sidebar_label: Endpoints
 ---
 
 import Tabs from '@theme/Tabs';
@@ -22,10 +22,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: #get-a-file-upload-magic-link
 [11]: #create-a-file-upload-magic-link
 [12]: #delete-a-file-upload-magic-link
-
-:::tip
-This page will be obsolete in a few days. To consult the magic link endpoints, use https://docs.withleaf.io/docs/Magic_link_endpoints.
-:::
 
 ## About
 

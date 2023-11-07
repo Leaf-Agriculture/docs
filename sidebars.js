@@ -96,14 +96,6 @@ module.exports = {
         },
         {
           type: 'category',
-          label: 'Magic Link',
-          items: [
-            'Magic_link_overview',
-            'Link_magic_link'
-          ]
-        },
-        {
-          type: 'category',
           label: 'Beta',
           items: [
             'beta_features_overview',
@@ -129,6 +121,14 @@ module.exports = {
                 'Link_provider_connection',
                 'Link_file_upload',
                 'Link_endpoints'
+              ]
+            },
+            {
+              type: 'category',
+              label: 'Magic Link',
+              items: [
+                'Magic_link_overview',
+                'Magic_link_endpoints'
               ]
             }
           ]

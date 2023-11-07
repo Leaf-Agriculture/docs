@@ -26,7 +26,7 @@ This service has the following endpoints available:
 
 | Description                        | Endpoints                                                              |
 |------------------------------------|------------------------------------------------------------------------|
-| [Get Integrations Resources][1]    | <span class="badge badge--warning">POST</span> `/resources`            |
+| [Get Integrations Resources][1]    | <span class="badge badge--success">GET</span> `/resources`            |
 
 
 
@@ -133,15 +133,14 @@ Each provider has its own implementation of the FMIS structure which you can che
 
 #### FMIS Structure Table
 
-In this table we have the following FMIS properties available for the Integrations Resources response based on the provider
-that's being processed.
+This table contains the FMIS properties available for the Integrations Resources responses.
 
 | Provider           | Grower                        | Farm                          | Field               |
 |--------------------|-------------------------------|-------------------------------|---------------------|
 | `JohnDeere`        | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
-| `ClimateFieldView` | :negative_squared_cross_mark: | :white_check_mark:            | :white_check_mark:  |
+| `ClimateFieldView` | :heavy_multiplication_x:      | :white_check_mark:            | :white_check_mark:  |
 | `CNHI`             | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
 | `Trimble`          | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
-| `Stara`            | :negative_squared_cross_mark: | :negative_squared_cross_mark: | :white_check_mark:  |
+| `Stara`            | :heavy_multiplication_x:      | :heavy_multiplication_x:      | :white_check_mark:  |
 | `Raven`            | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
 | `AgVance`          | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |

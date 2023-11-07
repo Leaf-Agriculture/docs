@@ -33,6 +33,7 @@ This service has the following endpoints available:
 | [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}` |
 | [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                         |
 | [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                                  |
+| [Sync fields manually](#sync-fields-manually)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/sync`                                       |
 | [Delete a field](#delete-a-field)                                                                 | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                      |
 | [Get all boundaries from field](#get-all-boundaries-from-field)                                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`                 |
 | [Get a boundary from field](#get-a-boundary-from-field)                                           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`    |
@@ -124,10 +125,6 @@ These last two parameters are used exclusively for paging through results.
   {
     "id": "1a952614-3673-4d1e-b677-1f7224339ec6",
     "leafUserId": "58800d61-91ac-4922-8e2a-f0216b9f052a",
-    "area": {
-      "value": 785229.21674535141,
-      "unit": "ha"
-    },
     "boundaries": [
       "279b52d5-ec6d-4459-a06a-4f47ffab0659"
     ],
@@ -142,16 +139,11 @@ These last two parameters are used exclusively for paging through results.
     "updatedTime": "2021-11-03T01:34:15.154051Z",
     "farmId": 3746117,
     "mergedFieldId": "f97c5bbc-2dbf-4400-8d59-39eba37f8847",
-    "sources": [],
-    "legacy": true
+    "sources": []
   },
   {
     "id": "68c354f2-eb20-4512-816f-2edea4b6fca4",
     "leafUserId": "9ffc7b1c-617b-46cb-a8ef-927b26285b7f",
-    "area": {
-      "value": 2.9995511484116317,
-      "unit": "ha"
-    },
     "boundaries": [
       "39d171d7-9ec3-4201-81bf-9d57473b2a67"
     ],
@@ -459,7 +451,7 @@ values={[
   curl -X PATCH \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "name": "updatedName", "farmId": 1, "geometry": { "type: "MultiPolygon", "coordinates": [...] } }'
-      'https://api.withleaf.io/services/fields/api/fields/users/{leafUserId}/{id}'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}'
   ```
 
   </TabItem>
@@ -948,105 +940,95 @@ specified by the given id's. Such Field id's goes in a list, in the request body
 
 
 
-<!-- ### POST /users/{id}/fields/same` --
-<!-- response needs to be a json, not documenting for now -->
-<!-- Gets a boolean value answering if the Fields specified by a list of Field
-id's sent in the request body have the same values for their vertices, in
-exactly the same order. -->
 
 
-<!-- ### POST /users/{id}/fields/disjoint` --
-<!-- response needs to be a json, not documenting for now -->
-<!-- Gets a boolean value answering if the fields specified by a list of field
-id's in the request body are disjoint.
 
-#### Response
-true or false
+
+
+
+
+
+
+### Sync fields manually
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/sync`
+
+:::tip 
+This endpoint should be used to fetch data when one of the configurations is enabled: [customDataSync](/docs/configurations_overview#customdatasync) or [fieldsAutoSync](/docs/configurations_overview#fieldsautosync).
+:::
+
+Schedules a synchronization to fetch Field Boundaries data from the providers.
+
+
+#### Request body
+If the `customSync` configuration is enabled, only the fields sent in the body will be synchronized. For the `fieldsAutoSync` leave the body empty will sync all the fields available in the provider.
+
+```json
+{
+  "fields": ["UUID"]
+}
+```
+
+#### Request examples
 
 <Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
 }>
-  <TabItem value="js">
+<TabItem value="js">
 
   ```js
-  var axios = require('axios');
-  var data = JSON.stringify(["id1","id2"]);
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
 
-  var config = {
-    method: 'post',
-    url: 'https://api.withleaf.io/services/fields/api/users/{id}/fields/disjoint',
-    headers: {
-      'Authorization': 'Bearer YOUR_LEAF_TOKEN',
-      'Content-Type': 'application/json'
-    },
-    data : data
-  };
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/sync'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    fields: ["1a952614-3673-4d1e-b677-1f7224339ec6"]
+  }
+
+  axios.patch(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
   ```
 
   </TabItem>
   <TabItem value="py">
 
-
   ```py
   import requests
 
-  url = "https://api.withleaf.io/services/fields/api/users/{id}/fields/disjoint"
+  TOKEN = 'YOUR_TOKEN'
 
-  payload = "[\"id1\", \"id2\"]\n"
-  headers = {
-    'Authorization': 'Bearer YOUR_LEAF_TOKEN',
-    'Content-Type': 'application/json'
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/sync'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'fields': ['1a952614-3673-4d1e-b677-1f7224339ec6']
   }
 
-  response = requests.request("POST", url, headers=headers, data = payload)
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
   ```
 
   </TabItem>
   <TabItem value="sh">
 
   ```shell
-  curl --location --request \
-  POST 'https://api.withleaf.io/services/fields/api/users/{id}/fields/disjoint' \
-  --header 'Authorization: Bearer YOUR_LEAF_TOKEN' \
-  --header 'Content-Type: application/json' \
-  --data-raw '["id1", "id2"]'
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "fields": ["1a952614-3673-4d1e-b677-1f7224339ec6"] }'
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/sync'
   ```
 
   </TabItem>
-</Tabs> -->
+</Tabs>
 
-
-
-<!-- ### POST /users/{id}/fields/integration
-Uploads fields to providers. Currently we only support Climate FieldView.
-New integrations will come soon.
-
-Request body format:
-
-```json
-{
-  "fields": ["UUID"],
-  "providers": ["ClimateFieldView"]
-}
-```
-
-#### Response
-A JSON in the followin format.
-
-```json
-{
-  "UUID": {
-    "ClimateFieldView": {
-      "id": "0cb726c8-aff0-415a-9de3-a04b627008dd"
-    },
-  },
-}
-``` -->
 
 ### Delete a field
 
@@ -2060,25 +2042,6 @@ you can query for - and you can still query by the individual fields too.
 
 **`geometry` and `area` are deprecated keys** that contains the geometry of the active boundary and its area, respectively.
 
-Below are the return possibilities when passing different geometries:
-
-|         Response          |
-|:-------------------------:|
-|           VALID           |
-|      REPEATED_POINT       |
-|    HOLE_OUTSIDE_SHELL     |
-|       NESTED_HOLES        |
-|   DISCONNECTED_INTERIOR   |
-|     SELF_INTERSECTION     |
-|  RING_SELF_INTERSECTION   |
-|       NESTED_SHELLS       |
-|      DUPLICATE_RINGS      |
-|      TOO_FEW_POINTS       |
-|    INVALID_COORDINATE     |
-|      RING_NOT_CLOSED      |
-| NOT_ALLOWED_GEOMETRY_TYPE |
-
-
 ```json
 {
   "id": "UUID",
@@ -2092,27 +2055,42 @@ Below are the return possibilities when passing different geometries:
   "mergedFieldId": ["UUID"],
   "files": ["UUID"],
   "boundaries": ["UUID"],
-  "geometry": {
-    "type": "MultiPolygon",
-    "coordinates": [
-      [
-        [
-          [-93.48821327980518, 41.77137549568163],
-          [-93.48817333680519, 41.77143534378164],
-          [-93.48821327390516, 41.76068857977987],
-          [-93.48821327980518, 41.77137549568163]
-        ]
-      ]
-    ]
-  },
-  "area": {
-    "value": float,
-    "unit": "ha"
-  },
   "createdTime": "ISO date-time",
   "updatedTime": "ISO date-time",
+  "status": "PROCESSED"
 }
 ```
+
+#### Preview mode
+If the [`customDataSync`](/docs/configurations_overview#customdatasync) configuration is enabled, the Field boundaries will be fetched from the providers in the `PREVIEW` mode. A Field in `PREVIEW` mode has almost all properties available except the boundary.
+
+```json
+{
+  "id": "UUID",
+  "providerName": "string",
+  "providerFieldName": "string",
+  "providerFieldId": "string",
+  "providerBoundaryId": "UUID",
+  "type": "ORIGINAL",
+  "leafUserId": "UUID",
+  "organizationId": "string",
+  "mergedFieldId": ["UUID"],
+  "files": ["UUID"],
+  "boundaries": [],
+  "createdTime": "ISO date-time",
+  "updatedTime": "ISO date-time",
+  "status": "PREVIEW"
+}
+```
+
+Those Fields will still be listed in the field endpoints, allowing the custom synchronization of the resources available in the providers. To fetch a Field completely, it is necessary to remove it from the `PREVIEW` mode, sending it in the [manual sync endpoint](#sync-fields-manually).
+
+After the change request, the field(s) will be fetched completely in the next synchronization window and it will be available as `PROCESSED`.
+
+
+**Field operations**
+
+In `PREVIEW` mode, the operation files associated with the fields on the provider side will also not be fetched and will only be available after the field sync request. Since not all providers support this relationship, it will only be reflected in John Deere and Climate FieldView files. For other providers, all files will be fetched normally, regardless of the configuration.
 
 | Description                                               | Endpoints                                                                     |
 |-----------------------------------------------------------|-------------------------------------------------------------------------------|
@@ -2121,6 +2099,7 @@ Below are the return possibilities when passing different geometries:
 | [Create a field](#create-a-field)                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`           |
 | [Get fields by geometry](#get-fields-by-geometry)         | <span class="badge badge--warning">POST</span> `/fields/query/intersects`     |
 | [Get intersection of fields](#get-intersection-of-fields) | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect` |
+| [Sync fields manually](#sync-fields-manually)             | <span class="badge badge--warning">POST</span> `/users/{id}/fields/sync`       |
 | [Delete a field](#delete-a-field)                         | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`     |
 
 ### Boundary Resource
@@ -2141,6 +2120,8 @@ Each boundary has a `status` and `providerStatus`.
   - `INACTIVE` - The boundary is inactive in the provider.
 
 `providerStatus`, just like the geometry, is a static attribute. In case this attribute is changed at the provider, the boundary's `status` is updated and a new boundary is created with the updated `providerStatus` in order to maintain history.
+
+The `geometry` may be invalidly registered with the provider, more information in [Troubleshooting](#troubleshooting).
 
 ```json
 {
@@ -2274,11 +2255,26 @@ Each boundary has a `status` and `providerStatus`.
 
 ## Troubleshooting
 
-Currently, we get the field boundary data as available from the provider, so in some cases there may be fields without 
-boundaries or with invalid boundaries.
+Currently, Leaf gets the field boundary data as available from the provider, so in some cases there may be fields without 
+boundaries or with invalid boundaries, identified with one of the values below:
 
-Below is an example of a **self-intersect** geometry that would be filtered by Leaf since we do not interpret
-as a valid geometry.
+|     Validity values       |
+|:-------------------------:|
+|           VALID           |
+|      REPEATED_POINT       |
+|    HOLE_OUTSIDE_SHELL     |
+|       NESTED_HOLES        |
+|   DISCONNECTED_INTERIOR   |
+|     SELF_INTERSECTION     |
+|  RING_SELF_INTERSECTION   |
+|       NESTED_SHELLS       |
+|      DUPLICATE_RINGS      |
+|      TOO_FEW_POINTS       |
+|    INVALID_COORDINATE     |
+|      RING_NOT_CLOSED      |
+| NOT_ALLOWED_GEOMETRY_TYPE |
+
+Here is an example of a geometry registered as invalid due to a **SELF_INTERSECTION**.
 
 ```json
 {
@@ -2303,6 +2299,3 @@ as a valid geometry.
 This is what this invalid type of geometry looks like from the provider side:
 
 <img alt="Field example" src={useBaseUrl('img/invalid_geometry.png')} />
-
-To avoid these errors, with the exception of the **VALID** answer, do not submit the types of geometries listed in the
-[table](https://docs.withleaf.io/docs/field_boundary_management_endpoints#field-resource).

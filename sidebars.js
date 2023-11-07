@@ -98,7 +98,7 @@ module.exports = {
           type: 'category',
           label: 'Magic Link',
           items: [
-            'Link_overview',
+            'Magic_link_overview',
             'Link_magic_link'
           ]
         },

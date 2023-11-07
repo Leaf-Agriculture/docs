@@ -33,7 +33,7 @@ https://api.withleaf.io/services/widgets/api
 
 ## Magic Links
 
-### Provider connection
+### Provider
 
 This is a link to authenticate to multiple providers.
 

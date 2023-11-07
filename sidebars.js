@@ -96,6 +96,14 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Magic Link',
+          items: [
+            'Link_overview',
+            'Link_magic_link'
+          ]
+        },
+        {
+          type: 'category',
           label: 'Beta',
           items: [
             'beta_features_overview',

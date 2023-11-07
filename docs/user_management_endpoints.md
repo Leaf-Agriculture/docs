@@ -27,7 +27,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [14]: /docs/credentials_raven_slingshot
 [15]: /docs/credentials_sentera
 [16]: /docs/credentials_agvance
-[17]: #get-integrations-resources
+[17]: /docs/integrations_endpoints
 
 
 ## About
@@ -75,8 +75,6 @@ The following endpoints are available:
 | [Create a Leaf User][3]          | <span class="badge badge--warning">POST</span> `/users`          |
 | [Update a Leaf User][4]          | <span class="badge badge--warning">PUT</span> `/users`           |
 | [Delete a Leaf User][5]          | <span class="badge badge--danger">DELETE</span> `/users/{id}`    |
-| [Get Integrations Resources][17] | <span class="badge badge--warning">POST</span> `/resources`      |
-
 ## User Endpoints
 
 
@@ -514,111 +512,6 @@ Deletes an existing Leaf User by `id`.
   </TabItem>
 </Tabs>
 
-### Get Integrations Resources
-
-&nbsp<span class="badge badge--success">GET</span> `/resources`
-
-Gets a paged list of Integrations Resources. It is possible to filter the results by passing
-some query parameters.
-
-- `provider`, only matches fields from this provider (string).
-- `leafUserId`, only matches fields from this user (string).
-- `page`, an integer specifying the page being fetched.
-- `size`, an integer specifying the size of the page (defaults to 20).
-
-These last two parameters are used exclusively for paging through results.
-
-#### Request examples
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint ='https://api.withleaf.io/services/integrations/api/resources'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/integrations/api/resources'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/integrations/api/resources'
-  ```
-
-  </TabItem>
-</Tabs>
-
-#### Response
-
-```json
-[
-  {
-      "provider": "JohnDeere",
-      "leafUserId": "UUID",
-      "growers": 12,
-      "farms": 12,
-      "fields": 100
-  },
-  {
-      "provider": "ClimateFieldView",
-      "leafUserId": "UUID",
-      "farms": 12,
-      "fields": 100
-  },
-  ....
-]
-```
-
-:::tip FMIS Structure Warning
-Each provider has its own implementation of the FMIS structure which you can check on the table below.
-:::
-
-#### FMIS Structure Table
-
-This table contains the FMIS properties available for the Integrations Resources responses.
-
-| Provider           | Grower                        | Farm                          | Field               |
-|--------------------|-------------------------------|-------------------------------|---------------------|
-| `JohnDeere`        | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
-| `ClimateFieldView` | :heavy_multiplication_x:      | :white_check_mark:            | :white_check_mark:  |
-| `CNHI`             | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
-| `Trimble`          | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
-| `Stara`            | :heavy_multiplication_x:      | :heavy_multiplication_x:      | :white_check_mark:  |
-| `Raven`            | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
-| `AgVance`          | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
-
-
 ## Providers credentials endpoints
 
 - [John Deere][7]
@@ -632,6 +525,7 @@ This table contains the FMIS properties available for the Integrations Resources
 - [Sentera][15]
 - [AgVance][16]
 
+After connecting with a provider, a summary of the available resources can be accessed using the [Integration resource endpoint][17].
 
 :::tip
 Please don't hesitate to [contact][contact] us at help@withleaf.io to schedule a demo, ask a question, request sample data, or suggest a feature!

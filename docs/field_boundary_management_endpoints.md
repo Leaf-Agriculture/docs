@@ -992,7 +992,7 @@ values={[
     fields: ["1a952614-3673-4d1e-b677-1f7224339ec6"]
   }
 
-  axios.patch(endpoint, { headers, data })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```

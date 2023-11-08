@@ -13,7 +13,7 @@ The Magic Link is the easiest way to connect your customer data with Leaf API. I
 ## Authenticate with Magic Link
 
 <p align="center">
-    <img alt="Customization" src={useBaseUrl('img/magic_link_flow.png')} />
+    <img alt="Customization" src={useBaseUrl('img/fluxo_authentication.png')} />
 </p>
 
 ### Provider
@@ -27,7 +27,7 @@ The magic link authentication is a feature to authenticate with only one provide
 ## Upload file with Magic Link
 
 <p align="center">
-    <img alt="Customization" src={useBaseUrl('img/file_upload_flow.jpg')} />
+    <img alt="Customization" src={useBaseUrl('img/fluxo_file_upload.png')} />
 </p>
 
 ### File-upload

@@ -2062,7 +2062,7 @@ you can query for - and you can still query by the individual fields too.
 ```
 
 #### Preview mode
-If the [`customDataSync`](/docs/configurations_overview#customdatasync) configuration is enabled, the Field boundaries will be fetched from the providers in the `PREVIEW` mode. A Field in `PREVIEW` mode has almost all properties available except the boundary.
+If the [`customDataSync`](/docs/configurations_overview#customdatasync) configuration is enabled, the field will be fetched from the providers in the `PREVIEW` mode. A Field in `PREVIEW` mode has almost all properties except the geometry so that no boundaries will be available.
 
 ```json
 {

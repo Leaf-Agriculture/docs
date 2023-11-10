@@ -56,10 +56,10 @@ Get the list of machines that are related to a given LeafUserId. Some fields can
 
 | Parameter (to filter by) | Values                                                                                         |
 |--------------------------|------------------------------------------------------------------------------------------------|
-| `name`                   | string                                                                                         |
-| `provider`               | string (JohnDeere, CaseIH, Stara, etc)                                                         |
-| `providerOrganizationId` | string                                                                                         |
-| `serialNumber`           | string                                                                                         |
+| `name`                   | machine name                                                                                   |
+| `provider`               | `JohnDeere`, `Stara` and `CNHI`                                                                |
+| `providerOrganizationId` | provider side organization id                                                                  |
+| `serialNumber`           | machine serial number                                                                          |
 | `originType`             | specify the origin of the machine, must be either USER_CREATED, FILE_POOLED or PROVIDER_POOLED |
 | `createdTime`            | must match exactly the time of the record creation, ISO 8601 without timezone                  |
 | `beforeCreatedTime`      | filters for records created before the datetime, ISO 8601 without timezone                     |
@@ -73,6 +73,10 @@ They are:
 - `size`, an integer specifying the size of the page (max is 100)
 - `sort`, the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc
   - Valid values for sorting are: id, leafUserId, name, provider, providerOrganizationId, providerMachineId, serialNumber, vin, model, make, category and modelYear
+
+:::info the default value for page size is 20
+If the parameters page and size are not set, the endpoint will return 20 results.
+:::
 
 #### Request examples
 
@@ -630,7 +634,30 @@ values={[
 
 &nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/implements`
 
-Get all the implements information based on your `leafUserId`.
+Get all the implements information based on your `leafUserId`. Currently, John Deere and Trimble implements are listed.
+
+
+| Parameter (to filter by) | Values                                                        |
+|--------------------------|---------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                     |
+| `provider`               | `JohnDeere` or `Trimble`                                      |
+| `providerImplementId`    | provider side implement id                                    |
+| `providerOrganizationId` | provider side organization id                                 |
+| `createdTime`            | ISO 8601 date. Returns operations from the createdTime onward |
+| `updatedTime`            | ISO 8601 date. Returns operations from the updatedTime onward |
+| `name`                   | implement name                                                |
+
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (max is 100)
+- `sort`, the sorting order of the results; can be multi-value, where the first value to be passed will have preference in ordering over the next ones; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc
+  - Valid values for sorting are: id, leafUserId, name, provider, providerOrganizationId, providerImplementId, serialNumber, model, make, category.
+
+:::info the default value for page size is 20
+If the parameters page and size are not set, the endpoint will return 20 results.
+:::
 
 #### Request examples
 
@@ -784,7 +811,24 @@ values={[
 
 &nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/operators`
 
-Get all the operators information based on your `leafUserId`.
+Get all the operators information based on your `leafUserId`. Currently, John Deere operators are listed.
+
+[//]: # ()
+[//]: # (| Parameter &#40;to filter by&#41; | Values                                                                                         |)
+
+[//]: # (|--------------------------|------------------------------------------------------------------------------------------------|)
+
+[//]: # (| `provider`               | `JohnDeere`                                                                |)
+
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (max is 100)
+
+:::info the default value for page size is 20
+If the parameters page and size are not set, the endpoint will return 20 results.
+:::
 
 #### Request examples
 

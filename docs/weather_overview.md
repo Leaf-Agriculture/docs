@@ -27,6 +27,7 @@ daily or hourly.
 - Rain
 - Relative Humidity (2 m)
 - Short Wave Radiation
+- Long Wave Radiation
 - Snowfall
 - Sunrise
 - Sunset
@@ -66,6 +67,7 @@ be fetched daily or hourly. Please note, historical weather data from less than 
 - Rain
 - Relative Humidity (2 m)
 - Short Wave Radiation
+- Long Wave Radiation
 - Snowfall
 - Sunrise
 - Sunset

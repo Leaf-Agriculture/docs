@@ -31,7 +31,7 @@ All HTTP methods should be prepended by this service's endpoint:
 https://api.withleaf.io/services/widgets/api
 ```
 
-## Magic Links
+## Magic Link
 
 ### Provider
 
@@ -224,8 +224,12 @@ Get a link for authentication across multiple providers.
 
 Creates a link for authentication across multiple providers.
 
-- `allowedProviders`: you will need to set the providers that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble` and `other`. The default is `other` and will allow all these providers.
-- `expiresIn`: the int value set here can be from `900` to `31536000`, with the value in seconds referring to one year. The default is `900`.
+- `allowedProviders`: you will need to set the providers that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble` and `All`. The default is `All` and will allow all these providers.
+- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`.
+
+:::info
+The `allowedProviders` and `expiresIn` parameters are optional. If not passed, they will be filled with `All` and 900, respectively.
+:::
 
 ##### Request body
 
@@ -573,7 +577,11 @@ Get a link for authentication from a single provider.
 Creates a link for authentication from a single provider.
 
 - `provider`: you will only need to define a single provider that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`.
-- `expiresIn`: the int value set here can be from `900` to `31536000`, with the value in seconds referring to one year. The default is `900`.
+- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`.
+
+:::info
+The `expiresIn` parameter is optional. If not passed, it will be filled with 900.
+:::
 
 ##### Request body
 
@@ -924,7 +932,11 @@ Get a file upload link.
 
 Create a file upload link.
 
-- `expiresIn`: the int value set here can be from `900` to `31536000`, with the value in seconds referring to one year. The default is `900`.
+- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`.
+
+:::info
+The `expiresIn` parameter is optional. If not passed, it will be filled with 900.
+:::
 
 ##### Request body
 
@@ -951,10 +963,7 @@ Create a file upload link.
   const TOKEN = 'YOUR_TOKEN'
 
   const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/file-upload'
-  const headers = { 
-    'Authorization': `Bearer ${TOKEN}`,
-    'Content-Type': 'multipart/form-data'
-  }
+  const headers = { 'Authorization': `Bearer ${TOKEN}`}
   
   const data = {
     "expiresIn": int,
@@ -968,10 +977,7 @@ Create a file upload link.
     }
   }
   
-  const form = new FormData()
-  form.append('file', 'file.zip')
-  
-  axios.post(endpoint, form, { headers, data })
+  axios.post(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -987,7 +993,6 @@ Create a file upload link.
   endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/file-upload'
   headers = {'Authorization': f'Bearer {TOKEN}'}
   
-  files = {'file': open('file.zip', 'rb')}
   data = {
     "expiresIn": int,
     "settings": {
@@ -1000,7 +1005,7 @@ Create a file upload link.
     }
   }
   
-  response = requests.post(endpoint, headers=headers, json=data, files=files)
+  response = requests.post(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -1010,7 +1015,6 @@ Create a file upload link.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -F 'file=file.zip' \
       -d '{ "expiresIn": int, "settings": { "backgroundColor": "codeColor", "headerImage": "URL", "companyLogo": "URL", "companyName": "companyName", "showLeafUserName": "boolean", "disconnectEnabled": "boolean" } }'
       'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/file-upload'
   ```
@@ -1086,6 +1090,384 @@ Delete a file upload link.
   </TabItem>
 </Tabs>
 
+## Magic Link with Leaf User Creation
+
+The creation of these magic links includes a leaf user created by Leaf itself, with the `externalId` payload being a mandatory variable so that our customers can identify these leaf users.
+
+** Endpoints **
+
+| Description                              | Endpoints                                                                   |
+|------------------------------------------|-----------------------------------------------------------------------------|
+| [Create a Provider Magic Link][3]        | <span class="badge badge--warning">POST</span> `/magic-link/provider`       |
+| [Create An Authentication Magic Link][3] | <span class="badge badge--warning">POST</span> `/magic-link/authentication` |
+| [Create a File Upload Magic Link][3]     | <span class="badge badge--warning">POST</span> `/magic-link/file-upload`    |
+
+### Create a Provider Magic Link
+
+&nbsp<span class="badge badge--warning">POST</span> `/magic-link/provider`
+
+Creates a link for authentication across multiple providers without leaf user.
+
+- `allowedProviders`: you will need to set the providers that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble` and `All`. The default is `All` and will allow all these providers
+- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`
+- `externalId`: is a variable to assign a controllable value on the client side
+- `name`: it will be the name of the leaf user that we will create
+- `email`: it will be the email of the leaf user that we will create
+
+:::info
+The `allowedProviders` and `expiresIn` parameters are optional. If not passed, they will be filled with `All` and 900, respectively. The `name` and `email` parameters are also optional, they will fill in the leaf user information that we will create, when they are not passed, we will fill in the name and email with the `externalId` itself.
+:::
+
+##### Request body
+
+``` json
+{
+  "name": "user_name",
+  "email": "user_email",
+  "externalId": "external_id",
+  "expiresIn": 900,
+  "allowedProviders": [
+    "provider_name"
+  ]
+}
+```
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/provider'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "name": "user_name",
+    "email": "user_email",
+    "externalId": "external_id",
+    "expiresIn": int,
+    "allowedProviders": ["providerName"],
+    "settings": {
+      "backgroundColor": "codeColor",
+      "headerImage": "URL",
+      "companyLogo": "URL",
+      "companyName": "companyName",
+      "showLeafUserName": "boolean",
+      "disconnectEnabled": "boolean"
+    }
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/provider'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+    
+  data = {
+    "name": "user_name",
+    "email": "user_email",
+    "externalId": "external_id",
+    "expiresIn": int,
+    "allowedProviders": ["providerName"],
+    "settings": {
+      "backgroundColor": "codeColor",
+      "headerImage": "URL",
+      "companyLogo": "URL",
+      "companyName": "companyName",
+      "showLeafUserName": "boolean",
+      "disconnectEnabled": "boolean"
+    }
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "user_name", "email": "user_email", "externalId": "external_id", "expiresIn": int, "allowedProviders": ["providerName"], "settings": { "backgroundColor": "codeColor", "headerImage": "URL", "companyLogo": "URL", "companyName": "companyName", "showLeafUserName": "boolean", "disconnectEnabled": "boolean" } }'
+      'https://api.withleaf.io/services/widgets/api/magic-link/provider'
+  ```
+
+  </TabItem>
+</Tabs>
+
+##### Response
+
+``` json
+{
+  "id": "magicLinkId",
+  "leafUserId": "UUID",
+  "link": "https://magic-link.withleaf.io/{magicLinkId}",
+  "expiresAt": "2010-10-10T10:10:10.000000000Z"
+}
+```
+
+### Create An Authentication Magic Link
+
+&nbsp<span class="badge badge--warning">POST</span> `/magic-link/authentication`
+
+Creates a link for authentication from a single provider without leaf user.
+
+- `provider`: you will need to set the provider that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`
+- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`
+- `externalId`: is a variable to assign a controllable value on the client side
+- `name`: it will be the name of the leaf user that we will create
+- `email`: it will be the email of the leaf user that we will create
+
+:::info
+The `expiresIn` parameter is optional. If not passed, it will be filled with 900. The `name` and `email` parameters are also optional, they will fill in the leaf user information that we will create, when they are not passed, we will fill in the name and email with the `externalId` itself.
+:::
+
+##### Request body
+
+``` json
+{
+  "name": "user_name",
+  "email": "user_email",
+  "externalId": "external_id",
+  "expiresIn": 900,
+  "provider": "provider_name"
+}
+```
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/authentication'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "name": "user_name",
+    "email": "user_email",
+    "externalId": "external_id",
+    "expiresIn": int,
+    "provider": "provider_name",
+    "settings": {
+      "backgroundColor": "codeColor",
+      "headerImage": "URL",
+      "companyLogo": "URL",
+      "companyName": "companyName",
+      "showLeafUserName": "boolean",
+      "disconnectEnabled": "boolean"
+    }
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/authentication'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+    
+  data = {
+    "name": "user_name",
+    "email": "user_email",
+    "externalId": "external_id",
+    "expiresIn": int,
+    "provider": "provider_name",
+    "settings": {
+      "backgroundColor": "codeColor",
+      "headerImage": "URL",
+      "companyLogo": "URL",
+      "companyName": "companyName",
+      "showLeafUserName": "boolean",
+      "disconnectEnabled": "boolean"
+    }
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "user_name", "email": "user_email", "externalId": "external_id", "expiresIn": int, "provider": "provider_name", "settings": { "backgroundColor": "codeColor", "headerImage": "URL", "companyLogo": "URL", "companyName": "companyName", "showLeafUserName": "boolean", "disconnectEnabled": "boolean" } }'
+      'https://api.withleaf.io/services/widgets/api/magic-link/authentication'
+  ```
+
+  </TabItem>
+</Tabs>
+
+##### Response
+
+``` json
+{
+  "id": "magicLinkId",
+  "leafUserId": "UUID",
+  "link": "https://magic-link.withleaf.io/{magicLinkId}",
+  "expiresAt": "2010-10-10T10:10:10.000000000Z"
+}
+```
+
+### Create a File Upload Magic Link
+
+&nbsp<span class="badge badge--warning">POST</span> `/magic-link/file-upload`
+
+Create a file upload link without leaf user.
+
+- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`
+- `externalId`: is a variable to assign a controllable value on the client side
+- `name`: it will be the name of the leaf user that we will create
+- `email`: it will be the email of the leaf user that we will create
+
+:::info
+The `expiresIn` parameter is optional. If not passed, it will be filled with 900. The `name` and `email` parameters are also optional, they will fill in the leaf user information that we will create, when they are not passed, we will fill in the name and email with the `externalId` itself.
+:::
+
+##### Request body
+
+``` json
+{
+  "name": "user_name",
+  "email": "user_email",
+  "externalId": "external_id",
+  "expiresIn": 900
+}
+```
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/file-upload'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "name": "user_name",
+    "email": "user_email",
+    "externalId": "external_id",
+    "expiresIn": int,
+    "settings": {
+      "backgroundColor": "codeColor",
+      "headerImage": "URL",
+      "companyLogo": "URL",
+      "companyName": "companyName",
+      "showLeafUserName": "boolean",
+      "disconnectEnabled": "boolean"
+    }
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/file-upload'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+    
+  data = {
+    "name": "user_name",
+    "email": "user_email",
+    "externalId": "external_id",
+    "expiresIn": int,
+    "settings": {
+      "backgroundColor": "codeColor",
+      "headerImage": "URL",
+      "companyLogo": "URL",
+      "companyName": "companyName",
+      "showLeafUserName": "boolean",
+      "disconnectEnabled": "boolean"
+    }
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "name": "user_name", "email": "user_email", "externalId": "external_id", "expiresIn": int, "settings": { "backgroundColor": "codeColor", "headerImage": "URL", "companyLogo": "URL", "companyName": "companyName", "showLeafUserName": "boolean", "disconnectEnabled": "boolean" } }'
+      'https://api.withleaf.io/services/widgets/api/magic-link/file-upload'
+  ```
+
+  </TabItem>
+</Tabs>
+
+##### Response
+
+``` json
+{
+  "id": "magicLinkId",
+  "leafUserId": "UUID",
+  "link": "https://magic-link.withleaf.io/{magicLinkId}",
+  "expiresAt": "2010-10-10T10:10:10.000000000Z"
+}
+```
 
 ## Link customization
 

@@ -66,7 +66,7 @@ The default value is `false`.
 }
 ```
 #### unitMeasurement
-This config will set the summary units related with machine files and fields operations. The values can be: `METRIC`, `IMPERIAL` or `DEFAULT`. The `DEFAULT` value does not standardize the units, presenting some variables in the imperial system and others in metric.
+This config determines the units for machine files and field operations. Possible values are `METRIC`, `IMPERIAL`, or `DEFAULT`. The `DEFAULT` option does not standardize units, allowing for a mix of imperial and metric variables.
 
 #### generateProviderImages
 If set to `true`, Leaf will generate property images for [files][1] fetched from providers. Uploaded files are not affected by this change. The default value is `false`.  

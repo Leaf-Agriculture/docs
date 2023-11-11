@@ -8,8 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-[1]: #get-john-deere-connected-organizations
-[2]: #get-trimble-connected-organizations
+[1]: #get-provider-organizations
 
 ## About
 
@@ -25,22 +24,27 @@ See below the REST resources and their endpoints available in this service.
 
 **Endpoints**
 
-| Description                                 | Endpoints                                                                                   |
-|---------------------------------------------|---------------------------------------------------------------------------------------------|
-| [Get John Deere Connected Organizations][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/JohnDeere` |
-| [Get Trimble Connected Organizations][2]    | <span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/Trimble`   |
+| Description                     | Endpoints                                                                                         |
+|---------------------------------|---------------------------------------------------------------------------------------------------|
+| [Get Provider Organizations][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/{provider}` |
 
 ## Organizations List
 
-### Get John Deere Connected Organizations
+### Get Provider Organizations
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/JohnDeere`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/{provider}`
 
 <p align='justify'>
 
-Get John Deere organizations connected by Leaf User.
+Get provider connected and disconnected organizations from Leaf User.
 
 </p>
+
+- `provider`: can be `JohnDeere` or `Trimble`.
+
+:::info
+At Trimble it is not possible to differentiate which organizations are connected or not.
+:::
 
 #### Request examples
 
@@ -58,7 +62,7 @@ Get John Deere organizations connected by Leaf User.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/JohnDeere'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/{provider}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -74,7 +78,7 @@ Get John Deere organizations connected by Leaf User.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/JohnDeere'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/{provider}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -87,7 +91,7 @@ Get John Deere organizations connected by Leaf User.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/JohnDeere'
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/{provider}'
   ```
 
   </TabItem>
@@ -113,81 +117,4 @@ Get John Deere organizations connected by Leaf User.
   ]
 }
 ```
-
-
-### Get Trimble Connected Organizations
-
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/Trimble`
-
-<p align='justify'>
-
-Get Trimble organizations connected by Leaf User.
-
-</p>
-
-#### Request examples
-
-<Tabs
-  defaultValue="sh"
-  values={[
-    { label: 'cURL', value: 'sh', },
-    { label: 'Python', value: 'py', },
-    { label: 'JavaScript', value: 'js', },
-  ]
-}>
-  <TabItem value="js">
-
-  ```js
-  const axios = require('axios')
-  const TOKEN = 'YOUR_TOKEN'
-
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/Trimble'
-  const headers = { 'Authorization': `Bearer ${TOKEN}` }
-
-  axios.get(endpoint, { headers })
-      .then(res => console.log(res.data))
-      .catch(console.error)
-  ```
-
-  </TabItem>
-  <TabItem value="py">
-
-  ```py
-  import requests
-
-  TOKEN = 'YOUR_TOKEN'
-
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/Trimble'
-  headers = {'Authorization': f'Bearer {TOKEN}'}
-
-  response = requests.get(endpoint, headers=headers)
-  print(response.json())
-  ```
-
-  </TabItem>
-  <TabItem value="sh">
-
-  ```shell
-  curl -X GET \
-      -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/organizations/Trimble'
-  ```
-
-  </TabItem>
-</Tabs>
-
-#### Response
-
-```json
-{
-  "managementUri": "https://www.trimbleag.com/ThirdPartyAccess/ThirdPartyAuthorizationRedirect?clientId=client_id",
-  "connectedOrganizations": [
-    {
-      "id": "client_id",
-      "name": "organization_name"
-    }
-  ]
-}
-```
-
 

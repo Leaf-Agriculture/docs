@@ -122,6 +122,14 @@ module.exports = {
                 'Link_file_upload',
                 'Link_endpoints'
               ]
+            },
+            {
+              type: 'category',
+              label: 'Magic Link',
+              items: [
+                'Magic_link_overview',
+                'Magic_link_endpoints'
+              ]
             }
           ]
         },

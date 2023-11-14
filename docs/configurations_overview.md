@@ -19,6 +19,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [9]: /docs/operations_endpoints#get-operations-geotiff-images
 [10]: /docs/field_boundary_management_endpoints#preview-mode
 [11]: /docs/field_boundary_management_endpoints#sync-fields-manually
+[12]: /docs/machine_file_conversion_units
 
 
 Leaf's system can be customized to present different behaviors across services and Leaf Users. This is done using Configurations.
@@ -32,7 +33,7 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 | Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [Field Boundary Management](#field-boundary-management) | customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                              | 
-| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, originalOperationData, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, unitMeasurement                                                                                                                                                                                                                                                                                                            | 
+| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement                                                                                                                                                                                                                                                                                                            | 
 | [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement | 
 
 
@@ -52,21 +53,6 @@ Minimum intersection between two fields to merge them. A new field of type MERGE
 ### Machine File Conversion
 #### cleanupStandardGeojson
 If set to `true`, Leaf will automatically remove [invalid points](machine_file_conversion_sample_output.md#valid-points) from the standardGeoJSON file. The default value is `true`.
-
-#### originalOperationData
-If set to `true`, it will add some non Leaf-standard properties to the File summary, such as the field name and the type of the operation, as described originally by the provider. It is not applicable to the standard GeoJSON file or the Field Operation summary.  
-The default value is `false`.
-
-```
-"originalOperationData": {
-    "originalOperationFarm": "Farm Green",
-    "originalOperationField": "Field A",
-    "originalOperationGrower": "Grower",
-    "originalOperationType": "SowingAndPlanting"
-}
-```
-#### unitMeasurement
-This config determines the units for machine files and field operations. Possible values are `METRIC`, `IMPERIAL`, or `DEFAULT`. The `DEFAULT` option does not standardize units, allowing for a mix of imperial and metric variables.
 
 #### generateProviderImages
 If set to `true`, Leaf will generate property images for [files][1] fetched from providers. Uploaded files are not affected by this change. The default value is `false`.  
@@ -109,6 +95,23 @@ Shape of points to be used when generating images of operations. It can assume t
 :::tip note
 This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
 :::
+
+#### originalOperationData
+If set to `true`, it will add some non Leaf-standard properties to the File summary, such as the field name and the type of the operation, as described originally by the provider. It is not applicable to the standard GeoJSON file or the Field Operation summary.  
+The default value is `false`.
+
+```
+"originalOperationData": {
+    "originalOperationFarm": "Farm Green",
+    "originalOperationField": "Field A",
+    "originalOperationGrower": "Grower",
+    "originalOperationType": "SowingAndPlanting"
+}
+```
+#### unitMeasurement
+Defines the unit of measurement of the summary, standardGeoJSON, and filteredGeoJSON for the Machine Files and Field Operations services. It supports `METRIC`, `IMPERIAL`, and `DEFAULT` - that not standardize the units and keep them as available in the files/provider (this is the default value).
+
+The units for each option available can be found on the [Units of Measurement page][12].
 
 ### Field Operations
 These configurations can be enabled with the use of Leaf Field Operations. This requires an active boundary to be present so Leaf can merge the machine files and create a Field Operation.

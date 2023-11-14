@@ -43,7 +43,7 @@ This is a link to authenticate to multiple providers.
 |-----------------------------------|-----------------------------------------------------------------------------------------|
 | [Get all provider magic link][1]  | <span class="badge badge--success">GET</span> `/magic-link/provider`                    |
 | [Get a provider magic link][2]    | <span class="badge badge--success">GET</span> `/magic-link/provider/{magicLinkId}`      |
-| [Create a provider magic link][3] | <span class="badge badge--warning">POST</span> `/magic-link/user/{leafUserId}/provider` |
+| [Create a provider magic link][3] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/provider` |
 | [Delete a provider magic link][4] | <span class="badge badge--danger">DELETE</span> `/magic-link/provider/{magicLinkId}`    |
 
 #### Get all provider magic link
@@ -220,7 +220,7 @@ Get a link for authentication across multiple providers.
 
 #### Create a provider magic link
 
-&nbsp<span class="badge badge--warning">POST</span> `/magic-link/user/{leafUserId}/provider`
+&nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/provider`
 
 Creates a link for authentication across multiple providers.
 
@@ -258,7 +258,7 @@ The `allowedProviders` and `expiresIn` parameters are optional. If not passed, t
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/provider'
+  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/provider'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
@@ -287,7 +287,7 @@ The `allowedProviders` and `expiresIn` parameters are optional. If not passed, t
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/provider'
+  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/provider'
   headers = {'Authorization': f'Bearer {TOKEN}'}
     
   data = {
@@ -314,7 +314,7 @@ The `allowedProviders` and `expiresIn` parameters are optional. If not passed, t
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "expiresIn": int, "allowedProviders": ["providerName"], "settings": { "backgroundColor": "codeColor", "headerImage": "URL", "companyLogo": "URL", "companyName": "companyName", "showLeafUserName": "boolean", "disconnectEnabled": "boolean" } }'
-      'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/provider'
+      'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/provider'
   ```
 
   </TabItem>
@@ -399,7 +399,7 @@ This is a link to authenticate to a single provider.
 |------------------------------------------|-----------------------------------------------------------------------------------------------|
 | [Get all authentication magic link][5]   | <span class="badge badge--success">GET</span> `/magic-link/authentication`                    |
 | [Get an authentication magic link][6]    | <span class="badge badge--success">GET</span> `/magic-link/authentication/{magicLinkId}`      |
-| [Create an authentication magic link][7] | <span class="badge badge--warning">POST</span> `/magic-link/user/{leafUserId}/authentication` |
+| [Create an authentication magic link][7] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/authentication` |
 | [Delete an authentication magic link][8] | <span class="badge badge--danger">DELETE</span> `/magic-link/authentication/{magicLinkId}`    |
 
 #### Get all authentication magic link
@@ -572,7 +572,7 @@ Get a link for authentication from a single provider.
 
 #### Create an authentication magic link
 
-&nbsp<span class="badge badge--warning">POST</span> `/magic-link/user/{leafUserId}/authentication`
+&nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/authentication`
 
 Creates a link for authentication from a single provider.
 
@@ -608,7 +608,7 @@ The `expiresIn` parameter is optional. If not passed, it will be filled with 900
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/authentication'
+  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/authentication'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
@@ -637,7 +637,7 @@ The `expiresIn` parameter is optional. If not passed, it will be filled with 900
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/authentication'
+  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/authentication'
   headers = {'Authorization': f'Bearer {TOKEN}'}
     
   data = {
@@ -664,7 +664,7 @@ The `expiresIn` parameter is optional. If not passed, it will be filled with 900
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "expiresIn": int, "provider": "providerName", "settings": { "backgroundColor": "codeColor", "headerImage": "URL", "companyLogo": "URL", "companyName": "companyName", "showLeafUserName": "boolean", "disconnectEnabled": "boolean" } }'
-      'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/authentication'
+      'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/authentication'
   ```
 
   </TabItem>
@@ -757,7 +757,7 @@ This is a link to upload a file.
 |---------------------------------------|--------------------------------------------------------------------------------------------|
 | [Get all file upload magic link][9]   | <span class="badge badge--success">GET</span> `/magic-link/file-upload`                    |
 | [Get a file upload magic link][10]    | <span class="badge badge--success">GET</span> `/magic-link/file-upload/{magicLinkId}`      |
-| [Create a file upload magic link][11] | <span class="badge badge--warning">POST</span> `/magic-link/user/{leafUserId}/file-upload` |
+| [Create a file upload magic link][11] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/file-upload` |
 | [Delete a file upload magic link][12] | <span class="badge badge--danger">DELETE</span> `/magic-link/file-upload/{magicLinkId}`    |
 
 #### Get all file upload magic link
@@ -928,7 +928,7 @@ Get a file upload link.
 
 #### Create a file upload magic link
 
-&nbsp<span class="badge badge--warning">POST</span> `/magic-link/user/{leafUserId}/file-upload`
+&nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/file-upload`
 
 Create a file upload link.
 
@@ -962,7 +962,7 @@ The `expiresIn` parameter is optional. If not passed, it will be filled with 900
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/file-upload'
+  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/file-upload'
   const headers = { 'Authorization': `Bearer ${TOKEN}`}
   
   const data = {
@@ -990,7 +990,7 @@ The `expiresIn` parameter is optional. If not passed, it will be filled with 900
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/file-upload'
+  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/file-upload'
   headers = {'Authorization': f'Bearer {TOKEN}'}
   
   data = {
@@ -1016,7 +1016,7 @@ The `expiresIn` parameter is optional. If not passed, it will be filled with 900
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "expiresIn": int, "settings": { "backgroundColor": "codeColor", "headerImage": "URL", "companyLogo": "URL", "companyName": "companyName", "showLeafUserName": "boolean", "disconnectEnabled": "boolean" } }'
-      'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/file-upload'
+      'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/file-upload'
   ```
 
   </TabItem>
@@ -1503,7 +1503,7 @@ Simply fill in the `settings` property when creating the link.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/provider'
+  const endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/provider'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
@@ -1532,7 +1532,7 @@ Simply fill in the `settings` property when creating the link.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/provider'
+  endpoint = 'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/provider'
   headers = {'Authorization': f'Bearer {TOKEN}'}
     
   data = {
@@ -1559,7 +1559,7 @@ Simply fill in the `settings` property when creating the link.
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "expiresIn": int, "allowedProviders": ["Other"], "settings": { "backgroundColor": "codeColor", "headerImage": "URL", "companyLogo": "URL", "companyName": "companyName", "showLeafUserName": "boolean", "disconnectEnabled": "boolean" } }'
-      'https://api.withleaf.io/services/widgets/api/magic-link/user/{leafUserId}/provider'
+      'https://api.withleaf.io/services/widgets/api/magic-link/users/{leafUserId}/provider'
   ```
 
   </TabItem>

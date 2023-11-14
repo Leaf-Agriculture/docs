@@ -35,7 +35,7 @@ https://api.withleaf.io/services/widgets/api
 
 ### Provider
 
-This is a link to authenticate to multiple providers.
+This is a link to authenticate with multiple providers.
 
 ** Endpoints **
 
@@ -50,7 +50,7 @@ This is a link to authenticate to multiple providers.
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/provider`
 
-Get all links for authentication across multiple providers.
+Get all created links for authentication across multiple providers.
 
 ##### Request examples
 
@@ -138,7 +138,7 @@ Get all links for authentication across multiple providers.
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/provider/{magicLinkId}`
 
-Get a link for authentication across multiple providers.
+Get a created link for authentication across multiple providers.
 
 ##### Request examples
 
@@ -224,12 +224,8 @@ Get a link for authentication across multiple providers.
 
 Creates a link for authentication across multiple providers.
 
-- `allowedProviders`: you will need to set the providers that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble` and `All`. The default is `All` and will allow all these providers.
-- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`.
-
-:::info
-The `allowedProviders` and `expiresIn` parameters are optional. If not passed, they will be filled with `All` and 900, respectively.
-:::
+- `allowedProviders`: the list of providers allowed in the authentication process. It can be one or more of the following: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, and `Trimble`.
+- `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
 
 ##### Request body
 
@@ -391,7 +387,7 @@ Delete a link for authentication across multiple providers.
 
 ### Authentication
 
-This is a link to authenticate to a single provider.
+This is a link to authenticate with a single provider.
 
 ** Endpoints **
 
@@ -406,7 +402,7 @@ This is a link to authenticate to a single provider.
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/authentication`
 
-Get all links for authentication from a single provider.
+Get all created links for authentication with a single provider.
 
 ##### Request examples
 
@@ -492,7 +488,7 @@ Get all links for authentication from a single provider.
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/authentication/{magicLinkId}`
 
-Get a link for authentication from a single provider.
+Get a created link for authentication with a single provider.
 
 ##### Request examples
 
@@ -574,14 +570,10 @@ Get a link for authentication from a single provider.
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/authentication`
 
-Creates a link for authentication from a single provider.
+Creates a link for authentication with a single provider.
 
-- `provider`: you will only need to define a single provider that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`.
-- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`.
-
-:::info
-The `expiresIn` parameter is optional. If not passed, it will be filled with 900.
-:::
+- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`.
+- `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
 
 ##### Request body
 
@@ -685,7 +677,7 @@ The `expiresIn` parameter is optional. If not passed, it will be filled with 900
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/magic-link/authentication/{magicLinkId}`
 
-Delete a link for authentication from a single provider.
+Delete a link for authentication with a single provider.
 
 ##### Request examples
 
@@ -739,17 +731,9 @@ Delete a link for authentication from a single provider.
 </Tabs>
 
 
-
-
-
-
-
-
-
-
 ### File upload
 
-This is a link to upload a file.
+This is a link to upload machine files.
 
 ** Endpoints **
 
@@ -764,7 +748,7 @@ This is a link to upload a file.
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/file-upload`
 
-Get all file upload links.
+Get all file upload created links.
 
 ##### Request examples
 
@@ -849,7 +833,7 @@ Get all file upload links.
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/file-upload/{magicLinkId}`
 
-Get a file upload link.
+Get a file upload created link.
 
 ##### Request examples
 
@@ -930,13 +914,9 @@ Get a file upload link.
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/file-upload`
 
-Create a file upload link.
+Creates a file upload link.
 
-- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`.
-
-:::info
-The `expiresIn` parameter is optional. If not passed, it will be filled with 900.
-:::
+- `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
 
 ##### Request body
 
@@ -1092,7 +1072,7 @@ Delete a file upload link.
 
 ## Magic Link with Leaf User Creation
 
-The creation of these magic links includes a leaf user created by Leaf itself, with the `externalId` payload being a mandatory variable so that our customers can identify these leaf users.
+This option enables the creation of Leaf users automatically during the Magic link creation process. The uniqueness of leaf users can be achieved using a mandatory external identifier, the `externalId`, which can be an ID already used in your application.
 
 ** Endpoints **
 
@@ -1106,16 +1086,16 @@ The creation of these magic links includes a leaf user created by Leaf itself, w
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/provider`
 
-Creates a link for authentication across multiple providers without leaf user.
+Creates a link for authentication across multiple providers. The leaf user will be created during this process based on the `externalId`.
 
-- `allowedProviders`: you will need to set the providers that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble` and `All`. The default is `All` and will allow all these providers
-- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`
-- `externalId`: is a variable to assign a controllable value on the client side
-- `name`: it will be the name of the leaf user that we will create
-- `email`: it will be the email of the leaf user that we will create
+- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`.
+- `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
+- `externalId`: the client side user unique ID
+- `name`: it will be the name of the leaf user that we will be created. Updates in this property must be done in the Leaf user endpoints.
+- `email`: it will be the email of the leaf user that we will be created. Updates in this property must be done in the Leaf user endpoints.
 
 :::info
-The `allowedProviders` and `expiresIn` parameters are optional. If not passed, they will be filled with `All` and 900, respectively. The `name` and `email` parameters are also optional, they will fill in the leaf user information that we will create, when they are not passed, we will fill in the name and email with the `externalId` itself.
+The `name` and `email` parameters are optional, they will fill in the leaf user information that we will create, when they are not informed, we will fill in the name and email with the `externalId` information.
 :::
 
 ##### Request body
@@ -1231,16 +1211,16 @@ The `allowedProviders` and `expiresIn` parameters are optional. If not passed, t
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/authentication`
 
-Creates a link for authentication from a single provider without leaf user.
+Creates a link for authentication with a single provider. The leaf user will be created during this process based on the `externalId`.
 
-- `provider`: you will need to set the provider that you want to be allowed in the authentication process. Can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`
-- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`
-- `externalId`: is a variable to assign a controllable value on the client side
-- `name`: it will be the name of the leaf user that we will create
-- `email`: it will be the email of the leaf user that we will create
+- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`.
+- `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
+- `externalId`: the client side user unique ID
+- `name`: it will be the name of the leaf user that we will be created. Updates in this property must be done in the Leaf user endpoints.
+- `email`: it will be the email of the leaf user that we will be created. Updates in this property must be done in the Leaf user endpoints.
 
 :::info
-The `expiresIn` parameter is optional. If not passed, it will be filled with 900. The `name` and `email` parameters are also optional, they will fill in the leaf user information that we will create, when they are not passed, we will fill in the name and email with the `externalId` itself.
+The `name` and `email` parameters are optional, they will fill in the leaf user information that we will create, when they are not informed, we will fill in the name and email with the `externalId` information.
 :::
 
 ##### Request body
@@ -1354,15 +1334,15 @@ The `expiresIn` parameter is optional. If not passed, it will be filled with 900
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/file-upload`
 
-Create a file upload link without leaf user.
+Create a file upload link. The leaf user will be created during this process based on the `externalId`.
 
-- `expiresIn`: the int value set here can be from `900` to `31622400`, with the value in seconds referring to one year. The default is `900`
-- `externalId`: is a variable to assign a controllable value on the client side
-- `name`: it will be the name of the leaf user that we will create
-- `email`: it will be the email of the leaf user that we will create
+- `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
+- `externalId`: the client side user unique ID
+- `name`: it will be the name of the leaf user that we will be created. Updates in this property must be done in the Leaf user endpoints.
+- `email`: it will be the email of the leaf user that we will be created. Updates in this property must be done in the Leaf user endpoints.
 
 :::info
-The `expiresIn` parameter is optional. If not passed, it will be filled with 900. The `name` and `email` parameters are also optional, they will fill in the leaf user information that we will create, when they are not passed, we will fill in the name and email with the `externalId` itself.
+The `name` and `email` parameters are optional, they will fill in the leaf user information that we will create, when they are not informed, we will fill in the name and email with the `externalId` information.
 :::
 
 ##### Request body

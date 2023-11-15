@@ -34,7 +34,7 @@ This service has the following endpoints available:
 | [Get fields by geometry](#get-fields-by-geometry)                         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                              |
 | [Get intersection of fields](#get-intersection-of-fields)                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                                       |
 | [Sync fields manually](#sync-fields-manually)                             | <span class="badge badge--warning">POST</span> `/users/{id}/fields/sync`                                            |
-| [Upload Field to Provider](#upload-field-to-provider)                     | <span class="badge badge--success">GET</span> `/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}` |
+| [Upload a Field to Provider](#upload-a-field-to-provider)                     | <span class="badge badge--warning">POST</span> `/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}` |
 | [Delete a field](#delete-a-field)                                         | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                           |
 | [Get all boundaries from field](#get-all-boundaries-from-field)           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`                      |
 | [Get a boundary from field](#get-a-boundary-from-field)                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`         |
@@ -1031,7 +1031,7 @@ values={[
 </Tabs>
 
 
-### Upload Field to Provider
+### Upload a Field to Provider
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}`
 

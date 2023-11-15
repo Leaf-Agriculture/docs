@@ -23,30 +23,31 @@ There is a [REST resources](#rest-resources) section if you want to check it out
 
 This service has the following endpoints available:
 
-| Description                                                                                       | Endpoints                                                                                                      |
-|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| [Get all fields](#get-all-fields)                                                                 | <span class="badge badge--success">GET</span> `/fields`                                                        |
-| [Get a field](#get-a-field)                                                                       | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                        |
-| [Create a field](#create-a-field)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                            |
-| [Update a field](#update-a-field)                                                                 | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                      |
-| [Get all operation files of a field](#get-all-operation-files-of-a-field)                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`          |
-| [Get an operation file of a field](#get-an-operation-file-of-a-field)                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}` |
-| [Get fields by geometry](#get-fields-by-geometry)                                                 | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                         |
-| [Get intersection of fields](#get-intersection-of-fields)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                                  |
-| [Sync fields manually](#sync-fields-manually)                                                                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/sync`                                       |
-| [Delete a field](#delete-a-field)                                                                 | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                      |
-| [Get all boundaries from field](#get-all-boundaries-from-field)                                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`                 |
-| [Get a boundary from field](#get-a-boundary-from-field)                                           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`    |
-| [Get active boundary from field](#get-active-boundary-from-field)                                 | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
-| [Update active boundary from field](#update-active-boundary-from-field)                           | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                   |
-| [Get all farms](#get-all-farms)                                                                   | <span class="badge badge--success">GET</span> `/farms`                                                         |
-| [Get a farm](#get-a-farm)                                                                         | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                         |
-| [Create a farm](#create-a-farm)                                                                   | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                     |
-| [Update a farm](#update-a-farm)                                                                   | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`                                 |
-| [Get all growers](#get-all-growers)                                                               | <span class="badge badge--success">GET</span> `/growers`                                                       |
-| [Get a grower](#get-a-grower)                                                                     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`                               |
-| [Create a grower](#create-a-grower)                                                               | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                   |
-| [Update a grower](#update-a-grower)                                                               | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                               |
+| Description                                                               | Endpoints                                                                                                           |
+|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| [Get all fields](#get-all-fields)                                         | <span class="badge badge--success">GET</span> `/fields`                                                             |
+| [Get a field](#get-a-field)                                               | <span class="badge badge--success">GET</span> `/users/{id}/fields/{id}`                                             |
+| [Create a field](#create-a-field)                                         | <span class="badge badge--warning">POST</span> `/users/{id}/fields`                                                 |
+| [Update a field](#update-a-field)                                         | <span class="badge badge--warning">PATCH</span> `/users/{id}/fields/{id}`                                           |
+| [Get all operation files of a field](#get-all-operation-files-of-a-field) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files`               |
+| [Get an operation file of a field](#get-an-operation-file-of-a-field)     | <span class="badge badge--success">GET</span> `/users/{leafUserId}/fields/{fieldId}/operations/files/{fileId}`      |
+| [Get fields by geometry](#get-fields-by-geometry)                         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                              |
+| [Get intersection of fields](#get-intersection-of-fields)                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                                       |
+| [Sync fields manually](#sync-fields-manually)                             | <span class="badge badge--warning">POST</span> `/users/{id}/fields/sync`                                            |
+| [Upload Field to Provider](#upload-field-to-provider)                     | <span class="badge badge--success">GET</span> `/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}` |
+| [Delete a field](#delete-a-field)                                         | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                           |
+| [Get all boundaries from field](#get-all-boundaries-from-field)           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`                      |
+| [Get a boundary from field](#get-a-boundary-from-field)                   | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries/{boundaryId}`         |
+| [Get active boundary from field](#get-active-boundary-from-field)         | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundary`                        |
+| [Update active boundary from field](#update-active-boundary-from-field)   | <span class="badge badge--warning">PUT</span> `users/{leafUserId}/fields/{fieldId}/boundary`                        |
+| [Get all farms](#get-all-farms)                                           | <span class="badge badge--success">GET</span> `/farms`                                                              |
+| [Get a farm](#get-a-farm)                                                 | <span class="badge badge--success">GET</span> `/users/{id}/farms/{id}`                                              |
+| [Create a farm](#create-a-farm)                                           | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/farms`                                          |
+| [Update a farm](#update-a-farm)                                           | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/farms/{id}`                                      |
+| [Get all growers](#get-all-growers)                                       | <span class="badge badge--success">GET</span> `/growers`                                                            |
+| [Get a grower](#get-a-grower)                                             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/growers/{id}`                                    |
+| [Create a grower](#create-a-grower)                                       | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/growers`                                        |
+| [Update a grower](#update-a-grower)                                       | <span class="badge badge--warning">PUT</span> `/users/{leafUserId}/growers/{id}`                                    |
 
 
 ## Fields
@@ -1028,6 +1029,83 @@ values={[
 
   </TabItem>
 </Tabs>
+
+
+### Upload Field to Provider
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}`
+
+Upload a field boundary a provider. The field must be available on the Leaf API first (manually created or fetched from a provider).
+
+- `provider_name`: cname of the provider that will receive the field boundary. The supported providers are `JohnDeere` or `ClimateFieldView`.
+- if the `provider_name` is `JohnDeere` it will be necessary to add the `organizationId` as a parameter: `?organizationId={organization_value}`
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.post(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.post(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "ba518264-7f2a-11ee-b962-0242ac120002": {
+      "ClimateFieldView": {
+        "id": "uuid",
+        "status": "PENDING",
+        "updatedAt": "2023-11-09T18:02:17.834Z"
+      }
+    }
+  }
+]
+```
 
 
 ### Delete a field

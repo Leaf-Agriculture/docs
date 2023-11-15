@@ -118,15 +118,15 @@ An `id` for the credentials you just created will be returned. This `id` will
 be automatically transferred to the value of `jd_credentials_id` to be used in
 the next step.
 
-### Climate Field View
+### Climate FieldView
 Grab our [quickstart][quickstart] Postman collection and follow along!
 
-#### 1. Get Climate Field View auth URL
+#### 1. Get Climate FieldView auth URL
 
 We will be generating a url to redirect your user to authenticate with Climate.
 
 Update environment variables `cfv_client_id` and `cfv_client_secret` to your
-Climate Field View developer account credentials.
+Climate FieldView developer account credentials.
 
 Update environment variable `cfv_redirect_url` to your application's backend
 
@@ -142,7 +142,7 @@ note: this code expires after 1 minute.
 
 Paste code value to environment variable `cfv_code`
 
-#### 2. Get Climate Field View tokens
+#### 2. Get Climate FieldView tokens
 
 Hit "Send"
 
@@ -151,7 +151,7 @@ and `refresh_token`. These will be automatically transferred to
 `cfv_access_token` and `cfv_refresh_token` environment variables and will be
 used in the next step.
 
-#### 3. Add Climate Field View credentials
+#### 3. Add Climate FieldView credentials
 
 Now we can create a Developer-User pair credentials ID that will allow you to
 access your user’s Climate data. We first add the Climate credentials to Leaf
@@ -166,7 +166,7 @@ the next step.
 #### Create Leaf User
 
 Now we have to attach credentials to a Leaf User. To do so, we can create a
-Leaf user and attach our John Deere and/or Climate Field View credentials via
+Leaf user and attach our John Deere and/or Climate FieldView credentials via
 the credentials id. We can also attach credentials from other companies to this
 same user to query all available data by Grower/Farm/Field regardless of brand.
 

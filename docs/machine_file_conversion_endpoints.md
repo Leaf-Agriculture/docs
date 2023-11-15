@@ -607,11 +607,11 @@ This endpoint requires the `leafUserId` filter.
 
 ```json
 {
-    "files": [
-        "c3ad6c7b-19b8-4cd7-580a-dfab82043465",
-        "c3ad6c7b-c472-49e9-aab2-7ad222843465",
-        "9aa68735-5a04-42ef-0983-dbdd2bcdfa16"
-    ]
+  "files": [
+    "c3ad6c7b-19b8-4cd7-580a-dfab82043465",
+    "c3ad6c7b-c472-49e9-aab2-7ad222843465",
+    "9aa68735-5a04-42ef-0983-dbdd2bcdfa16"
+  ]
 }
 ```
 

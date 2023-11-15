@@ -1035,10 +1035,10 @@ values={[
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}`
 
-Upload a provider's or manually created field boundary to John Deere or Climate Field View. This functionality will soon be made available to other providers.
+Upload a field boundary a provider. The field must be available on the Leaf API first (manually created or fetched from a provider).
 
-- `provider_name`: choose the name of the provider that will receive the field boundary from another provider. The value can be: `JohnDeere` or `ClimateFieldView`.
-- if the `provider_name` is `JohnDeere` it will be necessary to add the `organizationId` as a parameter. This way: `?organizationId={organization_value}`
+- `provider_name`: cname of the provider that will receive the field boundary. The supported providers are `JohnDeere` or `ClimateFieldView`.
+- if the `provider_name` is `JohnDeere` it will be necessary to add the `organizationId` as a parameter: `?organizationId={organization_value}`
 
 #### Request examples
 

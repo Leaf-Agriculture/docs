@@ -1,6 +1,6 @@
 ---
 title: Climate FieldView Credentials
-description: Credentials - Climate Field View
+description: Credentials - Climate FieldView
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -39,7 +39,7 @@ See below the REST resources and their endpoints available in this service.
 | [Create a Climate Fieldview credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/climate-field-view-credentials`  |
 | [Delete Climate Fieldview  credentials][3]  | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/climate-field-view-credentials` |
 
-## Climate Field View Credentials Endpoints
+## Climate FieldView Credentials Endpoints
 
 ### Get the Climate Fieldview credentials
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/climate-field-view-credentials`

@@ -1028,13 +1028,13 @@ The points in the standardGeoJSON are considered valid if all the following rule
 | wetMassPerArea     | > 0.0  |
 | wetVolume          | > 0.0  |
 | wetVolumePerArea   | > 0.0  |
-| harvestMoisture    | > 0.0  |
+| harvestMoisture    | > 0.0 and <100.0 |
 | appliedRate        | > 0.0  |
 | seedRate           | > 0.0  |
 | tillageDepthActual | > 0.0  |
 | recordingStatus    | = "On" |
 
-If necessary Leaf API can automatically clean these points up using the configuration [`cleanupStandardGeojson`][1].
+The API will automatically clean the invalid points when the [`cleanupStandardGeojson`][1] configuration is enabled.
 
 ### Images
 

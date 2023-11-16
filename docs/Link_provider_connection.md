@@ -28,6 +28,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [provider-companyName]: #companyname
 [provider-leafUser]: #leafuser
 [provider-darkmode]: #isdarkmode
+[provider-showSearchbar]: #showsearchbar
+[provider-title]: #title
 
 [provider-providersconnected]: #providersconnected
 [provider-providerwidgetstatus]: #providerwidgetstatus
@@ -580,6 +582,8 @@ function App() {
 | [companyName][provider-companyName]       | String | Customization: the name of the company    |
 | [isDarkMode][provider-darkmode]           | Boolean| Enable/disable the dark mode              |
 | [leafUser][provider-leafUser]             | String | The Leaf User ID                          |
+| [showSearchbar][provider-showSearchbar]   | String | Show/hide the search bar                  |
+| [title][provider-title]                   | String | The title of the widget                   |
 
 #### Property Details
 
@@ -593,12 +597,18 @@ The URL to the company logo. It will be displayed in the landing screen. It can 
 #### companyName
 The company name. It will be displayed in the landing screen and in each reference about the customer.
 
-#### leafUser
-The Leaf User ID. Check [this page][4] for more info about the Leaf User.
-
 #### isDarkMode
 Toggles dark mode on and off. The default value is `false`.
 
+#### leafUser
+The Leaf User ID. Check [this page][4] for more info about the Leaf User.
+
+#### showSearchbar
+Shows/hides the search bar for providers available for integration. The default is `true`, so the search bar will be displayed.
+
+#### title
+The title displayed in the widget. The default is "Select your integration".  
+Customized texts will not be automatically translated.
 
 ### Hooks Overview
 

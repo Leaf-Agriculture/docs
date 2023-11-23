@@ -1037,7 +1037,7 @@ values={[
 
 Upload a field boundary a provider. The field must be available on the Leaf API first (manually created or fetched from a provider).
 
-- `provider_name`: cname of the provider that will receive the field boundary. The supported providers are `JohnDeere` or `ClimateFieldView`.
+- `provider_name`: the name of the provider that will receive the field boundary. The supported providers are `JohnDeere` or `ClimateFieldView`.
 - if the `provider_name` is `JohnDeere` it will be necessary to add the `organizationId` as a parameter: `?organizationId={organization_value}`
 
 #### Request examples
@@ -1107,6 +1107,9 @@ Upload a field boundary a provider. The field must be available on the Leaf API 
 ]
 ```
 
+:::info Warning
+To avoid recursive synchronizations, it is not possible to send a field to the same provider from which it was fetched.
+:::
 
 ### Delete a field
 

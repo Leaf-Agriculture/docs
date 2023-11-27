@@ -47,7 +47,8 @@ Our supported providers are:
 
 ## Input
 
-This feature will fetch, from operation files, varieties of crops harvested/planted and products applied and store this data.
+This resource will search, in the operation's files, varieties of harvested/planted crops and applied products and 
+store this data. For products, data from [Agrian](https://www.telus.com/agcg/products/label-database) and [CDMS](https://www.cdms.net/Services/Product-Database) will also be made available globally, so that all customers can access it.
 
 
 

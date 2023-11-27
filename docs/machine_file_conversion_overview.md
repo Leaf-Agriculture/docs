@@ -15,6 +15,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [4]: https://docs.withleaf.io/docs/operations_overview/
 [5]: https://docs.withleaf.io/docs/converters_overview
 [6]: https://docs.withleaf.io/docs/provider-authentication-overview
+[7]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output
+[8]: https://docs.withleaf.io/docs/operations_sample_output
 
 :::info requires Leaf User
 Before you begin importing data, you will need a Leaf User. You’ll be able to attach provider credentials and manually upload data to the Leaf User. If you don't have a Leaf User or you have not connected it with any provider yet, see the **[Leaf user overview][1]**
@@ -42,12 +44,14 @@ File processing time will vary depending on the amount of data being processed o
 Once Leaf has processed files into a file summary, you will receive summarized information, such as averages, standard deviations, maximum and minimum values ​​for important properties, and more. This summary is usually used to get general information about the operation without the need to download and open the standardGeojson file. For example, you can display the area of the operation, how much was harvested and the date it happened, all without opening large files.
 
 ## Machine file summary vs operation summary
-**Machine file summary:** Basic information of files derived from the point data, processed and cleaned by Leaf. Data outputs will vary by task (planted, applied, harvested, tillage). You’ll find some sample responses here.
+**Machine file summary:** Basic information of files derived from the point data, processed and cleaned by Leaf. Data outputs will vary by task (planted, applied, harvested, tillage). You’ll find some sample responses [here][7].
 
-**Operation summary:** The output of files merged to a field boundary that are processed and cleaned by Leaf.
+**Operation summary:** The output of files merged to a field boundary that are processed and cleaned by Leaf. You’ll find some sample responses [here][8].
 
 ## Why does Leaf merge files?
 Since one single operation can be represented in several (sometimes hundreds of) files by the provider,
 Leaf provides an auto-merge feature, which will identify files that
 belong to the same operation (planting, for example) and same field boundary and 
 automatically merge them into a single operation. This works for both integrations and manual file uploads. Please keep in mind that merging files is processing-heavy and can take some time to finish. This process runs every 4 hours.
+
+<img alt="Field example" src={useBaseUrl('img/machine-file-vs-operation.png')} />

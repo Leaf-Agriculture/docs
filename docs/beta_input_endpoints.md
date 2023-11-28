@@ -9,8 +9,8 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[2]: #get-all-provider-products
-[3]: #get-all-summary-products
+[2]: #get-all-products
+[3]: #get-summarized-products
 [4]: #search-for-products
 [5]: #get-all-varieties
 [6]: #get-a-product
@@ -18,7 +18,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [8]: #updated-product-matches
 [9]: #get-product-matches-historical
 [10]: https://docs.withleaf.io/docs/beta_input_endpoints#get-a-product
-[11]: #get-all-summary-varieties
+[11]: #get-summarized-varieties
 [12]: #search-for-varieties
 
 ## About
@@ -37,8 +37,8 @@ See below the REST resources and their endpoints available in this service.
 
 | Description                                  | Endpoints                                                                                                                |
 |----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| [Get all provider products][2]               | <span class="badge badge--success">GET</span> `/products`                                                                |
-| [Get all summary products][3]                | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/summary`                                     |
+| [Get all products][2]                        | <span class="badge badge--success">GET</span> `/products`                                                                |
+| [Get summarized products][3]                 | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/summary`                                     |
 | [Search for products][4]                     | <span class="badge badge--success">GET</span> `/products/search`                                                         |
 | [Get a product][6]                           | <span class="badge badge--success">GET</span> `/products/{id}`                                                           |
 | [Get matching products from an operation][7] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/matching/operations/{operationId}`           |
@@ -46,11 +46,11 @@ See below the REST resources and their endpoints available in this service.
 | [Get product matches historical][9]          | <span class="badge badge--success">GET</span> `/products/matching/operations/{operationId}/matches/{matchId}/historical` |
 
 
-### Get all provider products
+### Get all products
 
 &nbsp<span class="badge badge--success">GET</span>  `/products`
 
-List of products available from providers (for now only for John Deere).
+List of products from providers (for now only for John Deere) in a Leaf User level. This way, on this endpoint the user can search for all products that are available from traditional providers (e.g. John Deere), so here we do not include specific providers such as Agrian and CDMS.
 
 | Parameter (to filter by) | Values                                                                                                                                                                                                                              |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -133,11 +133,11 @@ values={[
 ```
 
 
-### Get all summary products
+### Get summarized products
 
 &nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products/summary`
 
-List of products extracted from machine file summaries.
+List of products extracted from machine file.
 
 | Parameter (to filter by)    | Values                                                                                                                                                                                                                              |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -215,7 +215,7 @@ values={[
 
 &nbsp<span class="badge badge--success">GET</span>  `/products/search`
 
-Search for products by name, partial values are supported. Agrian and CDMS products are currently available to everyone, and John Deere products from the Operation Center at the API Owner level.  
+Search for products by name, partial values are supported. Agrian and CDMS products are currently available to everyone, and John Deere products from the Operation Center at the Leaf User level.  
 
 | Parameter (to filter by) | Values                                                                             |
 |--------------------------|------------------------------------------------------------------------------------|
@@ -670,11 +670,11 @@ values={[
 ## Varieties
 
 
-| Description                     | Endpoints                                                                             |
-|---------------------------------|---------------------------------------------------------------------------------------|
-| [Get all varieties][5]          | <span class="badge badge--success">GET</span> `/varieties`                            |
-| [Get all summary varieties][11] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties/summary` |
-| [Search for varieties][12]      | <span class="badge badge--success">GET</span> `/users/varieties/search`               |
+| Description                    | Endpoints                                                                             |
+|--------------------------------|---------------------------------------------------------------------------------------|
+| [Get all varieties][5]         | <span class="badge badge--success">GET</span> `/varieties`                            |
+| [Get summarized varieties][11] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties/summary` |
+| [Search for varieties][12]     | <span class="badge badge--success">GET</span> `/users/varieties/search`               |
 
 
 ### Get all varieties
@@ -761,11 +761,11 @@ values={[
 ```
 
 
-### Get all summary varieties
+### Get summarized varieties
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties/summary`
 
-List of varieties extracted from machine file summaries.
+List of varieties extracted from machine file.
 
 | Parameter (to filter by) | Values                                                                                                                                                                                                                              |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -854,7 +854,7 @@ values={[
 
 &nbsp<span class="badge badge--success">GET</span>  `/varieties/search`
 
-Search for varieties by name, partial values are supported. Varieties from John Deere Operation Center are available at the API Owner level.  
+Search for varieties by name, partial values are supported. Varieties from John Deere Operation Center are available at the Leaf User level.  
 
 | Parameter (to filter by) | Values                                                                             |
 |--------------------------|------------------------------------------------------------------------------------|

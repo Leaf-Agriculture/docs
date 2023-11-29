@@ -536,7 +536,7 @@ values={[
     status: "VALIDATED"
   }
 
-  axios.get(endpoint, { headers })
+  axios.get(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -556,7 +556,7 @@ values={[
     status: "VALIDATED"
   }
 
-  response = requests.get(endpoint, headers=headers)
+  response = requests.get(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 

@@ -62,7 +62,6 @@ https://api.withleaf.io/services/usermanagement/api
 
 See below the REST resources and their endpoints available in this service.
 
-:::
 ## API key
 The API keys are the required authentication info for the Leaf widgets. It is created at a Leaf user level.
 

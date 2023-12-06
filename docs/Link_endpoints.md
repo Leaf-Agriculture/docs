@@ -62,10 +62,7 @@ https://api.withleaf.io/services/usermanagement/api
 
 See below the REST resources and their endpoints available in this service.
 
-:::tip Note
-The app information that will be highly referenced here is the application information registered by the client with the providers
 :::
-
 ## API key
 The API keys are the required authentication info for the Leaf widgets. It is created at a Leaf user level.
 
@@ -318,6 +315,12 @@ Revokes a Leaf user API key.
 
 
 ## Providers application info
+This section is about your application information from the provider, basically related to the required properties for each one, like the client ID, keys, and secrets.
+
+:::tip Provider setup
+Setting up the provider application information is mandatory to use the provider in the authentication widgets/links from Leaf Link.
+:::
+
 ### AgLeader
 
 To enable AgLeader as a provider in the widget you need to have your application already registered with AgLeader. You can find more info on how to create a developer account [here][1].

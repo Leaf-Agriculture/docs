@@ -53,6 +53,197 @@ daily or hourly.
 The service uses an option to provide the best forecast for any given location worldwide, based on the models available.
 :::
 
+### Availability by Weather Model
+
+<Tabs
+  defaultValue="ICON"
+  values={[
+    { label: 'ICON', value: 'ICON', },
+    { label: 'GFS', value: 'GFS', },
+    { label: 'Arpege & Arome', value: 'Arpege & Arome', },
+    { label: 'IFS', value: 'IFS', },
+    { label: 'JMA', value: 'JMA', },
+    { label: 'GEM', value: 'GEM', },
+  ]
+}>
+
+  <TabItem value="ICON">
+ 
+
+  | Property            | Unit of measurement         | Description                                                                                                 |
+  |---------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|
+  | meanTemperature     | Imperial: ºF; Metric: ºC    | Mean daily air temperature at 2 meters above ground.                                                        |
+  | minTemperature      | Imperial: ºF; Metric: ºC    | Minimum daily air temperature at 2 meters above ground.                                                     |
+  | maxTemperature      | Imperial: ºF; Metric: ºC    | Maximum daily air temperature at 2 meters above ground.                                                     |
+  | meanSoilTemperature | Imperial: ºF; Metric: ºC    | Mean surface temperature (0 cm deep), which can be water or land.                                           |
+  | minSoilTemperature  | Imperial: ºF; Metric: ºC    | Minimum surface temperature (0 cm deep), which can be water or land.                                        |
+  | maxSoilTemperature  | Imperial: ºF; Metric: ºC    | Maximum surface temperature (0 cm deep), which can be water or land.                                        |
+  | sunrise             | iso8601                     | Sunrise time.                                                                                               |
+  | sunset              | iso8601                     | Sunset time.                                                                                                |
+  | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
+  | maxWindgusts        | Imperial: mph, Metric: km/h | Maximum wind gusts on a day.                                                                                | 
+  | windDirection       | º                           | Dominant wind direction.                                                                                    |
+  | evapotranspiration  | Imperial: inch, Metric: mm  | Daily sum of ET₀ Reference Evapotranspiration of a well watered grass field.                                |
+  | rainSum             | Imperial: inch, Metric: mm  | Sum of daily rain.                                                                                          |
+  | snowfallSum         | Imperial: inch, Metric: cm  | Sum of daily snowfall.                                                                                      |
+  | precipitationSum    | Imperial: inch, Metric: mm  | Sum of daily precipitation (including rain, showers and snowfall).                                          |
+  | dewpoint            | Imperial: ºF, Metric: ºC    | Dew point temperature at 2 meters above ground.                                                             |
+  | longwaveRadiation   | W/m²                        | Longwave radiation refers to thermal or infrared radiation emitted by the Earth back into space.            |
+  | shortwaveRadiation  | W/m²                        | Shortwave radiation is often quantified as solar irradiation incident on the Earth's atmosphere or surface. |
+  | cloudcover          | %                           | Total cloud cover as an area fraction.                                                                      |
+  | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                 |
+
+  
+:::tip
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+:::
+
+  </TabItem>
+
+  <TabItem value="GFS">
+ 
+
+  | Property            | Unit of measurement         | Description                                                                                                 |
+  |---------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|
+  | meanTemperature     | Imperial: ºF; Metric: ºC    | Mean daily air temperature at 2 meters above ground.                                                        |
+  | minTemperature      | Imperial: ºF; Metric: ºC    | Minimum daily air temperature at 2 meters above ground.                                                     |
+  | maxTemperature      | Imperial: ºF; Metric: ºC    | Maximum daily air temperature at 2 meters above ground.                                                     |
+  | sunrise             | iso8601                     | Sunrise time.                                                                                               |
+  | sunset              | iso8601                     | Sunset time.                                                                                                |
+  | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
+  | maxWindgusts        | Imperial: mph, Metric: km/h | Maximum wind gusts on a day.                                                                                | 
+  | windDirection       | º                           | Dominant wind direction.                                                                                    |
+  | evapotranspiration  | Imperial: inch, Metric: mm  | Daily sum of ET₀ Reference Evapotranspiration of a well watered grass field.                                |
+  | rainSum             | Imperial: inch, Metric: mm  | Sum of daily rain.                                                                                          |
+  | snowfallSum         | Imperial: inch, Metric: cm  | Sum of daily snowfall.                                                                                      |
+  | precipitationSum    | Imperial: inch, Metric: mm  | Sum of daily precipitation (including rain, showers and snowfall).                                          |
+  | dewpoint            | Imperial: ºF, Metric: ºC    | Dew point temperature at 2 meters above ground.                                                             |
+  | longwaveRadiation   | W/m²                        | Longwave radiation refers to thermal or infrared radiation emitted by the Earth back into space.            |
+  | shortwaveRadiation  | W/m²                        | Shortwave radiation is often quantified as solar irradiation incident on the Earth's atmosphere or surface. |
+  | cloudcover          | %                           | Total cloud cover as an area fraction.                                                                      |
+  | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                 |
+
+:::tip
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+:::
+
+  </TabItem>
+
+  <TabItem value="Arpege & Arome">
+
+  | Property            | Unit of measurement         | Description                                                                                                 |
+  |---------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|
+  | meanTemperature     | Imperial: ºF; Metric: ºC    | Mean daily air temperature at 2 meters above ground.                                                        |
+  | minTemperature      | Imperial: ºF; Metric: ºC    | Minimum daily air temperature at 2 meters above ground.                                                     |
+  | maxTemperature      | Imperial: ºF; Metric: ºC    | Maximum daily air temperature at 2 meters above ground.                                                     |
+  | sunrise             | iso8601                     | Sunrise time.                                                                                               |
+  | sunset              | iso8601                     | Sunset time.                                                                                                |
+  | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
+  | maxWindgusts        | Imperial: mph, Metric: km/h | Maximum wind gusts on a day.                                                                                | 
+  | windDirection       | º                           | Dominant wind direction.                                                                                    |
+  | evapotranspiration  | Imperial: inch, Metric: mm  | Daily sum of ET₀ Reference Evapotranspiration of a well watered grass field.                                |
+  | snowfallSum         | Imperial: inch, Metric: cm  | Sum of daily snowfall.                                                                                      |
+  | precipitationSum    | Imperial: inch, Metric: mm  | Sum of daily precipitation (including rain, showers and snowfall).                                          |
+  | dewpoint            | Imperial: ºF, Metric: ºC    | Dew point temperature at 2 meters above ground.                                                             |
+  | longwaveRadiation   | W/m²                        | Longwave radiation refers to thermal or infrared radiation emitted by the Earth back into space.            |
+  | shortwaveRadiation  | W/m²                        | Shortwave radiation is often quantified as solar irradiation incident on the Earth's atmosphere or surface. |
+  | cloudcover          | %                           | Total cloud cover as an area fraction.                                                                      |
+  | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                 |
+
+:::tip
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+:::
+
+  </TabItem>
+
+  <TabItem value="IFS">
+
+  | Property            | Unit of measurement         | Description                                                                                                |
+  |---------------------|-----------------------------|------------------------------------------------------------------------------------------------------------|
+  | meanTemperature     | Imperial: ºF; Metric: ºC    | Mean daily air temperature at 2 meters above ground.                                                       |
+  | minTemperature      | Imperial: ºF; Metric: ºC    | Minimum daily air temperature at 2 meters above ground.                                                    |
+  | maxTemperature      | Imperial: ºF; Metric: ºC    | Maximum daily air temperature at 2 meters above ground.                                                    |
+  | meanSoilTemperature | Imperial: ºF; Metric: ºC    | Mean surface temperature (0 cm deep), which can be water or land.                                          |
+  | minSoilTemperature  | Imperial: ºF; Metric: ºC    | Minimum surface temperature (0 cm deep), which can be water or land.                                       |
+  | maxSoilTemperature  | Imperial: ºF; Metric: ºC    | Maximum surface temperature (0 cm deep), which can be water or land.                                       |  
+  | sunrise             | iso8601                     | Sunrise time.                                                                                              |
+  | sunset              | iso8601                     | Sunset time.                                                                                               |
+  | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                               |
+  | maxWindgusts        | Imperial: mph, Metric: km/h | Maximum wind gusts on a day.                                                                               | 
+  | windDirection       | º                           | Dominant wind direction.                                                                                   |
+  | evapotranspiration  | Imperial: inch, Metric: mm  | Daily sum of ET₀ Reference Evapotranspiration of a well watered grass field.                               |
+  | rainSum             | Imperial: inch, Metric: mm  | Sum of daily rain.                                                                                         |
+  | snowfallSum         | Imperial: inch, Metric: cm  | Sum of daily snowfall.                                                                                     |
+  | precipitationSum    | Imperial: inch, Metric: mm  | Sum of daily precipitation (including rain, showers and snowfall).                                         |
+  | dewpoint            | Imperial: ºF, Metric: ºC    | Dew point temperature at 2 meters above ground.                                                            |
+  | cloudcover          | %                           | Total cloud cover as an area fraction.                                                                     |
+  | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                |
+
+:::tip
+  Sunrise and sunset variables are only available for daily forecast. Dew point, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+:::
+
+
+  </TabItem>
+
+   <TabItem value="JMA">
+
+  | Property            | Unit of measurement         | Description                                                                                                 |
+  |---------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|
+  | meanTemperature     | Imperial: ºF; Metric: ºC    | Mean daily air temperature at 2 meters above ground.                                                        |
+  | minTemperature      | Imperial: ºF; Metric: ºC    | Minimum daily air temperature at 2 meters above ground.                                                     |
+  | maxTemperature      | Imperial: ºF; Metric: ºC    | Maximum daily air temperature at 2 meters above ground.                                                     |
+  | sunrise             | iso8601                     | Sunrise time.                                                                                               |
+  | sunset              | iso8601                     | Sunset time.                                                                                                |
+  | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
+  | windDirection       | º                           | Dominant wind direction.                                                                                    |
+  | evapotranspiration  | Imperial: inch, Metric: mm  | Daily sum of ET₀ Reference Evapotranspiration of a well watered grass field.                                |
+  | snowfallSum         | Imperial: inch, Metric: cm  | Sum of daily snowfall.                                                                                      |
+  | precipitationSum    | Imperial: inch, Metric: mm  | Sum of daily precipitation (including rain, showers and snowfall).                                          |
+  | dewpoint            | Imperial: ºF, Metric: ºC    | Dew point temperature at 2 meters above ground.                                                             |
+  | longwaveRadiation   | W/m²                        | Longwave radiation refers to thermal or infrared radiation emitted by the Earth back into space.            |
+  | shortwaveRadiation  | W/m²                        | Shortwave radiation is often quantified as solar irradiation incident on the Earth's atmosphere or surface. |
+  | cloudcover          | %                           | Total cloud cover as an area fraction.                                                                      |
+  | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                 |
+
+:::tip
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+:::
+
+  </TabItem>
+
+  <TabItem value="GEM">
+
+  | Property            | Unit of measurement         | Description                                                                                                 |
+  |---------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|
+  | meanTemperature     | Imperial: ºF; Metric: ºC    | Mean daily air temperature at 2 meters above ground.                                                        |
+  | minTemperature      | Imperial: ºF; Metric: ºC    | Minimum daily air temperature at 2 meters above ground.                                                     |
+  | maxTemperature      | Imperial: ºF; Metric: ºC    | Maximum daily air temperature at 2 meters above ground.                                                     |
+  | sunrise             | iso8601                     | Sunrise time.                                                                                               |
+  | sunset              | iso8601                     | Sunset time.                                                                                                |
+  | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
+  | maxWindgusts        | Imperial: mph, Metric: km/h | Maximum wind gusts on a day.                                                                                | 
+  | windDirection       | º                           | Dominant wind direction.                                                                                    |
+  | evapotranspiration  | Imperial: inch, Metric: mm  | Daily sum of ET₀ Reference Evapotranspiration of a well watered grass field.                                |
+  | rainSum             | Imperial: inch, Metric: mm  | Sum of daily rain.                                                                                          |
+  | snowfallSum         | Imperial: inch, Metric: cm  | Sum of daily snowfall.                                                                                      |
+  | precipitationSum    | Imperial: inch, Metric: mm  | Sum of daily precipitation (including rain, showers and snowfall).                                          |
+  | dewpoint            | Imperial: ºF, Metric: ºC    | Dew point temperature at 2 meters above ground.                                                             |
+  | longwaveRadiation   | W/m²                        | Longwave radiation refers to thermal or infrared radiation emitted by the Earth back into space.            |
+  | shortwaveRadiation  | W/m²                        | Shortwave radiation is often quantified as solar irradiation incident on the Earth's atmosphere or surface. |
+  | cloudcover          | %                           | Total cloud cover as an area fraction.                                                                      |
+  | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                 |
+
+  
+:::tip
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+:::
+
+  </TabItem>    
+
+  </Tabs>
+
+
 ## Historical Data
 
 Leaf's historical weather service provides access to data from 1940 onwards when available. The data can 
@@ -83,3 +274,81 @@ be fetched daily or hourly. Please note, historical weather data from less than 
 |:----------------:|:-------------:|:------------------:|:-------------------:|:-----------------:|-------------------------|
 |       ERA5       |    Global     |   0.25° (~25 km)   |       Hourly        |  1940 to present  | Daily with 5 days delay |
 |    ERA5-Land     |    Global     |   0.1° (~11 km)    |       Hourly        |  1950 to present  | Daily with 5 days delay |
+
+
+### Availability by Weather Model
+
+<Tabs
+  defaultValue="ERA5"
+  values={[
+    { label: 'ERA5', value: 'ERA5', },
+    { label: 'ERA5-Land', value: 'ERA5-Land', },
+  ]
+}>
+
+  <TabItem value="ERA5">
+ 
+
+  | Property            | Unit of measurement         | Description                                                                                                 |
+  |---------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|
+  | meanTemperature     | Imperial: ºF; Metric: ºC    | Mean daily air temperature at 2 meters above ground.                                                        |
+  | minTemperature      | Imperial: ºF; Metric: ºC    | Minimum daily air temperature at 2 meters above ground.                                                     |
+  | maxTemperature      | Imperial: ºF; Metric: ºC    | Maximum daily air temperature at 2 meters above ground.                                                     |
+  | meanSoilTemperature | Imperial: ºF; Metric: ºC    | Mean surface temperature (0 cm deep), which can be water or land.                                           |
+  | minSoilTemperature  | Imperial: ºF; Metric: ºC    | Minimum surface temperature (0 cm deep), which can be water or land.                                        |
+  | maxSoilTemperature  | Imperial: ºF; Metric: ºC    | Maximum surface temperature (0 cm deep), which can be water or land.                                        |
+  | sunrise             | iso8601                     | Sunrise time.                                                                                               |
+  | sunset              | iso8601                     | Sunset time.                                                                                                |
+  | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
+  | maxWindgusts        | Imperial: mph, Metric: km/h | Maximum wind gusts on a day.                                                                                | 
+  | windDirection       | º                           | Dominant wind direction.                                                                                    |
+  | evapotranspiration  | Imperial: inch, Metric: mm  | Daily sum of ET₀ Reference Evapotranspiration of a well watered grass field.                                |
+  | rainSum             | Imperial: inch, Metric: mm  | Sum of daily rain.                                                                                          |
+  | snowfallSum         | Imperial: inch, Metric: cm  | Sum of daily snowfall.                                                                                      |
+  | precipitationSum    | Imperial: inch, Metric: mm  | Sum of daily precipitation (including rain, showers and snowfall).                                          |
+  | dewpoint            | Imperial: ºF, Metric: ºC    | Dew point temperature at 2 meters above ground.                                                             |
+  | longwaveRadiation   | W/m²                        | Longwave radiation refers to thermal or infrared radiation emitted by the Earth back into space.            |
+  | shortwaveRadiation  | W/m²                        | Shortwave radiation is often quantified as solar irradiation incident on the Earth's atmosphere or surface. |
+  | cloudcover          | %                           | Total cloud cover as an area fraction.                                                                      |
+  | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                 |
+
+  
+:::tip
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+:::
+
+  </TabItem>
+
+  <TabItem value="ERA5-Land">
+ 
+
+  | Property            | Unit of measurement         | Description                                                                                                 |
+  |---------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------|
+  | meanTemperature     | Imperial: ºF; Metric: ºC    | Mean daily air temperature at 2 meters above ground.                                                        |
+  | minTemperature      | Imperial: ºF; Metric: ºC    | Minimum daily air temperature at 2 meters above ground.                                                     |
+  | maxTemperature      | Imperial: ºF; Metric: ºC    | Maximum daily air temperature at 2 meters above ground.                                                     |
+  | meanSoilTemperature | Imperial: ºF; Metric: ºC    | Mean surface temperature (0 cm deep), which can be water or land.                                           |
+  | minSoilTemperature  | Imperial: ºF; Metric: ºC    | Minimum surface temperature (0 cm deep), which can be water or land.                                        |
+  | maxSoilTemperature  | Imperial: ºF; Metric: ºC    | Maximum surface temperature (0 cm deep), which can be water or land.                                        |
+  | sunrise             | iso8601                     | Sunrise time.                                                                                               |
+  | sunset              | iso8601                     | Sunset time.                                                                                                |
+  | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
+  | maxWindgusts        | Imperial: mph, Metric: km/h | Maximum wind gusts on a day.                                                                                | 
+  | windDirection       | º                           | Dominant wind direction.                                                                                    |
+  | evapotranspiration  | Imperial: inch, Metric: mm  | Daily sum of ET₀ Reference Evapotranspiration of a well watered grass field.                                |
+  | rainSum             | Imperial: inch, Metric: mm  | Sum of daily rain.                                                                                          |
+  | snowfallSum         | Imperial: inch, Metric: cm  | Sum of daily snowfall.                                                                                      |
+  | precipitationSum    | Imperial: inch, Metric: mm  | Sum of daily precipitation (including rain, showers and snowfall).                                          |
+  | dewpoint            | Imperial: ºF, Metric: ºC    | Dew point temperature at 2 meters above ground.                                                             |
+  | longwaveRadiation   | W/m²                        | Longwave radiation refers to thermal or infrared radiation emitted by the Earth back into space.            |
+  | shortwaveRadiation  | W/m²                        | Shortwave radiation is often quantified as solar irradiation incident on the Earth's atmosphere or surface. |
+  | cloudcover          | %                           | Total cloud cover as an area fraction.                                                                      |
+  | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                 |
+
+:::tip
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+:::
+
+  </TabItem>
+
+  </Tabs>

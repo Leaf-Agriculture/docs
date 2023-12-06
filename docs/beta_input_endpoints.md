@@ -50,7 +50,7 @@ See below the REST resources and their endpoints available in this service.
 
 &nbsp<span class="badge badge--success">GET</span>  `/products`
 
-List of products from providers (for now only for John Deere) in a Leaf User level. This way, on this endpoint the user can search for all products that are available from traditional providers (e.g. John Deere), so here we do not include specific providers such as Agrian and CDMS.
+List of products from providers (for now only for John Deere) in a Leaf User level. This way, on this endpoint the user can search for all products that are available from traditional providers (e.g. John Deere), so here we do **not include** specific providers such as Agrian and CDMS.
 
 | Parameter (to filter by) | Values                                                                                                                                                                                                                              |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -674,7 +674,7 @@ values={[
 |--------------------------------|---------------------------------------------------------------------------------------|
 | [Get all varieties][5]         | <span class="badge badge--success">GET</span> `/varieties`                            |
 | [Get summarized varieties][11] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties/summary` |
-| [Search for varieties][12]     | <span class="badge badge--success">GET</span> `/users/varieties/search`               |
+| [Search for varieties][12]     | <span class="badge badge--success">GET</span> `/varieties/search`                     |
 
 
 ### Get all varieties
@@ -858,7 +858,7 @@ Search for varieties by name, partial values are supported. Varieties from John 
 
 | Parameter (to filter by) | Values                                                                             |
 |--------------------------|------------------------------------------------------------------------------------|
-| `name`                   | part of the product name to be searched **(required)**                             |
+| `name`                   | part of the variety name to be searched **(required)**                             |
 | `maxResults`             | the number of results that should be returned (max value is 20). The default is 10 |
 | `crop`                   | the name of the crop of the varieties of interest                                  |
 
@@ -926,6 +926,301 @@ values={[
     "provider": "JohnDeere",
     "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2",
     "status": "ACTIVE"
+  },
+  ....
+]
+```
+
+## Tank Mixes
+
+
+| Description                 | Endpoints                                                         |
+|-----------------------------|-------------------------------------------------------------------|
+| [Get all tank mixes][5]     | <span class="badge badge--success">GET</span> `/tankMixes`        |
+| [Search for tank mixes][12] | <span class="badge badge--success">GET</span> `/tankMixes/search` |
+
+
+### Get all tank mixes
+
+&nbsp<span class="badge badge--success">GET</span>  `/tankMixes`
+
+List of tank mixes available from providers (for now only for John Deere).
+
+| Parameter (to filter by) | Values                                                                                                                                                                                                                              |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                                                                                                                                                           |
+| `provider`               | `JohnDeere`                                                                                                                                                                                                                         |
+| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
+| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
+| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/tankMixes'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/tankMixes'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/tankMixes'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "abc59ca6-937c-11ee-b9d1-0242ac120002",
+    "name": "TankTest1",
+    "providerId": "b74878dc-937c-11ee-b9d1-0242ac120002",
+    "notes": null,
+    "solutionRate": {
+      "valueAsDouble": 5,
+      "unit": "gal1ac-1",
+      "vrDomainId": "vrSolutionRateLiquid"
+    },
+    "formulationType": "LIQUID",
+    "targetCrops": [
+      "PINEAPPLE"
+    ],
+    "carrier": {
+      "id": "c0cb84d0-937c-11ee-b9d1-0242ac120002",
+      "name": "Water",
+      "labelProvider": "JohnDeere",
+      "registrant": "GENERIC",
+      "registration": null,
+      "distributor": null,
+      "productType": "ADDITIVE",
+      "formulationType": "LIQUID",
+      "productPageUrl": null,
+      "labels": null,
+      "activeIngredient": null,
+      "carrier": true,
+      "status": "ACTIVE",
+      "providerId": "e0daf77e-937c-11ee-b9d1-0242ac120002",
+      "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+    },
+    "components": [
+      {
+        "id": "d1fb3aac-937c-11ee-b9d1-0242ac120002",
+        "name": "Brandt Big Foot SS",
+        "labelProvider": "JohnDeere",
+        "registrant": "Brandt Consolidated, Inc.",
+        "registration": null,
+        "distributor": null,
+        "productType": "ADDITIVE",
+        "formulationType": "DRY",
+        "productPageUrl": null,
+        "labels": null,
+        "activeIngredient": null,
+        "carrier": false,
+        "status": "ACTIVE",
+        "providerId": "06da2738-937d-11ee-b9d1-0242ac120002",
+        "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+      },
+      {
+        "id": "eaee0878-937c-11ee-b9d1-0242ac120002",
+        "name": "Ferti-Phos Mg 0-25-0",
+        "labelProvider": "JohnDeere",
+        "registrant": "Fertilizer Company of Arizona, Inc.",
+        "registration": null,
+        "distributor": null,
+        "productType": "FERTILIZER",
+        "formulationType": "LIQUID",
+        "productPageUrl": null,
+        "labels": null,
+        "activeIngredient": null,
+        "carrier": true,
+        "status": "ACTIVE",
+        "providerId": "0e0f1c66-937d-11ee-b9d1-0242ac120002",
+        "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+      }
+    ],
+    "status": "ACTIVE",
+    "provider": "JohnDeere",
+    "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+  },
+  ....
+]
+```
+
+
+### Search for tank mixes
+
+&nbsp<span class="badge badge--success">GET</span>  `/tankMixes/search`
+
+Search for tank mixes by name, partial values are supported. Tank mix from John Deere Operation Center are available at the Leaf User level.  
+
+| Parameter (to filter by) | Values                                                                             |
+|--------------------------|------------------------------------------------------------------------------------|
+| `name`                   | part of the tank mix name to be searched **(required)**                            |
+| `maxResults`             | the number of results that should be returned (max value is 20). The default is 10 |
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/tankMixes/search'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/tankMixes/search'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/tankMixes/search'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "abc59ca6-937c-11ee-b9d1-0242ac120002",
+    "name": "TankTest1",
+    "providerId": "b74878dc-937c-11ee-b9d1-0242ac120002",
+    "notes": null,
+    "solutionRate": {
+      "valueAsDouble": 5,
+      "unit": "gal1ac-1",
+      "vrDomainId": "vrSolutionRateLiquid"
+    },
+    "formulationType": "LIQUID",
+    "targetCrops": [
+      "PINEAPPLE"
+    ],
+    "carrier": {
+      "id": "c0cb84d0-937c-11ee-b9d1-0242ac120002",
+      "name": "Water",
+      "labelProvider": "JohnDeere",
+      "registrant": "GENERIC",
+      "registration": null,
+      "distributor": null,
+      "productType": "ADDITIVE",
+      "formulationType": "LIQUID",
+      "productPageUrl": null,
+      "labels": null,
+      "activeIngredient": null,
+      "carrier": true,
+      "status": "ACTIVE",
+      "providerId": "e0daf77e-937c-11ee-b9d1-0242ac120002",
+      "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+    },
+    "components": [
+      {
+        "id": "d1fb3aac-937c-11ee-b9d1-0242ac120002",
+        "name": "Brandt Big Foot SS",
+        "labelProvider": "JohnDeere",
+        "registrant": "Brandt Consolidated, Inc.",
+        "registration": null,
+        "distributor": null,
+        "productType": "ADDITIVE",
+        "formulationType": "DRY",
+        "productPageUrl": null,
+        "labels": null,
+        "activeIngredient": null,
+        "carrier": false,
+        "status": "ACTIVE",
+        "providerId": "06da2738-937d-11ee-b9d1-0242ac120002",
+        "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+      },
+      {
+        "id": "eaee0878-937c-11ee-b9d1-0242ac120002",
+        "name": "Ferti-Phos Mg 0-25-0",
+        "labelProvider": "JohnDeere",
+        "registrant": "Fertilizer Company of Arizona, Inc.",
+        "registration": null,
+        "distributor": null,
+        "productType": "FERTILIZER",
+        "formulationType": "LIQUID",
+        "productPageUrl": null,
+        "labels": null,
+        "activeIngredient": null,
+        "carrier": true,
+        "status": "ACTIVE",
+        "providerId": "0e0f1c66-937d-11ee-b9d1-0242ac120002",
+        "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+      }
+    ],
+    "status": "ACTIVE",
+    "provider": "JohnDeere",
+    "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
   },
   ....
 ]

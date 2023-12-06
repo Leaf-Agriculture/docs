@@ -8,20 +8,22 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-[1]: #get-all-provider-magic-link
+[1]: #get-all-provider-magic-links
 [2]: #get-a-provider-magic-link
 [3]: #create-a-provider-magic-link
 [4]: #delete-a-provider-magic-link
 
-[5]: #get-all-authentication-magic-link
+[5]: #get-all-authentication-magic-links
 [6]: #get-an-authentication-magic-link
 [7]: #create-an-authentication-magic-link
 [8]: #delete-an-authentication-magic-link
 
-[9]: #get-all-file-upload-magic-link
+[9]: #get-all-file-upload-magic-links
 [10]: #get-a-file-upload-magic-link
 [11]: #create-a-file-upload-magic-link
 [12]: #delete-a-file-upload-magic-link
+
+[13]:  /docs/Link_provider_connection#set-up
 
 ## About
 
@@ -41,12 +43,12 @@ This is a link to authenticate with multiple providers.
 
 | Description                       | Endpoints                                                                               |
 |-----------------------------------|-----------------------------------------------------------------------------------------|
-| [Get all provider magic link][1]  | <span class="badge badge--success">GET</span> `/magic-link/provider`                    |
+| [Get all provider magic links][1]  | <span class="badge badge--success">GET</span> `/magic-link/provider`                    |
 | [Get a provider magic link][2]    | <span class="badge badge--success">GET</span> `/magic-link/provider/{magicLinkId}`      |
 | [Create a provider magic link][3] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/provider` |
 | [Delete a provider magic link][4] | <span class="badge badge--danger">DELETE</span> `/magic-link/provider/{magicLinkId}`    |
 
-#### Get all provider magic link
+#### Get all provider magic links
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/provider`
 
@@ -222,6 +224,10 @@ Get a created link for authentication across multiple providers.
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/provider`
 
+:::info Provider application info
+Make sure you set up your provider application first. More info [here][13].
+:::
+
 Creates a link for authentication across multiple providers.
 
 - `allowedProviders`: the list of providers allowed in the authentication process. It can be one or more of the following: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, and `Trimble`.
@@ -393,12 +399,12 @@ This is a link to authenticate with a single provider.
 
 | Description                              | Endpoints                                                                                     |
 |------------------------------------------|-----------------------------------------------------------------------------------------------|
-| [Get all authentication magic link][5]   | <span class="badge badge--success">GET</span> `/magic-link/authentication`                    |
+| [Get all authentication magic links][5]   | <span class="badge badge--success">GET</span> `/magic-link/authentication`                    |
 | [Get an authentication magic link][6]    | <span class="badge badge--success">GET</span> `/magic-link/authentication/{magicLinkId}`      |
 | [Create an authentication magic link][7] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/authentication` |
 | [Delete an authentication magic link][8] | <span class="badge badge--danger">DELETE</span> `/magic-link/authentication/{magicLinkId}`    |
 
-#### Get all authentication magic link
+#### Get all authentication magic links
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/authentication`
 
@@ -567,8 +573,11 @@ Get a created link for authentication with a single provider.
 ```
 
 #### Create an authentication magic link
-
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/authentication`
+
+:::info Provider application info
+Make sure you set up your provider application first. More info [here][13].
+:::
 
 Creates a link for authentication with a single provider.
 
@@ -739,12 +748,12 @@ This is a link to upload machine files.
 
 | Description                           | Endpoints                                                                                  |
 |---------------------------------------|--------------------------------------------------------------------------------------------|
-| [Get all file upload magic link][9]   | <span class="badge badge--success">GET</span> `/magic-link/file-upload`                    |
+| [Get all file upload magic links][9]   | <span class="badge badge--success">GET</span> `/magic-link/file-upload`                    |
 | [Get a file upload magic link][10]    | <span class="badge badge--success">GET</span> `/magic-link/file-upload/{magicLinkId}`      |
 | [Create a file upload magic link][11] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/file-upload` |
 | [Delete a file upload magic link][12] | <span class="badge badge--danger">DELETE</span> `/magic-link/file-upload/{magicLinkId}`    |
 
-#### Get all file upload magic link
+#### Get all file upload magic links
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/file-upload`
 
@@ -1079,12 +1088,16 @@ This option enables the creation of Leaf users automatically during the Magic li
 | Description                              | Endpoints                                                                   |
 |------------------------------------------|-----------------------------------------------------------------------------|
 | [Create a Provider Magic Link][3]        | <span class="badge badge--warning">POST</span> `/magic-link/provider`       |
-| [Create An Authentication Magic Link][3] | <span class="badge badge--warning">POST</span> `/magic-link/authentication` |
+| [Create an Authentication Magic Link][3] | <span class="badge badge--warning">POST</span> `/magic-link/authentication` |
 | [Create a File Upload Magic Link][3]     | <span class="badge badge--warning">POST</span> `/magic-link/file-upload`    |
 
 ### Create a Provider Magic Link
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/provider`
+
+:::info Provider application info
+Make sure you set up your provider application first. More info [here][13].
+:::
 
 Creates a link for authentication across multiple providers. The leaf user will be created during this process based on the `externalId`.
 
@@ -1207,9 +1220,13 @@ The `name` and `email` parameters are optional, they will fill in the leaf user 
 }
 ```
 
-### Create An Authentication Magic Link
+### Create an Authentication Magic Link
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/authentication`
+
+:::info Provider application info
+Make sure you set up your provider application first. More info [here][13].
+:::
 
 Creates a link for authentication with a single provider. The leaf user will be created during this process based on the `externalId`.
 

@@ -102,6 +102,11 @@ module.exports = {
             'beta_features_overview',
             {
               type: 'category',
+              label: 'Input Database',
+              items: ['beta_input_endpoints']
+            },
+            {
+              type: 'category',
               label: 'Assets',
               items: ['beta_assets_endpoints']
             },

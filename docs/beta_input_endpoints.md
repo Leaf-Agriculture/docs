@@ -8,15 +8,18 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<!-- the following links are referenced throughout this document -->
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
 [2]: #get-all-products
+[3]: #get-summarized-products
 [4]: #search-for-products
 [5]: #get-all-varieties
-[7]: #get-a-product
-[8]: #get-matching-products-from-an-operation
-[9]: #updated-product-matches
-[10]: #get-product-matches-historical
+[6]: #get-a-product
+[7]: #get-matching-products-from-an-operation
+[8]: #updated-product-matches
+[9]: #get-product-matches-historical
+[10]: https://docs.withleaf.io/docs/beta_input_endpoints#get-a-product
+[11]: #get-summarized-varieties
+[12]: #search-for-varieties
 
 ## About
 
@@ -28,33 +31,36 @@ https://api.withleaf.io/services/beta/api
 
 See below the REST resources and their endpoints available in this service.
 
-## Products (Beta)
+## Products
 
-This feature has the following endpoints available:
+**Endpoints**
 
 | Description                                  | Endpoints                                                                                                                |
 |----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| [Get all products][2]                        | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products`                                             |
+| [Get all products][2]                        | <span class="badge badge--success">GET</span> `/products`                                                                |
+| [Get summarized products][3]                 | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/summary`                                     |
 | [Search for products][4]                     | <span class="badge badge--success">GET</span> `/products/search`                                                         |
-| [Get a product][7]                           | <span class="badge badge--success">GET</span> `/products/{id}`                                                           |
-| [Get matching products from an operation][8] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/matching/operations/{operationId}`           |
-| [Updated product matches][9]                 | <span class="badge badge--warning">PUT</span> `/products/matching/operations/{operationId}/matches/{matchId}`            |
-| [Get product matches historical][10]         | <span class="badge badge--success">GET</span> `/products/matching/operations/{operationId}/matches/{matchId}/historical` |
+| [Get a product][6]                           | <span class="badge badge--success">GET</span> `/products/{id}`                                                           |
+| [Get matching products from an operation][7] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/matching/operations/{operationId}`           |
+| [Updated product matches][8]                 | <span class="badge badge--warning">PUT</span> `/products/matching/operations/{operationId}/matches/{matchId}`            |
+| [Get product matches historical][9]          | <span class="badge badge--success">GET</span> `/products/matching/operations/{operationId}/matches/{matchId}/historical` |
 
 
 ### Get all products
 
-&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products`
+&nbsp<span class="badge badge--success">GET</span>  `/products`
 
-List the existing products used by a leaf user.
+List of products from providers (for now only for John Deere) in a Leaf User level. This way, on this endpoint the user can search for all products that are available from traditional providers (e.g. John Deere), so here we do **not include** specific providers such as Agrian and CDMS.
 
-| Parameter (to filter by)    | Values                                                                                                                                                                                                                              |
-|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                      | part of the product name                                                                                                                                                                                                            |
-| `page`                      | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
-| `size`                      | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
-| `sort`                      | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+| Parameter (to filter by) | Values                                                                                                                                                                                                                              |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                                                                                                                                                           |
+| `provider`               | `JohnDeere`                                                                                                                                                                                                                         |
+| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
+| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
+| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
 
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -70,7 +76,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/products'
+  const endpoint ='https://api.withleaf.io/services/beta/api/products'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -86,7 +92,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products'
+  endpoint = 'https://api.withleaf.io/services/beta/api/products'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -99,7 +105,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products'
+      'https://api.withleaf.io/services/beta/api/products'
   ```
 
   </TabItem>
@@ -107,20 +113,100 @@ values={[
 
 #### Response
 
-The response is a JSON array containing products records.
+```json
+[
+  {
+    "id": "07b3f270-8af8-11ee-b9d1-0242ac120002",
+    "name": "Propiconazole",
+    "registrant": "Tide International USA,Inc.",
+    "productType": "Chemical",
+    "labelProvider": "JohnDeere",
+    "providerId": "020c55f6-8af8-11ee-b9d1-0242ac120002",
+    "formulationType": "DRY",
+    "leafUserId": "fb6fcda4-8af7-11ee-b9d1-0242ac120002",
+    "registration": "0084229-00011-AA-0000000",
+    "status": "ACTIVE",
+    "carrier": true
+  },
+  ....
+]
+```
+
+
+### Get summarized products
+
+&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/products/summary`
+
+List of products extracted from machine file.
+
+| Parameter (to filter by)    | Values                                                                                                                                                                                                                              |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                      | part of the product name                                                                                                                                                                                                            |
+| `page`                      | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
+| `size`                      | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
+| `sort`                      | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/summary'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/summary'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/products/summary'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
 
 ```json
 [
   {
-    "id": "8e0de5a5-0888-41f3-b9af-5a03c27b04a0",
-    "name": "RoundUp",
-    "leafUserId": "349386f2-762a-4bcb-8675-3c97efa6d462"
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "leafFilesCount": 1,
+    "normalizedName": "CompostX"
   },
-  {
-    "id": "a885307b-e528-4e6b-a76b-a75c175f17c1",
-    "name": "Atrazine",
-    "leafUserId": "349386f2-762a-4bcb-8675-3c97efa6d462"
-  }
+  ....
 ]
 ```
 
@@ -129,14 +215,14 @@ The response is a JSON array containing products records.
 
 &nbsp<span class="badge badge--success">GET</span>  `/products/search`
 
-Search for products by name, partial values are supported.
-
+Search for products by name, partial values are supported. Agrian and CDMS products are currently available to everyone, and John Deere products from the Operation Center at the Leaf User level.  
 
 | Parameter (to filter by) | Values                                                                             |
 |--------------------------|------------------------------------------------------------------------------------|
 | `name`                   | part of the product name to be searched **(required)**                             |
 | `maxResults`             | the number of results that should be returned (max value is 20). The default is 10 |
 
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -188,8 +274,6 @@ values={[
 </Tabs>
 
 #### Response
-
-The response is a JSON array with the products that match the query.
 
 ```json
 [
@@ -246,6 +330,8 @@ The response is a JSON array with the products that match the query.
 &nbsp<span class="badge badge--success">GET</span>  `/products/{id}`
 
 Get a product by its id. The data is obtained from different product databases.
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -310,12 +396,12 @@ values={[
   "labelProvider": "AGRIAN",
   "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=21666",
   "labels": [
-      {
-        "name": " Label - 03-R0718 ",
-        "url": "https://www.agrian.com/pdfs/current/Badge_X2_FungicideBactericide_Label1p.pdf"
-      },
-      ....
-    ]
+    {
+      "name": " Label - 03-R0718 ",
+      "url": "https://www.agrian.com/pdfs/current/Badge_X2_FungicideBactericide_Label1p.pdf"
+    },
+    ....
+  ]
 }
 ```
 
@@ -323,7 +409,9 @@ values={[
 
 &nbsp<span class="badge badge--success">GET</span>  `/products/matching/operations/{operationId}`
 
-Get the standard products that best match the products from a Field Operation. Information such as the registration number and labels can be obtained from [this endpoint][7] using the `id`.
+Get the standard products that best match the products from a Field Operation. Information such as the registration number and labels can be obtained from [this endpoint][10] using the `id`.
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -425,6 +513,8 @@ Or, to change prediction:
 }
 ```
 
+#### Request examples
+
 <Tabs
 defaultValue="sh"
 values={[
@@ -446,7 +536,7 @@ values={[
     status: "VALIDATED"
   }
 
-  axios.get(endpoint, { headers })
+  axios.get(endpoint, { headers, data })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -466,7 +556,7 @@ values={[
     status: "VALIDATED"
   }
 
-  response = requests.get(endpoint, headers=headers)
+  response = requests.get(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -513,6 +603,8 @@ values={[
 &nbsp<span class="badge badge--success">GET</span> `/products/matching/operations/{operationId}/matches/{matchId}/historical`
 
 Get a product's change history.
+
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -575,30 +667,31 @@ values={[
 ]
 ```
 
-## Varieties (Beta)
+## Varieties
 
-This feature has the following endpoints available:
 
-| Description            | Endpoints                                                                     |
-|------------------------|-------------------------------------------------------------------------------|
-| [Get all varieties][5] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties` |
+| Description                    | Endpoints                                                                             |
+|--------------------------------|---------------------------------------------------------------------------------------|
+| [Get all varieties][5]         | <span class="badge badge--success">GET</span> `/varieties`                            |
+| [Get summarized varieties][11] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties/summary` |
+| [Search for varieties][12]     | <span class="badge badge--success">GET</span> `/varieties/search`                     |
 
-### Get All Varieties
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties`
+### Get all varieties
 
-Get all varieties from a leaf user.
+&nbsp<span class="badge badge--success">GET</span>  `/varieties`
 
+List of varieties available from providers (for now only for John Deere).
 
 | Parameter (to filter by) | Values                                                                                                                                                                                                                              |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                   | part of the product name                                                                                                                                                                                                            |
-| `crops`                  | desired crop name                                                                                                                                                                                                                   |
-| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
+| `leafUserId`             | uuid of one of your users                                                                                                                                                                                                           |
+| `provider`               | `JohnDeere`                                                                                                                                                                                                                         |
 | `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
+| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
 | `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
 
-
+#### Request examples
 
 <Tabs
 defaultValue="sh"
@@ -614,7 +707,7 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/varieties'
+  const endpoint ='https://api.withleaf.io/services/beta/api/varieties'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -630,7 +723,7 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/varieties'
+  endpoint = 'https://api.withleaf.io/services/beta/api/varieties'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -643,7 +736,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/varieties'
+      'https://api.withleaf.io/services/beta/api/varieties'
   ```
 
   </TabItem>
@@ -651,7 +744,89 @@ values={[
 
 #### Response
 
-The response is a JSON list with all the varieties
+```json
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "1299",
+    "cropName": "SOYBEANS",
+    "leafUserId": "028c30fa-6d2a-11ee-b962-0242ac120002",
+    "registrant": "Curry Seed",
+    "provider": "JohnDeere",
+    "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2",
+    "status": "ACTIVE"
+  },
+  ....
+]
+```
+
+
+### Get summarized varieties
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties/summary`
+
+List of varieties extracted from machine file.
+
+| Parameter (to filter by) | Values                                                                                                                                                                                                                              |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                   | part of the product name                                                                                                                                                                                                            |
+| `crops`                  | desired crop name                                                                                                                                                                                                                   |
+| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
+| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
+| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/users/{leafUserId}/varieties/summary'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/users/{leafUserId}/varieties/summary'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/users/{leafUserId}/varieties/summary'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
 
 ```json
 [
@@ -670,6 +845,383 @@ The response is a JSON list with all the varieties
     "crops": [
       "corn"
     ]
-  }
+  },
+  ....
+]
+```
+
+### Search for varieties
+
+&nbsp<span class="badge badge--success">GET</span>  `/varieties/search`
+
+Search for varieties by name, partial values are supported. Varieties from John Deere Operation Center are available at the Leaf User level.  
+
+| Parameter (to filter by) | Values                                                                             |
+|--------------------------|------------------------------------------------------------------------------------|
+| `name`                   | part of the variety name to be searched **(required)**                             |
+| `maxResults`             | the number of results that should be returned (max value is 20). The default is 10 |
+| `crop`                   | the name of the crop of the varieties of interest                                  |
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/varieties/search'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/varieties/search'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/varieties/search'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "1299",
+    "cropName": "SOYBEANS",
+    "leafUserId": "028c30fa-6d2a-11ee-b962-0242ac120002",
+    "registrant": "Curry Seed",
+    "provider": "JohnDeere",
+    "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2",
+    "status": "ACTIVE"
+  },
+  ....
+]
+```
+
+## Tank Mixes
+
+
+| Description                 | Endpoints                                                         |
+|-----------------------------|-------------------------------------------------------------------|
+| [Get all tank mixes][5]     | <span class="badge badge--success">GET</span> `/tankMixes`        |
+| [Search for tank mixes][12] | <span class="badge badge--success">GET</span> `/tankMixes/search` |
+
+
+### Get all tank mixes
+
+&nbsp<span class="badge badge--success">GET</span>  `/tankMixes`
+
+List of tank mixes available from providers (for now only for John Deere).
+
+| Parameter (to filter by) | Values                                                                                                                                                                                                                              |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `leafUserId`             | uuid of one of your users                                                                                                                                                                                                           |
+| `provider`               | `JohnDeere`                                                                                                                                                                                                                         |
+| `size`                   | an integer specifying the size of the page (max is 100)                                                                                                                                                                             |
+| `page`                   | an integer specifying the page being fetched (default is 0)                                                                                                                                                                         |
+| `sort`                   | the sorting order of the results; can be multi-value, where the first value to be passed will take priority over the next values; you can also specify the order as `asc` or `desc` with `asc` being the default. Example: id, desc |
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/tankMixes'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/tankMixes'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/tankMixes'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "abc59ca6-937c-11ee-b9d1-0242ac120002",
+    "name": "TankTest1",
+    "providerId": "b74878dc-937c-11ee-b9d1-0242ac120002",
+    "notes": null,
+    "solutionRate": {
+      "valueAsDouble": 5,
+      "unit": "gal1ac-1",
+      "vrDomainId": "vrSolutionRateLiquid"
+    },
+    "formulationType": "LIQUID",
+    "targetCrops": [
+      "PINEAPPLE"
+    ],
+    "carrier": {
+      "id": "c0cb84d0-937c-11ee-b9d1-0242ac120002",
+      "name": "Water",
+      "labelProvider": "JohnDeere",
+      "registrant": "GENERIC",
+      "registration": null,
+      "distributor": null,
+      "productType": "ADDITIVE",
+      "formulationType": "LIQUID",
+      "productPageUrl": null,
+      "labels": null,
+      "activeIngredient": null,
+      "carrier": true,
+      "status": "ACTIVE",
+      "providerId": "e0daf77e-937c-11ee-b9d1-0242ac120002",
+      "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+    },
+    "components": [
+      {
+        "id": "d1fb3aac-937c-11ee-b9d1-0242ac120002",
+        "name": "Brandt Big Foot SS",
+        "labelProvider": "JohnDeere",
+        "registrant": "Brandt Consolidated, Inc.",
+        "registration": null,
+        "distributor": null,
+        "productType": "ADDITIVE",
+        "formulationType": "DRY",
+        "productPageUrl": null,
+        "labels": null,
+        "activeIngredient": null,
+        "carrier": false,
+        "status": "ACTIVE",
+        "providerId": "06da2738-937d-11ee-b9d1-0242ac120002",
+        "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+      },
+      {
+        "id": "eaee0878-937c-11ee-b9d1-0242ac120002",
+        "name": "Ferti-Phos Mg 0-25-0",
+        "labelProvider": "JohnDeere",
+        "registrant": "Fertilizer Company of Arizona, Inc.",
+        "registration": null,
+        "distributor": null,
+        "productType": "FERTILIZER",
+        "formulationType": "LIQUID",
+        "productPageUrl": null,
+        "labels": null,
+        "activeIngredient": null,
+        "carrier": true,
+        "status": "ACTIVE",
+        "providerId": "0e0f1c66-937d-11ee-b9d1-0242ac120002",
+        "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+      }
+    ],
+    "status": "ACTIVE",
+    "provider": "JohnDeere",
+    "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+  },
+  ....
+]
+```
+
+
+### Search for tank mixes
+
+&nbsp<span class="badge badge--success">GET</span>  `/tankMixes/search`
+
+Search for tank mixes by name, partial values are supported. Tank mix from John Deere Operation Center are available at the Leaf User level.  
+
+| Parameter (to filter by) | Values                                                                             |
+|--------------------------|------------------------------------------------------------------------------------|
+| `name`                   | part of the tank mix name to be searched **(required)**                            |
+| `maxResults`             | the number of results that should be returned (max value is 20). The default is 10 |
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/tankMixes/search'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/tankMixes/search'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/tankMixes/search'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "abc59ca6-937c-11ee-b9d1-0242ac120002",
+    "name": "TankTest1",
+    "providerId": "b74878dc-937c-11ee-b9d1-0242ac120002",
+    "notes": null,
+    "solutionRate": {
+      "valueAsDouble": 5,
+      "unit": "gal1ac-1",
+      "vrDomainId": "vrSolutionRateLiquid"
+    },
+    "formulationType": "LIQUID",
+    "targetCrops": [
+      "PINEAPPLE"
+    ],
+    "carrier": {
+      "id": "c0cb84d0-937c-11ee-b9d1-0242ac120002",
+      "name": "Water",
+      "labelProvider": "JohnDeere",
+      "registrant": "GENERIC",
+      "registration": null,
+      "distributor": null,
+      "productType": "ADDITIVE",
+      "formulationType": "LIQUID",
+      "productPageUrl": null,
+      "labels": null,
+      "activeIngredient": null,
+      "carrier": true,
+      "status": "ACTIVE",
+      "providerId": "e0daf77e-937c-11ee-b9d1-0242ac120002",
+      "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+    },
+    "components": [
+      {
+        "id": "d1fb3aac-937c-11ee-b9d1-0242ac120002",
+        "name": "Brandt Big Foot SS",
+        "labelProvider": "JohnDeere",
+        "registrant": "Brandt Consolidated, Inc.",
+        "registration": null,
+        "distributor": null,
+        "productType": "ADDITIVE",
+        "formulationType": "DRY",
+        "productPageUrl": null,
+        "labels": null,
+        "activeIngredient": null,
+        "carrier": false,
+        "status": "ACTIVE",
+        "providerId": "06da2738-937d-11ee-b9d1-0242ac120002",
+        "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+      },
+      {
+        "id": "eaee0878-937c-11ee-b9d1-0242ac120002",
+        "name": "Ferti-Phos Mg 0-25-0",
+        "labelProvider": "JohnDeere",
+        "registrant": "Fertilizer Company of Arizona, Inc.",
+        "registration": null,
+        "distributor": null,
+        "productType": "FERTILIZER",
+        "formulationType": "LIQUID",
+        "productPageUrl": null,
+        "labels": null,
+        "activeIngredient": null,
+        "carrier": true,
+        "status": "ACTIVE",
+        "providerId": "0e0f1c66-937d-11ee-b9d1-0242ac120002",
+        "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+      }
+    ],
+    "status": "ACTIVE",
+    "provider": "JohnDeere",
+    "leafUserId": "cd06377c-937c-11ee-b9d1-0242ac120002"
+  },
+  ....
 ]
 ```

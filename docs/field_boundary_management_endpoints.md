@@ -2380,3 +2380,14 @@ Here is an example of a geometry registered as invalid due to a **SELF_INTERSECT
 This is what this invalid type of geometry looks like from the provider side:
 
 <img alt="Field example" src={useBaseUrl('img/invalid_geometry.png')} />
+
+### Automatic geometry fix
+There is a [configuration](/docs/configurations_overview#automaticfixboundary) available to fix the invalid geometry that Leaf fetches from the provider.
+
+When enabled, Leaf will try to fix the geometry. If the fix is successful, then the invalid boundary will be disabled (available as a historical boundary) and the new one will be available as the main boundary with the property `"fixStatus": "FIXED"`
+
+This behavior only applies to Fields obtained from providers, as validation prevents Fields from being created manually with invalid geometries.
+
+:::info Warning
+Note that this is an automatic procedure and that the corrected geometry may present small differences in relation to the original, such as an increase or decrease in area.
+:::

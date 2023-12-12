@@ -20,6 +20,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: /docs/field_boundary_management_endpoints#preview-mode
 [11]: /docs/field_boundary_management_endpoints#sync-fields-manually
 [12]: /docs/machine_file_conversion_units
+[13]: /docs/field_boundary_management_endpoints#automatic-geometry-fix
 
 
 Leaf's system can be customized to present different behaviors across services and Leaf Users. This is done using Configurations.
@@ -32,12 +33,15 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 
 | Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| [Field Boundary Management](#field-boundary-management) | customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                              | 
+| [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                              | 
 | [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData                                                                                                                                                                                                                                                                                                            | 
 | [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry | 
 
 
 ### Field Boundary Management
+#### automaticFixBoundary
+If set to `true`, this configuration will attempt to correct invalid geometries obtained from providers. The default value is `false`. More information [here][13].
+
 #### customDataSync
 If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`.
 #### fieldsAttachIntersection

@@ -203,8 +203,8 @@ values={[
 [
   {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "leafFilesCount": 1,
-    "normalizedName": "CompostX"
+    "name": "Produto padrão",
+    "leafUserId": "8bbe50a0-992c-11ee-b9d1-0242ac120002"
   },
   ....
 ]
@@ -409,7 +409,7 @@ values={[
 
 &nbsp<span class="badge badge--success">GET</span>  `/products/matching/operations/{operationId}`
 
-Get the standard products that best match the products from a Field Operation. Information such as the registration number and labels can be obtained from [this endpoint][10] using the `id`.
+This endpoint can be used as the input validator, getting the standard products that best match the products from a Field Operation. Information such as the registration number and labels can be obtained from [this endpoint][10] using the `id`.
 
 #### Request examples
 
@@ -748,13 +748,15 @@ values={[
 [
   {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "1299",
-    "cropName": "SOYBEANS",
+    "crops": [
+      "ALFALFA"
+    ],
+    "name": "Master Piece",
+    "companyName": "Simplot",
+    "status": "ACTIVE",
     "leafUserId": "028c30fa-6d2a-11ee-b962-0242ac120002",
-    "registrant": "Curry Seed",
     "provider": "JohnDeere",
-    "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2",
-    "status": "ACTIVE"
+    "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2"
   },
   ....
 ]
@@ -832,16 +834,16 @@ values={[
 [
   {
     "id": "680ff073-18d0-4951-ba69-b2ca0b098bc3",
-    "normalizedName": "corn variety 2",
-    "leafFilesCount": 2,
+    "name": "corn variety 2",
+    "leafUserId": "028c30fa-6d2a-11ee-b962-0242ac120002",
     "crops": [
       "corn"
     ]
   },
   {
     "id": "1544de06-682d-4549-92a3-a06b2ccdc96d",
-    "normalizedName": "corn variety 2 (1)",
-    "leafFilesCount": 1,
+    "name": "corn variety 2 (1)",
+    "leafUserId": "8e1e0920-1265-4066-8067-8ce2ce5012b2",
     "crops": [
       "corn"
     ]
@@ -919,13 +921,15 @@ values={[
 [
   {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "1299",
-    "cropName": "SOYBEANS",
+    "crops": [
+      "ALFALFA"
+    ],
+    "name": "Master Piece",
+    "companyName": "Simplot",
+    "status": "ACTIVE",
     "leafUserId": "028c30fa-6d2a-11ee-b962-0242ac120002",
-    "registrant": "Curry Seed",
     "provider": "JohnDeere",
-    "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2",
-    "status": "ACTIVE"
+    "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2"
   },
   ....
 ]

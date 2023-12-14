@@ -78,6 +78,7 @@ The service uses an option to provide the best forecast for any given location w
   | meanSoilTemperature | Imperial: ºF; Metric: ºC    | Mean surface temperature (0 cm deep), which can be water or land.                                           |
   | minSoilTemperature  | Imperial: ºF; Metric: ºC    | Minimum surface temperature (0 cm deep), which can be water or land.                                        |
   | maxSoilTemperature  | Imperial: ºF; Metric: ºC    | Maximum surface temperature (0 cm deep), which can be water or land.                                        |
+  | soilMoisture        | m³/m³                       | Average soil water content as volumetric mixing ratio at 0-1, 1-3, 3-9, 9-27 and 27-81 cm depths.           |
   | sunrise             | iso8601                     | Sunrise time.                                                                                               |
   | sunset              | iso8601                     | Sunset time.                                                                                                |
   | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
@@ -95,7 +96,7 @@ The service uses an option to provide the best forecast for any given location w
 
   
 :::tip
-  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover, soil moisture and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
 :::
 
   </TabItem>
@@ -297,6 +298,7 @@ be fetched daily or hourly. Please note, historical weather data from less than 
   | meanSoilTemperature | Imperial: ºF; Metric: ºC    | Mean surface temperature (0 cm deep), which can be water or land.                                           |
   | minSoilTemperature  | Imperial: ºF; Metric: ºC    | Minimum surface temperature (0 cm deep), which can be water or land.                                        |
   | maxSoilTemperature  | Imperial: ºF; Metric: ºC    | Maximum surface temperature (0 cm deep), which can be water or land.                                        |
+  | soilMoisture        | m³/m³                       | Average soil water content as volumetric mixing ratio at 0-7, 7-28, 28-100 and 100-255 cm depths.           | 
   | sunrise             | iso8601                     | Sunrise time.                                                                                               |
   | sunset              | iso8601                     | Sunset time.                                                                                                |
   | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
@@ -314,7 +316,7 @@ be fetched daily or hourly. Please note, historical weather data from less than 
 
   
 :::tip
-  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover, soil moisture and relative humidity are only available for hourly historical. The other variables have their corresponding values in both hourly and daily.
 :::
 
   </TabItem>
@@ -330,6 +332,7 @@ be fetched daily or hourly. Please note, historical weather data from less than 
   | meanSoilTemperature | Imperial: ºF; Metric: ºC    | Mean surface temperature (0 cm deep), which can be water or land.                                           |
   | minSoilTemperature  | Imperial: ºF; Metric: ºC    | Minimum surface temperature (0 cm deep), which can be water or land.                                        |
   | maxSoilTemperature  | Imperial: ºF; Metric: ºC    | Maximum surface temperature (0 cm deep), which can be water or land.                                        |
+  | soilMoisture        | m³/m³                       | Average soil water content as volumetric mixing ratio at 0-7, 7-28, 28-100 and 100-255 cm depths.           |
   | sunrise             | iso8601                     | Sunrise time.                                                                                               |
   | sunset              | iso8601                     | Sunset time.                                                                                                |
   | maxWindspeed        | Imperial: mph, Metric: km/h | Maximum wind speed on a day.                                                                                |
@@ -346,7 +349,7 @@ be fetched daily or hourly. Please note, historical weather data from less than 
   | relativeHumidity    | %                           | Relative humidity at 2 meters above ground.                                                                 |
 
 :::tip
-  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover and relative humidity are only available for hourly forecast. The other variables have their corresponding values in both hourly and daily.
+  Sunrise and sunset variables are only available for daily forecast. Dew point, longwave radiation, shortwave radiation, cloud cover, soil moisture and relative humidity are only available for hourly historical. The other variables have their corresponding values in both hourly and daily.
 :::
 
   </TabItem>

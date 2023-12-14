@@ -15,8 +15,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 This page lists the units of measurements and properties across all machine file/operation types (tillage, planting, applied, harvest). If you have any questions or feedback, reach out to our team at help@withleaf.io.
 
-The units depend on the [unitMeasurement][2] configuration. The default value is `DEFAULT`. `IMPERIAL` and `METRIC` are options avaiable too.
-
+Units are determined by the [unitMeasurement][2] configuration where you can select  `IMPERIAL` or `METRIC`. The default is `DEFAULT`.
 
 
 <Tabs

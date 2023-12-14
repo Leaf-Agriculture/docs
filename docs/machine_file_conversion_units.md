@@ -28,6 +28,9 @@ The units depend on the [unitMeasurement][2] configuration. The default value is
   ]
 }>
   <TabItem value="default">
+
+  These are the units of measurement for the `DEFAULT` configuration.
+
 <Tabs
   defaultValue="all types"
   values={[
@@ -38,7 +41,6 @@ The units depend on the [unitMeasurement][2] configuration. The default value is
     { label: 'Tillage', value: 'tillage', },
   ]
 }>
-
   <TabItem value="all types">
  
 
@@ -128,6 +130,9 @@ Note: Mass and volume units vary depending on the user's preferences
 
 
   <TabItem value="imperial">
+
+These are the units of measurement for the `IMPERIAL` configuration.
+
   <Tabs
   defaultValue="all types"
   values={[
@@ -225,6 +230,9 @@ Note: Mass and volume units vary depending on the user's preferences
 
 
   <TabItem value="metric">
+
+These are the units of measurement for the `METRIC` configuration.
+
   <Tabs
   defaultValue="all types"
   values={[

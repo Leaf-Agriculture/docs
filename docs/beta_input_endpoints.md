@@ -495,23 +495,14 @@ values={[
 
 Updated Leaf predictions or approves them.
 
-#### Request body
+To approve Leaf prediction, pass the follow query parameter:
 
-To approve Leaf prediction:
-
-```json
-{
-  "status": "VALIDATED"
-}
-```
+- `status`: `VALIDATED`
 
 Or, to change prediction:
 
-```json
-{
-  "productId": "expectedProductID"
-}
-```
+- `productId`: `expectedProductID`
+
 
 #### Request examples
 
@@ -529,14 +520,10 @@ values={[
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}'
+  const endpoint = 'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}?status=VALIDATED'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
-  
-  const data = {
-    status: "VALIDATED"
-  }
 
-  axios.get(endpoint, { headers, data })
+  axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -549,14 +536,10 @@ values={[
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}'
+  endpoint = 'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}?status=VALIDATED'
   headers = {'Authorization': f'Bearer {TOKEN}'}
   
-  data = {
-    status: "VALIDATED"
-  }
-
-  response = requests.get(endpoint, headers=headers, json=data)
+  response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
 
@@ -566,8 +549,7 @@ values={[
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "status": "VALIDATED" }' \
-      'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}'
+      'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}?status=VALIDATED'
   ```
 
   </TabItem>

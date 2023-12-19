@@ -301,17 +301,17 @@ values={[
   },
   {
     "id": "81ffe756-1fd0-4d97-b2ec-e33b5232f507",
-    "name": "GameOn",
-    "registration": "62719-724",
-    "registrant": "Corteva Agriscience",
+    "name": "CompostY",
+    "registration": "00000-000",
+    "registrant": "Agriscience",
     "productType": "Dry",
     "formulationType": "Dry Flowable",
     "labelProvider": "AGRIAN",
-    "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=21666",
+    "productPageUrl": "https://www.agrian.com/searchcenter/demonstration=00000",
     "labels": [
       {
-        "name": "Label - 03-R0718",
-        "url": "https://www.agrian.com/pdfs/current/Badge_X2_FungicideBactericide_Label1p.pdf"
+        "name": "Label - 00-R000",
+        "url": "https://www.agrian.com/pdfs/new/00000.pdf"
       },
       ....
     ],
@@ -481,8 +481,7 @@ values={[
     "name": "counter",
     "productId": "a85c1d0d-b673-46aa-a3a3-31cb65f57598",
     "matchDetails": {
-      "status": "PREDICTED",
-      "score": 8.6226015
+      "status": "VALIDATED"
     }
   },
   ....
@@ -582,17 +581,17 @@ values={[
     "id": "uidd-match-0001",
     "name": "Ta35",
     "productId": "uidd-prd-1001",
-    "matchDetail": {
+    "matchDetails": {
       "score": 91,
-      "status": "predicted"
+      "status": "PREDICTED"
     }
   },
   {
     "id": "uidd-match-0002",
     "name": "Talisman",
     "productId": "uidd-prd-1003",
-    "matchDetail": {
-      "status": "validated"
+    "matchDetails": {
+      "status": "VALIDATED"
     }
   }
 ]
@@ -660,9 +659,14 @@ values={[
 ```json
 [
   {
-    "productId": "uidd-prd-1002",
-    "score": 99,
-    "historicalTime": "2010-10-10T01:01:01"
+    "matchId": "uidd-match-0002",
+    "name": "Talisman",
+    "productId": "uidd-prd-1003",
+    "matchDetails": {
+      "status": "PREDICTED",
+      "score": 8.225217
+    },
+    "historicalTime": "2023-12-19T13:18:44.709Z"
   }
 ]
 ```

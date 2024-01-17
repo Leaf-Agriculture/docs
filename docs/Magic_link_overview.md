@@ -20,11 +20,11 @@ The Magic Link is the easiest way to connect your customer data with Leaf API. I
 
 ### Provider
 
-The magic link Provider is a feature that allows the user to authenticate with several providers using a single link. It is necessary to have previously created the respective [application info][1] for these providers.
+The Magic Link Provider is a feature that allows the user to authenticate with several providers using a single link. It is necessary to have previously created the respective [application info][1] for these providers.
 
 ### Authentication
 
-The magic link Authentication is a feature to authenticate with only one provider at a time. It is necessary to have previously created the [application info][1] for this provider.
+The Magic Link Authentication is a feature to authenticate with only one provider at a time. It is necessary to have previously created the [application info][1] for this provider.
 
 ## Upload file with Magic Link
 
@@ -34,5 +34,5 @@ The magic link Authentication is a feature to authenticate with only one provide
 
 ### File upload
 
-The magic link File upload is a feature that allows the user to upload machine files to the Leaf API.
+The Magic Link File upload is a feature that allows the user to upload machine files to the Leaf API.
 

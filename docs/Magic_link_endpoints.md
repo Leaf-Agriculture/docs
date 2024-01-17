@@ -43,12 +43,12 @@ This is a link to authenticate with multiple providers.
 
 | Description                       | Endpoints                                                                               |
 |-----------------------------------|-----------------------------------------------------------------------------------------|
-| [Get all provider magic links][1]  | <span class="badge badge--success">GET</span> `/magic-link/provider`                    |
-| [Get a provider magic link][2]    | <span class="badge badge--success">GET</span> `/magic-link/provider/{magicLinkId}`      |
-| [Create a provider magic link][3] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/provider` |
-| [Delete a provider magic link][4] | <span class="badge badge--danger">DELETE</span> `/magic-link/provider/{magicLinkId}`    |
+| [Get all provider Magic Links][1]  | <span class="badge badge--success">GET</span> `/magic-link/provider`                    |
+| [Get a provider Magic Link][2]    | <span class="badge badge--success">GET</span> `/magic-link/provider/{magicLinkId}`      |
+| [Create a provider Magic Link][3] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/provider` |
+| [Delete a provider Magic Link][4] | <span class="badge badge--danger">DELETE</span> `/magic-link/provider/{magicLinkId}`    |
 
-#### Get all provider magic links
+#### Get all provider Magic Link
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/provider`
 
@@ -136,7 +136,7 @@ Get all created links for authentication across multiple providers.
 ```
 
 
-#### Get a provider magic link
+#### Get a provider Magic Link
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/provider/{magicLinkId}`
 
@@ -220,7 +220,7 @@ Get a created link for authentication across multiple providers.
 }
 ```
 
-#### Create a provider magic link
+#### Create a provider Magic Link
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/provider`
 
@@ -333,7 +333,7 @@ Creates a link for authentication across multiple providers.
 }
 ```
 
-#### Delete a provider magic link
+#### Delete a provider Magic Link
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/magic-link/provider/{magicLinkId}`
 
@@ -399,12 +399,12 @@ This is a link to authenticate with a single provider.
 
 | Description                              | Endpoints                                                                                     |
 |------------------------------------------|-----------------------------------------------------------------------------------------------|
-| [Get all authentication magic links][5]   | <span class="badge badge--success">GET</span> `/magic-link/authentication`                    |
-| [Get an authentication magic link][6]    | <span class="badge badge--success">GET</span> `/magic-link/authentication/{magicLinkId}`      |
-| [Create an authentication magic link][7] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/authentication` |
-| [Delete an authentication magic link][8] | <span class="badge badge--danger">DELETE</span> `/magic-link/authentication/{magicLinkId}`    |
+| [Get all authentication Magic Links][5]   | <span class="badge badge--success">GET</span> `/magic-link/authentication`                    |
+| [Get an authentication Magic Link][6]    | <span class="badge badge--success">GET</span> `/magic-link/authentication/{magicLinkId}`      |
+| [Create an authentication Magic Link][7] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/authentication` |
+| [Delete an authentication Magic Link][8] | <span class="badge badge--danger">DELETE</span> `/magic-link/authentication/{magicLinkId}`    |
 
-#### Get all authentication magic links
+#### Get all authentication Magic Links
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/authentication`
 
@@ -490,7 +490,7 @@ Get all created links for authentication with a single provider.
 ```
 
 
-#### Get an authentication magic link
+#### Get an authentication Magic Link
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/authentication/{magicLinkId}`
 
@@ -572,7 +572,7 @@ Get a created link for authentication with a single provider.
 }
 ```
 
-#### Create an authentication magic link
+#### Create an authentication Magic Link
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/authentication`
 
 :::info Provider application info
@@ -682,7 +682,7 @@ Creates a link for authentication with a single provider.
 }
 ```
 
-#### Delete an authentication magic link
+#### Delete an authentication Magic Link
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/magic-link/authentication/{magicLinkId}`
 
@@ -748,12 +748,12 @@ This is a link to upload machine files.
 
 | Description                           | Endpoints                                                                                  |
 |---------------------------------------|--------------------------------------------------------------------------------------------|
-| [Get all file upload magic links][9]   | <span class="badge badge--success">GET</span> `/magic-link/file-upload`                    |
-| [Get a file upload magic link][10]    | <span class="badge badge--success">GET</span> `/magic-link/file-upload/{magicLinkId}`      |
-| [Create a file upload magic link][11] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/file-upload` |
-| [Delete a file upload magic link][12] | <span class="badge badge--danger">DELETE</span> `/magic-link/file-upload/{magicLinkId}`    |
+| [Get all file upload Magic Links][9]   | <span class="badge badge--success">GET</span> `/magic-link/file-upload`                    |
+| [Get a file upload Magic Link][10]    | <span class="badge badge--success">GET</span> `/magic-link/file-upload/{magicLinkId}`      |
+| [Create a file upload Magic Link][11] | <span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/file-upload` |
+| [Delete a file upload Magic Link][12] | <span class="badge badge--danger">DELETE</span> `/magic-link/file-upload/{magicLinkId}`    |
 
-#### Get all file upload magic links
+#### Get all file upload Magic Links
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/file-upload`
 
@@ -838,7 +838,7 @@ Get all file upload created links.
 ```
 
 
-#### Get a file upload magic link
+#### Get a file upload Magic Link
 
 &nbsp<span class="badge badge--success">GET</span> `/magic-link/file-upload/{magicLinkId}`
 
@@ -919,7 +919,7 @@ Get a file upload created link.
 }
 ```
 
-#### Create a file upload magic link
+#### Create a file upload Magic Link
 
 &nbsp<span class="badge badge--warning">POST</span> `/magic-link/users/{leafUserId}/file-upload`
 
@@ -1022,7 +1022,7 @@ Creates a file upload link.
 }
 ```
 
-#### Delete a file upload magic link
+#### Delete a file upload Magic Link
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/magic-link/file-upload/{magicLinkId}`
 
@@ -1081,7 +1081,7 @@ Delete a file upload link.
 
 ## Magic Link with Leaf User Creation
 
-This option enables the creation of Leaf users automatically during the Magic link creation process. The uniqueness of leaf users can be achieved using a mandatory external identifier, the `externalId`, which can be an ID already used in your application.
+This option enables the creation of Leaf users automatically during the Magic Link creation process. The uniqueness of leaf users can be achieved using a mandatory external identifier, the `externalId`, which can be an ID already used in your application.
 
 ** Endpoints **
 
@@ -1482,7 +1482,7 @@ Simply fill in the `settings` property when creating the link.
 | 3 | companyName         | `string`  | The company name.                                                                                                                                                                                                                     |
 | 4 | headerImage         | `string`  | URL to an image that will be used as a header in the application.                                                                                                                                                                     |
 | 5 | showLeafUserName    | `boolean` | Indicates whether the Leaf user name will be displayed or not. It can be `true` or `false`. The default is `false`.                                                                                                                   |
-| 6 | disconnectedEnabled | `boolean` | **Only enabled for provider and authentication magic link**. Enables the option for the user to choose to disconnect from the provider at the end of the authentication process. It can be `true` or `false`. The default is `false`. |
+| 6 | disconnectedEnabled | `boolean` | **Only enabled for provider and authentication Magic Link**. Enables the option for the user to choose to disconnect from the provider at the end of the authentication process. It can be `true` or `false`. The default is `false`. |
 
 #### Request examples
 

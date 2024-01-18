@@ -573,6 +573,19 @@ values={[
       "max": 4,
       "unit": "in"
     },
+    "machinery": [
+      {
+        "name": "MachineName",
+        "type": "machine",
+        "serialNumber": "10271080",
+        "brand": "Machine"
+      },
+      {
+        "name": "ImplementName",
+        "type": "implement",
+        "brand": "unknown"
+      }
+    ],
     "originalOperationData": {
       "originalOperationFarm": "Farm Green",
       "originalOperationField": "Field A",

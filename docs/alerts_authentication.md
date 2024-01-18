@@ -13,7 +13,8 @@ To this end, you should verify webhook signatures.
 
 Leaf generates signatures using a hash-based message authentication code (HMAC) with SHA-256, and 
 the secret specified when you created the alerts' configuration as the HMAC key.
-Be careful with deserialization of the request body when using it to verify the signature. It's recommended that you get the request body as bytes. The signed content has no line breaks, it's a string of the raw JSON with white-spaces after “:” and “,”.
+Be careful with deserialization of the request body when using it to verify the signature. 
+It's recommended that you get the request body as bytes. The signed content has no line breaks and spaces after symbols, it's a string of the raw JSON with white-spaces after “:” and “,”.
 
 The digest is added to the X-Leaf-Signature header encoded in base 64.
 
@@ -68,3 +69,23 @@ MessageDigest.isEqual(sigHeader, signatureBytes)
 
   </TabItem>
 </Tabs>
+
+For the value of `request_body_bytes`.
+
+The event is sent as follows:
+
+```
+{
+  "source": "REST",
+  "leafUserId": "the id of the file owner",
+  "fieldId": "the id of the created field",
+  "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+  "type": "mergedFieldCreated"
+}
+```
+
+And it should be normalized as follows:
+
+```
+{"source": "REST", "leafUserId": "the id of the file owner", "fieldId": "the id of the created field", "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", "type": "mergedFieldCreated"}
+```

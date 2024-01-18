@@ -70,9 +70,9 @@ MessageDigest.isEqual(sigHeader, signatureBytes)
   </TabItem>
 </Tabs>
 
-For the value of `request_body_bytes`.
+The value of `request_body_bytes` corresponds to the payload of the [alerts](https://docs.withleaf.io/docs/alerts_events/#about).
 
-The event is sent as follows:
+For example, if the event is as follows:
 
 ```
 {
@@ -84,7 +84,7 @@ The event is sent as follows:
 }
 ```
 
-And it should be normalized as follows:
+For authentication to occur correctly, the `request_body_bytes` value must be normalized:
 
 ```
 {"source": "REST", "leafUserId": "the id of the file owner", "fieldId": "the id of the created field", "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", "type": "mergedFieldCreated"}

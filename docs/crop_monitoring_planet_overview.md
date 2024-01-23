@@ -14,7 +14,7 @@ Leaf provides an integration with Planet, fetching PlanetScope images from a bac
 the user. PlanetScope provides numerus categories of products from different satellite sensors 
 called `itemTypes` and for each one, we have different `assetType`.
 
-For now, we support `PSScene` with their respective assets `ortho_analytic_8b_sr` (13 images), `ortho_analytic_8b` (13 images), `ortho_udm2` and `ortho_analytic_8b_xml`. 
+For now, we support `PSScene` with their respective assets `ortho_analytic_8b_sr` (13 images), `ortho_analytic_8b` (13 images), `ortho_visual` (2 images), `ortho_udm2` and `ortho_analytic_8b_xml`. 
 For more information on those assets check the 
 [documentation](https://developers.planet.com/docs/data/psscene/#available-asset-types).
 
@@ -74,6 +74,16 @@ Radiometrically-calibrated analytic image stored as 16-bit scaled radiance.
 #### ortho_analytic_8b_xml
 
 Radiometrically-calibrated analytic image metadata.
+
+#### ortho_visual
+
+Visual image with color-correction.
+
+| File   | Band name     |
+|:-------|:--------------|
+| Band 1 | Red           |
+| Band 2 | Blue          |
+| Band 3 | Green         |
 
 
 #### ortho_udm2

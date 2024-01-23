@@ -34,10 +34,10 @@ import hmac
 import base64
 import json
 
-request_body = 'alert_payload'
+payload = 'alert_payload'
 
 # Sign the request body received with your secret
-expected_sig = hmac.digest(msg=bytes(json.dumps(request_body), 'utf-8'),
+expected_sig = hmac.digest(msg=bytes(json.dumps(payload), 'utf-8'),
                            key=bytes('your secret key', 'utf-8'),
                            digest='sha256')
 

@@ -25,6 +25,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [13]:  /docs/Link_provider_connection#set-up
 
+[14]: #create-a-provider-magic-link-1
+[15]: #create-an-authentication-magic-link-1
+[16]: #create-a-file-upload-magic-link-1
+
 ## About
 
 All HTTP methods should be prepended by this service's endpoint:
@@ -1085,11 +1089,11 @@ This option enables the creation of Leaf users automatically during the Magic Li
 
 ** Endpoints **
 
-| Description                              | Endpoints                                                                   |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| [Create a Provider Magic Link][3]        | <span class="badge badge--warning">POST</span> `/magic-link/provider`       |
-| [Create an Authentication Magic Link][3] | <span class="badge badge--warning">POST</span> `/magic-link/authentication` |
-| [Create a File Upload Magic Link][3]     | <span class="badge badge--warning">POST</span> `/magic-link/file-upload`    |
+| Description                               | Endpoints                                                                   |
+|-------------------------------------------|-----------------------------------------------------------------------------|
+| [Create a Provider Magic Link][14]        | <span class="badge badge--warning">POST</span> `/magic-link/provider`       |
+| [Create an Authentication Magic Link][15] | <span class="badge badge--warning">POST</span> `/magic-link/authentication` |
+| [Create a File Upload Magic Link][16]     | <span class="badge badge--warning">POST</span> `/magic-link/file-upload`    |
 
 ### Create a Provider Magic Link
 

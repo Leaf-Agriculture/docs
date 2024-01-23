@@ -32,14 +32,17 @@ Here is an example on how to verify the request in your webhook:
 ```py
 import hmac
 import base64
+import json
 
+request_body = 'alert_payload'
 
 # Sign the request body received with your secret
-expected_sig = hmac.digest(msg=request_body_bytes,
-                           key=bytes('your secret', 'utf-8'),
+expected_sig = hmac.digest(msg=bytes(json.dumps(request_body), 'utf-8'),
+                           key=bytes('your secret key', 'utf-8'),
                            digest='sha256')
 
-# Decode the X-Leaf-Signature header that is encoded in base 64
+# Decode the base-64 encoded X-Leaf-Signature header that was sent in the event header
+sig_header = "x-leaf-signature-in-header"
 request_sig = base64.b64decode(sig_header)
 
 # Compare both
@@ -70,22 +73,16 @@ MessageDigest.isEqual(sigHeader, signatureBytes)
   </TabItem>
 </Tabs>
 
-The value of `request_body_bytes` corresponds to the payload of the [alerts](https://docs.withleaf.io/docs/alerts_events/#about).
+The value `alert_payload` corresponds to the payload of the [alerts](https://docs.withleaf.io/docs/alerts_events/#about).
 
-For example, if the event is as follows:
+For example, if you need to authenticate a created field, the `alert_payload` will be:
 
-```
+```json
 {
   "source": "REST",
   "leafUserId": "the id of the file owner",
   "fieldId": "the id of the created field",
   "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
-  "type": "mergedFieldCreated"
+  "type": "fieldCreated"
 }
-```
-
-For authentication to occur correctly, the `request_body_bytes` value must be normalized:
-
-```
-{"source": "REST", "leafUserId": "the id of the file owner", "fieldId": "the id of the created field", "timestamp": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", "type": "mergedFieldCreated"}
 ```

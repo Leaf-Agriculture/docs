@@ -42,7 +42,7 @@ See below the REST resources and their endpoints available in this service.
 | [Search for products][4]                     | <span class="badge badge--success">GET</span> `/products/search`                                                         |
 | [Get a product][6]                           | <span class="badge badge--success">GET</span> `/products/{id}`                                                           |
 | [Get matching products from an operation][7] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/products/matching/operations/{operationId}`           |
-| [Updated product matches][8]                 | <span class="badge badge--warning">PUT</span> `/products/matching/operations/{operationId}/matches/{matchId}`            |
+| [Updated product matches][8]                 | <span class="badge badge--warning">PATCH</span> `/products/matching/operations/{operationId}/matches/{matchId}`            |
 | [Get product matches historical][9]          | <span class="badge badge--success">GET</span> `/products/matching/operations/{operationId}/matches/{matchId}/historical` |
 
 
@@ -490,7 +490,7 @@ values={[
 
 ### Updated product matches
 
-&nbsp<span class="badge badge--warning">PUT</span> `/products/matching/operations/{id}/matches/{matchId}` 
+&nbsp<span class="badge badge--warning">PATCH</span> `/products/matching/operations/{id}/matches/{matchId}` 
 
 Updated Leaf predictions or approves them.
 
@@ -535,7 +535,7 @@ values={[
     status: "VALIDATED"
   }
   
-  axios.get(endpoint, { headers, data })
+  axios.patch(endpoint, data, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -555,7 +555,7 @@ values={[
     status: "VALIDATED"
   }
 
-  response = requests.get(endpoint, headers=headers, json=data)
+  response = requests.patch(endpoint, headers=headers, json=data)
   print(response.json())
   ```
 
@@ -563,7 +563,7 @@ values={[
   <TabItem value="sh">
 
   ```shell
-  curl -X GET \
+  curl -X PATCH \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -d '{ "status": "VALIDATED" }' \
       'https://api.withleaf.io/services/beta/api/products/matching/operations/{operationId}/matches/{matchId}'

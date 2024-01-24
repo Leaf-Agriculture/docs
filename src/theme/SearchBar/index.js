@@ -18,7 +18,7 @@ export default function SearchBarWrapper() {
   return (
     <div className="mendable-search">
       <MendableSearchBar
-        anon_key={customFields.mendableAnonKey}
+        anon_key={"d78bd0b5-f2fb-4529-8637-0371010cf11f"}
         style={{ accentColor: '#2F5F57', darkMode: false, hideSources: true }}
         searchBarStyle={{
             backgroundColor: '#F5F5F5',

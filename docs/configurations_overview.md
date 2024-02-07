@@ -37,6 +37,8 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 | [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement                                                                                                                                                                                                                                                                                                            | 
 | [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement | 
 
+| [ Synchronization ](#synchronization)                  | customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync| 
+
 
 ### Field Boundary Management
 #### automaticFixBoundary
@@ -203,3 +205,29 @@ This configuration has no effect over the [Field Operations Images V2](https://d
 
 #### unitMeasurement
 [See this section for more information](#unitMeasurement)
+
+### Synchronization
+
+#### customDataSync
+If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`.
+
+#### fieldsAutoSync
+If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.
+
+#### operationsAutoSync
+If set to `true`, Leaf will automatically synchronize provider's operations. The default value is `true`.
+
+#### implementsAutoSync
+If set to `true`, Leaf will automatically synchronize provider's implements. The default value is `false`.
+
+#### machinesAutoSync
+If set to `true`, Leaf will automatically synchronize provider's machines. The default value is `false`.
+
+#### operatorsAutoSync
+If set to `true`, Leaf will automatically synchronize provider's operators. The default value is `false`.
+
+#### productsAutoSync
+If set to `true`, Leaf will automatically fetch John Deere inputs/products. The default value is `false`.
+
+#### zonesAutoSync
+If set to `true`, Leaf will automatically synchronize provider's zones. The default value is `false`.

@@ -10,6 +10,7 @@ import classnames from "classnames";
 import { useHistory } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { MendableSearchBar } from '@mendable/search'
+import { MendableFloatingButton } from "@mendable/search"
 
 export default function SearchBarWrapper() {
   const {
@@ -19,7 +20,7 @@ export default function SearchBarWrapper() {
     <div className="mendable-search">
       <MendableSearchBar
         anon_key={"d78bd0b5-f2fb-4529-8637-0371010cf11f"}
-        style={{ accentColor: '#2F5F57', darkMode: false, hideSources: true }}
+        style={{ accentColor: '#2F5F57', darkMode: false}}
         searchBarStyle={{
             backgroundColor: '#F5F5F5',
             borderColor: '',
@@ -35,5 +36,21 @@ export default function SearchBarWrapper() {
     </div>
   )
 }
+
+//export default function SearchBarWrapper() {
+//  return (
+//    <div className="mendable-search">
+//      <MendableFloatingButton
+//        anon_key={"d78bd0b5-f2fb-4529-8637-0371010cf11f"}
+//        style={{ accentColor: '#2F5F57', darkMode: false}}
+//        floatingButtonStyle={{
+//           color: "#fff",
+//           backgroundColor: "#2F5F57"
+//        }}
+//        icon = <img src="https://cdn.icon-icons.com/icons2/2770/PNG/512/message_ask_icon_176717.png" />
+//      />
+//    </div>
+//  )
+//}
 
 //export default Search;

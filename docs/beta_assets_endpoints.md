@@ -172,7 +172,7 @@ values={[
 
 ### Get a machine
 
-&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/machines/{machineId}`
+&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/machines/{machineId}`
 
 Get the details of a given machine by its id.
 
@@ -248,7 +248,7 @@ values={[
 
 ### Get machine files
 
-&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/machines/{machineId}/files`
+&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/machines/{machineId}/files`
 
 Get the details of machine operations files given a machine id. Some fields can be sent as query parameters to filter the machine files, such as:
 
@@ -468,7 +468,7 @@ values={[
 
 ### Update a machine
 
-&nbsp<span class="badge badge--warning">PATCH</span>  `/api/users/{leafUserId}/machines/{machineId}`
+&nbsp<span class="badge badge--warning">PATCH</span>  `/users/{leafUserId}/machines/{machineId}`
 
 Update a machine for a specific LeafUser. 
 
@@ -573,7 +573,7 @@ values={[
 
 ### Delete a machine
 
-&nbsp<span class="badge badge--danger">DELETE</span>  `/api/users/{leafUserId}/machines/{machineId}`
+&nbsp<span class="badge badge--danger">DELETE</span>  `/users/{leafUserId}/machines/{machineId}`
 
 Delete a machine data
 
@@ -632,7 +632,7 @@ values={[
 
 ### Get all implements
 
-&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/implements`
+&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/implements`
 
 Get all the implements information based on your `leafUserId`. Currently, John Deere and Trimble implements are listed.
 
@@ -809,7 +809,7 @@ values={[
 
 ### Get all operators
 
-&nbsp<span class="badge badge--success">GET</span>  `/api/users/{leafUserId}/operators`
+&nbsp<span class="badge badge--success">GET</span>  `/users/{leafUserId}/operators`
 
 Get all the operators information based on your `leafUserId`. Currently, John Deere operators are listed.
 

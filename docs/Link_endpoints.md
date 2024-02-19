@@ -407,12 +407,14 @@ Get all AgLeader app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -482,7 +484,8 @@ Get an AgLeader app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION"
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -782,12 +785,14 @@ Get all Climate FieldView app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -857,7 +862,8 @@ Get a Climate FieldView app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION"
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -1169,12 +1175,14 @@ Get all CNHI app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -1244,7 +1252,8 @@ Get a CNHI app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "STAGE or PRODUCTION"
+  "clientEnvironment": "STAGE or PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -1556,12 +1565,14 @@ Get all John Deere app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -1631,7 +1642,8 @@ Get a John Deere app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "STAGE or PRODUCTION"
+  "clientEnvironment": "STAGE or PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -1937,12 +1949,14 @@ Get all Trimble app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -2012,7 +2026,8 @@ Get a Trimble app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION"
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -2318,12 +2333,14 @@ Get all Raven Slingshot app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -2393,7 +2410,8 @@ Get a Raven Slingshot app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION"
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 

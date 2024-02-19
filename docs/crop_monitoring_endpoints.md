@@ -121,10 +121,11 @@ curl -X GET \
 [
   {
     "externalId": "your field id",
+    "createdTime": "2024-02-19T17:06:32.131848",
     "geometry": {
       "type": "MultiPolygon",
       "coordinates": [...]
-    }
+    },
     "providers": [
       "sentinel", 
       "planet"
@@ -203,6 +204,7 @@ curl -X GET \
 ```json
 {
   "externalId": "your field id",
+  "createdTime": "2024-02-19T17:06:32.131848",
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [...]

@@ -234,7 +234,7 @@ Make sure you set up your provider application first. More info [here][13].
 
 Creates a link for authentication across multiple providers.
 
-- `allowedProviders`: the list of providers allowed in the authentication process. It can be one or more of the following: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, and `Trimble`.
+- `allowedProviders`: the list of providers allowed in the authentication process. It can be one or more of the following: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble` and `RavenSlingshot`.
 - `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
 
 ##### Request body
@@ -585,7 +585,7 @@ Make sure you set up your provider application first. More info [here][13].
 
 Creates a link for authentication with a single provider.
 
-- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`.
+- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble` or `RavenSlingshot`.
 - `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
 
 ##### Request body
@@ -1105,7 +1105,7 @@ Make sure you set up your provider application first. More info [here][13].
 
 Creates a link for authentication across multiple providers. The leaf user will be created during this process based on the `externalId`.
 
-- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`.
+- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble`, or `RavenSlingshot`.
 - `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
 - `externalId`: the client side user unique ID
 - `name`: it will be the name of the leaf user that we will be created. Updates in this property must be done in the Leaf user endpoints.
@@ -1234,7 +1234,7 @@ Make sure you set up your provider application first. More info [here][13].
 
 Creates a link for authentication with a single provider. The leaf user will be created during this process based on the `externalId`.
 
-- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader` or `Trimble`.
+- `provider`: the provider to be used in the authentication process. It can be: `JohnDeere`, `ClimateFieldView`, `CNHI`, `AgLeader`, `Trimble`, or `RavenSlingshot`.
 - `expiresIn`: an integer number for the expiration time, in seconds. This parameter is optional and the default value is `900` (minimum) and the maximum is the equivalent to 1 year.
 - `externalId`: the client side user unique ID
 - `name`: it will be the name of the leaf user that we will be created. Updates in this property must be done in the Leaf user endpoints.

@@ -561,6 +561,7 @@ values={[
       "unit": "ft"
     },
     "operationType": "tillage",
+    "tillType": "Closing Disk",
     "tillageDepthActual": {
       "avg": 0,
       "min": 0,

@@ -872,6 +872,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "heading": "float",
         "distance": "float",
         "tillageDepthTarget": "float",
+        "tillType": "string",
         "recordingStatus": "string",
         "timestamp": "string",
         "operationType": "tillage",

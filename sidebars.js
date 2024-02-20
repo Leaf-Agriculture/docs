@@ -58,7 +58,15 @@ module.exports = {
         {
           type: 'category',
           label: 'Field Boundary Management',
-          items: ['field_boundary_management_overview', 'field_boundary_management_endpoints']
+          items: [
+            'field_boundary_management_overview',
+            'field_boundary_management_endpoints',
+            {
+              type: 'category',
+              label: 'Upload fields',
+              items: ['field_boundary_management_upload_endpoints']
+            }
+          ]
         },
         {
           type: 'category',

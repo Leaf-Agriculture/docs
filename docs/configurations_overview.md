@@ -21,6 +21,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [11]: /docs/field_boundary_management_endpoints#sync-fields-manually
 [12]: /docs/machine_file_conversion_units
 [13]: /docs/field_boundary_management_endpoints#automatic-geometry-fix
+[14]: #splitoperationsbyfield
+[15]: /docs/machine_file_conversion_endpoints#get-all-outsidefieldgeojson-files
+[16]: #enableoutsidefieldgeojson-1
 
 
 Leaf's system can be customized to present different behaviors across services and Leaf Users. This is done using Configurations.
@@ -34,8 +37,8 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 | Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                              | 
-| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement                                                                                                                                                                                                                                                                                                            | 
-| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement  | 
+| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson                                                                                                                                                                                                                                                                                                            | 
+| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement, enableOutsideFieldGeojson  | 
 | [ Synchronization ](#synchronization)                  | customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync | 
 
 
@@ -119,6 +122,9 @@ Defines the unit of measurement of the summary, standardGeoJSON, and filteredGeo
 
 The units for each option available can be found on the [Units of Measurement page][12].
 
+#### enableOutsideFieldGeojson
+[See this section for more information][16]
+
 ### Field Operations
 These configurations can be enabled with the use of Leaf Field Operations. This requires an active boundary to be present so Leaf can merge the machine files and create a Field Operation.
 
@@ -193,6 +199,7 @@ If set to `true`, Leaf will generate images of operations when processing them. 
 This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
 :::
 
+
 #### geoimagesColorRamp
 [See this section for more information](#geoimagescolorramp)
 
@@ -207,6 +214,9 @@ This configuration has no effect over the [Field Operations Images V2](https://d
 
 #### unitMeasurement
 [See this section for more information](#unitMeasurement)
+
+#### enableOutsideFieldGeojson
+Machine files can have points outside the field boundaries, these points are normally discarded when creating a Field Operation with the [`splitOperationsByField`][14] configuration enabled. If set to `true`, this configuration will allow fetch the points, for each machine file, not considered in any Field Operation for a Leaf user. The default value is `false`. A list of all files with points outside boundaries can be fetched using the [outsideFieldGeoJSON endpoint][15].
 
 ### Synchronization
 

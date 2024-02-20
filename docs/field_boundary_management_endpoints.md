@@ -962,7 +962,7 @@ Schedules a synchronization to fetch Field Boundaries data from the providers.
 
 
 #### Request body
-If the `customSync` configuration is enabled, only the fields sent in the body will be synchronized. For the `fieldsAutoSync` leave the body empty will sync all the fields available in the provider.
+If the `customDataSync` configuration is enabled, only the fields sent in the body will be synchronized. For the `fieldsAutoSync` leave the body empty will sync all the fields available in the provider.
 
 ```json
 {

@@ -11,6 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [1]: #get-an-upload
 [2]: #upload-status
 [3]: #get-the-upload-entries
+[4]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#get-a-field
 
 
 ## About
@@ -62,7 +63,7 @@ Currently, our upload endpoints accepts files with the maximum size limited to 3
 
 This endpoint requires the `leafUserId` parameter.
 
-If there is a property/column called `name` available in the file, Leaf API will use it as the field name property.
+Leaf will project all the geometries to WGS 84 (EPSG:4326). If there is a property/column called `name` available in the file, Leaf API will use it as the field name property.
 
 #### Request examples
 
@@ -143,7 +144,7 @@ The upload ID returned as `id` can be used to retrieve on [Get an upload][1] the
 
 ##### Upload status
 
-The possible *status* are:
+The possible `status` are:
 
 | Status    | Description                                                                                         |
 |-----------|-----------------------------------------------------------------------------------------------------|
@@ -232,7 +233,7 @@ Gets all uploads.
 ]
 ```
 
-The possible *status* are listed [here][2].
+The possible `status` are listed [here][2].
 
 ### Get an upload
 
@@ -304,7 +305,7 @@ Gets an upload by the upload id.
 }
 ```
 
-The possible *status* are listed [here][2].
+The possible `status` are listed [here][2].
 
 ### Get the upload entries
 
@@ -376,7 +377,7 @@ Returns the result of each file identified as compatible in the processing.
         "converterFormat": "GEOJSON",
         "originalFileUrl": "url",
         "leafUserId": "uuid",
-        "uploadId": "4uuid",
+        "uploadId": "uuid",
         "status": "FINISHED",
         "createFieldErrorDetails": [],
         "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
@@ -415,7 +416,9 @@ Returns the result of each file identified as compatible in the processing.
 ]
 ```
 
-The entries response has the list of the fields created for each recognized file, it can be fetched in the `fieldId` property. The `converterFormat` will show the identified format: `SHAPEFILE`, `GEOJSON`, or `KML`.
+The entries response has the list of the fields created for each recognized file, it can be fetched in the `fieldId` property. More information about the created fields can be fetched using the ID in the [Get a field endpoint][4].
+
+The `converterFormat` will show the identified format: `SHAPEFILE`, `GEOJSON`, or `KML`.
 
 If an error occurs for any entry in the file it will be showed in the `createFieldErrorDetails` array.
 
@@ -441,7 +444,7 @@ If an error occurs for any entry in the file it will be showed in the `createFie
 ]
 ```
 
-The possible status for each file is described below:
+The possible `status` for each file is described below:
 
 | Status                | Description                                                                            |
 |-----------------------|----------------------------------------------------------------------------------------|

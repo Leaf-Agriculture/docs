@@ -121,10 +121,11 @@ curl -X GET \
 [
   {
     "externalId": "your field id",
+    "createdTime": "2024-02-19T17:06:32.131848",
     "geometry": {
       "type": "MultiPolygon",
       "coordinates": [...]
-    }
+    },
     "providers": [
       "sentinel", 
       "planet"
@@ -203,6 +204,7 @@ curl -X GET \
 ```json
 {
   "externalId": "your field id",
+  "createdTime": "2024-02-19T17:06:32.131848",
   "geometry": {
     "type": "MultiPolygon",
     "coordinates": [...]
@@ -586,6 +588,12 @@ If you are looking for a geometry for testing purposes you can use this one.
   }
 }
 ```
+
+#### Restrictions
+The satellite field creation will fail if the geometry doesn't fit the Planet requirements listed below:
+- The geometry must be valid, it cannot have self-intersection, for example;
+- The smallest possible area for each inner ring is 1 m²;
+- The maximum number of vertices allowed is 1,500 vertices.
 
 
 ### Delete a satellite field

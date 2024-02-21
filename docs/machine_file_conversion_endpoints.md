@@ -26,6 +26,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [15]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-files-units
 [16]: #get-uncovered-files
 [17]: https://docs.withleaf.io/docs/operations_overview
+[18]: #get-a-files-outsidefieldgeojson
+[19]: #get-all-outsidefieldgeojson-files
+[20]: /docs/configurations_overview#splitoperationsbyfield
+[21]: /docs/configurations_overview#enableoutsidefieldgeojson-1
 
 ## About
 
@@ -37,16 +41,18 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-| Description               | Endpoints                                                             |
-|---------------------------|-----------------------------------------------------------------------|
-| [Get all files][2]        | <span class="badge badge--success">GET</span> `/files`                |
-| [Get a file][3]           | <span class="badge badge--success">GET</span> `/files/{id}`           |
-| [Get a file summary][4]   | <span class="badge badge--success">GET</span> `/files/{id}/summary`   |
-| [Get a file's images][5]  | <span class="badge badge--success">GET</span> `/files/{id}/images`    |
-| [Get a file's units][6]   | <span class="badge badge--success">GET</span> `/files/{id}/units`     |
-| [Get a file status][7]    | <span class="badge badge--success">GET</span> `/files/{id}/status`    |
-| [Get uncovered files][16] | <span class="badge badge--success">GET</span> `/files/uncoveredFiles` |
-| [Merge files][8]          | <span class="badge badge--warning">POST</span> `/files/merge`         |
+| Description                        | Endpoints                                                                      |
+|-----------------------------------|---------------------------------------------------------------------------------|
+| [Get all files][2]                 | <span class="badge badge--success">GET</span> `/files`                         |
+| [Get a file][3]                    | <span class="badge badge--success">GET</span> `/files/{id}`                    |
+| [Get a file summary][4]            | <span class="badge badge--success">GET</span> `/files/{id}/summary`            |
+| [Get a file's images][5]           | <span class="badge badge--success">GET</span> `/files/{id}/images`             |
+| [Get a file's units][6]            | <span class="badge badge--success">GET</span> `/files/{id}/units`              |
+| [Get a file status][7]             | <span class="badge badge--success">GET</span> `/files/{id}/status`             |
+| [Get a file's outsideFieldGeoJSON][18] | <span class="badge badge--success">GET</span> `/files/{id}/outsideFieldGeojson` |
+| [Get all outsideFieldGeoJSON files][19] | <span class="badge badge--success">GET</span> `/files/outsideFieldGeojson`     |
+| [Get uncovered files][16]          | <span class="badge badge--success">GET</span> `/files/uncoveredFiles`          |
+| [Merge files][8]                   | <span class="badge badge--warning">POST</span> `/files/merge`                  |
 
 
 For easily testing these endpoints, we recommend using our Postman [collection][1].
@@ -543,6 +549,160 @@ Get status by file processing step by id.
   }
 }
 ```
+
+### Get a file's outsideFieldGeoJSON
+
+&nbsp<span class="badge badge--success">GET</span> `/files/{id}/outsideFieldGeojson`
+
+Gets a GeoJSON file with all points not considered in any Field Operation for that Leaf user.
+This file depends on the [`splitOperationsByField`][20] and [`enableOutsideFieldGeojson`][21] configurations previously enabled.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/outsideFieldGeojson'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/outsideFieldGeojson'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/outsideFieldGeojson'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+  "fields": [
+    "uuid"
+  ],
+  "featureCount": 21,
+  "outsideFieldGeojson": "url",
+  "downloadOutsideFieldGeojson": "url"
+}
+```
+
+The response will show the number of points/features from the file in the property `featureCount`. The URL to get access to the file is available in the `downloadOutsideFieldGeojson` property.
+
+This response also shows, in the `fields` property, all the fields the entire file (from where the outside points were extracted) intersects.
+
+### Get all outsideFieldGeoJSON files
+
+&nbsp<span class="badge badge--success">GET</span> `/files/outsideFieldGeojson`
+
+Gets a list off all outside GeoJSON files with points not considered in any Field Operation for that Leaf user.
+This information depends on the [`splitOperationsByField`][20] and [`enableOutsideFieldGeojson`][21] configurations previously enabled.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/files/outsideFieldGeojson'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/outsideFieldGeojson'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/outsideFieldGeojson'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+    "id": "uuid",
+    "fields": [
+      "uuid"
+    ],
+    "featureCount": 21,
+    "outsideFieldGeojson": "url",
+    "downloadOutsideFieldGeojson": "url"
+  }
+]
+```
+
+The response will show a list of files that has outside points. For each one, the property `featureCount` will show the number of points/features from the file. The URL to get access to the file is available in the `downloadOutsideFieldGeojson` property.
+
+This response also shows, in the `fields` property, all the fields the entire file (from where the outside points were extracted) intersects.
+
 
 ### Get uncovered files
 &nbsp<span class="badge badge--success">GET</span> `/files/uncoveredFiles?leafUserId={leafUserId}`

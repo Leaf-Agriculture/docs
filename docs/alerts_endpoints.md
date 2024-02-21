@@ -520,3 +520,126 @@ webhook listens to.
 
   </TabItem>
 </Tabs>
+
+## Other channels
+
+### ArcGIS
+:::info
+This option is a beta feature
+:::
+The alerts can be delivered in other channels like the `arcgis` that enables the alert to be sent direct to an ArcGIS Geoprocessing service.
+
+#### Create an ArcGIS alert
+
+&nbsp<span class="badge badge--warning">POST</span> `/arcgis`
+
+Creates a alert for be consumed in an ArcGIS geoprocessing service specifying which events you want to be notified about and where (server URL). The alert will begin receiving events immediately after it is created.
+
+It's not possible to create different alerts that listen to the same events. For example,
+if you have already registered a alerts listening for `newSatelliteImages`
+and try to register another one, you'll get a 400 response with error `eventRegisteredTwice`.
+
+#### Request body
+
+| Parameter | Type                        | Description                                                                                   |
+|-----------|-----------------------------|-----------------------------------------------------------------------------------------------|
+| events    | enum name of the event type | They are defined in the "Events" section of the services chapters (e.g. `newSatelliteImage`)  |
+| name      | string                      | The name of your alert                                                                      |
+| secret    | string                      | The secret used for HMAC authentication. We sign payload with this secret. See more [here][6] |
+| url       | a valid HTTP URL string     | The address of your geoprocessing service, make sure to use this format:  `https://{ArcGIS Server url}/server/rest/services/{service name}/GPServer/{toolname}/submitJob?f=json`                                                            |
+
+The allowed keys to be filled in events are:
+
+- `credentialsLimitedPermission`, `credentialsUnauthenticated`, `fieldCreated`, `fieldBoundaryCreated`, `fieldBoundaryUpdated`, `uploadedFileProcessingFinished`, `uploadedFileProcessingFailed`, `providerFileProcessingFinished`, `providerFileProcessingFailed`, `mergedFileProcessingFinished`, `mergedFileProcessingFailed`, `automergedFileProcessingFinished`, `automergedFileProcessingFailed`, `operationCreated`, `operationUpdated`, `operationProcessingFinished`, `newSatelliteImage`, `machineCreated`, `machineUpdated`, `machineDeleted`
+
+To see the detailed description of each of these events, click [here](https://docs.withleaf.io/docs/alerts_events).
+
+Example in JSON:
+
+```json
+{
+  "events": [
+    "newSatelliteImage"
+  ],
+  "name": "Satellite images listener",
+  "secret": "mRyT257XpFWX",
+  "url": "arcgis geoprocessing url"
+}
+```
+
+#### Request example
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]}
+>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+
+  const TOKEN = 'YOUR_TOKEN'
+  const headers = {'Authorization': `Bearer ${TOKEN}`}
+  const endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/arcgis'
+
+  const data = { /* Your payload as specified above  */ }
+
+  axios.post(endpoint, {headers, data})
+      .then(response => console.log(response.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+  endpoint = 'https://api.withleaf.io/services/alerts/api/alerts/arcgis'
+
+  payload = {...}  # Your payload as specified above
+
+  response = requests.post(endpoint, headers=headers, json=payload)
+  print(response.json())
+  ```
+
+  </TabItem>
+
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Content-Type: application/json' \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d 'Your paylaod as specified above'
+      'https://api.withleaf.io/services/alerts/api/alerts/arcgis'
+  ```
+  </TabItem>
+</Tabs>
+
+#### Response
+It returns a JSON containing information about the webhook created.
+
+  ```json
+  {
+    "id": "UUID",
+    "events": [
+      "newSatelliteImage"
+    ],
+    "name": "Satellite images listener",
+    "secret": "mRyT257XpFWX",
+    "url": "arcgis geoprocessing url"
+  }
+  ```
+
+#### Geoprocessing configuration
+This option requires that the geoprocessing is publicly available, that is, without authentication.
+
+To prevent anyone from using your service inappropriately, consider implementing the secret validation mentioned [here][6].

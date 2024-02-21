@@ -560,6 +560,7 @@ This is an example of a summary for a "tillage" operation
         "value": 202441.90563950103,
         "unit": "m2"
       },
+      "tillType": ["Closing Disk"],
       "tillageDepthTarget": {
         "avg": 6,
         "min": 6,
@@ -872,6 +873,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "heading": "float",
         "distance": "float",
         "tillageDepthTarget": "float",
+        "tillType": ["string"],
         "recordingStatus": "string",
         "timestamp": "string",
         "operationType": "tillage",

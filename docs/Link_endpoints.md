@@ -51,6 +51,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [35]: https://docs.withleaf.io/docs/Link_provider_connection#redirect-uri
 [36]: https://docs.withleaf.io/docs/Link_provider_connection#authentication-callback-url
 
+[37]: https://withleaf.io/en/whats-new/raven-slingshot-integration-with-leaf/
+[38]: #get-all-raven-slingshot-app-information
+[39]: #get-a-raven-slingshot-app-information
+[40]: #create-a-raven-slingshot-app-information
+[41]: #update-a-raven-slingshot-app-information
+[42]: #delete-a-raven-slingshot-app-information
+
 
 ## About
 
@@ -400,12 +407,14 @@ Get all AgLeader app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -475,7 +484,8 @@ Get an AgLeader app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION"
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -775,12 +785,14 @@ Get all Climate FieldView app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -850,7 +862,8 @@ Get a Climate FieldView app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION"
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -1162,12 +1175,14 @@ Get all CNHI app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -1237,7 +1252,8 @@ Get a CNHI app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "STAGE or PRODUCTION"
+  "clientEnvironment": "STAGE or PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -1549,12 +1565,14 @@ Get all John Deere app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "STAGE or PRODUCTION"
+    "clientEnvironment": "STAGE or PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -1624,7 +1642,8 @@ Get a John Deere app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "STAGE or PRODUCTION"
+  "clientEnvironment": "STAGE or PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -1930,12 +1949,14 @@ Get all Trimble app information from the API Owner.
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   },
   {
     "provider": "providerName",
     "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION"
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -2005,7 +2026,8 @@ Get a Trimble app information from the API Owner.
 {
   "provider": "providerName",
   "appName": "yourAppName",
-  "clientEnvironment": "PRODUCTION"
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
 }
 ```
 
@@ -2223,6 +2245,384 @@ Delete a Trimble app information.
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/app-keys/Trimble/{appName}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+
+
+### Raven Slingshot
+
+To enable Raven Slingshot as a provider in the widget you need to have your application already registered with Raven Slingshot. You can find more info on how to create a developer account [here][37].
+
+** Endpoints **
+
+| Description                            | Endpoints                                                                     |
+|----------------------------------------|-------------------------------------------------------------------------------|
+| [Get all Raven Slingshot app information][38]  | <span class="badge badge--success">GET</span> `/app-keys/RavenSlingshot`             |
+| [Get a Raven Slingshot app information][39]    | <span class="badge badge--success">GET</span> `/app-keys/RavenSlingshot/{appName}`   |
+| [Create a Raven Slingshot app information][40] | <span class="badge badge--warning">POST</span> `/app-keys/RavenSlingshot/{appName}`  |
+| [Update a Raven Slingshot app information][41] | <span class="badge badge--warning">PUT</span> `/app-keys/RavenSlingshot/{appName} `  |
+| [Delete a Raven Slingshot app information][42] | <span class="badge badge--danger">DELETE</span> `/app-keys/RavenSlingshot/{appName}` |
+
+
+#### Get all Raven Slingshot app information
+
+&nbsp<span class="badge badge--success">GET</span> `/app-keys/RavenSlingshot`
+
+Get all Raven Slingshot app information from the API Owner.
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+##### Response
+
+``` json
+[
+  {
+    "provider": "providerName",
+    "appName": "yourAppName",
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+  },
+  {
+    "provider": "providerName",
+    "appName": "yourAppName",
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+  }
+]
+```
+
+
+#### Get a Raven Slingshot app information
+
+&nbsp<span class="badge badge--success">GET</span> `/app-keys/RavenSlingshot/{appName}`
+
+Get a Raven Slingshot app information from the API Owner.
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+##### Response
+
+``` json
+{
+  "provider": "providerName",
+  "appName": "yourAppName",
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+}
+```
+
+
+#### Create a Raven Slingshot app information
+
+&nbsp<span class="badge badge--warning">POST</span> `/app-keys/RavenSlingshot/{appName}`
+
+Create a Raven Slingshot app information.
+
+##### Request body
+
+``` json
+{
+    "apiKey": "string",
+    "sharedSecret": "string"
+}
+```
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "apiKey": "string",
+    "sharedSecret": "string"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+    
+  data = {
+    "apiKey": "string",
+    "sharedSecret": "string"
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "apiKey": "string", "sharedSecret": "string" }'
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Update a Raven Slingshot app information
+
+&nbsp<span class="badge badge--warning">PUT</span> `/app-keys/RavenSlingshot/{appName}`
+
+Update a Raven Slingshot app information.
+
+##### Request body
+
+``` json
+{
+  "apiKey": "string",
+  "sharedSecret": "string"
+}
+```
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "apiKey": "string",
+    "sharedSecret": "string"
+  }
+
+  axios.put(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+    
+  data = {
+    "apiKey": "string",
+    "sharedSecret": "string"
+  }
+  
+  response = requests.put(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "apiKey": "string", "sharedSecret": "string" }'
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Delete a Raven Slingshot app information
+
+&nbsp<span class="badge badge--danger">DELETE</span> `/app-keys/RavenSlingshot/{appName}`
+
+Delete a Raven Slingshot app information.
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/{appName}'
   ```
 
   </TabItem>

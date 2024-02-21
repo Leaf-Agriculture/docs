@@ -22,6 +22,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [cnhi]: https://withleaf.io/en/whats-new/cnhi-authentication-with-leaf/
 [agleader]: https://withleaf.io/en/whats-new/agleader-authentication-with-leaf/
 [trimble]: https://withleaf.io/en/whats-new/trimble-authentication-with-leaf/
+[raven-slingshot]: https://withleaf.io/en/whats-new/raven-slingshot-integration-with-leaf/
 
 [provider-apiKey]: #apikey
 [provider-companyLogoUrl]: #companylogourl
@@ -492,7 +493,82 @@ Here is a request example:
   </TabItem>
 </Tabs>
 
+### Raven Slingshot
+To enable Raven Slingshot as a provider in the widget you need your `apiKey` and `sharedSecret` from Raven. You can find more info on creating a developer account [here][raven-slingshot].
 
+#### Application info
+To allow the users to authenticate with Raven Slingshot, you will need to send your application info to this endpoint
+&nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/app-keys/RavenSlingshot/{appName}`
+
+For Slingshot, it is necessary to inform the:
+- `apiKey`
+- `sharedSecret`
+
+You can set the `appName`.
+
+Here is a request example:
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', }
+  ]}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/LeafWidget'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    apiKey: "string",
+    sharedSecret: "string"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/LeafWidget'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    apiKey: "string",
+    sharedSecret: "string"
+  }
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "apiKey": "string", "sharedSecret": "string" }'
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/RavenSlingshot/LeafWidget'
+  ```
+
+  </TabItem>
+</Tabs>
+
+:::tip
+Remember your user will still need to provide the `Access Key` during the authentication process.
+:::
 
 
 ## Tutorial

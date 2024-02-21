@@ -309,7 +309,7 @@ The possible `status` are listed [here][2].
 
 ### Get the upload entries
 
-&nbsp<span class="badge badge--success">GET</span> `/upload/{uploadId}`
+&nbsp<span class="badge badge--success">GET</span> `/upload/{uploadId}/entries`
 
 Returns the result of each file identified as compatible in the processing.
 

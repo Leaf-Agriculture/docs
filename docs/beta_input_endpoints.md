@@ -203,7 +203,7 @@ values={[
 [
   {
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "Produto padrão",
+    "name": "Default product",
     "leafUserId": "8bbe50a0-992c-11ee-b9d1-0242ac120002"
   },
   ....
@@ -283,6 +283,7 @@ values={[
     "registration": "00000-00-00000",
     "registrant": "Leaf Company, LLC",
     "productType": "Dry",
+    "physicalState": "dry",
     "formulationType": "Dry Flowable",
     "labelProvider": "CDMS",
     "productPageUrl": "https://www.cdms.net/ldat/",
@@ -305,6 +306,7 @@ values={[
     "registration": "00000-000",
     "registrant": "Agriscience",
     "productType": "Dry",
+    "physicalState": "dry",
     "formulationType": "Dry Flowable",
     "labelProvider": "AGRIAN",
     "productPageUrl": "https://www.agrian.com/searchcenter/demonstration=00000",
@@ -319,6 +321,55 @@ values={[
       "Roundup",
       "Glyphosate",
       ....
+    ],
+    "activeIngredients": [
+      {
+        "name": "Roundup",
+        "value": "40",
+        "unit": "%"
+      },
+      {
+        "name": "Glyphosate",
+        "value": "15",
+        "unit": "%"
+      }
+    ]
+  },
+  {
+    "id": "21f4cb76-07fa-46ca-a8cf-cfbc2f161bdf",
+    "name": "Product AB",
+    "registration": "0434785-2911",
+    "distributor": null,
+    "registrant": "Loveland Products, Inc.",
+    "productType": "Insecticide Miticide",
+    "formulationType": "Emulsifiable Concentrate OR Emulsion Concentrate",
+    "labelProvider": "AGRIAN",
+    "productPageUrl": "https://www.agrian.com/labelcenter/results.cfm?d=0000",
+    "labels": [
+      {
+        "name": "Label",
+        "url": "https://www.agrian.com/pdfs/new/00000.pdf"
+      },
+      ....
+    ],
+    "activeIngredient": [
+      "13.1 - Lambda-cyhalothrin"
+    ],
+    "leafUserId": null,
+    "carrier": null,
+    "status": null,
+    "providerId": null,
+    "physicalState": "liquid",
+    "density": {
+      "value": "7.17",
+      "unit": "lb/ga"
+    },
+    "activeIngredients": [
+      {
+        "name": "Lambda-cyhalothrin",
+        "value": "13.1",
+        "unit": "%"
+      }
     ]
   },
   ....

@@ -34,6 +34,7 @@ This service has the following endpoints available:
 | [Get fields by geometry](#get-fields-by-geometry)                         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/intersects`                              |
 | [Get intersection of fields](#get-intersection-of-fields)                 | <span class="badge badge--warning">POST</span> `/users/{id}/fields/intersect`                                       |
 | [Sync fields manually](#sync-fields-manually)                             | <span class="badge badge--warning">POST</span> `/users/{id}/fields/sync`                                            |
+| [Enable a preview field](#enable-a-preview-field)                             | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/{id}/enableSync`                                            |
 | [Upload a Field to Provider](#upload-a-field-to-provider)                     | <span class="badge badge--warning">POST</span> `/users/{leaf_user_id}/fields/{field_id}/integration/{provider_name}` |
 | [Delete a field](#delete-a-field)                                         | <span class="badge badge--danger">DELETE</span> `/users/{id}/fields/{id}`                                           |
 | [Get all boundaries from field](#get-all-boundaries-from-field)           | <span class="badge badge--success">GET</span> `users/{leafUserId}/fields/{fieldId}/boundaries`                      |
@@ -955,20 +956,11 @@ specified by the given id's. Such Field id's goes in a list, in the request body
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/sync`
 
 :::tip 
-This endpoint should be used to fetch data when one of the configurations is enabled: [customDataSync](/docs/configurations_overview#customdatasync) or [fieldsAutoSync](/docs/configurations_overview#fieldsautosync).
+This endpoint should be used to fetch field data when this [fieldsAutoSync](/docs/configurations_overview#fieldsautosync) configuration is disabled.
 :::
 
 Schedules a synchronization to fetch Field Boundaries data from the providers.
 
-
-#### Request body
-If the `customDataSync` configuration is enabled, only the fields sent in the body will be synchronized. For the `fieldsAutoSync` leave the body empty will sync all the fields available in the provider.
-
-```json
-{
-  "fields": ["UUID"]
-}
-```
 
 #### Request examples
 
@@ -989,11 +981,7 @@ values={[
   const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/sync'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-  const data = {
-    fields: ["1a952614-3673-4d1e-b677-1f7224339ec6"]
-  }
-
-  axios.post(endpoint, { headers, data })
+  axios.post(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1009,11 +997,7 @@ values={[
   endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/sync'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  data = {
-    'fields': ['1a952614-3673-4d1e-b677-1f7224339ec6']
-  }
-
-  response = requests.post(endpoint, headers=headers, json=data)
+  response = requests.post(endpoint, headers=headers)
   print(response.json())
   ```
 
@@ -1023,8 +1007,70 @@ values={[
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "fields": ["1a952614-3673-4d1e-b677-1f7224339ec6"] }'
       'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/sync'
+  ```
+
+  </TabItem>
+</Tabs>
+
+### Enable a preview field
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/{id}/enableSync`
+
+:::tip 
+This endpoint should be used to fetch data when the [customDataSync](/docs/configurations_overview#customdatasync) configuration is enabled.
+:::
+
+It will remove the field from the `PREVIEW` mode making it ready for be fetched in the next synchonization. The status will change to `WAITING`.
+
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/enableSync'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.post(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/enableSync'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+
+  response = requests.post(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/fields/api/users/{leafUserId}/fields/{id}/enableSync'
   ```
 
   </TabItem>
@@ -2164,9 +2210,9 @@ If the [`customDataSync`](/docs/configurations_overview#customdatasync) configur
 }
 ```
 
-Those Fields will still be listed in the field endpoints, allowing the custom synchronization of the resources available in the providers. To fetch a Field completely, it is necessary to remove it from the `PREVIEW` mode, sending it in the [manual sync endpoint](#sync-fields-manually).
+Those Fields will still be listed in the field endpoints, allowing the custom synchronization of the resources available in the providers. To fetch a Field completely, it is necessary to remove it from the `PREVIEW` mode, sending it in the [enable a preview field](#enable-a-preview-field).
 
-After the change request, the field(s) will be fetched completely in the next synchronization window and it will be available as `PROCESSED`.
+After the change request, the field(s) will be marked as `WAITING` to be fetched completely in the next synchronization window and then, when it happens, the status will change to `PROCESSED`.
 
 
 **Field operations**

@@ -18,7 +18,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [8]: /docs/operations_sample_output#field-operations-images-v2
 [9]: /docs/operations_endpoints#get-operations-geotiff-images
 [10]: /docs/field_boundary_management_endpoints#preview-mode
-[11]: /docs/field_boundary_management_endpoints#sync-fields-manually
+[11]: /docs/field_boundary_management_endpoints#enable-a-preview-field
 [12]: /docs/machine_file_conversion_units
 [13]: /docs/field_boundary_management_endpoints#automatic-geometry-fix
 [14]: #splitoperationsbyfield

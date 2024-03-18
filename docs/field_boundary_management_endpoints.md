@@ -940,17 +940,6 @@ specified by the given id's. Such Field id's goes in a list, in the request body
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
 ### Sync fields manually
 
 &nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/fields/sync`

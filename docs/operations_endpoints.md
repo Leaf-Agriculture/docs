@@ -30,6 +30,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [19]: #get-the-operations-filteredgeojson
 [20]: https://docs.withleaf.io/docs/configurations_overview/#operationsfilteredgeojson
 [21]: #get-files-from-an-operation
+[22]: #get-the-operations-machines
+[23]: #get-the-operations-implements
+[24]: #get-the-operations-operators
+[25]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-a-machine
+[26]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-an-implement
+[27]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-an-operator
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
@@ -56,9 +62,12 @@ This service has the following endpoints available:
 | [Get operation's images V2][8]            | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`         |
 | [Get operation's geotiff images][16]      | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`    |
 | [Get the operation's units][5]            | <span class="badge badge--success">GET</span> `/operations/{id}/units`            |
+| [Get the operation's machines][22]        | <span class="badge badge--success">GET</span> `/operations/{id}/machines`         |
+| [Get the operation's implements][23]      | <span class="badge badge--success">GET</span> `/operations/{id}/implements`       |
+| [Get the operation's operators][24]       | <span class="badge badge--success">GET</span> `/operations/{id}/operators`        |
 | [Crop operation by field][17]             | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField` |
 | [Reprocess an operation][11]              | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`       |
-| [Get files from an operation][21]          | <span class="badge badge--warning">POST</span> `/operations/{id}/files`           |
+| [Get files from an operation][21]         | <span class="badge badge--warning">POST</span> `/operations/{id}/files`           |
 
 For easily testing these endpoints, we recommend using our Postman [collection][postman].
 
@@ -839,6 +848,209 @@ standardized keys, across different providers.
 Units usually don't change for the same Leaf User, since the providers units
 configuration is based on their location. But keep in mind that it's best to
 always take the units into consideration, just to be sure.
+
+### Get the operation's machines
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/machines`
+
+Gets the machines used in the given operation. The IDs returned can be used to fetch more information about the machine in the [Get a machine endpoint][25].
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/machines'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/machines'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/machines'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+```json
+{
+    "machines": [
+        "77385069-7666-4867-8d72-72c2584e2b4e",
+        "baad537c-69e3-4d86-a99b-92d5b716b574"
+    ]
+}
+```
+
+### Get the operation's implements
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/implements`
+
+Gets the implements used in the given operation. The IDs returned can be used to fetch more information about the implement in the [Get an implement endpoint][26].
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/implements'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/implements'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/implements'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+```json
+{
+    "implements": [
+        "1190bc0d-e94c-407a-8aba-ac4c6a1cd29b"
+    ]
+}
+```
+
+### Get the operation's operators
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/operators`
+
+Gets the operators that performed the given operation. The IDs returned can be used to fetch more information about the operator in the [Get an operator endpoint][27].
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/operators'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/operators'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/operators'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+```json
+{
+    "operators": [
+        "f2f4723a-2bfe-472b-b6f7-7874c8500208"
+    ]
+}
+```
+
 
 
 

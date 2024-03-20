@@ -20,6 +20,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [9]: /docs/field_boundary_management_endpoints#get-all-growers
 [10]: #download-prescription-from-john-deere
 [11]: #upload-prescription-to-trimble
+[12]: #upload-prescription-to-agleader
 
 ## About
 All HTTP methods should be prepended by this service's endpoint:
@@ -45,6 +46,7 @@ This feature has the following endpoints available:
 | [List prescriptions from CNHi][5]             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/cnhi`               |
 | [Upload prescription to Climate FieldView][8] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/climateFieldView`  |
 | [Upload prescription to Trimble][11]          | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/trimble`           |
+| [Upload prescription to AgLeader][12]         | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/agleader`          |
 
 ### Upload prescription to Raven Slingshot
 
@@ -799,6 +801,94 @@ values={[
       -H 'Authorization: Bearer YOUR_TOKEN' \
       -F 'file=prescription_rx_map.zip' \
       'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/trimble?rateAttribute={}&rateUnit={}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "id": "str",
+  "name": "str"
+}
+```
+
+
+### Upload prescription to AgLeader
+
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/agleader`
+
+Upload a prescription using the AgLeader credentials of the LeafUserId.
+
+The file to be uploaded needs to be .zip and contain one of each of the following file extension: shp, dbf, shx; and all files must have the same name. The zip file cannot contain subfolders.
+
+#### Example:
+
+A zip file named “prescription_rx_map”, containing the following files:
+- prescription_rx_map.shp
+- prescription_rx_map.dbf
+- prescription_rx_map.shx
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/agleader'
+
+  const headers = {
+    'Authorization': `Bearer ${TOKEN}`
+    'Content-Type': 'multipart/form-data'
+  }
+
+  const form = new FormData()
+  form.append('file', 'prescription_rx_map.zip')
+
+  axios.post(endpoint, form, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/agleader'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  files = {'file': open('prescription_rx_map.zip')}
+
+  response = requests.post(endpoint, headers=headers, files=files)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -F 'file=prescription_rx_map.zip' \
+      'https://api.withleaf.io/services/beta/prescription/api/users/{leafUserId}/agleader'
   ```
 
   </TabItem>

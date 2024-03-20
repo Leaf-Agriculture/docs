@@ -27,6 +27,7 @@ sidebar_label: Overview
 [18]: https://docs.withleaf.io/docs/credentials_cfv
 [19]: https://docs.withleaf.io/docs/credentials_trimble
 [20]: https://docs.withleaf.io/docs/integrations_endpoints
+[21]: https://docs.withleaf.io/docs/credentials_lindsay
 
 ## About 
 By the end of this section, the objective is to successfully authenticate your application and link provider credentials to Leaf, enabling you to start integrating standardized data from major agricultural providers. Ultimately you’ll want your customers to be able to integrate their (user-permissioned) data from their providers into your application. So in order to set this up at the user level, you’ll need to attach the user token from the provider to the Leaf User. 
@@ -54,6 +55,7 @@ For more details about provider credentials endpoints, see below for:
 - [Climate Fielview][18]
 - [CNHi][10]
 - [John Deere][17]
+- [Lindsay][21]
 - [Raven][12]
 - [Raven Slingshot][14]
 - [Sentera][15]

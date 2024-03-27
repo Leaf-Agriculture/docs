@@ -99,6 +99,14 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Irrigation',
+          items: [
+            'irrigation_overview',
+            'irrigation_endpoints',
+          ]
+        },
+        {
+          type: 'category',
           label: 'Leaf Connect',
           items: [
             'connect',

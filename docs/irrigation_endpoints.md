@@ -26,7 +26,7 @@ This service has the following endpoints available:
 |---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
 | [Get as-applied irrigation](#get-as-applied-irrigation)                                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`                                                             |
 | [Get all irrigated fields](#get-all-irrigated-fields)                                               | <span class="badge badge--success">GET</span> `/irrigation/fields`                                             |
-| [Get an irrigated field](#get-an-irrigated-field)                                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`                                                 |
+| [Get an irrigated field](#get-an-irrigated-field)                                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`                                                 |
 
 ### Get as-applied irrigation
 
@@ -235,7 +235,7 @@ Lists all fields that have received any irrigation at some point.
 
 ### Get an irrigated field
 
-&nbsp<span class="badge badge--success">GET</span> `/irrigation/fields/{fieldId}`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`
 
 Gets information about irrigation performed in a specific field.
 
@@ -255,7 +255,7 @@ Gets information about irrigation performed in a specific field.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/irrigation/api/irrigation/fields/{fieldId}'
+  const endpoint ='https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields/{fieldId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -271,7 +271,7 @@ Gets information about irrigation performed in a specific field.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/irrigation/api/irrigation/fields/{fieldId}'
+  endpoint = 'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields/{fieldId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -284,7 +284,7 @@ Gets information about irrigation performed in a specific field.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/irrigation/api/irrigation/fields/{fieldId}'
+      'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields/{fieldId}'
   ```
 
   </TabItem>

@@ -101,6 +101,7 @@ Lists all irrigation activities from supported providers, summarized by day and 
       "properties": {
         "depth": {
           "avg": 4.87,
+          "sum": 28.36,
           "min": 2.53,
           "max": 7.49,
           "unit": "mm"
@@ -112,7 +113,7 @@ Lists all irrigation activities from supported providers, summarized by day and 
       },
       "geometry": { }
     },
-    "equipments": [
+    "equipment": [
       {
         "name": "My Pivot",
         "type": "pivot",
@@ -297,7 +298,7 @@ Gets information about irrigation performed in a specific field.
   {
     "id": "uuid",
     "fieldId": "uuid",
-    "irrigationId": "uuid",
+    "irrigationId": ["uuid"],
     "provider": "Lindsay",
     "standardGeojson": "url.json",
     "downloadStandardGeojson": "url.json",
@@ -308,6 +309,7 @@ Gets information about irrigation performed in a specific field.
       "properties": {
         "depth": {
           "avg": 4.87,
+          "sum": 28.36,
           "min": 2.53,
           "max": 7.49,
           "unit": "mm"
@@ -323,7 +325,7 @@ Gets information about irrigation performed in a specific field.
       },
       "geometry": {  }
     },
-    "equipments": [
+    "equipment": [
       {
         "name": "My Pivot",
         "type": "pivot",

@@ -50,6 +50,7 @@ module.exports = {
                 'credentials_sentera',
                 'credentials_agvance',
                 'credentials_lindsay',
+                'credentials_valley',
                 'integrations_endpoints',
                 'provider_organizations'
               ]

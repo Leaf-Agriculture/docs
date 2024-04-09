@@ -32,7 +32,7 @@ This service has the following endpoints available:
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`
 
-Lists all irrigation reports from supported providers, summarized by day and with information on the amount of water applied, stored in the `depth` property. The area covered by the irrigation and the different geometries for each `depth` value is also available in the irrigation `standardGeojson`.
+Lists all irrigation activities from supported providers, summarized by day and with information on the amount of water applied, stored in the `depth` property. The area covered by the irrigation and the different geometries for each `depth` value are also available in the irrigation `standardGeojson`.
 
 #### Request examples
 

@@ -1,24 +1,26 @@
 ---
-title: Lindsay Credentials
-description: Credentials - Lindsay
+title: Valley Credentials
+description: Credentials - Valley
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-[1]: #get-the-lindsay-credentials
-[2]: #create-a-lindsay-credentials
-[3]: #delete-lindsay-credentials
+[1]: #get-the-valley-credentials
+[2]: #create-a-valley-credentials
+[3]: #delete-valley-credentials
 
 
 
-Form of a Lindsay Credentials resource:
+Form of a Valley Credentials resource:
 
 ```json
 {
-  "clientId": "str",
-  "clientSecret": "str",
-  "refreshToken": "str"
+  "apid": "str",
+  "initializationVector": "str",
+  "key": "str",
+  "username": "str",
+  "password": "str"
 }
 ```
 
@@ -34,20 +36,20 @@ See below the REST resources and their endpoints available in this service.
 
 Description | Endpoints
 --- | ---
-[Get the Lindsay credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/lindsay-credentials`
-[Create a Lindsay credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/lindsay-credentials`
-[Delete Lindsay credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/lindsay-credentials`
+[Get the Valley credentials][1] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/valley-credentials`
+[Create a Valley credentials][2] | <span class="badge badge--warning">POST</span> `/users/{leafUserId}/valley-credentials`
+[Delete Valley credentials][3] | <span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/valley-credentials`
 
 
-## Lindsay Credentials Endpoints
+## Valley Credentials Endpoints
 
-### Get the Lindsay credentials
+### Get the Valley credentials
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/lindsay-credentials`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/valley-credentials`
 
 <p align='justify'>
 
-Get the Lindsay credentials of the Leaf User based on its id and returns a JSON with the credentials. If during background processing we detect that this credential is no longer valid, the value of the status will be changed.
+Get the Valley credentials of the Leaf User based on its id and returns a JSON with the credentials. If during background processing we detect that this credential is no longer valid, the value of the status will be changed.
 
 </p>
 
@@ -66,7 +68,7 @@ Get the Lindsay credentials of the Leaf User based on its id and returns a JSON 
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -82,7 +84,7 @@ Get the Lindsay credentials of the Leaf User based on its id and returns a JSON 
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -95,7 +97,7 @@ Get the Lindsay credentials of the Leaf User based on its id and returns a JSON 
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   ```
 
   </TabItem>
@@ -105,30 +107,31 @@ Get the Lindsay credentials of the Leaf User based on its id and returns a JSON 
 
 ```json
 {
-  "id": "str",
-  "status": "str",
-  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
-  "tokenMetadata": {"scopes": ["str"]},
-  "clientId": "str",
-  "clientSecret": "str",
-  "accessToken": "str",
-  "refreshToken": "str"
+    "id": "uuid",
+    "status": "str",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+    "apid": "str",
+    "key": "str",
+    "initializationVector": "str",
+    "username": "str",
 }
 ```
 
 
-### Create a Lindsay credentials
-&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/lindsay-credentials`
+### Create a Valley credentials
+&nbsp<span class="badge badge--warning">POST</span> `/users/{leafUserId}/valley-credentials`
 
-Create a Lindsay credentials for the Leaf User.
+Create a Valley credentials for the Leaf User.
 
 #### Request body
 
 ```json
 {
-  "clientId": "str",
-  "clientSecret": "str",
-  "refreshToken": "str"
+  "apid": "str",
+  "initializationVector": "str",
+  "key": "str",
+  "username": "str",
+  "password": "str"
 }
 ```
 
@@ -148,13 +151,15 @@ Create a Lindsay credentials for the Leaf User.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
-    "clientId": "str",
-    "clientSecret": "str",
-    "refreshToken": "str"
+    "apid": "str",
+    "initializationVector": "str",
+    "key": "str",
+    "username": "str",
+    "password": "str"
   }
 
   axios.post(endpoint, data, { headers })
@@ -170,13 +175,15 @@ Create a Lindsay credentials for the Leaf User.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    "clientId": "str",
-    "clientSecret": "str",
-    "refreshToken": "str"
+    "apid": "str",
+    "initializationVector": "str",
+    "key": "str",
+    "username": "str",
+    "password": "str"
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -189,8 +196,8 @@ Create a Lindsay credentials for the Leaf User.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"clientId": "str","clientSecret": "str","refreshToken": "str"}' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+      -d '{"apid": "str", "initializationVector": "str", "key": "str", "username": "str", "password": "str"}' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   ```
 
   </TabItem>
@@ -198,27 +205,26 @@ Create a Lindsay credentials for the Leaf User.
 
 #### Response
 
-A Lindsay credentials with status.
+A Valley credentials with status.
 
 ```json
 {
-  "id": "str",
-  "status": "str",
-  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
-  "tokenMetadata": {"scopes": ["str"]},
-  "clientId": "str",
-  "clientSecret": "str",
-  "accessToken": "str",
-  "refreshToken": "str"
+    "id": "uuid",
+    "status": "OK",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'",
+    "apid": "str",
+    "key": "str",
+    "initializationVector": "str",
+    "username": "str",
 }
 ```
 
 
-### Delete Lindsay credentials
+### Delete Valley credentials
 
-&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/lindsay-credentials`
+&nbsp<span class="badge badge--danger">DELETE</span> `/users/{leafUserId}/valley-credentials`
 
-Delete Leaf User's Lindsay credentials.
+Delete Leaf User's Valley credentials.
 
 #### Request examples
 <Tabs
@@ -235,7 +241,7 @@ Delete Leaf User's Lindsay credentials.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.delete(endpoint, { headers })
@@ -251,7 +257,7 @@ Delete Leaf User's Lindsay credentials.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.delete(endpoint, headers=headers)
@@ -264,7 +270,7 @@ Delete Leaf User's Lindsay credentials.
   ```shell
   curl -X DELETE \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials'
   ```
 
   </TabItem>
@@ -276,7 +282,7 @@ With these endpoints, you can do some troubleshooting to see your credential's h
 
 ### Events
 
-&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/lindsay-credentials/events`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/valley-credentials/events`
 
 Get the logs of the provider credential based on the LeafUserId sent.
 
@@ -295,7 +301,7 @@ Get the logs of the provider credential based on the LeafUserId sent.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials/events'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials/events'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -311,7 +317,7 @@ Get the logs of the provider credential based on the LeafUserId sent.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials/events'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/valley-credentials/events'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -325,7 +331,7 @@ Get the logs of the provider credential based on the LeafUserId sent.
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}
-      /lindsay-credentials/events'
+      /valley-credentials/events'
   ```
 
   </TabItem>

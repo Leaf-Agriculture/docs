@@ -10,13 +10,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-Irrigation information from different providers is available in the Leaf API. Data may include the field boundaries, as-applied irrigation and equipment like pivot and sensors.
+Irrigation information from different providers is available in the Leaf API. Data may include field boundaries, as-applied irrigation and equipment like pivots and sensors.
 
 ## Irrigation data
 
-It will provide a representation of all irrigated area by existent irrigation equipment systems. The information is summarized by day and split by depth, which represent the amount of water for each multipolygon geometry from the report.
-
+The irrigation data represents the total irrigated area by existing irrigation equipment. The information is summarized by day and split by depth, which represents the amount of water for each multipolygon geometry.
 
 ## Irrigated field
 
-It relates the field boundaries and the as-applied irrigation performed, showing the area covered by the irrigation and the different amount of water in each zones or angles, represent by multipolygon geometries. The geometries are clipped by the field boundary geometry displaying the information restricted by the given field.
+The irrigated field shows the as-applied irrigation event within field boundaries. It shows the area covered by the irrigation event and the different amounts of water in each zone or angle, which are represented by multipolygon geometries. The irrigated geometries are clipped to the field boundary geometry, displaying the information for the given field.

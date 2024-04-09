@@ -58,6 +58,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [41]: #update-a-raven-slingshot-app-information
 [42]: #delete-a-raven-slingshot-app-information
 
+[43]: https://docs.withleaf.io/docs/provider-authentication-overview#provider-scopes
+
 
 ## About
 
@@ -948,6 +950,20 @@ Create a Climate FieldView app information.
   </TabItem>
 </Tabs>
 
+##### Scopes
+If any additional permission is required during the authentication process, use the `scopes` parameter to require it as displayed below:
+
+``` json
+{
+  "apiKey": "string",
+  "clientId": "string",
+  "clientSecret": "string",
+  "scopes": ["string"]
+}
+```
+
+Check the allowed values in this [scopes table][43].
+
 #### Update a Climate FieldView app information
 
 &nbsp<span class="badge badge--warning">PUT</span> `/app-keys/ClimateFieldView/{appName}`
@@ -1801,6 +1817,19 @@ Update a John Deere app information.
 
   </TabItem>
 </Tabs>
+
+##### Scopes
+If any additional permission is required during the authentication process, use the `scopes` parameter to require it as displayed below:
+
+``` json
+{
+  "clientKey": "string",
+  "clientSecret": "string",
+  "scopes": ["string"]
+}
+```
+
+Check the allowed values in this [scopes table][43].
 
 
 #### Delete a John Deere app information

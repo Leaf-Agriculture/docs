@@ -61,7 +61,7 @@ Currently, our upload endpoints accepts files with the maximum size limited to 3
 
 :::
 
-This endpoint requires the `leafUserId` parameter.
+This endpoint requires the `leafUserId` parameter and it also accepts the optional `farmId` parameter, which supports any existent Leaf farm ID and if present, all valid fields will be created under the informed farm.
 
 Leaf will project all the geometries to WGS 84 (EPSG:4326). If there is a property/column called `name` available in the file, Leaf API will use it as the field name property.
 

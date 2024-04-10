@@ -25,14 +25,14 @@ This service has the following endpoints available:
 | Description                                                               | Endpoints                                                                                                           |
 |---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
 | [Get as-applied irrigation](#get-as-applied-irrigation)                                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`                                                             |
-| [Get all irrigated fields](#get-all-irrigated-fields)                                               | <span class="badge badge--success">GET</span> `/irrigation/fields`                                             |
+| [Get all irrigated fields](#get-all-irrigated-fields)                                               | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields`                                             |
 | [Get an irrigated field](#get-an-irrigated-field)                                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`                                                 |
 
 ### Get as-applied irrigation
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`
 
-Lists all irrigation reports from supported providers, summarized by day and with information on the amount of water applied, stored in the `depth` property. The area covered by the irrigation and the different geometries for each `depth` value is also available in the irrigation `standardGeojson`.
+Lists all irrigation activities from supported providers, summarized by day and with information on the amount of water applied, stored in the `depth` property. The area covered by the irrigation and the different geometries for each `depth` value are also available in the irrigation `standardGeojson`.
 
 #### Request examples
 
@@ -101,6 +101,7 @@ Lists all irrigation reports from supported providers, summarized by day and wit
       "properties": {
         "depth": {
           "avg": 4.87,
+          "sum": 28.36,
           "min": 2.53,
           "max": 7.49,
           "unit": "mm"
@@ -112,7 +113,7 @@ Lists all irrigation reports from supported providers, summarized by day and wit
       },
       "geometry": { }
     },
-    "equipments": [
+    "equipment": [
       {
         "name": "My Pivot",
         "type": "pivot",
@@ -137,7 +138,7 @@ These are the basic properties available:
 | `startTime`        | The start of the irrigation period, typically the first hour of the day                                                                                     |
 | `endTime`          | The end of the irrigation period, typically the last hour of the day                                                                                        |
 | `provider`         | The irrigation data provider. It can be `Lindsay` or `Valley`                                                                                               |
-| `equipments`       | The list of equipment that performed the irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
+| `equipment`       | The list of equipment that performed the irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
 | `createdTime`      | The time the record was created in Leaf                                                                                                                     |
 
 ##### Summary
@@ -167,7 +168,7 @@ To view the field-related information, check the [Get an irrigated field](#get-a
 
 ### Get all irrigated fields
 
-&nbsp<span class="badge badge--success">GET</span> `/irrigation/fields`
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields`
 
 Lists all fields that have received any irrigation at some point.
 
@@ -187,7 +188,7 @@ Lists all fields that have received any irrigation at some point.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint ='https://api.withleaf.io/services/irrigation/api/irrigation/fields'
+  const endpoint ='https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -203,7 +204,7 @@ Lists all fields that have received any irrigation at some point.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/irrigation/api/irrigation/fields'
+  endpoint = 'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -216,7 +217,7 @@ Lists all fields that have received any irrigation at some point.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/irrigation/api/irrigation/fields'
+      'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields'
   ```
 
   </TabItem>
@@ -227,7 +228,7 @@ Lists all fields that have received any irrigation at some point.
 ```json
 [
   {
-    "id": "95eb7d79-b93d-4fc2-877a-3f2b366f8beb",
+    "fieldId": "95eb7d79-b93d-4fc2-877a-3f2b366f8beb",
     "lastIrrigationTime": "2024-02-18T23:59:59.000000Z"
   }
 ]
@@ -297,7 +298,7 @@ Gets information about irrigation performed in a specific field.
   {
     "id": "uuid",
     "fieldId": "uuid",
-    "irrigationId": "uuid",
+    "irrigationId": ["uuid"],
     "provider": "Lindsay",
     "standardGeojson": "url.json",
     "downloadStandardGeojson": "url.json",
@@ -308,6 +309,7 @@ Gets information about irrigation performed in a specific field.
       "properties": {
         "depth": {
           "avg": 4.87,
+          "sum": 28.36,
           "min": 2.53,
           "max": 7.49,
           "unit": "mm"
@@ -323,7 +325,7 @@ Gets information about irrigation performed in a specific field.
       },
       "geometry": {  }
     },
-    "equipments": [
+    "equipment": [
       {
         "name": "My Pivot",
         "type": "pivot",
@@ -348,7 +350,7 @@ These are the basic properties available:
 | `startTime`        | The start of the irrigation period, typically the first hour of the day                                                                                     |
 | `endTime`          | The end of the irrigation period, typically the last hour of the day                                                                                        |
 | `provider`         | The irrigation data provider. It can be `Lindsay` or `Valley`                                                                                               |
-| `equipments`       | The list of equipment that performed irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
+| `equipment`       | The list of equipment that performed irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
 | `createdTime`      | The time the record was created in Leaf                                                                                                                     |
 
 ##### Summary

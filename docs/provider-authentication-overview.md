@@ -28,6 +28,19 @@ sidebar_label: Overview
 [19]: https://docs.withleaf.io/docs/credentials_trimble
 [20]: https://docs.withleaf.io/docs/integrations_endpoints
 [21]: https://docs.withleaf.io/docs/credentials_lindsay
+[22]: https://docs.withleaf.io/docs/credentials_valley
+
+[23]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#get-all-fields
+[24]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#upload-a-field-to-provider
+[25]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-all-files
+[26]: https://docs.withleaf.io/docs/beta_prescriptions_endpoints#list-prescriptions-from-john-deere
+[27]: https://docs.withleaf.io/docs/beta_prescriptions_endpoints#upload-prescription-to-john-deere
+[28]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-all-machines
+[29]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-all-implements
+[30]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-all-operators
+[31]: https://docs.withleaf.io/docs/beta_input_endpoints#get-all-products
+[32]: https://docs.withleaf.io/docs/beta_input_endpoints#get-all-varieties
+
 
 ## About 
 By the end of this section, the objective is to successfully authenticate your application and link provider credentials to Leaf, enabling you to start integrating standardized data from major agricultural providers. Ultimately you’ll want your customers to be able to integrate their (user-permissioned) data from their providers into your application. So in order to set this up at the user level, you’ll need to attach the user token from the provider to the Leaf User. 
@@ -48,6 +61,22 @@ Each data provider's authentication flow is slightly different. Please refer to 
 
 This authentication flow has to be done only once in most cases. Leaf will manage the tokens and refresh them when needed.
 
+### Provider scopes
+Some providers like John Deere and Climate FieldView keep their resources under specific permissions, which means the user needs to grant access during the authentication process mentioned before. The allowed permissions are grouped in Leaf products as described below:
+
+| Scope              | Description                                                                                                                    |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| FIELDS:READ        | Requests permission to access the [field boundaries][23] entities from the provider                                            |
+| FIELDS:WRITE       | Requests permission to [create field boundary][24] entities in the provider                                                    |
+| OPERATIONS:READ    | Requests permission to fetch and download [operation data and files][25] from the provider                                     |
+| PRESCRIPTION:READ  | Requests permission to fetch and download [prescription data][26] and files from the provider                                  |
+| PRESCRIPTION:WRITE | Requests permission to [upload prescription files][27] to the provider                                                         |
+| ASSETS:READ        | Requests permission to get asset information like [machines][28], [implements][29], and [operators][30] from the provider      |
+| PRODUCTS:READ      | Requests permission to get [products][31] and [varieties][32] information from the provider, like fertilizers, and chemicals   |
+| ZONES:READ         | Requests permission to get zone information from the provider                                                                  |
+
+The scopes can be used in the Leaf authentication URL helper or in the application key information from Leaf Link.
+
 ## Provider credentials endpoints
 For more details about provider credentials endpoints, see below for:
 - [AgLeader][13]
@@ -61,10 +90,12 @@ For more details about provider credentials endpoints, see below for:
 - [Sentera][15]
 - [Stara][11]
 - [Trimble][19]
+- [Valley][22]
 
 Also, we recommend use our Providers Integrations Resources endpoint to debrief the ingested resources from the authenticated account. 
 With the Providers Integrations Resources, you can access all the relevant information between the authentication and the processing of your 
 resources ingested into Leaf's API. The resource summary gives you more visibility on what and how many resources are being processed. 
 - [Integrations Resources][20]
+
 
 Need more guidance? Contact us at help@withleaf.io.

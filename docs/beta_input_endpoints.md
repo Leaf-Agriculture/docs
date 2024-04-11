@@ -217,10 +217,10 @@ values={[
 
 Search for products by name, partial values are supported. Agrian and CDMS products are currently available to everyone, and John Deere products from the Operation Center at the Leaf User level.  
 
-| Parameter (to filter by) | Values                                                                             |
-|--------------------------|------------------------------------------------------------------------------------|
-| `name`                   | part of the product name to be searched **(required)**                             |
-| `maxResults`             | the number of results that should be returned (max value is 20). The default is 10 |
+| Parameter (to filter by) | Values                                                                              |
+|--------------------------|-------------------------------------------------------------------------------------|
+| `name`                   | part of the product name to be searched **(required)**                              |
+| `maxResults`             | the number of results that should be returned (max value is 100). The default is 10 |
 
 #### Request examples
 

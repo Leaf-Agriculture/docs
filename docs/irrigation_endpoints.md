@@ -22,11 +22,102 @@ https://api.withleaf.io/services/irrigation/api
 
 This service has the following endpoints available:
 
-| Description                                                               | Endpoints                                                                                                           |
-|---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| [Get as-applied irrigation](#get-as-applied-irrigation)                                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`                                                             |
-| [Get all irrigated fields](#get-all-irrigated-fields)                                               | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields`                                             |
-| [Get an irrigated field](#get-an-irrigated-field)                                         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`                                                 |
+| Description                                                   | Endpoints                                                 |
+|---------------------------------------------------------------|-----------------------------------------------------------|
+| [Get all irrigation equipment](#get-all-irrigation-equipment) | GET `/users/{leafUserId}/irrigation-equipment`            |
+| [Get as-applied irrigation](#get-as-applied-irrigation)       | GET `/users/{leafUserId}/irrigation/applied-irrigation`   |
+| [Get all irrigated fields](#get-all-irrigated-fields)         | GET `/users/{leafUserId}/irrigation/fields`               |
+| [Get an irrigated field](#get-an-irrigated-field)             | GET `/users/{leafUserId}/irrigation/fields/{fieldId}`     |
+
+### Get all irrigation equipment
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment`
+
+Lists all irrigation system equipment available for a given leaf user.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation-equipment'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation-equipment'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation-equipment'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+[
+  {
+        "id": "uuid",
+        "providerEquipmentId": "uuid",
+        "provider": "Lindsay",
+        "name": "HHD 700C",
+        "type": "pivot",
+        "pivotLength": "0.0",
+        "endgunLength": "0.0",
+        "pivotRuntime": "0.0",
+        "brand": "unknown"
+    } 
+]
+```
+
+#### Properties
+These are the properties available:
+
+| Property                    | Description                                                               |
+|-----------------------------|---------------------------------------------------------------------------|
+| `id`                        | The equipment ID                                                          |
+| `providerEquipmentId`       | The equipment ID from the provider                                        |
+| `provider`                  | The data provider: `Lindsay` or `Valley`                                  |
+| `name`                      | The name of the equipment                                                 |
+| `type`                      | The irrigation system type                                                |
+| `pivotLength`               | The length of the equipment                                               |
+| `endgunLength`              | The length of the endgun throw                                            |
+| `pivotRuntime`              | The time a pivot takes to complete a full revolution                      |
+| `brand`                     | The brand of the equipment                                                |
 
 ### Get as-applied irrigation
 
@@ -128,7 +219,7 @@ Lists all irrigation activities from supported providers, summarized by day and 
 ```
 
 #### Properties
-These are the basic properties available:
+These are the properties available:
 
 | Property           | Description                                                                                                                                                 |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -340,7 +431,7 @@ Gets information about irrigation performed in a specific field.
 ```
 
 #### Properties
-These are the basic properties available:
+These are the properties available:
 
 | Property           | Description                                                                                                                                                 |
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|

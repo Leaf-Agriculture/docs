@@ -55,10 +55,9 @@ This endpoint accepts a .zip of multilevel files, detects the valid files from t
 the ID's of the fields created/processed in the [entries endpoint][3].
 
 
-:::info File size limit of 3 GB
+:::info Limitations
 
-Currently, our upload endpoints accepts files with the maximum size limited to 3 gigabytes.
-
+Currently, our upload endpoints accepts files with the maximum size limited to 3 gigabytes and with up to 100 registers/fields.
 :::
 
 This endpoint requires the `leafUserId` parameter and it also accepts the optional `farmId` parameter, which supports any existent Leaf farm ID and if present, all valid fields will be created under the informed farm.

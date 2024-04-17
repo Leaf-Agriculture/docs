@@ -22,12 +22,12 @@ https://api.withleaf.io/services/irrigation/api
 
 This service has the following endpoints available:
 
-| Description                                                   | Endpoints                                                 |
-|---------------------------------------------------------------|-----------------------------------------------------------|
-| [Get all irrigation equipment](#get-all-irrigation-equipment) | GET `/users/{leafUserId}/irrigation-equipment`            |
-| [Get as-applied irrigation](#get-as-applied-irrigation)       | GET `/users/{leafUserId}/irrigation/applied-irrigation`   |
-| [Get all irrigated fields](#get-all-irrigated-fields)         | GET `/users/{leafUserId}/irrigation/fields`               |
-| [Get an irrigated field](#get-an-irrigated-field)             | GET `/users/{leafUserId}/irrigation/fields/{fieldId}`     |
+| Description                                                   | Endpoints                                                                                           |
+|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| [Get all irrigation equipment](#get-all-irrigation-equipment) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment`            |
+| [Get as-applied irrigation](#get-as-applied-irrigation)       | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`   |
+| [Get all irrigated fields](#get-all-irrigated-fields)         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields`               |
+| [Get an irrigated field](#get-an-irrigated-field)             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`     |
 
 ### Get all irrigation equipment
 
@@ -114,9 +114,9 @@ These are the properties available:
 | `provider`                  | The data provider: `Lindsay` or `Valley`                                  |
 | `name`                      | The name of the equipment                                                 |
 | `type`                      | The irrigation system type                                                |
-| `pivotLength`               | The length of the equipment                                               |
-| `endgunLength`              | The length of the endgun throw                                            |
-| `pivotRuntime`              | The time a pivot takes to complete a full revolution                      |
+| `pivotLength`               | The length of the equipment (`meters`)                           |
+| `endgunLength`              | The length of the endgun throw  (`meters`)                       |
+| `pivotRuntime`              | The time a pivot takes to complete a full revolution (`min`)              |
 | `brand`                     | The brand of the equipment                                                |
 
 ### Get as-applied irrigation
@@ -329,7 +329,13 @@ Lists all fields that have received any irrigation at some point.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`
 
-Gets information about irrigation performed in a specific field.
+Gets information about irrigation performed in a specific field. It is valid for all existent field boundary from the Leaf user account.
+
+:::info Warning
+This functionality associates field boundaries from any provider with irrigation data, so there must be existing field boundaries in the integrated leaf user to access it.
+Lindsay can provide field boundaries by default, but Valley cannot.
+:::
+
 
 #### Request examples
 
@@ -441,7 +447,7 @@ These are the properties available:
 | `startTime`        | The start of the irrigation period, typically the first hour of the day                                                                                     |
 | `endTime`          | The end of the irrigation period, typically the last hour of the day                                                                                        |
 | `provider`         | The irrigation data provider. It can be `Lindsay` or `Valley`                                                                                               |
-| `equipment`       | The list of equipment that performed irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
+| `equipment`        | The list of equipment that performed irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
 | `createdTime`      | The time the record was created in Leaf                                                                                                                     |
 
 ##### Summary

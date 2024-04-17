@@ -111,6 +111,7 @@ Get the Lindsay credentials of the Leaf User based on its id and returns a JSON 
   "tokenMetadata": {"scopes": ["str"]},
   "clientId": "str",
   "clientSecret": "str",
+  "clientEnvironment": "STAGE",
   "accessToken": "str",
   "refreshToken": "str"
 }
@@ -128,7 +129,8 @@ Create a Lindsay credentials for the Leaf User.
 {
   "clientId": "str",
   "clientSecret": "str",
-  "refreshToken": "str"
+  "refreshToken": "str",
+  "clientEnvironment": "STAGE" or "PRODUCTION"
 }
 ```
 
@@ -154,7 +156,8 @@ Create a Lindsay credentials for the Leaf User.
   const data = {
     "clientId": "str",
     "clientSecret": "str",
-    "refreshToken": "str"
+    "refreshToken": "str",
+    "clientEnvironment": "STAGE"
   }
 
   axios.post(endpoint, data, { headers })
@@ -176,7 +179,8 @@ Create a Lindsay credentials for the Leaf User.
   data = {
     "clientId": "str",
     "clientSecret": "str",
-    "refreshToken": "str"
+    "refreshToken": "str",
+    "clientEnvironment": "STAGE"
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -189,7 +193,7 @@ Create a Lindsay credentials for the Leaf User.
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{"clientId": "str","clientSecret": "str","refreshToken": "str"}' \
+      -d '{"clientId": "str","clientSecret": "str","refreshToken": "str", "clientEnvironment": "STAGE"}' \
       'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/lindsay-credentials'
   ```
 
@@ -208,6 +212,7 @@ A Lindsay credentials with status.
   "tokenMetadata": {"scopes": ["str"]},
   "clientId": "str",
   "clientSecret": "str",
+  "clientEnvironment": "STAGE",
   "accessToken": "str",
   "refreshToken": "str"
 }

@@ -136,8 +136,8 @@ If set to `true`, Leaf will aggregate products with the same name and display on
 `area` and `totalApplied` will be aggregated by the sum and the `rate` by the average. This config is only for applied data. The default value is `false`.
 
 #### summaryGeometry
-The values to be defined are `BUFFER` and `CONVEX_HULL`, that refer to the geometry calculation algorithm in the summary of the machine files. 
-Buffer See the image below to understand the model of each calculation.
+It refer to the method used to create the operation summary geometry from the machine operation files. The options available are `BUFFER` or `CONVEX_HULL`.
+The default is `CONVEX_HULL`.
 
 <p align="center">
     <img alt="Geometries algorithm" width="50%" src={useBaseUrl('img/buffer_algorithm.png')} />

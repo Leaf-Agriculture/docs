@@ -24,6 +24,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [14]: #splitoperationsbyfield
 [15]: /docs/machine_file_conversion_endpoints#get-all-outsidefieldgeojson-files
 [16]: #enableoutsidefieldgeojson-1
+[17]: /docs/operations_endpoints#get-the-operations-sessions
 
 
 Leaf's system can be customized to present different behaviors across services and Leaf Users. This is done using Configurations.
@@ -38,7 +39,7 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                              | 
 | [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson                                                                                                                                                                                                                                                                                                            | 
-| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement, enableOutsideFieldGeojson  | 
+| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession  | 
 | [ Synchronization ](#synchronization)                  | customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync | 
 
 
@@ -217,6 +218,9 @@ This configuration has no effect over the [Field Operations Images V2](https://d
 
 #### enableOutsideFieldGeojson
 Machine files can have points outside the field boundaries, these points are normally discarded when creating a Field Operation with the [`splitOperationsByField`][14] configuration enabled. If set to `true`, this configuration will allow fetch the points, for each machine file, not considered in any Field Operation for a Leaf user. The default value is `false`. A list of all files with points outside boundaries can be fetched using the [outsideFieldGeoJSON endpoint][15].
+
+#### enableOperationsSession
+If  set to `true`, it enables a new view of the field operation data, compiled by operator, implement and machines used in the operation. The information can be accessed in the [field operation session endpoint][17]. The default is `false`.
 
 ### Synchronization
 

@@ -36,6 +36,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [25]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-a-machine
 [26]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-an-implement
 [27]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-an-operator
+[28]: #get-the-operations-sessions
+[29]: https://docs.withleaf.io/docs/configurations_overview/#enableOperationsSession
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
@@ -65,6 +67,7 @@ This service has the following endpoints available:
 | [Get the operation's machines][22]        | <span class="badge badge--success">GET</span> `/operations/{id}/machines`         |
 | [Get the operation's implements][23]      | <span class="badge badge--success">GET</span> `/operations/{id}/implements`       |
 | [Get the operation's operators][24]       | <span class="badge badge--success">GET</span> `/operations/{id}/operators`        |
+| [Get the operation's sessions][28]        | <span class="badge badge--success">GET</span> `/operations/{id}/sessions`         |
 | [Crop operation by field][17]             | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField` |
 | [Reprocess an operation][11]              | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`       |
 | [Get files from an operation][21]         | <span class="badge badge--warning">POST</span> `/operations/{id}/files`           |
@@ -1051,8 +1054,135 @@ Gets the operators that performed the given operation. The IDs returned can be u
 }
 ```
 
+### Get the operation's sessions
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/sessions`
+
+Get compiled machine, implement and operator data for a management view with total area covered and working hours.
+
+:::info Important
+It requires the [`enableOperationsSession` configuration][29] enabled to create this data.
+Currently, this information is only available for John Deere operations.
+:::
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/sessions'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/sessions'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/sessions'
+  ```
+
+  </TabItem>
+</Tabs>
 
 
+#### Response
+```json
+[
+  {
+    "machineId": "uuid",
+    "serialNumber": "SERIALNUMBER001",
+    "sessions": [
+      {
+        "id": "sessionId",
+        "startTime": "2023-11-29T11:03:42.000Z",
+        "endTime": "2023-11-29T20:58:36.000Z",
+        "operator": {
+          "id": "operatorId",
+          "name": "SIDINEY BATISTA"
+        },
+        "area": {
+          "value": 18.215,
+          "unit": "ha"
+        }
+      }
+    ]
+  },
+  {
+    "machineId": "uuid",
+    "serialNumber": "SERIALNUMBER002",
+    "sessions": [
+      {
+        "id": "sessionId",
+        "startTime": "2010-10-10T10:10:10.000000000Z",
+        "endTime": "2010-10-10T10:10:10.000000000Z",
+        "operator": {
+          "id": "uuid",
+          "name": "Operator A"
+        },
+        "area": {
+          "value": 26.019,
+          "unit": "ha"
+        }
+      }
+    ]
+  },
+  {
+    "machineId": "machineId",
+    "serialNumber": "1RW9640DKNA075787",
+    "sessions": [
+      {
+        "id": "sessionId",
+        "startTime": "2010-10-10T10:10:10.000000000Z",
+        "endTime": "2010-10-10T10:10:10.000000000Z",
+        "operator": {
+          "id": "uuid",
+          "name": "Operator A"
+        },
+        "implement": {
+          "id": "uuid",
+          "name": "Implement 1"
+        },
+        "area": {
+          "value": 39.410,
+          "unit": "ha"
+        }
+      }
+    ]
+  }
+]
+```
 
 
 ### Crop operation by field

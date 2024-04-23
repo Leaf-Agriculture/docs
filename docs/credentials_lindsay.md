@@ -18,7 +18,8 @@ Form of a Lindsay Credentials resource:
 {
   "clientId": "str",
   "clientSecret": "str",
-  "refreshToken": "str"
+  "refreshToken": "str",
+  "clientEnvironment": "str"
 }
 ```
 

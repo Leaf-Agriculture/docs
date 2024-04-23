@@ -331,9 +331,9 @@ Lists all fields that have received any irrigation at some point.
 
 Gets information about irrigation performed in a specific field. It is valid for all existent field boundary from the Leaf user account.
 
-:::info Warning
+:::info Field boundary
 This functionality associates field boundaries from any provider with irrigation data, so there must be existing field boundaries in the integrated leaf user to access it.
-Lindsay can provide field boundaries by default, but Valley cannot.
+Valley does not provide field boundaries and Lindsay requires the FieldNET Advisor product to make them available.
 :::
 
 

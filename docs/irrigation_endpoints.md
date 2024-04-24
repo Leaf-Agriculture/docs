@@ -96,10 +96,23 @@ Lists all irrigation system equipment available for a given leaf user.
         "provider": "Lindsay",
         "name": "HHD 700C",
         "type": "pivot",
-        "pivotLength": "0.0",
-        "endgunLength": "0.0",
-        "pivotRuntime": "0.0",
-        "brand": "unknown"
+        "pivotLength": {
+          "value": 0.0,
+          "unit": "m"
+        },
+        "endgunLength": {
+          "value": 0.0,
+          "unit": "m"
+        },
+        "pivotRuntime": {
+          "value": 0.0,
+          "unit": "hr"
+        },
+        "brand": "unknown",
+        "originalEquipmentData": {
+            "equipmentType": "",
+            "equipmentSubType": ""
+        }
     } 
 ]
 ```
@@ -114,10 +127,13 @@ These are the properties available:
 | `provider`                  | The data provider: `Lindsay` or `Valley`                                  |
 | `name`                      | The name of the equipment                                                 |
 | `type`                      | The irrigation system type                                                |
-| `pivotLength`               | The length of the equipment (`meters`)                           |
-| `endgunLength`              | The length of the endgun throw  (`meters`)                       |
-| `pivotRuntime`              | The time a pivot takes to complete a full revolution (`min`)              |
+| `pivotLength`               | The length of the equipment (**`meters`** or `feet`)                      |
+| `endgunLength`              | The length of the endgun throw (**`meters`** or `feet`)                   |
+| `pivotRuntime`              | The time a pivot takes to complete a full revolution (`hours`)            |
 | `brand`                     | The brand of the equipment                                                |
+| `originalEquipmentData`     | Not normalized equipment information data such as original type and subtype as available in the provider  |
+
+\* The unit of measure can be defined by the [`unitMeasurement`][1] configuration.
 
 ### Get as-applied irrigation
 
@@ -200,6 +216,10 @@ Lists all irrigation activities from supported providers, summarized by day and 
         "totalArea": {
           "value": 52.72,
           "unit": "ha"
+        },
+        "totalPowerOn": {
+            "value": 16.7,
+            "unit": "hr"
         }
       },
       "geometry": { }
@@ -229,18 +249,19 @@ These are the properties available:
 | `startTime`        | The start of the irrigation period, typically the first hour of the day                                                                                     |
 | `endTime`          | The end of the irrigation period, typically the last hour of the day                                                                                        |
 | `provider`         | The irrigation data provider. It can be `Lindsay` or `Valley`                                                                                               |
-| `equipment`       | The list of equipment that performed the irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
+| `equipment`        | The list of equipment that performed the irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
 | `createdTime`      | The time the record was created in Leaf                                                                                                                     |
 
 ##### Summary
 
 Each record shows a summary of the day, with the following properties:
 
-| Property  | Unit of measure  | Description                                     |
-|-----------|------------------|-------------------------------------------------|
-| depth     | **`mm`** or `in` | Basic statistics on the amount of water applied |
-| totalArea | **`ha`** or `ac` | Total irrigated area                            |
-| geometry  | -                | The geometry that represents the irrigated area |
+| Property     | Unit of measure  | Description                                     |
+|--------------|------------------|-------------------------------------------------|
+| depth        | **`mm`** or `in` | Basic statistics on the amount of water applied |
+| totalArea    | **`ha`** or `ac` | Total irrigated area                            |
+| totalPowerOn | `hr`             | Total time the pivot was ON for the given day   |
+| geometry     | -                | The geometry that represents the irrigated area |
 
 \* The unit of measure can be defined by the [`unitMeasurement`][1] configuration.
 
@@ -415,6 +436,10 @@ Valley does not provide field boundaries and Lindsay requires the FieldNET Advis
           "value": 49.48,
           "unit": "ha"
         },
+        "totalPowerOn": {
+            "value": 16.7,
+            "unit": "hr"
+        },
         "coverage": {
           "value": 81.51,
           "unit": "percentage"
@@ -453,12 +478,13 @@ These are the properties available:
 ##### Summary
 Each record shows a summary of the day, with the following properties:
 
-| Property  | Unit             | Description                                                          |
-|-----------|------------------|----------------------------------------------------------------------|
-| depth     | **`mm`** or `in` | Basic statistics on the amount of water applied                      |
-| totalArea | **`ha`** or `ac` | Total irrigated area for that given field                            |
-| coverage  | `%`              | The percentage of field area covered by irrigation - the wetted area |
-| geometry  | -                | The geometry that represents the field irrigated area                |
+| Property     | Unit             | Description                                                          |
+|--------------|------------------|----------------------------------------------------------------------|
+| depth        | **`mm`** or `in` | Basic statistics on the amount of water applied                      |
+| totalArea    | **`ha`** or `ac` | Total irrigated area for that given field                            |
+| totalPowerOn | `hr`             | Total time the pivot was ON for the given day                        |
+| coverage     | `%`              | The percentage of field area covered by irrigation - the wetted area |
+| geometry     | -                | The geometry that represents the field irrigated area                |
 
 \* The unit of measure can be defined by the [`unitMeasurement`][1] configuration.
 

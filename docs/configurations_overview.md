@@ -40,7 +40,9 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 | [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                              | 
 | [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson                                                                                                                                                                                                                                                                                                            | 
 | [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession  | 
+| [ Irrigation ](#irrigation)                  | irrigationProcessingRange | 
 | [ Synchronization ](#synchronization)                  | customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync | 
+
 
 
 ### Field Boundary Management
@@ -221,6 +223,11 @@ Machine files can have points outside the field boundaries, these points are nor
 
 #### enableOperationsSession
 If  set to `true`, it enables a new view of the field operation data, compiled by operator, implement and machines used in the operation. The information can be accessed in the [field operation session endpoint][17]. The default is `false`.
+
+### Irrigation
+
+#### irrigationProcessingRange
+The retroactive time period (in months) to fetch irrigation activities from providers. The default is `12` so only irrigation data that occurred 12 months ago to present will be processed by Leaf.
 
 ### Synchronization
 

@@ -37,7 +37,7 @@ This service has the following endpoints available:
 Lists all irrigation system equipment available for a given leaf user. It is possible to filter the results by passing some query parameters:
 
 | Parameter (to filter by) |         Values         |
-|:------------------------:|:----------------------:|
+|------------------------|----------------------|
 | `providerEquipmentId`    | Provider equipment ID  |
 | `provider`               | `Lindsay` or `Valley` |
 
@@ -253,7 +253,7 @@ These are the properties available:
 Lists all irrigation activities from supported providers, summarized by day and with information on the amount of water applied, stored in the `depth` property. The area covered by the irrigation and the different geometries for each `depth` value are also available in the irrigation `standardGeojson`. It is possible to filter the results by passing some query parameters:
 
 | Parameter (to filter by) |                       Values                      |
-|:------------------------:|:-------------------------------------------------:|
+|------------------------|-------------------------------------------------|
 | `provider`               | `Lindsay` or `Valley`                             |
 | `startTime`              | Returns irrigation data from the startTime onward |
 | `endTime`                | Returns irrigation data  until the endTime        |
@@ -408,7 +408,7 @@ To view the field-related information, check the [Get an irrigated field](#get-a
 Lists all fields that have received any irrigation at some point. It is possible to filter the results by passing some query parameters:
 
 | Parameter (to filter by) |                       Values                      |
-|:------------------------:|:-------------------------------------------------:|
+|------------------------|-------------------------------------------------|
 | `equipmentId`            | Leaf equipment ID                                 |
 | `startTime`              | Returns irrigation data from the startTime onward |
 | `endTime`                | Returns irrigation data  until the endTime        |
@@ -482,7 +482,7 @@ Lists all fields that have received any irrigation at some point. It is possible
 Gets information about irrigation performed in a specific field. It is valid for all existent field boundary from the Leaf user account. It is possible to filter the results by passing some query parameters:
 
 | Parameter (to filter by) |                       Values                      |
-|:------------------------:|:-------------------------------------------------:|
+|------------------------|-------------------------------------------------|
 | `irrigationId`           | As-applied irrigation ID                          |
 | `provider`               | `Lindsay` or `Valley`                             |
 | `startTime`              | Returns irrigation data from the startTime onward |

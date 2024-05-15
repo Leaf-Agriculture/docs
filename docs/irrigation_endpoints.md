@@ -25,6 +25,7 @@ This service has the following endpoints available:
 | Description                                                   | Endpoints                                                                                           |
 |---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | [Get all irrigation equipment](#get-all-irrigation-equipment) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment`            |
+| [Get an irrigation equipment](#get-an-irrigation-equipment) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment/{id}`            |
 | [Get as-applied irrigation](#get-as-applied-irrigation)       | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`   |
 | [Get all irrigated fields](#get-all-irrigated-fields)         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields`               |
 | [Get an irrigated field](#get-an-irrigated-field)             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`     |
@@ -33,7 +34,12 @@ This service has the following endpoints available:
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment`
 
-Lists all irrigation system equipment available for a given leaf user.
+Lists all irrigation system equipment available for a given leaf user. It is possible to filter the results by passing some query parameters:
+
+| Parameter (to filter by) |         Values         |
+|------------------------|----------------------|
+| `providerEquipmentId`    | Provider equipment ID  |
+| `provider`               | `Lindsay` or `Valley` |
 
 #### Request examples
 
@@ -135,11 +141,122 @@ These are the properties available:
 
 \* The unit of measure can be defined by the [`unitMeasurement`][1] configuration.
 
+
+### Get an irrigation equipment
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment/{id}`
+
+Get a specific irrigation system equipment by ID.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation-equipment/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation-equipment/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation-equipment/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+        "id": "uuid",
+        "providerEquipmentId": "uuid",
+        "provider": "Lindsay",
+        "name": "HHD 700C",
+        "type": "pivot",
+        "pivotLength": {
+          "value": 0.0,
+          "unit": "m"
+        },
+        "endgunLength": {
+          "value": 0.0,
+          "unit": "m"
+        },
+        "pivotRuntime": {
+          "value": 0.0,
+          "unit": "hr"
+        },
+        "brand": "unknown",
+        "originalEquipmentData": {
+            "equipmentType": "",
+            "equipmentSubType": ""
+        }
+    }
+```
+
+#### Properties
+These are the properties available:
+
+| Property                    | Description                                                               |
+|-----------------------------|---------------------------------------------------------------------------|
+| `id`                        | The equipment ID                                                          |
+| `providerEquipmentId`       | The equipment ID from the provider                                        |
+| `provider`                  | The data provider: `Lindsay` or `Valley`                                  |
+| `name`                      | The name of the equipment                                                 |
+| `type`                      | The irrigation system type                                                |
+| `pivotLength`               | The length of the equipment (**`meters`** or `feet`)                      |
+| `endgunLength`              | The length of the endgun throw (**`meters`** or `feet`)                   |
+| `pivotRuntime`              | The time a pivot takes to complete a full revolution (`hours`)            |
+| `brand`                     | The brand of the equipment                                                |
+| `originalEquipmentData`     | Not normalized equipment information data such as original type and subtype as available in the provider  |
+
+\* The unit of measure can be defined by the [`unitMeasurement`][1] configuration.
+
 ### Get as-applied irrigation
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`
 
-Lists all irrigation activities from supported providers, summarized by day and with information on the amount of water applied, stored in the `depth` property. The area covered by the irrigation and the different geometries for each `depth` value are also available in the irrigation `standardGeojson`.
+Lists all irrigation activities from supported providers, summarized by day and with information on the amount of water applied, stored in the `depth` property. The area covered by the irrigation and the different geometries for each `depth` value are also available in the irrigation `standardGeojson`. It is possible to filter the results by passing some query parameters:
+
+| Parameter (to filter by) |                       Values                      |
+|------------------------|-------------------------------------------------|
+| `provider`               | `Lindsay` or `Valley`                             |
+| `startTime`              | Returns irrigation data from the startTime onward |
+| `endTime`                | Returns irrigation data  until the endTime        |
 
 #### Request examples
 
@@ -217,6 +334,10 @@ Lists all irrigation activities from supported providers, summarized by day and 
           "value": 52.72,
           "unit": "ha"
         },
+        "totalVolume": {
+            "value": 1604.7,
+            "unit": "L"
+        },
         "totalPowerOn": {
             "value": 16.7,
             "unit": "hr"
@@ -226,6 +347,7 @@ Lists all irrigation activities from supported providers, summarized by day and 
     },
     "equipment": [
       {
+        "id": "uuid",
         "name": "My Pivot",
         "type": "pivot",
         "providerEquipmentId": "d0245010-157d-4988-96a2-5f3637098475"
@@ -249,7 +371,7 @@ These are the properties available:
 | `startTime`        | The start of the irrigation period, typically the first hour of the day                                                                                     |
 | `endTime`          | The end of the irrigation period, typically the last hour of the day                                                                                        |
 | `provider`         | The irrigation data provider. It can be `Lindsay` or `Valley`                                                                                               |
-| `equipment`        | The list of equipment that performed the irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
+| `equipment`        | The list of equipment that performed the irrigation, may contain the `id`, `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
 | `createdTime`      | The time the record was created in Leaf                                                                                                                     |
 
 ##### Summary
@@ -260,6 +382,7 @@ Each record shows a summary of the day, with the following properties:
 |--------------|------------------|-------------------------------------------------|
 | depth        | **`mm`** or `in` | Basic statistics on the amount of water applied |
 | totalArea    | **`ha`** or `ac` | Total irrigated area                            |
+| totalVolume  | **`L`** or `gal` | Total volume applied                            |
 | totalPowerOn | `hr`             | Total time the pivot was ON for the given day   |
 | geometry     | -                | The geometry that represents the irrigated area |
 
@@ -282,7 +405,13 @@ To view the field-related information, check the [Get an irrigated field](#get-a
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields`
 
-Lists all fields that have received any irrigation at some point.
+Lists all fields that have received any irrigation at some point. It is possible to filter the results by passing some query parameters:
+
+| Parameter (to filter by) |                       Values                      |
+|------------------------|-------------------------------------------------|
+| `equipmentId`            | Leaf equipment ID                                 |
+| `startTime`              | Returns irrigation data from the startTime onward |
+| `endTime`                | Returns irrigation data  until the endTime        |
 
 #### Request examples
 
@@ -350,7 +479,14 @@ Lists all fields that have received any irrigation at some point.
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`
 
-Gets information about irrigation performed in a specific field. It is valid for all existent field boundary from the Leaf user account.
+Gets information about irrigation performed in a specific field. It is valid for all existent field boundary from the Leaf user account. It is possible to filter the results by passing some query parameters:
+
+| Parameter (to filter by) |                       Values                      |
+|------------------------|-------------------------------------------------|
+| `irrigationId`           | As-applied irrigation ID                          |
+| `provider`               | `Lindsay` or `Valley`                             |
+| `startTime`              | Returns irrigation data from the startTime onward |
+| `endTime`                | Returns irrigation data  until the endTime        |
 
 :::info Field boundary
 This functionality associates field boundaries from any provider with irrigation data, so there must be existing field boundaries in the integrated leaf user to access it.
@@ -436,6 +572,10 @@ Valley does not provide field boundaries and Lindsay requires the FieldNET Advis
           "value": 49.48,
           "unit": "ha"
         },
+        "totalVolume": {
+            "value": 1604.7,
+            "unit": "L"
+        },
         "totalPowerOn": {
             "value": 16.7,
             "unit": "hr"
@@ -449,6 +589,7 @@ Valley does not provide field boundaries and Lindsay requires the FieldNET Advis
     },
     "equipment": [
       {
+        "id": "uuid",
         "name": "My Pivot",
         "type": "pivot",
         "providerEquipmentId": "d0245010-157d-4988-96a2-5f3637098475"
@@ -472,7 +613,7 @@ These are the properties available:
 | `startTime`        | The start of the irrigation period, typically the first hour of the day                                                                                     |
 | `endTime`          | The end of the irrigation period, typically the last hour of the day                                                                                        |
 | `provider`         | The irrigation data provider. It can be `Lindsay` or `Valley`                                                                                               |
-| `equipment`        | The list of equipment that performed irrigation, may contain the `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
+| `equipment`        | The list of equipment that performed irrigation, may contain the `id`, `name`, `type` and the identifier of the equipment at the provider (`providerEquipmentId`) |
 | `createdTime`      | The time the record was created in Leaf                                                                                                                     |
 
 ##### Summary
@@ -482,6 +623,7 @@ Each record shows a summary of the day, with the following properties:
 |--------------|------------------|----------------------------------------------------------------------|
 | depth        | **`mm`** or `in` | Basic statistics on the amount of water applied                      |
 | totalArea    | **`ha`** or `ac` | Total irrigated area for that given field                            |
+| totalVolume  | **`L`** or `gal` | Total volume applied                                                 |
 | totalPowerOn | `hr`             | Total time the pivot was ON for the given day                        |
 | coverage     | `%`              | The percentage of field area covered by irrigation - the wetted area |
 | geometry     | -                | The geometry that represents the field irrigated area                |

@@ -183,7 +183,7 @@ Range used to consider if files are part of the same operation. Default value is
 Range used to consider if harvest files are part of the same operation. Default value is `21` days.
 
 #### operationsProcessingRange
-The retroactive time period (in months) to fetch file operations from providers. The default is `12` so only operations that occurred 12 months ago to present will be processed by Leaf.
+The retroactive period (in months) to fetch file operations from providers. The default is `12` so only operations that were created or updated within the past 12 months will be processed by Leaf.
 
 #### splitOperationsByField
 If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`.

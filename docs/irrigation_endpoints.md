@@ -25,10 +25,12 @@ This service has the following endpoints available:
 | Description                                                   | Endpoints                                                                                           |
 |---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | [Get all irrigation equipment](#get-all-irrigation-equipment) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment`            |
-| [Get an irrigation equipment](#get-an-irrigation-equipment) | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment/{id}`            |
+| [Get an irrigation equipment](#get-an-irrigation-equipment)   | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation-equipment/{id}`       |
 | [Get as-applied irrigation](#get-as-applied-irrigation)       | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation`   |
+| [Get an irrigation activity](#get-an-irrigation-activity)       | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation/{id}`   |
 | [Get all irrigated fields](#get-all-irrigated-fields)         | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields`               |
 | [Get an irrigated field](#get-an-irrigated-field)             | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}`     |
+| [Get an irrigated field activity](#get-an-irrigated-field-activity)    | <span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}/irrigated/{id}`     |
 
 ### Get all irrigation equipment
 
@@ -401,6 +403,112 @@ To view the field-related information, check the [Get an irrigated field](#get-a
     <img alt="Irrigation data" src={useBaseUrl('img/irrigation-data-geojson.png')} />
 </p>
 
+### Get an irrigation activity
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/applied-irrigation/{id}`
+
+Gets an irrigation activity by ID.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/applied-irrigation/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/applied-irrigation/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/applied-irrigation/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+  "id": "uuid",
+  "provider": "Lindsay",
+  "standardGeojson": "url.json",
+  "downloadStandardGeojson": "url.json",
+  "leafUserId": "uuid",
+  "apiOwnerUsername": "apiowner@withleaf.io",
+  "summary": {
+    "type": "Feature",
+    "properties": {
+      "depth": {
+        "avg": 4.87,
+        "sum": 28.36,
+        "min": 2.53,
+        "max": 7.49,
+        "unit": "mm"
+      },
+      "totalArea": {
+        "value": 52.72,
+        "unit": "ha"
+      },
+      "totalVolume": {
+          "value": 1604.7,
+          "unit": "L"
+      },
+      "totalPowerOn": {
+          "value": 16.7,
+          "unit": "hr"
+      }
+    },
+    "geometry": { }
+  },
+  "equipment": [
+    {
+      "id": "uuid",
+      "name": "My Pivot",
+      "type": "pivot",
+      "providerEquipmentId": "d0245010-157d-4988-96a2-5f3637098475"
+    }
+  ],
+  "createdTime": "2024-03-04T00:31:25.497Z",
+  "startTime": "2024-01-07T00:00:00Z",
+  "endTime": "2024-01-07T23:59:59Z"
+}
+```
+
 ### Get all irrigated fields
 
 &nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields`
@@ -641,3 +749,115 @@ The GeoJSON file available for the irrigated field will show all irrigated areas
 <p align="center">
     <img alt="Irrigation field" src={useBaseUrl('img/irrigation-field-geojson.png')} />
 </p>
+
+### Get an irrigated field activity
+
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/irrigation/fields/{fieldId}/irrigated/{id}`
+
+Gets information about an irrigation activity performed in a specific field.
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields/{fieldId}/irrigated/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields/{fieldId}/irrigated/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/irrigation/api/users/{leafUserId}/irrigation/fields/{fieldId}/irrigated/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+  "id": "uuid",
+  "fieldId": "uuid",
+  "irrigationId": ["uuid"],
+  "provider": "Lindsay",
+  "standardGeojson": "url.json",
+  "downloadStandardGeojson": "url.json",
+  "leafUserId": "uuid",
+  "apiOwnerUsername": "apiowner@withleaf.io",
+  "summary": {
+    "type": "Feature",
+    "properties": {
+      "depth": {
+        "avg": 4.87,
+        "sum": 28.36,
+        "min": 2.53,
+        "max": 7.49,
+        "unit": "mm"
+      },
+      "totalArea": {
+        "value": 49.48,
+        "unit": "ha"
+      },
+      "totalVolume": {
+          "value": 1604.7,
+          "unit": "L"
+      },
+      "totalPowerOn": {
+          "value": 16.7,
+          "unit": "hr"
+      },
+      "coverage": {
+        "value": 81.51,
+        "unit": "percentage"
+      }
+    },
+    "geometry": {  }
+  },
+  "equipment": [
+    {
+      "id": "uuid",
+      "name": "My Pivot",
+      "type": "pivot",
+      "providerEquipmentId": "d0245010-157d-4988-96a2-5f3637098475"
+    }
+  ],
+  "createdTime": "2024-03-04T00:31:25.497Z",
+  "startTime": "2024-01-07T00:00:00Z",
+  "endTime": "2024-01-07T23:59:59Z"
+}
+```

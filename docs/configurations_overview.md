@@ -256,4 +256,4 @@ If set to `true`, Leaf will automatically fetch John Deere inputs/products. The 
 If set to `true`, Leaf will automatically synchronize provider's zones. The default value is `false`.
 
 #### syncPartnerData
-If set to `true`, Leaf will fetch shared/partner data from John Deere and AgLeader accounts that have granted the required permissions to access it. This means if set to `false` only the user resources will be fetched, even if the permissions allow access to shared data/organizations. The default value is `true`.
+If set to `true`, Leaf will fetch shared/partner data from John Deere and AgLeader shared accounts that have granted the required permissions. If set to `false`, only the directly connected  account data will be fetched, even if the permissions allow access to shared data/organizations. The default value is `true`.

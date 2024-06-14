@@ -41,7 +41,7 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 | [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson                                                                                                                                                                                                                                                                                                            | 
 | [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession  | 
 | [ Irrigation ](#irrigation)                  | irrigationProcessingRange | 
-| [ Synchronization ](#synchronization)                  | customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync | 
+| [ Synchronization ](#synchronization)                  | customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync, syncPartnerData | 
 
 
 
@@ -254,3 +254,6 @@ If set to `true`, Leaf will automatically fetch John Deere inputs/products. The 
 
 #### zonesAutoSync
 If set to `true`, Leaf will automatically synchronize provider's zones. The default value is `false`.
+
+#### syncPartnerData
+If set to `true`, Leaf will fetch shared/partner data from John Deere and AgLeader accounts that have granted the required permissions to access it. This means if set to `false` only the user resources will be fetched, even if the permissions allow access to shared data/organizations. The default value is `true`.

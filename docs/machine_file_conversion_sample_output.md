@@ -63,9 +63,8 @@ This is an example of a summary for a "planted" operation
   "fields": [
     "97f19b7c-45bd-40c5-b2c5-efd1d3764ab3"
   ],
-  "fileType": "PLANTED",
+  "fileFormat": "AGDATA",
   "fileName": "testFile.zip",
-  "sizeInBytes": 676403,
   "originalFile": "url",
   "downloadOriginalFile": "url",
   "rawGeojson": "url",
@@ -110,6 +109,10 @@ This is an example of a summary for a "planted" operation
         "min": 2,
         "max": 114,
         "unit": "lb"
+      },
+      "totalFuelUsed": {
+        "value": 196.25137347639,
+        "unit": "gal"
       },
       "originalOperationType": "SowingAndPlanting",
       "varieties": [
@@ -195,9 +198,8 @@ This is an example of a summary for an "applied" operation
     "fields": [
       "ebdb032c-b3a9-4116-9837-602abc23d4a0"
     ],
-    "fileType": "APPLIED",
+    "fileFormat": "SHAPEFILE",
     "fileName": "testFile.zip",
-    "sizeInBytes": 187351,
     "originalFile": "url",
     "downloadOriginalFile": "url",
     "rawGeojson": "url",
@@ -283,6 +285,10 @@ This is an example of a summary for an "applied" operation
           "value": 63817.03945545471,
           "unit": "m2"
         },
+        "totalFuelUsed": {
+          "value": 196.25137347639,
+          "unit": "gal"
+        },
         "machinery": [
           {
             "name": "John Deere R Series R4030",
@@ -327,9 +333,8 @@ This is an example of a summary for a "harvested" operation
     "fields": [
       "696b5df6-e401-4d13-bafe-3d2689723254"
     ],
-    "fileType": "HARVESTED",
+    "fileFormat": "CN1",
     "fileName": "testFile.zip",
-    "sizeInBytes": 1244007,
     "originalFile": "url",
     "downloadOriginalFile": "url",
     "rawGeojson": "url",
@@ -422,6 +427,10 @@ This is an example of a summary for a "harvested" operation
         "totalWetMass": {
           "value": 72494.18277191388,
           "unit": "lb"
+        },
+        "totalFuelUsed": {
+          "value": 196.25137347639,
+          "unit": "gal"
         },
         "varieties": [
           {
@@ -523,7 +532,7 @@ This is an example of a summary for a "tillage" operation
   "fields": [
     "d9b35409-6014-446b-a552-07274f98a9a2"
   ],
-  "fileFormat": "SHAPEFILE",
+  "fileFormat": "ISO11783",
   "fileName": "testFile.zip",
   "originalFile": "url",
   "downloadOriginalFile": "url",
@@ -623,6 +632,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | operationDescription  | **       | string                      |
   | downForce             | **       | dict                        |
   | singulation           | **       | dict                        |
+  | totalFuelUsed         | **       | dict                        |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -647,6 +657,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | totalApplied          | **       | float                       |
   | operationDescription  | **       | string                      |
   | tankMix               | **       | boolean                     |
+  | totalFuelUsed         | **       | dict                        |
 
 
   \* = Always in response  
@@ -682,6 +693,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | varieties             | **       | dict                        |
   | machinery             | **       | list of machineInfo objects |
   | operationDescription  | **       | string                      |
+  | totalFuelUsed         | **       | dict                        |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests  
@@ -703,6 +715,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | speed                 | **       | dict                        |
   | machinery             | **       | list of machineInfo objects |
   | operationDescription  | **       | string                      |
+  | totalFuelUsed         | **       | dict                        |
 
   \* = Always in response  
   \*\* = Usually in response but not required to pass tests
@@ -765,7 +778,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "downForce": "float",
         "singulation": "float",
         "skips": "float",
-        "doubles": "float"
+        "doubles": "float",
+        "fuelUsed": "float"
     }
   }
   ```
@@ -795,7 +809,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "crop": "string",
         "area": "float",
         "appliedRate": "float",
-        "appliedRateTarget": "float",      
+        "appliedRateTarget": "float",
+        "fuelUsed": "float",      
         "products": [
         {
             "name": "AMS",
@@ -853,7 +868,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "dryMass": "float",
         "dryVolume": "float",
         "dryMassPerArea": "float",
-        "dryVolumePerArea": "float"
+        "dryVolumePerArea": "float",
+        "fuelUsed": "float"
     }
   }
   ```
@@ -880,7 +896,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
         "originalOperationType": "name of the operation as returned by the provider",
         "equipmentWidth": "float",
         "elevation": "float",
-        "area": "float"
+        "area": "float",
+        "fuelUsed": "float"
     }
    }
    ```
@@ -927,6 +944,8 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | singulation           | **       | float                       | %                    | The performance of each meter on the planter                                 |
   | xOffset               | **       | float                       | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | fuelUsed              | **       | float                       | L or gal             | The fuel consumed                                                            |
+  
 
   </TabItem>
   <TabItem value="applied">
@@ -951,6 +970,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
   | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | fuelUsed              | **       | float                       | L or gal         | The fuel consumed                                                            |
 
   </TabItem>
   <TabItem value="harvested">
@@ -986,6 +1006,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | samplingInterval      | **       | float                       | s              | Delta time from the previous recorded feature                                |
   | xOffset               | **       | float                       | m              | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m              | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | fuelUsed              | **       | float                       | L or gal       | The fuel consumed                                                            |
 
   </TabItem>
    <TabItem value="tillage">
@@ -1009,6 +1030,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
   | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | fuelUsed              | **       | float                       | L or gal         | The fuel consumed                                                            |
 
   </TabItem>
 </Tabs>

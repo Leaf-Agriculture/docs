@@ -20,6 +20,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: https://docs.withleaf.io/docs/beta_input_endpoints#get-a-product
 [11]: #get-summarized-varieties
 [12]: #search-for-varieties
+[13]: #get-a-variety
 
 ## About
 
@@ -728,6 +729,7 @@ values={[
 | Description                    | Endpoints                                                                             |
 |--------------------------------|---------------------------------------------------------------------------------------|
 | [Get all varieties][5]         | <span class="badge badge--success">GET</span> `/varieties`                            |
+| [Get a variety][13]            | <span class="badge badge--success">GET</span> `/varieties/{id}`                       |
 | [Get summarized varieties][11] | <span class="badge badge--success">GET</span> `/users/{leafUserId}/varieties/summary` |
 | [Search for varieties][12]     | <span class="badge badge--success">GET</span> `/varieties/search`                     |
 
@@ -811,10 +813,86 @@ values={[
     "status": "ACTIVE",
     "leafUserId": "028c30fa-6d2a-11ee-b962-0242ac120002",
     "provider": "JohnDeere",
-    "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2"
+    "providerId": "8e1e0920-1265-4066-8067-8ce2ce5012b2",
+    "organizationId": "9999"
   },
   ....
 ]
+```
+
+### Get a variety
+
+&nbsp<span class="badge badge--success">GET</span>  `/varieties/{id}`
+
+Get a variaty by the given id.
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/beta/api/varieties/{id}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```python
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/beta/api/varieties/{id}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/beta/api/varieties/{id}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+  "id": "111120cc-d0c5-40d3-a063-ca09903a0738",
+  "crops": [
+    "SOYBEANS"
+  ],
+  "providerId": "f4c43d25-0000-1000-7fc2-e1e1e1193019",
+  "name": "2105 2000 mix",
+  "companyName": "CHANNEL",
+  "status": "ACTIVE",
+  "provider": "JohnDeere",
+  "leafUserId": "90a7faf4-33d3-4e35-9f46-1894ae13955d",
+  "organizationId": "9999"
+}
 ```
 
 

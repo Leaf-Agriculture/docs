@@ -455,6 +455,10 @@ It returns a list of JSON objects.
   }
   ```
 
+:::info
+In case of alert delivery failures, Leaf Alerts will make new attempts at 1, 30, 60 and 240 minutes.
+:::
+
 ### Delete a webhook
 
 &nbsp<span class="badge badge--danger">DELETE</span> `/webhooks/{id}`

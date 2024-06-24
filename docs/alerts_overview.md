@@ -35,6 +35,11 @@ register, get and delete webhooks.
 
 To understand how to verify if an incoming request comes from Leaf, see the [Authentication section][alerts_auth].
 
+:::info
+In case of alert delivery failures, Leaf Alerts will make new attempts at 1, 30, 60 and 240 minutes.
+:::
+
+
 
 [alerts_endpoints]: alerts_endpoints.md
 [alerts_auth]: alerts_authentication.md

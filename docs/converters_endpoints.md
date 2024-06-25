@@ -150,9 +150,10 @@ Green Star 2 (2600)
 
 #### CNHI
 
-| File Format | Monitor Model                    | Details                                         |
-|-------------|----------------------------------|-------------------------------------------------|
-| CN1         | CaseIH monitors or exported from CNH Connects | `/file.cn1/index.vy1`                           |
+| File Format | Monitor Model                    | Details               |
+|-------------|----------------------------------|-----------------------|
+| CN1         | Case IH Pro 700, equivalent to New Holland IntelliView IV | `/file.cn1/index.vy1` |
+| ISOXML      | Case IH Pro 1200, equivalent to New Holland IntelliView 12 | `/TASKDATA.XML`       |
 
 ##### Expected file structure
 
@@ -161,6 +162,12 @@ Voyager 2
 *.cn1
 └── ...
    └── *.vy1
+```
+ISOXML
+```bash
+TASKDATA
+├── TASKDATA.XML
+└── *.bin
 ```
 
 #### AgLeader

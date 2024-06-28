@@ -17,6 +17,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [fileupload-companyLogoUrl]: #companylogourl
 [fileupload-companyName]: #companyname
 [fileupload-leafUser]: #leafuser
+[fileupload-locale]: #locale
 [fileupload-filestimerange]: #filestimerange
 [fileupload-isdarkmode]: #isdarkmode
 [fileupload-title]: #title
@@ -153,6 +154,7 @@ It is valid only for the React version.
 | [filesTimeRange][fileupload-filestimerange]   | Number  | Time to get the historical of uploaded files |
 | [isDarkMode][fileupload-isdarkmode]           | Boolean | Enables/disables the dark mode               |
 | [leafUser][fileupload-leafUser]               | String  | The Leaf User ID                             |
+| [locale][fileupload-locale]                   | String  | Forces the widget language                   |
 | [title][fileupload-title]                     | String  | Customization: a link to the company logo    |
 
 
@@ -181,6 +183,11 @@ If set to `true`, it will enable the widget dark mode.
 
 #### leafUser
 The Leaf User ID. Check [this page][2] for more info about the Leaf User.
+
+
+#### locale
+By default, the widget sets the language based on the user's browser configuration, but to force a language, use this property with one of the possible values: `en_US`, `pt_BR`, `es_ES`, or `fr_FR`.
+
 
 #### title
 The text to display on the top of the widget.

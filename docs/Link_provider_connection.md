@@ -28,6 +28,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [provider-companyLogoUrl]: #companylogourl
 [provider-companyName]: #companyname
 [provider-leafUser]: #leafuser
+[provider-locale]: #locale
 [provider-darkmode]: #isdarkmode
 [provider-showSearchbar]: #showsearchbar
 [provider-title]: #title
@@ -658,6 +659,8 @@ function App() {
 | [companyName][provider-companyName]       | String | Customization: the name of the company    |
 | [isDarkMode][provider-darkmode]           | Boolean| Enable/disable the dark mode              |
 | [leafUser][provider-leafUser]             | String | The Leaf User ID                          |
+| [locale][provider-locale]                 | String | Forces the widget language                |
+| [title][provider-title]                   | String | The title of the widget                   |
 | [showSearchbar][provider-showSearchbar]   | String | Show/hide the search bar                  |
 | [title][provider-title]                   | String | The title of the widget                   |
 
@@ -678,6 +681,9 @@ Toggles dark mode on and off. The default value is `false`.
 
 #### leafUser
 The Leaf User ID. Check [this page][4] for more info about the Leaf User.
+
+#### locale
+By default, the widget sets the language based on the user's browser configuration, but to force a language, use this property with one of the possible values: `en_US`, `pt_BR`, `es_ES`, or `fr_FR`.
 
 #### showSearchbar
 Shows/hides the search bar for providers available for integration. The default is `true`, so the search bar will be displayed.

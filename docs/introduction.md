@@ -3,6 +3,8 @@ title: Introduction
 description: Introduction
 ---
 
+import { MendableSearchBar } from "@mendable/search";
+
 **Welcome to Leaf's Documentation!**
 
 Food and Agriculture developers use Leaf's API to access clean, standardized,
@@ -16,3 +18,5 @@ Please don't hesitate to [contact][contact] us to schedule a demo, ask a questio
 :::
 
 [contact]: mailto:help@withleaf.io
+
+[//]: # (<MendableSearchBar anon_key='d78bd0b5-f2fb-4529-8637-0371010cf11f' showSimpleSearch={false}></MendableSearchBar>)

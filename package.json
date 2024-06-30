@@ -13,15 +13,17 @@
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.61",
     "@docusaurus/preset-classic": "^2.0.0-alpha.61",
+    "@mendable/search": "^0.0.203",
     "classnames": "^2.3.0",
     "docusaurus-lunr-search": "^2.1.11",
     "docusaurus-plugin-dotenv": "^1.0.1",
     "docusaurus2-dotenv": "^1.4.0",
     "dotenv": "^16.0.3",
+    "gh-pages": "^5.0.0",
     "node": "^16.10.0",
     "react": "^17.0.2",
     "react-dom": "^16.8.4",
-    "gh-pages": "^5.0.0"
+    "swizzle": "^1.1.0"
   },
   "browserslist": {
     "production": [
@@ -34,7 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
   }
 }

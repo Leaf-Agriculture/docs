@@ -333,7 +333,7 @@ A JSON containing the configuration of the Leaf User.
 
 &nbsp<span class="badge badge--warning">PATCH</span> `/configs`
 
-Updates the specified fields of Configuration for the API Owner. A resquest body must be provided
+Updates the specified fields of Configuration for the API Owner. A request body must be provided
 containing the configurations to be set. All entries are optional.
 
 Request body example:

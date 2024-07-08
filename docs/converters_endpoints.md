@@ -328,7 +328,7 @@ TASKDATA
 
 | File Format | Details                                                                                                                                                            |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Shapefile   | Shapefiles exported from SMS and Raven Slingshot. Since Shapefiles do not contain information on the units used, we assume the default units from the provider will be used. |
+| Shapefile   | Shapefiles exported from SMS, Raven Slingshot, and Topcon. Since Shapefiles do not contain information on the units used, we assume the default units from the provider will be used. |
 
 #### Request examples
 

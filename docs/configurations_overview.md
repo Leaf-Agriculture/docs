@@ -38,8 +38,8 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 | Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                              | 
-| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson                                                                                                                                                                                                                                                                                                            | 
-| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession  | 
+| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson, filesImageAttributeCreation                                                                                                                                                                                                                                                                                                            | 
+| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession, operationsImageAttributeCreation  | 
 | [ Irrigation ](#irrigation)                  | irrigationProcessingRange | 
 | [ Synchronization ](#synchronization)                  | customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync, syncPartnerData | 
 
@@ -75,7 +75,8 @@ All geoimage configurations are for V1 images only. We recommend using V2 for th
 
 #### geoimagesColorRamp
 The color ramp to be used when generating images of operations. It's a map from a percentage value to a list containing a color in RGB or RGBA. The last entry in the map must contain a value for the `nv` key, mapping to the color for null values. The default value is
-```
+
+```json
 {
     "0%"  : [200,   0, 0],
     "35%" : [255,  40, 0],
@@ -111,7 +112,7 @@ This configuration has no effect over the [Field Operations Images V2](https://d
 If set to `true`, it will add some non Leaf-standard properties to the File summary, such as the field name and the type of the operation, as described originally by the provider. It is not applicable to the standard GeoJSON file or the Field Operation summary.  
 The default value is `false`.
 
-```
+```json
 "originalOperationData": {
     "originalOperationFarm": "Farm Green",
     "originalOperationField": "Field A",
@@ -127,6 +128,76 @@ The units for each option available can be found on the [Units of Measurement pa
 
 #### enableOutsideFieldGeojson
 [See this section for more information][16]
+
+#### filesImageAttributeCreation
+
+Customizes the images available for each property of operation files. To activate the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`false`).
+The options available are:
+
+```json
+"filesImageAttributeCreation": {
+    "harvested": {
+        "area": false,
+        "distance": false,
+        "elevation": false,
+        "equipmentWidth": false,
+        "harvestMoisture": false,
+        "wetMass": false,
+        "wetMassPerArea": false,
+        "wetVolume": false,
+        "wetVolumePerArea": false,
+        "dryMass": false,
+        "dryMassPerArea": false,
+        "dryVolume": false,
+        "dryVolumePerArea": false,
+        "speed": false,
+        "heading": false,
+        "cropFlow": false,
+        "proteinPercentage": false,
+        "fuelRate": false,
+        "fuelUsed": false
+    },
+    "planted": {
+        "heading": false,
+        "distance": false,
+        "elevation": false,
+        "seedRate": false,
+        "area": false,
+        "equipmentWidth": false,
+        "speed": false,
+        "seedRateTarget": false,
+        "seedDepth": false,
+        "fuelRate": false,
+        "fuelUsed": false,
+        "downForce": false,
+        "singulation": false
+    },
+    "applied": {
+        "heading": false,
+        "distance": false,
+        "elevation": false,
+        "appliedRate": false,
+        "area": false,
+        "equipmentWidth": false,
+        "speed": false,
+        "appliedRateTarget": false,
+        "fuelRate": false,
+        "fuelUsed": false
+    },
+    "tillage": {
+        "area": false,
+        "heading": false,
+        "distance": false,
+        "elevation": false,
+        "equipmentWidth": false,
+        "tillageDepthTarget": false,
+        "speed": false,
+        "tillageDepthActual": false,
+        "fuelRate": false,
+        "fuelUsed": false
+    }
+}
+```
 
 ### Field Operations
 These configurations can be enabled with the use of Leaf Field Operations. This requires an active boundary to be present so Leaf can merge the machine files and create a Field Operation.
@@ -223,6 +294,76 @@ Machine files can have points outside the field boundaries, these points are nor
 
 #### enableOperationsSession
 If  set to `true`, it enables a new view of the field operation data, compiled by operator, implement and machines used in the operation. The information can be accessed in the [field operation session endpoint][17]. The default is `false`.
+
+#### operationsImageAttributeCreation
+
+Customizes the images available for each property of Field Operations. To activate the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`true`).
+The options available are:
+
+```json
+"operationsImageAttributeCreation": {
+    "harvested": {
+        "area": true,
+        "distance": true,
+        "elevation": true,
+        "equipmentWidth": true,
+        "harvestMoisture": true,
+        "wetMass": true,
+        "wetMassPerArea": true,
+        "wetVolume": true,
+        "wetVolumePerArea": true,
+        "dryMass": true,
+        "dryMassPerArea": true,
+        "dryVolume": true,
+        "dryVolumePerArea": true,
+        "speed": true,
+        "heading": true,
+        "cropFlow": true,
+        "proteinPercentage": true,
+        "fuelRate": true,
+        "fuelUsed": true
+    },
+    "planted": {
+        "heading": true,
+        "distance": true,
+        "elevation": true,
+        "seedRate": true,
+        "area": true,
+        "equipmentWidth": true,
+        "speed": true,
+        "seedRateTarget": true,
+        "seedDepth": true,
+        "fuelRate": true,
+        "fuelUsed": true,
+        "downForce": true,
+        "singulation": true
+    },
+    "applied": {
+        "heading": true,
+        "distance": true,
+        "elevation": true,
+        "appliedRate": true,
+        "area": true,
+        "equipmentWidth": true,
+        "speed": true,
+        "appliedRateTarget": true,
+        "fuelRate": true,
+        "fuelUsed": true
+    },
+    "tillage": {
+        "area": true,
+        "heading": true,
+        "distance": true,
+        "elevation": true,
+        "equipmentWidth": true,
+        "tillageDepthTarget": true,
+        "speed": true,
+        "tillageDepthActual": true,
+        "fuelRate": true,
+        "fuelUsed": true
+    }
+}
+```
 
 ### Irrigation
 

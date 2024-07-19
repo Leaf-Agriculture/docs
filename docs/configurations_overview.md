@@ -131,7 +131,7 @@ The units for each option available can be found on the [Units of Measurement pa
 
 #### filesImageAttributeCreation
 
-Customizes the images available for each property of operation files. To activate the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`false`).
+Customizes the images available for each property of operation files. To enable the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`false`).
 The options available are:
 
 ```json
@@ -297,7 +297,7 @@ If  set to `true`, it enables a new view of the field operation data, compiled b
 
 #### operationsImageAttributeCreation
 
-Customizes the images available for each property of Field Operations. To activate the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`true`).
+Customizes the images available for each property of Field Operations. To enable the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`true`).
 The options available are:
 
 ```json

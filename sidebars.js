@@ -51,6 +51,7 @@ module.exports = {
                 'credentials_agvance',
                 'credentials_lindsay',
                 'credentials_valley',
+                'credentials_agrimatics',
                 'integrations_endpoints',
                 'provider_organizations'
               ]
@@ -131,7 +132,14 @@ module.exports = {
             {
               type: 'category',
               label: 'Prescriptions',
-              items: ['beta_prescriptions_endpoints']
+              items: [
+                'beta_prescriptions_endpoints',
+                {
+                  type: 'category',
+                  label: 'Operations Planning',
+                  items: ['operations_planning_endpoints']
+                }
+              ]
             },
             {
               type: 'category',

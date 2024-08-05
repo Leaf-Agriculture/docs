@@ -5,14 +5,14 @@ sidebar_label: Overview
 ---
 <!-- the following links are referenced throughout this document -->
 [1]: https://docs.withleaf.io/docs/Link_provider_connection
-[2]: https://withleaf.io/en/whats-new/john-deere-authentication-with-leaf/
-[3]: https://withleaf.io/en/whats-new/climate-fieldview-authentication-with-leaf/
-[4]: https://withleaf.io/en/whats-new/agleader-authentication-with-leaf/
-[5]: https://withleaf.io/en/whats-new/cnhi-authentication-with-leaf/
-[6]: https://withleaf.io/en/whats-new/raven-slingshot-integration-with-leaf/
-[7]: https://withleaf.io/en/whats-new/stara-authentication-with-leaf/
-[8]: https://withleaf.io/en/whats-new/trimble-authentication-with-leaf/
-[9]: https://withleaf.io/en/whats-new/sentera-integration-with-leaf/
+[2]: https://withleaf.io/en/tutorials/john-deere-authentication-with-leaf/
+[3]: https://withleaf.io/en/tutorials/climate-fieldview-authentication-with-leaf/
+[4]: https://withleaf.io/en/tutorials/agleader-authentication-with-leaf/
+[5]: https://withleaf.io/en/tutorials/cnhi-authentication-with-leaf/
+[6]: https://withleaf.io/en/tutorials/raven-slingshot-integration-with-leaf/
+[7]: https://withleaf.io/en/tutorials/stara-authentication-with-leaf/
+[8]: https://withleaf.io/en/tutorials/trimble-authentication-with-leaf/
+[9]: https://withleaf.io/en/tutorials/sentera-integration-with-leaf/
 
 
 
@@ -29,6 +29,7 @@ sidebar_label: Overview
 [20]: https://docs.withleaf.io/docs/integrations_endpoints
 [21]: https://docs.withleaf.io/docs/credentials_lindsay
 [22]: https://docs.withleaf.io/docs/credentials_valley
+[33]: https://docs.withleaf.io/docs/credentials_agrimatics
 
 [23]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#get-all-fields
 [24]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#upload-a-field-to-provider
@@ -78,8 +79,11 @@ Some providers like John Deere and Climate FieldView keep their resources under 
 The scopes can be used in the Leaf authentication URL helper or in the application key information from Leaf Link.
 
 ## Provider credentials endpoints
+
 For more details about provider credentials endpoints, see below for:
+
 - [AgLeader][13]
+- [Agrimatics][33]
 - [AgVance][16]
 - [Climate Fielview][18]
 - [CNHi][10]
@@ -95,7 +99,7 @@ For more details about provider credentials endpoints, see below for:
 Also, we recommend use our Providers Integrations Resources endpoint to debrief the ingested resources from the authenticated account. 
 With the Providers Integrations Resources, you can access all the relevant information between the authentication and the processing of your 
 resources ingested into Leaf's API. The resource summary gives you more visibility on what and how many resources are being processed. 
+
 - [Integrations Resources][20]
 
-
-Need more guidance? Contact us at help@withleaf.io.
+Need more guidance? Contact us at `help@withleaf.io`.

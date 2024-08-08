@@ -19,6 +19,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [7]: #retry-a-batch
 [9]: https://docs.withleaf.io/docs/user_management_overview
 [10]: https://docs.withleaf.io/docs/machine_file_conversion_overview
+[11]: #batch-files-status
 
 ## About
 
@@ -30,13 +31,13 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-| Description                 | Endpoints                                                          |
-|-----------------------------|--------------------------------------------------------------------|
-| [Upload a file][4]          | <span class="badge badge--warning">POST</span> `/batch`            |
-| [Get a batch][5]            | <span class="badge badge--success">GET</span> `/batch/{id}`        |
-| [Get all batches][6]        | <span class="badge badge--success">GET</span> `/batch`             |
-| [Retry a batch][7]          | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`  |
-| [Get Batch Files Status][8] | <span class="badge badge--success">GET</span> `/batch/{id}/status` |
+| Description                  | Endpoints                                                          |
+|------------------------------|--------------------------------------------------------------------|
+| [Upload a file][4]           | <span class="badge badge--warning">POST</span> `/batch`            |
+| [Get a batch][5]             | <span class="badge badge--success">GET</span> `/batch/{id}`        |
+| [Get all batches][6]         | <span class="badge badge--success">GET</span> `/batch`             |
+| [Retry a batch][7]           | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`  |
+| [Get Batch Files Status][11] | <span class="badge badge--success">GET</span> `/batch/{id}/status` |
 
 
 To easily test these endpoints, we recommend using our Postman [collection][1].

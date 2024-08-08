@@ -36,7 +36,7 @@ This service has the following endpoints available:
 | [Get a batch][5]            | <span class="badge badge--success">GET</span> `/batch/{id}`        |
 | [Get all batches][6]        | <span class="badge badge--success">GET</span> `/batch`             |
 | [Retry a batch][7]          | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`  |
-| [Get Batch Files Status][8] | <span class="badge badge--warning">GET</span> `/batch/{id}/status` |
+| [Get Batch Files Status][8] | <span class="badge badge--success">GET</span> `/batch/{id}/status` |
 
 
 To easily test these endpoints, we recommend using our Postman [collection][1].
@@ -682,7 +682,7 @@ If a batch upload does not complete as expected, this endpoint allows you to try
 
 ### Batch Files Status
 
-&nbsp<span class="badge badge--warning">GET</span> `/batch/{id}/status`
+&nbsp<span class="badge badge--success">GET</span> `/batch/{id}/status`
 
 After your batch generate the list of Leaf Files, this enpoint can be used to verify the status of each resource complied on the same response.
 #### Request examples

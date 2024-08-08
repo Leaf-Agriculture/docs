@@ -30,12 +30,13 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-| Description            | Endpoints                                                           |
-|------------------------|---------------------------------------------------------------------|
-| [Upload a file][4]     | <span class="badge badge--warning">POST</span> `/batch`             |
-| [Get a batch][5]       | <span class="badge badge--success">GET</span> `/batch/{id}`         |
-| [Get all batches][6]   | <span class="badge badge--success">GET</span> `/batch`              |
-| [Retry a batch][7]     | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`   |
+| Description           | Endpoints                                                          |
+|-----------------------|--------------------------------------------------------------------|
+| [Upload a file][4]    | <span class="badge badge--warning">POST</span> `/batch`            |
+| [Get a batch][5]      | <span class="badge badge--success">GET</span> `/batch/{id}`        |
+| [Get all batches][6]  | <span class="badge badge--success">GET</span> `/batch`             |
+| [Retry a batch][7]    | <span class="badge badge--warning">PUT</span> `/batch/{id}/retry`  |
+| [Get Batch Status][8] | <span class="badge badge--warning">PUT</span> `/batch/{id}/status` |
 
 
 To easily test these endpoints, we recommend using our Postman [collection][1].
@@ -676,6 +677,89 @@ If a batch upload does not complete as expected, this endpoint allows you to try
     "provider": "Other",
     "status": "RECEIVED",
     "uploadTimestamp": "2021-03-12T19:50:55.567755Z"
+}
+```
+
+### Batch Status
+
+&nbsp<span class="badge badge--warning">PUT</span> `/batch/{id}/status`
+
+After your batch generate the list of Leaf Files, this enpoint can be used to verify the status of each resource complied on the same response.
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/operations/api/batch/{id}/status'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.put(endpoint, data, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/batch/{id}/status'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.put(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/batch/{id}/status'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Response
+
+```json
+{
+  "converted": {
+    "leafFiles": [
+      "06512392-8d69-4033-8127-4cc62b7176b9",
+      "075fd0f6-af1a-433d-ad7a-e3e979179244"
+    ]
+  },
+  "processing": {
+    "leafFiles": [
+      "9d22cbca-03ff-47e8-ac66-f6d463d206f4"
+    ]
+  },
+  "failed": {
+    "standardGeojson": {
+      "leafFiles": [
+        "0abca517-09f2-4d1d-9627-9cd3147e9ec3"
+      ],
+      "status": "failed",
+      "message": "no points passed the filter"
+    }
+  }
 }
 ```
 

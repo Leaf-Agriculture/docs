@@ -43,6 +43,15 @@ File processing time will vary depending on the amount of data being processed o
 
 Once Leaf has processed files into a file summary, you will receive summarized information, such as averages, standard deviations, maximum and minimum values ​​for important properties, and more. This summary is usually used to get general information about the operation without the need to download and open the standardGeojson file. For example, you can display the area of the operation, how much was harvested and the date it happened, all without opening large files.
 
+### Summary geometry
+Leaf API generates a geometry that best represents the coverage of an operation and makes it available in the operation summary.
+The geometry is created based on the buffer of the operation points.
+
+<p align="center">
+    <img alt="Geometries algorithm" width="70%" src={useBaseUrl('img/summary_geometry.png')} />
+</p>
+
+
 ## Machine file summary vs operation summary
 **Machine file summary:** Basic information of files derived from the point data, processed and cleaned by Leaf. Data outputs will vary by task (planted, applied, harvested, tillage). You’ll find some sample responses [here][7].
 

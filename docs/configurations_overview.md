@@ -39,7 +39,7 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                              | 
 | [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson, filesImageAttributeCreation                                                                                                                                                                                                                                                                                                            | 
-| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, summaryGeometry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession, operationsImageAttributeCreation  | 
+| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession, operationsImageAttributeCreation  | 
 | [ Irrigation ](#irrigation)                  | irrigationProcessingRange | 
 | [ Synchronization ](#synchronization)                  | customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync, syncPartnerData | 
 
@@ -208,14 +208,6 @@ These configurations can be enabled with the use of Leaf Field Operations. This 
 #### summarizeByProductEntry
 If set to `true`, Leaf will aggregate products with the same name and display only one entry per product in the summary. 
 `area` and `totalApplied` will be aggregated by the sum and the `rate` by the average. This config is only for applied data. The default value is `false`.
-
-#### summaryGeometry
-It refer to the method used to create the operation summary geometry from the machine operation files. The options available are `BUFFER` or `CONVEX_HULL`.
-The default is `CONVEX_HULL`.
-
-<p align="center">
-    <img alt="Geometries algorithm" width="50%" src={useBaseUrl('img/buffer_algorithm.png')} />
-</p>
 
 #### fieldOperationCreation
 Enables the creation of [Field Operations][2]. The default is `true`.

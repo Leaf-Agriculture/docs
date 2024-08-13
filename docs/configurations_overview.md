@@ -209,14 +209,6 @@ These configurations can be enabled with the use of Leaf Field Operations. This 
 If set to `true`, Leaf will aggregate products with the same name and display only one entry per product in the summary. 
 `area` and `totalApplied` will be aggregated by the sum and the `rate` by the average. This config is only for applied data. The default value is `false`.
 
-#### summaryGeometry
-It refer to the method used to create the operation summary geometry from the machine operation files. The options available are `BUFFER` or `CONVEX_HULL`.
-The default is `CONVEX_HULL`.
-
-<p align="center">
-    <img alt="Geometries algorithm" width="50%" src={useBaseUrl('img/buffer_algorithm.png')} />
-</p>
-
 #### fieldOperationCreation
 Enables the creation of [Field Operations][2]. The default is `true`.
 

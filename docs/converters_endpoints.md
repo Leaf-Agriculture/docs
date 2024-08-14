@@ -20,6 +20,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [9]: https://docs.withleaf.io/docs/user_management_overview
 [10]: https://docs.withleaf.io/docs/machine_file_conversion_overview
 [11]: #batch-files-status
+[12]: /docs/machine_file_conversion_endpoints#troubleshooting
 
 ## About
 
@@ -762,6 +763,8 @@ After your batch generate the list of Leaf Files, this enpoint can be used to ve
   }
 }
 ```
+
+The most common failed messages are listed [here][12].
 
 
 :::info Please note

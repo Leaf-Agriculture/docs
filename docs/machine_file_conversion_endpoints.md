@@ -30,6 +30,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [19]: #get-all-outsidefieldgeojson-files
 [20]: /docs/configurations_overview#splitoperationsbyfield
 [21]: /docs/configurations_overview#enableoutsidefieldgeojson-1
+[22]: /docs/machine_file_conversion_sample_output#valid-points
+[23]: /docs/configurations_overview#cleanupstandardgeojson-1
 
 ## About
 
@@ -549,6 +551,66 @@ Get status by file processing step by id.
   }
 }
 ```
+
+#### Troubleshooting
+
+This endpoint can help identify the cause of file processing failures.
+As in the example below.
+
+```json
+{
+    "zippedPNGs": {
+        "status": "failed",
+        "message": "skipped"
+    },
+    "originalFile": {
+        "status": "processed",
+        "message": "ok"
+    },
+    "filteredGeojson": {
+        "status": "failed",
+        "message": "skipped"
+    },
+    "propertiesPNGs": {
+        "status": "failed",
+        "message": "skipped"
+    },
+    "summary": {
+        "status": "failed",
+        "message": "skipped"
+    },
+    "rawGeojson": {
+        "status": "processed",
+        "message": "ok"
+    },
+    "standardGeojson": {
+        "status": "failed",
+        "message": "no points passed the filter"
+    },
+    "units": {
+        "status": "processed",
+        "message": "ok"
+    }
+}
+```
+
+The outermost key indicates the conversion step at which the file passed.
+The possible `status` are:
+
+- `processed`: the step worked well.
+- `failed`: the process failed at the current step.
+- `skipped`: the step was skipped because a failure occurred before or a configuration prevents it from being executed.
+
+More information is available in the `message` property and here are the most common messages:
+
+| Message                                   | Details                                                                                                                                                                                                                     |
+|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| no points passed the filter               | No points remained after the cleaning process of points that did not meet the criteria of [valid points][22]. This process can be enabled/disabled in configuration [cleanupStandardGeojson][23].                                                     |
+| unsupported operation type: {type}        | The operation type extracted from the file does not fit into any of the types supported by Leaf: `tillage`, `planted`, `applied`, or `harvested`. Examples of not supported types: `datacollection`, `guidance`, `unknown`. |
+| missing required properties: {properties} | Indicates that one or more required properties from the Leaf standard format were not identified in the file. The message lists the missing properties.                                                                     |
+| No operation files found after conversion | No valid operation files found in the file                                                                                                                                                                                  |
+| unsupported crop: {crop name}             | The crop name is not [mapped on the Leaf side yet][13]                                                                                                                                                                            |
+
 
 ### Get a file's outsideFieldGeoJSON
 

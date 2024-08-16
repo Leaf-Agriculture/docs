@@ -80,7 +80,7 @@ below.
 | Parameter (to filter by) | Values                                                                                           |
 |--------------------------|--------------------------------------------------------------------------------------------------|
 | `leafUserId`             | uuid of one of your users                                                                        |
-| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader` or `Leaf`                         |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader`, `RavenSlingshot`, `Stara` or `Leaf`                         |
 | `status`                 | `processed`, `failed` or `processing`                                                            |
 | `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                 |
 | `organizationId`         | the provider organizationId (only available for John Deere)                                      |
@@ -89,7 +89,7 @@ below.
 | `startTime`              | ISO 8601 date. Returns operations from the startTime onward                                      |
 | `updatedTime`            | ISO 8601 date. Returns operations from the updatedTime onward                                    |
 | `endTime`                | ISO 8601 date. Returns operations until the endTime                                              |
-| `operationType`          | `applied`, `planted` or `harvested`                                                              |
+| `operationType`          | `applied`, `planted`,  `harvested` or `tillage`                                                              |
 | `minArea`                | a number (Double) representing the minimum area (square meters) of the operations to be returned |
 
 Also, for `operationType`: `harvested` we can process the yield properties related to the operation using the 
@@ -552,65 +552,6 @@ Get status by file processing step by id.
 }
 ```
 
-#### Troubleshooting
-
-This endpoint can help identify the cause of file processing failures.
-As in the example below.
-
-```json
-{
-    "zippedPNGs": {
-        "status": "failed",
-        "message": "skipped"
-    },
-    "originalFile": {
-        "status": "processed",
-        "message": "ok"
-    },
-    "filteredGeojson": {
-        "status": "failed",
-        "message": "skipped"
-    },
-    "propertiesPNGs": {
-        "status": "failed",
-        "message": "skipped"
-    },
-    "summary": {
-        "status": "failed",
-        "message": "skipped"
-    },
-    "rawGeojson": {
-        "status": "processed",
-        "message": "ok"
-    },
-    "standardGeojson": {
-        "status": "failed",
-        "message": "no points passed the filter"
-    },
-    "units": {
-        "status": "processed",
-        "message": "ok"
-    }
-}
-```
-
-The outermost key indicates the conversion step at which the file passed.
-The possible `status` are:
-
-- `processed`: the step worked well.
-- `failed`: the process failed at the current step.
-- `skipped`: the step was skipped because a failure occurred before or a configuration prevents it from being executed.
-
-More information is available in the `message` property and here are the most common messages:
-
-| Message                                   | Details                                                                                                                                                                                                                     |
-|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| no points passed the filter               | No points remained after the cleaning process of points that did not meet the criteria of [valid points][22]. This process can be enabled/disabled in configuration [cleanupStandardGeojson][23].                                                     |
-| unsupported operation type: {type}        | The operation type extracted from the file does not fit into any of the types supported by Leaf: `tillage`, `planted`, `applied`, or `harvested`. Examples of not supported types: `datacollection`, `guidance`, `unknown`. |
-| missing required properties: {properties} | Indicates that one or more required properties from the Leaf standard format were not identified in the file. The message lists the missing properties.                                                                     |
-| No operation files found after conversion | No valid operation files found in the file                                                                                                                                                                                  |
-| unsupported crop: {crop name}             | The crop name is not [mapped on the Leaf side yet][13]                                                                                                                                                                            |
-
 
 ### Get a file's outsideFieldGeoJSON
 
@@ -947,3 +888,62 @@ Leaf Alerts support events that happen within Leaf and events that happen within
 ### List of Operations Events
 
 Leaf Operations Service can Alert you on these events: [list of Operations Events][9]
+
+## Troubleshooting
+
+If a file fails to process, more information about the cause of the failure can be obtained from the [status endpoint][7], as in the example below.
+
+```json
+{
+    "zippedPNGs": {
+        "status": "failed",
+        "message": "skipped"
+    },
+    "originalFile": {
+        "status": "processed",
+        "message": "ok"
+    },
+    "filteredGeojson": {
+        "status": "failed",
+        "message": "skipped"
+    },
+    "propertiesPNGs": {
+        "status": "failed",
+        "message": "skipped"
+    },
+    "summary": {
+        "status": "failed",
+        "message": "skipped"
+    },
+    "rawGeojson": {
+        "status": "processed",
+        "message": "ok"
+    },
+    "standardGeojson": {
+        "status": "failed",
+        "message": "no points passed the filter"
+    },
+    "units": {
+        "status": "processed",
+        "message": "ok"
+    }
+}
+```
+
+The outermost key indicates the conversion step at which the file passed.
+The possible `status` are:
+
+- `processed`: the step worked well.
+- `failed`: the process failed at the current step.
+- `skipped`: the step was skipped because a failure occurred before or a configuration prevents it from being executed.
+
+More information is available in the `message` property and here are the most common messages:
+
+| Message                                   | Details                                                                                                                                                                                                                     |
+|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| no points passed the filter               | No points remained after the cleaning process of points that did not meet the criteria of [valid points][22]. This process can be enabled/disabled in the [cleanupStandardGeojson][23] configuration.                                                     |
+| unsupported operation type: {type}        | The operation type extracted from the file does not fit into any of the types supported by Leaf: `tillage`, `planted`, `applied`, or `harvested`. Examples of not supported types: `datacollection`, `guidance`, `unknown`. |
+| missing required properties: {properties} | Indicates that one or more required properties from the Leaf standard format were not identified in the file. The message lists the missing properties.                                                                     |
+| No operation files found after conversion | No valid operation files found in the file                                                                                                                                                                                  |
+| unsupported crop: {crop name}             | The crop name is not [mapped on the Leaf side yet][13]                                                                                                                                                                            |
+

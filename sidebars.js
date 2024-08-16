@@ -51,7 +51,6 @@ module.exports = {
                 'credentials_agvance',
                 'credentials_lindsay',
                 'credentials_valley',
-                'credentials_agrimatics',
                 'integrations_endpoints',
                 'provider_organizations'
               ]

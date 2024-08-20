@@ -60,6 +60,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [43]: https://docs.withleaf.io/docs/provider-authentication-overview#provider-scopes
 
+[44]: https://withleaf.io/en/tutorials/stara-authentication-with-leaf/
+[45]: #get-all-stara-app-information
+[46]: #get-a-stara-app-information
+[47]: #create-a-stara-app-information
+[48]: #update-a-stara-app-information
+[49]: #delete-a-stara-app-information
+
 
 ## About
 
@@ -2658,6 +2665,371 @@ Delete a Raven Slingshot app information.
 </Tabs>
 
 
+### Stara
+
+To enable Stara as a provider in the widget you need to have your application already registered with Stara. You can find more info on how to create a developer account [here][44].
+
+** Endpoints **
+
+| Description                            | Endpoints                                                                     |
+|----------------------------------------|-------------------------------------------------------------------------------|
+| [Get all Stara app information][45]  | <span class="badge badge--success">GET</span> `/app-keys/Stara`             |
+| [Get a Stara app information][46]    | <span class="badge badge--success">GET</span> `/app-keys/Stara/{appName}`   |
+| [Create a Stara app information][47] | <span class="badge badge--warning">POST</span> `/app-keys/Stara/{appName}`  |
+| [Update a Stara app information][48] | <span class="badge badge--warning">PUT</span> `/app-keys/Stara/{appName}`   |
+| [Delete a Stara app information][49] | <span class="badge badge--danger">DELETE</span> `/app-keys/Stara/{appName}` |
 
 
+#### Get all Stara app information
 
+&nbsp<span class="badge badge--success">GET</span> `/app-keys/Stara`
+
+Get all Stara app information from the API Owner.
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+##### Response
+
+``` json
+[
+  {
+    "provider": "providerName",
+    "appName": "yourAppName",
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+  },
+  {
+    "provider": "providerName",
+    "appName": "yourAppName",
+    "clientEnvironment": "PRODUCTION",
+    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+  }
+]
+```
+
+
+#### Get a Stara app information
+
+&nbsp<span class="badge badge--success">GET</span> `/app-keys/Stara/{appName}`
+
+Get a Stara app information from the API Owner.
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+##### Response
+
+``` json
+{
+  "provider": "providerName",
+  "appName": "yourAppName",
+  "clientEnvironment": "PRODUCTION",
+  "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+}
+```
+
+
+#### Create a Stara app information
+
+&nbsp<span class="badge badge--warning">POST</span> `/app-keys/Stara/{appName}`
+
+Create a Stara app information.
+
+##### Request body
+
+``` json
+{
+    "apiKey": "string"
+}
+```
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "accessTokenClient": "string"
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+    
+  data = {
+    "accessTokenClient": "string"
+  }
+  
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "accessTokenClient": "string" }'
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+#### Update a Stara app information
+
+&nbsp<span class="badge badge--warning">PUT</span> `/app-keys/Stara/{appName}`
+
+Update a Stara app information.
+
+##### Request body
+
+``` json
+{
+  "accessTokenClient": "string"
+}
+```
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+  
+  const data = {
+    "accessTokenClient": "string"
+  }
+
+  axios.put(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+    
+  data = {
+    "accessTokenClient": "string"
+  }
+  
+  response = requests.put(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PUT \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "accessTokenClient": "string" }'
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Delete a Stara app information
+
+&nbsp<span class="badge badge--danger">DELETE</span> `/app-keys/Stara/{appName}`
+
+Delete a Stara app information.
+
+##### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.delete(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.delete(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X DELETE \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/{appName}'
+  ```
+
+  </TabItem>
+</Tabs>

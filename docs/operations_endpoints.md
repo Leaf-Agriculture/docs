@@ -70,7 +70,7 @@ This service has the following endpoints available:
 | [Get the operation's sessions][28]        | <span class="badge badge--success">GET</span> `/operations/{id}/sessions`         |
 | [Crop operation by field][17]             | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField` |
 | [Reprocess an operation][11]              | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`       |
-| [Get files from an operation][21]         | <span class="badge badge--warning">POST</span> `/operations/{id}/files`           |
+| [Get files from an operation][21]         | <span class="badge badge--success">GET</span> `/operations/{id}/files`           |
 
 For easily testing these endpoints, we recommend using our Postman [collection][postman].
 
@@ -1262,7 +1262,7 @@ You could monitor the processing status using the `leafFileId` by our [Alerts Se
 
 ### Get files from an operation
 
-&nbsp<span class="badge badge--warning">POST</span>  `/operations/{id}/files`
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/files`
 
 Allow the user to fetch all files resources that were aggregated to generate an Field Operation.
 
@@ -1286,7 +1286,7 @@ Allow the user to fetch all files resources that were aggregated to generate an 
   const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/files'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
-  axios.post(endpoint, { headers })
+  axios.get(endpoint, { headers })
       .then(res => console.log(res.data))
       .catch(console.error)
   ```
@@ -1302,7 +1302,7 @@ Allow the user to fetch all files resources that were aggregated to generate an 
   endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/files'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
-  response = requests.post(endpoint, headers=headers)
+  response = requests.get(endpoint, headers=headers)
   print(response.json())
   ```
 
@@ -1310,7 +1310,7 @@ Allow the user to fetch all files resources that were aggregated to generate an 
   <TabItem value="sh">
 
   ```shell
-  curl -X POST \
+  curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
       'https://api.withleaf.io/services/operations/api/operations/{id}/files'
   ```

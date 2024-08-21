@@ -29,7 +29,6 @@ sidebar_label: Overview
 [20]: https://docs.withleaf.io/docs/integrations_endpoints
 [21]: https://docs.withleaf.io/docs/credentials_lindsay
 [22]: https://docs.withleaf.io/docs/credentials_valley
-[33]: https://docs.withleaf.io/docs/credentials_agrimatics
 
 [23]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#get-all-fields
 [24]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#upload-a-field-to-provider
@@ -83,7 +82,6 @@ The scopes can be used in the Leaf authentication URL helper or in the applicati
 For more details about provider credentials endpoints, see below for:
 
 - [AgLeader][13]
-- [Agrimatics][33]
 - [AgVance][16]
 - [Climate Fielview][18]
 - [CNHi][10]

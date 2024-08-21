@@ -575,6 +575,10 @@ Remember your user will still need to provide the `Access Key` during the authen
 ### Stara
 To enable Stara as a provider in the widget you need your `accessTokenClient` from Stara. You can find more info on creating a developer account [here][stara].
 
+:::info
+Stara is not yet available in Link Angular
+:::
+
 #### Application info
 To allow the users to authenticate with Stara, you will need to send your application info to this endpoint
 &nbsp<span class="badge badge--warning">POST</span> `/usermanagement/api/app-keys/Stara/{appName}`

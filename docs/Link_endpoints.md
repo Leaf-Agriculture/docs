@@ -2669,6 +2669,11 @@ Delete a Raven Slingshot app information.
 
 To enable Stara as a provider in the widget you need to have your application already registered with Stara. You can find more info on how to create a developer account [here][44].
 
+:::info
+Stara is not yet available in Link Angular
+:::
+
+
 ** Endpoints **
 
 | Description                            | Endpoints                                                                     |

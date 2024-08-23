@@ -43,7 +43,7 @@ By default, our API archives files to slower storage after 180 days of no access
 To provide greater security all files provided by Leaf must be accessed with authentication using the existing Leaf token.
 
 :::tip
-Old download links will be deprecated on December 1st, 2024. We strongly recommended that you use the authenticated download links which can be identified with the prefix `download-` and which point to api.withleaf.io.
+Non-authenticated or direct to S3 download links will be deprecated on December 1st, 2024. We strongly recommended that you use the authenticated download links which can be identified with the prefix `download-` and which point to api.withleaf.io.
 :::
 
 

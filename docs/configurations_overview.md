@@ -364,6 +364,9 @@ The retroactive time period (in months) to fetch irrigation activities from prov
 
 ### Synchronization
 
+#### syncPartnerData
+If set to `true`, Leaf will fetch shared/partner data from John Deere and AgLeader shared accounts that have granted the required permissions. If set to `false`, only the directly connected  account data will be fetched, even if the permissions allow access to shared data/organizations. The default value is `true`.
+
 #### customDataSync
 If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`.
 
@@ -388,5 +391,3 @@ If set to `true`, Leaf will automatically fetch John Deere inputs/products. The 
 #### zonesAutoSync
 If set to `true`, Leaf will automatically synchronize provider's zones. The default value is `false`.
 
-#### syncPartnerData
-If set to `true`, Leaf will fetch shared/partner data from John Deere and AgLeader shared accounts that have granted the required permissions. If set to `false`, only the directly connected  account data will be fetched, even if the permissions allow access to shared data/organizations. The default value is `true`.

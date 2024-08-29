@@ -40,10 +40,10 @@ By default, our API archives files to slower storage after 180 days of no access
 
 ## Downloading files from Leaf
 
-To provide greater security all files provided by Leaf are now protected and must be accessed with authentication using the existing Leaf token.
+To provide greater security all files provided by Leaf must be accessed using your Leaf token.
 
-:::tip
-This is a recent change, so the old download links are still available, however, it will be discontinued soon. Therefore, it is strongly recommended that updates are made to access the new download links providers by Leaf (it can be identified with the prefix `download-`).
+:::info
+Unauthenticated or direct to S3 download links will be deprecated on December 1st, 2024. We strongly recommended that you use the authenticated download links which can be identified with the prefix `download-` and which point to api.withleaf.io.
 :::
 
 

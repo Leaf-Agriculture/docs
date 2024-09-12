@@ -606,7 +606,8 @@ Here is a request example:
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   const data = {
-    accessTokenClient: "string"
+    user: "string",
+    pwd: "string"
   }
 
   axios.post(endpoint, { headers, data })
@@ -626,7 +627,8 @@ Here is a request example:
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   data = {
-    accessTokenClient: "string"
+    user: "string",
+    pwd: "string"
   }
 
   response = requests.post(endpoint, headers=headers, json=data)
@@ -639,7 +641,7 @@ Here is a request example:
   ```shell
   curl -X POST \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      -d '{ "accessTokenClient": "string" }'
+      -d '{ "user": "string", "pwd": "string" }'
       'https://api.withleaf.io/services/usermanagement/api/app-keys/Stara/LeafWidget'
   ```
 

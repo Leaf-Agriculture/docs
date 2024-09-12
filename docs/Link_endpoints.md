@@ -2752,12 +2752,6 @@ Get all Stara app information from the API Owner.
     "appName": "yourAppName",
     "clientEnvironment": "PRODUCTION",
     "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
-  },
-  {
-    "provider": "providerName",
-    "appName": "yourAppName",
-    "clientEnvironment": "PRODUCTION",
-    "createdTime": "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   }
 ]
 ```
@@ -2843,7 +2837,8 @@ Create a Stara app information.
 
 ``` json
 {
-    "apiKey": "string"
+    "user": "string",
+    "pwd": "string"
 }
 ```
 
@@ -2867,7 +2862,8 @@ Create a Stara app information.
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
-    "accessTokenClient": "string"
+    "user": "string",
+    "pwd": "string"
   }
 
   axios.post(endpoint, { headers, data })
@@ -2887,7 +2883,8 @@ Create a Stara app information.
   headers = {'Authorization': f'Bearer {TOKEN}'}
     
   data = {
-    "accessTokenClient": "string"
+    "user": "string",
+    "pwd": "string"
   }
   
   response = requests.post(endpoint, headers=headers, json=data)
@@ -2941,7 +2938,8 @@ Update a Stara app information.
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
   
   const data = {
-    "accessTokenClient": "string"
+    "user": "string",
+    "pwd": "string"
   }
 
   axios.put(endpoint, { headers })
@@ -2961,7 +2959,8 @@ Update a Stara app information.
   headers = {'Authorization': f'Bearer {TOKEN}'}
     
   data = {
-    "accessTokenClient": "string"
+    "user": "string",
+    "pwd": "string"
   }
   
   response = requests.put(endpoint, headers=headers)

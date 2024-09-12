@@ -1065,6 +1065,9 @@ values={[
   </TabItem>
 </Tabs>
 
+:::tip 
+Fields can also be marked to synchronization at the grower level using the [enable preview fields by growers](#enable-preview-fields-by-grower) endpoint.
+:::
 
 ### Upload a Field to Provider
 
@@ -2138,6 +2141,82 @@ values={[
 #### Response
 
 A single [Grower](#grower-resource) as a JSON object.
+
+### Enable preview fields by grower
+
+&nbsp<span class="badge badge--warning">POST</span> `/growers/enableSync`
+
+
+:::tip 
+This endpoint should be used to fetch data when the [customDataSync](/docs/configurations_overview#customdatasync) configuration is enabled.
+:::
+
+It will remove the indicated growers' fields from `PREVIEW` mode leaving them ready to be fetched almost immediately after the request. The status will change to `WAITING`. It accepts a list of Leaf grower IDs.
+
+#### Request examples
+
+<Tabs
+defaultValue="sh"
+values={[
+{ label: 'cURL', value: 'sh', },
+{ label: 'Python', value: 'py', },
+{ label: 'JavaScript', value: 'js', },
+]
+}>
+<TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/fields/api/growers/enableSync'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  const data = {
+    growerIds: [
+      99999, 88888
+    ]
+  }
+
+  axios.post(endpoint, { headers, data })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/fields/api/growers/enableSync'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  data = {
+    'growerIds': [
+      99999, 88888
+    ]
+  }
+
+
+  response = requests.post(endpoint, headers=headers, json=data)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X POST \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      -d '{ "growerIds": [ 99999, 88888 ] }'
+      'https://api.withleaf.io/services/fields/api/growers/enableSync'
+  ```
+
+  </TabItem>
+</Tabs>
 
 ## REST Resources
 

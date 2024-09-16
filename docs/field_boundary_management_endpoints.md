@@ -1066,7 +1066,7 @@ values={[
 </Tabs>
 
 :::tip 
-Fields can also be marked to synchronization at the grower level using the [enable preview fields by growers](#enable-preview-fields-by-grower) endpoint.
+Fields can be set to synchronize at the grower level using the [enable preview fields by growers](#enable-preview-fields-by-grower) endpoint.
 :::
 
 ### Upload a Field to Provider
@@ -2151,7 +2151,7 @@ A single [Grower](#grower-resource) as a JSON object.
 This endpoint should be used to fetch data when the [customDataSync](/docs/configurations_overview#customdatasync) configuration is enabled.
 :::
 
-It will remove the indicated growers' fields from `PREVIEW` mode leaving them ready to be fetched almost immediately after the request. The status will change to `WAITING`. It accepts a list of Leaf grower IDs.
+It will remove the indicated growers' fields from `PREVIEW` mode leaving them ready to be fetched immediately after the request. The status will change to `WAITING`. It accepts a list of Leaf grower IDs.
 
 #### Request examples
 

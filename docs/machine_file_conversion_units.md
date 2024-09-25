@@ -171,7 +171,7 @@ These are the units of measurement for the `IMPERIAL` configuration.
 |--------------|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | seedRate     | seeds/ac             | Seeds per acre. How many seeds were planted in an area?                                                                                         |
 | singulation  | percentage           | Percentage. Singulation refers to how well a meter is dropping one seed at a time.                                                                         |
-| downForce    | lb                   | Pound-force. Downforce refers to the amount of pressure that’s been applied to a crop row to ensure planting happens at the right depth. |
+| downForce    | lbf                  | Pound-force. Downforce refers to the amount of pressure that’s been applied to a crop row to ensure planting happens at the right depth. |
 | totalPlanted | seeds                | Number of seeds in total that have been planted.                                                                                                           |
 | skips        | percentage           | Percentage. A skip is identified as a missing seed/plant within a row.                                                                                     |
 | doubles      | percentage           | Percentage. A double is identified as more than one seed in the same location or close enough that they can impact each other.                             |
@@ -271,7 +271,7 @@ These are the units of measurement for the `METRIC` configuration.
 |--------------|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | seedRate     | seeds/ha             | Seeds per hectare. How many seeds were planted in an area?                                                                                         |
 | singulation  | percentage           | Percentage. Singulation refers to how well a meter is dropping one seed at a time.                                                                         |
-| downForce    | Kg                   | Kilogram-force. Downforce refers to the amount of pressure that’s been applied to a crop row to ensure planting happens at the right depth. |
+| downForce    | Kgf                  | Kilogram-force. Downforce refers to the amount of pressure that’s been applied to a crop row to ensure planting happens at the right depth. |
 | totalPlanted | seeds                | Number of seeds in total that have been planted.                                                                                                           |
 | skips        | percentage           | Percentage. A skip is identified as a missing seed/plant within a row.                                                                                     |
 | doubles      | percentage           | Percentage. A double is identified as more than one seed in the same location or close enough that they can impact each other.                             |

@@ -453,7 +453,7 @@ values={[
       "avg": 137.00726517903476,
       "min": 0,
       "max": 251,
-      "unit": "lb"
+      "unit": "lbf"
     },
     "seedRate": {
       "avg": 36590.32694115429,
@@ -852,7 +852,7 @@ values={[
   "elevation": "ft",
   "seedRateTarget": "seeds/ac",
   "seedRate": "seeds/ac",
-  "downForce": "lb",
+  "downForce": "lbf",
   "singulation": "prcnt",
   "equipmentWidth": "ft",
   "area": "m2"

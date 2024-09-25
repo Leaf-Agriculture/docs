@@ -52,6 +52,7 @@ Form of a Leaf User resource:
   "email": "help@withleaf.io",
   "phone": "str",
   "address": "str",
+  "externalId": "str",
   "trimbleCredentials":  {"Object"},
   "cnhiCredentials":  {"Object"},
   "johnDeereCredentials":  {"Object"},
@@ -59,7 +60,9 @@ Form of a Leaf User resource:
   "climateFieldViewCredentials": {"Object"},
   "staraCredentials": {"Object"},
   "agLeaderCredentials": {"Object"},
-  "ravenSlingshotCredentials": {"Object"}
+  "ravenSlingshotCredentials": {"Object"},
+  "lindsayCredentials": {"Object"},
+  "valleyCredentials": {"Object"}
 }
 ```
 
@@ -145,6 +148,7 @@ Get all Leaf Users.
     "email": "help@withleaf.io",
     "phone": "str",
     "address": "str",
+    "externalId": "str",
     "trimbleCredentials":  {"Object"},
     "cnhiCredentials":  {"Object"},
     "johnDeereCredentials":  {"Object"},
@@ -227,6 +231,7 @@ Get a Leaf User by its `id`. This request looks up an individual Leaf User (such
   "email": "help@withleaf.io",
   "phone": "str",
   "address": "str",
+  "externalId": "str",
   "trimbleCredentials":  {"Object"},
   "cnhiCredentials":  {"Object"},
   "johnDeereCredentials":  {"Object"},
@@ -256,7 +261,9 @@ Creates a Leaf User. You will need to create a Leaf User when linking a provider
 }
 ```
 
-Besides the four properties of the example above, once you have created
+The optional `externalId` property can be informed to identify the Leaf User with an existing user ID, facilitating matching between Leaf and the client application.
+
+Besides the four properties of the example above, once you have created 
 credentials for a provider like John Deere, you can add an entry like the
 following. Specifying the ID of the credentials object previously created will link it to the Leaf User being created. This will enable you to start querying farm data from the provider. Check the
  [providers credentials endpoints][6] for more details about the credentials object.

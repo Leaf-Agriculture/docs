@@ -108,7 +108,7 @@ This is an example of a summary for a "planted" operation
         "avg": 67.79335793357933,
         "min": 2,
         "max": 114,
-        "unit": "lb"
+        "unit": "lbf"
       },
       "totalFuelUsed": {
         "value": 196.25137347639,
@@ -710,7 +710,7 @@ Select the tab you want to see: "planted", "applied", "harvested", or "tillage".
   | operationType         | *        | string "tillage"            |
   | originalOperationType | **       | string                      |
   | totalArea             | *        | float                       |
-  | tillageDepthTarget    | *        | float                       |
+  | tillageDepthTarget    | **       | float                       |
   | tillageDepthActual    | **       | float                       |
   | speed                 | **       | dict                        |
   | machinery             | **       | list of machineInfo objects |
@@ -1023,7 +1023,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | operationType         | *        | string                      | -                | string "tillage"                                                             |
   | originalOperationType | **       | string                      | -                | string                                                                       |
   | equipmentWidth        | *        | float                       | ft or m          | Width of implement                                                           |
-  | tillageDepthTarget    | *        | float                       | fl.oz/ac or L/m² | The target depth                                                             |
+  | tillageDepthTarget    | **       | float                       | fl.oz/ac or L/m² | The target depth                                                             |
   | speed                 | **       | float                       | ft/s or m/s      | Speed of machine at point                                                    |
   | tillageDepthActual    | **       | float                       | fl.oz/ac or L/m² | The actual depth                                                             |
   | machinery             | **       | list of machineInfo objects | -                | Name of machine and implement                                                |
@@ -1349,7 +1349,7 @@ values={[
   "elevation": "ft",
   "seedRateTarget": "seeds/ac",
   "seedRate": "seeds/ac",
-  "downForce": "lb",
+  "downForce": "lbf",
   "singulation": "prcnt",
   "equipmentWidth": "ft",
   "area": "m2"

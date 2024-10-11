@@ -22,7 +22,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## About
 
-The endpoints described here are separated into two disticnt categories, the [Organizations List][2] are tools for listing organizations that have or have not granted access to Leaf. Additionaly we have the [Organization Sync][3] which are tools to manage the Organizations to be processed which sequently will impact on the associated resources such as Field Boundaries, Operations and Asset for example.
+The endpoints described here are divided into two categories. The [Organizations List][2] provides tools for listing organizations that have or have not granted access to Leaf. The [Organization Sync][3] offers tools for managing organizations to be processed, which in turn impacts associated resources such as field boundaries, operations, and assets.
 
 All HTTP methods should be prepended by this service's endpoint:
 

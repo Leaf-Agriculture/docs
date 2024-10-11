@@ -367,7 +367,7 @@ The retroactive time period (in months) to fetch irrigation activities from prov
 
 #### organizationsDataSync
 
-If set to `ALL`, Leaf will fetch organizations from the provider account with the default processing behavior for the resources. When set to `SELECTED_ONLY` the API will ingest the Organizations for each Provider which should be the top level entity that holds the FMIS structure resources in a `PREVIEW` status. Users can then manage the sync of the data from each organization using the [Organization Sync][18] endpoints  
+If set to `ALL`, Leaf will fetch organizations from the provider account with the default processing behavior for the resources with the status set as `SELECTED`. When set to `SELECTED_ONLY` the API will ingest the Organizations for each Provider which should be the top-level entity that holds the FMIS structure resources in a `PREVIEW` status. Users can then manage the sync of the data from each organization using the [Organization Sync][18] endpoints  
 
 #### syncPartnerData
 If set to `true`, Leaf will fetch shared/partner data from John Deere and AgLeader shared accounts that have granted the required permissions. If set to `false`, only the directly connected  account data will be fetched, even if the permissions allow access to shared data/organizations. The default value is `true`.

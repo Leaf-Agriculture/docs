@@ -139,7 +139,7 @@ At Trimble it is not possible to differentiate which organizations are connected
 
 ### Resource
 
-Here's the properties available for a Provider Organization.
+The properties available for a Provider Organization are.
 
 ```json
 {
@@ -151,17 +151,17 @@ Here's the properties available for a Provider Organization.
 }
 ```
 
-- The `provider_org_id` property is referecing the organization id value from the provider. It should be used while managing this resource.
-- The `provider_org_name` property is referecing the organization name value from the provider.
-- The `status` property is refrencing to the current state of the resource. The property can have multiple values between `PREVIEW`, `SELECTED` and `BLOCKED`. 
-  - If the `status` property has the value `SELECTED`, all the resources available to be fecthed from the provider will be processed.
-  - If the `status` property has the value `PREVIEW`, no resources beyond the organization itsefl will be processed.
-  - If the `status` property has the value `BLOCKED`, the organization does not have the required permissions in order to be processed by Leaf API, to troubleshoot this issue please review the Step 3 of the [John Deere Authentication Guide][7], once the setup is complete, the resource will be available with the `PREVIEW` status. For any additional troubleshoot options, please reach out to help@withleaf.io
+- The `provider_org_id` property references the organization ID value from the provider. For example, if the John Deere organization ID is 12345, then the 'provider_org_id' should be 12345.
+- The `provider_org_name` property references the value of the organization name from the provider.
+- The `status` property represents the current state of the resource. The state of the resource can be either `PREVIEW`, `SELECTED`, or `BLOCKED`. 
+  - If the `status` property has the value `SELECTED`, all available resources will be fetched from the provider and processed.
+  - If the `status` property has the value `PREVIEW`, no resources beyond the organization itself will be processed.
+  - If the `status` property has the value `BLOCKED`, the organization does not have the required permissions to be processed by Leaf. To troubleshoot this issue please review Step 3 of the [John Deere Authentication Guide][7], once the setup is complete, the resource will be available with the `PREVIEW` status. For any additional troubleshooting options, please reach out to help@withleaf.io
 
 
 ### Get All Provider Organizations
 
-With this endpoint users can check the organizations ingested from the integration process.
+With this endpoint users can retrieve all organizations.
 
 #### Request examples
 
@@ -234,7 +234,7 @@ With this endpoint users can check the organizations ingested from the integrati
 
 ### Get a Provider Organization
 
-With this endpoint, users can select a provider organization individually.
+With this endpoint users can retrieve individual provider organizations.
 
 #### Request examples
 

@@ -144,15 +144,15 @@ The properties available for a Provider Organization are.
 ```json
 {
   
-  "provider_org_id": "5206781", 
-  "provider_org_name": "TB Farms", 
+  "providerOrgId": "5206781", 
+  "providerOrgName": "TB Farms", 
   "status": "SELECTED" 
 
 }
 ```
 
-- The `provider_org_id` property references the organization ID value from the provider. For example, if the John Deere organization ID is 12345, then the 'provider_org_id' should be 12345.
-- The `provider_org_name` property references the value of the organization name from the provider.
+- The `providerOrgId` property references the organization ID value from the provider. For example, if the John Deere organization ID is 12345, then the `providerOrgId` should be 12345.
+- The `providerOrgName` property references the value of the organization name from the provider.
 - The `status` property represents the current state of the resource. The state of the resource can be either `PREVIEW`, `SELECTED`, or `BLOCKED`. 
   - If the `status` property has the value `SELECTED`, all available resources will be fetched from the provider and processed.
   - If the `status` property has the value `PREVIEW`, no resources beyond the organization itself will be processed.
@@ -162,6 +162,12 @@ The properties available for a Provider Organization are.
 ### Get All Provider Organizations
 
 With this endpoint users can retrieve all organizations.
+
+You can also pass some parameters used exclusively for paging through results.
+They are:
+
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (default is 20, max is 100)
 
 #### Request examples
 
@@ -219,13 +225,13 @@ With this endpoint users can retrieve all organizations.
 ```json
 [
   {
-    "provider_org_id": "01011000",
-    "provider_org_name": "Leaf Organization",
+    "providerOrgId": "01011000",
+    "providerOrgName": "Leaf Organization",
     "status": "SELECTED"
   },
   {
-    "provider_org_id": "123321",
-    "provider_org_name": "Agriculture Organization",
+    "providerOrgId": "123321",
+    "providerOrgName": "Agriculture Organization",
     "status": "PREVIEW"
   }
 ]
@@ -252,7 +258,7 @@ With this endpoint users can retrieve individual provider organizations.
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{provider_org_id}'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{providerOrgId}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.get(endpoint, { headers })
@@ -268,7 +274,7 @@ With this endpoint users can retrieve individual provider organizations.
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{provider_org_id}'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{providerOrgId}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.get(endpoint, headers=headers)
@@ -281,7 +287,7 @@ With this endpoint users can retrieve individual provider organizations.
   ```shell
   curl -X GET \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{provider_org_id}'
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{providerOrgId}'
   ```
 
   </TabItem>
@@ -291,8 +297,8 @@ With this endpoint users can retrieve individual provider organizations.
 
 ```json
 {
-    "provider_org_id": "123321",
-    "provider_org_name": "Agriculture Organization",
+    "providerOrgId": "123321",
+    "providerOrgName": "Agriculture Organization",
     "status": "PREVIEW"
 }
 
@@ -319,7 +325,7 @@ With this endpoint, users can change the status of a provider organization. You 
   const axios = require('axios')
   const TOKEN = 'YOUR_TOKEN'
 
-  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{provider_org_id}/{status}'
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{providerOrgId}/{status}'
   const headers = { 'Authorization': `Bearer ${TOKEN}` }
 
   axios.patch(endpoint, { headers })
@@ -335,7 +341,7 @@ With this endpoint, users can change the status of a provider organization. You 
 
   TOKEN = 'YOUR_TOKEN'
 
-  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{provider_org_id}/{status}'
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{providerOrgId}/{status}'
   headers = {'Authorization': f'Bearer {TOKEN}'}
 
   response = requests.patch(endpoint, headers=headers)
@@ -348,7 +354,7 @@ With this endpoint, users can change the status of a provider organization. You 
   ```shell
   curl -X PATCH \
       -H 'Authorization: Bearer YOUR_TOKEN' \
-      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{provider_org_id}/{status}'
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/{providerOrgId}/{status}'
   ```
 
   </TabItem>
@@ -358,8 +364,8 @@ With this endpoint, users can change the status of a provider organization. You 
 
 ```json
 {
-    "provider_org_id": "123321",
-    "provider_org_name": "Agriculture Organization",
+    "providerOrgId": "123321",
+    "providerOrgName": "Agriculture Organization",
     "status": "PREVIEW"
 }
 

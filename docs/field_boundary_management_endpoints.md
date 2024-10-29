@@ -141,7 +141,8 @@ These last two parameters are used exclusively for paging through results.
     "updatedTime": "2021-11-03T01:34:15.154051Z",
     "farmId": 3746117,
     "mergedFieldId": "f97c5bbc-2dbf-4400-8d59-39eba37f8847",
-    "sources": []
+    "sources": [],
+    "status": "PROCESSED"
   },
   {
     "id": "68c354f2-eb20-4512-816f-2edea4b6fca4",
@@ -152,7 +153,8 @@ These last two parameters are used exclusively for paging through results.
     "type": "ORIGINAL",
     "createdTime": "2023-06-14T18:31:01.702615Z",
     "updatedTime": "2023-06-14T18:31:01.702615Z",
-    "sources": []
+    "sources": [],
+    "status": "PROCESSED"
   },
   ....
 ]

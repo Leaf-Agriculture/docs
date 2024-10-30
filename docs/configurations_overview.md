@@ -52,7 +52,9 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 If set to `true`, this configuration will attempt to correct invalid geometries obtained from providers. The default value is `false`. More information [here][13].
 
 #### customDataSync
+
 If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`. Once the config is set from `true` to `false`, the Fields fetched from a Leaf User can be `PROCESSED` using the [Manual Sync endpoint][19].
+
 #### fieldsAttachIntersection
 Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100 percent. The default value is `0.01`, which is the smallest number possible of overlap between the fields. Example: Setting this to 1 = 1%, setting this to 0.01 = 0.01%. 
 #### fieldsAutoSync

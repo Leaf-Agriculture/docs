@@ -26,6 +26,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [16]: #enableoutsidefieldgeojson-1
 [17]: /docs/operations_endpoints#get-the-operations-sessions
 [18]: /docs/provider_organizations#organizations-sync
+[19]: /docs/field_boundary_management_endpoints#sync-fields-manually
 
 
 Leaf's system can be customized to present different behaviors across services and Leaf Users. This is done using Configurations.
@@ -51,7 +52,7 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 If set to `true`, this configuration will attempt to correct invalid geometries obtained from providers. The default value is `false`. More information [here][13].
 
 #### customDataSync
-If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`.
+If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`. Once the config is set from `true` to `false`, the Fields fetched can be `PROCESSED` using the Manual Sync endpoint.
 #### fieldsAttachIntersection
 Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100 percent. The default value is `0.01`, which is the smallest number possible of overlap between the fields. Example: Setting this to 1 = 1%, setting this to 0.01 = 0.01%. 
 #### fieldsAutoSync

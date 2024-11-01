@@ -38,3 +38,9 @@ When a request exceeds the rate limit for a given API method, the server will re
 - **Implement Retry Logic**: Use the `Retry-After` header to adjust your request timing. Wait at least the number of seconds specified before retrying.
 - **Backoff Strategy**: If repeated 429 responses occur, consider using an exponential backoff approach, gradually increasing the time between requests.
 - **Monitor Usage**: Track your API usage patterns and rate limit hits to optimize request volume and avoid unnecessary retries.
+
+:::tip
+Please don't hesitate to [contact][contact] us at help@withleaf.io for more information!
+:::
+
+[contact]: mailto:help@withleaf.io

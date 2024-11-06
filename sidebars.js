@@ -12,7 +12,6 @@ module.exports = {
         'introduction',
         'authentication',
         'setup_information',
-        'limits',
         {
           type: 'category',
           label: 'Configurations',

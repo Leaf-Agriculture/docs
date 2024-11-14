@@ -354,7 +354,7 @@ following. Specifying the ID of the credentials object previously created will l
 
 ### Update a Leaf User
 
-<span style="color: red; font-weight: bold;">⚠️ Deprecated</span>
+<span style="color: red; font-weight: bold;">Deprecated</span>
 
 > **Deprecation Notice**  
 > This endpoint is deprecated and will be removed in a future release. Consider using the endpoints for Provider Credentials to better manage the credentials of a Leaf User.

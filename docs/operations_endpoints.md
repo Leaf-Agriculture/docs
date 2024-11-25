@@ -38,10 +38,13 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [27]: https://docs.withleaf.io/docs/beta_assets_endpoints#get-an-operator
 [28]: #get-the-operations-sessions
 [29]: https://docs.withleaf.io/docs/configurations_overview/#enableOperationsSession
+[30]: https://docs.withleaf.io/docs/configurations_overview/#enableGeoparquetOutput
+[31]: #get-the-operations-standardgeoparquet
+[32]: #get-the-operations-filteredgeoparquet
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
-[files_sample]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-file-sample
+[files_sample]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-file-sample]
 
 ## About
 
@@ -53,24 +56,26 @@ https://api.withleaf.io/services/operations/api
 
 This service has the following endpoints available:
 
-| Description                               | Endpoints                                                                         |
-|-------------------------------------------|-----------------------------------------------------------------------------------|
-| [Get all operations][1]                   | <span class="badge badge--success">GET</span> `/operations`                       |
-| [Get an operation][2]                     | <span class="badge badge--success">GET</span> `/operations/{id}`                  |
-| [Get the operation's summary][3]          | <span class="badge badge--success">GET</span> `/operations/{id}/summary`          |
-| [Get the operation's standardGeojson][18] | <span class="badge badge--success">GET</span> `/operations/{id}/standardGeojson`  |
-| [Get the operation's filteredGeojson][19] | <span class="badge badge--success">GET</span> `/operations/{id}/filteredGeojson`  |
-| [Get operation's images][4]               | <span class="badge badge--success">GET</span> `/operations/{id}/images`           |
-| [Get operation's images V2][8]            | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`         |
-| [Get operation's geotiff images][16]      | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`    |
-| [Get the operation's units][5]            | <span class="badge badge--success">GET</span> `/operations/{id}/units`            |
-| [Get the operation's machines][22]        | <span class="badge badge--success">GET</span> `/operations/{id}/machines`         |
-| [Get the operation's implements][23]      | <span class="badge badge--success">GET</span> `/operations/{id}/implements`       |
-| [Get the operation's operators][24]       | <span class="badge badge--success">GET</span> `/operations/{id}/operators`        |
-| [Get the operation's sessions][28]        | <span class="badge badge--success">GET</span> `/operations/{id}/sessions`         |
-| [Crop operation by field][17]             | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField` |
-| [Reprocess an operation][11]              | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`       |
-| [Get files from an operation][21]         | <span class="badge badge--success">GET</span> `/operations/{id}/files`           |
+| Description                                   | Endpoints                                                                             |
+|-----------------------------------------------|---------------------------------------------------------------------------------------|
+| [Get all operations][1]                       | <span class="badge badge--success">GET</span> `/operations`                           |
+| [Get an operation][2]                         | <span class="badge badge--success">GET</span> `/operations/{id}`                      |
+| [Get the operation's summary][3]              | <span class="badge badge--success">GET</span> `/operations/{id}/summary`              |
+| [Get the operation's standardGeojson][18]     | <span class="badge badge--success">GET</span> `/operations/{id}/standardGeojson`      |
+| [Get the operation's standardGeoParquet][31]  | <span class="badge badge--success">GET</span> `/operations/{id}/standardGeoparquet`   |
+| [Get the operation's filteredGeojson][19]     | <span class="badge badge--success">GET</span> `/operations/{id}/filteredGeojson`      |
+| [Get the operation's filteredGeoParquet][32]  | <span class="badge badge--success">GET</span> `/operations/{id}/filteredGeoparquet`   |
+| [Get operation's images][4]                   | <span class="badge badge--success">GET</span> `/operations/{id}/images`               |
+| [Get operation's images V2][8]                | <span class="badge badge--success">GET</span> `/operations/{id}/imagesV2`             |
+| [Get operation's geotiff images][16]          | <span class="badge badge--success">GET</span> `/operations/{id}/geotiffImages`        |
+| [Get the operation's units][5]                | <span class="badge badge--success">GET</span> `/operations/{id}/units`                |
+| [Get the operation's machines][22]            | <span class="badge badge--success">GET</span> `/operations/{id}/machines`             |
+| [Get the operation's implements][23]          | <span class="badge badge--success">GET</span> `/operations/{id}/implements`           |
+| [Get the operation's operators][24]           | <span class="badge badge--success">GET</span> `/operations/{id}/operators`            |
+| [Get the operation's sessions][28]            | <span class="badge badge--success">GET</span> `/operations/{id}/sessions`             |
+| [Crop operation by field][17]                 | <span class="badge badge--warning">POST</span> `/operations/cropOperationByField`     |
+| [Reprocess an operation][11]                  | <span class="badge badge--warning">POST</span> `/operations/{id}/reprocess`           |
+| [Get files from an operation][21]             | <span class="badge badge--success">GET</span> `/operations/{id}/files`                |
 
 For easily testing these endpoints, we recommend using our Postman [collection][postman].
 
@@ -403,6 +408,76 @@ Get the standardGeojson file URL relative to the operation.
 }
 ```
 
+### Get the operation's standardGeoparquet
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/standardGeoparquet`
+
+Get the standard GeoParquet file URL relative to the operation.
+
+:::tip
+To use this option, [enableGeoparquetOutput][30] configuration must be enabled.
+:::
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/standardGeoparquet'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/standardGeoparquet'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/standardGeoparquet'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "downloadStandardGeoparquet": "URL"
+}
+```
 
 ### Get the operation's filteredGeojson
 
@@ -477,6 +552,77 @@ To use this option, the [operationsFilteredGeojson][20] configuration must be en
 }
 ```
 
+### Get the operation's filteredGeoparquet
+
+&nbsp<span class="badge badge--success">GET</span>  `/operations/{id}/filteredGeoparquet`
+
+Get the filtered GeoParquet file URL relative to the operation.
+
+:::tip
+To use this option, the [operationsFilteredGeojson][20] and [enableGeoparquetOutput][30] configuration must be enabled.
+:::
+
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeoparquet'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeoparquet'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/operations/{id}/filteredGeoparquet'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "downloadFilteredGeoparquet": "URL"
+}
+```
 
 ### Get operation's images
 

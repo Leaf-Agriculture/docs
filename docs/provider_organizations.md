@@ -164,7 +164,13 @@ The properties available for a Provider Organization are.
 
 ### Get All Provider Organizations
 
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations`
+
+<p align='justify'>
+
 With this endpoint users can retrieve all organizations.
+
+</p>
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -251,7 +257,15 @@ They are:
 
 ### Get a Provider Organization
 
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations`
+
+<p align='justify'>
+
 With this endpoint users can retrieve individual provider organizations.
+
+</p>
+
+
 
 #### Request examples
 
@@ -319,7 +333,14 @@ With this endpoint users can retrieve individual provider organizations.
 
 ### Patch a Provider Organization
 
-With this endpoint, users can change the status of a provider organization. You can only change the status of a provider organization between `SELECTED` or `PREVIEW`. Also, as mentioned before, provider organizations with the `BLOCKED` status cannot be changed.  
+
+&nbsp<span class="badge badge--success">PATCH</span> `/users/{leafUserId}/{provider}/organizations`
+
+<p align='justify'>
+
+With this endpoint, users can change the status of a provider organization. You can only change the status of a provider organization between `SELECTED` or `PREVIEW`. Also, as mentioned before, provider organizations with the `BLOCKED` status cannot be changed.
+
+</p>
 
 #### Request examples
 

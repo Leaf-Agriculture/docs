@@ -382,3 +382,73 @@ With this endpoint, users can change the status of a provider organization. You 
 }
 
 ```
+
+
+### Sync Provider Organizations
+
+&nbsp<span class="badge badge--success">POST</span> `users/{leafUserId}/{provider}/organizations/sync`
+
+<p align='justify'>
+
+With this endpoint, users can sync their organizations to reflect the current setup on the Provider Account into Leaf's resources.
+
+</p>
+
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/sync'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.post(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/sync'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.post(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PATCH \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/sync'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+This endpoint could be used on the following scenarios:
+
+- When updating the Organization Connection using the `managementUri` property from the Provider Organization. Provider Organizations should have the `status` changed from `BLOCKED` to `PREVIEW` if the cnnection setup is correct, after the `/sync`.
+- If the user changes the `organizationDataSync` value from `ALL` to `SELECTED_ONLY` to the specfied Leaf User.
+- In case of missing the Provider Organizations List is compatilble with the latest list from the Provider.

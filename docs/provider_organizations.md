@@ -34,12 +34,13 @@ See below the REST resources and their endpoints available in this service.
 
 **Endpoints**
 
-| Description                                | Endpoints                                                                                                      |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| [Get Provider Organizations][1]            | <span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/{provider}`                   |
-| [Get All Provider Organizations][4]        | <span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations`                   |
-| [Get a Provider Organization][5]           | <span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations/{provider_org_id}` |
-| [Update a Provider Organization Status][6] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/{provider}/organizations/{provider_org_id}`         |
+| Description                                | Endpoints                                                                                                        |
+|--------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| [Get Provider Organizations][1]            | <span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/{provider}`                     |
+| [Get All Provider Organizations][4]        | <span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations`                     |
+| [Get a Provider Organization][5]           | <span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations/{provider_org_id}`   |
+| [Update a Provider Organization Status][6] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/{provider}/organizations/{provider_org_id}` |
+| [Sync Provider Organizations][7]           | <span class="badge badge--success">POST</span> `/users/{leafUserId}/{provider}/organizations/sync`               |
 
 ## Organizations List
 
@@ -451,4 +452,4 @@ This endpoint could be used on the following scenarios:
 
 - When updating the Organization Connection using the `managementUri` property from the Provider Organization. Provider Organizations should have the `status` changed from `BLOCKED` to `PREVIEW` if the cnnection setup is correct, after the `/sync`.
 - If the user changes the `organizationDataSync` value from `ALL` to `SELECTED_ONLY` to the specfied Leaf User.
-- In case of missing the Provider Organizations List is compatilble with the latest list from the Provider.
+- In case of one or more missing Provider Organizations from the List, using the endpoint will trigger the process of fethcing the latest resources avaialble.

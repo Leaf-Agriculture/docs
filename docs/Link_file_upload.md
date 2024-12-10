@@ -31,10 +31,6 @@ Leaf's File Upload Link is a widget that allows your customers to upload differe
     <img alt="File upload widget" width="50%" src={useBaseUrl('img/leaf-file-upload.png')} />
 </p>
 
-:::caution Beta
-This is a beta feature.
-:::
-
 ### How it works
 The user can add files using the file picker from the `Browse` button or drop files in the `Drag & drop` zone. Your files must be in a `zip` file.
  

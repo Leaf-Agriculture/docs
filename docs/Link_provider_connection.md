@@ -46,11 +46,6 @@ Leaf's Provider Connection Link is a widget that you can install with minimal se
     <img alt="File upload widget" width="75%" src={useBaseUrl('img/leaf-provider-connection.png')} />
 </p>
 
-:::caution Beta
-This is a beta feature.
-:::
-
-
 
 ## Get started
 

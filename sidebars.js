@@ -100,6 +100,23 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Leaf Link',
+          items: [
+            'Link_provider_connection',
+            'Link_file_upload',
+            'Link_endpoints'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Magic Link',
+          items: [
+            'Magic_link_overview',
+            'Magic_link_endpoints'
+          ]
+        },
+        {
+          type: 'category',
           label: 'Irrigation',
           items: [
             'irrigation_overview',
@@ -120,7 +137,7 @@ module.exports = {
             'beta_features_overview',
             {
               type: 'category',
-              label: 'Input Database',
+              label: 'Input Validator',
               items: ['beta_input_endpoints']
             },
             {
@@ -144,23 +161,6 @@ module.exports = {
               type: 'category',
               label: 'Layers',
               items: ['beta_layers_endpoints']
-            },
-            {
-              type: 'category',
-              label: 'Leaf Link',
-              items: [
-                'Link_provider_connection',
-                'Link_file_upload',
-                'Link_endpoints'
-              ]
-            },
-            {
-              type: 'category',
-              label: 'Magic Link',
-              items: [
-                'Magic_link_overview',
-                'Magic_link_endpoints'
-              ]
             }
           ]
         },

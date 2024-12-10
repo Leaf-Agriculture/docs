@@ -1,7 +1,7 @@
 ---
-title: Leaf Provider Connection / Authentication Link
-description: Leaf Provider Connection / Authentication Link
-sidebar_label: Leaf Provider Connection / Authentication Link
+title: Leaf Provider Connection Link
+description: Leaf Provider Connection Link
+sidebar_label: Leaf Provider Connection Link
 ---
 
 import Tabs from '@theme/Tabs';
@@ -40,7 +40,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 ## Overview
-Leaf's Provider Connection / Authentication Link is a widget that you can install with minimal setup and a few lines of code. This widget enables your customers to connect their existing provider accounts, which associates it with their Leaf User.
+Leaf's Provider Connection Link is a widget that you can install with minimal setup and a few lines of code. This widget enables your customers to connect their existing provider accounts, which associates it with their Leaf User.
 
 <p align="center">
     <img alt="File upload widget" width="75%" src={useBaseUrl('img/leaf-provider-connection.png')} />

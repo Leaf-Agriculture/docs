@@ -39,11 +39,11 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 
 | Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, customDataSync, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
-| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson, filesImageAttributeCreation                                                                                                                                                                                                                                                                                                                                                    | 
-| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession, operationsImageAttributeCreation | 
+| [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
+| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson, filesImageAttributeCreation, enableGeoparquetOutput                                                                                                                                                                                                                                                                                                                                                    | 
+| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession, operationsImageAttributeCreation, enableGeoparquetOutput | 
 | [ Irrigation ](#irrigation)                  | irrigationProcessingRange                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 
-| [ Synchronization ](#synchronization)                  | organizationsDataSync, customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync, syncPartnerData                                                                                                                                                                                                                                                                                                                                                                                            | 
+| [ Synchronization ](#synchronization)                  | organizationDataSync, customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync, syncPartnerData                                                                                                                                                                                                                                                                                                                                                                                            | 
 
 
 
@@ -51,16 +51,13 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 #### automaticFixBoundary
 If set to `true`, this configuration will attempt to correct invalid geometries obtained from providers. The default value is `false`. More information [here][13].
 
-#### customDataSync
-
-If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`. Once the config is set from `true` to `false`, the Fields fetched from a Leaf User can be `PROCESSED` using the [Manual Sync endpoint][19].
 
 #### fieldsAttachIntersection
 Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100 percent. The default value is `0.01`, which is the smallest number possible of overlap between the fields. Example: Setting this to 1 = 1%, setting this to 0.01 = 0.01%. 
-#### fieldsAutoSync
-If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.
 #### fieldsAutoMerge
 Feature automatically merges fields that passes through the intersection parameter. Default value is `true`. The merge intersection can be controlled by the fieldsMergeIntersection configuration.
+#### fieldsAutoSync
+If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.
 #### fieldsMergeIntersection
 Minimum intersection between two fields to merge them. A new field of type MERGED will be created based in the intersection of the fields, while the original fields will be kept for historical purposes but remain inactive. This property supports a floating point between 0 and 100. The default value is `0.01`, which is the smallest number possible of overlap between the fields.
 
@@ -202,6 +199,9 @@ The options available are:
     }
 }
 ```
+
+#### enableGeoparquetOutput
+If enabled, the vector point files like the StandardGeoJSON, will be available as GeoParquet additionally to the GeoJSON. The GeoParquet file will contain the same data, benefiting from faster processing and reduced storage costs. Once enabled it will create the GeoParquet from the point in time it is set to true (not historical data). The default is `false`.
 
 ### Field Operations
 These configurations can be enabled with the use of Leaf Field Operations. This requires an active boundary to be present so Leaf can merge the machine files and create a Field Operation.
@@ -361,6 +361,9 @@ The options available are:
 }
 ```
 
+#### enableGeoparquetOutput
+[See this section for more information](#enableGeoparquetOutput)
+
 ### Irrigation
 
 #### irrigationProcessingRange
@@ -368,7 +371,7 @@ The retroactive time period (in months) to fetch irrigation activities from prov
 
 ### Synchronization
 
-#### organizationsDataSync
+#### organizationDataSync
 
 If set to `ALL`, Leaf will fetch and process data from all organizations within the provider account. If set to `SELECTED_ONLY`, Leaf will only fetch and process data from the organizations were the organization status has been set to `SELECTED`. Setting the status of an organization is done using the Organization Sync endpoints.  The dafault value is `ALL`.
 
@@ -376,7 +379,7 @@ If set to `ALL`, Leaf will fetch and process data from all organizations within 
 If set to `true`, Leaf will fetch shared/partner data from John Deere and AgLeader shared accounts that have granted the required permissions. If set to `false`, only the directly connected  account data will be fetched, even if the permissions allow access to shared data/organizations. The default value is `true`.
 
 #### customDataSync
-If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`.
+If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`. Once the config is set from `true` to `false`, the Fields fetched from a Leaf User can be `PROCESSED` using the [Manual Sync endpoint][19].
 
 #### fieldsAutoSync
 If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.

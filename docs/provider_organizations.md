@@ -34,12 +34,13 @@ See below the REST resources and their endpoints available in this service.
 
 **Endpoints**
 
-| Description                                | Endpoints                                                                                                      |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| [Get Provider Organizations][1]            | <span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/{provider}`                   |
-| [Get All Provider Organizations][4]        | <span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations`                   |
-| [Get a Provider Organization][5]           | <span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations/{provider_org_id}` |
-| [Update a Provider Organization Status][6] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/{provider}/organizations/{provider_org_id}`         |
+| Description                                | Endpoints                                                                                                        |
+|--------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| [Get Provider Organizations][1]            | <span class="badge badge--success">GET</span> `/users/{leafUserId}/organizations/{provider}`                     |
+| [Get All Provider Organizations][4]        | <span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations`                     |
+| [Get a Provider Organization][5]           | <span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations/{provider_org_id}`   |
+| [Update a Provider Organization Status][6] | <span class="badge badge--success">PATCH</span> `/users/{leafUserId}/{provider}/organizations/{provider_org_id}` |
+| [Sync Provider Organizations][7]           | <span class="badge badge--success">POST</span> `/users/{leafUserId}/{provider}/organizations/sync`               |
 
 ## Organizations List
 
@@ -144,24 +145,32 @@ The properties available for a Provider Organization are.
 ```json
 {
   
-  "providerOrgId": "5206781", 
-  "providerOrgName": "TB Farms", 
-  "status": "SELECTED" 
+  "providerOrgId": "520674381", 
+  "providerOrgName": "Leaf Farms", 
+  "status": "SELECTED",
+  "managementUri": "https://connections.deere.com/connections/clientKey/connections-dialog?orgId=Leaf Farms"
 
 }
 ```
 
 - The `providerOrgId` property references the organization ID value from the provider. For example, if the John Deere organization ID is 12345, then the `providerOrgId` should be 12345.
 - The `providerOrgName` property references the value of the organization name from the provider.
+- The `managementUri` property references the connection between your John Deere Application and the Provider Organization. If the URL alias contains the `connections-dialog` property then the connection is establshied with your JD Application, these Organizations can be updated between `SELECTED` and `PREVIEW`, if the management URL contains the `select-organizations` property then your setup with the JD Application is not complete.
 - The `status` property represents the current state of the resource. The state of the resource can be either `PREVIEW`, `SELECTED`, or `BLOCKED`. 
   - If the `status` property has the value `SELECTED`, all available resources will be fetched from the provider and processed.
   - If the `status` property has the value `PREVIEW`, no resources beyond the organization itself will be processed.
-  - If the `status` property has the value `BLOCKED`, the organization does not have the required permissions to be processed by Leaf. To troubleshoot this issue please review Step 3 of the [John Deere Authentication Guide][7], once the setup is complete, the resource will be available with the `PREVIEW` status. For any additional troubleshooting options, please reach out to help@withleaf.io
+  - If the `status` property has the value `BLOCKED`, the organization does not have the required permissions or does not have the connection, which can be checked with the `managementUri` to be processed by Leaf. To troubleshoot this issue please review Step 3 of the [John Deere Authentication Guide][7], once the setup is complete, the resource will be available with the `PREVIEW` status. For any additional troubleshooting options, please reach out to help@withleaf.io
 
 
 ### Get All Provider Organizations
 
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations`
+
+<p align='justify'>
+
 With this endpoint users can retrieve all organizations.
+
+</p>
 
 You can also pass some parameters used exclusively for paging through results.
 They are:
@@ -227,20 +236,36 @@ They are:
   {
     "providerOrgId": "01011000",
     "providerOrgName": "Leaf Organization",
-    "status": "SELECTED"
+    "status": "SELECTED",
+    "managementUri": "https://connections.deere.com/connections/clientKey/connections-dialog?orgId=Leaf Agriculture"
   },
   {
     "providerOrgId": "123321",
     "providerOrgName": "Agriculture Organization",
-    "status": "PREVIEW"
-  }
+    "status": "PREVIEW",
+    "managementUri": "https://connections.deere.com/connections/clientKey/connections-dialog?orgId=Agriculture Organization"
+  },
+  {
+    "providerOrgId": "123321",
+    "providerOrgName": "Agriculture Farm",
+    "status": "BLOCKED",
+    "managementUri": "https://connections.deere.com/connections/clientKey/select-organizations"
+  }  
 ]
 
 ```
 
 ### Get a Provider Organization
 
+&nbsp<span class="badge badge--success">GET</span> `/users/{leafUserId}/{provider}/organizations`
+
+<p align='justify'>
+
 With this endpoint users can retrieve individual provider organizations.
+
+</p>
+
+
 
 #### Request examples
 
@@ -299,7 +324,8 @@ With this endpoint users can retrieve individual provider organizations.
 {
     "providerOrgId": "123321",
     "providerOrgName": "Agriculture Organization",
-    "status": "PREVIEW"
+    "status": "PREVIEW",
+    "managementUri": "https://connections.deere.com/connections/clientKey/connections-dialog?orgId=Agriculture Organization"
 }
 
 ```
@@ -307,7 +333,14 @@ With this endpoint users can retrieve individual provider organizations.
 
 ### Patch a Provider Organization
 
-With this endpoint, users can change the status of a provider organization. You can only change the status of a provider organization between `SELECTED` or `PREVIEW`. Also, as mentioned before, provider organizations with the `BLOCKED` status cannot be changed.  
+
+&nbsp<span class="badge badge--success">PATCH</span> `/users/{leafUserId}/{provider}/organizations`
+
+<p align='justify'>
+
+With this endpoint, users can change the status of a provider organization. You can only change the status of a provider organization between `SELECTED` or `PREVIEW`. Also, as mentioned before, provider organizations with the `BLOCKED` status cannot be changed.
+
+</p>
 
 #### Request examples
 
@@ -366,7 +399,78 @@ With this endpoint, users can change the status of a provider organization. You 
 {
     "providerOrgId": "123321",
     "providerOrgName": "Agriculture Organization",
-    "status": "PREVIEW"
+    "status": "SELECTED",
+    "managementUri": "https://connections.deere.com/connections/clientKey/connections-dialog?orgId=Agriculture Organization"
 }
 
 ```
+
+
+### Sync Provider Organizations
+
+&nbsp<span class="badge badge--success">POST</span> `users/{leafUserId}/{provider}/organizations/sync`
+
+<p align='justify'>
+
+With this endpoint, users can sync their organizations to reflect the current setup on the Provider Account into Leaf's resources.
+
+</p>
+
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/sync'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.post(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/sync'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.post(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X PATCH \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/usermanagement/api/users/{leafUserId}/{provider}/organizations/sync'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+This endpoint could be used on the following scenarios:
+
+- When updating the Organization Connection using the `managementUri` property from the Provider Organization. Provider Organizations should have the `status` changed from `BLOCKED` to `PREVIEW` if the cnnection setup is correct, after the `/sync`.
+- If the user changes the `organizationDataSync` value from `ALL` to `SELECTED_ONLY` to the specfied Leaf User.
+- In case of one or more missing Provider Organizations from the List, using the endpoint will trigger the process of fethcing the latest resources avaialble.

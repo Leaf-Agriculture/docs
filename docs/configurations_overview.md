@@ -293,70 +293,70 @@ If  set to `true`, it enables a new view of the field operation data, compiled b
 
 #### operationsImageAttributeCreation
 
-Customizes the images available for each property of Field Operations. To enable the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`true`).
+Customizes the images available for each property of Field Operations. To enable the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`false`).
 The options available are:
 
 ```json
 "operationsImageAttributeCreation": {
     "harvested": {
-        "area": true,
-        "distance": true,
-        "elevation": true,
-        "equipmentWidth": true,
-        "harvestMoisture": true,
-        "wetMass": true,
-        "wetMassPerArea": true,
-        "wetVolume": true,
-        "wetVolumePerArea": true,
-        "dryMass": true,
-        "dryMassPerArea": true,
-        "dryVolume": true,
-        "dryVolumePerArea": true,
-        "speed": true,
-        "heading": true,
-        "cropFlow": true,
-        "proteinPercentage": true,
-        "fuelRate": true,
-        "fuelUsed": true
+        "area": false,
+        "distance": false,
+        "elevation": false,
+        "equipmentWidth": false,
+        "harvestMoisture": false,
+        "wetMass": false,
+        "wetMassPerArea": false,
+        "wetVolume": false,
+        "wetVolumePerArea": false,
+        "dryMass": false,
+        "dryMassPerArea": false,
+        "dryVolume": false,
+        "dryVolumePerArea": false,
+        "speed": false,
+        "heading": false,
+        "cropFlow": false,
+        "proteinPercentage": false,
+        "fuelRate": false,
+        "fuelUsed": false
     },
     "planted": {
-        "heading": true,
-        "distance": true,
-        "elevation": true,
-        "seedRate": true,
-        "area": true,
-        "equipmentWidth": true,
-        "speed": true,
-        "seedRateTarget": true,
-        "seedDepth": true,
-        "fuelRate": true,
-        "fuelUsed": true,
-        "downForce": true,
-        "singulation": true
+        "heading": false,
+        "distance": false,
+        "elevation": false,
+        "seedRate": false,
+        "area": false,
+        "equipmentWidth": false,
+        "speed": false,
+        "seedRateTarget": false,
+        "seedDepth": false,
+        "fuelRate": false,
+        "fuelUsed": false,
+        "downForce": false,
+        "singulation": false
     },
     "applied": {
-        "heading": true,
-        "distance": true,
-        "elevation": true,
-        "appliedRate": true,
-        "area": true,
-        "equipmentWidth": true,
-        "speed": true,
-        "appliedRateTarget": true,
-        "fuelRate": true,
-        "fuelUsed": true
+        "heading": false,
+        "distance": false,
+        "elevation": false,
+        "appliedRate": false,
+        "area": false,
+        "equipmentWidth": false,
+        "speed": false,
+        "appliedRateTarget": false,
+        "fuelRate": false,
+        "fuelUsed": false
     },
     "tillage": {
-        "area": true,
-        "heading": true,
-        "distance": true,
-        "elevation": true,
-        "equipmentWidth": true,
-        "tillageDepthTarget": true,
-        "speed": true,
-        "tillageDepthActual": true,
-        "fuelRate": true,
-        "fuelUsed": true
+        "area": false,
+        "heading": false,
+        "distance": false,
+        "elevation": false,
+        "equipmentWidth": false,
+        "tillageDepthTarget": false,
+        "speed": false,
+        "tillageDepthActual": false,
+        "fuelRate": false,
+        "fuelUsed": false
     }
 }
 ```

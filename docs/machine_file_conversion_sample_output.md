@@ -931,7 +931,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | operationType         | *        | string                      | -                    | string "planted"                                                             |
   | originalOperationType | **       | string                      | -                    | string                                                                       |
   | equipmentWidth        | *        | float                       | ft or m              | Width of implement                                                           |
-  | recordingStatus       | *        | Boolean                     | -                    | Recording status of machine at point                                         |
+  | recordingStatus       | **       | Boolean                     | -                    | Recording status of machine at point                                         |
   | seedRate              | *        | int                         | seeds/m² or seeds/ac | The rate of seeds planted at point                                           |
   | variety               | **       | string                      | -                    | The variety of seed being planted                                            |
   | speed                 | **       | float                       | ft/s or m/s          | Speed of machine at point                                                    |
@@ -958,7 +958,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | elevation             | *        | float                       | m                | Distance to sea level                                                        |
   | area                  | *        | float                       | ft² or m²        | Area represented by point                                                    |
   | appliedRate           | *        | float                       | fl.oz/ac or L/m² | The amount of product being applied at point                                 |
-  | recordingStatus       | *        | Boolean                     | -                | Recording status of machine                                                  |
+  | recordingStatus       | * *      | Boolean                     | -                | Recording status of machine                                                  |
   | timestamp             | *        | string                      | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
   | operationType         | *        | string                      | -                | string "applied"                                                             |
   | originalOperationType | **       | string                      | -                | string                                                                       |
@@ -986,7 +986,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | operationType         | *        | string                      | -              | string "harvested"                                                           |
   | originalOperationType | **       | string                      | -              | string                                                                       |
   | equipmentWidth        | *        | float                       | ft or m        | Width of implement                                                           |
-  | recordingStatus       | *        | Boolean                     | -              | Recording status of machine                                                  |
+  | recordingStatus       | **       | Boolean                     | -              | Recording status of machine                                                  |
   | harvestMoisture       | *        | float                       | %              | float                                                                        |
   | wetMass               | *        | float                       | lb or kg       | wet mass harvested in that point                                             |
   | wetMassPerArea        | *        | float                       | lb/ac or kg/ha | wet mass harvested in that point divided by area                             |
@@ -1018,7 +1018,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | heading               | *        | float                       | -                | Heading of machine at point                                                  |
   | elevation             | *        | float                       | m                | Distance to sea level                                                        |
   | area                  | *        | float                       | ft² or m²        | Area represented by point                                                    |
-  | recordingStatus       | *        | Boolean                     | -                | Recording status of machine                                                  |
+  | recordingStatus       | **       | Boolean                     | -                | Recording status of machine                                                  |
   | timestamp             | *        | string                      | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
   | operationType         | *        | string                      | -                | string "tillage"                                                             |
   | originalOperationType | **       | string                      | -                | string                                                                       |

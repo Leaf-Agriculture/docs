@@ -1,22 +1,31 @@
 ---
-title: Authentication Alerts
-description: Alerts - Authentication
-sidebar_label: Authentication
+title: Alert Authentication and Security
+description: Alerts - Authentication and Security
+sidebar_label: Authentication and Security
 ---
 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-It’s very important to confirm that requests received on your webhook are sent from Leaf, to avoid IP spoofing attacks.
-To this end, you should verify webhook signatures.
+## Validating Signatures from Leaf
 
-Leaf generates signatures using a hash-based message authentication code (HMAC) with SHA-256, and 
-the secret specified when you created the alerts' configuration as the HMAC key.
-Be careful with deserialization of the request body when using it to verify the signature. 
-It's recommended that you get the request body as bytes. The signed content has no line breaks and spaces after symbols, it's a string of the raw JSON with white-spaces after “:” and “,”.
+Keeping your webhook secure is essential to ensure that only Leaf sends requests to your endpoint. To help with this, Leaf uses signatures to verify every request.
 
-The digest is added to the X-Leaf-Signature header encoded in base 64.
+Here’s how it works:
+
+- Signatures and Secrets: Each webhook request is signed using HMAC with SHA-256. The secret key you set up during the alert’s configuration is used to generate the signature.
+
+- What You Should Do: Use the X-Leaf-Signature header in the request to verify the signature. This ensures the request is genuine and untampered. The digest added to the X-Leaf-Signature header is encoded in base 64.
+
+- Handling the Request Body: Always read the request body as raw bytes before verifying the signature. The signed content is a compact JSON string without extra line breaks or spaces (other than spaces after ":" and ",").
+
+By following these steps, you’ll ensure that your application only processes requests sent by Leaf.
+
+:::info 
+Using an `X-CompanyName-Signature` header is a common method of securing webhooks and is used by many companies including (Twilio)[https://www.twilio.com/docs/usage/webhooks/webhooks-security] and (Slack)[https://api.slack.com/authentication/verifying-requests-from-slack]. 
+:::
+
 
 Here is an example on how to verify the request in your webhook:
 
@@ -86,3 +95,9 @@ For example, if you need to authenticate a created field, the `alert_payload` wi
   "type": "fieldCreated"
 }
 ```
+
+## Webhooks and IP Addresses 
+
+Leaf uses a cloud architecture to provide services, and as such, does not have a fixed range of IP addresses that issue webhooks.
+
+When designing your network architecture, you may wish to have one set of servers and a load balancer in a DMZ that receive webhook requests from Leaf, and then proxy those requests to your private network.

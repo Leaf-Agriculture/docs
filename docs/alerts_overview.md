@@ -14,7 +14,7 @@ With Alerts you can be notified when something happens or changes instead of nee
 
 Leaf Alerts are set up as webhooks. Webhooks are user-defined HTTP callbacks that are triggered by some event in a web application and make it easier to integrate different applications or third-party APIs, like Leaf.
 
-When setting up an Alert, you provide us with a server URL (the address of the callback), an encoded secret for you to validate the authenticity of incoming webhook requests, and you specify what events you want to be notified about. When those events occur, we notify you via an HTTP request to the provided URL. Security is important and to understand how to verify if an incoming request comes from Leaf, see the [Authentication section][alerts_auth].
+When setting up an Alert, you provide us with a server URL (the address of the callback), an encoded secret for you to validate the authenticity of incoming webhook requests, and you specify what events you want to be notified about. When those events occur, we notify you via an HTTP request to the provided URL. Security is important and to understand how to verify if an incoming request comes from Leaf, see [Authentication and Security][alerts_auth].
 
 Events you might want to be alerted about include:
 

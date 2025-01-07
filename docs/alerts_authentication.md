@@ -23,7 +23,7 @@ Here’s how it works:
 By following these steps, you’ll ensure that your application only processes requests sent by Leaf.
 
 :::info 
-Using an `X-CompanyName-Signature` header is a common method of securing webhooks and is used by many companies including (Twilio)[https://www.twilio.com/docs/usage/webhooks/webhooks-security] and (Slack)[https://api.slack.com/authentication/verifying-requests-from-slack]. 
+Using an `X-CompanyName-Signature` header is a common method of securing webhooks and is used by many companies including [Twilio](https://www.twilio.com/docs/usage/webhooks/webhooks-security) and [Slack](https://api.slack.com/authentication/verifying-requests-from-slack). 
 :::
 
 

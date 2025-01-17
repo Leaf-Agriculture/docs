@@ -25,7 +25,7 @@ https://api.withleaf.io/services/billingapplication/api
 
 See below the REST resources and their endpoints available in this service.
 
-### Contract Products:
+### Contract Products
 - AUDIT_FIELDS_BOUNDARY
 
 Current active field boundary area, unbdounded by sales contract start and end dates.

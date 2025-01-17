@@ -9,6 +9,11 @@ This documentation website was built using [Docusaurus 2][1]
 $ npm install
 ```
 
+or if you are having problems with dependency conflicts:
+```
+$ npm install --legacy-peer-deps
+```
+
 ### Local Development
 This commmand starts a local server with auto reload enabled. Every time you
 save a file it will refresh the page in the browser.

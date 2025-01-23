@@ -28,7 +28,7 @@ See below the REST resources and their endpoints available in this service.
 ### Contract Products
 - AUDIT_FIELDS_BOUNDARY
 
-Current active field boundary area, unbdounded by sales contract start and end dates.
+Current active field boundary area, unbounded by sales contract start and end dates.
 
 - FIELDS_BOUNDARY
 

@@ -41,10 +41,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [30]: https://docs.withleaf.io/docs/configurations_overview/#enableGeoparquetOutput
 [31]: #get-the-operations-standardgeoparquet
 [32]: #get-the-operations-filteredgeoparquet
+[files_sample]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-file-sample
 [sample_summary]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-summary
 [sample_units]: https://docs.withleaf.io/docs/operations_sample_output#field-operations-units
 [postman]: https://github.com/Leaf-Agriculture/Leaf-API-Postman-Collection
-[files_sample]: https://docs.withleaf.io/docs/machine_file_conversion_sample_output#machine-file-sample]
 
 ## About
 
@@ -1466,7 +1466,7 @@ Allow the user to fetch all files resources that were aggregated to generate an 
 
 #### Response
 
-Check our [sample response](files_sample) to have complete represention on the expected output.
+Check our [sample response][files_sample] to have complete representation on the expected output.
 
 ### Reprocess an operation
 

@@ -293,7 +293,7 @@ Gets the summary, if available, for the file id.
 
 &nbsp<span class="badge badge--success">GET</span>  `/files/{id}/images`
 
-Gets a list of PNG images generated from the operation's file properties.
+Gets a list of images generated from the operation's file properties.  To enable image generation, please make sure you have enabled the relevant attributes for which you want images created using the  [filesImageAttributeCreation](https://docs.withleaf.io/docs/configurations_overview#filesimageattributecreation) configuration. 
 
 #### Request examples
 

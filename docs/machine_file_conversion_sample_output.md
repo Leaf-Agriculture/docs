@@ -1055,7 +1055,7 @@ The points in the standardGeoJSON are considered valid if all the following rule
 | harvestMoisture    | > 0.0 and <100.0 |
 | appliedRate        | > 0.0  |
 | seedRate           | > 0.0  |
-| tillageDepthActual | > 0.0  |
+| tillageDepthActual | >= 0.0  |
 | recordingStatus    | = "On" |
 
 The API will automatically clean the invalid points when the [`cleanupStandardGeojson`][1] configuration is enabled.

@@ -49,7 +49,8 @@ Custom configurations can be set for individual Leaf Users. Configurations set f
 
 ### Field Boundary Management
 #### automaticFixBoundary
-The default value is `false`. If set to `true`, this configuration will attempt to correct invalid geometries obtained from providers. More information [here][13].
+##### default: `true`
+When enabled Leaf will attempt to correct invalid geometries obtained from providers. More information [here][13].
 
 
 #### fieldsAttachIntersection

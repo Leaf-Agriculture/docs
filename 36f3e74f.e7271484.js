@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[26],{82:function(o){o.exports=JSON.parse('{"rick-roll":{"allTagsPath":"/docs/blog/tags","slug":"rick-roll","name":"rick roll","count":1,"permalink":"/docs/blog/tags/rick-roll"}}')}}]);

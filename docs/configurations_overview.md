@@ -53,7 +53,8 @@ Configurations can be set at two levels:
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [Field Boundary Management](#field-boundary-management) | [automaticFixBoundary](#automaticfixboundary), [fieldsAttachIntersection](#fieldsattachintersection), [fieldsAutoMerge](#fieldsautomerge), [fieldsAutoSync](#fieldsautosync), [fieldsMergeIntersection](#fieldsmergeintersection)                                                                                                                                                                                                                                                                                                                                                                                                                         | 
 | [Machine File Conversion ](#machine-file-conversion)    | [cleanupStandardGeojson](#cleanupstandardgeojson), [originalOperationData](#originaloperationdata), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableGeoparquetOutput](#enablegeoparquetoutput)                                                                                                                                                                                                                                                                                                                                                    | 
-| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsImageAsGeoTiff](#operationsimageasgeotiff), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [operationsImageAttributeCreation](#operationsimageattributecreation), [enableGeoparquetOutput](#enablegeoparquetoutput) | 
+| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [enableGeoparquetOutput](#enablegeoparquetoutput) | 
+| [ Field Operations Images ](#image-generation)                | [operationsImageCreation](#operationsimagecreation), [operationsImageAsGeoTiff](#operationsimageasgeotiff), [operationsImageAttributeCreation](#operationsimageattributecreation)                                                                                                                                                                                                                                                                                                                                                                                              | 
 | [ Irrigation ](#irrigation)                  | [irrigationProcessingRange](#irrigationprocessingrange)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 | [ Data Synchronization ](#data-synchronization)                  | [organizationDataSync](#organizationdatasync), [customDataSync](#customdatasync), [fieldsAutoSync](#fieldsautosync), [operationsAutoSync](#operationsautosync), [implementsAutoSync](#implementsautosync), [machinesAutoSync](#machinesautosync), [operatorsAutoSync](#operatorsautosync), [productsAutoSync](#productsautosync), [zonesAutoSync](#zonesautosync), [syncPartnerData](#syncpartnerdata)                                                                                                                                                                                                                                                                                                                                                                                            | 
 
@@ -153,9 +154,67 @@ Default: `true`
 
 Enable this setting to allow filtering of [Field Operations][2] data based on various criteria (see [Filtered GeoJSON][7]). 
 
-:::note
-`operationsFilteredGeojson` must be `true` for Leaf to generate [Operations Images][8].
-:::
+
+
+
+#### operationsRemoveOutliers
+Default: `true`
+
+Enable this setting to remove outlier points from the `filteredGeojson` output for harvest operations. Leaf identifies outliers based on harvest volume values falling outside the standard deviation threshold set by `operationsOutliersLimit`. Requires `operationsFilteredGeojson` to be enabled. See [Outliers][5] for more details.
+
+#### operationsOutliersLimit
+Default: `3`
+
+Set the standard deviation threshold for identifying outliers when `operationsRemoveOutliers` is enabled. For example, the default value `3` removes points where the harvest volume is more than 3 standard deviations from the mean. See [Outliers][5] for more details.
+
+#### operationsMergeRange
+Default: `5` days
+
+Define the time window (in days) used to group machine files into a single non-harvest Field Operation. Files within this range for the same field, crop, and operation type are merged.
+
+#### operationsMergeRangeHarvested
+Default: `21` days
+
+Define the time window (in days) used to group machine files into a single harvest Field Operation. Files within this range for the same field and crop are merged.
+
+#### operationsProcessingRange
+Default: `[Set as needed]` (Typically 12 months)
+
+Specify the lookback period (in months) for fetching and processing operations data from providers. Leaf will only process operations created or updated within this timeframe.
+
+#### splitOperationsByField
+Default: `true`
+
+Enable this setting to create separate Field Operations for each distinct Leaf Field Boundary that intersects with the machine data. If disabled, data intersecting multiple boundaries might be combined into a single operation.
+
+#### splitOperationsByProvider
+Default: `true`
+
+Enable this setting to group machine files by provider *in addition to* field, operation type, crop, and date when creating Field Operations. If disabled (`false`), Leaf merges data from different providers into the same Field Operation if other criteria match.
+
+#### splitOperationsByTillType
+Default: `false`
+
+Enable this setting to create separate Field Operations for each unique `tillType` found within tillage machine data. If disabled, different tillage types might be combined into a single operation.
+
+
+#### unitMeasurement
+Default: `[Your Preferred System]`
+
+[See this section for more information](#unitmeasurement)
+
+#### enableOutsideFieldGeojson
+Default: `false`
+
+[See this section for more information](#enableoutsidefieldgeojson)
+
+#### enableOperationsSession
+Default: `false`
+
+Enables a new view of the field operation data, compiled by operator, implement and machines used in the operation. The information can be accessed in the [field operation session endpoint][17].
+
+
+### Field Operations Image Generation
 
 #### operationsImageCreation
 Default: `false`
@@ -235,71 +294,6 @@ Customize which Operations Images are generated by setting the corresponding att
     }
 }
 ```
-
-
-
-#### operationsRemoveOutliers
-Default: `true`
-
-Enable this setting to remove outlier points from the `filteredGeojson` output for harvest operations. Leaf identifies outliers based on harvest volume values falling outside the standard deviation threshold set by `operationsOutliersLimit`. Requires `operationsFilteredGeojson` to be enabled. See [Outliers][5] for more details.
-
-#### operationsOutliersLimit
-Default: `3`
-
-Set the standard deviation threshold for identifying outliers when `operationsRemoveOutliers` is enabled. For example, the default value `3` removes points where the harvest volume is more than 3 standard deviations from the mean. See [Outliers][5] for more details.
-
-#### operationsMergeRange
-Default: `5` days
-
-Define the time window (in days) used to group machine files into a single non-harvest Field Operation. Files within this range for the same field, crop, and operation type are merged.
-
-#### operationsMergeRangeHarvested
-Default: `21` days
-
-Define the time window (in days) used to group machine files into a single harvest Field Operation. Files within this range for the same field and crop are merged.
-
-#### operationsProcessingRange
-Default: `[Set as needed]` (Typically 12 months)
-
-Specify the lookback period (in months) for fetching and processing operations data from providers. Leaf will only process operations created or updated within this timeframe.
-
-#### splitOperationsByField
-Default: `true`
-
-Enable this setting to create separate Field Operations for each distinct Leaf Field Boundary that intersects with the machine data. If disabled, data intersecting multiple boundaries might be combined into a single operation.
-
-#### splitOperationsByProvider
-Default: `true`
-
-Enable this setting to group machine files by provider *in addition to* field, operation type, crop, and date when creating Field Operations. If disabled (`false`), Leaf merges data from different providers into the same Field Operation if other criteria match.
-
-#### splitOperationsByTillType
-Default: `false`
-
-Enable this setting to create separate Field Operations for each unique `tillType` found within tillage machine data. If disabled, different tillage types might be combined into a single operation.
-
-
-
-
-
-#### unitMeasurement
-Default: `[Your Preferred System]`
-
-[See this section for more information](#unitmeasurement)
-
-#### enableOutsideFieldGeojson
-Default: `false`
-
-[See this section for more information](#enableoutsidefieldgeojson)
-
-#### enableOperationsSession
-Default: `false`
-
-Enables a new view of the field operation data, compiled by operator, implement and machines used in the operation. The information can be accessed in the [field operation session endpoint][17].
-
-
-#### enableGeoparquetOutput
-[See this section for more information](#enableGeoparquetOutput)
 
 ### Irrigation
 

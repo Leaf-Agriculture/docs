@@ -29,3 +29,16 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+/* Increase width of the right-hand table of contents */
+.col.col--3:last-child {
+  --ifm-col-width: 30%; /* Adjust this percentage as needed */
+  max-width: 30%; /* Match the width */
+}
+
+/* Adjust the main content area to accommodate the wider TOC */
+.col.col--9:first-child, 
+.col.col--7:first-child { /* Add col--7 if you use a left sidebar */
+  --ifm-col-width: 70%; /* 100% - TOC width */
+  max-width: 70%; /* Match the width */
+}

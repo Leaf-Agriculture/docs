@@ -43,7 +43,7 @@ sidebar_label: Overview
 
 
 ## About 
-By the end of this section, the objective is to successfully authenticate your application and link provider credentials to Leaf, enabling you to start integrating standardized data from major agricultural providers. Ultimately you’ll want your customers to be able to integrate their (user-permissioned) data from their providers into your application. So in order to set this up at the user level, you’ll need to attach the user token from the provider to the Leaf User. 
+By the end of this section, the objective is to successfully authenticate your application and link provider credentials to Leaf, enabling you to start integrating standardized data from major agricultural providers. Ultimately you'll want your customers to be able to integrate their (user-permissioned) data from their providers into your application. So in order to set this up at the user level, you'll need to attach the user token from the provider to the Leaf User. 
 
 TIP: Once you get to the stage of building the user authentication UI for your customers integrating their providers, we recommend using our pre-built [Leaf Link widget][1]. 
 
@@ -60,6 +60,15 @@ Each data provider's authentication flow is slightly different. Please refer to 
 - For more crop monitoring or weather providers, head to the relevant documentation sections. If you still don't see your provider, contact us at help@withleaf.io for more information. 
 
 This authentication flow has to be done only once in most cases. Leaf will manage the tokens and refresh them when needed.
+
+### Provider environments 
+Some providers utilize distinct environments, which Leaf categorizes as **STAGE** (also known as Sandbox or Test) and **PRODUCTION**. It's crucial to align the `clientEnvironment` setting in your Leaf credentials request with your application's status and the type of provider accounts you intend to use:
+
+*   **STAGE:** Use this environment for development and testing. It typically requires corresponding test accounts from the provider. Real customer accounts usually won't work in this environment. Leaf often defaults to this environment.
+*   **PRODUCTION:** Use this environment only when your application has received production access approval from the provider. This environment works with real customer accounts, but test/sandbox accounts often won't function here.
+
+Ensure your application has the necessary permissions from the provider for the environment you select (especially for Production). Mismatched environments or permissions will likely result in non-functional credentials. Refer to specific provider documentation (like John Deere's or CNHI's) for details on their environment requirements and approval processes.
+
 
 ### Provider scopes
 Some providers like John Deere and Climate FieldView keep their resources under specific permissions, which means the user needs to grant access during the authentication process mentioned before. The allowed permissions are grouped in Leaf products as described below:

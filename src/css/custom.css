@@ -33,7 +33,7 @@
 /* Increase width of the right-hand table of contents */
 .col.col--3:last-child {
   --ifm-col-width: 30%; /* Adjust this percentage as needed */
-  max-width: 30%; /* Match the width */
+  max-width: 15%; /* Match the width */
 }
 
 /* Adjust the main content area to accommodate the wider TOC */

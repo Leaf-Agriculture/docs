@@ -116,6 +116,25 @@ Default: `false`
 Enable this setting to have Leaf automatically synchronize zone data from your connected providers.
 
 
+### seasonsAutoSync
+
+Default: `false`
+
+Enable this setting to automatically synchronize growing seasons data from Climate FieldView. When enabled, the system will automatically fetch and process growing seasons for fields, including crop years, season dates, and associated field operations. This is particularly useful for maintaining up-to-date growing season information without manual intervention.
+
+The synchronized season data includes:
+
+Field associations </br>
+Provider season IDs </br>
+Crop years</br>
+Start and end dates</br>
+Activity types</br>
+Season names</br>
+Field operations
+
+If disabled, you will need to manually synchronize season data or manage it through other means.
+
+
 ## Field Boundary Management
 ### automaticFixBoundary
 Default: `true`
@@ -209,8 +228,6 @@ Enable this setting to have Leaf automatically synchronize operation data from y
 Default: `true`
 
 Enable this setting to allow filtering of [Field Operations][2] data based on various criteria (see [Filtered GeoJSON][7]). 
-
-
 
 
 ### operationsRemoveOutliers

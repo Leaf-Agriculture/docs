@@ -253,6 +253,24 @@ Default: `false`
 
 Enable this setting to create separate Field Operations for each unique `tillType` found within tillage machine data. If disabled, different tillage types might be combined into a single operation.
 
+
+### summaryGeometry
+Default: `CONVEX_HULL`
+
+The summaryGeometry setting determines how the geometric boundary of an operation is calculated in the summary data. It has two possible values:
+
+CONVEX_HULL:
+
+Creates a convex hull around all the points in the operation
+A convex hull is the smallest convex polygon that contains all the points.
+
+BUFFER:
+
+Creates a buffer zone around the operation points.
+The buffer size is based on the equipment width.
+If no equipment width is available, it uses a default value of 30ft
+The buffer creates a more detailed representation of the actual coverage area
+
 ### unitMeasurement
 Default: `[Your Preferred System]`
 

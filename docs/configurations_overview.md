@@ -295,7 +295,7 @@ Enable this setting to create separate Field Operations for each unique `tillTyp
 
 ### summaryGeometry
 
-Default: `CONVEX_HULL`
+Default: `BUFFER`
 
 The summaryGeometry setting determines how the geometric boundary of an operation is calculated in the summary data. It has two possible values:
 

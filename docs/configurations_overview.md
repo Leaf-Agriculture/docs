@@ -259,17 +259,25 @@ Default: `CONVEX_HULL`
 
 The summaryGeometry setting determines how the geometric boundary of an operation is calculated in the summary data. It has two possible values:
 
-CONVEX_HULL:
+`CONVEX_HULL`:
 
 Creates a convex hull around all the points in the operation
 A convex hull is the smallest convex polygon that contains all the points.
 
-BUFFER:
+`BUFFER`:
 
 Creates a buffer zone around the operation points.
 The buffer size is based on the equipment width.
 If no equipment width is available, it uses a default value of 30ft
 The buffer creates a more detailed representation of the actual coverage area
+
+
+### summaryInStandardGeojson
+
+Default: `false`
+
+Enable this setting to include summary data in the standard GeoJSON output. When enabled, the standard GeoJSON will include a summary section with properties alongside the feature collection. This summary data includes aggregated information about the operation such as total area, distance, and other operation-specific metrics. If disabled, the standard GeoJSON will only contain the feature collection without any summary information.
+
 
 ### unitMeasurement
 Default: `[Your Preferred System]`

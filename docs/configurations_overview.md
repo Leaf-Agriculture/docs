@@ -278,6 +278,12 @@ Default: `false`
 
 Enable this setting to include summary data in the standard GeoJSON output. When enabled, the standard GeoJSON will include a summary section with properties alongside the feature collection. This summary data includes aggregated information about the operation such as total area, distance, and other operation-specific metrics. If disabled, the standard GeoJSON will only contain the feature collection without any summary information.
 
+### matchingOperationProducts
+
+Default: `false`
+
+Enable this setting to match and link products from operations with their corresponding product catalog entries. When enabled, operations will include detailed product information and matching details, allowing for better product tracking and analysis. This is particularly useful for application-type operations where you want to maintain a record of which specific products were used. If disabled, operations will not include product matching information.
+
 
 ### unitMeasurement
 Default: `[Your Preferred System]`

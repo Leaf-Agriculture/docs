@@ -36,7 +36,7 @@ If the crop does not have a value defined in this table, then the API will not c
 
 | Crops                    | Density (lb/bu) | Dry Moisture (%) |
 |--------------------------------------|----------------:|-------------:|
-| alfalfa                              |   100   |             |
+| alfalfa                              |   100   |        13   |
 | annual ryegrass                      |    56   |        14   |
 | apples                               |      48 |             |
 | arugula                              |     1   |             |
@@ -44,20 +44,20 @@ If the crop does not have a value defined in this table, then the API will not c
 | basil                                |     1   |             |
 | bean, black                          |    60   |             |
 | bean, green                          |   78.81 |             |
-| bean, navy                           |    67.2 |             |
+| bean, navy                           |    67.2 |        15   |
 | bean, pinto                          |   60.99 |             |
-| beans, edible                        |    60   |             |
+| beans, edible                        |    60   |        15   |
 | bell pepper                          |     1   |             |
 | bent grass                           |    14   |             |
 | bentgrass                            |     1   |             |
 | bermuda grass                        |     1   |             |
-| black eyed peas                      |   60.01 |             |
+| black eyed peas                      |   60.01 |        12   |
 | blue grass                           |    14   |             |
 | blueberry                            |     1   |             |
 | bok choy                             |     1   |             |
 | boot stage wcs                       |   60.01 |             |
 | borage                               |    60   |             |
-| buckwheat                            |    44   |             |
+| buckwheat                            |    44   |        14   |
 | camassia                             |     1   |             |
 | canna                                |     1   |             |
 | canola                               |    50   |        10   |
@@ -66,29 +66,28 @@ If the crop does not have a value defined in this table, then the API will not c
 | catnip                               |     1   |             |
 | chasmanthe                           |     1   |             |
 | cherries                             |     1   |        13   |
-| chick peas                           |    60   |             |
+| chick peas                           |    60   |        14   |
 | chickpeas                            |   60.98 |             |
 | chives                               |     4.5 |             |
 | clover                               |    60   |             |
-| coffee                               |  19.769 |             |
+| coffee                               |  19.769 |         1   |
 | colza                                |   71.09 |             |
 | coriander                            |    28   |             |
-| corn                                 |    56   |             |
-| corn cob mix                         |   77.69 |        13   |
-| corn seed                            |     1   |             |
-| corn silage                          |   49.80 |             |
+| corn                                 |    56   |        15   |
+| corn, cob mix                         |   77.69 |        13   |
+| corn, seed                            |     1   |             |
+| corn, silage                          |   49.80 |             |
 | corn, seed                           |   49.57 |             |
-| corn, white                          |   56.57 |        13   |
-| corn2                                |    56   |             |
+| corn, white                          |   56.57 |        15   |
 | cotton                               |  120.42 |             |
 | cranberry                            |     1   |             |
 | crimson clover                       |    60   |             |
-| downy bromegrass                     |     1   |             |
-| durum wheat                          |    60   |             |
+| downy bromegrass                     |     1   |        12   |
+| durum wheat                          |    60   |        13.5 |
 | edible bean lrg                      |    30   |             |
 | edible bean med                      |      30 |             |
 | edible bean sml                      |      30 |             |
-| edible beans                         |    60   |             |
+| edible beans                         |    60   |        15   |
 | einkorn                              |   18.14 |        13   |
 | els                                  |    32   |             |
 | emmer                                |   18.14 |        13   |
@@ -107,12 +106,12 @@ If the crop does not have a value defined in this table, then the API will not c
 | fababean                             |   62.15 |             |
 | faber beans                          |    60   |             |
 | fall barley                          |    48   |             |
-| fan spring barley                    |    48   |        13   |
+| fan spring barley                    |    48   |        15   |
 | fenugreek                            |     1   |             |
 | festulolium                          |     1   |             |
 | field beans                          |    60   |             |
-| field peas                           |    60   |             |
-| flax                                 |    60   |        13   |
+| field peas                           |    60   |        12   |
+| flax                                 |    60   |        10   |
 | forage mix                           |     1   |             |
 | fritillaria                          |     1   |             |
 | garlic                               |     1   |             |
@@ -125,38 +124,38 @@ If the crop does not have a value defined in this table, then the API will not c
 | grass seeds                          |    22   |             |
 | grass wet                            |   100   |             |
 | green onions                         |     1   |             |
-| hard red spring wheat                |   60.01 |             |
-| hard red winter wheat                |   60.01 |             |
-| hard white spring wheat              |   60.01 |             |
-| hard white winter wheat              |   60.01 |             |
+| hard red spring wheat                |   60.01 |        13.5 |
+| hard red winter wheat                |   60.01 |        13.5 |
+| hard white spring wheat              |   60.01 |        13.5 |
+| hard white winter wheat              |   60.01 |        13.5 |
 | horseradish                          |     1   |             |
 | iceberg salad                        |   18.65 |             |
 | lentil chilean                       |   60.01 |             |
 | lentil crimson                       |   60.01 |             |
 | lentil eston                         |   60.01 |             |
 | lentil laird                         |   60.01 |             |
-| lentils                              |    60   |             |
+| lentils                              |    60   |        13   |
 | lucerne                              |   54.38 |             |
 | lupins                               |    60   |             |
 | macadamia                            |     1   |             |
-| maize                                |    56   |             |
+| maize                                |    56   |        15.0 |
 | maize ccm                            |    56   |             |
 | maize long                           |   100   |             |
 | maize short                          |   100   |             |
 | meadowfoam                           |    60   |             |
-| millet                               |    50   |         9.5 |
+| millet                               |    50   |        13   |
 | millet, pearl                        |    48   |             |
 | mint                                 |     1   |             |
 | miscanthus                           |   100   |             |
 | montbretia                           |     1   |             |
 | mung bean                            |   60.01 |             |
-| mustard                              |    55   |             |
+| mustard                              |    55   |         9.5 |
 | mustard gisilba                      |   60.01 |             |
 | mustard, seed                        |   59.00 |             |
-| navy beans                           |   61.99 |             |
+| navy beans                           |   61.99 |        15   |
 | oats                                 |    32   |        12   |
 | oilseed rape winter                  |   52.01 |             |
-| orchard grass                        |    14   |             |
+| orchard grass                        |    14   |        12   |
 | orchardgrass                         |     1   |             |
 | ornamental allium                    |     1   |             |
 | other grains                         |    40   |             |
@@ -169,7 +168,7 @@ If the crop does not have a value defined in this table, then the API will not c
 | per ryegrass                         |    56   |        13   |
 | phacelia                             |     1   |             |
 | pineapple                            |     1   |        13   |
-| popcorn                              |   100   |             |
+| popcorn                              |   100   |        14   |
 | potatoes                             |    60   |             |
 | potatoes for chips                   |   60.01 |             |
 | potatoes for retail                  |   60.01 |             |
@@ -178,34 +177,34 @@ If the crop does not have a value defined in this table, then the API will not c
 | quinoa                               |     1   |             |
 | radish                               |   52.45 |             |
 | rape seed                            |    60   |             |
-| rapeseed                             |   52.01 |             |
+| rapeseed                             |   52.01 |        12.5 |
 | rapeseed e ind                       |   52.01 |             |
 | rapeseed e oil                       |   52.01 |             |
 | raspberry                            |     1   |             |
 | red clover                           |     1   |             |
-| red grass fescue                     |    14   |             |
+| red grass fescue                     |    14   |        12   |
 | reed canary grass                    |     1   |        12   |
-| rice                                 |    45   |             |
+| rice                                 |    45   |        13   |
 | rice long                            |    45   |             |
 | rice medium                          |    45   |         8   |
 | rutabaga                             |     1   |             |
-| rye                                  |    56   |        14   |
-| safflower                            |    38   |             |
+| rye                                  |    56   |        15   |
+| safflower                            |    38   |         8   |
 | sesame                               |    46   |        15   |
 | silage corn                          |   60.05 |        10   |
 | silvergrass                          |     1   |             |
-| smooth bromegrass                    |     1   |             |
-| soft red spring wheat                |   60.01 |             |
-| soft red winter wheat                |   60.01 |             |
+| smooth bromegrass                    |     1   |        12   |
+| soft red spring wheat                |   60.01 |        13.5 |
+| soft red winter wheat                |   60.01 |        13.5 |
 | soft white spring wheat              |   60.01 |        13.5 |
 | soft white winter wheat              |   60.01 |        13.5 |
-| sorghum                              |    56   |             |
-| soybeans                             |    60   |             |
+| sorghum                              |    56   |        14   |
+| soybeans                             |    60   |        13   |
 | spelt                                |   18.14 |        13   |
 | spider lilies                        |     1   |             |
-| spring barley                        |    48   |             |
+| spring barley                        |    48   |        15   |
 | spring rye                           |    56   |             |
-| spring wheat                         |    60   |             |
+| spring wheat                         |    60   |        13.5 |
 | sudangrass                           |   39.99 |             |
 | sudex                                |     1   |             |
 | sugar beet                           |   74.66 |             |
@@ -216,30 +215,30 @@ If the crop does not have a value defined in this table, then the API will not c
 | sunflower oil                        |   28.97 |             |
 | sunflower stripe                     |    20   |             |
 | sunflower, seed                      |   51.04 |             |
-| sunflowers                           |   100   |             |
+| sunflowers                           |   100   |        10   |
 | sweet corn                           |    70   |        15   |
 | sweet potatoes                       |    50   |             |
 | sweet sorghum                        |   100   |             |
-| tall fescue                          |     1   |             |
-| timothy grass                        |     1   |             |
-| triticale                            |    50   |             |
+| tall fescue                          |     1   |        12   |
+| timothy grass                        |     1   |        12   |
+| triticale                            |    50   |        13   |
 | turnip                               |   53.52 |             |
 | turnips                              |    55   |        13.5 |
 | upland cotton                        |    32   |             |
 | walnut                               |     1   |             |
 | watermelon                           |     1   |             |
-| wheat                                |    60   |             |
-| wheat (hrd rd spr)                   |    60   |             |
-| wheat (hrd rd wtr)                   |    60   |             |
+| wheat                                |    60   |        13.5 |
+| wheat (hrd rd spr)                   |    60   |        13.5 |
+| wheat (hrd rd wtr)                   |    60   |        13.5 |
 | wheat, canada prairie spring   red   |   60.01 |             |
 | wheat, canada prairie spring   white |   60.01 |         1   |
 | wheat, hard red spring               |   60.01 |        13.5 |
 | wheat, hard red winter               |   60.01 |        13.5 |
-| wheat, hard white spring             |   60.01 |             |
+| wheat, hard white spring             |   60.01 |        13.5 |
 | wheat, hard white winter             |   60.01 |        13.5 |
 | wheat, soft red spring               |   60.01 |        13.5 |
 | wheat, soft red winter               |   60.01 |        13.5 |
-| wheat, soft white spring             |   60.01 |             |
+| wheat, soft white spring             |   60.01 |        13.5 |
 | wheat, soft white winter             |   60.01 |        13.5 |
 | white beans                          |   55.16 |             |
 | white clover                         |    60   |             |
@@ -249,8 +248,8 @@ If the crop does not have a value defined in this table, then the API will not c
 | whole crop wet                       |   100   |             |
 | wild rice                            |    45   |             |
 | winter barley                        |    48   |             |
-| winter rye                           |    56   |        14   |
-| winter wheat                         |    60   |             |
+| winter rye                           |    56   |        15   |
+| winter wheat                         |    60   |        13.5 |
 | wood                                 |   100   |             |
 | yellow popcorn                       |   60.01 |             |
 | zantedeschia                         |     1   |             |

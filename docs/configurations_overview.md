@@ -54,8 +54,8 @@ Configurations can be set at two levels:
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [ Data Synchronization ](#data-synchronization)                  | [organizationDataSync](#organizationdatasync), [customDataSync](#customdatasync), [fieldsAutoSync](#fieldsautosync), [operationsAutoSync](#operationsautosync), [implementsAutoSync](#implementsautosync), [machinesAutoSync](#machinesautosync), [operatorsAutoSync](#operatorsautosync), [productsAutoSync](#productsautosync), [zonesAutoSync](#zonesautosync), [syncPartnerData](#syncpartnerdata)                                                                                                                                                                                                                                                                                                                                                                                            | 
 | [Field Boundary Management](#field-boundary-management) | [automaticFixBoundary](#automaticfixboundary), [fieldsAttachIntersection](#fieldsattachintersection), [fieldsAutoMerge](#fieldsautomerge), [fieldsAutoSync](#fieldsautosync), [fieldsMergeIntersection](#fieldsmergeintersection)                                                                                                                                                                                                                                                                                                                                                                                                                         | 
-| [Machine File Conversion ](#machine-file-conversion)    | [cleanupStandardGeojson](#cleanupstandardgeojson), [originalOperationData](#originaloperationdata), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableGeoparquetOutput](#enablegeoparquetoutput), [plantedOperationsCropOptional](#plantedoperationscropoptional)                                                                                                                                                                                                                                                                                                                                                    | 
-| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [enableGeoparquetOutput](#enablegeoparquetoutput), [plantedOperationsCropOptional](#plantedoperationscropoptional)  | 
+| [Machine File Conversion ](#machine-file-conversion)    | [cleanupStandardGeojson](#cleanupstandardgeojson), [originalOperationData](#originaloperationdata), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableGeoparquetOutput](#enablegeoparquetoutput), [CropOptional](#cropoptional) ,[SeedRateOptional](#seedrateoptional)                                                                                                                                                                                                                                                                                                                                                    | 
+| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [enableGeoparquetOutput](#enablegeoparquetoutput), [CropOptional](#cropoptional), [SeedRateOptional](#seedrateoptional)  | 
 | [ Field Operations Images ](#field-operations-image-generation)                | [operationsImageCreation](#operationsimagecreation), [operationsImageAsGeoTiff](#operationsimageasgeotiff), [operationsImageAttributeCreation](#operationsimageattributecreation),                                                                                                                                                                                                                                                                                                                                                                                              | 
 | [ Irrigation ](#irrigation)                  | [irrigationProcessingRange](#irrigationprocessingrange)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 
@@ -182,16 +182,31 @@ Default: `false`
 
 Enable this setting to generate vector point file outputs (like `standardGeoJSON`) in GeoParquet format in addition to GeoJSON. GeoParquet offers faster processing and reduced storage. This setting applies to data processed after it's enabled (no historical conversion). This applies to both Machine File Conversion and Field Operations.
 
-### plantedOperationsCropOptional
+### cropOptional
 Default: `required`
 
-Enable this setting to make the crop value in the summary option. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
+Enable this setting to make the crop value in the summary optional. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
 
 ```json
 {
     "standardGeoJson": {
         "planted": {
             "crop": "optional"
+        }
+    }
+}
+```
+
+### seedRateOptional
+Default: `required`
+
+Enable this setting to make the seedRate value in the summary optional. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
+
+```json
+{
+    "standardGeoJson": {
+        "planted": {
+            "seedRate": "optional"
         }
     }
 }
@@ -283,10 +298,10 @@ Default: `false`
 
 Enables a new view of the field operation data, compiled by operator, implement and machines used in the operation. The information can be accessed in the [field operation session endpoint][17].
 
-### plantedOperationsCropOptional
+### cropOptional
 Default: `required`
 
-Enable this setting to make the crop value in the summary option. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
+Enable this setting to make the crop value in the summary optional. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
 
 ```json
 {
@@ -298,6 +313,20 @@ Enable this setting to make the crop value in the summary option. We will ignore
 }
 ```
 
+### seedRateOptional
+Default: `required`
+
+Enable this setting to make the seedRate value in the summary optional. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
+
+```json
+{
+    "standardGeoJson": {
+        "planted": {
+            "seedRate": "optional"
+        }
+    }
+}
+```
 
 ## Field Operations Image Generation
 

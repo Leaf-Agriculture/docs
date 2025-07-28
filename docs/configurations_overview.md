@@ -54,8 +54,8 @@ Configurations can be set at two levels:
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [ Data Synchronization ](#data-synchronization)                  | [organizationDataSync](#organizationdatasync), [customDataSync](#customdatasync), [fieldsAutoSync](#fieldsautosync), [operationsAutoSync](#operationsautosync), [implementsAutoSync](#implementsautosync), [machinesAutoSync](#machinesautosync), [operatorsAutoSync](#operatorsautosync), [productsAutoSync](#productsautosync), [zonesAutoSync](#zonesautosync), [syncPartnerData](#syncpartnerdata)                                                                                                                                                                                                                                                                                                                                                                                            | 
 | [Field Boundary Management](#field-boundary-management) | [automaticFixBoundary](#automaticfixboundary), [fieldsAttachIntersection](#fieldsattachintersection), [fieldsAutoMerge](#fieldsautomerge), [fieldsAutoSync](#fieldsautosync), [fieldsMergeIntersection](#fieldsmergeintersection)                                                                                                                                                                                                                                                                                                                                                                                                                         | 
-| [Machine File Conversion ](#machine-file-conversion)    | [cleanupStandardGeojson](#cleanupstandardgeojson), [originalOperationData](#originaloperationdata), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableGeoparquetOutput](#enablegeoparquetoutput), [cropOptional](#cropoptional) ,[seedRateOptional](#seedrateoptional)                                                                                                                                                                                                                                                                                                                                                    | 
-| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [enableGeoparquetOutput](#enablegeoparquetoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional)  | 
+| [Machine File Conversion ](#machine-file-conversion)    | [cleanupStandardGeojson](#cleanupstandardgeojson), [originalOperationData](#originaloperationdata), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableGeoparquetOutput](#enablegeoparquetoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional), [appliedRateOptional](#appliedrateoptional)                                                                                                                                                                                                                                                                                                                                                    | 
+| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [enableGeoparquetOutput](#enablegeoparquetoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional), [appliedRateOptional](#appliedrateoptional)  | 
 | [ Field Operations Images ](#field-operations-image-generation)                | [operationsImageCreation](#operationsimagecreation), [operationsImageAsGeoTiff](#operationsimageasgeotiff), [operationsImageAttributeCreation](#operationsimageattributecreation),                                                                                                                                                                                                                                                                                                                                                                                              | 
 | [ Irrigation ](#irrigation)                  | [irrigationProcessingRange](#irrigationprocessingrange)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 
@@ -212,6 +212,21 @@ Enable this setting to make the seedRate an optional, rather than required prope
 }
 ```
 
+### appliedRateOptional
+Default: `required`
+
+Enable this setting to make the appliedRate an optional, rather than required property. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
+
+```json
+{
+    "standardGeoJson": {
+        "applied": {
+            "appliedRate": "optional"
+        }
+    }
+}
+```
+
 ## Field Operations
 These configurations can be enabled with the use of Leaf Field Operations. Field Operations require an active boundary to be present so Leaf can merge the machine files with the field boundaries to create Field Operations.
 
@@ -308,6 +323,21 @@ Enable this setting to make the crop value in the summary optional. We will igno
     "standardGeoJson": {
         "planted": {
             "crop": "optional"
+        }
+    }
+}
+```
+
+### appliedRateOptional
+Default: `required`
+
+Enable this setting to make the appliedRate an optional, rather than required property. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
+
+```json
+{
+    "standardGeoJson": {
+        "applied": {
+            "appliedRate": "optional"
         }
     }
 }

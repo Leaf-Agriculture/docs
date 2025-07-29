@@ -43,7 +43,7 @@ Contracts are automatically generated when you start using Leaf services. Each c
 
 ### API Owner vs Leaf User Level Tracking
 
-- **API Owner Level**: Shows unique spatial area across all users (removes overlaps)
+- **API Owner Level**: Shows unique spatial area across all users (removes overlaps) for a given api owner
 - **Leaf User Level**: Shows individual user processing (includes overlaps, used for billing)
 
 The difference between these totals indicates spatial overlap - useful for identifying data duplication across your organization.

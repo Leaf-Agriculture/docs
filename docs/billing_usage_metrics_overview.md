@@ -41,10 +41,10 @@ Contracts are automatically generated when you start using Leaf services. Each c
 
 **Finding Your Contracts**: Call `GET /billing/contracts` to see available contracts with their IDs and tracked services.
 
-### Account vs User Level Tracking
+### API Owner vs Leaf User Level Tracking
 
-- **Account Level**: Shows unique spatial area across all users (removes overlaps)
-- **User Level**: Shows individual user processing (includes overlaps, used for billing)
+- **API Owner Level**: Shows unique spatial area across all users (removes overlaps)
+- **Leaf User Level**: Shows individual user processing (includes overlaps, used for billing)
 
 The difference between these totals indicates spatial overlap - useful for identifying data duplication across your organization.
 

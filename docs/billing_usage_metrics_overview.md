@@ -25,13 +25,13 @@ Each service tracks area differently with these product identifiers:
 | Product ID | What It Tracks | When to Use |
 |------------|----------------|-------------|
 | `FIELDS_BOUNDARY` | Boundary processing during contract period | Field boundary usage monitoring and billing |
-| `AUDIT_FIELDS_BOUNDARY` | Current total boundary area | Understanding field portfolio size |
-| `OPERATIONS_FILE` | Machine files uploaded/synced | Raw machine data processing usage monitoring and billing |
-| `OPERATIONS_OPERATION` | Operations from files intersecting boundaries | Field-specific operations usage monitoring and billing |
-| `SATELLITE_PROCESS_PLANET` | Planet satellite imagery processing | Planet satellite usage monitoring and billing|
-| `SATELLITE_PROCESS_SENTINEL` | Sentinel satellite imagery processing | Sentinel satellite usage monitoring and billing|
+| `AUDIT_FIELDS_BOUNDARY` | Current total boundary area | Understanding total area with Leaf |
+| `OPERATIONS_FILE` | Machine files processed during contract period| Raw machine data processing usage monitoring |
+| `OPERATIONS_OPERATION` | Operations processed during the contract period based on machine files intersecting boundaries | Field-specific operations usage monitoring and billing |
+| `SATELLITE_PROCESS_PLANET` | Planet satellite imagery procssed during the contract period| Planet satellite usage monitoring and billing|
+| `SATELLITE_PROCESS_SENTINEL` | Sentinel satellite imagery processed during the contract period | Sentinel satellite usage monitoring and billing|
 
-You pay for Leaf to process your data, not access it. Once processed, you have unlimited API access.
+You pay for Leaf to process your data, not access it. Once processed, you have unlimited API access to it for the duration of your contract.
 
 Area is counted when Leaf successfully processes your data (not during uploads or if processing fails). Deleted boundaries count in the current contract term only.
 

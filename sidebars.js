@@ -164,6 +164,14 @@ module.exports = {
             }
           ]
         },
+        {
+          type: 'category',
+          label: 'Usage Monitoring',
+          items: [
+            'billing_usage_metrics_overview',
+            'billing_usage_metrics_endpoints'
+          ]
+        },
       ],
     }
   ]

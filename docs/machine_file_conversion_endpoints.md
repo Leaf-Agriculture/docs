@@ -32,6 +32,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [21]: /docs/configurations_overview#enableoutsidefieldgeojson-1
 [22]: /docs/machine_file_conversion_sample_output#valid-points
 [23]: /docs/configurations_overview#cleanupstandardgeojson-1
+[24]: #get-a-files-standardgeoparquet
+[25]: /docs/configurations_overview#enableGeoparquetOutput
 
 ## About
 
@@ -48,6 +50,7 @@ This service has the following endpoints available:
 | [Get all files][2]                 | <span class="badge badge--success">GET</span> `/files`                         |
 | [Get a file][3]                    | <span class="badge badge--success">GET</span> `/files/{id}`                    |
 | [Get a file summary][4]            | <span class="badge badge--success">GET</span> `/files/{id}/summary`            |
+| [Get a file's standardGeoParquet][24] | <span class="badge badge--success">GET</span> `/files/{id}/standardGeoparquet` |
 | [Get a file's images][5]           | <span class="badge badge--success">GET</span> `/files/{id}/images`             |
 | [Get a file's units][6]            | <span class="badge badge--success">GET</span> `/files/{id}/units`              |
 | [Get a file status][7]             | <span class="badge badge--success">GET</span> `/files/{id}/status`             |
@@ -288,6 +291,77 @@ Gets the summary, if available, for the file id.
 
 [Here's a link with sample responses][14] for "planted", "applied", "harvested" and "tillage" operation files.
 
+
+### Get a file's standardGeoParquet
+
+&nbsp<span class="badge badge--success">GET</span>  `/files/{id}/standardGeoparquet`
+
+Get the standard GeoParquet file URL relative to the file.
+
+:::tip
+To use this option, [enableGeoparquetOutput][25] configuration must be enabled.
+:::
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/standardGeoparquet'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/standardGeoparquet'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/standardGeoparquet'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "downloadStandardGeoparquet": "URL"
+}
+```
 
 ### Get a file's images
 

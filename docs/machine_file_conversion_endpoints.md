@@ -34,6 +34,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [23]: /docs/configurations_overview#cleanupstandardgeojson-1
 [24]: #get-a-files-standardgeoparquet
 [25]: /docs/configurations_overview#enableGeoparquetOutput
+[26]: #get-a-files-polygongeoparquet
+
 
 ## About
 
@@ -51,6 +53,7 @@ This service has the following endpoints available:
 | [Get a file][3]                    | <span class="badge badge--success">GET</span> `/files/{id}`                    |
 | [Get a file summary][4]            | <span class="badge badge--success">GET</span> `/files/{id}/summary`            |
 | [Get a file's standardGeoParquet][24] | <span class="badge badge--success">GET</span> `/files/{id}/standardGeoparquet` |
+| [Get a file's polygonGeoParquet][26] | <span class="badge badge--success">GET</span> `/files/{id}/polygonGeoparquet` |
 | [Get a file's images][5]           | <span class="badge badge--success">GET</span> `/files/{id}/images`             |
 | [Get a file's units][6]            | <span class="badge badge--success">GET</span> `/files/{id}/units`              |
 | [Get a file status][7]             | <span class="badge badge--success">GET</span> `/files/{id}/status`             |
@@ -360,6 +363,77 @@ To use this option, [enableGeoparquetOutput][25] configuration must be enabled.
 ```json
 {
   "downloadStandardGeoparquet": "URL"
+}
+```
+
+### Get a file's polygonGeoParquet
+
+&nbsp<span class="badge badge--success">GET</span>  `/files/{id}/polygonGeoparquet`
+
+Get the polygon GeoParquet file URL relative to the file.
+
+:::tip
+To use this option, enablePolygonOutput configuration must be enabled.
+:::
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/polygonGeoparquet'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/polygonGeoparquet'
+  headers = {'Authorization': f'Bearer ${TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/polygonGeoparquet'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "downloadPolygonGeoparquet": "URL"
 }
 ```
 

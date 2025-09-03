@@ -186,7 +186,7 @@ Enable this setting to generate vector point file outputs (like `standardGeoJSON
 ### enablePolygonOutput
 Default: `false`
 
-Enable this setting to output data in polygon format instead of point format. When set to `false` (default), the GeoJSON output contains point data as shown in the image below:
+Enable this setting to output data in polygon format in addition to point format. When set to `false` (default), the GeoJSON output contains point data as shown in the image below:
 
 <img src={useBaseUrl('img/polygon_output_points.png')} alt="Point data output" />
 

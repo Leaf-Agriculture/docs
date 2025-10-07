@@ -941,10 +941,16 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | seedDepth             | **       | float                       | cm                   | The depth at which seeds were planted at point                               |
   | productIndex          | **       | int                         | -                    | Index of the applied product                                                 |
   | downForce             | **       | float                       | lbf                  | The weight detected by the down force sensor on each row that has one        |
+  | downForceMargin       | **       | float                       | lbf                  | How much weight left to apply to keep each row unit down                 |
   | singulation           | **       | float                       | %                    | The performance of each meter on the planter                                 |
   | xOffset               | **       | float                       | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft                   | Vertical offset from the machine and the implement                       |
   | fuelUsed              | **       | float                       | L or gal             | The fuel consumed                                                            |
+  | groundContact         | **       | float                       | %                    | The amount of time that the weight is present on the gauge wheel         |
+  | spacingVariation      | **       | float                       | %                    | The consistency of the seed spacing                                      |
+  | seedSpacing           | **       | float                       | %                    | Distance between the seeds                                               |
+  | rideQuality           | **       | float                       | %                    | The amount of time the row unit acceleration in greater than desired     |
   
 
   </TabItem>

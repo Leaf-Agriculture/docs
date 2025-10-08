@@ -949,7 +949,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | fuelUsed              | **       | float                       | L or gal             | The fuel consumed                                                            |
   | groundContact         | **       | float                       | %                    | The amount of time that the weight is present on the gauge wheel         |
   | spacingVariation      | **       | float                       | %                    | The consistency of the seed spacing                                      |
-  | seedSpacing           | **       | float                       | %                    | Distance between the seeds                                               |
+  | seedSpacing           | **       | float                       | ft or m              | Distance between the seeds                                               |
   | rideQuality           | **       | float                       | %                    | The amount of time the row unit acceleration in greater than desired     |
   
 

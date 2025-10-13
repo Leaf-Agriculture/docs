@@ -976,6 +976,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
   | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft               | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal         | The fuel consumed                                                            |
 
   </TabItem>
@@ -1012,6 +1013,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | samplingInterval      | **       | float                       | s              | Delta time from the previous recorded feature                                |
   | xOffset               | **       | float                       | m              | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m              | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft             | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal       | The fuel consumed                                                            |
 
   </TabItem>
@@ -1036,6 +1038,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
   | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft               | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal         | The fuel consumed                                                            |
 
   </TabItem>

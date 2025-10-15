@@ -941,10 +941,16 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | seedDepth             | **       | float                       | cm                   | The depth at which seeds were planted at point                               |
   | productIndex          | **       | int                         | -                    | Index of the applied product                                                 |
   | downForce             | **       | float                       | lbf                  | The weight detected by the down force sensor on each row that has one        |
+  | downForceMargin       | **       | float                       | lbf                  | Remaining downforce available to maintain ground contact for each row unit |
   | singulation           | **       | float                       | %                    | The performance of each meter on the planter                                 |
   | xOffset               | **       | float                       | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft                   | Horizontal distance offset between the machine and the implement         |
   | fuelUsed              | **       | float                       | L or gal             | The fuel consumed                                                            |
+  | groundContact         | **       | float                       | %                    | Percentage of time the gauge wheel maintains contact with the ground     |
+  | spacingVariation      | **       | float                       | %                    | Variation in seed spacing, representing the consistency of seed placement |
+  | seedSpacing           | **       | float                       | ft or m              | Distance between consecutive seeds in the row                            |
+  | rideQuality           | **       | float                       | %                    | Percentage of time the row unit experiences acceleration above the desired threshold (indicator of ride smoothness) |
   
 
   </TabItem>
@@ -970,6 +976,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
   | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft               | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal         | The fuel consumed                                                            |
 
   </TabItem>
@@ -1006,6 +1013,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | samplingInterval      | **       | float                       | s              | Delta time from the previous recorded feature                                |
   | xOffset               | **       | float                       | m              | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m              | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft             | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal       | The fuel consumed                                                            |
 
   </TabItem>
@@ -1030,6 +1038,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
   | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft               | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal         | The fuel consumed                                                            |
 
   </TabItem>

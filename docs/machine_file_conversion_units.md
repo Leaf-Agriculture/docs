@@ -285,7 +285,7 @@ These are the units of measurement for the `METRIC` configuration.
 |-----------------|----------------------------------------|----------------------------------------------------------------------------------------------------------|
 | products        | -                                                                   | Shows which products were applied during the operation and at what rate the product was applied over an area.                                                             |
 | rate            | m³/ha, L/ha, kg/ha  | How much of a product was applied per area? The units depend on several product-related factors, such as liquid vs solid, fertilizer vs insecticide, etc.                 |
-| appliedRate     | m³/ha, L/ha, kg/ha                        | Shows the operation applied rate of all combined products.                                                                                                                |
+| appliedRate     | m³/ha, L/ha, kg/ha, t/ha                        | Shows the operation applied rate of all combined products.                                                                                                                |
 | totalApplied    | m³, L                                 | How much product was applied in total during the operation? The units depend on several product-related factors, such as liquid vs solid, fertilizer vs insecticide, etc. |
 
 Note: Rate units vary depending on the user's preferences and what type of product was used

@@ -18,7 +18,6 @@
     "docusaurus-plugin-dotenv": "^1.0.1",
     "docusaurus2-dotenv": "^1.4.0",
     "dotenv": "^16.0.3",
-    "node": "^16.10.0",
     "react": "^17.0.2",
     "react-dom": "^16.8.4",
     "gh-pages": "^5.0.0"

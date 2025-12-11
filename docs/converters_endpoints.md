@@ -21,7 +21,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [10]: https://docs.withleaf.io/docs/machine_file_conversion_overview
 [11]: #batch-files-status
 [12]: /docs/machine_file_conversion_endpoints#troubleshooting
-[13]: converters_shapefile_requirements
 
 ## About
 
@@ -332,7 +331,7 @@ TASKDATA
 
 | File Format | Details                                                                                                                                                            |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Shapefile   | Shapefiles exported from SMS, Raven Slingshot, and Topcon. Since Shapefiles do not contain information on the units used, we assume the default units from the provider will be used. See [Shapefile Requirements][13] for detailed attribute specifications. |
+| Shapefile   | Shapefiles exported from SMS, Raven Slingshot, and Topcon. Since Shapefiles do not contain information on the units used, we assume the default units from the provider will be used. |
 
 #### Request examples
 

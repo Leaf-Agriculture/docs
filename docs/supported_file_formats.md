@@ -276,6 +276,15 @@ shapefile.zip
 
 All shapefile components must share the same base filename.
 
+### Required attributes by operation type
+
+| Operation Type | Required Attributes |
+|----------------|---------------------|
+| harvested | coordinates, timestamp, crop, area, distance, elevation, operationType, equipmentWidth, harvestMoisture, wetMass, wetMassPerArea, wetVolume, wetVolumePerArea, dryMass, dryMassPerArea, dryVolume, dryVolumePerArea |
+| planted | coordinates, timestamp, crop, heading, distance, elevation, operationType, seedRate |
+| applied | coordinates, timestamp, heading, distance, elevation, operationType, appliedRate, products |
+| tillage | coordinates, timestamp, area, heading, distance, elevation, operationType, equipmentWidth |
+
 :::tip
 The ZIP file should not contain subfolders. Place all shapefile components at the root level of the archive.
 :::

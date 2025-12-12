@@ -360,32 +360,66 @@ All shapefile components must share the same base filename.
 The ZIP file should not contain subfolders. Place all shapefile components at the root level of the archive.
 :::
 
-### Supported Property Naming Conventions
+### Required Properties by Operation Type
 
-Leaf supports various input column names for shapefiles.
+Leaf supports various input column names for shapefiles. Properties are organized by operation type.
+
+#### Harvested
 
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
-| appliedRate | Liq\_Rt\_ga, AppliedRat, Rt\_Apd\_Liq, Rt\_Apd\_Ms\_, actualRate |
-| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
+| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
 | crop | crop, Crop\_Type, Crop, CROP\_NM, cropid, CropID, Product\_Pr |
+| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
 | distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
-| dryMass | Dry yield, dry yield, dryYield, dryMass |
-| dryMassPerArea | Yld\_Mass\_D |
-| dryVolume | dryVolume |
-| dryVolumePerArea | Yld\_Vol\_Dr |
 | elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
+| operationType | Operation, type |
 | equipmentWidth | Swath\_Widt, SwthWdth, Swth\_Wdth\_, swathWidth, SWATHWIDTH, Width, SwathWidth, Swa\_Wd\_in |
 | harvestMoisture | Moisture\_\_, moisture, Moisture, MOISTURE, 013A |
-| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
-| operationType | Operation, type |
-| products | product, products, Product, Products |
-| seedRate | seedRate, AmntPerAc, SeedCount, Seed Count, Rt\_Apd\_Ct\_, SeedFlow\_k, SeedFlow\_\_, SeedFlow\_s, Seed\_Cnt\_\_, AVE\_SEEDS |
-| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
 | wetMass | WetMass, wetMass, Harvest\_We |
 | wetMassPerArea | Yield\_Mass, Yld\_Mass\_W |
 | wetVolume | wetVolume |
 | wetVolumePerArea | Yld\_Vol\_We, Yield\_\_Wet, WET\_YIELD |
+| dryMass | Dry yield, dry yield, dryYield, dryMass |
+| dryMassPerArea | Yld\_Mass\_D |
+| dryVolume | dryVolume |
+| dryVolumePerArea | Yld\_Vol\_Dr |
+
+#### Planted
+
+| Leaf Property | Supported Input Column Names |
+|---------------|-----------------------------------|
+| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
+| crop | crop, Crop\_Type, Crop, CROP\_NM, cropid, CropID, Product\_Pr |
+| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
+| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
+| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
+| operationType | Operation, type |
+| seedRate | seedRate, AmntPerAc, SeedCount, Seed Count, Rt\_Apd\_Ct\_, SeedFlow\_k, SeedFlow\_\_, SeedFlow\_s, Seed\_Cnt\_\_, AVE\_SEEDS |
+
+#### Applied
+
+| Leaf Property | Supported Input Column Names |
+|---------------|-----------------------------------|
+| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
+| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
+| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
+| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
+| operationType | Operation, type |
+| appliedRate | Liq\_Rt\_ga, AppliedRat, Rt\_Apd\_Liq, Rt\_Apd\_Ms\_, actualRate |
+| products | product, products, Product, Products |
+
+#### Tillage
+
+| Leaf Property | Supported Input Column Names |
+|---------------|-----------------------------------|
+| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
+| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
+| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
+| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
+| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
+| operationType | Operation, type |
+| equipmentWidth | Swath\_Widt, SwthWdth, Swth\_Wdth\_, swathWidth, SWATHWIDTH, Width, SwathWidth, Swa\_Wd\_in |
 
 ### Unit handling
 

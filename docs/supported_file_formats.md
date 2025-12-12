@@ -366,71 +366,26 @@ Leaf supports various input column names for shapefiles.
 
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
-| appliedRate | applicationRate, Liq\_Rt\_ga, appliedRate, AppliedRate, AppliedRat, Rt\_Apd\_Liq, Rt\_Apd\_Ms\_, CNHV2AttributeTypeApplicationRate, ProductAmount, ProductRate, vrAppRateVolumeActual, Application Mass, actualRate, iVolume/Area Act, Volume/Area Act |
-| appliedRateTarget | applicationRateTarget, appliedRateTarget, CNHV2AttributeTypeTargetRate, targetRate, TgtRtLiqga, TargetRate, Tgt\_Rate\_g, Tgt\_Rate\_l, vrAppRateVolumeTarget, vrAppRateVolumeSetPoint, Tgt\_Rate\_k, Tgt\_Rate\_\_, TargetPerAcUOM, TargetPerA, iVolume/Area Tgt, Volume/Area Tgt |
-| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, vrDeltaArea, AreaUOM, vrTotalAreaCovered, Delta area, delta area |
-| cleanFurrow | Clean\_Furrow, cleanFurrow |
-| crop | crop, Crop\_Type, Crop, CROP\_NM, ProductCropType, cropid, CropID, vrEICCropID, Product\_Pr |
-| cropFlow | CNHV2AttributeTypeSampleCropFlow, cropFlow, Crop\_Flow, Crop\_Flw\_M, Mass Flow, ProductFlow, grain flow, Grain flow, vrYieldWetMassFlow |
-| cropVolumeFlow | Crop\_Flw\_V, cropVolumeFlow |
-| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_, vrDistanceTraveled |
-| doubles | doubles, Doubles, vrPlantingDoubles, SeedMon Doubles |
-| downForce | downForce, vrDownForceApplied, CNHV2PropertyTypeDownForce, Downforce, DownforceUOM, Supplemental DForce |
-| downForceMargin | vrDownForceMargin, downForceMargin |
-| dryMass | Dry yield, dry yield, dryYield, vrYieldMass, VRYIELDMAS, dryMass |
-| dryMassPerArea | Yld\_Mass\_D, dryMassPerArea |
-| dryVolume | dryVolume, VRYIELDVOL |
-| dryVolumePerArea | Yld\_Vol\_Dr, dryVolumePerArea, vrYieldVolumePerArea |
-| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM, vrElevation, ElevationUOM |
-| equipmentWidth | CNHV2PropertyTypeSectionSwathWidth, Swath\_Widt, SwthWdth, Swth\_Wdth\_, swathWidth, SWATHWIDTH, MainSwathWidth, equipmentWidth, vrEquipmentWidth, Width, SegmentWidthUom, SwathWidth, Swa\_Wd\_in |
-| fuelFlow | fuelFlow, vrFuelRatePerHour |
-| fuelRate | fuelRate |
-| fuelUsed | fuel, FUEL, Fuel, CNHV2AttributeTypeFuelUsed, fuelUsed |
-| furrowQuality | Uniform\_Furrow, furrowQuality |
-| groundContact | vrGroundContact, groundContact |
-| harvestMoisture | CNHV2AttributeTypeMoisture, harvestMoisture, Moisture\_\_, moisture, Moisture, MOISTURE, 013A, vrHarvestMoisture, Crop Moisture, AutoMoistureContent, autoMoistureContent |
-| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, vrHeading, cog, COG |
-| implementOffset | implementYOffset, implementOffset |
-| machinery | machinery, Machine, VehicleSUID |
-| operationType | operationType, OperationType, Operation, type |
-| operatorId | operatorId, OperatorSUID |
-| organicMatter | Organic\_Matter, organicMatter |
-| productHash | PRODUCTHASH, productHash |
-| productIndex | CNHV2PropertyTypeProductSUID, productIndex |
+| appliedRate | Liq\_Rt\_ga, AppliedRat, Rt\_Apd\_Liq, Rt\_Apd\_Ms\_, actualRate |
+| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
+| crop | crop, Crop\_Type, Crop, CROP\_NM, cropid, CropID, Product\_Pr |
+| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
+| dryMass | Dry yield, dry yield, dryYield, dryMass |
+| dryMassPerArea | Yld\_Mass\_D |
+| dryVolume | dryVolume |
+| dryVolumePerArea | Yld\_Vol\_Dr |
+| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
+| equipmentWidth | Swath\_Widt, SwthWdth, Swth\_Wdth\_, swathWidth, SWATHWIDTH, Width, SwathWidth, Swa\_Wd\_in |
+| harvestMoisture | Moisture\_\_, moisture, Moisture, MOISTURE, 013A |
+| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
+| operationType | Operation, type |
 | products | product, products, Product, Products |
-| proteinPercentage | vrConstituentProteinSolubility, proteinPercentage, CNHV2AttributeTypeProtein |
-| recordingStatus | dtRecordingStatus, HeadStatus, recordingStatus, workstatus, WorkStatus, RecordingStatus, In Work, in Work |
-| rideQuality | vrRideQuality, rideQuality |
-| samplingInterval | samplingInterval, SamplingInterval, Duration\_s, Duration\_\_, CALC\_DUR, CNHV2AttributeTypeDuration, Duration, duration, Dur\_sec |
-| sectionId | SECTIONID, sectionId, SectionId, segmentId |
-| seedRate | seedRateActual, seedRate, AmountPerAcUom, AmntPerAc, SeedCount, Seed Count, SeedMon Pop Rate, Rt\_Apd\_Ct\_, SeedFlow\_k, SeedFlow\_\_, SeedFlow\_s, Seed\_Cnt\_\_, AVE\_SEEDS, vrSeedRateSeedsActual, Count/Time Act, Application Count |
-| seedRateTarget | seedRateTarget, vrSeedRateSeedsTarget, Tgt\_Rate\_k, Tgt\_Rate\_\_, TargetPerAcUOM, TargetPerA |
-| seedSpacing | vrActualSeedSpacingCV, seedSpacing |
-| singulation | singulation, Singulation, vrPlantingSingulation, Singulaton, SingulationUOM, CNHV2PropertyTypeSingulationPercentage, SeedMon Singulation |
-| skips | skips, Skips, vrPlantingSkips, SeedMon Skips |
-| soilCationExchangeCapacity | CationExchangeCapacity, soilCationExchangeCapacity |
-| soilMoisture | Furrow\_Moisture, soilMoisture |
-| soilTemperature | vrSoilTemperature, soilTemperature, SOILTEMP |
-| spacingVariation | Spacing\_Variation, spacingVariation |
-| speed | speed, Speedmph, Speed\_mph\_, Speed\_mph, VEHICLSPEED, Speed, AverageSpeed, vrVehicleSpeed, Speed\_\_mph, SpeedUOM, SOD |
-| subOperationType | subOperationType, suboperationtype |
-| tankMix | tankMix |
-| tankMixName | tankMixName |
-| tillageDepthActual | vrTillageDepthActual, ApplDepth, tillageDepthActual |
-| tillageDepthTarget | vrTillageDepthTarget, tillageDepthTarget, TrgtDepth |
-| tillType | TillType, tillType |
+| seedRate | seedRate, AmntPerAc, SeedCount, Seed Count, Rt\_Apd\_Ct\_, SeedFlow\_k, SeedFlow\_\_, SeedFlow\_s, Seed\_Cnt\_\_, AVE\_SEEDS |
 | timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
-| trashPercentage | Trash, trashPercentage |
-| variety | variety, Variety, VARIETY, Product\_Na, CNHV2PropertyTypeProductName |
-| vrYieldBal | VRYIELDBAL, vrYieldBal |
-| wetMass | vrYieldWetMass, WetMass, wetMass, Harvest\_We, Delta grain, delta grain |
-| wetMassPerArea | VRYLDRCANE, wetMassPerArea, Yield\_Mass, Yld\_Mass\_W, vrYieldWetMassPerArea |
+| wetMass | WetMass, wetMass, Harvest\_We |
+| wetMassPerArea | Yield\_Mass, Yld\_Mass\_W |
 | wetVolume | wetVolume |
-| wetVolumePerArea | vrYieldWetVolumePerArea, Yld\_Vol\_We, wetVolumePerArea, Yield\_\_Wet, WET\_YIELD |
-| xOffset | CNHV2PropertyTypeGPSAntennaXOffset, xOffset |
-| yOffset | CNHV2PropertyTypeGPSAntennaYOffset, yOffset |
-| appliedProperties | appliedProperties |
-| appliedYieldLatency | vrAppliedYieldLatency, appliedYieldLatency |
+| wetVolumePerArea | Yld\_Vol\_We, Yield\_\_Wet, WET\_YIELD |
 
 ### Unit handling
 

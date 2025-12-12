@@ -48,19 +48,20 @@ Currently, our upload endpoints accept files with a maximum size of 3 gigabytes.
 
 ## John Deere
 
-| File Format | Monitor Model |
-|-------------|---------------|
-| GS3 | GreenStar 3 - 2630 |
-| Gen4 | Gen 4 - 4600/4630 |
-| Shapefile | Exported from MyJohnDeere |
+| File Format | Monitor Model | Details |
+|-------------|---------------|---------|
+| GS3 | GreenStar 2 - 2600, GreenStar 3 - 2630 | Harvest, planting, and applied data in .fdd/.fdl files |
+| Gen4 | Gen 4 - 4600/4630 | Harvest, planting, and applied data in .jdl log files |
+| Shapefile | Exported from MyJohnDeere | Harvest, planting, and applied data with .json metadata |
 
 ### Expected file structure
 
-**GreenStar 4 (4600+)**
+**GreenStar 2 (2600)**
 ```
-jd-data
-└── log
-   └── *.jdl
+...
+└── RCD
+   ├── *.fdd
+   └── *.fdl
 ```
 
 **GreenStar 3 (2630)**
@@ -75,21 +76,20 @@ GS3_2630
                  └── *.fdl
 ```
 
-**GreenStar 2 (2600)**
+**GreenStar 4 (4600+)**
 ```
-...
-└── RCD
-   ├── *.fdd
-   └── *.fdl
+jd-data
+└── log
+   └── *.jdl
 ```
 
 ---
 
 ## Climate FieldView
 
-| File Format | Monitor Model |
-|-------------|---------------|
-| dat | All files from Climate FieldView |
+| File Format | Monitor Model | Details |
+|-------------|---------------|---------|
+| dat | All files from Climate FieldView | Harvest, planting, and applied data (harvest_*.dat, field_map_*.dat, liquid_map_*.dat) |
 
 ### Expected file structure
 
@@ -111,10 +111,10 @@ GS3_2630
 
 ## CNHI
 
-| File Format | Monitor Model |
-|-------------|---------------|
-| CN1 | Case IH Pro 700, equivalent to New Holland IntelliView IV |
-| ISOXML | Case IH Pro 1200, equivalent to New Holland IntelliView 12 |
+| File Format | Monitor Model | Details |
+|-------------|---------------|---------|
+| CN1 | Case IH Pro 700, equivalent to New Holland IntelliView IV | Harvest, planting, applied, and tillage data in .vy1 files |
+| ISOXML | Case IH Pro 1200, equivalent to New Holland IntelliView 12 | Harvest, planting, applied, and tillage data in TASKDATA.XML + .bin files |
 
 ### Expected file structure
 
@@ -136,11 +136,11 @@ TASKDATA
 
 ## AgLeader
 
-| File Format | Monitor Model |
-|-------------|---------------|
-| yld | YM2000, PFAdvantage & other OEM systems |
-| ilf | INTEGRA / Insight / Edge |
-| agdata | INTEGRA / VERSA / COMPASS |
+| File Format | Monitor Model | Details |
+|-------------|---------------|---------|
+| yld | YM2000, PFAdvantage & other OEM systems | Yield/harvest data in .yld files |
+| ilf | INTEGRA / Insight / Edge | Harvest, planting, applied, and tillage data in .ilf files |
+| agdata | INTEGRA / VERSA / COMPASS | Harvest, planting, applied, and tillage data in .agdata files |
 
 ### Expected file structure
 
@@ -167,10 +167,10 @@ TASKDATA
 
 ## Trimble
 
-| File Format | Monitor Model |
-|-------------|---------------|
-| AgData | FMX and CFX monitors |
-| AgGPS | TMX and GFX monitors |
+| File Format | Monitor Model | Details |
+|-------------|---------------|---------|
+| AgData | FMX and CFX monitors | Harvest, planting, applied, and tillage data in .ag* files |
+| AgGPS | TMX and GFX monitors | Harvest, planting, applied, and tillage data as shapefiles |
 
 ### Expected file structure
 
@@ -209,9 +209,9 @@ AgGPS
 
 ## Precision Planting
 
-| File Format | Monitor Model |
-|-------------|---------------|
-| PP2020 | 20\|20 |
+| File Format | Monitor Model | Details |
+|-------------|---------------|---------|
+| PP2020 | 20\|20 | Harvest, planting, and applied data in .2020 files |
 
 ### Expected file structure
 
@@ -231,9 +231,11 @@ AgGPS
 
 ---
 
-## ISOXML
+## ISO11783 (ISOXML)
 
-Multiple providers use the ISOXML format including CLAAS, Kuhn, Kverneland Group, Müller-Elektronik, Teknomika, and Topcon Precision Agriculture.
+### CLAAS, Kuhn, Kverneland Group, Müller-Elektronik, Teknomika, and Topcon Precision Agriculture
+
+Multiple providers use the ISOXML format.
 
 ### Expected file structure
 
@@ -247,9 +249,9 @@ TASKDATA
 
 ## Farmobile
 
-| File Format | Source |
-|-------------|--------|
-| GeoJSON | Exported from Farmobile |
+| File Format | Source | Details |
+|-------------|--------|---------|
+| GeoJSON | Exported from Farmobile | Operation data in GeoJSON format (default Farmobile units assumed) |
 
 Since GeoJSON files do not contain information on the units used, Leaf assumes the default units from Farmobile.
 
@@ -257,7 +259,7 @@ Since GeoJSON files do not contain information on the units used, Leaf assumes t
 
 ## Shapefile
 
-Shapefiles are supported from SMS (Ag Leader), Raven Slingshot, and Topcon.
+Shapefiles are supported from SMS (Ag Leader), Raven Slingshot, Topcon, and other providers assuming they meet the file structure and attribute conventions.
 
 ### Expected file structure
 
@@ -265,14 +267,14 @@ Shapefiles must be uploaded as a ZIP file containing the required shapefile comp
 
 ```
 shapefile.zip
-├── data.shp    (required) - geometry data
-├── data.dbf    (required) - attribute data
-├── data.shx    (required) - shape index
-├── data.prj    (optional) - projection information
-└── data.cpg    (optional) - character encoding
+├── *.shp    (required) - geometry data
+├── *.dbf    (required) - attribute data (crop, yield, moisture, area, etc.)
+├── *.shx    (required) - shape index
+├── *.prj    (optional) - projection information
+└── *.cpg    (optional) - character encoding
 ```
 
-All files must share the same base filename (e.g., `data.shp`, `data.dbf`, `data.shx`).
+All shapefile components must share the same base filename.
 
 :::tip
 The ZIP file should not contain subfolders. Place all shapefile components at the root level of the archive.

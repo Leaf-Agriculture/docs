@@ -48,11 +48,11 @@ Currently, our upload endpoints accept files with a maximum size of 3 gigabytes.
 
 ## John Deere
 
-| File Format | Monitor Model | Details |
-|-------------|---------------|---------|
-| GS3 | GreenStar 3 - 2630 | `/GS3_2630/profile/RCD/EIC/global.ver` |
-| Gen4 | Gen 4 - 4600/4630 | `/JD-Data/log/user defined name/*.jdl` |
-| Shapefile | Exported from MyJohnDeere | Shapefile with extra metadata in a `.json` file |
+| File Format | Monitor Model |
+|-------------|---------------|
+| GS3 | GreenStar 3 - 2630 |
+| Gen4 | Gen 4 - 4600/4630 |
+| Shapefile | Exported from MyJohnDeere |
 
 ### Expected file structure
 
@@ -87,9 +87,9 @@ GS3_2630
 
 ## Climate FieldView
 
-| File Format | Monitor Model | Details |
-|-------------|---------------|---------|
-| dat | All files from Climate FieldView | A zip with `.dat` files |
+| File Format | Monitor Model |
+|-------------|---------------|
+| dat | All files from Climate FieldView |
 
 ### Expected file structure
 
@@ -111,10 +111,10 @@ GS3_2630
 
 ## CNHI
 
-| File Format | Monitor Model | Details |
-|-------------|---------------|---------|
-| CN1 | Case IH Pro 700, equivalent to New Holland IntelliView IV | `/file.cn1/index.vy1` |
-| ISOXML | Case IH Pro 1200, equivalent to New Holland IntelliView 12 | `/TASKDATA.XML` |
+| File Format | Monitor Model |
+|-------------|---------------|
+| CN1 | Case IH Pro 700, equivalent to New Holland IntelliView IV |
+| ISOXML | Case IH Pro 1200, equivalent to New Holland IntelliView 12 |
 
 ### Expected file structure
 
@@ -136,11 +136,11 @@ TASKDATA
 
 ## AgLeader
 
-| File Format | Monitor Model | Details |
-|-------------|---------------|---------|
-| yld | YM2000, PFAdvantage & other OEM systems | A zip with `.yld` files |
-| ilf | INTEGRA / Insight / Edge | A zip with `.ilf` files |
-| agdata | INTEGRA / VERSA / COMPASS | A zip with `.agdata` files |
+| File Format | Monitor Model |
+|-------------|---------------|
+| yld | YM2000, PFAdvantage & other OEM systems |
+| ilf | INTEGRA / Insight / Edge |
+| agdata | INTEGRA / VERSA / COMPASS |
 
 ### Expected file structure
 
@@ -167,10 +167,10 @@ TASKDATA
 
 ## Trimble
 
-| File Format | Monitor Model | Details |
-|-------------|---------------|---------|
-| AgData | FMX and CFX monitors | `/AgData/` |
-| AgGPS | TMX and GFX monitors | `/AgGPS/` |
+| File Format | Monitor Model |
+|-------------|---------------|
+| AgData | FMX and CFX monitors |
+| AgGPS | TMX and GFX monitors |
 
 ### Expected file structure
 
@@ -209,9 +209,9 @@ AgGPS
 
 ## Precision Planting
 
-| File Format | Monitor Model | Details |
-|-------------|---------------|---------|
-| PP2020 | 20\|20 | A zip with `.2020` files |
+| File Format | Monitor Model |
+|-------------|---------------|
+| PP2020 | 20\|20 |
 
 ### Expected file structure
 
@@ -247,9 +247,11 @@ TASKDATA
 
 ## Farmobile
 
-| File Format | Details |
-|-------------|---------|
-| GeoJSON | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used. |
+| File Format | Source |
+|-------------|--------|
+| GeoJSON | Exported from Farmobile |
+
+Since GeoJSON files do not contain information on the units used, Leaf assumes the default units from Farmobile.
 
 ---
 

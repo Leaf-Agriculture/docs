@@ -364,16 +364,8 @@ The ZIP file should not contain subfolders. Place all shapefile components at th
 
 ### Required Properties by Operation Type
 
-Leaf supports various input column names for shapefiles. The properties below are common to all operation types, followed by operation-specific properties.
+Leaf supports various input column names for shapefiles. For each operation-specific required property, the following column names are supported: 
 
-#### All Operations
-
-| Leaf Property | Supported Input Column Names |
-|---------------|-----------------------------------|
-| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
-| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
-| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
-| operationType | Operation, type |
 
 #### Operation-Specific Properties
 
@@ -383,7 +375,6 @@ Leaf supports various input column names for shapefiles. The properties below ar
     { label: 'Harvested', value: 'harvested' },
     { label: 'Planted', value: 'planted' },
     { label: 'Applied', value: 'applied' },
-    { label: 'Tillage', value: 'tillage' },
   ]}>
 
 <TabItem value="harvested">
@@ -391,17 +382,12 @@ Leaf supports various input column names for shapefiles. The properties below ar
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
 | crop | crop, Crop\_Type, Crop, CROP\_NM, cropid, CropID, Product\_Pr |
-| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
-| equipmentWidth | Swath\_Widt, SwthWdth, Swth\_Wdth\_, swathWidth, SWATHWIDTH, Width, SwathWidth, Swa\_Wd\_in |
 | harvestMoisture | Moisture\_\_, moisture, Moisture, MOISTURE, 013A |
 | wetMass | WetMass, wetMass, Harvest\_We |
 | wetMassPerArea | Yield\_Mass, Yld\_Mass\_W |
 | wetVolume | wetVolume |
 | wetVolumePerArea | Yld\_Vol\_We, Yield\_\_Wet, WET\_YIELD |
-| dryMass | Dry yield, dry yield, dryYield, dryMass |
-| dryMassPerArea | Yld\_Mass\_D |
-| dryVolume | dryVolume |
-| dryVolumePerArea | Yld\_Vol\_Dr |
+
 
 </TabItem>
 
@@ -410,7 +396,6 @@ Leaf supports various input column names for shapefiles. The properties below ar
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
 | crop | crop, Crop\_Type, Crop, CROP\_NM, cropid, CropID, Product\_Pr |
-| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
 | seedRate | seedRate, AmntPerAc, SeedCount, Seed Count, Rt\_Apd\_Ct\_, SeedFlow\_k, SeedFlow\_\_, SeedFlow\_s, Seed\_Cnt\_\_, AVE\_SEEDS |
 
 </TabItem>
@@ -419,23 +404,15 @@ Leaf supports various input column names for shapefiles. The properties below ar
 
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
-| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
 | appliedRate | Liq\_Rt\_ga, AppliedRat, Rt\_Apd\_Liq, Rt\_Apd\_Ms\_, actualRate |
 | products | product, products, Product, Products |
 
 </TabItem>
 
-<TabItem value="tillage">
-
-| Leaf Property | Supported Input Column Names |
-|---------------|-----------------------------------|
-| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
-| heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
-| equipmentWidth | Swath\_Widt, SwthWdth, Swth\_Wdth\_, swathWidth, SWATHWIDTH, Width, SwathWidth, Swa\_Wd\_in |
-
-</TabItem>
 
 </Tabs>
+
+To include additional column names please contact support. 
 
 ### Unit handling
 

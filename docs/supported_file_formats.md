@@ -5,6 +5,8 @@ sidebar_label: Supported File Formats
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 [1]: /docs/machine_file_conversion_units
 [2]: /docs/machine_file_conversion_sample_output
@@ -362,18 +364,34 @@ The ZIP file should not contain subfolders. Place all shapefile components at th
 
 ### Required Properties by Operation Type
 
-Leaf supports various input column names for shapefiles. Properties are organized by operation type.
+Leaf supports various input column names for shapefiles. The properties below are common to all operation types, followed by operation-specific properties.
 
-#### Harvested
+#### All Operations
 
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
 | timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
-| crop | crop, Crop\_Type, Crop, CROP\_NM, cropid, CropID, Product\_Pr |
-| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
 | distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
 | elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
 | operationType | Operation, type |
+
+#### Operation-Specific Properties
+
+<Tabs
+  defaultValue="harvested"
+  values={[
+    { label: 'Harvested', value: 'harvested' },
+    { label: 'Planted', value: 'planted' },
+    { label: 'Applied', value: 'applied' },
+    { label: 'Tillage', value: 'tillage' },
+  ]}>
+
+<TabItem value="harvested">
+
+| Leaf Property | Supported Input Column Names |
+|---------------|-----------------------------------|
+| crop | crop, Crop\_Type, Crop, CROP\_NM, cropid, CropID, Product\_Pr |
+| area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
 | equipmentWidth | Swath\_Widt, SwthWdth, Swth\_Wdth\_, swathWidth, SWATHWIDTH, Width, SwathWidth, Swa\_Wd\_in |
 | harvestMoisture | Moisture\_\_, moisture, Moisture, MOISTURE, 013A |
 | wetMass | WetMass, wetMass, Harvest\_We |
@@ -385,41 +403,39 @@ Leaf supports various input column names for shapefiles. Properties are organize
 | dryVolume | dryVolume |
 | dryVolumePerArea | Yld\_Vol\_Dr |
 
-#### Planted
+</TabItem>
+
+<TabItem value="planted">
 
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
-| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
 | crop | crop, Crop\_Type, Crop, CROP\_NM, cropid, CropID, Product\_Pr |
 | heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
-| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
-| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
-| operationType | Operation, type |
 | seedRate | seedRate, AmntPerAc, SeedCount, Seed Count, Rt\_Apd\_Ct\_, SeedFlow\_k, SeedFlow\_\_, SeedFlow\_s, Seed\_Cnt\_\_, AVE\_SEEDS |
 
-#### Applied
+</TabItem>
+
+<TabItem value="applied">
 
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
-| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
 | heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
-| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
-| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
-| operationType | Operation, type |
 | appliedRate | Liq\_Rt\_ga, AppliedRat, Rt\_Apd\_Liq, Rt\_Apd\_Ms\_, actualRate |
 | products | product, products, Product, Products |
 
-#### Tillage
+</TabItem>
+
+<TabItem value="tillage">
 
 | Leaf Property | Supported Input Column Names |
 |---------------|-----------------------------------|
-| timestamp | IsoTime, timestamp, Timestamp, Time\_Stamp, Date\_\_\_Tim, Date, TS, UTC, Time, TimeStamp, timeStamp |
 | area | area, Field\_\_\_Ar, Area, Area\_\_ac\_, AreaUOM, Delta area, delta area |
 | heading | heading, Heading, Heading\_D, Track\_deg\_, BEARING, cog, COG |
-| distance | distance, Distance\_f, Distance, Dist\_in, DISTANCE, CALC\_DIST, Distance\_\_ |
-| elevation | elevation, Elevation, Elev\_m, Elevation\_, ALTITUDE, Altitude, elevM |
-| operationType | Operation, type |
 | equipmentWidth | Swath\_Widt, SwthWdth, Swth\_Wdth\_, swathWidth, SWATHWIDTH, Width, SwathWidth, Swa\_Wd\_in |
+
+</TabItem>
+
+</Tabs>
 
 ### Unit handling
 

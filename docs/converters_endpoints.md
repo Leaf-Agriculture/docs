@@ -11,17 +11,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <!-- the following links are referenced throughout this document -->
 [1]: https://github.com/Leaf-Agriculture/Leaf-quickstart-Postman-collection
-[2]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-all-files
-[3]: https://docs.withleaf.io/docs/machine_file_conversion_endpoints#get-a-file
+[2]: machine_file_conversion_endpoints#get-all-files
+[3]: machine_file_conversion_endpoints#get-a-file
 [4]: #upload-a-file
 [5]: #get-batch-upload
 [6]: #get-all-batches
 [7]: #retry-a-batch
-[9]: https://docs.withleaf.io/docs/user_management_overview
-[10]: https://docs.withleaf.io/docs/machine_file_conversion_overview
+[9]: user_management_overview
+[10]: machine_file_conversion_overview
 [11]: #batch-files-status
-[12]: /docs/machine_file_conversion_endpoints#troubleshooting
-[13]: /docs/supported_file_formats
+[12]: machine_file_conversion_endpoints#troubleshooting
+[13]: supported_file_formats
 
 ## About
 

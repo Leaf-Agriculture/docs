@@ -8,8 +8,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-[1]: /docs/machine_file_conversion_units
-[2]: /docs/machine_file_conversion_sample_output
+[1]: machine_file_conversion_units
+[2]: machine_file_conversion_sample_output
 
 ## Overview
 

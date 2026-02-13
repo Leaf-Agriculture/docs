@@ -96,228 +96,59 @@ The following file formats from each provider are supported:
 
 | File Format | Monitor Model             | Details                                         |
 |-------------|---------------------------|-------------------------------------------------|
+| GS2         | GreenStar 2 – 2600        | `/RCD/*.fdd, *.fdl`                             |
 | GS3         | GreenStar 3 – 2630        | `/GS3_2630/profile/RCD/EIC/global.ver`          |
-| Gen4        | Gen 4 - 4600/4630         | `/JD-Data/log/user defined name/*.jdl`          |
+| Gen4        | Gen 4 - 4600/4630         | `/JD-Data/log/*.jdl`                            |
 | Shapefile   | Exported from MyJohnDeere | Shapefile with extra metadata in a `.json` file |
-
-##### Expected file structure
-
-GreenStar 4 (4600+) 
-```bash
-jd-data
-└── log
-   └── *.jdl
-```
-
-GreenStar 3 (2630) 
-```bash
-GS3_2630
-└── RCD
-   └── EIC
-      └── global.ver
-        └── documentation
-              └── ...
-                 ├── *.fdd
-                 └── *.fdl
-```
-
-Green Star 2 (2600)  
-```bash
-...
-└── RCD
-   ├── *.fdd
-   └── *.fdl
-```
 
 #### Climate FieldView
 
-| File Format | Monitor Model                    | Details                                         |
-|-------------|----------------------------------|-------------------------------------------------|
-| dat         | All files from Climate FieldView | A zip with `.dat` files                         |
-
-##### Expected file structure
-
-20|20 SeedSense Generation 1 and Generation 2
-```bash
-...
-├── harvest_*.dat – Harvest data
-├── field_map_*.dat – Planting data
-└── liquid_map_*.dat - AsApplied spraying data
-```
-
-20|20 SeedSense Generation 3
-```bash
-...
-└── *.2020
-```
+| File Format | Monitor Model                          | Details                             |
+|-------------|----------------------------------------|-------------------------------------|
+| dat         | 20\|20 SeedSense Gen 1 and Gen 2      | A zip with `.dat` files             |
+| 2020        | 20\|20 SeedSense Gen 3                | A zip with `.2020` files            |
 
 #### CNHI
 
 | File Format | Monitor Model                    | Details               |
 |-------------|----------------------------------|-----------------------|
-| CN1         | Case IH Pro 700, equivalent to New Holland IntelliView IV | `/file.cn1/index.vy1` |
-| ISOXML      | Case IH Pro 1200, equivalent to New Holland IntelliView 12 | `/TASKDATA.XML`       |
-
-##### Expected file structure
-
-Voyager 2
-```bash
-*.cn1
-└── ...
-   └── *.vy1
-```
-ISOXML
-```bash
-TASKDATA
-├── TASKDATA.XML
-└── *.bin
-```
+| CN1         | Case IH Pro 700 / New Holland IntelliView IV | `<name>.cn1/index.vy1` |
+| ISOXML      | Case IH Pro 1200 / New Holland IntelliView 12 | `/TASKDATA/TASKDATA.XML`       |
 
 #### AgLeader
 
 | File Format | Monitor Model                           | Details                                |
 |-------------|-----------------------------------------|----------------------------------------|
-| yld         | YM2000, PFAdvantage & other OEM systems | A zip with `.yld` files                |
+| yld         | YM2000, PF Advantage & other OEM systems | A zip with `.yld` files                |
 | ilf         | INTEGRA / Insight / Edge                | A zip with `.ilf` files                |
-| agdata      | INTEGRA / VERSA / COMPASS               | A zip with `.agdata` files             |
-
-##### Expected file structure
-AgLeader Integra (versions 3.5+), Versa
-```bash
-...
-├── *.agdata
-└── *.agsetup
-```
-
-AgLeader Edge, Insight, and Integra (version 3.4)
-```bash
-...
-└── *.ilf
-```
-
-AgLeader PF Advantage, PF 3000, PF 3000 Pro, YM2000 
-```bash
-...
-└── *.yld
-```
+| agdata      | INTEGRA / VERSA / COMPASS               | A zip with `.agdata` and `.agsetup` files |
 
 #### Trimble
 
 | File Format | Monitor Model                    | Details                                         |
 |-------------|----------------------------------|-------------------------------------------------|
-| AgData      | FMX and CFX monitors             | `/AgData/`                                      |
-| AgGPS       | TMX and GFX monitors             | `/AgGPS/`                                       |
+| AgData      | FMX and CFX monitors             | `/Agdata/`                                      |
+| AgGPS       | TMX and GFX monitors             | `/AgGPS/` (shapefile-based)                     |
 
-##### Expected file structure
-GFX-750, TMX-2050 
-```bash
-Agdata
-├── Fields
-   └── *.agf
-├── implements
-   └── *.agi
-├── prescriptions
-   └── *.agm
-├── Tasks
-   └── *.agt
-├── Users
-   └── *.agu
-└── vehicles
-   └── *.agv
-```
-
-
-CFX-750, FMX  
-```bash
-AgGPS
-└── Data
-   └── "Grower"
-      └── Farm
-        └── field
-          └── "Task"
-            ├── *.cpg
-            ├── *.dbf
-            ├── *.shp
-            └── *.shx
-```
-
-#### Precision Planting (beta)
+#### Precision Planting
 
 | File Format | Monitor Model                           | Details                                |
 |-------------|-----------------------------------------|----------------------------------------|
-| PP2020      | 20\|20                                  | A zip with `.2020` files.              |
+| dat         | 20\|20 SeedSense Gen 1 and Gen 2       | A zip with `.dat` files                |
+| PP2020      | 20\|20 SeedSense Gen 3                 | A zip with `.2020` files               |
 
-##### Expected file structure
+#### Raven Slingshot
 
-20|20 SeedSense Generation 1 and Generation 2
-```bash
-...
-├── harvest_*.dat – Harvest data
-├── field_map_*.dat – Planting data
-└── liquid_map_*.dat - AsApplied spraying data
-```
-
-20|20 SeedSense Generation 3
-```bash
-...
-└── *.2020
-```
+| File Format | Monitor Model | Details                                |
+|-------------|---------------|----------------------------------------|
+| FMIS        | Raven FMIS    | A zip with `.xml` and `.tab` files     |
+| JDP         | Raven JDP     | A zip with `.jdp` files               |
 
 #### ISOXML
-##### Expected file structure
-```bash
-TASKDATA
-├── *.XML
-└── *.bin
-```
 
-#### CLAAS
-##### Expected file structure
-```bash
-TASKDATA
-├── *.XML
-└── *.bin
-```
-
-#### Kuhn
-##### Expected file structure
-```bash
-TASKDATA
-├── *.XML
-└── *.bin
-```
-
-#### Kverneland Group
-##### Expected file structure
-```bash
-TASKDATA
-├── *.XML
-└── *.bin
-```
-
-#### Müller-Elektronik
-##### Expected file structure
-```bash
-TASKDATA
-├── *.XML
-└── *.bin
-```
-
-#### Teknomika
-##### Expected file structure
-```bash
-TASKDATA
-├── *.XML
-└── *.bin
-```
-
-#### Topcon Precision Agriculture
-##### Expected file structure
-```bash
-TASKDATA
-├── *.XML
-└── *.bin
-```
+| File Format | Supported Brands | Details                                |
+|-------------|------------------|----------------------------------------|
+| ISOXML      | CLAAS, Kuhn, Kverneland Group, Müller-Elektronik, Teknomika, Topcon | `/TASKDATA/` with `*.XML` and `*.bin`  |
 
 #### Farmobile
 
@@ -325,13 +156,13 @@ TASKDATA
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | GeoJSON     | GeoJSON files exported from Farmobile. Since GeoJSON files do not contain information on the units used, we assume the default units from Farmobile are being used. |
 
-
-
 #### Other
 
 | File Format | Details                                                                                                                                                            |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Shapefile   | Shapefiles exported from SMS, Raven Slingshot, and Topcon. Since Shapefiles do not contain information on the units used, we assume the default units from the provider will be used. |
+
+For detailed file structure requirements, preparation guidelines, and shapefile column mappings, see [Supported File Formats](/docs/converters_file_requirements).
 
 #### Request examples
 

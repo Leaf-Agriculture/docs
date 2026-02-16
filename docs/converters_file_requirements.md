@@ -17,7 +17,7 @@ Maximum file size: 3 GB
 **ZIP folders directly from your monitor -- don't manually collect files.** Each equipment manufacturer uses specific folder names and structures that must remain intact. When creating your ZIP file:
 
 - ZIP the entire folder as it exists on your monitor or USB drive
-- Keep folder names exactly as they appear (e.g., `TASKDATA`, `RCD`, `Agdata`)
+- Keep folder names exactly as they appear (e.g., `TASKDATA`, `RCD`, `AgData`)
 - Preserve the complete folder hierarchy
 - Don't create new folders, rename folders, or move files around
 
@@ -179,7 +179,7 @@ Locate the folder containing `.yld` files, ZIP it, and upload.
 Expected structure:
 
 ```
-Agdata
+AgData
 ├── Fields
 │   └── *.agf
 ├── implements
@@ -194,7 +194,7 @@ Agdata
    └── *.agv
 ```
 
-Locate the `Agdata` folder, ZIP it with the complete folder structure, and upload.
+Locate the `AgData` folder, ZIP it with the complete folder structure, and upload.
 
 **GFX-750, TMX-2050 monitors (AgGPS format - shapefiles)**
 
@@ -357,7 +357,7 @@ If original monitor files aren't available and you need to export from Ag Leader
 **Missing or incomplete data**
 
 - Verify you've maintained the original folder structure from your monitor
-- Don't rename folders (e.g., keep `TASKDATA`, `RCD`, `Agdata` as-is)
+- Don't rename folders (e.g., keep `TASKDATA`, `RCD`, `AgData` as-is)
 - ZIP the complete folder directly - don't manually collect or move files
 - For ISOXML files, the `TASKDATA` folder must contain both `*.XML` and `*.bin` files in their original structure
 - For Ag Leader INTEGRA, both `*.agdata` and `*.agsetup` files must be in their original folder

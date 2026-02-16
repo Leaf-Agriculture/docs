@@ -127,7 +127,7 @@ The following file formats from each provider are supported:
 
 | File Format | Monitor Model                    | Details                                         |
 |-------------|----------------------------------|-------------------------------------------------|
-| AgData      | FMX and CFX monitors             | `/Agdata/`                                      |
+| AgData      | FMX and CFX monitors             | `/AgData/`                                      |
 | AgGPS       | TMX and GFX monitors             | `/AgGPS/` (shapefile-based)                     |
 
 #### Precision Planting

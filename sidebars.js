@@ -73,7 +73,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Manual File Upload',
-          items: ['converters_overview', 'converters_endpoints']
+          items: ['converters_overview', 'converters_file_requirements', 'converters_endpoints']
         },
         {
           type: 'category',

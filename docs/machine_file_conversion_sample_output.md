@@ -9,6 +9,7 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [1]: https://docs.withleaf.io/docs/configurations_overview#cleanupstandardgeojson
+[2]: https://docs.withleaf.io/docs/configurations_overview#cleanuprules
 
 ## Overview
 
@@ -1053,21 +1054,23 @@ Despite the example units, Leaf's API will push through every unit, if the proce
 
 ### Valid points
 
-The points in the standardGeoJSON are considered valid if all the following rules are true:
+By default, points in the standardGeoJSON are considered valid if all the following rules are true:
 
-| property           | rule   |
-|--------------------|--------|
-| wetMass            | > 0.0  |
-| wetMassPerArea     | > 0.0  |
-| wetVolume          | > 0.0  |
-| wetVolumePerArea   | > 0.0  |
-| harvestMoisture    | > 0.0 and <100.0 |
-| appliedRate        | > 0.0  |
-| seedRate           | > 0.0  |
-| tillageDepthActual | >= 0.0  |
-| recordingStatus    | = "On" |
+| property           | rule              |
+|--------------------|-------------------|
+| wetMass            | > 0.0             |
+| wetMassPerArea     | > 0.0             |
+| wetVolume          | > 0.0             |
+| wetVolumePerArea   | > 0.0             |
+| harvestMoisture    | > 0.0 and < 100.0 |
+| appliedRate        | > 0.0             |
+| seedRate           | > 0.0             |
+| tillageDepthActual | >= 0.0            |
+| recordingStatus    | = "On"            |
+| crop               | != "unknown"      |
+| products           | >= 0.0            |
 
-The API will automatically clean the invalid points when the [`cleanupStandardGeojson`][1] configuration is enabled.
+The API will automatically clean the invalid points when the [`cleanupStandardGeojson`][1] configuration is enabled. To customize which rules are applied and their thresholds, see the [`cleanupRules`][2] configuration.
 
 ### Images
 

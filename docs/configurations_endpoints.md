@@ -110,7 +110,20 @@ A JSON containing the configuration of the API Owner.
   "operationsImageCreation": true,
   "fieldsAutoSync": true,
   "fieldsMergeIntersection": 0.01,
-  "fieldsAttachIntersection": 0.01
+  "fieldsAttachIntersection": 0.01,
+  "cleanupStandardGeojson": true,
+  "cleanupRules": {
+    "wetMass": [
+      { "operator": "GT", "value": 0.0 }
+    ],
+    "harvestMoisture": [
+      { "operator": "GT", "value": 0.0 },
+      { "operator": "LT", "value": 100.0 }
+    ],
+    "recordingStatus": [
+      { "operator": "EQ", "value": "On" }
+    ]
+  }
 }
 ```
 
@@ -302,7 +315,19 @@ Request body example:
 ```json
 {
   "operationsImageCreation": true,
-  "fieldsAutoSync": true
+  "fieldsAutoSync": true,
+  "cleanupRules": {
+    "wetMass": [
+      { "operator": "GT", "value": 0.0 }
+    ],
+    "harvestMoisture": [
+      { "operator": "GT", "value": 0.0 },
+      { "operator": "LT", "value": 100.0 }
+    ],
+    "recordingStatus": [
+      { "operator": "EQ", "value": "On" }
+    ]
+  }
 }
 ```
 

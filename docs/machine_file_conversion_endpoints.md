@@ -86,7 +86,7 @@ below.
 | Parameter (to filter by) | Values                                                                                           |
 |--------------------------|--------------------------------------------------------------------------------------------------|
 | `leafUserId`             | uuid of one of your users                                                                        |
-| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader`, `RavenSlingshot`, `Stara` or `Leaf`                         |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader`, `RavenSlingshot`, `Stara`, `Panorama` or `Leaf`             |
 | `status`                 | `processed`, `failed` or `processing`                                                            |
 | `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                 |
 | `organizationId`         | the provider organizationId (only available for John Deere)                                      |

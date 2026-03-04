@@ -87,6 +87,11 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Pointlake',
+          items: ['pointlake_overview', 'pointlake_endpoints']
+        },
+        {
+          type: 'category',
           label: 'Crop Monitoring',
           items: ['crop_monitoring_overview', 'crop_monitoring_sentinel_overview',  'crop_monitoring_planet_overview',  'crop_monitoring_endpoints']
         },

@@ -29,6 +29,8 @@ sidebar_label: Overview
 [20]: https://docs.withleaf.io/docs/integrations_endpoints
 [21]: https://docs.withleaf.io/docs/credentials_lindsay
 [22]: https://docs.withleaf.io/docs/credentials_valley
+[33]: https://docs.withleaf.io/docs/credentials_panorama
+[34]: https://withleaf.io/en/tutorials/precision-planting-panorama-authentication-with-leaf/
 
 [23]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#get-all-fields
 [24]: https://docs.withleaf.io/docs/field_boundary_management_endpoints#upload-a-field-to-provider
@@ -56,6 +58,7 @@ Each data provider's authentication flow is slightly different. Please refer to 
 - [Raven Slingshot authentication with Leaf][6]
 - [Stara authentication with Leaf][7]
 - [Trimble authentication with Leaf][8]
+- [Precision Planting Panorama authentication with Leaf][34]
 - [Integrating Sentera layers and imagery][9]
 - For more crop monitoring or weather providers, head to the relevant documentation sections. If you still don't see your provider, contact us at help@withleaf.io for more information. 
 
@@ -102,6 +105,7 @@ For more details about provider credentials endpoints, see below for:
 - [Stara][11]
 - [Trimble][19]
 - [Valley][22]
+- [Precision Planting Panorama][33]
 
 Also, we recommend use our Providers Integrations Resources endpoint to debrief the ingested resources from the authenticated account. 
 With the Providers Integrations Resources, you can access all the relevant information between the authentication and the processing of your 

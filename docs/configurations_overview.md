@@ -27,6 +27,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [17]: /docs/operations_endpoints#get-the-operations-sessions
 [18]: /docs/provider_organizations#organizations-sync
 [19]: /docs/field_boundary_management_endpoints#sync-fields-manually
+[20]: /docs/machine_file_conversion_sample_output#valid-points
 
 
 ## Overview 
@@ -55,8 +56,8 @@ Configurations can be set at two levels:
 |---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | [ Data Synchronization ](#data-synchronization)                  | [organizationDataSync](#organizationdatasync), [customDataSync](#customdatasync), [fieldsAutoSync](#fieldsautosync), [operationsAutoSync](#operationsautosync), [implementsAutoSync](#implementsautosync), [machinesAutoSync](#machinesautosync), [operatorsAutoSync](#operatorsautosync), [productsAutoSync](#productsautosync), [zonesAutoSync](#zonesautosync), [syncPartnerData](#syncpartnerdata)                                                                                                                                                                                                                                                                                                                                                                                            | 
 | [Field Boundary Management](#field-boundary-management) | [automaticFixBoundary](#automaticfixboundary), [fieldsAttachIntersection](#fieldsattachintersection), [fieldsAutoMerge](#fieldsautomerge), [fieldsAutoSync](#fieldsautosync), [fieldsMergeIntersection](#fieldsmergeintersection)                                                                                                                                                                                                                                                                                                                                                                                                                         | 
-| [Machine File Conversion ](#machine-file-conversion)    | [cleanupStandardGeojson](#cleanupstandardgeojson), [originalOperationData](#originaloperationdata), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableGeoparquetOutput](#enablegeoparquetoutput), [enablePolygonOutput](#enablepolygonoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional)                                                                                                                                                                                                                                                                                                                                                    | 
-| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [outofStandardOperations](#outofstandardoperations), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [enableGeoparquetOutput](#enablegeoparquetoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional)  | 
+| [Machine File Conversion ](#machine-file-conversion)    | [cleanupStandardGeojson](#cleanupstandardgeojson), [cleanupRules](#cleanuprules), [originalOperationData](#originaloperationdata), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableGeoparquetOutput](#enablegeoparquetoutput), [enablePolygonOutput](#enablepolygonoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional)                                                                                                                                                                                                                                                                                                                                                    | 
+| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [cleanupRules](#cleanuprules), [outofStandardOperations](#outofstandardoperations), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [enableGeoparquetOutput](#enablegeoparquetoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional)  | 
 | [ Field Operations Images ](#field-operations-image-generation)                | [operationsImageCreation](#operationsimagecreation), [operationsImageAsGeoTiff](#operationsimageasgeotiff), [operationsImageAttributeCreation](#operationsimageattributecreation),                                                                                                                                                                                                                                                                                                                                                                                              | 
 | [ Irrigation ](#irrigation)                  | [irrigationProcessingRange](#irrigationprocessingrange)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
 
@@ -148,9 +149,89 @@ Define the minimum intersection percentage required to merge two fields. When fi
 ### cleanupStandardGeojson
 Default: `true`
 
-Enable this setting to have Leaf automatically remove points marked as invalid (see [Valid Points](machine_file_conversion_sample_output.md#valid-points)) from the `standardGeoJSON` file output.
+Enable this setting to have Leaf automatically remove points marked as invalid (see [Valid Points][20]) from the `standardGeoJSON` file output. The criteria used to determine validity are defined by the [`cleanupRules`](#cleanuprules) configuration.
 
+### cleanupRules
+Default: `[See below]`
 
+Define custom rules that determine which data points are considered valid when [`cleanupStandardGeojson`](#cleanupstandardgeojson) is enabled. Each rule targets a specific property and applies an operator/value condition. Points that do not satisfy all applicable rules are removed from the `standardGeoJSON` output.
+
+The default rules are:
+
+```json
+{
+    "cleanupRules": {
+        "harvestMoisture": [
+            { "operator": "GT", "value": 0.0 },
+            { "operator": "LT", "value": 100.0 }
+        ],
+        "tillageDepthActual": [
+            { "operator": "GTE", "value": 0.0 }
+        ],
+        "recordingStatus": [
+            { "operator": "EQ", "value": "On" }
+        ],
+        "appliedRate": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "wetVolume": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "wetVolumePerArea": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "wetMass": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "seedRate": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "wetMassPerArea": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "crop": [
+            { "operator": "NE", "value": "unknown" }
+        ],
+        "products": [
+            { "operator": "GTE", "value": 0.0 }
+        ]
+    }
+}
+```
+
+The following properties and operators are supported:
+
+| Property             | Value type | Allowed operators          |
+|----------------------|------------|----------------------------|
+| `wetMass`            | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `wetMassPerArea`     | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `wetVolume`          | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `wetVolumePerArea`   | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `harvestMoisture`    | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `appliedRate`        | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `seedRate`           | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `tillageDepthActual` | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `area`               | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `products`           | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `recordingStatus`    | string     | `EQ`, `NE`                 |
+| `crop`               | string     | `EQ`, `NE`                 |
+
+Available operators:
+
+| Operator | Description              |
+|----------|--------------------------|
+| `GT`     | Greater than             |
+| `GTE`    | Greater than or equal to |
+| `LT`     | Less than                |
+| `LTE`    | Less than or equal to    |
+| `EQ`     | Equal to                 |
+| `NE`     | Not equal to             |
+
+:::info
+Setting custom `cleanupRules` replaces the **entire** default rule set for the cleanup step — it does not merge with the defaults. For example, if you only specify a rule for `recordingStatus`, all other default rules (such as `wetMass`, `harvestMoisture`, `seedRate`, etc.) will no longer be applied. Any property without a rule has no filtering — there is no fallback threshold. Make sure to include every rule you need.
+:::
+
+This applies to both Machine File Conversion and Field Operations.
 
 ### originalOperationData
 Default: `true`
@@ -237,6 +318,10 @@ These configurations can be enabled with the use of Leaf Field Operations. Field
 Default: `true`
 
 Enable this setting to have Leaf automatically remove points marked as invalid from the `standardGeoJSON` file output during Field Operation processing. [See this section for more information](#cleanupstandardgeojson)
+
+### cleanupRules
+
+[See this section for more information](#cleanuprules)
 
 ### outOfStandardOperations
 

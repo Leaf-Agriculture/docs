@@ -81,8 +81,8 @@ Units are determined by the [unitMeasurement][2] configuration where you can sel
 | Property        | Unit of Measurement                    | Description                                                                                              |
 |-----------------|----------------------------------------|----------------------------------------------------------------------------------------------------------|
 | products        | -                                                                   | Shows which products were applied during the operation and at what rate the product was applied over an area.                                                             |
-| rate            | Imperial: gal/ac, lb/ac, qt/ac, floz/ac, Metric: kg/ha, t/ha, L/ha  | How much of a product was applied per area? The units depend on several product-related factors, such as liquid vs solid, fertilizer vs insecticide, etc.                 |
-| appliedRate     | Imperial: gal/ac, lb/ac, Metric: t/ha, L/ha                         | Shows the operation applied rate of all combined products.                                                                                                                |
+| rate            | Imperial: gal/ac, lb/ac, qt/ac, floz/ac, Metric: kg/ha, t/ha, L/ha, mm3/m2  | How much of a product was applied per area? The units depend on several product-related factors, such as liquid vs solid, fertilizer vs insecticide, etc.                 |
+| appliedRate     | Imperial: gal/ac, lb/ac, Metric: t/ha, L/ha, mm3/m2                         | Shows the operation applied rate of all combined products.                                                                                                                |
 | totalApplied    | Imperial: gal, lb, qt, Metric: t, L                                 | How much product was applied in total during the operation? The units depend on several product-related factors, such as liquid vs solid, fertilizer vs insecticide, etc. |
 
 Note: Rate units vary depending on the user's preferences and what type of product was used

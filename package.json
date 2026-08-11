@@ -11,10 +11,10 @@
     "serve": "docusaurus serve"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.61",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.61",
+    "@docusaurus/core": "^3.10.2",
+    "@docusaurus/preset-classic": "^3.10.2",
     "classnames": "^2.3.0",
-    "docusaurus-lunr-search": "^2.1.11",
+    "docusaurus-lunr-search": "^3.6.0",
     "docusaurus-plugin-dotenv": "^1.0.1",
     "docusaurus2-dotenv": "^1.4.0",
     "dotenv": "^16.0.3",

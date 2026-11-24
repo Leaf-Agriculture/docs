@@ -30,6 +30,7 @@ Each service tracks area differently with these product identifiers:
 | `OPERATIONS_OPERATION` | Operations processed during the contract period based on machine files intersecting boundaries | Field-specific operations usage monitoring and billing |
 | `SATELLITE_PROCESS_PLANET` | Planet satellite imagery procssed during the contract period| Planet satellite usage monitoring and billing|
 | `SATELLITE_PROCESS_SENTINEL` | Sentinel satellite imagery processed during the contract period | Sentinel satellite usage monitoring and billing|
+| `UNIFIED_AREA` | Total unique area consumed during the contract period | Overall area consumption monitoring across all services |
 
 You pay for Leaf to process your data, not access it. Once processed, you have unlimited API access to it for the duration of your contract.
 

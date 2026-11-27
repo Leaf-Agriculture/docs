@@ -87,6 +87,22 @@ The following endpoints are available:
 
 Get all Leaf Users.
 
+Gets a paged list of Leaf Users that belong to the current logged in user. It is
+possible to filter the results by passing some query parameters. They are listed
+below.
+
+| Parameter (to filter by)  | Values                                                                            |
+|---------------------------|-----------------------------------------------------------------------------------|
+| `email`                   | email of one of your users                                                        |
+| `name`                    | name of one of your users                                                         |
+| `externalId`              | the externalId of one of your users                                               |
+
+You can also pass parameters to page through results:
+
+- `page`, an integer specifying the page being fetched (default is 0)
+- `size`, an integer specifying the size of the page (max is 100)
+
+
 #### Request examples
 
 <Tabs

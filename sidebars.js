@@ -51,6 +51,7 @@ module.exports = {
                 'credentials_agvance',
                 'credentials_lindsay',
                 'credentials_valley',
+                'credentials_panorama',
                 'integrations_endpoints',
                 'provider_organizations'
               ]
@@ -73,7 +74,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Manual File Upload',
-          items: ['converters_overview', 'converters_endpoints']
+          items: ['converters_overview', 'converters_file_requirements', 'converters_endpoints']
         },
         {
           type: 'category',
@@ -162,6 +163,14 @@ module.exports = {
               label: 'Layers',
               items: ['beta_layers_endpoints']
             }
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Usage Monitoring',
+          items: [
+            'billing_usage_metrics_overview',
+            'billing_usage_metrics_endpoints'
           ]
         },
       ],

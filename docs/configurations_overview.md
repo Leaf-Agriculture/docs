@@ -1,5 +1,5 @@
 ---
-title: Configurations Overview
+title: Configurations
 description: Configurations - Overview
 sidebar_label: Overview
 ---
@@ -27,91 +27,216 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [17]: /docs/operations_endpoints#get-the-operations-sessions
 [18]: /docs/provider_organizations#organizations-sync
 [19]: /docs/field_boundary_management_endpoints#sync-fields-manually
+[20]: /docs/machine_file_conversion_sample_output#valid-points
 
 
-Leaf's system can be customized to present different behaviors across services and Leaf Users. This is done using Configurations.
+## Overview 
 
-All API Owners start with a default configuration set. These configurations can be changed, but they can not be deleted or set to `null`.
+Leaf's system can be heavily customized to pull and process data differently across APIs and Leaf Users. This customization is achieved using **Configurations** – settings that control data ingestion, processing, and output formats.
 
-Custom configurations can be set for individual Leaf Users. Configurations set for a Leaf User won't be changed if the API Owner's configurations change. However, if individual Leaf User configurations are not set, they will automatically inherit the API Owner's configurations. 
+Configurations can be applied to multiple APIs, including field and field boundaries, machine files, and field operations. Some configurations, like `organizationDataSync` and `customDataSync`, affect all APIs.
 
-*Currently, configurations are available for the following services:*
-
-| Service                                                 | Available configurations                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
-|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| [Field Boundary Management](#field-boundary-management) | automaticFixBoundary, fieldsAttachIntersection, fieldsAutoMerge, fieldsAutoSync, fieldsMergeIntersection                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
-| [Machine File Conversion ](#machine-file-conversion)    | cleanupStandardGeojson, generateProviderImages, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, originalOperationData, unitMeasurement, enableOutsideFieldGeojson, filesImageAttributeCreation, enableGeoparquetOutput                                                                                                                                                                                                                                                                                                                                                    | 
-| [Field Operations ](#field-operations)                  | cleanupStandardGeojson, fieldOperationCreation, operationsAutoSync, operationsFilteredGeojson, operationsImageAsGeoTiff, operationsRemoveOutliers, operationsOutliersLimit, operationsMergeRange, operationsMergeRangeHarvested, operationsProcessingRange, splitOperationsByField, splitOperationsByProvider, splitOperationsByTillType, operationsImageCreation, geoimagesColorRamp, geoimagesProjection, geoimagesResolution, geoimagesShape, summarizeByProductEntry, unitMeasurement, enableOutsideFieldGeojson, enableOperationsSession, operationsImageAttributeCreation, enableGeoparquetOutput | 
-| [ Irrigation ](#irrigation)                  | irrigationProcessingRange                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 
-| [ Synchronization ](#synchronization)                  | organizationDataSync, customDataSync, fieldsAutoSync, operationsAutoSync, implementsAutoSync, machinesAutoSync, operatorsAutoSync, productsAutoSync, zonesAutoSync, syncPartnerData                                                                                                                                                                                                                                                                                                                                                                                            | 
-
-
-
-### Field Boundary Management
-#### automaticFixBoundary
-If set to `true`, this configuration will attempt to correct invalid geometries obtained from providers. The default value is `false`. More information [here][13].
-
-
-#### fieldsAttachIntersection
-Minimum intersection percentage between a field and an operation. An intersection proportion higher than this value will make the operation to be linked to the given field. This property supports a floating point between 0 and 100 percent. The default value is `0.01`, which is the smallest number possible of overlap between the fields. Example: Setting this to 1 = 1%, setting this to 0.01 = 0.01%. 
-#### fieldsAutoMerge
-Feature automatically merges fields that passes through the intersection parameter. Default value is `true`. The merge intersection can be controlled by the fieldsMergeIntersection configuration.
-#### fieldsAutoSync
-If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.
-#### fieldsMergeIntersection
-Minimum intersection between two fields to merge them. A new field of type MERGED will be created based in the intersection of the fields, while the original fields will be kept for historical purposes but remain inactive. This property supports a floating point between 0 and 100. The default value is `0.01`, which is the smallest number possible of overlap between the fields.
-
-
-### Machine File Conversion
-#### cleanupStandardGeojson
-If set to `true`, Leaf will automatically remove [invalid points](machine_file_conversion_sample_output.md#valid-points) from the standardGeoJSON file. The default value is `true`.
-
-#### generateProviderImages
-If set to `true`, Leaf will generate property images for [files][1] fetched from providers. Uploaded files are not affected by this change. The default value is `false`.  
-Not to be confused with [operationsImageCreation](#operationsimagecreation), which is specifically for [Field Operations][2].
-
-:::tip note
-All geoimage configurations are for V1 images only. We recommend using V2 for the best quality. 
+:::info
+Configuration changes are **not** applied retroactively.  If you update a configuration and need to reprocess data, you can use the [Reprocess Operation](operations_endpoints.md#reprocess-an-operation) endpoint. 
 :::
 
-#### geoimagesColorRamp
-The color ramp to be used when generating images of operations. It's a map from a percentage value to a list containing a color in RGB or RGBA. The last entry in the map must contain a value for the `nv` key, mapping to the color for null values. The default value is
+
+### Configuration Levels
+
+Configurations can be set at two levels:
+
+1.  **API Owner Level:** Every API Owner account starts with a default set of configurations (detailed below). These defaults can be changed, but they cannot be deleted or set to `null`.
+2.  **Leaf User Level:** You can set specific configurations for individual Leaf Users (representing growers, regions, etc.). This allows granular control over how a specific user's data is synchronized or processed.
+
+**Inheritance:** If a configuration is *not* explicitly set for a Leaf User, that user automatically inherits the configuration from the API Owner. However, once a configuration *is* set at the Leaf User level, it will **not** change even if the API Owner's configuration is subsequently modified.
+
+### Available Configurations
+
+| API                                             |Configurations                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
+|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| [ Data Synchronization ](#data-synchronization)                  | [organizationDataSync](#organizationdatasync), [customDataSync](#customdatasync), [fieldsAutoSync](#fieldsautosync), [operationsAutoSync](#operationsautosync), [implementsAutoSync](#implementsautosync), [machinesAutoSync](#machinesautosync), [operatorsAutoSync](#operatorsautosync), [productsAutoSync](#productsautosync), [zonesAutoSync](#zonesautosync), [syncPartnerData](#syncpartnerdata)                                                                                                                                                                                                                                                                                                                                                                                            | 
+| [Field Boundary Management](#field-boundary-management) | [automaticFixBoundary](#automaticfixboundary), [fieldsAttachIntersection](#fieldsattachintersection), [fieldsAutoMerge](#fieldsautomerge), [fieldsAutoSync](#fieldsautosync), [fieldsMergeIntersection](#fieldsmergeintersection)                                                                                                                                                                                                                                                                                                                                                                                                                         | 
+| [Machine File Conversion ](#machine-file-conversion)    | [cleanupStandardGeojson](#cleanupstandardgeojson), [cleanupRules](#cleanuprules), [originalOperationData](#originaloperationdata), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableGeoparquetOutput](#enablegeoparquetoutput), [enablePolygonOutput](#enablepolygonoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional)                                                                                                                                                                                                                                                                                                                                                    | 
+| [Field Operations ](#field-operations)                  | [cleanupStandardGeojson](#cleanupstandardgeojson), [cleanupRules](#cleanuprules), [outofStandardOperations](#outofstandardoperations), [fieldOperationCreation](#fieldoperationcreation), [operationsAutoSync](#operationsautosync), [operationsFilteredGeojson](#operationsfilteredgeojson), [operationsRemoveOutliers](#operationsremoveoutliers), [operationsOutliersLimit](#operationsoutlierslimit), [operationsMergeRange](#operationsmergerange), [operationsMergeRangeHarvested](#operationsmergerangeharvested), [operationsProcessingRange](#operationsprocessingrange), [splitOperationsByField](#splitoperationsbyfield), [splitOperationsByProvider](#splitoperationsbyprovider), [splitOperationsByTillType](#splitoperationsbytilltype), [summarizeByProductEntry](#summarizebyproductentry), [unitMeasurement](#unitmeasurement), [enableOutsideFieldGeojson](#enableoutsidefieldgeojson), [enableOperationsSession](#enableoperationssession), [enableGeoparquetOutput](#enablegeoparquetoutput), [cropOptional](#cropoptional), [seedRateOptional](#seedrateoptional)  | 
+| [ Field Operations Images ](#field-operations-image-generation)                | [operationsImageCreation](#operationsimagecreation), [operationsImageAsGeoTiff](#operationsimageasgeotiff), [operationsImageAttributeCreation](#operationsimageattributecreation),                                                                                                                                                                                                                                                                                                                                                                                              | 
+| [ Irrigation ](#irrigation)                  | [irrigationProcessingRange](#irrigationprocessingrange)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
+
+
+## Data Synchronization
+
+### fieldsAutoSync
+Default: `true`
+
+Enable this setting to have Leaf automatically synchronize field boundary data from your connected providers. If disabled (`false`), you must manually trigger synchronization via the [Manual Sync endpoint][19].
+
+### operationsAutoSync
+Default: `true`
+
+Enable this setting to have Leaf automatically synchronize operation data from your connected providers.
+
+
+### customDataSync
+Default: `true`
+
+Enable this setting to initially fetch field boundaries in [`PREVIEW` mode][10]. This avoids fetching full data for all provider fields, allowing you to selectively [choose which fields][11] to fetch completely later. For some providers, this also affects fetching associated operation files. When changing this from `true` to `false`, previously previewed fields can be fully processed using the [Manual Sync endpoint][19].
+
+
+### organizationDataSync
+Default: `ALL`
+
+Control how Leaf syncs data across organizations within a provider account. Set to `ALL` to sync data from all organizations. Set to `SELECTED_ONLY` to sync only from organizations explicitly marked as `SELECTED` via the Organization Sync endpoints.
+
+### syncPartnerData
+Default: `false`
+
+Enable (`true`) this setting to fetch shared or partner data (e.g., from John Deere Operations Center partnerships or AgLeader shared accounts), provided the necessary permissions are granted. If disabled (`false`), Leaf only fetches data from the directly connected account, ignoring shared data even if permissions allow it.
+
+
+### implementsAutoSync
+Default: `false`
+
+Enable this setting to have Leaf automatically synchronize implement data from your connected providers.
+
+### machinesAutoSync
+Default: `false`
+
+Enable this setting to have Leaf automatically synchronize machine data from your connected providers.
+
+### operatorsAutoSync
+Default: `false`
+
+Enable this setting to have Leaf automatically synchronize operator data from your connected providers.
+
+### productsAutoSync
+Default: `false`
+
+Enable this setting to have Leaf automatically fetch input/product data (currently applies to John Deere).
+
+### zonesAutoSync
+Default: `false`
+
+Enable this setting to have Leaf automatically synchronize zone data from your connected providers.
+
+
+## Field Boundary Management
+### automaticFixBoundary
+Default: `true`
+
+Enable this setting to have Leaf automatically attempt to correct invalid field boundary geometries received from providers. See [Automatic Geometry Fix][13] for more details.
+
+#### fieldsAttachIntersection
+Default: `0.01`
+
+Set the minimum intersection percentage required to link an operation to a field. Leaf links the operation if the intersection area is greater than this value. Enter a value between 0 and 100 (e.g., `1` for 1%, `0.01` for 0.01%). `0.01` represents the smallest possible overlap.
+
+### fieldsAutoMerge
+Default: `false`
+
+Enable this setting to have Leaf automatically merge fields that meet the intersection threshold defined by the `fieldsMergeIntersection` configuration.
+
+### fieldsAutoSync
+Default: `true`
+
+Enable this setting to have Leaf automatically synchronize field boundaries from your connected providers. If set to `false`, you must manually trigger synchronization using the [sync fields endpoint][19].
+
+### fieldsMergeIntersection
+Default: `0.01`
+
+Define the minimum intersection percentage required to merge two fields. When fields meet this threshold and `fieldsAutoMerge` is enabled, Leaf creates a new field of type `MERGED` representing the intersection. The original fields remain inactive for historical reference. Enter a value between 0 and 100 (`0.01` is the minimum).
+
+
+## Machine File Conversion
+### cleanupStandardGeojson
+Default: `true`
+
+Enable this setting to have Leaf automatically remove points marked as invalid (see [Valid Points][20]) from the `standardGeoJSON` file output. The criteria used to determine validity are defined by the [`cleanupRules`](#cleanuprules) configuration.
+
+### cleanupRules
+Default: `[See below]`
+
+Define custom rules that determine which data points are considered valid when [`cleanupStandardGeojson`](#cleanupstandardgeojson) is enabled. Each rule targets a specific property and applies an operator/value condition. Points that do not satisfy all applicable rules are removed from the `standardGeoJSON` output.
+
+The default rules are:
 
 ```json
 {
-    "0%"  : [200,   0, 0],
-    "35%" : [255,  40, 0],
-    "45%" : [255, 150, 0],
-    "55%" : [255, 240, 0],
-    "65%" : [  0, 230, 0],
-    "75%" : [  0, 190, 0],
-    "100%": [  0, 130, 0],
-    "nv"  : [  0,   0, 0, 0]
+    "cleanupRules": {
+        "harvestMoisture": [
+            { "operator": "GT", "value": 0.0 },
+            { "operator": "LT", "value": 100.0 }
+        ],
+        "tillageDepthActual": [
+            { "operator": "GTE", "value": 0.0 }
+        ],
+        "recordingStatus": [
+            { "operator": "EQ", "value": "On" }
+        ],
+        "appliedRate": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "wetVolume": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "wetVolumePerArea": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "wetMass": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "seedRate": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "wetMassPerArea": [
+            { "operator": "GT", "value": 0.0 }
+        ],
+        "crop": [
+            { "operator": "NE", "value": "unknown" }
+        ],
+        "products": [
+            { "operator": "GTE", "value": 0.0 }
+        ]
+    }
 }
 ```
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
+
+The following properties and operators are supported:
+
+| Property             | Value type | Allowed operators          |
+|----------------------|------------|----------------------------|
+| `wetMass`            | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `wetMassPerArea`     | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `wetVolume`          | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `wetVolumePerArea`   | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `harvestMoisture`    | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `appliedRate`        | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `seedRate`           | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `tillageDepthActual` | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `area`               | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `products`           | number     | `GT`, `GTE`, `LT`, `LTE`  |
+| `recordingStatus`    | string     | `EQ`, `NE`                 |
+| `crop`               | string     | `EQ`, `NE`                 |
+
+Available operators:
+
+| Operator | Description              |
+|----------|--------------------------|
+| `GT`     | Greater than             |
+| `GTE`    | Greater than or equal to |
+| `LT`     | Less than                |
+| `LTE`    | Less than or equal to    |
+| `EQ`     | Equal to                 |
+| `NE`     | Not equal to             |
+
+:::info
+Setting custom `cleanupRules` replaces the **entire** default rule set for the cleanup step — it does not merge with the defaults. For example, if you only specify a rule for `recordingStatus`, all other default rules (such as `wetMass`, `harvestMoisture`, `seedRate`, etc.) will no longer be applied. Any property without a rule has no filtering — there is no fallback threshold. Make sure to include every rule you need.
 :::
 
-#### geoimagesProjection
-Projection to be used when generating images of operations. It can assume the values `EPSG:3857` and `EPSG:4326`. The default value is `EPSG:3857`.
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
-#### geoimagesResolution
-Resolution of the generated images of operations. The default value is `0.00001` degrees.
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
-#### geoimagesShape
-Shape of points to be used when generating images of operations. It can assume the values `ROUND` and `SQUARE`. The default value is `SQUARE`.
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
+This applies to both Machine File Conversion and Field Operations.
 
-#### originalOperationData
-If set to `true`, it will add some non Leaf-standard properties to the File summary, such as the field name and the type of the operation, as described originally by the provider. It is not applicable to the standard GeoJSON file or the Field Operation summary.  
-The default value is `false`.
+### originalOperationData
+Default: `true`
+
+Enable this setting to include non-standard properties (like original farm name, field name, grower, and operation type provided by the source) in the File summary output. This does not affect the `standardGeoJSON` or Field Operation summary outputs.
 
 ```json
 "originalOperationData": {
@@ -122,179 +247,211 @@ The default value is `false`.
 }
 ```
 
-#### unitMeasurement
-Defines the unit of measurement of the summary, standardGeoJSON, and filteredGeoJSON for the Machine Files and Field Operations services. It supports `METRIC`, `IMPERIAL`, and `DEFAULT` - that not standardize the units and keep them as available in the files/provider (this is the default value).
+### unitMeasurement
+Default: `[Your Preferred System]`
 
-The units for each option available can be found on the [Units of Measurement page][12].
+Choose the unit system (Metric, Imperial, or Default) for summary, `standardGeoJSON`, and `filteredGeoJSON` outputs in Machine Files and Field Operations. `METRIC` and `IMPERIAL` convert measurements accordingly. `DEFAULT` uses the units provided by the original data source. Using `METRIC` or `IMPERIAL` ensures consistency across your data. See the [Units of Measurement page][12] for specific unit conversions.
 
-#### enableOutsideFieldGeojson
-[See this section for more information][16]
+### enableOutsideFieldGeojson
+Default: `false`
 
-#### filesImageAttributeCreation
+Enable this setting to capture machine file points that fall outside defined field boundaries when `splitOperationsByField` is active. Normally, these points are discarded. When enabled, you can retrieve these points using the [outsideFieldGeoJSON endpoint][15]. This applies to both Machine File Conversion and Field Operations.
 
-Customizes the images available for each property of operation files. To enable the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`false`).
-The options available are:
+
+
+### enableGeoparquetOutput
+Default: `false`
+
+Enable this setting to generate vector point file outputs (like `standardGeoJSON`) in GeoParquet format in addition to GeoJSON. GeoParquet offers faster processing and reduced storage. This setting applies to data processed after it's enabled (no historical conversion). This applies to both Machine File Conversion and Field Operations.
+
+### enablePolygonOutput
+Default: `false`
+
+Enable this setting to output data in polygon format in addition to point format. When set to `false` (default), the GeoJSON output contains point data as shown in the image below:
+
+<img src={useBaseUrl('img/polygon_output_points.png')} alt="Point data output" />
+
+When set to `true`, the output will be provided in polygon format as shown in these images:
+
+<img src={useBaseUrl('img/polygon_ouput_polys_zoomed.png')} alt="Polygon data output - zoomed in view" />
+
+<img src={useBaseUrl('img/polygon_ouput_polys_zoomed_out.png')} alt="Polygon data output - zoomed out view" />
+
+:::note
+Given the size and complexity of polygon files, polygon output is only provided in GeoParquet format. Most systems ingesting polygon output also use Geoparquet natively instead of GeoJSON. You can enable GeoParquet for all files and operations using the `enableGeoparquetOutput` configuration. When enabled, polygon output can be accessed via the Get a file's polygonGeoParquet endpoint.
+:::
+
+### cropOptional
+Default: `required`
+
+Enable this setting to make crop an optional rather than required property. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
 
 ```json
-"filesImageAttributeCreation": {
-    "harvested": {
-        "area": false,
-        "distance": false,
-        "elevation": false,
-        "equipmentWidth": false,
-        "harvestMoisture": false,
-        "wetMass": false,
-        "wetMassPerArea": false,
-        "wetVolume": false,
-        "wetVolumePerArea": false,
-        "dryMass": false,
-        "dryMassPerArea": false,
-        "dryVolume": false,
-        "dryVolumePerArea": false,
-        "speed": false,
-        "heading": false,
-        "cropFlow": false,
-        "proteinPercentage": false,
-        "fuelRate": false,
-        "fuelUsed": false
-    },
-    "planted": {
-        "heading": false,
-        "distance": false,
-        "elevation": false,
-        "seedRate": false,
-        "area": false,
-        "equipmentWidth": false,
-        "speed": false,
-        "seedRateTarget": false,
-        "seedDepth": false,
-        "fuelRate": false,
-        "fuelUsed": false,
-        "downForce": false,
-        "singulation": false
-    },
-    "applied": {
-        "heading": false,
-        "distance": false,
-        "elevation": false,
-        "appliedRate": false,
-        "area": false,
-        "equipmentWidth": false,
-        "speed": false,
-        "appliedRateTarget": false,
-        "fuelRate": false,
-        "fuelUsed": false
-    },
-    "tillage": {
-        "area": false,
-        "heading": false,
-        "distance": false,
-        "elevation": false,
-        "equipmentWidth": false,
-        "tillageDepthTarget": false,
-        "speed": false,
-        "tillageDepthActual": false,
-        "fuelRate": false,
-        "fuelUsed": false
+{
+    "standardGeoJson": {
+        "planted": {
+            "crop": "optional"
+        }
     }
 }
 ```
 
-#### enableGeoparquetOutput
-If enabled, the vector point files like the StandardGeoJSON, will be available as GeoParquet additionally to the GeoJSON. The GeoParquet file will contain the same data, benefiting from faster processing and reduced storage costs. Once enabled it will create the GeoParquet from the point in time it is set to true (not historical data). The default is `false`.
+### seedRateOptional
+Default: `required`
 
-### Field Operations
-These configurations can be enabled with the use of Leaf Field Operations. This requires an active boundary to be present so Leaf can merge the machine files and create a Field Operation.
+Enable this setting to make the seedRate an optional, rather than required property. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
 
-#### cleanupStandardGeojson
-[See this section for more information](#cleanupstandardgeojson)
+```json
+{
+    "standardGeoJson": {
+        "planted": {
+            "seedRate": "optional"
+        }
+    }
+}
+```
 
-#### summarizeByProductEntry
-If set to `true`, Leaf will aggregate products with the same name and display only one entry per product in the summary. 
-`area` and `totalApplied` will be aggregated by the sum and the `rate` by the average. This config is only for applied data. The default value is `false`.
+## Field Operations
+These configurations can be enabled with the use of Leaf Field Operations. Field Operations require an active boundary to be present so Leaf can merge the machine files with the field boundaries to create Field Operations.
 
-#### fieldOperationCreation
-Enables the creation of [Field Operations][2]. The default is `true`.
+### cleanupStandardGeojson
+Default: `true`
 
-#### operationsAutoSync
-If set to `true`, Leaf will automatically synchronize provider's operations. The default value is `true`.
+Enable this setting to have Leaf automatically remove points marked as invalid from the `standardGeoJSON` file output during Field Operation processing. [See this section for more information](#cleanupstandardgeojson)
 
-#### operationsFilteredGeojson
-Enables the option to clear [Field Operations][2] data based on [some filter options][7]. Also enables the use of [operations images V2][8].
-The default is `false`.
+### cleanupRules
 
-#### operationsImageAsGeoTiff
-If set to `true`, Leaf will generate the images of operations in the GeoTIFF format too. The data can be accessed in this [endpoint][9]. The default value is `false`.
-:::tip note
-This configuration has effect **only** in the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
+[See this section for more information](#cleanuprules)
 
-#### operationsRemoveOutliers
-If enabled, it will remove points in the [filteredGeojson][7] based on harvest values so it is only applied to harvest type operations. The outliers will be defined based on the [operationsOutliersLimit][4] configuration. The default value is `true`.
+### outOfStandardOperations
 
-More info [here][5].
+Default: `false`
 
-:::tip
-To use this option, [operationsFilteredGeojson][6] must be enabled.
-:::
+Enable this setting to allow processing of operations that don't meet the standard validation criteria. When enabled, operations and files that would normally fail validation can still be processed, but will be marked as non-standard. This allows for more flexible handling of operations data while maintaining awareness of their non-standard status.
 
-#### operationsOutliersLimit
-Sets the threshold for removing outliers when the [operationsRemoveOutliers][3] configuration is enabled. The defined value will be considered to measure how many standard deviations will be considered as outliers. The default value is `3` which means that all points with harvested volume values ​​that are more than 3 standard deviations away from the mean will be removed.
+### summarizeByProductEntry
+Default: `true`
 
-More info [here][5].
+Enable this setting to aggregate product application data in the Field Operation summary. Leaf groups entries with the same product name, summing `area` and `totalApplied` and averaging the `rate`. This applies only to application-type operations.
 
-#### operationsMergeRange
-Range used to consider if files are part of the same operation. Default value is `5` days.
+### fieldOperationCreation
+Default: `true`
 
-#### operationsMergeRangeHarvested
-Range used to consider if harvest files are part of the same operation. Default value is `21` days.
+Enable this setting to allow Leaf to automatically create [Field Operations][2] by merging relevant machine files associated with an active field boundary.
 
-#### operationsProcessingRange
-The retroactive period (in months) to fetch file operations from providers. The default is `12` so only operations that were created or updated within the past 12 months will be processed by Leaf.
+### operationsAutoSync
+Default: `true`
 
-#### splitOperationsByField
-If set to `true`, Leaf will split your Field Operations based on the intersection of each Leaf Field Boundary. The default value is `false`.
+Enable this setting to have Leaf automatically synchronize operation data from your connected providers.
 
-#### splitOperationsByProvider
-If set to `true`, files will be filtered by provider in addition to the field, operation type, crop and date interval 
-to create operations. If set to `false`, operations will be created regardless of the source provider. The default value is `false`.
+### operationsFilteredGeojson
+Default: `true`
 
-#### splitOperationsByTillType
-If set to `true`, it will separate tillage operations by the `tillType` property, generating different Field Operations for each different existing tillage type. The default value is `false`.
-
-#### operationsImageCreation
-If set to `true`, Leaf will generate images of operations when processing them. If set to `false`, Leaf won't create the images. The default value is `false`.
-
-:::tip note
-This configuration has no effect over the [Field Operations Images V2](https://docs.withleaf.io/docs/operations_sample_output#field-operations-images-v2) output.
-:::
+Enable this setting to allow filtering of [Field Operations][2] data based on various criteria (see [Filtered GeoJSON][7]). 
 
 
-#### geoimagesColorRamp
-[See this section for more information](#geoimagescolorramp)
 
-#### geoimagesProjection
-[See this section for more information](#geoimagesprojection)
 
-#### geoimagesResolution
-[See this section for more information](#geoimagesresolution)
+### operationsRemoveOutliers
+Default: `true`
 
-#### geoimagesShape
-[See this section for more information](#geoimagesshape)
+Enable this setting to remove outlier points from the `filteredGeojson` output for harvest operations. Leaf identifies outliers based on harvest volume values falling outside the standard deviation threshold set by `operationsOutliersLimit`. Requires `operationsFilteredGeojson` to be enabled. See [Outliers][5] for more details.
 
-#### unitMeasurement
-[See this section for more information](#unitMeasurement)
+### operationsOutliersLimit
+Default: `3`
 
-#### enableOutsideFieldGeojson
-Machine files can have points outside the field boundaries, these points are normally discarded when creating a Field Operation with the [`splitOperationsByField`][14] configuration enabled. If set to `true`, this configuration will allow fetch the points, for each machine file, not considered in any Field Operation for a Leaf user. The default value is `false`. A list of all files with points outside boundaries can be fetched using the [outsideFieldGeoJSON endpoint][15].
+Set the standard deviation threshold for identifying outliers when `operationsRemoveOutliers` is enabled. For example, the default value `3` removes points where the harvest volume is more than 3 standard deviations from the mean. See [Outliers][5] for more details.
 
-#### enableOperationsSession
-If  set to `true`, it enables a new view of the field operation data, compiled by operator, implement and machines used in the operation. The information can be accessed in the [field operation session endpoint][17]. The default is `false`.
+### operationsMergeRange
+Default: `5` days
 
-#### operationsImageAttributeCreation
+Define the time window (in days) used to group machine files into a single non-harvest Field Operation. Files within this range for the same field, crop, and operation type are merged.
 
-Customizes the images available for each property of Field Operations. To enable the generation of an image, set the value `true` to the desired property. By default, all images are disabled (`false`).
-The options available are:
+### operationsMergeRangeHarvested
+Default: `21` days
+
+Define the time window (in days) used to group machine files into a single harvest Field Operation. Files within this range for the same field and crop are merged.
+
+### operationsProcessingRange
+Default: `[Set as needed]` (Typically 12 months)
+
+Specify the lookback period (in months) for fetching and processing operations data from providers. Leaf will only process operations created or updated within this timeframe.
+
+### splitOperationsByField
+Default: `true`
+
+Enable this setting to create separate Field Operations for each distinct Leaf Field Boundary that intersects with the machine data. If disabled, data intersecting multiple boundaries might be combined into a single operation.
+
+### splitOperationsByProvider
+Default: `true`
+
+Enable this setting to group machine files by provider *in addition to* field, operation type, crop, and date when creating Field Operations. If disabled (`false`), Leaf merges data from different providers into the same Field Operation if other criteria match.
+
+### splitOperationsByTillType
+Default: `false`
+
+Enable this setting to create separate Field Operations for each unique `tillType` found within tillage machine data. If disabled, different tillage types might be combined into a single operation.
+
+### unitMeasurement
+Default: `[Your Preferred System]`
+
+[See this section for more information](#unitmeasurement)
+
+### enableOutsideFieldGeojson
+Default: `false`
+
+[See this section for more information](#enableoutsidefieldgeojson)
+
+### enableOperationsSession
+Default: `false`
+
+Enables a new view of the field operation data, compiled by operator, implement and machines used in the operation. The information can be accessed in the [field operation session endpoint][17].
+
+### cropOptional
+Default: `required`
+
+Enable this setting to make the crop value in the summary optional. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
+
+```json
+{
+    "standardGeoJson": {
+        "planted": {
+            "crop": "optional"
+        }
+    }
+}
+```
+
+### seedRateOptional
+Default: `required`
+
+Enable this setting to make the seedRate value in the summary optional. We will ignore the value and pass through the original entry. This applies to both Machine File Conversion and Field Operations.
+
+```json
+{
+    "standardGeoJson": {
+        "planted": {
+            "seedRate": "optional"
+        }
+    }
+}
+```
+
+## Field Operations Image Generation
+
+### operationsImageCreation
+Default: `false`
+
+Enable this setting for Leaf to generate [Operations Images][8].
+
+### operationsImageAsGeoTiff
+Default: `false`
+
+Enable this setting to allow Leaf to generate the images of operations in GeoTIFF format. The data can be accessed in this [endpoint][9]. 
+
+
+### operationsImageAttributeCreation
+Customize which Operations Images are generated by setting the corresponding attribute flags to `true`.
 
 ```json
 "operationsImageAttributeCreation": {
@@ -361,44 +518,10 @@ The options available are:
 }
 ```
 
-#### enableGeoparquetOutput
-[See this section for more information](#enableGeoparquetOutput)
+## Irrigation
 
-### Irrigation
+### irrigationProcessingRange
+Default: `12` months
 
-#### irrigationProcessingRange
-The retroactive time period (in months) to fetch irrigation activities from providers. The default is `12` so only irrigation data that occurred 12 months ago to present will be processed by Leaf.
-
-### Synchronization
-
-#### organizationDataSync
-
-If set to `ALL`, Leaf will fetch and process data from all organizations within the provider account. If set to `SELECTED_ONLY`, Leaf will only fetch and process data from the organizations were the organization status has been set to `SELECTED`. Setting the status of an organization is done using the Organization Sync endpoints.  The dafault value is `ALL`.
-
-#### syncPartnerData
-If set to `true`, Leaf will fetch shared/partner data from John Deere and AgLeader shared accounts that have granted the required permissions. If set to `false`, only the directly connected  account data will be fetched, even if the permissions allow access to shared data/organizations. The default value is `true`.
-
-#### customDataSync
-If set to `true`, the field boundaries will be partially obtained in [`PREVIEW` mode][10]. This prevents all provider fields from being fetched, allowing [later selection][11] of fields that will be fetched completely. For some providers, it will also affect the operation files associated with those fields. The default value is `false`. Once the config is set from `true` to `false`, the Fields fetched from a Leaf User can be `PROCESSED` using the [Manual Sync endpoint][19].
-
-#### fieldsAutoSync
-If set to `true`, Leaf will automatically synchronize provider's fields. If set to `false`, synchronizations must be manually requested via endpoint. The default value is `true`.
-
-#### operationsAutoSync
-If set to `true`, Leaf will automatically synchronize provider's operations. The default value is `true`.
-
-#### implementsAutoSync
-If set to `true`, Leaf will automatically synchronize provider's implements. The default value is `false`.
-
-#### machinesAutoSync
-If set to `true`, Leaf will automatically synchronize provider's machines. The default value is `false`.
-
-#### operatorsAutoSync
-If set to `true`, Leaf will automatically synchronize provider's operators. The default value is `false`.
-
-#### productsAutoSync
-If set to `true`, Leaf will automatically fetch John Deere inputs/products. The default value is `false`.
-
-#### zonesAutoSync
-If set to `true`, Leaf will automatically synchronize provider's zones. The default value is `false`.
+Specify the lookback period (in months) for fetching and processing irrigation activities from providers. Leaf will only process irrigation data that occurred within this timeframe.
 

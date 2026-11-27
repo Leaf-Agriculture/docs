@@ -144,3 +144,4 @@ This table contains the FMIS properties available for the Integrations Resources
 | `Stara`            | :heavy_multiplication_x:      | :heavy_multiplication_x:      | :white_check_mark:  |
 | `Raven`            | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
 | `AgVance`          | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |
+| `Panorama`         | :white_check_mark:            | :white_check_mark:            | :white_check_mark:  |

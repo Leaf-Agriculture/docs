@@ -32,6 +32,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [21]: /docs/configurations_overview#enableoutsidefieldgeojson-1
 [22]: /docs/machine_file_conversion_sample_output#valid-points
 [23]: /docs/configurations_overview#cleanupstandardgeojson-1
+[24]: #get-a-files-standardgeoparquet
+[25]: /docs/configurations_overview#enableGeoparquetOutput
+[26]: #get-a-files-polygongeoparquet
+
 
 ## About
 
@@ -48,6 +52,8 @@ This service has the following endpoints available:
 | [Get all files][2]                 | <span class="badge badge--success">GET</span> `/files`                         |
 | [Get a file][3]                    | <span class="badge badge--success">GET</span> `/files/{id}`                    |
 | [Get a file summary][4]            | <span class="badge badge--success">GET</span> `/files/{id}/summary`            |
+| [Get a file's standardGeoParquet][24] | <span class="badge badge--success">GET</span> `/files/{id}/standardGeoparquet` |
+| [Get a file's polygonGeoParquet][26] | <span class="badge badge--success">GET</span> `/files/{id}/polygonGeoparquet` |
 | [Get a file's images][5]           | <span class="badge badge--success">GET</span> `/files/{id}/images`             |
 | [Get a file's units][6]            | <span class="badge badge--success">GET</span> `/files/{id}/units`              |
 | [Get a file status][7]             | <span class="badge badge--success">GET</span> `/files/{id}/status`             |
@@ -80,7 +86,7 @@ below.
 | Parameter (to filter by) | Values                                                                                           |
 |--------------------------|--------------------------------------------------------------------------------------------------|
 | `leafUserId`             | uuid of one of your users                                                                        |
-| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader`, `RavenSlingshot`, `Stara` or `Leaf`                         |
+| `provider`               | `CNHI`, `JohnDeere`, `Trimble`, `ClimateFieldView`, `AgLeader`, `RavenSlingshot`, `Stara`, `Panorama` or `Leaf`             |
 | `status`                 | `processed`, `failed` or `processing`                                                            |
 | `origin`                 | `provider`, `automerged`, `merged` or `uploaded`                                                 |
 | `organizationId`         | the provider organizationId (only available for John Deere)                                      |
@@ -288,6 +294,148 @@ Gets the summary, if available, for the file id.
 
 [Here's a link with sample responses][14] for "planted", "applied", "harvested" and "tillage" operation files.
 
+
+### Get a file's standardGeoParquet
+
+&nbsp<span class="badge badge--success">GET</span>  `/files/{id}/standardGeoparquet`
+
+Get the standard GeoParquet file URL relative to the file.
+
+:::tip
+To use this option, [enableGeoparquetOutput][25] configuration must be enabled.
+:::
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/standardGeoparquet'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/standardGeoparquet'
+  headers = {'Authorization': f'Bearer {TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/standardGeoparquet'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "downloadStandardGeoparquet": "URL"
+}
+```
+
+### Get a file's polygonGeoParquet
+
+&nbsp<span class="badge badge--success">GET</span>  `/files/{id}/polygonGeoparquet`
+
+Get the polygon GeoParquet file URL relative to the file.
+
+:::tip
+To use this option, enablePolygonOutput configuration must be enabled.
+:::
+
+#### Request examples
+
+<Tabs
+  defaultValue="sh"
+  values={[
+    { label: 'cURL', value: 'sh', },
+    { label: 'Python', value: 'py', },
+    { label: 'JavaScript', value: 'js', },
+  ]
+}>
+
+  <TabItem value="js">
+
+  ```js
+  const axios = require('axios')
+  const TOKEN = 'YOUR_TOKEN'
+
+  const endpoint ='https://api.withleaf.io/services/operations/api/files/{id}/polygonGeoparquet'
+  const headers = { 'Authorization': `Bearer ${TOKEN}` }
+
+  axios.get(endpoint, { headers })
+      .then(res => console.log(res.data))
+      .catch(console.error)
+  ```
+
+  </TabItem>
+  <TabItem value="py">
+
+  ```py
+  import requests
+
+  TOKEN = 'YOUR_TOKEN'
+
+  endpoint = 'https://api.withleaf.io/services/operations/api/files/{id}/polygonGeoparquet'
+  headers = {'Authorization': f'Bearer ${TOKEN}'}
+
+  response = requests.get(endpoint, headers=headers)
+  print(response.json())
+  ```
+
+  </TabItem>
+  <TabItem value="sh">
+
+  ```shell
+  curl -X GET \
+      -H 'Authorization: Bearer YOUR_TOKEN' \
+      'https://api.withleaf.io/services/operations/api/files/{id}/polygonGeoparquet'
+  ```
+
+  </TabItem>
+</Tabs>
+
+
+#### Response
+
+```json
+{
+  "downloadPolygonGeoparquet": "URL"
+}
+```
 
 ### Get a file's images
 
@@ -941,9 +1089,8 @@ More information is available in the `message` property and here are the most co
 
 | Message                                   | Details                                                                                                                                                                                                                     |
 |-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| no points passed the filter               | No points remained after the cleaning process of points that did not meet the criteria of [valid points][22]. This process can be enabled/disabled in the [cleanupStandardGeojson][23] configuration.                                                     |
-| unsupported operation type: {type}        | The operation type extracted from the file does not fit into any of the types supported by Leaf: `tillage`, `planted`, `applied`, or `harvested`. Examples of not supported types: `datacollection`, `guidance`, `unknown`. |
-| missing required properties: {properties} | Indicates that one or more required properties from the Leaf standard format were not identified in the file. The message lists the missing properties.                                                                     |
-| No operation files found after conversion | No valid operation files found in the file                                                                                                                                                                                  |
-| unsupported crop: {crop name}             | The crop name is not [mapped on the Leaf side yet][13]                                                                                                                                                                            |
+| no points passed the filter               | **What it means:** Our cleaning process checks every point against a set of criteria which we use to determine if the point is a [valid point](https://learn.withleaf.io/docs/machine_file_conversion_sample_output#valid-points). When you see this error message it means that no points remained after the cleaning process.<br />**Why it occurs:** In most cases, the incoming files have 0 points to process and therefore fail the criteria of even having valid points. This file is not strictly a failed file; we are intentionally canceling it given the configuration in place.<br />**What you can do:** The cleaning process can be turned on/off with the [cleanupStandardGeojson](https://learn.withleaf.io/docs/configurations_overview#cleanupstandardgeojson-1) configuration.                                                    |
+| unsupported operation type: {type}        | **What it means:**  One of the first things our pipeline does is determine what operation type the file represents.  When you see this message it means the operation type detected in the file doesn’t match one of our supported types. Our supported operations are: _planting, applications, harvesting and tillage._ Examples of unsupported types include: _datacollection, datagathering, guidance and unknown_.<br />**Why it occurs:** This typically happens when files are mislabeled or involve an operation not recognized by Leaf.<br />**What you can do:** Double check with your customer what operation type the file should be.|
+| missing required properties: {properties} | **What it means:** One or more required properties from the Leaf standard format weren’t identified in the file. The message lists the missing properties (e.g., _appliedRate, products, seedRate_).<br />**Why it occurs:** Often due to incomplete data or discrepancies in formatting between the uploaded file and Leaf’s expected standards and detection rules we have in place.<br />**What you can do:** Double check with your customer that the data exists with the provider and if possible send us a screenshot of the correct values.                                                                     |
+| Failed to convert file on provider batch processing | **What it means:** When we are unable to extract any valid JSON from the provider files, these files are marked as failed to avoid repeated attempts. This file is not strictly a failed file.<br />**Why it occurs:** Invalid or unrecognizable data structures prevent successful extraction of JSON content.<br />**What you can do:** Make sure the original data follows the standard structure and file format like naming convention and folder structure. 
 

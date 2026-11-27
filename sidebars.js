@@ -51,6 +51,7 @@ module.exports = {
                 'credentials_agvance',
                 'credentials_lindsay',
                 'credentials_valley',
+                'credentials_panorama',
                 'integrations_endpoints',
                 'provider_organizations'
               ]
@@ -73,7 +74,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Manual File Upload',
-          items: ['converters_overview', 'converters_endpoints']
+          items: ['converters_overview', 'converters_file_requirements', 'converters_endpoints']
         },
         {
           type: 'category',
@@ -100,6 +101,23 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Leaf Link',
+          items: [
+            'Link_provider_connection',
+            'Link_file_upload',
+            'Link_endpoints'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Magic Link',
+          items: [
+            'Magic_link_overview',
+            'Magic_link_endpoints'
+          ]
+        },
+        {
+          type: 'category',
           label: 'Irrigation',
           items: [
             'irrigation_overview',
@@ -120,7 +138,7 @@ module.exports = {
             'beta_features_overview',
             {
               type: 'category',
-              label: 'Input Database',
+              label: 'Input Validator',
               items: ['beta_input_endpoints']
             },
             {
@@ -144,24 +162,15 @@ module.exports = {
               type: 'category',
               label: 'Layers',
               items: ['beta_layers_endpoints']
-            },
-            {
-              type: 'category',
-              label: 'Leaf Link',
-              items: [
-                'Link_provider_connection',
-                'Link_file_upload',
-                'Link_endpoints'
-              ]
-            },
-            {
-              type: 'category',
-              label: 'Magic Link',
-              items: [
-                'Magic_link_overview',
-                'Magic_link_endpoints'
-              ]
             }
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Usage Monitoring',
+          items: [
+            'billing_usage_metrics_overview',
+            'billing_usage_metrics_endpoints'
           ]
         },
       ],

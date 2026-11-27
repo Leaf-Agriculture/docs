@@ -92,12 +92,13 @@ module.exports = {
           label: 'Blog',
           position: 'left'
         },
-        {
-          to: 'https://withleaf.io/account/quickstart',
-          activeBasePath: './',
-          label: 'Register',
-          position: 'left',
-        },
+        // un-comment to let users self serv register, its switched off as we want users to get in contact with us
+        // {
+        //  to: 'https://withleaf.io/account/quickstart',
+        //  activeBasePath: './',
+        //  label: 'Register',
+        //  position: 'left',
+        // },
         {
           href: 'https://github.com/Leaf-Agriculture/docs',
           label: 'GitHub',

@@ -18,11 +18,11 @@ The Magic Link is the easiest way to connect your customer data with Leaf API. I
     <img alt="authentication" src={useBaseUrl('img/flow_authentication.png')} />
 </p>
 
-### Provider
+### Multiple providers
 
 The Magic Link Provider is a feature that allows the user to authenticate with several providers using a single link. It is necessary to have previously created the respective [application info][1] for these providers.
 
-### Authentication
+### Single provider
 
 The Magic Link Authentication is a feature to authenticate with only one provider at a time. It is necessary to have previously created the [application info][1] for this provider.
 

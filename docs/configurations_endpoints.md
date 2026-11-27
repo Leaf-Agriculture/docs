@@ -108,22 +108,22 @@ A JSON containing the configuration of the API Owner.
   "apiOwnerUsername": "api-owner",
   "leafUserId": "",
   "operationsImageCreation": true,
-  "geoimagesResolution": 0.00001,
-  "geoimagesShape": "SQUARE",
-  "geoimagesProjection": "EPSG:3857",
-  "geoimagesColorRamp": {
-    "0%": [200, 0, 0],
-    "35%": [255, 40, 0],
-    "45%": [255, 150, 0],
-    "55%": [255, 240, 0],
-    "65%": [0, 230, 0],
-    "75%": [0, 190, 0],
-    "100%": [0, 130, 0],
-    "nv": [0, 0, 0, 0]
-  },
   "fieldsAutoSync": true,
   "fieldsMergeIntersection": 0.01,
-  "fieldsAttachIntersection": 0.01
+  "fieldsAttachIntersection": 0.01,
+  "cleanupStandardGeojson": true,
+  "cleanupRules": {
+    "wetMass": [
+      { "operator": "GT", "value": 0.0 }
+    ],
+    "harvestMoisture": [
+      { "operator": "GT", "value": 0.0 },
+      { "operator": "LT", "value": 100.0 }
+    ],
+    "recordingStatus": [
+      { "operator": "EQ", "value": "On" }
+    ]
+  }
 }
 ```
 
@@ -197,19 +197,6 @@ A JSON containing the configuration of the Leaf User.
   "apiOwnerUsername": "api-owner",
   "leafUserId": "00000000-0000-0000-0000-000000000000",
   "operationsImageCreation": true,
-  "geoimagesResolution": 0.00001,
-  "geoimagesShape": "SQUARE",
-  "geoimagesProjection": "EPSG:3857",
-  "geoimagesColorRamp": {
-    "0%": [200, 0, 0],
-    "35%": [255, 40, 0],
-    "45%": [255, 150, 0],
-    "55%": [255, 240, 0],
-    "65%": [0, 230, 0],
-    "75%": [0, 190, 0],
-    "100%": [0, 130, 0],
-    "nv": [0, 0, 0, 0]
-  },
   "fieldsAutoSync": true,
   "fieldsMergeIntersection": 0.01,
   "fieldsAttachIntersection": 0.01,
@@ -309,19 +296,6 @@ A JSON containing the configuration of the Leaf User.
   "apiOwnerUsername": "api-owner",
   "leafUserId": "00000000-0000-0000-0000-000000000000",
   "operationsImageCreation": true,
-  "geoimagesResolution": 0.00001,
-  "geoimagesShape": "SQUARE",
-  "geoimagesProjection": "EPSG:3857",
-  "geoimagesColorRamp": {
-    "0%": [200, 0, 0],
-    "35%": [255, 40, 0],
-    "45%": [255, 150, 0],
-    "55%": [255, 240, 0],
-    "65%": [0, 230, 0],
-    "75%": [0, 190, 0],
-    "100%": [0, 130, 0],
-    "nv": [0, 0, 0, 0]
-  },
   "fieldsAutoSync": true,
   "fieldsMergeIntersection": 0.01,
   "fieldsAttachIntersection": 0.01,
@@ -341,7 +315,19 @@ Request body example:
 ```json
 {
   "operationsImageCreation": true,
-  "fieldsAutoSync": true
+  "fieldsAutoSync": true,
+  "cleanupRules": {
+    "wetMass": [
+      { "operator": "GT", "value": 0.0 }
+    ],
+    "harvestMoisture": [
+      { "operator": "GT", "value": 0.0 },
+      { "operator": "LT", "value": 100.0 }
+    ],
+    "recordingStatus": [
+      { "operator": "EQ", "value": "On" }
+    ]
+  }
 }
 ```
 
@@ -418,19 +404,6 @@ A JSON containing the configuration of the API Owner.
   "apiOwnerUsername": "api-owner",
   "leafUserId": "",
   "operationsImageCreation": true,
-  "geoimagesResolution": 0.00001,
-  "geoimagesShape": "SQUARE",
-  "geoimagesProjection": "EPSG:3857",
-  "geoimagesColorRamp": {
-    "0%": [200, 0, 0],
-    "35%": [255, 40, 0],
-    "45%": [255, 150, 0],
-    "55%": [255, 240, 0],
-    "65%": [0, 230, 0],
-    "75%": [0, 190, 0],
-    "100%": [0, 130, 0],
-    "nv": [0, 0, 0, 0]
-  },
   "fieldsAutoSync": true,
   "fieldsMergeIntersection": 0.01,
   "fieldsAttachIntersection": 0.01,
@@ -529,19 +502,6 @@ A JSON containing the configuration of the Leaf User.
   "apiOwnerUsername": "api-owner",
   "leafUserId": "00000000-0000-0000-0000-000000000000",
   "operationsImageCreation": true,
-  "geoimagesResolution": 0.00001,
-  "geoimagesShape": "SQUARE",
-  "geoimagesProjection": "EPSG:3857",
-  "geoimagesColorRamp": {
-    "0%": [200, 0, 0],
-    "35%": [255, 40, 0],
-    "45%": [255, 150, 0],
-    "55%": [255, 240, 0],
-    "65%": [0, 230, 0],
-    "75%": [0, 190, 0],
-    "100%": [0, 130, 0],
-    "nv": [0, 0, 0, 0]
-  },
   "fieldsAutoSync": true,
   "fieldsMergeIntersection": 0.01,
   "fieldsAttachIntersection": 0.01,

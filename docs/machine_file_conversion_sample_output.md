@@ -9,6 +9,7 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 [1]: https://docs.withleaf.io/docs/configurations_overview#cleanupstandardgeojson
+[2]: https://docs.withleaf.io/docs/configurations_overview#cleanuprules
 
 ## Overview
 
@@ -930,7 +931,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | elevation             | *        | float                       | ft or m              | Distance to sea level                                                        |
   | operationType         | *        | string                      | -                    | string "planted"                                                             |
   | originalOperationType | **       | string                      | -                    | string                                                                       |
-  | equipmentWidth        | *        | float                       | ft or m              | Width of implement                                                           |
+  | equipmentWidth        | **       | float                       | ft or m              | Width of implement                                                           |
   | recordingStatus       | **       | Boolean                     | -                    | Recording status of machine at point                                         |
   | seedRate              | *        | int                         | seeds/m² or seeds/ac | The rate of seeds planted at point                                           |
   | variety               | **       | string                      | -                    | The variety of seed being planted                                            |
@@ -941,10 +942,16 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | seedDepth             | **       | float                       | cm                   | The depth at which seeds were planted at point                               |
   | productIndex          | **       | int                         | -                    | Index of the applied product                                                 |
   | downForce             | **       | float                       | lbf                  | The weight detected by the down force sensor on each row that has one        |
+  | downForceMargin       | **       | float                       | lbf                  | Remaining downforce available to maintain ground contact for each row unit |
   | singulation           | **       | float                       | %                    | The performance of each meter on the planter                                 |
   | xOffset               | **       | float                       | m                    | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                    | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft                   | Horizontal distance offset between the machine and the implement         |
   | fuelUsed              | **       | float                       | L or gal             | The fuel consumed                                                            |
+  | groundContact         | **       | float                       | %                    | Percentage of time the gauge wheel maintains contact with the ground     |
+  | spacingVariation      | **       | float                       | %                    | Variation in seed spacing, representing the consistency of seed placement |
+  | seedSpacing           | **       | float                       | ft or m              | Distance between consecutive seeds in the row                            |
+  | rideQuality           | **       | float                       | %                    | Percentage of time the row unit experiences acceleration above the desired threshold (indicator of ride smoothness) |
   
 
   </TabItem>
@@ -963,13 +970,14 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | operationType         | *        | string                      | -                | string "applied"                                                             |
   | originalOperationType | **       | string                      | -                | string                                                                       |
   | products              | *        | list of dicts               | -                | tank mix including products and ratio                                        |
-  | equipmentWidth        | *        | float                       | ft or m          | Width of implement                                                           |
+  | equipmentWidth        | **       | float                       | ft or m          | Width of implement                                                           |
   | speed                 | **       | float                       | ft/s or m/s      | Speed of machine at point                                                    |
   | appliedRateTarget     | **       | float                       | fl.oz/ac or L/m² | The target amount of product to be applied at the point                      |
   | machinery             | **       | list of machineInfo objects | -                | Name of machine and implement                                                |
   | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
   | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft               | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal         | The fuel consumed                                                            |
 
   </TabItem>
@@ -985,7 +993,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | elevation             | *        | float                       | ft or m        | Distance to sea level                                                        |
   | operationType         | *        | string                      | -              | string "harvested"                                                           |
   | originalOperationType | **       | string                      | -              | string                                                                       |
-  | equipmentWidth        | *        | float                       | ft or m        | Width of implement                                                           |
+  | equipmentWidth        | **       | float                       | ft or m        | Width of implement                                                           |
   | recordingStatus       | **       | Boolean                     | -              | Recording status of machine                                                  |
   | harvestMoisture       | *        | float                       | %              | float                                                                        |
   | wetMass               | *        | float                       | lb or kg       | wet mass harvested in that point                                             |
@@ -1006,6 +1014,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | samplingInterval      | **       | float                       | s              | Delta time from the previous recorded feature                                |
   | xOffset               | **       | float                       | m              | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m              | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft             | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal       | The fuel consumed                                                            |
 
   </TabItem>
@@ -1022,7 +1031,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | timestamp             | *        | string                      | -                | ISO 8601 date, complete and with Z. example: 2011-10-05T14:48:00.000Z        |
   | operationType         | *        | string                      | -                | string "tillage"                                                             |
   | originalOperationType | **       | string                      | -                | string                                                                       |
-  | equipmentWidth        | *        | float                       | ft or m          | Width of implement                                                           |
+  | equipmentWidth        | **       | float                       | ft or m          | Width of implement                                                           |
   | tillageDepthTarget    | **       | float                       | fl.oz/ac or L/m² | The target depth                                                             |
   | speed                 | **       | float                       | ft/s or m/s      | Speed of machine at point                                                    |
   | tillageDepthActual    | **       | float                       | fl.oz/ac or L/m² | The actual depth                                                             |
@@ -1030,6 +1039,7 @@ Each operation file returns with a "standardgeojson" URL that allows you to down
   | sectionId             | **       | int                         | -                | ID of implement sensor section                                               |
   | xOffset               | **       | float                       | m                | Vertical offset from the instrumentation sensor and the monitor GPS system   |
   | yOffset               | **       | float                       | m                | Horizontal offset from the instrumentation sensor and the monitor GPS system |
+  | implementOffset       | **       | float                       | ft               | Horizontal distance offset between the machine and the implement             |
   | fuelUsed              | **       | float                       | L or gal         | The fuel consumed                                                            |
 
   </TabItem>
@@ -1044,21 +1054,23 @@ Despite the example units, Leaf's API will push through every unit, if the proce
 
 ### Valid points
 
-The points in the standardGeoJSON are considered valid if all the following rules are true:
+By default, points in the standardGeoJSON are considered valid if all the following rules are true:
 
-| property           | rule   |
-|--------------------|--------|
-| wetMass            | > 0.0  |
-| wetMassPerArea     | > 0.0  |
-| wetVolume          | > 0.0  |
-| wetVolumePerArea   | > 0.0  |
-| harvestMoisture    | > 0.0 and <100.0 |
-| appliedRate        | > 0.0  |
-| seedRate           | > 0.0  |
-| tillageDepthActual | >= 0.0  |
-| recordingStatus    | = "On" |
+| property           | rule              |
+|--------------------|-------------------|
+| wetMass            | > 0.0             |
+| wetMassPerArea     | > 0.0             |
+| wetVolume          | > 0.0             |
+| wetVolumePerArea   | > 0.0             |
+| harvestMoisture    | > 0.0 and < 100.0 |
+| appliedRate        | > 0.0             |
+| seedRate           | > 0.0             |
+| tillageDepthActual | >= 0.0            |
+| recordingStatus    | = "On"            |
+| crop               | != "unknown"      |
+| products           | >= 0.0            |
 
-The API will automatically clean the invalid points when the [`cleanupStandardGeojson`][1] configuration is enabled.
+The API will automatically clean the invalid points when the [`cleanupStandardGeojson`][1] configuration is enabled. To customize which rules are applied and their thresholds, see the [`cleanupRules`][2] configuration.
 
 ### Images
 

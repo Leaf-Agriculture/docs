@@ -370,7 +370,12 @@ following. Specifying the ID of the credentials object previously created will l
 
 ### Update a Leaf User
 
-&nbsp<span class="badge badge--warning">PUT</span> `/users`
+&nbsp;<span class="badge badge--warning">DEPRECATED</span>
+
+> **Deprecation Notice**  
+> This endpoint is deprecated and will be removed in a future release. Consider using the endpoints for Provider Credentials to better manage the credentials of a Leaf User.
+
+&nbsp;<span class="badge badge--warning">PUT</span> `/users`
 
 Edits an existing Leaf User by submitting a new one.
 

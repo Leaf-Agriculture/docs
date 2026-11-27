@@ -1,6 +1,6 @@
 ---
-title: Billing > Usage metrics endpoints
-description: Billing - Usage metrics endpoints
+title: Usage Monitoring endpoints
+description: API endpoints for monitoring and tracking your usage across different services and features
 sidebar_label: Endpoints
 ---
 
@@ -16,7 +16,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 [5]: #get-contract-consumption-range-for-api-owner
 [6]: #get-contract-consumption-range-for-leaf-user
 
-## About
 All HTTP methods should be prepended by this service's endpoint:
 
 ```
@@ -25,53 +24,23 @@ https://api.withleaf.io/services/billingapplication/api
 
 See below the REST resources and their endpoints available in this service.
 
-### Contract Products
-- AUDIT_FIELDS_BOUNDARY
+## Usage Monitoring Endpoints
 
-Current active field boundary area, unbounded by sales contract start and end dates.
-
-- FIELDS_BOUNDARY
-
-Field boundary area consumption, including deleted and updated geometries, containing only field boundaries that were created/updated inside the sales contract start and end/renewal date.
-
-- FIELDS_BOUNDARY_SENTERA
-
-Sentera exlusive field boundary area consumption, including deleted and updated geometries, containing only field boundaries that were created/updated inside the sales contract start and end/renewal date.
-
-- OPERATIONS_FILE
-
-Machine operations files area consumption, including deleted geometries, containing only files that were created inside the sales contract start and end/renewal date.
-
-- OPERATIONS_OPERATION
-
-Machine operations area consumption, generated automatically from the intersection of fields boundary and machine operations files geometries, containing only operations that were generated inside the sales contract start and end/renewal date.
-
-- SATELLITE_PROCESS_PLANET
-
-Satellite imagery area consumption of the Planet provider, containing only images processed inside the sales contract start and end/renewal date.
-
-- SATELLITE_PROCESS_SENTINEL
-
-Satellite imagery area consumptioni of the Sentinel provider, containing only images processed inside the sales contract start and end/renewal date.
-
-
-## Area consumption tracking
-
-This feature has the following endpoints available:
+Monitor your usage with these endpoints:
 
 | Description                                        | Endpoints                                                                                                            |
 |----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| [List contracts][2]                                | <span class="badge badge--success">GET</span> `/billing/contracts`                                                   |
-| [Get contract by id][3]                            | <span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}`                                     |
-| [Get contract consumption][4]                      | <span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption`                         |
-| [Get contract consumption range for api owner][5]  | <span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption/api-owner`               |
-| [Get contract consumption range for leaf user][6]  | <span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption/leaf-user/{leaf_user_id}`|
+| [List your contracts][2]                           | <span class="badge badge--success">GET</span> `/billing/contracts`                                                   |
+| [Get contract details][3]                          | <span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}`                                     |
+| [Get daily usage summary][4]                       | <span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption`                         |
+| [Get usage range for your organization][5]         | <span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption/api-owner`               |
+| [Get usage range for specific user][6]             | <span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption/leaf-user/{leaf_user_id}`|
 
-### List contracts
+### List your contracts
 
 &nbsp<span class="badge badge--success">GET</span> `/billing/contracts`
 
-Returns a list of all contracts available for the authenticated user.
+Get a list of all usage monitoring contracts available for your organization. Each contract represents a different service or feature you can monitor.
 
 #### Request examples
 
@@ -132,20 +101,23 @@ curl -X GET \
     "product": "FIELDS_BOUNDARY",
     "startDate": "2023-01-01T00:00:00Z",
     "endDate": "2024-01-01T00:00:00Z",
-    "region": null,
-    "quotaInHectares": 0.0,
-    "quotaInAcres": 0.0
-  },
-  ...
+    "region": null
+  }
 ]
 ```
 
+**Response fields:**
+- `id`: Unique identifier for this contract
+- `product`: Which service this tracks (see "What Gets Tracked" above)
+- `startDate`: When usage monitoring began for this contract
+- `endDate`: When usage monitoring ends for this contract
+- `region`: Geographic region (if applicable)
 
-### Get contract by id
+### Get contract details
 
 &nbsp<span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}`
 
-Returns details for a specific contract by its ID.
+Get detailed information about a specific usage monitoring contract.
 
 #### Request examples
 
@@ -205,17 +177,18 @@ curl -X GET \
   "product": "FIELDS_BOUNDARY",
   "startDate": "2023-01-01T00:00:00Z",
   "endDate": "2024-01-01T00:00:00Z",
-  "region": null,
-  "quotaInHectares": 0.0,
-  "quotaInAcres": 0.0
+  "region": null
 }
 ```
 
-### Get contract consumption
+### Get daily usage summary
 
 &nbsp<span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption`
 
-Gets the consumption metrics for a specific contract. Allows an optional "timestamp" query parameter to specify which day to get the data for, if not specified returns current day's data.
+Get usage metrics for a specific contract for a single day. If you don't specify a date, it returns today's usage.
+
+**Query Parameters:**
+- `timestamp` (optional): Date to get usage for in ISO format `YYYY-MM-DDTHH:MM:SS.sssZ`
 
 #### Request examples
 
@@ -235,7 +208,7 @@ const TOKEN = 'YOUR_TOKEN'
 
 const endpoint = 'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
-const params = { timestamp: 'YYYY-MM-DDT00:00:00.000Z' }
+const params = { timestamp: '2024-01-15T00:00:00.000Z' }
 
 axios.get(endpoint, { headers, params })
     .then(res => console.log(res.data))
@@ -251,7 +224,7 @@ import requests
 TOKEN = 'YOUR_TOKEN'
 endpoint = 'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption'
 headers = {'Authorization': f'Bearer {TOKEN}'}
-params = {'timestamp': 'YYYY-MM-DDT00:00:00.000Z'}
+params = {'timestamp': '2024-01-15T00:00:00.000Z'}
 
 response = requests.get(endpoint, headers=headers, params=params)
 print(response.json())
@@ -263,37 +236,47 @@ print(response.json())
 ```shell
 curl -X GET \
     -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption?timestamp=YYYY-MM-DDT00:00:00.000Z'
+    'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption?timestamp=2024-01-15T00:00:00.000Z'
 ```
 
 </TabItem>
 </Tabs>
 
-#### Request response
+#### Response example
 
 ```json
 {
-  "areaUnit": "Hectare",
-  "date": "YYYY-MM-DDT00:00:00Z",
-  "totalUniqueArea": 0.32,
+  "areaUnit": "Acre",
+  "date": "2024-01-15T00:00:00Z",
+  "totalUniqueArea": 0.8,
   "leafUsersAreas": [
     {
         "leafUserId": "uuid1",
-        "totalArea": 0.26
+        "totalArea": 0.6
     },
     {
         "leafUserId": "uuid2",
-        "totalArea": 0.15
+        "totalArea": 0.4
     }
   ]
 }
 ```
 
-### Get contract consumption range for api owner
+**Response fields:**
+- `areaUnit`: Unit of measurement (Acre or Hectare)
+- `date`: The date this usage data represents
+- `totalUniqueArea`: Total unique area processed (removes overlaps between users)
+- `leafUsersAreas`: Breakdown of usage by individual users
+
+### Get usage range for your organization
 
 &nbsp<span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption/api-owner`
 
-Gets consumption metrics for an API owner over a time range, specified by the query parameters "startTime" and "endTime", ISO format `YYYY-MM-DDTT00:00:00.000Z`.
+Get usage metrics for your entire organization over a date range. Shows daily breakdown of total and cumulative usage.
+
+**Query Parameters:**
+- `startTime`: Start date in ISO format `YYYY-MM-DDTHH:MM:SS.sssZ`
+- `endTime`: End date in ISO format `YYYY-MM-DDTHH:MM:SS.sssZ`
 
 #### Request examples
 
@@ -314,8 +297,8 @@ const TOKEN = 'YOUR_TOKEN'
 const endpoint = 'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption/api-owner'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 const params = {
-    startTime: 'YYYY-MM-DDT00:00:00.000Z',
-    endTime: 'YYYY-MM-DDT00:00:00.000Z'
+    startTime: '2024-01-01T00:00:00.000Z',
+    endTime: '2024-01-31T00:00:00.000Z'
 }
 
 axios.get(endpoint, { headers, params })
@@ -333,8 +316,8 @@ TOKEN = 'YOUR_TOKEN'
 endpoint = 'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption/api-owner'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 params = {
-    'startTime': 'YYYY-MM-DDT00:00:00.000Z',
-    'endTime': 'YYYY-MM-DDT00:00:00.000Z'
+    'startTime': '2024-01-01T00:00:00.000Z',
+    'endTime': '2024-01-31T00:00:00.000Z'
 }
 
 response = requests.get(endpoint, headers=headers, params=params)
@@ -347,7 +330,7 @@ print(response.json())
 ```shell
 curl -X GET \
     -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption/api-owner?startTime=YYYY-MM-DDT00:00:00.000Z&endTime=YYYY-MM-DDT00:00:00.000Z'
+    'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption/api-owner?startTime=2024-01-01T00:00:00.000Z&endTime=2024-01-31T00:00:00.000Z'
 ```
 
 </TabItem>
@@ -357,28 +340,38 @@ curl -X GET \
 
 ```json
 {
-  "areaUnit": "Hectare",
+  "areaUnit": "Acre",
   "areaPerDay": [
     {
         "date": "2024-01-02T00:00:00Z",
-        "totalArea": 10.0,
-        "dailyArea": 26.0
+        "totalArea": 90.0,
+        "dailyArea": 65.0
     },
     {
         "date": "2024-01-03T00:00:00Z",
-        "totalArea": 10.0,
+        "totalArea": 90.0,
         "dailyArea": 0.0
-    },
-    ...
+    }
   ]
 }
 ```
 
-### Get contract consumption range for leaf user
+**Response fields:**
+- `areaUnit`: Unit of measurement (Acre or Hectare)
+- `areaPerDay`: Array of daily usage data
+  - `date`: The date for this data point
+  - `totalArea`: Cumulative area processed up to this date
+  - `dailyArea`: New area processed on this specific date
+
+### Get usage range for specific user
 
 &nbsp<span class="badge badge--success">GET</span> `/billing/contracts/{contract_id}/consumption/leaf-user/{leaf_user_id}`
 
-Gets consumption metrics for a specific Leaf user over a time range, specified by the query parameters "startTime" and "endTime", ISO format `YYYY-MM-DDTT00:00:00.000Z`.
+Get usage metrics for a specific Leaf user over a date range. Shows how much area this user has processed day by day.
+
+**Query Parameters:**
+- `startTime`: Start date in ISO format `YYYY-MM-DDTHH:MM:SS.sssZ`
+- `endTime`: End date in ISO format `YYYY-MM-DDTHH:MM:SS.sssZ`
 
 #### Request examples
 
@@ -399,8 +392,8 @@ const TOKEN = 'YOUR_TOKEN'
 const endpoint = 'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption/leaf-user/{leaf_user_id}'
 const headers = { 'Authorization': `Bearer ${TOKEN}` }
 const params = {
-    startTime: 'YYYY-MM-DDT00:00:00.000Z',
-    endTime: 'YYYY-MM-DDT00:00:00.000Z'
+    startTime: '2024-01-01T00:00:00.000Z',
+    endTime: '2024-01-31T00:00:00.000Z'
 }
 
 axios.get(endpoint, { headers, params })
@@ -418,8 +411,8 @@ TOKEN = 'YOUR_TOKEN'
 endpoint = 'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption/leaf-user/{leaf_user_id}'
 headers = {'Authorization': f'Bearer {TOKEN}'}
 params = {
-    'startTime': 'YYYY-MM-DDT00:00:00.000Z',
-    'endTime': 'YYYY-MM-DDT00:00:00.000Z'
+    'startTime': '2024-01-01T00:00:00.000Z',
+    'endTime': '2024-01-31T00:00:00.000Z'
 }
 
 response = requests.get(endpoint, headers=headers, params=params)
@@ -432,7 +425,7 @@ print(response.json())
 ```shell
 curl -X GET \
     -H 'Authorization: Bearer YOUR_TOKEN' \
-    'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption/leaf-user/{leaf_user_id}?startTime=YYYY-MM-DDT00:00:00.000Z&endTime=YYYY-MM-DDT00:00:00.000Z'
+    'https://api.withleaf.io/services/billingapplication/api/billing/contracts/{contract_id}/consumption/leaf-user/{leaf_user_id}?startTime=2024-01-01T00:00:00.000Z&endTime=2024-01-31T00:00:00.000Z'
 ```
 
 </TabItem>
@@ -442,21 +435,27 @@ curl -X GET \
 
 ```json
 {
-  "areaUnit": "Hectare",
+  "areaUnit": "Acre",
   "areaPerDay": [
     {
         "date": "2024-01-02T00:00:00Z",
-        "totalArea": 0.26,
-        "dailyArea": 0.26
+        "totalArea": 0.6,
+        "dailyArea": 0.6
     },
     {
         "date": "2024-01-03T00:00:00Z",
-        "totalArea": 0.26,
+        "totalArea": 0.6,
         "dailyArea": 0.0
-    },
-    ...
+    }
   ]
 }
 ```
+
+**Response fields:**
+- `areaUnit`: Unit of measurement (Acre or Hectare)
+- `areaPerDay`: Array of daily usage data for this user
+  - `date`: The date for this data point
+  - `totalArea`: Cumulative area processed by this user up to this date
+  - `dailyArea`: New area processed by this user on this specific date
 
 [contact]: mailto:help@withleaf.io
